@@ -455,3 +455,27 @@ that patch. Upstream bugs (e.g. the `pyproject.toml` dependency declaration) are
 locally**, never fixed in place. Any real upstream fix is a separate, deliberate decision.
 
 *Check before committing:* `git status --short` shows nothing outside `research/`.
+
+## 2026-09-04 (later) — Reproducibility bug fixed; canonical results doc added
+
+**Bug found while verifying numbers against raw CSVs, and it undermined a stated guarantee.** Six experiment
+sites seeded RNGs with `(seed, "label", ...).__hash__()`. Python salts string hashing per process
+(`PYTHONHASHSEED`), so tuples containing strings hash differently on every run — `--seed` did **not** make runs
+reproducible, despite the README claiming it did. Two runs of the same seed gave naive-attacker decay of 0.046
+and 0.094. Fixed with `research/common/metrics.stable_seed()` (blake2b over the repr'd parts) and verified:
+two separate processes under `PYTHONHASHSEED=random` now produce byte-identical output. Track A and B CSVs
+regenerated.
+
+**Two reporting corrections that came out of the same check:**
+- *Decay* is now reported as a mean over rounds 1–19 with min/max (naive **0.058**, range 0.030–0.086) rather
+  than a single round. The naive attacker's `f_l` is inherently noisy — the victim re-buckets uniformly and lands
+  back in the attacker's bucket with probability 1/16, spiking `f_l` to ~0.9 that round — so any single round
+  overstated precision.
+- *Censorship with caching on* is noisy at n=8 (50% / 62% / 75% across runs) because that arm runs on a live
+  swarm, where the seed fixes node_id selection but not network timing or caching races. Now reported as
+  "roughly half" with the caveat, instead of a precise figure. The 100% (caching off) and 0% (control) cells were
+  stable across every run.
+
+**Added `research/FINDINGS.md`** as the canonical results reference: every number read back from the committed
+CSV that produced it, each table naming its source file, uncertainty stated where it exists, plus an explicit
+limitations section. `README.md` now links to it.

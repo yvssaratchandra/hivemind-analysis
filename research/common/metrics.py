@@ -21,7 +21,28 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence
 
-__all__ = ["fraction", "amplification", "Recorder", "summarize"]
+__all__ = ["fraction", "amplification", "Recorder", "summarize", "stable_seed", "seeded_rng"]
+
+
+def stable_seed(*parts: Any) -> int:
+    """A reproducible integer seed derived from arbitrary parts.
+
+    Deliberately **not** ``hash(...)`` or ``tuple.__hash__()``: Python salts string
+    hashing per process (PYTHONHASHSEED), so those give a different value on every
+    run and silently destroy reproducibility even when the caller passes a fixed
+    ``--seed``. blake2b is stable across processes, machines and releases.
+    """
+    import hashlib
+
+    digest = hashlib.blake2b("|".join(repr(part) for part in parts).encode(), digest_size=8)
+    return int.from_bytes(digest.digest(), "big")
+
+
+def seeded_rng(*parts: Any):
+    """``random.Random`` seeded reproducibly from ``parts``. See :func:`stable_seed`."""
+    import random
+
+    return random.Random(stable_seed(*parts))
 
 
 def fraction(numerator: int, denominator: int) -> float:

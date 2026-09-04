@@ -19,7 +19,6 @@ from __future__ import annotations
 
 import argparse
 import asyncio
-import random
 from pathlib import Path
 from typing import List
 
@@ -33,7 +32,7 @@ from research.attacks.sybil_matchmaking import (
     verify_prediction_matches_hivemind,
 )
 from research.common import plotting
-from research.common.metrics import Recorder, summarize
+from research.common.metrics import Recorder, seeded_rng, summarize
 
 RESULTS_DIR = Path(__file__).resolve().parent.parent / "results"
 PREFIX = "run"
@@ -58,7 +57,7 @@ def run_amplification(seed: int) -> None:
         for budget in FAKE_BUDGETS:
             locals_ = []
             for repeat in range(REPEATS):
-                rng = random.Random((seed, num_buckets, budget, repeat).__hash__())
+                rng = seeded_rng(seed, num_buckets, budget, repeat)
                 result = simulate_amplification(
                     num_honest, budget, num_buckets=num_buckets, attacker_processes=1, rng=rng
                 )
@@ -111,7 +110,7 @@ def run_decay(seed: int) -> None:
     for tracking in (True, False):
         per_round: List[List[float]] = [[] for _ in range(rounds)]
         for repeat in range(REPEATS):
-            rng = random.Random((seed, "decay", tracking, repeat).__hash__())
+            rng = seeded_rng(seed, "decay", tracking, repeat)
             history = simulate_tracking(
                 rounds,
                 num_buckets=num_buckets,
@@ -128,7 +127,15 @@ def run_decay(seed: int) -> None:
         label = "tracking attacker (predicts victim's bucket)" if tracking else "naive attacker (fixed bucket)"
         series[label] = (list(range(rounds)), means)
         errors[label] = stds
-        print(f"  {label:<46} round 0: {means[0]:.3f} -> round {rounds - 1}: {means[-1]:.3f}")
+        # Report the post-attack regime as a mean over rounds 1..N-1, not a single round.
+        # A naive attacker's f_l is noisy after round 0: the victim re-buckets uniformly, so it
+        # lands back in the attacker's bucket with probability 1/num_buckets and f_l spikes to ~0.9
+        # in those rounds. Quoting one round would overstate the precision either way.
+        steady = summarize(means[1:])
+        print(
+            f"  {label:<46} round 0: {means[0]:.3f} -> rounds 1-{rounds - 1} mean: "
+            f"{steady['mean']:.3f} (min {steady['min']:.3f}, max {steady['max']:.3f})"
+        )
 
     csv_path = recorder.write(RESULTS_DIR)
     print(f"wrote {csv_path}")

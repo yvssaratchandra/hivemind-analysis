@@ -18,7 +18,6 @@ from __future__ import annotations
 
 import argparse
 import asyncio
-import random
 from pathlib import Path
 
 from research.attacks.eclipse_key import (
@@ -29,7 +28,7 @@ from research.attacks.eclipse_key import (
     sybils_needed_for_full_capture,
 )
 from research.common import plotting
-from research.common.metrics import Recorder, summarize
+from research.common.metrics import Recorder, seeded_rng, summarize
 
 RESULTS_DIR = Path(__file__).resolve().parent.parent / "results"
 KEY = "hivemind_run_alpha.all_averagers"  # shaped like a real Hivemind key
@@ -54,7 +53,7 @@ def run_analytical(seed: int) -> None:
         for num_sybils in SYBIL_COUNTS:
             captures = []
             for repeat in range(REPEATS):
-                rng = random.Random((seed, swarm_size, num_sybils, repeat).__hash__())
+                rng = seeded_rng(seed, swarm_size, num_sybils, repeat)
                 result = analytical_capture(KEY, swarm_size, num_sybils, num_replicas=NUM_REPLICAS, rng=rng)
                 captures.append(result.structural_capture)
                 recorder.record(**result.as_row(repeat=repeat, layer="analytical"))
@@ -97,9 +96,9 @@ def run_cost_curve(seed: int) -> None:
     for swarm_size in ANALYTICAL_SWARM_SIZES:
         needed, distances = [], []
         for repeat in range(REPEATS):
-            rng = random.Random((seed, "cost", swarm_size, repeat).__hash__())
+            rng = seeded_rng(seed, "cost", swarm_size, repeat)
             count = sybils_needed_for_full_capture(KEY, swarm_size, num_replicas=NUM_REPLICAS, rng=rng)
-            rng2 = random.Random((seed, "cost", swarm_size, repeat).__hash__())
+            rng2 = seeded_rng(seed, "cost", swarm_size, repeat)
             distance = nearest_honest_distance(KEY, swarm_size, rng=rng2)
             needed.append(count)
             distances.append(distance)
@@ -197,7 +196,7 @@ async def run_censorship(seed: int) -> None:
         for crafted in (True, False):
             label = "crafted node_ids" if crafted else "random node_ids (control)"
             for repeat in range(repeats):
-                rng = random.Random((seed, "censor", cache_label, crafted, repeat).__hash__())
+                rng = seeded_rng(seed, "censor", cache_label, crafted, repeat)
                 row = await censorship_test(
                     KEY,
                     num_honest,

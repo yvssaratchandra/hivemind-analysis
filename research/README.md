@@ -7,6 +7,9 @@ loopback on a single laptop, with no GPU and no real deep-learning training.
 The aim is constructive: every attack is paired with a prototype defense and a
 before/after measurement, so the findings can inform upstream hardening.
 
+> **All results with provenance and uncertainty: [`FINDINGS.md`](FINDINGS.md)** — the canonical reference,
+> with every number traced to the CSV that produced it.
+
 > **Scope.** All experiments bind to `127.0.0.1` only. No public Hivemind, IPFS, or
 > other live network is touched. Attack code exists to measure defenses on a swarm the
 > operator owns.
