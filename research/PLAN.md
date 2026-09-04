@@ -288,3 +288,49 @@ Periodic group re-formation is unpredictable to an outsider but fully transparen
 an attacker who declines to use public information. **Any defense that leans on re-formation for dilution needs
 the shuffle to depend on a secret the attacker does not hold.**
 
+## 2026-09-04 — Track C complete: from captured group to damaged model
+
+Code: `research/attacks/poison_averaging.py`, `research/defenses/robust_agg.py` (also defense D3),
+driver `research/experiments/track_c_learning_harm.py`. Results: `track_c_{damage,weight,stealth}.csv` + 6 PNGs.
+
+Task: distributed least-squares with a known optimum `x*`, 16 peers, 64 dims, 60 rounds, 3 seeds. No neural
+network or dataset, but real convergence (clean run reaches distance 0.002) and an exact ground truth, so all
+displacement is attributable to the attack. Defenders are given a *conservative guess* at `f`, never the true
+count.
+
+**C1 damage vs `f_l` (distance to optimum; clean = 0.002).**
+
+| attack | rule | f_l=0.06 | 0.25 | 0.44 | 0.50 |
+|---|---|---|---|---|---|
+| sign_flip | weighted_mean (today) | **4.37** | 9.82 | 364.8 | diverged |
+| sign_flip | multi_krum | 0.003 | 0.003 | 0.003 | diverged |
+| targeted_stealth | weighted_mean (today) | 0.257 | 1.001 | 1.635 | 1.799 |
+| targeted_stealth | coordinate_median | 0.002 | 0.003 | 0.004 | 2.594 |
+
+**Plain averaging breaks at f_l = 0.0625 — a single malicious peer out of sixteen — for all four attacks.**
+Track B shows one attacker process reaching f_l ≈ 0.9, i.e. roughly 14× more than needed.
+
+**C2 the unvalidated weight, and it is the sharpest finding.** One malicious peer in sixteen changes nothing but
+the `weight` it claims — a field taken from the wire and applied verbatim (`allreduce.py:339` → `partition.py:242`),
+whose honest value is a *self-reported sample count* (`grad_averager.py:196`):
+
+| rule | weight=1 | weight=10⁶ |
+|---|---|---|
+| weighted_mean (today) | 4.37 | **diverged** |
+| krum | 0.0062 | 0.0062 (unchanged) |
+| coordinate_median | 0.0023 | 0.0023 (unchanged) |
+
+This is a one-line attack that group-composition defenses do not touch, and the cheapest thing to fix (D4).
+
+**C3 stealth.** The targeted attack drives its 8 chosen coordinates off by 0.25 → 1.75 as f_l grows, while the
+attacker's contribution norm stays at **0.95–0.96× the honest mean** — consistently *quieter* than honest peers.
+Any norm- or magnitude-based filter would never fire. Robust aggregation, not anomaly detection, is the answer.
+
+**Where the robust rules themselves fail — reported, not glossed.** At f_l = 0.5 the attackers are a majority and
+*every* rule fails; that is the fundamental limit, not an implementation flaw. Before that: `trimmed_mean` breaks
+at 0.31; `krum`/`multi_krum` hold to ~0.44 against sign_flip but break at ~0.31 against targeted_stealth, because
+Sybils driven by one process submit *identical* vectors and so form the tightest cluster — the exact case Krum's
+"most agreed-with" selection rewards. `coordinate_median` was the most durable overall. Conclusion: robust
+aggregation is necessary but not sufficient; it must be paired with the identity/admission fixes (D1, D2) that
+keep `f_l` low in the first place.
+
