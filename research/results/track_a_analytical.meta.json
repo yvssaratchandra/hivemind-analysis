@@ -1,0 +1,10 @@
+{
+  "name": "track_a_analytical",
+  "params": {
+    "key": "hivemind_run_alpha.all_averagers",
+    "num_replicas": 5,
+    "repeats": 40,
+    "seed": 1234
+  },
+  "num_rows": 3200
+}

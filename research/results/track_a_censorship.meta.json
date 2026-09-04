@@ -1,0 +1,9 @@
+{
+  "name": "track_a_censorship",
+  "params": {
+    "key": "hivemind_run_alpha.all_averagers",
+    "num_replicas": 5,
+    "seed": 1234
+  },
+  "num_rows": 32
+}
