@@ -385,3 +385,26 @@ D4 is the cheapest patch of the four: Hivemind *already* asserts exactly this on
 remains (Track C), D4 closes the weight channel that neither of the others touches, and D2 is the precondition
 that makes identity claims meaningful at all.
 
+## 2026-09-04 — Tier-2 validation: headline results hold on a real multi-process swarm
+
+Code: `research/common/multiprocess_swarm.py`, driver `research/experiments/tier2_validation.py`.
+Result: `tier2_validation.csv`.
+
+Tier 1 already used real `p2pd` daemons and real libp2p, but shared one Python process and bootstrapped every
+peer off a single node (a star). Tier 2 removes both possible artefacts: **one OS process per peer**, and each
+joining peer bootstraps off a **randomly chosen** existing peer. (The stock
+`launch_swarm_in_separate_processes` helper forwards one `**kwargs` to every node and so cannot give peers
+distinct `node_id`s — the per-peer node_id is threaded through in our variant.)
+
+18 honest peers + 5 Sybils, `num_replicas=5`:
+
+| claim | Tier 1 | Tier 2 (separate processes, random topology) |
+|---|---|---|
+| structural replica capture | 1.00 | **1.00** |
+| live lookup capture | 1.00 | **1.00** (5/5 peers returned are Sybil) |
+| f_local from fabricated declarations | 0.97 (400 writes) | **0.949** (150 writes, 150/158 seen) |
+
+Both headline results are unchanged. Note `honest value readable: True` here for the same reason as in Track A:
+these Sybils are *passive*, so the eclipse grants custody without exercising it — the censorship arm (100% with
+caching off) is what measures the harm that custody enables.
+

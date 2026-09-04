@@ -1,0 +1,10 @@
+{
+  "name": "tier2_validation",
+  "params": {
+    "num_honest": 18,
+    "num_sybils": 5,
+    "num_replicas": 5,
+    "seed": 7
+  },
+  "num_rows": 2
+}
