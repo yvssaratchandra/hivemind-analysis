@@ -435,3 +435,23 @@ No file outside `research/` was modified; `ruff check` and `ruff format --check`
 5. Extend Track C beyond a convex task if a stronger claim about real training is wanted — the current task is
    deliberately simple so that damage is unambiguous, which is a limitation as well as a strength.
 
+---
+
+## Standing constraint (set 2026-09-04, applies to all future work)
+
+**Never modify core Hivemind in this project.** All work stays additive under `research/`. This covers the whole
+upstream tree — `hivemind/`, `tests/`, `benchmarks/`, `examples/`, `setup.py`, `pyproject.toml`,
+`requirements*.txt` — not just the library package.
+
+*Why:* this is security research against Hivemind **as it actually ships**. Editing the upstream tree would mean
+the measurements no longer describe real Hivemind, and the findings would lose their meaning. It also keeps
+`git diff master` equal to exactly the research contribution, and lets upstream be updated underneath without
+conflicts.
+
+*How this is honoured:* reproduce or wrap upstream behaviour instead of patching it. `research/defenses/robust_agg.py`
+reimplements the `TensorPartReducer` rule faithfully rather than editing `hivemind/averaging/partition.py`;
+`research/defenses/id_binding.py` exposes the admission predicate an upstream patch *would* call, without making
+that patch. Upstream bugs (e.g. the `pyproject.toml` dependency declaration) are **reported here and worked around
+locally**, never fixed in place. Any real upstream fix is a separate, deliberate decision.
+
+*Check before committing:* `git status --short` shows nothing outside `research/`.
