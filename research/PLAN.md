@@ -379,7 +379,7 @@ Sanitizing catches NaN/inf/negative (all three now rejected) but `1e6` is finite
 untouched. **Only the relative cap contains it.** Clipping bounds the damage rather than removing it (11.77 vs a
 4.37 baseline), because a 10× cap still grants 10× influence — a deliberate policy choice, not a flaw.
 D4 is the cheapest patch of the four: Hivemind *already* asserts exactly this on the sender side
-(`control.py:95`, `averager.py:399`); D4 just moves the check to the receiver.
+(`control.py:95-96`, `averager.py:401`); D4 just moves the check to the receiver.
 
 **Combined picture.** No single defense is sufficient. D1 keeps `f_l` low (Track A/B), D3 tolerates the `f_l` that
 remains (Track C), D4 closes the weight channel that neither of the others touches, and D2 is the precondition
@@ -407,4 +407,31 @@ distinct `node_id`s — the per-peer node_id is threaded through in our variant.
 Both headline results are unchanged. Note `honest value readable: True` here for the same reason as in Track A:
 these Sybils are *passive*, so the eclipse grants custody without exercising it — the censorship arm (100% with
 caching off) is what measures the harm that custody enables.
+
+## 2026-09-04 — Write-up complete
+
+`research/README.md` written as the reviewer-facing summary: threat model, the two-identity root cause with
+verified file:line citations, findings A–D, the defense table with its caveats, exact reproduction commands, and
+the resource notes. All cited line numbers were re-checked against the working tree (two were off by a line and
+corrected: `control.py:95-96`, `averager.py:401`).
+
+**State at completion.** All six planned work items are done: harness, Tracks A–D, Tier-2 validation, write-up.
+No file outside `research/` was modified; `ruff check` and `ruff format --check` pass over 18 files; upstream
+`test_dht.py`, `test_routing.py`, `test_dht_crypto.py` still pass (14/14).
+
+**Suggested next steps, in rough priority order.**
+1. **D1 as an upstream PR** — highest value and self-contained: bind `node_id` to `PeerID` and enforce it in the
+   three routing-ingestion paths (`rpc_ping`, `update_routing_table`, `call_find` neighbour lists). Needs a
+   staged-rollout story, since strict enforcement partitions unpatched peers — `BindingPolicy(strict=False)`
+   exists for exactly that.
+2. **D4 as a separate, tiny PR** — moving an assertion Hivemind already makes on the sender side to the receiver;
+   should be uncontroversial and independently useful.
+3. **The `pyproject.toml` dependency bug** — unrelated to security, trivially fixable, currently breaks
+   `pip install -e .` for everyone.
+4. **Open question worth study:** re-formation's shuffle is seeded on the public `group_id`. Seeding it on
+   something the attacker cannot compute (e.g. a value contributed by all members and revealed after the fact)
+   would restore the decay the design appears to intend. This is a design change, not a patch, and is the most
+   interesting remaining research direction.
+5. Extend Track C beyond a convex task if a stronger claim about real training is wanted — the current task is
+   deliberately simple so that damage is unambiguous, which is a limitation as well as a strength.
 

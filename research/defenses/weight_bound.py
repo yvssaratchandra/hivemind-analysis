@@ -13,8 +13,8 @@ count (``grad_averager.py:196``), so it is attacker-chosen by construction.
 
 Hivemind already asserts exactly the right property -- but only locally, on the
 sender's own value: ``StepControl.weight`` does ``assert weight >= 0 and
-np.isfinite(weight)`` (``averaging/control.py:95``) and ``DecentralizedAverager.step``
-repeats it (``averager.py:399``). Those are self-imposed constraints an honest client
+np.isfinite(weight)`` (``averaging/control.py:95-96``) and ``DecentralizedAverager.step``
+repeats it (``averager.py:401``). Those are self-imposed constraints an honest client
 applies to itself; nothing enforces them on incoming data. **D4 is simply moving that
 existing check to the receiving side**, which makes it a small and uncontroversial
 upstream patch.
@@ -45,7 +45,7 @@ def sanitize_weight(weight: float) -> Optional[float]:
     """Return a usable weight, or ``None`` if the sender's value must be discarded.
 
     Mirrors the assertion an honest sender already applies to itself
-    (``control.py:95``): finite and non-negative.
+    (``control.py:95-96``): finite and non-negative.
     """
     if weight is None or math.isnan(weight) or math.isinf(weight) or weight < 0:
         return None
