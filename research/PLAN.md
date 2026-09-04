@@ -334,3 +334,54 @@ Sybils driven by one process submit *identical* vectors and so form the tightest
 aggregation is necessary but not sufficient; it must be paired with the identity/admission fixes (D1, D2) that
 keep `f_l` low in the first place.
 
+## 2026-09-04 — Track D complete: prototype defenses, re-measured
+
+Code: `research/defenses/{id_binding,signed_declare,robust_agg,weight_bound}.py`,
+driver `research/experiments/track_d_defenses.py`. Results: `track_d_*.csv` + 2 PNGs.
+
+**D1 — bind `node_id` to the public key** (`node_id == DHTID.generate(peer_id.to_bytes())`, enforced wherever a
+`(node_id, peer_id)` pair enters routing state). Against Track A's attacker: **5/5 crafted addresses rejected,
+0/50 honest derived addresses rejected** (no false positives). Cost changes from *free* to keypair grinding:
+
+| prefix bits the attacker must match | keypairs per identity | keypairs for a total eclipse |
+|---|---|---|
+| 16 | 6.6e4 | 3.3e5 |
+| 24 | 1.7e7 | 8.4e7 |
+| 32 | 4.3e9 | 2.1e10 |
+
+And 64 legitimately-derived attacker addresses capture only **2/5** replica slots — versus 5/5 for 5 crafted ones.
+This is the single highest-value fix: it converts Track A from free to compute-bound.
+
+**D2 — signed averager declarations.** Needed a custom `RecordValidatorBase` rather than `SchemaValidator`, because
+averaging keys are dynamic (`{prefix}.0b{bits}`, one per bucket) while `SchemaValidator` binds fixed field names
+(`schema.py:44`). Results: **0/200 fabricated unsigned declarations accepted (was 200/200)**, honest owner-tagged
+signed declarations accepted, and owner-tagged-but-unsigned forgeries rejected — the last one matters because
+`RSASignatureValidator` is *fail-open* by default (`crypto.py:47`).
+*Stated honestly:* D2 removes **impersonation** and raises a fake identity's price from one DHT write to one
+keypair plus one write. It does **not** by itself stop Sybils — signing proves key possession, not distinctness.
+It is a precondition for, not a substitute for, D1.
+
+**D3 — robust aggregation.** Displacement from the honest mean with one extreme peer in 16:
+weighted_mean **5.7e6**, krum 4.21, multi_krum 1.16, coordinate_median 0.89, trimmed_mean 0.68.
+Full `f_l` sweep is in Track C, including where each rule fails.
+
+**D4 — bound the averaging weight, and a correction to the plan's assumption.** The plan proposed
+"`weight >= 0 && isfinite && weight <= cap`" as one fix; measurement shows the first two clauses and the third do
+*different* jobs:
+
+| policy | weight=1 | weight=10⁶ |
+|---|---|---|
+| no validation (today) | 4.37 | **diverged** |
+| sanitize only (finite, non-negative) | 4.37 | **diverged — no help** |
+| sanitize + clip to 10× group median | 4.37 | **11.77** |
+
+Sanitizing catches NaN/inf/negative (all three now rejected) but `1e6` is finite and positive, so it passes
+untouched. **Only the relative cap contains it.** Clipping bounds the damage rather than removing it (11.77 vs a
+4.37 baseline), because a 10× cap still grants 10× influence — a deliberate policy choice, not a flaw.
+D4 is the cheapest patch of the four: Hivemind *already* asserts exactly this on the sender side
+(`control.py:95`, `averager.py:399`); D4 just moves the check to the receiver.
+
+**Combined picture.** No single defense is sufficient. D1 keeps `f_l` low (Track A/B), D3 tolerates the `f_l` that
+remains (Track C), D4 closes the weight channel that neither of the others touches, and D2 is the precondition
+that makes identity claims meaningful at all.
+
