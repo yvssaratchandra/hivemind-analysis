@@ -244,3 +244,47 @@ halves censorship success (100% → 50%). This is a side effect of a *performanc
 caches expire and the attacker still holds every authoritative replica — but it is a real, measurable partial
 mitigation and is reported as such rather than assumed away.
 
+## 2026-09-04 — Track B complete: global → local amplification, and the decay question answered
+
+Code: `research/attacks/sybil_matchmaking.py`, driver `research/experiments/track_b_amplification.py`.
+Results: `track_b_{amplification,decay,live}.csv` + 3 PNGs.
+
+**The matchmaking Sybil is far cheaper than the plan assumed.** Averaging discovery records are unsigned
+(`declare_averager`, `key_manager.py:46`) and the subkey is just `peer_id.to_bytes()` with nothing checking the
+writer owns it. So **a fabricated averager identity costs one DHT write** — no keypair, no process, no
+connection. Measured live: *one* process registered 400 fabricated averagers. The plan's "one identity ≈ one
+peer" cost model understated this by orders of magnitude, and Track B is scoped accordingly: the attacker is a
+**single process** in every experiment below.
+
+**B1 amplification (live, 12 honest peers + 1 attacker process, f_global = 0.077).**
+
+| fabricated declarations | victim's candidates | fake | f_local | amplification | leader captured |
+|---|---|---|---|---|---|
+| 0 | 12 | 0 | 0.000 | — | no |
+| 1 | 13 | 1 | 0.077 | ×1.0 | **yes** |
+| 25 | 37 | 25 | 0.676 | ×8.8 | yes |
+| 400 | 412 | 400 | 0.971 | ×12.6 | yes |
+
+**Leadership costs exactly one fabricated declaration.** Leaders are chosen by earliest declared expiration
+(`matchmaking.py:478`), a self-chosen value, and the leader picks the group's membership and `group_id`.
+
+Simulated at 100 honest peers (f_global = 0.0099, one attacker process), 100 fabricated declarations give
+f_local = 0.50 / 0.80 / 0.94 / 0.98 for 1 / 4 / 16 / 64 buckets — **amplification ×50 to ×99**. Two multipliers
+compound: identity multiplication (writes are free) and targeting (honest peers scatter across buckets while the
+attacker concentrates in the victim's).
+
+**B2 decay — this answers the project's core question, and the answer is "no decay".** Re-bucketing after each
+group (`update_key_on_group_assembled`, `key_manager.py:94`) is seeded on `group_id` and computed from values
+**every group member already has**. `predict_next_group_bits` reproduces Hivemind's own re-bucketing
+**144/144** across group ids, target sizes and bit-widths. So an attacker who shares *one* group with the victim
+computes all its future buckets:
+
+| attacker | f_local round 0 | f_local round 19 |
+|---|---|---|
+| naive (floods a fixed bucket) | 0.893 | **0.046** (decays as the design suggests) |
+| tracking (predicts victim's bucket) | 0.889 | **0.893** (no decay at all) |
+
+Periodic group re-formation is unpredictable to an outsider but fully transparent to a participant. It sheds only
+an attacker who declines to use public information. **Any defense that leans on re-formation for dilution needs
+the shuffle to depend on a secret the attacker does not hold.**
+
