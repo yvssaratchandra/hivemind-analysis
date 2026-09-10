@@ -45,6 +45,7 @@ reliably pinned to α even with nobody attacking.
 | `research/analyse_groups.py` | Tests a recorded run's membership against a uniform-random-partition null, by Monte Carlo. |
 | `research/step3_eclipse.py` | Cost of owning a DHT record, as arithmetic over node_ids. Brief item 1, analytical layer. |
 | `research/step3_eclipse_live.py` | The same, on a live swarm of real `DHTNode`s. Brief item 1, live layer. |
+| `research/step3_candidates.py` | Attacker share of the victim's candidate list, by flooding and by eclipse. Brief item 2, discovery layer. |
 
 Results are in `research/results/*.csv` (tracked in git), tagged with the configuration that produced
 them — `step2_groups_16x8.csv` is 16 peers at group size 8. A trailing `_b` is an independent repeat.
@@ -333,7 +334,53 @@ replica of that record sits on attacker hardware — so the attacker *could* ref
 serve a stale value, or serve different values to different readers. Measuring that needs a
 node that misbehaves on `rpc_find`, which is a separate experiment and has not been run.
 
-### 6.3 From reading the source, not yet measured
+### 6.3 Measured: five identities take the whole candidate list, at any swarm size
+
+`step3_candidates.py`, live `hivemind.DHT` swarms, going through the real
+`GroupKeyManager.declare_averager` / `get_averagers` rather than a reimplementation. The
+victim's **candidate list** is the set of peers it reads back when looking for averaging
+partners.
+
+| arm | attacker processes | α | attacker share of list | honest peers still visible |
+|---|---|---|---|---|
+| honest control | 0 | 0.000 | 0.00 | 32/32 |
+| flood, 8 writes | 1 | 0.029 | 0.20 | 32/32 |
+| flood, 32 writes | 1 | 0.029 | 0.50 | 32/32 |
+| flood, 128 writes | 1 | 0.029 | 0.80 | 32/32 |
+| **eclipse, 5 nodes** | 5 | 0.132 | **1.00** | **0/32** |
+
+**Flooding is cheap but linear.** An advertisement is an unsigned record whose subkey is a
+PeerID nobody verifies (`key_manager.py:46`; `PeerID.__init__` validates nothing), so one
+process writes as many as it likes for peers that do not exist. But share is
+k/(k + honest): 128 fabricated advertisements reach 0.80 against 32 honest peers and would
+need four times as many to hold that share against four times the swarm. It also only
+*dilutes* — every honest peer stayed visible in every flood run.
+
+**The eclipse does not dilute, it removes.** Five nodes with crafted node_ids own every
+replica of the group key (§6.2), and `record_validator` — a supported `DHTNode.create`
+argument that gates incoming writes at `protocol.py:260` — lets each of them refuse to
+store anyone else's advertisement. Honest advertisements then have nowhere to land. The
+victim's candidate list came back with **exactly one entry, the attacker's**, at every
+swarm size tested.
+
+**This is the amplification the brief asks about.** As the swarm grows from 8 to 32 peers, α
+falls 0.357 → 0.227 → 0.132 while β at the candidate list stays pinned at 1.00. §6.2 showed
+five identities suffice at 10 000 peers, where α would be 0.0005 — and there is no reason
+from the mechanism for β to move.
+
+**A free detection signal, currently discarded.** All 32 honest peers got `False` back from
+their own `declare_averager` call: the DHT told each of them its advertisement had been
+refused by every replica. Nothing in Hivemind looks. `_declare_averager_periodically`
+(`matchmaking.py:535`, and again at 544) awaits the call and throws the result away, and a
+tree-wide search finds no other caller. A peer being erased from the discovery layer already
+has the evidence in hand and drops it.
+
+**What this is not.** The candidate list is not the averaging group. A peer picks one leader
+from this list and the group is assembled by a separate race (`GROUP_FORMATION.md` §3), so
+owning the list is not yet owning the group — that is the malicious-leader experiment, and
+these two must not be reported as the same quantity.
+
+### 6.4 From reading the source, not yet measured
 
 These came out of reading `hivemind/averaging/matchmaking.py` and are the reason the project is worth
 finishing. All are code-level claims with line references; none has been experimentally confirmed.
