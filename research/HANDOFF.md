@@ -66,13 +66,16 @@ independently, also gives 0.1492 at epoch 20.
 **Multi-group runs**, all 20 epochs, all with every observed group at exactly the requested size and
 no epochs missing peers:
 
-| peers | group size | groups/round | epoch-20 distance | spread | wall clock |
-|---|---|---|---|---|---|
-| 8 | 8 | 1 | 0.1492 | 0.0000 | 104 s |
-| 16 | 4 | 4 | 0.1266 | 0.0015 | 104 s |
-| 16 | 8 | 2 | 0.1226 / 0.1228 | 0.0017 / 0.0007 | 107 s / 104 s |
-| 24 | 8 | 3 | 0.1233 / 0.1234 | 0.0045 / 0.0036 | 109 s / 106 s |
-| 24 | 12 | 2 | 0.1229 | 0.0021 | 108 s |
+| peers | group size | groups/round | epoch-20 distance | spread at epoch 20 | peak spread | wall clock |
+|---|---|---|---|---|---|---|
+| 8 | 8 | 1 | 0.1492 | 0.0000 | 0.0000 | 104 s |
+| 16 | 4 | 4 | 0.1266 | 0.0015 | 0.2766 | 104 s |
+| 16 | 8 | 2 | 0.1226 / 0.1228 | 0.0017 / 0.0007 | 0.0703 / 0.0998 | 107 s / 104 s |
+| 24 | 8 | 3 | 0.1233 / 0.1234 | 0.0045 / 0.0036 | 0.0413 / 0.0514 | 109 s / 106 s |
+| 24 | 12 | 2 | 0.1229 | 0.0021 | 0.0190 | 108 s |
+
+Both spread columns are there because quoting only the epoch-20 one is misleading: the peak arrives in
+the first few epochs and is up to two orders of magnitude larger. See §3.
 
 Larger swarms converge slightly further per epoch because averaging over more peers gives a less noisy
 gradient; each peer still takes ~25 local steps per epoch at every size, since `target_batch_size`
@@ -111,9 +114,16 @@ Real averaging → spread is exactly **0.0000** (peers hold identical weights). 
 0.1–0.8 and grows, as peers drift apart. Check this on every run.
 
 That shortcut holds only while the whole swarm is **one group**. With more than one group per round,
-peers in different groups average different things, so the spread is small but non-zero — 0.0007 to
-0.0045 in the runs in §2 — and that is correct behaviour, not a symptom. `peers_seen` is what
-distinguishes the two cases at any group count; the spread is not.
+peers in different groups average different things, so the spread is non-zero and that is correct
+behaviour rather than a symptom. It starts at 0.0000, peaks within the first few epochs — 0.28 at
+epoch 1 in the 16-peer group-4 run, 0.07 at 16 peers with group 8, 0.04 at 24 — and then decays by
+roughly two orders of magnitude, to 0.001–0.005 by epoch 20.
+
+**Note that the peak overlaps the 0.1–0.8 quoted just above**, so on a multi-group run the magnitude
+of the spread cannot tell the two cases apart, and the early epochs are exactly where it misleads.
+Two things do tell them apart: `peers_seen`, at any group count, and the direction of travel — real
+averaging makes the spread shrink over the run, while peers training alone drift steadily further
+apart.
 
 ### Trap 2 — on Python 3.14 the swarm does not start at all, and hangs instead of failing
 
