@@ -154,6 +154,22 @@ These defaults change the behaviour above substantially, and `hivemind.Optimizer
 Under these defaults every peer in a run advertises on the same key, group membership is decided anew each
 round, and a group can be as small as two peers.
 
+A caller using `hivemind.Optimizer` cannot simply override `target_group_size` for the averager that
+matters. `Optimizer` accepts an `averager_opts` dictionary and its docstring (`optim/optimizer.py:157`)
+says it is "forwarded to both GradientAverager and TrainingStateAverager", but the code forwards it only
+to the state averager (`optimizer.py:263`); `_make_gradient_averager` (`optimizer.py:300-315`) never
+receives it. The gradient averager therefore keeps the `None` default — and it is the one whose groups
+decide who your gradients are mixed with. The only supported route to it is the `grad_averager_factory`
+argument (`optimizer.py:192`), binding the keyword into the factory, since `GradientAverager` passes
+unrecognised keywords through to `DecentralizedAverager`.
+
+**Measured consequence.** Because no peer ever changes group key under these defaults, every round is
+the same race between the same peers, and nothing re-randomises membership. Whether membership mixes is
+then decided by whether arrival order varies from round to round — a property of the environment, not
+of the protocol. In 20-round runs on one machine, 16-peer swarms froze into near-constant cliques (a
+pair sharing a group in all 20 rounds; 10–15 distinct partitions where a uniform random partition gives
+20) while 24-peer swarms were statistically indistinguishable from a fair draw. See `HANDOFF.md` §6.1.
+
 ---
 
 ## 2. The factors that decide membership
@@ -250,6 +266,15 @@ reported as the same quantity.
 
 - **Verified in code:** the five formation steps, the eight factors, the default values, and the fact that the
   deadline and admission decisions are unvalidated. Every claim above cites the line that supports it.
+- **Measured:** that membership is not a fair draw in general, and that whether it looks like one depends
+  on the testbed rather than on the protocol (`HANDOFF.md` §6.1). This is the honest-swarm baseline any
+  attacker result has to be compared against, and it is not the β ≈ α that the literature assumes.
+- **Also measured, and cheaper than expected:** winning leadership needs no modified client. The declared
+  deadline is `min(max(scheduled_time, now + min_matchmaking_time), search_end_time)`
+  (`matchmaking.py:527-531`), and `min_matchmaking_time` is just `Optimizer`'s `matchmaking_time`
+  argument (`optimizer.py:287,307`), so a peer configured with a smaller value than its neighbours
+  declares the earliest deadline and is elected leader by their own sorting. Only the *selective
+  admission* half of Route A needs a subclass.
 - **Not yet measured:** the practical success rate of Route A. The deadline trade-off in §3 means the attacker
   must win leadership *and* keep the group open long enough for the target to join. Whether that window is
   wide in practice is an experimental question, not one the source code answers.

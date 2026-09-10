@@ -5,6 +5,8 @@ reader with no prior context (human or assistant) can continue without the origi
 
 Last updated: 2026-09-10 · branch `research/net-security` · remote `analysis`
 
+Second machine, second day: the environment notes in §5 and the traps in §3 have both changed.
+
 ---
 
 ## 1. What this project is
@@ -24,7 +26,8 @@ Two quantities run through all of it:
 - **β** = attacker-controlled peers / members of one averaging group (local fraction)
 
 The interesting question is whether β is something an attacker *has* (β ≈ α, as the Byzantine-ML
-literature assumes) or something an attacker *chooses*. See §6.
+literature assumes) or something an attacker *chooses*. See §6 — and note that §6.1 finds β is not
+reliably pinned to α even with nobody attacking.
 
 **Standing constraint: never modify anything under `hivemind/`.** All work is additive under
 `research/`. Every extension uses a supported hook or a subclass.
@@ -39,29 +42,49 @@ literature assumes) or something an attacker *chooses*. See §6.
 |---|---|
 | `research/step1_baseline.py` | N peers, real DHT + real `hivemind.Optimizer`, training linear regression with a known optimum `w*`. Establishes the clean baseline. |
 | `research/step2_groups.py` | Same, plus records **which peers shared a group each round**. This is the control for β. |
+| `research/analyse_groups.py` | Tests a recorded run's membership against a uniform-random-partition null, by Monte Carlo. |
 
-Results in `research/results/*.csv` (tracked in git).
+Results are in `research/results/*.csv` (tracked in git), tagged with the configuration that produced
+them — `step2_groups_16x8.csv` is 16 peers at group size 8. A trailing `_b` is an independent repeat.
 
-**Verified 8-peer baseline** (`step2_groups.py --num-peers 8 --group-size 8 --max-epoch 20`):
+**Canonical baseline** (`step2_groups.py --num-peers 8 --group-size 8 --max-epoch 20`):
 
 | epoch | mean distance to `w*` | spread across peers | peers seen |
 |---|---|---|---|
 | 0 | 7.9173 | 0.0000 | 8 |
-| 10 | 1.0504 | 0.0000 | 8 |
-| 20 | **0.1479** | 0.0000 | 8 |
+| 10 | 1.0579 | 0.0000 | 8 |
+| 20 | **0.1492** | 0.0000 | 8 |
 
-20 rounds, 160 group observations, group size always 8, no missing epochs, 122 s wall clock.
-**0.1479 is the number "unbroken" means.** Every later attack result is compared against it.
+20 rounds, 160 group observations, group size always 8, no missing epochs, 104 s wall clock.
+**0.1492 is the number "unbroken" means.** Every later attack result is compared against it.
 
-**In flight, not yet recorded:** a 16-peer run with `--group-size 8`, giving two concurrent groups per
-round. That is the first configuration where group membership is a real choice and the co-occurrence
-matrix means anything. If it did not complete, just re-run it.
+The first machine recorded **0.1479** for the same configuration, and that number appears in earlier
+commits. The 0.9 % gap is not a behaviour change: peers race to `target_batch_size`, so the number of
+local steps each one lands per epoch varies slightly between runs. `step1_baseline.py`, re-run here
+independently, also gives 0.1492 at epoch 20.
+
+**Multi-group runs**, all 20 epochs, all with every observed group at exactly the requested size and
+no epochs missing peers:
+
+| peers | group size | groups/round | epoch-20 distance | spread | wall clock |
+|---|---|---|---|---|---|
+| 8 | 8 | 1 | 0.1492 | 0.0000 | 104 s |
+| 16 | 4 | 4 | 0.1266 | 0.0015 | 104 s |
+| 16 | 8 | 2 | 0.1226 / 0.1228 | 0.0017 / 0.0007 | 107 s / 104 s |
+| 24 | 8 | 3 | 0.1233 / 0.1234 | 0.0045 / 0.0036 | 109 s / 106 s |
+| 24 | 12 | 2 | 0.1229 | 0.0021 | 108 s |
+
+Larger swarms converge slightly further per epoch because averaging over more peers gives a less noisy
+gradient; each peer still takes ~25 local steps per epoch at every size, since `target_batch_size`
+scales with the peer count. What these runs were actually for is in §6.1.
 
 **Not started:** anything adversarial. Steps 1–2 are the honest control only.
 
 ---
 
-## 3. The one thing that will bite you
+## 3. The two things that will bite you
+
+### Trap 1 — a swarm that looks like it is training together, but is not
 
 **A Hivemind swarm can look like it is training together when every peer is actually training alone,
 and it still converges, so the graphs look fine.**
@@ -87,6 +110,24 @@ entirely local training.
 Real averaging → spread is exactly **0.0000** (peers hold identical weights). No averaging → spread is
 0.1–0.8 and grows, as peers drift apart. Check this on every run.
 
+That shortcut holds only while the whole swarm is **one group**. With more than one group per round,
+peers in different groups average different things, so the spread is small but non-zero — 0.0007 to
+0.0045 in the runs in §2 — and that is correct behaviour, not a symptom. `peers_seen` is what
+distinguishes the two cases at any group count; the spread is not.
+
+### Trap 2 — on Python 3.14 the swarm does not start at all, and hangs instead of failing
+
+Hivemind's averagers are `mp.Process` subclasses (`averaging/averager.py:50`) holding a `DHT`, asyncio
+primitives and shared-memory tensors, started with whatever multiprocessing start method is the
+default. **Python 3.14 changed that default on Linux from `fork` to `forkserver`**, which pickles the
+process object rather than inheriting it — and an averager does not pickle. Every peer dies inside
+`Optimizer.__init__` at `popen_forkserver._launch`, and the parent then waits forever for peers that
+are already gone, so what you see is a hang, with the real traceback buried in the child's output.
+
+`main()` in both scripts now calls `mp.set_start_method("fork", force=True)`. **Do not remove it.**
+Any new script that starts a swarm needs the same line. If a swarm fails to start, read the *child*
+traceback first.
+
 ---
 
 ## 4. Decisions already made, and why
@@ -96,14 +137,25 @@ Real averaging → spread is exactly **0.0000** (peers hold identical weights). 
   known answer so any displacement is attributable to an attack rather than to noise in a model you
   cannot inspect. A real neural net would remove that — you would be arguing about whether a loss dip
   was the attack or ordinary variance.
-- **16 peers, group size 8.** Memory measured on the dev machine: **~350 MB per peer** in PSS terms,
-  4.9 GB for 16 peers. Each peer is **4 Python processes plus one `p2pd`** (trainer, DHT, gradient
-  averager, state averager) because `DecentralizedAverager` extends `mp.Process`. On a 15.2 GB machine
-  with ~8.5 GB otherwise in use, 16 is the practical ceiling; 24–32 will not fit. Adjust for your box.
+- **Peer count is bounded by memory.** Each peer is **4 Python processes plus one `p2pd`** (trainer,
+  DHT, gradient averager, state averager), because `DecentralizedAverager` extends `mp.Process`. The
+  first machine measured ~350 MB per peer in PSS terms and 15.2 GB total, which capped it at 16. On the
+  current 32 GB box, system memory in use peaked at 13.3 GB for 16 peers and 15.7 GB for 24, against
+  ~5 GB with nothing running — so 450–520 MB per peer, and 24 fits with room to spare. 32 peers has not
+  been tried. Adjust for your box, and measure rather than assume.
 - **β granularity is 1/group_size**, so group size 8 gives steps of 0.125. Raise the *group* size, not
   the peer count, for a finer β sweep.
-- **`target_group_size` is set explicitly.** Left at its `None` default, groups close on a timer and
-  their size varies run to run, which would make β an unstable denominator.
+- **`target_group_size` is set explicitly, and must be set on the *gradient* averager.** Left at its
+  `None` default, the leader closes each group when its own deadline passes with whoever turned up
+  (`matchmaking.py:290-297`) rather than when the group is full (`matchmaking.py:276-280`), so group
+  size varies round to round and β has an unstable denominator. Passing it through `averager_opts` does
+  **not** achieve this: `Optimizer` forwards `averager_opts` only to the state averager
+  (`optim/optimizer.py:263`) and never to `_make_gradient_averager` (`optimizer.py:300-315`), despite
+  the docstring at `optimizer.py:157` saying it reaches both. The only supported route to the averager
+  that forms the groups β is computed from is `grad_averager_factory`. This was wrong here for two
+  commits; it is invisible whenever `num_peers == group_size`, which is why the 8-peer results were
+  unaffected and correct. `report()` now warns when an observed group size disagrees with the requested
+  one, which is the check that would have caught it.
 - **`offload_optimizer=False`** so `model.weight` is the live value being measured.
 - **Each peer gets its own `RSAPrivateKey`** via `tracker_opts`. Forked children would otherwise share
   one process-wide key and collide when publishing progress records.
@@ -120,15 +172,32 @@ git clone git@github.com:yvssaratchandra/hivemind-analysis.git hivemind
 cd hivemind
 git checkout research/net-security
 
-python -m venv .venv                 # Python 3.13 used on the dev machine
-.venv/bin/pip install -e .           # also downloads the p2pd binary (gitignored)
+python3 -m venv .venv                                    # 3.14.7 here; the first machine used 3.13
+.venv/bin/pip install -U pip setuptools wheel
+.venv/bin/pip install "grpcio-tools>=1.75.1" "protobuf>=6.0"
 .venv/bin/pip install torch --index-url https://download.pytorch.org/whl/cpu
+.venv/bin/pip install -e . --no-build-isolation          # also downloads p2pd (gitignored)
+.venv/bin/pip install -r requirements.txt
+.venv/bin/pip install psutil pytest pytest-asyncio       # only to run the test suite
 
+.venv/bin/pytest tests/test_dht.py -x -q                 # expect 4 passed
 .venv/bin/python research/step2_groups.py --num-peers 8 --group-size 8 --max-epoch 20
 ```
 
-Expect the 8-peer numbers in §2. If `peers visible to each other` reports 0 or 1, or the spread is not
-0.0000, re-read §3 before trusting anything — and raise `--batch-time` if the machine is slower.
+Two steps in there are not obvious, and both cost time to rediscover:
+
+- **`--no-build-isolation` is needed on Python 3.14.** `pyproject.toml` pins the build requirement to
+  `grpcio-tools>=1.33.2,<1.68`, and cp314 wheels for `grpcio-tools` start only at 1.75.1 — so an
+  isolated build tries to compile a pre-3.14 grpcio-tools from source. That pin only governs running
+  protoc at build time (`setup.py:39-58`), so installing a current grpcio-tools into the venv first and
+  skipping isolation is sound. On Python 3.13 none of this applies; plain `pip install -e .` works.
+- **`requirements.txt` has to be installed by hand.** The editable install here produced a dist-info
+  with no `Requires-Dist` at all, so pip installed hivemind with none of its dependencies and reported
+  success. The failure then shows up much later as a missing `numpy` or `cryptography`.
+
+Expect the 8-peer numbers in §2. If `peers visible to each other` reports 0 or 1, re-read §3 before
+trusting anything — and raise `--batch-time` if the machine is slower. On a run with more than one
+group per round, do not expect a 0.0000 spread; see §3.
 
 **What does not travel with the repo**, and is why this file exists: the conversation history, the plan
 file under `~/.claude-account2/plans/`, and the assistant memory directory. Everything load-bearing has
@@ -137,7 +206,62 @@ leaving it in a chat log.
 
 ---
 
-## 6. Findings so far (from reading the source, not yet measured)
+## 6. Findings
+
+### 6.1 Measured: membership does not mix, and nothing in the protocol says it should
+
+This is what the multi-group runs in §2 were for. `analyse_groups.py` compares a recorded run against
+the null the Byzantine-ML literature implicitly assumes — that each round's membership is a fresh,
+uniformly random partition of the swarm into groups of the observed size — over 20 000 Monte Carlo
+draws:
+
+| run | groups/round | co-occurrence sd | null sd | P(null ≥ observed) | distinct partitions |
+|---|---|---|---|---|---|
+| 16 peers, group 8 | 2 | 5.53 | 2.23 | < 5e-5 | 13/20 |
+| 16 peers, group 8 (repeat) | 2 | 5.45 | 2.23 | < 5e-5 | 10/20 |
+| 16 peers, group 4 | 4 | 4.96 | 1.78 | < 5e-5 | 15/20 |
+| 24 peers, group 8 | 3 | 1.96 | 2.06 | 0.85 | 20/20 |
+| 24 peers, group 8 (repeat) | 3 | 2.01 | 2.06 | 0.70 | 20/20 |
+| 24 peers, group 12 | 2 | 2.24 | 2.23 | 0.46 | 20/20 |
+
+The *mean* co-occurrence carries no information: with a fixed group size it is settled by arithmetic
+and matches the null exactly in every run. The spread is where the signal is.
+
+**At 16 peers the swarm froze into cliques, in all three runs.** One pair of peers shared a group in
+all 20 of 20 rounds — probability under the null (7/15)^20 ≈ 3e-7 for a given pair — another pair never
+met at all, and only 10–15 distinct partitions appeared across 20 rounds where the null gives 20.0
+essentially always. **At 24 peers, same code, same defaults: indistinguishable from a fair draw, every
+time.**
+
+**The distinguishing variable is peer count, not group count.** 24 peers at group size 12 gives two
+groups per round, exactly as 16 peers at group size 8 does, and it mixes fairly — so the tempting
+explanation that with two groups the leader's rejects have nowhere else to go is wrong. And 16 peers
+cliques at group size 4 as well, with four groups per round.
+
+What is left is arrival order. With `initial_group_bits = ""` (`averaging/averager.py:120`) no peer
+ever changes group key, so every round is the same race among the same peers: earliest declared
+deadline leads (`matchmaking.py:479-497`), and the leader admits followers in arrival order
+(`matchmaking.py:273`). **Nothing in the protocol re-randomises anything.** Whether membership mixes
+therefore depends entirely on whether arrival order varies from round to round, which is a property of
+the environment's timing noise rather than of Hivemind. At 16 peers this machine was quiet enough for
+the order to repeat; at 24, the scheduling jitter of ~120 processes across 18 cores was apparently
+enough to shuffle it.
+
+**Why this matters for β.** The assumption that β ≈ α rests on membership being a fresh random draw.
+Hivemind does not implement one. It happened to produce a fair draw at 24 peers here, and did not at
+16, and the difference was machine load. An attacker does not have to defeat a mixing mechanism,
+because there is no mixing mechanism to defeat.
+
+Two honest limits on this result:
+
+- Whether the clique regime or the fair regime is the realistic one is **not settled by this testbed**.
+  Persistent per-peer latency differences on a real network resemble the stable-ordering regime that
+  produced cliques here, but that is a hypothesis, not a measurement.
+- The experiment that would settle it has not been run: hold the peer count fixed and vary the timing
+  noise deliberately — pin peers to cores, or inject per-peer latency — and see whether the clique
+  structure follows the noise rather than the peer count.
+
+### 6.2 From reading the source, not yet measured
 
 These came out of reading `hivemind/averaging/matchmaking.py` and are the reason the project is worth
 finishing. All are code-level claims with line references; none has been experimentally confirmed.
@@ -155,7 +279,8 @@ finishing. All are code-level claims with line references; none has been experim
   (`averaging/averager.py:120`) and `hivemind.Optimizer` never overrides it, so
   `update_key_on_group_assembled` (`averaging/key_manager.py:102`) discards its own output and no peer
   ever changes group key. The brief's "decay under periodic re-formation" therefore has nothing to
-  decay under, unless the feature is switched on explicitly.
+  decay under, unless the feature is switched on explicitly. §6.1 is the measured consequence of this
+  one, and it is the only item in this list that is no longer just a code reading.
 - **Krum is not implemented, and cannot be dropped in.** No robust aggregation exists anywhere in the
   tree; aggregation is a plain weighted mean (`averaging/partition.py:242-260`) with a sender-supplied
   weight applied verbatim. Krum needs pairwise distances between *full* vectors, which no peer holds —
@@ -174,17 +299,32 @@ Background written up in `research/HIVEMIND_EXPLAINED.md` (how the system works)
 
 ## 7. Next steps
 
-1. **Finish the 16-peer run** and look at the co-occurrence matrix. Under fair sampling each pair of
-   peers should land together roughly half the time. Strongly peaked instead would mean stable cliques
-   form on their own — a finding about Hivemind itself, since nothing forces mixing when group keys
-   never change.
-2. **Step 3: a malicious leader.** Subclass `DecentralizedAverager` and override `rpc_join_group`
-   (which delegates at `averaging/averager.py:574-578`) to filter on `context.remote_id`. The upstream
-   test suite already does this kind of subclassing —
-   `tests/test_allreduce_fault_tolerance.py:32,87` defines `FaultyAverager` and `FaultyAllReduceRunner`
-   — so core Hivemind stays untouched. Measure β achieved vs. attacker count k, with an honest-leader
-   control arm that must reproduce β ≈ α.
-3. **Then** couple β to learning harm, reusing `distance_to_optimum` against the 0.1479 baseline.
+1. **Step 3: a malicious leader.** Two pieces, and only the second needs a subclass:
+   - *Winning leadership needs no modified client at all.* The declared deadline is
+     `min(max(step.scheduled_time, now + min_matchmaking_time), search_end_time)`
+     (`matchmaking.py:527-531`), and `min_matchmaking_time` comes straight from `Optimizer`'s
+     `matchmaking_time` argument (`optimizer.py:287,307`). A peer that simply configures a smaller
+     `matchmaking_time` than everyone else declares the earliest deadline and is elected leader by
+     every honest peer's own sorting (`matchmaking.py:479-497`). Note the trade-off in
+     `GROUP_FORMATION.md` §3: an earlier deadline also closes the group sooner.
+   - *Selective admission does.* Override `rpc_join_group` (which delegates at
+     `averaging/averager.py:574-578`) to filter on `context.remote_id`, admitting the victim and the
+     attacker's own Sybils and rejecting everyone else. The upstream test suite already subclasses this
+     way — `tests/test_allreduce_fault_tolerance.py:32,87` define `FaultyAverager` and
+     `FaultyAllReduceRunner` — so core Hivemind stays untouched.
+
+   Measure β achieved vs. attacker count k, with an honest-leader control arm. Note that §6.1 has
+   changed what that control means: it must be measured, not assumed to give β ≈ α, and it should be
+   run at both 16 and 24 peers because those two behave differently.
+
+   The identities have to be distributed before the attack can be selective. `run_peer` already
+   publishes its `PeerID` to the parent over the metrics queue (`step2_groups.py:144`); the parent will
+   need to collect all of them and hand the roster back before each peer builds its `Optimizer`, since
+   the filtering runs inside the averager's own process and can only see what was bound into the
+   factory.
+
+2. **Then** couple β to learning harm, reusing `distance_to_optimum` against the 0.1492 baseline.
+3. **Optional, and cheap:** settle the §6.1 limitation by varying timing noise at a fixed peer count.
 
 Before claiming novelty on β thresholds, read *Secure Distributed Training at Scale* (BTARD, ICML 2022,
 arXiv:2106.11257), especially its threat model and Appendices F and G. It assumes a **fixed** Byzantine
