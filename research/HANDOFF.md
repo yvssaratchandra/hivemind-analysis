@@ -44,6 +44,7 @@ reliably pinned to α even with nobody attacking.
 | `research/step2_groups.py` | Same, plus records **which peers shared a group each round**. This is the control for β. |
 | `research/analyse_groups.py` | Tests a recorded run's membership against a uniform-random-partition null, by Monte Carlo. |
 | `research/step3_eclipse.py` | Cost of owning a DHT record, as arithmetic over node_ids. Brief item 1, analytical layer. |
+| `research/step3_eclipse_live.py` | The same, on a live swarm of real `DHTNode`s. Brief item 1, live layer. |
 
 Results are in `research/results/*.csv` (tracked in git), tagged with the configuration that produced
 them — `step2_groups_16x8.csv` is 16 peers at group size 8. A trailing `_b` is an independent repeat.
@@ -305,8 +306,32 @@ Why this is possible at all: `DHTNode.create` accepts a caller-supplied `node_id
 (`dht/protocol.py:150`). The libp2p PeerID *is* cryptographically sound, but routing never
 consults it, so that soundness buys nothing here.
 
-Not yet measured: whether a live swarm agrees — that a real `store` lands on attacker nodes,
-and how long standing the Sybils up actually takes. That is the next step.
+**A live swarm agrees exactly.** `step3_eclipse_live.py` runs real `DHTNode`s — each with its
+own `p2pd`, real Kademlia routing, real `store` and `get` RPCs — with 24 honest peers, 3
+repeats per cell, caching off so custody is measured rather than copies:
+
+| crafted identities | theoretical capture | where the record actually landed | build time |
+|---|---|---|---|
+| 1 | 0.20 | 0.20 | 0.10 s |
+| 3 | 0.60 | 0.60 | 0.30 s |
+| 5 | **1.00** | **1.00** | 0.51 s |
+| 8 | 1.00 | 1.00 | 0.80 s |
+
+In **all 30 rows** the record landed on exactly the theoretical replica set: predicted and
+actual capture never differed, and the holder count was always exactly `num_replicas` = 5.
+Live routing has no slack the arithmetic missed. The random-node_id control never exceeded
+0.6 and never achieved a total eclipse.
+
+**Cost in time is ~0.1 s per Sybil**, near-perfectly linear (0.098–0.102 s across every
+configuration), on a swarm that is already running. Standing up a total eclipse of a key
+takes about half a second.
+
+**Custody is not yet censorship, and the table above should not be read as if it were.**
+These attacker nodes store and serve honestly; they simply own the addresses. An honest
+reader still got the value in all 30 rows. What the eclipse establishes is that every
+replica of that record sits on attacker hardware — so the attacker *could* refuse to serve,
+serve a stale value, or serve different values to different readers. Measuring that needs a
+node that misbehaves on `rpc_find`, which is a separate experiment and has not been run.
 
 ### 6.3 From reading the source, not yet measured
 
