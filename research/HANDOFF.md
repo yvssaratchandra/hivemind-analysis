@@ -43,6 +43,7 @@ reliably pinned to α even with nobody attacking.
 | `research/step1_baseline.py` | N peers, real DHT + real `hivemind.Optimizer`, training linear regression with a known optimum `w*`. Establishes the clean baseline. |
 | `research/step2_groups.py` | Same, plus records **which peers shared a group each round**. This is the control for β. |
 | `research/analyse_groups.py` | Tests a recorded run's membership against a uniform-random-partition null, by Monte Carlo. |
+| `research/step3_eclipse.py` | Cost of owning a DHT record, as arithmetic over node_ids. Brief item 1, analytical layer. |
 
 Results are in `research/results/*.csv` (tracked in git), tagged with the configuration that produced
 them — `step2_groups_16x8.csv` is 16 peers at group size 8. A trailing `_b` is an independent repeat.
@@ -271,7 +272,43 @@ Two honest limits on this result:
   noise deliberately — pin peers to cores, or inject per-peer latency — and see whether the clique
   structure follows the noise rather than the peer count.
 
-### 6.2 From reading the source, not yet measured
+### 6.2 Measured: eclipsing a record costs five identities, at any network size
+
+`step3_eclipse.py`, arithmetic over node_ids, 40 independent honest swarms per cell,
+`num_replicas = 5`. Target is the key averaging advertisements live under,
+`step2_grad_averager.0b`, whose address is `DHTID.generate(source=key)` — the same
+computation `DHTNode` performs (`dht/node.py:386`).
+
+| honest swarm | crafted node_ids for a total eclipse | capture with 5 random node_ids |
+|---|---|---|
+| 50 | 5 | 0.09 |
+| 100 | 5 | 0.04 |
+| 1 000 | 5 | 0.01 |
+| 10 000 | 5 | 0.00 |
+
+**Cost is exactly `num_replicas`, with zero variance, at every swarm size from 50 to 10 000.**
+Capture rises as k/5 for k < 5 — the attacker takes precisely the k nearest slots — and total
+eclipse lands at k = 5. Scale offers no protection whatsoever.
+
+**The control arm carries the claim.** The same number of attacker peers with *random*
+node_ids captures at chance and never reaches a total eclipse at any k tested, so the damage
+is attributable to address choice, not to owning peers. The crafted arm is identical across
+seeds (it does not depend on the random draw); the control arm varies with them, as it should.
+
+The mechanism in one number: with 10 000 honest peers the nearest honest address to the
+target sits about 2^146 away in XOR distance, while a crafted address sits at 0–4. Honest
+`node_id`s are uniform over 160 bits (`DHTID.generate` hashes with SHA1), so they cannot
+crowd a specific key; an attacker who picks its own address does not have to.
+
+Why this is possible at all: `DHTNode.create` accepts a caller-supplied `node_id`
+(`dht/node.py:171`) and peers accept the self-reported value verbatim off the wire
+(`dht/protocol.py:150`). The libp2p PeerID *is* cryptographically sound, but routing never
+consults it, so that soundness buys nothing here.
+
+Not yet measured: whether a live swarm agrees — that a real `store` lands on attacker nodes,
+and how long standing the Sybils up actually takes. That is the next step.
+
+### 6.3 From reading the source, not yet measured
 
 These came out of reading `hivemind/averaging/matchmaking.py` and are the reason the project is worth
 finishing. All are code-level claims with line references; none has been experimentally confirmed.
