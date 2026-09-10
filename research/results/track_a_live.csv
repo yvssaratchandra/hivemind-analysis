@@ -1,6 +1,0 @@
-num_honest,num_sybils,num_replicas,global_malicious_fraction,structural_capture,lookup_capture,store_capture,honest_read_ok,build_seconds,layer
-40,0,5,0.0,0.0,0.0,0.0,True,6.73419675999321,live
-40,1,5,0.024390243902439025,0.2,0.2,0.2,True,8.115953861008165,live
-40,3,5,0.06976744186046512,0.6,0.6,0.6,True,8.414404672003002,live
-40,5,5,0.1111111111111111,1.0,1.0,1.0,True,8.701266616000794,live
-40,8,5,0.16666666666666666,1.0,1.0,1.0,True,9.641218175005633,live
