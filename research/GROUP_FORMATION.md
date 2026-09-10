@@ -269,12 +269,15 @@ reported as the same quantity.
 - **Measured:** that membership is not a fair draw in general, and that whether it looks like one depends
   on the testbed rather than on the protocol (`HANDOFF.md` §6.1). This is the honest-swarm baseline any
   attacker result has to be compared against, and it is not the β ≈ α that the literature assumes.
-- **Also measured, and cheaper than expected:** winning leadership needs no modified client. The declared
-  deadline is `min(max(scheduled_time, now + min_matchmaking_time), search_end_time)`
-  (`matchmaking.py:527-531`), and `min_matchmaking_time` is just `Optimizer`'s `matchmaking_time`
-  argument (`optimizer.py:287,307`), so a peer configured with a smaller value than its neighbours
-  declares the earliest deadline and is elected leader by their own sorting. Only the *selective
-  admission* half of Route A needs a subclass.
+- **Measured, and it corrects an earlier claim here:** selective admission works exactly as described
+  above — when the attacker leads, the group is precisely {attacker's peers} ∪ {victim}, giving
+  β = k/(k+1) with no variance. But *winning leadership* is the hard half, not the easy one. An
+  earlier version of this section said a peer configured with a smaller `matchmaking_time` would be
+  elected leader by its neighbours' own sorting. Measured, that gives 0 %, 14 % and 20 % of rounds at
+  `matchmaking_time` 5.0, 2.0 and 0.5 — a real effect pointing the right way, but nowhere near
+  control. The reason is that `Optimizer` passes the same value to the pre-scheduling gate
+  (`optimizer.py:562`) and to the scheduled time it sets (`averager.py:394-395`), so the two cancel
+  and every peer's declared deadline lands on the shared epoch-end estimate. See `HANDOFF.md` §6.4.
 - **Not yet measured:** the practical success rate of Route A. The deadline trade-off in §3 means the attacker
   must win leadership *and* keep the group open long enough for the target to join. Whether that window is
   wide in practice is an experimental question, not one the source code answers.

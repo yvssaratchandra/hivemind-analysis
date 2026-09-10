@@ -46,6 +46,7 @@ reliably pinned to α even with nobody attacking.
 | `research/step3_eclipse.py` | Cost of owning a DHT record, as arithmetic over node_ids. Brief item 1, analytical layer. |
 | `research/step3_eclipse_live.py` | The same, on a live swarm of real `DHTNode`s. Brief item 1, live layer. |
 | `research/step3_candidates.py` | Attacker share of the victim's candidate list, by flooding and by eclipse. Brief item 2, discovery layer. |
+| `research/step3_capture.py` | A malicious leader admitting only the victim and its own peers. Brief item 2, at the averaging group itself. |
 
 Results are in `research/results/*.csv` (tracked in git), tagged with the configuration that produced
 them — `step2_groups_16x8.csv` is 16 peers at group size 8. A trailing `_b` is an independent repeat.
@@ -380,7 +381,75 @@ from this list and the group is assembled by a separate race (`GROUP_FORMATION.m
 owning the list is not yet owning the group — that is the malicious-leader experiment, and
 these two must not be reported as the same quantity.
 
-### 6.4 From reading the source, not yet measured
+### 6.4 Measured: the admission filter is exact, but leadership is not for sale
+
+`step3_capture.py`, 16 peers, group size 8, 20 epochs, peer 0 the victim and peers 1..k the
+attacker. All peers run one averager class, because RPC handles are named
+`f"{cls.__name__}.{method_name}"` (`p2p/servicer.py:148`) and a caller builds its stub from
+its own `type(self)` — two differently-named subclasses in one swarm register handlers
+nobody calls.
+
+A **led capture** below means the victim's group was exactly what the filter should produce:
+k attackers plus the victim and nobody else.
+
+| arm | k | α | led captures | β when captured | mean β over all rounds |
+|---|---|---|---|---|---|
+| honest | 1 | 0.062 | 0 % | — | 0.000 |
+| honest | 2 | 0.125 | 0 % | — | 0.069 |
+| honest | 4 | 0.250 | 0 % | — | 0.275 |
+| malicious | 1 | 0.062 | 14 % | **0.500** | 0.143 |
+| malicious | 2 | 0.125 | 10 % | **0.667** | 0.075 |
+| malicious | 4 | 0.250 | 10 % | **0.800** | 0.080 |
+
+**When the attacker leads, admission control is total.** β when captured is 0.500, 0.667,
+0.800 — exactly k/(k+1) in every case, with no variance. One identity beside the victim is
+half the group. That is an amplification of **8×** over α at k=1, and it confirms the
+`_check_reasons_to_reject` reading (`matchmaking.py:341-368`) on a live swarm.
+
+**But the attack's bottleneck is winning the leadership race, not admission**, and that is
+where it currently fails: leadership was won in only 10–20 % of rounds.
+
+**Correction to an earlier claim.** This file previously said a peer that configures a
+smaller `matchmaking_time` "is elected leader by every honest peer's own sorting". That is
+overstated. Measured at k=1, holding everything else fixed:
+
+| attacker `matchmaking_time` | led captures |
+|---|---|
+| 5.0 (same as honest) | **0 %** |
+| 2.0 | 14 % |
+| 0.5 | 20 % |
+
+It is a real lever and it points the right way, but it is weak, not decisive. The code says
+why. The declared deadline is `max(step.scheduled_time, now + min_matchmaking_time)`
+(`matchmaking.py:527-531`); `scheduled_time` is set to `now + min_matchmaking_time` at the
+moment averaging is pre-scheduled (`averager.py:394-395`), and that pre-scheduling fires
+when `estimated_next_update_time - now <= matchmaking_time` (`optimizer.py:562`). `Optimizer`
+passes the same number to both, so the two cancel: **`scheduled_time` lands on the shared
+epoch-end estimate for every peer, whatever its `matchmaking_time`.** The residual effect is
+most likely on *re-declaration* — `_declare_averager_periodically` sleeps until its own
+deadline lapses and then declares `now + min_matchmaking_time` with a stale `scheduled_time`
+(`matchmaking.py:536`), which is the one place a small value binds. That last part is
+inferred from the code and not yet directly measured.
+
+**More attackers made capture rarer, not commoner** (14 % → 10 % from k=1 to k=4), which is a
+mechanism worth naming: with several attackers admitting each other, the leader reaches
+`min_group_size = 2` from its own peers alone and assembles on its deadline before the victim
+arrives. In the k=2 run the attackers' own groups were size 2 in 36 of 42 observations — the
+two of them pairing up, without the victim.
+
+**The honest control did its job**, and §6.1 is why it was needed. Honest β was 0.000 at
+k=1, 0.069 at k=2 and 0.275 at k=4 against an α of 0.062, 0.125 and 0.250 — at or below α,
+not tracking it, exactly as a swarm that does not mix would behave. Assuming β ≈ α would have
+been wrong in both directions.
+
+**What would make leadership deterministic**, identified but not yet tried: `schedule_step`
+accepts an explicit `scheduled_time` (`optim/grad_averager.py:150`), so an averager subclass
+can force it low instead of letting it default to the epoch-end estimate — which is what makes
+`min_matchmaking_time` the binding term rather than a cancelled one. The tie-break, for equal
+deadlines, is the lowest `peer_id` (`matchmaking.py:478-481`), and `identity_path` makes
+PeerIDs choosable, so they can be ground offline. Neither needs a Hivemind modification.
+
+### 6.5 From reading the source, not yet measured
 
 These came out of reading `hivemind/averaging/matchmaking.py` and are the reason the project is worth
 finishing. All are code-level claims with line references; none has been experimentally confirmed.
@@ -419,22 +488,21 @@ Background written up in `research/HIVEMIND_EXPLAINED.md` (how the system works)
 ## 7. Next steps
 
 1. **Step 3: a malicious leader.** Two pieces, and only the second needs a subclass:
-   - *Winning leadership needs no modified client at all.* The declared deadline is
-     `min(max(step.scheduled_time, now + min_matchmaking_time), search_end_time)`
-     (`matchmaking.py:527-531`), and `min_matchmaking_time` comes straight from `Optimizer`'s
-     `matchmaking_time` argument (`optimizer.py:287,307`). A peer that simply configures a smaller
-     `matchmaking_time` than everyone else declares the earliest deadline and is elected leader by
-     every honest peer's own sorting (`matchmaking.py:479-497`). Note the trade-off in
-     `GROUP_FORMATION.md` §3: an earlier deadline also closes the group sooner.
+   - *Winning leadership is the hard half.* Configuring a smaller `matchmaking_time` is a weak
+     lever, not a decisive one — §6.4 measures 0 %, 14 % and 20 % capture at 5.0, 2.0 and 0.5,
+     and explains why the value largely cancels out. The untried levers are forcing
+     `schedule_step(scheduled_time=...)` low (`optim/grad_averager.py:150`) and grinding a
+     low `peer_id` for the tie-break (`matchmaking.py:478-481`, with `identity_path` making
+     PeerIDs choosable). Note the trade-off in `GROUP_FORMATION.md` §3: an earlier deadline
+     also closes the group sooner.
    - *Selective admission does.* Override `rpc_join_group` (which delegates at
      `averaging/averager.py:574-578`) to filter on `context.remote_id`, admitting the victim and the
      attacker's own Sybils and rejecting everyone else. The upstream test suite already subclasses this
      way — `tests/test_allreduce_fault_tolerance.py:32,87` define `FaultyAverager` and
      `FaultyAllReduceRunner` — so core Hivemind stays untouched.
 
-   Measure β achieved vs. attacker count k, with an honest-leader control arm. Note that §6.1 has
-   changed what that control means: it must be measured, not assumed to give β ≈ α, and it should be
-   run at both 16 and 24 peers because those two behave differently.
+   Done as far as admission goes — see §6.4. What remains is making leadership reliable, then
+   re-running the sweep; β when captured is already exactly k/(k+1).
 
    The identities have to be distributed before the attack can be selective. `run_peer` already
    publishes its `PeerID` to the parent over the metrics queue (`step2_groups.py:144`); the parent will
