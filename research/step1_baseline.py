@@ -33,6 +33,7 @@ import torch.nn.functional as F
 from torch import nn
 
 from hivemind import DHT, Optimizer
+from hivemind.optim.grad_averager import GradientAverager
 from hivemind.utils.crypto import RSAPrivateKey
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
@@ -112,7 +113,15 @@ def run_peer(
         averaging_timeout=args.averaging_timeout,
         # Fix the group size. Left at None, groups close on a timer instead and
         # their size varies run to run, which would make later measurements noisy.
+        #
+        # This has to be said twice. `averager_opts` reaches only the *state*
+        # averager (hivemind/optim/optimizer.py:263) -- despite the docstring at
+        # optimizer.py:157 saying it goes to both -- because _make_gradient_averager
+        # (optimizer.py:300-315) never receives it. The gradient averager is the one
+        # that forms the groups we care about, and the only supported way to configure
+        # it is through the factory.
         averager_opts=dict(target_group_size=args.group_size),
+        grad_averager_factory=partial(GradientAverager, target_group_size=args.group_size),
         # Each peer needs its own key: forked children would otherwise share one
         # process-wide key and collide when publishing progress to the DHT.
         tracker_opts=dict(private_key=RSAPrivateKey()),
@@ -179,6 +188,14 @@ def run_peer(
 
 
 def main() -> None:
+    # Hivemind's averagers are mp.Process subclasses (hivemind/averaging/averager.py:50)
+    # holding a DHT, asyncio primitives and shared-memory tensors, and they are started
+    # with the default multiprocessing context. Python 3.14 changed that default on Linux
+    # from "fork" to "forkserver", which pickles the process object instead of inheriting
+    # it -- and an averager does not pickle. Without this line every peer dies inside
+    # Optimizer.__init__ and the parent then waits forever for peers that are already gone.
+    mp.set_start_method("fork", force=True)
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--num-peers", type=int, default=4)
     parser.add_argument("--group-size", type=int, default=None, help="defaults to --num-peers (one group)")

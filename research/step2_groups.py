@@ -20,13 +20,14 @@ This also fixes two defects found in step 1:
   * untidy shutdown: peers used to exit at different times, stranding the
     stragglers with too few partners to form a group. Now they finish together.
 
-What this produces:
-    research/results/step2_training.csv   one row per (peer, epoch)
-    research/results/step2_groups.csv     one row per (peer, averaging round)
+What this produces, tagged with the configuration so runs do not overwrite each other:
+    research/results/step2_training_<tag>.csv   one row per (peer, epoch)
+    research/results/step2_groups_<tag>.csv     one row per (peer, averaging round)
 
 Run:
-    .venv/bin/python research/step2_groups.py --num-peers 8  --group-size 8
-    .venv/bin/python research/step2_groups.py --num-peers 16 --group-size 8
+    .venv/bin/python research/step2_groups.py --num-peers 8  --group-size 8 --max-epoch 20
+    .venv/bin/python research/step2_groups.py --num-peers 16 --group-size 8 --max-epoch 20 --run-id step2_16
+    .venv/bin/python research/step2_groups.py --num-peers 24 --group-size 8 --max-epoch 20 --run-id step2_24
 """
 
 from __future__ import annotations
@@ -152,12 +153,28 @@ def run_peer(
         batch_size_per_step=args.batch_size,
         matchmaking_time=args.matchmaking_time,
         averaging_timeout=args.averaging_timeout,
+        # `averager_opts` reaches only the *state* averager
+        # (hivemind/optim/optimizer.py:263), despite the docstring at optimizer.py:157
+        # claiming it goes to both: _make_gradient_averager (optimizer.py:300-315) never
+        # receives it. So target_group_size has to be passed twice, and the copy that
+        # matters is the one below -- the gradient averager forms the groups beta is
+        # computed from. Left unset it defaults to None (averaging/averager.py:117), and
+        # the leader then closes the group when its own deadline passes with whoever
+        # turned up (matchmaking.py:290-297) instead of when the group is full
+        # (matchmaking.py:276-280), so the group size varies round to round.
         averager_opts=dict(target_group_size=args.group_size),
         tracker_opts=dict(private_key=RSAPrivateKey()),
         offload_optimizer=False,
         # The observer hook. `partial` binds our extra arguments; Optimizer
-        # supplies the rest (hivemind/optim/optimizer.py:303).
-        grad_averager_factory=partial(ObservingGradientAverager, group_log=group_log, peer_index=peer_index),
+        # supplies the rest (hivemind/optim/optimizer.py:303). GradientAverager
+        # forwards unknown kwargs to DecentralizedAverager, which is how
+        # target_group_size gets through.
+        grad_averager_factory=partial(
+            ObservingGradientAverager,
+            group_log=group_log,
+            peer_index=peer_index,
+            target_group_size=args.group_size,
+        ),
         verbose=False,
     )
 
@@ -230,6 +247,14 @@ def run_peer(
 
 
 def main() -> None:
+    # Hivemind's averagers are mp.Process subclasses (hivemind/averaging/averager.py:50)
+    # holding a DHT, asyncio primitives and shared-memory tensors, and they are started
+    # with the default multiprocessing context. Python 3.14 changed that default on Linux
+    # from "fork" to "forkserver", which pickles the process object instead of inheriting
+    # it -- and an averager does not pickle. Without this line every peer dies inside
+    # Optimizer.__init__ and the parent then waits forever for peers that are already gone.
+    mp.set_start_method("fork", force=True)
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--num-peers", type=int, default=8)
     parser.add_argument("--group-size", type=int, default=8)
@@ -247,7 +272,17 @@ def main() -> None:
     parser.add_argument("--matchmaking-time", type=float, default=5.0)
     parser.add_argument("--averaging-timeout", type=float, default=30.0)
     parser.add_argument("--run-id", type=str, default="step2")
+    parser.add_argument(
+        "--tag",
+        type=str,
+        default=None,
+        help="suffix for the output filenames; defaults to NUMPEERSxGROUPSIZE so configurations "
+        "written in sequence do not overwrite each other",
+    )
     args = parser.parse_args()
+
+    if args.tag is None:
+        args.tag = f"{args.num_peers}x{args.group_size}"
 
     if args.target_batch_size is None:
         # Sized so each peer takes ~25 steps per epoch. With --batch-time 0.2s
@@ -310,11 +345,11 @@ def main() -> None:
         except Exception:
             pass
 
-    write_results(train_rows, group_rows, identities)
+    write_results(train_rows, group_rows, identities, args.tag)
     report(train_rows, group_rows, identities, args, elapsed=time.perf_counter() - started)
 
 
-def write_results(train_rows: list, group_rows: list, identities: dict) -> None:
+def write_results(train_rows: list, group_rows: list, identities: dict, tag: str) -> None:
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
     # Keep the last observation per (peer, epoch) -- recording every step means
@@ -324,7 +359,7 @@ def write_results(train_rows: list, group_rows: list, identities: dict) -> None:
         best[(row["peer"], row["epoch"])] = row
     training = sorted(best.values(), key=lambda row: (row["epoch"], row["peer"]))
 
-    path = RESULTS_DIR / "step2_training.csv"
+    path = RESULTS_DIR / f"step2_training_{tag}.csv"
     with open(path, "w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=["peer", "epoch", "distance_to_optimum", "seconds", "peers_seen"])
         writer.writeheader()
@@ -337,7 +372,7 @@ def write_results(train_rows: list, group_rows: list, identities: dict) -> None:
             str(identities.get(peer_id, "?")) for peer_id in row["members"].split()
         )
 
-    path = RESULTS_DIR / "step2_groups.csv"
+    path = RESULTS_DIR / f"step2_groups_{tag}.csv"
     with open(path, "w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=["peer", "round", "group_id", "group_size", "member_peers", "members"])
         writer.writeheader()
@@ -385,23 +420,49 @@ def report(train_rows: list, group_rows: list, identities: dict, args, elapsed: 
     print(f"distinct groups           : {len(distinct_groups)}")
     print(f"group size                : min {min(sizes)}, max {max(sizes)}, mean {sum(sizes) / len(sizes):.2f}")
 
-    # How often did each pair of peers end up together? Under fair sampling this
-    # should be roughly flat. A strongly uneven matrix, with no attacker present,
-    # would mean stable cliques are forming on their own.
-    together = defaultdict(int)
-    appearances = defaultdict(int)
+    # The check that would have caught the target_group_size defect. When the swarm has
+    # at least group_size peers, every group should be exactly that size. If it is not,
+    # target_group_size did not reach the gradient averager, the leader is closing groups
+    # on a timer instead, and beta has an unstable denominator. This is invisible when
+    # num_peers == group_size, which is why it survived the 8-peer run.
+    if args.num_peers >= args.group_size and set(sizes) != {args.group_size}:
+        print(
+            f"  !! expected every group to hold {args.group_size} peers, saw {sorted(set(sizes))}"
+            f" -- either target_group_size is not in force on the gradient averager, or peers"
+            f" dropped out of matchmaking"
+        )
+
+    # How often did each pair of peers end up together? Under fair sampling this should
+    # be roughly flat. A strongly uneven spread, with no attacker present, means stable
+    # cliques are forming on their own.
+    #
+    # Every member of a group reports that group, so the CSV holds one row per (peer,
+    # round) and a group of eight appears eight times. Collapsing on (round, group_id)
+    # first is what keeps this a count of *rounds* rather than of observations.
+    groups = {}
     for row in group_rows:
-        members = [m for m in row["member_peers"].split() if m != "?"]
-        for member in members:
-            appearances[int(member)] += 1
+        members = tuple(sorted(int(m) for m in row["member_peers"].split() if m != "?"))
+        groups[(row["round"], row["group_id"])] = members
+
+    together = defaultdict(int)
+    for members in groups.values():
         for i, a in enumerate(members):
             for b in members[i + 1 :]:
-                together[tuple(sorted((int(a), int(b))))] += 1
+                together[(a, b)] += 1
 
     if together and args.num_peers > args.group_size:
-        counts = sorted(together.values())
-        print(f"\npair co-occurrence: min {counts[0]}, median {counts[len(counts) // 2]}, max {counts[-1]}")
-        print("(flat = fair sampling; peaked = stable cliques)")
+        rounds = len({round_index for round_index, _group_id in groups})
+        # Include the pairs that never met, or a swarm split into two halves that never
+        # mix looks perfectly even.
+        counts = sorted(
+            together.get((a, b), 0)
+            for a in range(args.num_peers)
+            for b in range(a + 1, args.num_peers)
+        )
+        print(f"\npair co-occurrence, in rounds out of {rounds}:")
+        print(f"  min {counts[0]}, median {counts[len(counts) // 2]}, max {counts[-1]}")
+        print("  (flat = fair sampling; peaked = stable cliques)")
+        print("  run research/analyse_groups.py on the CSV to test this against a random-partition null")
 
     print(f"\nwall clock: {elapsed:.1f}s")
 
