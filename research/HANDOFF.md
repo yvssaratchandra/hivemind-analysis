@@ -406,8 +406,9 @@ k attackers plus the victim and nobody else.
 half the group. That is an amplification of **8×** over α at k=1, and it confirms the
 `_check_reasons_to_reject` reading (`matchmaking.py:341-368`) on a live swarm.
 
-**But the attack's bottleneck is winning the leadership race, not admission**, and that is
-where it currently fails: leadership was won in only 10–20 % of rounds.
+**The attack's bottleneck is winning the leadership race, not admission.** With the naive
+configuration leadership was won in only 10–20 % of rounds. Fixing that took two attempts and
+is written up below, because the failed one is the more informative.
 
 **Correction to an earlier claim.** This file previously said a peer that configures a
 smaller `matchmaking_time` "is elected leader by every honest peer's own sorting". That is
@@ -442,12 +443,69 @@ k=1, 0.069 at k=2 and 0.275 at k=4 against an α of 0.062, 0.125 and 0.250 — a
 not tracking it, exactly as a swarm that does not mix would behave. Assuming β ≈ α would have
 been wrong in both directions.
 
-**What would make leadership deterministic**, identified but not yet tried: `schedule_step`
-accepts an explicit `scheduled_time` (`optim/grad_averager.py:150`), so an averager subclass
-can force it low instead of letting it default to the epoch-end estimate — which is what makes
-`min_matchmaking_time` the binding term rather than a cancelled one. The tie-break, for equal
-deadlines, is the lowest `peer_id` (`matchmaking.py:478-481`), and `identity_path` makes
-PeerIDs choosable, so they can be ground offline. Neither needs a Hivemind modification.
+#### Winning the race: one failed fix, and the one that works
+
+**The obvious fix does not work.** `schedule_step` accepts an explicit `scheduled_time`
+(`optim/grad_averager.py:150`), so forcing it into the present should make
+`max(scheduled_time, now + min_matchmaking_time)` fall through to the term the attacker
+controls. Measured, it changed nothing: 5 %, 10 %, 0 %, 15 % at `matchmaking_time` 0.5, 1.0,
+2.0, 3.0, against a 14 % baseline. The reason is that declaration happens immediately after
+scheduling, which happens at `E - matchmaking_time`, so `now + min_matchmaking_time` still
+evaluates to `E`. Removing the `scheduled_time` term leaves the other one landing in the same
+place.
+
+**The coupling is between two different uses of the same number.** `Optimizer` gates
+pre-scheduling on `estimated_next_update_time - now <= matchmaking_time`
+(`optimizer.py:562`) *and* passes that same value to the averager as `min_matchmaking_time`
+(`optimizer.py:307`), which sets the declared deadline. The gate fires at `E - t` and the
+deadline becomes `(E - t) + t = E`. **Every peer declares the shared epoch-end estimate,
+whatever it configures** — which is why `matchmaking_time` looked like a lever and was not.
+
+**Breaking the coupling is what works.** Override only the averager's copy of
+`min_matchmaking_time` in the factory, so the attacker advertises *early* (a large `Optimizer`
+`matchmaking_time`, gate fires at `E - 15`) while declaring a *short rolling deadline* (a
+small `min_matchmaking_time`). That is the only configuration that declares earlier than `E`.
+At k=1:
+
+| attacker declare time | led captures |
+|---|---|
+| baseline, no decoupling | 14 % |
+| 0.5 s | 60 % |
+| 1.0 s | 57 % |
+| 1.5 s | **67 %** |
+| 3.0 s | 5 % |
+
+**The window `GROUP_FORMATION.md` §3 predicted is real and sharp.** Below ~1.5 s the attacker
+wins the election; by 3 s its deadline is too close to `E` to win at all. The victim has to
+arrive inside a window that a shorter deadline opens earlier and closes sooner, and between
+0.5 s and 1.5 s that trade-off is flat enough not to matter.
+
+**With leadership won, β is what the victim actually lives with:**
+
+| k | α | led captures | β when captured | mean β over all rounds | β/α |
+|---|---|---|---|---|---|
+| 1 | 0.062 | 57 % | 0.500 | 0.315 | **5.0×** |
+| 2 | 0.125 | 50 % | 0.667 | 0.508 | 4.1× |
+| 4 | 0.250 | 33 % | 0.800 | 0.555 | 2.2× |
+
+β when captured is still exactly k/(k+1), so none of the timing work touched the admission
+filter. The strongest result is the cheapest one: **a single attacker identity, α = 0.062,
+puts the victim in a two-peer group with it in 57 % of rounds and takes mean β to 0.315.**
+
+**Holding the group open for the victim mattered.** The attacker now admits its own peers only
+once the victim has joined, because otherwise the leader reaches `min_group_size = 2` on its
+own Sybils and assembles before the victim arrives. That took k=4 capture from 10 % to 33 %.
+Capture still falls as k rises — more peers to gather inside the same short window — so
+the cheap attack is also the reliable one.
+
+**Side effect worth recording:** honest group sizes became ragged under attack (183 groups of
+8, but also 9 of size 3, 6 of size 4, 3 of size 5, 6 of size 6, 3 of size 7 in the k=4 run).
+Rejected honest peers re-form into whatever is left. The attack degrades the honest swarm's
+group formation as well as capturing the victim, which was not its aim.
+
+**Still untried:** the tie-break for equal deadlines is the lowest `peer_id`
+(`matchmaking.py:478-481`), and `identity_path` makes PeerIDs choosable, so they can be ground
+offline. That would matter for the rounds the attacker still loses.
 
 ### 6.5 From reading the source, not yet measured
 
