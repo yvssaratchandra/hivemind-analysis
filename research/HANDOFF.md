@@ -574,15 +574,33 @@ say so inline; the rest have not.
   (`averaging/averager.py:120`) that yields **β = 0.5 from a single identity**, and β = k/g in general —
   meaning β decouples from α entirely. **Measured in §6.4 and confirmed exactly**: β when captured is
   k/(k+1) with no variance, in 57 % of rounds at k=1.
-- **Group re-formation is off by default.** `initial_group_bits` defaults to `""`
-  (`averaging/averager.py:120`) and `hivemind.Optimizer` never overrides it, so
-  `update_key_on_group_assembled` (`averaging/key_manager.py:102`) discards its own output and no peer
-  ever changes group key. The brief's "decay under periodic re-formation" therefore has nothing to
-  decay under, unless the feature is switched on explicitly. §6.1 is the measured consequence. Note
-  the sharper problem, which is still unmeasured: even switched on, the reshuffle is seeded on
+- **Group re-formation is implemented and works; what is missing is the sharding it operates on.**
+  Earlier versions of this file said it was "off by default", which was misleading. `initial_group_bits`
+  is not an on/off switch — its *length* declares how many buckets exist (2^b for b bits), and the
+  rotation at `key_manager.py:104` is a fixed-length sliding window, so the bucket count never changes
+  after construction. The default `""` (`averaging/averager.py:120`) means **one** bucket, and with one
+  bucket there is nothing to rotate between. For a swarm where `num_peers ≈ target_group_size` that is
+  the correct configuration, not a defect.
+
+  What is genuinely absent is any way to reach it from the main API, plus the adaptive sizing that
+  would make it automatic:
+  - `hivemind.Optimizer` exposes **no parameter** for `initial_group_bits` (nothing in `hivemind/optim/`
+    references it), and `averager_opts` does not reach the gradient averager (see §4). The only route is
+    binding it through `grad_averager_factory`.
+  - `update_key_on_not_enough_peers` (`key_manager.py:107-109`) — the hook that would re-bucket a peer
+    that cannot find partners — is `pass  # to be implemented in subclasses`, and **no subclass in the
+    tree implements it**. It is called for real at `matchmaking.py:538` and does nothing.
+
+  So a swarm sized by `hivemind.Optimizer` has one bucket and no peer ever changes group key, which is
+  what §6.1 measures the consequence of. Sizing buckets to the swarm (b ≈ log2(N / group_size)) is left
+  to the operator, and the operator is given no handle to do it with.
+
+  The sharper problem is still unmeasured: even with sharding switched on, the reshuffle is seeded on
   `random.Random(group_info.group_id)` and indexed by position in `group_info.peer_ids`
-  (`key_manager.py:94-104`), both of which every member holds — so an attacker in the victim's group
-  can compute where the victim goes next and follow it. See §7.
+  (`key_manager.py:94-104`) — and a peer sharing the victim's group holds both, *and* holds the same
+  current `group_bits`, since matching group keys is a precondition for being in the same group
+  (`BAD_GROUP_KEY`, `matchmaking.py:355`). Every input to the victim's next bucket is therefore known to
+  the attacker. See §7 item 2.
 - **Krum is not implemented, and cannot be dropped in.** No robust aggregation exists anywhere in the
   tree; aggregation is a plain weighted mean (`averaging/partition.py:242-260`) with a sender-supplied
   weight applied verbatim. Krum needs pairwise distances between *full* vectors, which no peer holds —
@@ -627,24 +645,60 @@ Brief items 1 and 2 are measured (§6.2, §6.3, §6.4). Item 3 is the remaining 
      own. **Every honest peer must run it or it does nothing** — one undefended slice owner re-admits
      the poison for that slice. Measure the single-defender case once to show why.
 
-2. **Loose ends, in descending order of interest:**
+2. **Brief item 2b: does re-formation shed the attacker?** This is the half of brief item 2 that is
+   still unmeasured — "how it decays under Hivemind's periodic group re-formation" — and it is the
+   experiment to run next after item 3, or before it if the brief is being answered in order.
+
+   **Turn sharding on first**, since the default gives one bucket and therefore nothing to decay under
+   (§6.5). Bind `initial_group_bits` through `grad_averager_factory`, the same route `step2_groups.py`
+   already uses for `target_group_size`. Size it so buckets are not empty: with 16 peers and group size
+   4, `b = 2` gives 4 buckets of ~4. Verify sharding is live by checking that observed group keys differ
+   across peers within a round — if every peer still advertises on `prefix.0b`, nothing was enabled.
+
+   **Three arms, all with one attacker identity (α = 1/16):**
+
+   | arm | attacker behaviour | prediction |
+   |---|---|---|
+   | none | no attacker; honest baseline | β = 0 |
+   | naive | joins the victim's bucket once, then stays put | β decays toward chance as the victim rotates away |
+   | tracking | recomputes the victim's next bucket each round and moves with it | β does not decay |
+
+   **The tracking computation, from `key_manager.py:94-104`.** After any round shared with the victim,
+   the attacker holds every input it needs:
+
+   ```python
+   rng = random.Random(group_info.group_id)                    # from the leader's broadcast
+   index = group_info.peer_ids.index(victim_peer_id)           # same broadcast
+   num_buckets = target_group_size or next_power_of_two(group_info.group_size)
+   generalized_index = rng.sample(range(num_buckets), group_info.group_size)[index]
+   new_bits = bin(generalized_index)[2:].rjust(int(np.ceil(np.log2(num_buckets))), "0")
+   victim_next = (current_bits + new_bits)[-len(current_bits):]
+   ```
+
+   `current_bits` is the attacker's own, and it is necessarily the victim's too: matching group keys is
+   a precondition for having shared a group at all (`BAD_GROUP_KEY`, `matchmaking.py:355`). So one
+   shared round is enough to follow the victim indefinitely.
+
+   **Measure**, per round: the victim's bucket, the attacker's bucket, whether they shared a group, and
+   β. Plot β against round for all three arms. **Validate the predictor independently** by recording
+   the attacker's predicted next bucket alongside the victim's actual next bucket and reporting exact
+   agreement — that is a cleaner claim than β alone, because it isolates the prediction from the
+   matchmaking race that §6.4 showed the attacker only wins ~57 % of the time.
+
+   If it holds, the finding is that re-formation is unpredictable to an outsider but transparent to a
+   participant, so it sheds only an attacker that declines to use information it already has.
+
+3. **Loose ends, in descending order of interest:**
    - **Grind a low `peer_id`.** The tie-break for equal declared deadlines is the lowest `peer_id`
      (`matchmaking.py:478-481`) and `identity_path` makes PeerIDs choosable, so they can be ground
      offline. That is the lever for the ~40 % of rounds the attacker still loses (§6.4).
-   - **Re-formation decay**, which the brief asks about and nothing here has measured. Enable it by
-     binding `initial_group_bits` through `grad_averager_factory` (3 bits at group size 8). The
-     source says it will not help: `update_key_on_group_assembled` seeds its shuffle with
-     `random.Random(group_info.group_id)` and indexes by position in `group_info.peer_ids`
-     (`key_manager.py:94-104`), and every member holds both — so an attacker inside the victim's group
-     can compute where the victim goes next and follow it. Worth measuring a *naive* attacker against
-     a *tracking* one; the prediction is decay for the first and none for the second.
    - **Settle the §6.1 limitation** by holding the peer count fixed and varying timing noise
      deliberately, to see whether the clique structure follows the noise rather than the peer count.
    - **Censorship, as opposed to custody.** §6.2's attacker nodes store and serve honestly. Refusing
      to serve on `rpc_find` is a separate experiment; §6.3 already does the store-side half with
      `record_validator`.
 
-3. **A free detection signal nobody uses**, if the project ever turns to defences: honest peers whose
+4. **A free detection signal nobody uses**, if the project ever turns to defences: honest peers whose
    advertisement is refused by every replica get `False` back from `declare_averager` and throw it
    away (`matchmaking.py:535`, and again at 544; no other caller checks it). §6.3 measured 0/32
    honest peers noticing they had been erased from discovery.
