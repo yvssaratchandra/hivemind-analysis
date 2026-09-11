@@ -72,14 +72,21 @@ requester's authenticated PeerID in hand.
 
 Results are CSVs in `research/results/`, tracked in git, named for their configuration:
 `step2_groups_16x8.csv` = 16 peers at group size 8; `_b` = independent repeat;
-`step6_isolation_<arm>_k<k>_n<n>_<cached|nocache>.csv`.
+`step6_isolation_<arm>_k<k>_n<n>_<cached|nocache>.csv`;
+`step7_poison_<attack>_w<weight>_<agg>_b<beta>_s<seed>.csv`.
 
 ### Canonical baseline
 
 `step2_groups.py --num-peers 8 --group-size 8 --max-epoch 20` → **0.1492** distance to `w*` at epoch 20,
 spread across peers 0.0000, 20 rounds, no missing epochs, ~104 s. **0.1492 is what "unbroken" means**;
-every attack result is compared against it. (An earlier machine recorded 0.1479 for the same config;
-the 0.9 % gap is run-to-run variation in how many local steps land per epoch, not a behaviour change.)
+(An earlier machine recorded 0.1479 for the same config; the 0.9 % gap is run-to-run variation in how
+many local steps land per epoch, not a behaviour change.)
+
+**It is not comparable to every experiment.** `step2` leaves the gradient averager's
+`target_group_size` unset, so its groups close on deadline rather than filling. Any script that *binds*
+it — `step3_capture`, `step6`, `step7` — converges ~4x worse with no attacker present (0.148 unbound vs
+0.575 bound, 8 peers at group size 8). **Those scripts must be compared against their own no-attack
+arm**, never against 0.1492. See §4.11.
 
 ---
 
@@ -351,6 +358,23 @@ anywhere, while `matchmaking.py:538` calls it for real.
 - **Metastability.** The permutation preserves balance only while every bucket forms one full group. One
   undersized group breaks the invariant permanently. Clean at 4 epochs, 63 failures by 10.
 
+### 4.10 Other code-level facts, unmeasured
+
+- **Krum is not implemented**, nor is any robust aggregation. Aggregation is a plain weighted mean
+  (`partition.py:242-260`) with a **sender-supplied weight applied verbatim**, read off the wire at
+  `allreduce.py:340`. Krum needs pairwise distances between *full* vectors; under reduce-scatter peer
+  *i* only ever holds slice *i*. Coordinate-wise rules (median, trimmed mean) *are* implementable
+  locally, because per-slice is identical to whole-vector for them.
+- **Hivemind never distributes data.** No dataset or sharding code exists in the library. Each peer owns
+  its pipeline; the ALBERT example has every peer load the whole corpus and shuffle with a seed derived
+  from its own public key.
+
+Background: `HIVEMIND_EXPLAINED.md` (how the system works), `GROUP_FORMATION.md` (group formation and
+attacker control), `QA_NOTES.md` (Q&A log + literature review — **no published work analyses Hivemind's
+DHT security**).
+
+---
+
 ### 4.11 Brief item 3: what β costs the model, and what robust rules can promise
 
 `step7_poison.py`, 8 peers, group size 4, β = 1/4 (one poisoning member), 3 seeds, 20 epochs.
@@ -424,23 +448,6 @@ discarding the property that makes Hivemind scale.
 - Control variance is 0.55–0.74 across seeds. The 35–148× effect is far outside it; the median result
   (0.5–2.3×) is not, so the defence claim rests on three seeds rather than one.
 
-### 4.10 Other code-level facts, unmeasured
-
-- **Krum is not implemented**, nor is any robust aggregation. Aggregation is a plain weighted mean
-  (`partition.py:242-260`) with a **sender-supplied weight applied verbatim**, read off the wire at
-  `allreduce.py:340`. Krum needs pairwise distances between *full* vectors; under reduce-scatter peer
-  *i* only ever holds slice *i*. Coordinate-wise rules (median, trimmed mean) *are* implementable
-  locally, because per-slice is identical to whole-vector for them.
-- **Hivemind never distributes data.** No dataset or sharding code exists in the library. Each peer owns
-  its pipeline; the ALBERT example has every peer load the whole corpus and shuffle with a seed derived
-  from its own public key.
-
-Background: `HIVEMIND_EXPLAINED.md` (how the system works), `GROUP_FORMATION.md` (group formation and
-attacker control), `QA_NOTES.md` (Q&A log + literature review — **no published work analyses Hivemind's
-DHT security**).
-
----
-
 ## 5. Methodology notes
 
 **What replicates and what does not.** Results where the mechanism *removes* a race are stable across
@@ -480,35 +487,73 @@ averager, state averager), because `DecentralizedAverager` extends `mp.Process`.
 
 ## 6. Next steps
 
-### Brief item 3 — couple β to learning harm (the only assignment item at zero)
+**All four brief items are measured** (§4.1-4.11). What follows is work that would strengthen the
+result, in priority order.
 
-The pieces exist: `step3_capture.py` / `step6_isolation.py` put the victim in a group with a known β,
-and `distance_to_optimum` measures damage against the **0.1492** baseline. Missing: a poisoning attacker
-and a defence.
+### Step 8 — the forged withdrawal (do this first; strongest remaining candidate)
 
-**Poisoning** goes in an overridden `_generate_input_for_peer` on an `AllReduceRunner` subclass, so only
-what is *sent* is poisoned and the attacker's own state stays consistent — the upstream
-`FaultyAllReduceRunner` (`tests/test_allreduce_fault_tolerance.py:87`) overrides exactly that method.
-Cover sign-flip and large-norm (crude baselines), a **stealthy targeted** bias sized to stay inside the
-honest gradient's norm range, and the **unvalidated weight** — `partition.py:242` applies a
-sender-supplied weight verbatim, so a large declared weight needs no gradient crafting at all. Start
-there; it is the cheapest and the most Hivemind-specific.
+**Status: code-level claim, verified by reading, NOT yet measured.** Everything below cites the line
+that supports it, but no experiment has been run. Treat it as a designed attack, not a result.
 
-**Defence — an open decision.** The brief names **Krum**. The note in §4.10 argues Krum cannot work
-under reduce-scatter, which is true for a *scalable* implementation but not at this scale: 8 peers × 64
-parameters is 512 floats, so gathering full vectors on one peer is trivial. **Recommendation: implement
-Krum via a gather, report it as the brief asks, and present the reduce-scatter incompatibility as a
-finding** — "Krum works but only by discarding the property that makes Hivemind scale" is a stronger
-result than substituting coordinate-median and explaining Krum away. Confirm with the supervisor first.
+Every read-filtering attack so far (§4.5, §4.6) is defeated by DHT caching, for one structural reason:
+the attacker can only **remove** entries from a response, and `add_candidate` (`node.py:834-837`)
+*merges* every responder's dictionary, so one honest peer answering from cache undoes the filtering
+(§4.7, §4.6). Removal needs universal cooperation; caching keeps recruiting honest responders.
 
-Coordinate-wise median / trimmed mean are the implementable-as-is comparison: subclass
-`TensorPartReducer` to buffer each sender's part rather than summing it (`accumulate_part` already
-receives `sender_index`), then replace `self.tensor_part_reducer` in an `AllReduceRunner` subclass.
+**A forged withdrawal inverts that: it is an addition, so merging, caching and replication all work
+for the attacker instead of against it.** Four facts compose:
 
-**One design point that is itself a finding:** in reduce-scatter each peer reduces only its own slice, so
-a robust rule protects exactly the slices its users own. **Every honest peer must run it or it does
-nothing** — one undefended slice owner re-admits the poison for that slice. Measure the single-defender
-case once to show why.
+1. **Hivemind withdraws a peer by writing `False` under its subkey**, with
+   `expiration = nextafter(expiration_time, +inf)` (`key_manager.py:61`) — deliberately the smallest
+   increment *above*, so a withdrawal outranks the declaration it cancels.
+2. **Later expiration wins, and an earlier one is rejected** (`timed_storage.py:81-84`):
+   `if self.data[key].expiration_time < expiration_time: overwrite` else `return False`.
+3. **`get_averagers(only_active=True)` skips `False` entries** (`key_manager.py:87`) — the victim
+   performs the removal itself.
+4. **The subkey is an unverified `peer_id.to_bytes()`** (`key_manager.py:64`); nothing checks the
+   writer owns it, `PeerID.__init__` validates nothing, and **there is no `record_validator` on
+   averaging keys at all** (verified: no reference to `record_validator` anywhere in
+   `hivemind/averaging/`).
+
+So: **write `value=False` under an honest peer's subkey with a far-future expiration, and that peer
+disappears from every peer's candidate list.** Because of fact 2 this is not a per-round race — it also
+**blocks that peer's own re-declarations** until the forged expiration lapses, since its honest
+`declare_averager` carries a nearer expiration and is rejected. Its `declare_averager` returns `False`,
+which nothing in the tree reads (§4.2's unused detection signal).
+
+**What it costs, and why it matters for a real deployment:**
+
+| | read-filtering (§4.5–4.6) | forged withdrawal |
+|---|---|---|
+| Mechanism | remove entries from a response | add a record |
+| Versus merge semantics | fights them | **exploits them** |
+| Versus cached copies | cached honest copies win | **later expiration overwrites them** |
+| Needs custody (5 crafted node_ids)? | yes | **no — any peer can write** |
+| Detection signal | honest `declare_averager` returns False | same, and equally unread |
+
+Dropping the custody precondition is the point: no eclipse, no crafted `node_id`s, no five identities.
+One DHT write per peer to be hidden, refreshed when the forged expiration nears. Target PeerIDs are
+readable straight off the group key.
+
+**This also completes the follower path.** §4.6 showed an attacker can capture a victim's group by
+joining it as a follower, but only if honest peers are excluded — which needed read-filtering, which
+caching defeats. A forged withdrawal excludes them without custody and without winning any race.
+
+**Build it as `research/step8_withdrawal.py`**, modelled on `step5_selective.py` (which already drives
+the real `GroupKeyManager` through the `NodeAsDHT` adapter, so key construction and subkey choice stay
+Hivemind's). Arms: `honest` control; `forge` writing withdrawals for all honest peers but the victim.
+Measure the victim's candidate list, a bystander's list, whether honest `declare_averager` calls start
+returning `False`, and **run it with caching on** — that is the whole point.
+
+**Verify before believing it, in this order:**
+1. A forged `False` under another peer's subkey is accepted at all (fact 4). If a validator or
+   signature check rejects it, the attack is dead and that is the finding.
+2. It survives merging with cached honest copies (facts 1-2) — the claim caching cannot defeat it.
+3. The suppressed peer's later honest re-declaration is **rejected** (fact 2), which is the difference
+   between a one-shot suppression and a per-round race.
+4. Whether the DHT bounds how far in the future an expiration may be. `timed_storage.py:76` only
+   rejects expirations in the *past*; if some upper bound exists elsewhere it limits how long one write
+   suppresses a peer. Not checked.
 
 ### Loose ends, in descending order of interest
 
