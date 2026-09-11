@@ -52,7 +52,7 @@ requester's authenticated PeerID in hand.
 | (1) eclipse cost | **done** — §4.1 |
 | (2) α → β | **done** at three layers — §4.2, §4.3, §4.5, §4.6 |
 | (2b) decay under re-formation | **done** — §4.4 |
-| (3) β → learning harm, plain vs Krum | **not started** — §6 has the design |
+| (3) β → learning harm, plain vs Krum | **done** — §4.11 |
 
 ### Code
 
@@ -68,6 +68,7 @@ requester's authenticated PeerID in hand.
 | `step4_reformation.py` | Does re-formation shed the attacker? Needs sharding switched on. |
 | `step5_selective.py` | Lying to the victim on read instead of censoring everyone on write. |
 | `step6_isolation.py` | Does list capture win the *group*? Adds DHT-only Sybils holding the key's replicas. |
+| `step7_poison.py` | Brief item 3: poisoning the all-reduce, plain averaging vs coordinate median. |
 
 Results are CSVs in `research/results/`, tracked in git, named for their configuration:
 `step2_groups_16x8.csv` = 16 peers at group size 8; `_b` = independent repeat;
@@ -349,6 +350,79 @@ anywhere, while `matchmaking.py:538` calls it for real.
   failures, 96 s instead of 337 s.
 - **Metastability.** The permutation preserves balance only while every bucket forms one full group. One
   undersized group breaks the invariant permanently. Clean at 4 epochs, 63 failures by 10.
+
+### 4.11 Brief item 3: what β costs the model, and what robust rules can promise
+
+`step7_poison.py`, 8 peers, group size 4, β = 1/4 (one poisoning member), 3 seeds, 20 epochs.
+Poisoning is applied to the **send path only** (`_generate_input_for_peer`, `allreduce.py:247`), so the
+attacker's own tensors stay honest and the damage measured is damage to *honest* peers.
+
+| configuration | seed 0 | seed 1 | seed 2 | ratio to control |
+|---|---|---|---|---|
+| control, no attack | 0.6721 | 0.5485 | 0.7436 | — |
+| `sign_flip`, honest weight | 0.5403 | — | — | ≈ control (within noise) |
+| **`sign_flip` + declared weight 10⁶** | **30.71** | **81.44** | **26.03** | **35–148×** |
+| same, coordinate median | 0.6194 | 1.2700 | 0.3723 | 0.5–2.3× |
+
+**One peer in four moves the model 35–148× further from the optimum**, and the damage comes almost
+entirely from one unvalidated scalar. The same poisoned gradient at an honest weight is indistinguishable
+from the control, because the mean dilutes it 1-in-4.
+
+**The weight is a multiplier, not a poison.** `partition.py:242` applies the sender's declared weight
+verbatim (`accumulator.add_(part, alpha=weight); denominator += weight`), read straight off the wire
+(`allreduce.py:340`). An honest gradient at weight 10⁶ does almost nothing (measured 1.22× — the group
+average simply becomes that peer's own valid gradient, losing the benefit of averaging but not the
+direction). Combined with a poison it scales that poison without bound. Report the two factors
+separately; `--declared-weight` is orthogonal to `--attack` for this reason.
+
+**Coordinate-wise median recovers nearly all of it** — 0.5–2.3× the control against 35–148× — at **zero
+extra communication**, because per-slice is identical to whole-vector for a coordinate-wise rule. It
+also ignores the declared weight by construction, which is the point: that is the field the attacker
+controls. Recovery is not perfect (seed 1 at 1.27 sits above the control band), so state it as
+"recovers most of the damage", not "eliminates".
+
+#### What robust aggregation can promise at Hivemind's group sizes
+
+Published conditions, verified from source:
+
+| rule | condition | source |
+|---|---|---|
+| Krum / Multi-Krum | **2f + 2 < n** | Blanchard et al., NeurIPS 2017 |
+| Coordinate median, trimmed mean | **q < n/2** (trim level ≥ q) | Yin et al., ICML 2018 |
+
+| group size n | max f for Krum | max β Krum | max β median |
+|---|---|---|---|
+| **2** (`min_group_size` default) | **0** | **0** | **0** |
+| **4** (our runs) | **0** | **0** | 0.25 |
+| 8 | 2 | 0.25 | 0.375 |
+| 256 (ALBERT `target_group_size`) | 126 | ≈0.49 | ≈0.49 |
+
+**Krum has no tolerance below n = 5.** And β measured in §4.3 is exactly k/(k+1) — 0.500, 0.667, 0.800 —
+with 0.646 in §4.6. **Every one exceeds every bound.**
+
+**The decisive point: the attacker chooses n as well as f.** Robust-aggregation theory takes group size
+as exogenous. Here the attacker *is the leader* and closes the group when it likes
+(`matchmaking.py:277-297`), and `min_group_size = 2` lets it close at two. A {attacker, victim} group is
+n = 2, f = 1: Krum needs 4 < 2, median needs 1 < 1. **Every precondition fails by construction, before a
+single gradient is crafted.** No aggregation rule helps when the adversary picks the denominator.
+
+*Stated precisely:* these are **sufficient** conditions. Exceeding one removes the guarantee; it does not
+prove the rule fails. The measured arm above is what speaks to actual damage.
+
+**Krum was not implemented**, for two independent reasons: its bound is violated at these group sizes
+anyway, and it cannot run under reduce-scatter, needing pairwise distances between *full* vectors while
+peer *i* holds only slice *i*. Running it would mean concentrating the whole vector on one reducer —
+discarding the property that makes Hivemind scale.
+
+**Caveats.**
+- **The 0.1492 baseline in §2 is not comparable to these numbers.** It was produced by `step2_groups.py`,
+  whose factory leaves the gradient averager's `target_group_size` unset, so its groups close on deadline
+  rather than filling. Binding it — which `step7` does, so β has a stable denominator — costs ~4× on its
+  own: 0.148 unbound vs 0.575 bound, 8 peers at group size 8, no attacker. `step7 --no-bind-group-size`
+  returns 0.1481, which is what confirms the reducer subclass is faithful to Hivemind's own averaging.
+  **Always compare against this script's own `--attack none` arm.**
+- Control variance is 0.55–0.74 across seeds. The 35–148× effect is far outside it; the median result
+  (0.5–2.3×) is not, so the defence claim rests on three seeds rather than one.
 
 ### 4.10 Other code-level facts, unmeasured
 
