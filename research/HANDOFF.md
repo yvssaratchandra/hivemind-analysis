@@ -3,9 +3,10 @@
 State of the project, why it is built this way, and how to pick it up on another machine. Written so a
 reader with no prior context (human or assistant) can continue without the original conversation.
 
-Last updated: 2026-09-10 · branch `research/net-security` · remote `analysis`
+Last updated: 2026-09-11 · branch `research/net-security` · remote `origin`
 
-Second machine, second day: the environment notes in §5 and the traps in §3 have both changed.
+Written on the second machine. If you are arriving on a third: §5 has the setup that actually works,
+§3 has the two failure modes that cost the most time, and §2 says what is measured and what is not.
 
 ---
 
@@ -85,7 +86,26 @@ Larger swarms converge slightly further per epoch because averaging over more pe
 gradient; each peer still takes ~25 local steps per epoch at every size, since `target_batch_size`
 scales with the peer count. What these runs were actually for is in §6.1.
 
-**Not started:** anything adversarial. Steps 1–2 are the honest control only.
+**Adversarial results**, all on live swarms, all detailed in §6:
+
+| brief item | question | answer | where |
+|---|---|---|---|
+| 1 | cost of an eclipse | **5 identities, ~0.5 s**, at any network size from 50 to 10 000 | §6.2 |
+| 2 | α → β at the discovery layer | 5 identities take **100 %** of the victim's candidate list | §6.3 |
+| 2 | α → β at the averaging group | α 0.062 → mean β **0.315**, a 5× amplification from one identity | §6.4 |
+| 3 | β → learning harm, plain vs robust aggregation | **not started** | — |
+
+**Reading the results directory.** Filenames carry the configuration:
+
+| pattern | what it is |
+|---|---|
+| `step2_groups_<n>x<g>.csv` | honest group membership, n peers at group size g; `_b` is a repeat |
+| `step3_eclipse_analytical.csv` | XOR arithmetic sweep, no processes |
+| `step3_eclipse_live.csv` | the same on real `DHTNode`s |
+| `step3_candidates_live.csv` | candidate-list capture, honest / flood / eclipse arms |
+| `step3_capture_groups_<arm>_k<k>_n<n>.csv` | malicious leader, naive configuration |
+| `step3_capture_groups_forced_mmt<t>_k1.csv` | the fix that **failed** — kept because §6.4 explains why |
+| `step3_capture_groups_decoupled_d<t>_k<k>.csv` | the fix that works, `<t>` the attacker's declare time |
 
 ---
 
@@ -212,6 +232,21 @@ Two steps in there are not obvious, and both cost time to rediscover:
 Expect the 8-peer numbers in §2. If `peers visible to each other` reports 0 or 1, re-read §3 before
 trusting anything — and raise `--batch-time` if the machine is slower. On a run with more than one
 group per round, do not expect a 0.0000 spread; see §3.
+
+To reproduce the adversarial results, cheapest first:
+
+```bash
+.venv/bin/python research/step3_eclipse.py                    # seconds, no swarm
+.venv/bin/python research/step3_eclipse_live.py               # ~3 min, 24 DHT-only peers
+.venv/bin/python research/step3_candidates.py --sizes 8 16 32 # ~6 min
+.venv/bin/python research/step3_capture.py --arm honest    --attackers 1
+.venv/bin/python research/step3_capture.py --arm malicious --attackers 1 \
+    --attacker-matchmaking-time 15.0 --attacker-declare-time 1.0
+```
+
+The last two are ~2.5 min each at 16 peers. The two attacker flags are not optional decoration —
+without them leadership is won in 14 % of rounds instead of 57 %, for the reason in §6.4. Anything
+longer than three 16-peer configurations should be run in the background rather than waited on.
 
 **What does not travel with the repo**, and is why this file exists: the conversation history, the plan
 file under `~/.claude-account2/plans/`, and the assistant memory directory. Everything load-bearing has
@@ -381,7 +416,7 @@ from this list and the group is assembled by a separate race (`GROUP_FORMATION.m
 owning the list is not yet owning the group — that is the malicious-leader experiment, and
 these two must not be reported as the same quantity.
 
-### 6.4 Measured: the admission filter is exact, but leadership is not for sale
+### 6.4 Measured: the admission filter is exact, and leadership can be won after all
 
 `step3_capture.py`, 16 peers, group size 8, 20 epochs, peer 0 the victim and peers 1..k the
 attacker. All peers run one averager class, because RPC handles are named
@@ -510,23 +545,31 @@ offline. That would matter for the rounds the attacker still loses.
 ### 6.5 From reading the source, not yet measured
 
 These came out of reading `hivemind/averaging/matchmaking.py` and are the reason the project is worth
-finishing. All are code-level claims with line references; none has been experimentally confirmed.
+finishing. They are code-level claims with line references. Two of them have since been measured and
+say so inline; the rest have not.
 
 - **Group membership is a race, not a random draw.** A peer advertises a self-chosen *deadline*;
   everyone sorts candidates by `(deadline, peer_id)` and the earliest becomes leader
   (`matchmaking.py:479-497`); the leader then admits followers in arrival order
-  (`matchmaking.py:273`). Both criteria are attacker-controlled.
+  (`matchmaking.py:273`). Both criteria are attacker-controlled. **Measured in §6.4**, with one
+  correction: the deadline is attacker-controllable only once the averager's `min_matchmaking_time` is
+  set independently of `Optimizer`'s `matchmaking_time`, which otherwise makes every peer declare the
+  same value.
 - **A leader chooses its own group.** `_check_reasons_to_reject` (`matchmaking.py:341-368`) runs on the
   leader's own machine with the requester's TLS-authenticated PeerID already in hand. A modified leader
   can admit exactly one target plus its own Sybils. With `min_group_size = 2`
   (`averaging/averager.py:120`) that yields **β = 0.5 from a single identity**, and β = k/g in general —
-  meaning β decouples from α entirely.
+  meaning β decouples from α entirely. **Measured in §6.4 and confirmed exactly**: β when captured is
+  k/(k+1) with no variance, in 57 % of rounds at k=1.
 - **Group re-formation is off by default.** `initial_group_bits` defaults to `""`
   (`averaging/averager.py:120`) and `hivemind.Optimizer` never overrides it, so
   `update_key_on_group_assembled` (`averaging/key_manager.py:102`) discards its own output and no peer
   ever changes group key. The brief's "decay under periodic re-formation" therefore has nothing to
-  decay under, unless the feature is switched on explicitly. §6.1 is the measured consequence of this
-  one, and it is the only item in this list that is no longer just a code reading.
+  decay under, unless the feature is switched on explicitly. §6.1 is the measured consequence. Note
+  the sharper problem, which is still unmeasured: even switched on, the reshuffle is seeded on
+  `random.Random(group_info.group_id)` and indexed by position in `group_info.peer_ids`
+  (`key_manager.py:94-104`), both of which every member holds — so an attacker in the victim's group
+  can compute where the victim goes next and follow it. See §7.
 - **Krum is not implemented, and cannot be dropped in.** No robust aggregation exists anywhere in the
   tree; aggregation is a plain weighted mean (`averaging/partition.py:242-260`) with a sender-supplied
   weight applied verbatim. Krum needs pairwise distances between *full* vectors, which no peer holds —
@@ -545,31 +588,53 @@ Background written up in `research/HIVEMIND_EXPLAINED.md` (how the system works)
 
 ## 7. Next steps
 
-1. **Step 3: a malicious leader.** Two pieces, and only the second needs a subclass:
-   - *Winning leadership is the hard half.* Configuring a smaller `matchmaking_time` is a weak
-     lever, not a decisive one — §6.4 measures 0 %, 14 % and 20 % capture at 5.0, 2.0 and 0.5,
-     and explains why the value largely cancels out. The untried levers are forcing
-     `schedule_step(scheduled_time=...)` low (`optim/grad_averager.py:150`) and grinding a
-     low `peer_id` for the tie-break (`matchmaking.py:478-481`, with `identity_path` making
-     PeerIDs choosable). Note the trade-off in `GROUP_FORMATION.md` §3: an earlier deadline
-     also closes the group sooner.
-   - *Selective admission does.* Override `rpc_join_group` (which delegates at
-     `averaging/averager.py:574-578`) to filter on `context.remote_id`, admitting the victim and the
-     attacker's own Sybils and rejecting everyone else. The upstream test suite already subclasses this
-     way — `tests/test_allreduce_fault_tolerance.py:32,87` define `FaultyAverager` and
-     `FaultyAllReduceRunner` — so core Hivemind stays untouched.
+Brief items 1 and 2 are measured (§6.2, §6.3, §6.4). Item 3 is the remaining one.
 
-   Done as far as admission goes — see §6.4. What remains is making leadership reliable, then
-   re-running the sweep; β when captured is already exactly k/(k+1).
+1. **Brief item 3: couple β to learning harm.** The pieces are all in place — `step3_capture.py`
+   already produces a victim sitting in a group with a known β, and `distance_to_optimum` measures
+   damage against the 0.1492 baseline. What is missing is a poisoning attacker and a defence.
 
-   The identities have to be distributed before the attack can be selective. `run_peer` already
-   publishes its `PeerID` to the parent over the metrics queue (`step2_groups.py:144`); the parent will
-   need to collect all of them and hand the roster back before each peer builds its `Optimizer`, since
-   the filtering runs inside the averager's own process and can only see what was bound into the
-   factory.
+   - *Poisoning* goes in an overridden `_generate_input_for_peer` on an `AllReduceRunner` subclass,
+     so only what is **sent** is poisoned and the attacker's own state stays consistent — the upstream
+     `FaultyAllReduceRunner` (`tests/test_allreduce_fault_tolerance.py:87`) overrides exactly that
+     method. Worth covering sign-flip and large-norm (crude, should be caught by anything), a
+     **stealthy targeted** bias sized to stay inside the honest gradient's norm range, and the
+     **unvalidated weight** — `partition.py:242` applies a sender-supplied weight verbatim, read
+     straight off the wire at `allreduce.py:340`, so a large declared weight costs nothing and needs
+     no gradient crafting at all.
+   - *Defence* is coordinate-wise median or trimmed mean, **not Krum**. Computing them per-slice is
+     identical to computing them over the whole vector, so they work inside reduce-scatter unchanged;
+     Krum needs pairwise distances between full vectors and under reduce-scatter peer *i* only ever
+     holds slice *i*, so it could only be done by forcing every full vector onto one peer, which
+     discards the property that makes Hivemind scale. Implement by subclassing `TensorPartReducer` to
+     buffer each sender's part rather than summing it (`accumulate_part` already receives
+     `sender_index`), then replacing `self.tensor_part_reducer` in an `AllReduceRunner` subclass.
+   - *One design point that is itself a finding:* in reduce-scatter each peer reduces only its own
+     slice and ships the result to everyone, so a robust rule protects exactly the slices its users
+     own. **Every honest peer must run it or it does nothing** — one undefended slice owner re-admits
+     the poison for that slice. Measure the single-defender case once to show why.
 
-2. **Then** couple β to learning harm, reusing `distance_to_optimum` against the 0.1492 baseline.
-3. **Optional, and cheap:** settle the §6.1 limitation by varying timing noise at a fixed peer count.
+2. **Loose ends, in descending order of interest:**
+   - **Grind a low `peer_id`.** The tie-break for equal declared deadlines is the lowest `peer_id`
+     (`matchmaking.py:478-481`) and `identity_path` makes PeerIDs choosable, so they can be ground
+     offline. That is the lever for the ~40 % of rounds the attacker still loses (§6.4).
+   - **Re-formation decay**, which the brief asks about and nothing here has measured. Enable it by
+     binding `initial_group_bits` through `grad_averager_factory` (3 bits at group size 8). The
+     source says it will not help: `update_key_on_group_assembled` seeds its shuffle with
+     `random.Random(group_info.group_id)` and indexes by position in `group_info.peer_ids`
+     (`key_manager.py:94-104`), and every member holds both — so an attacker inside the victim's group
+     can compute where the victim goes next and follow it. Worth measuring a *naive* attacker against
+     a *tracking* one; the prediction is decay for the first and none for the second.
+   - **Settle the §6.1 limitation** by holding the peer count fixed and varying timing noise
+     deliberately, to see whether the clique structure follows the noise rather than the peer count.
+   - **Censorship, as opposed to custody.** §6.2's attacker nodes store and serve honestly. Refusing
+     to serve on `rpc_find` is a separate experiment; §6.3 already does the store-side half with
+     `record_validator`.
+
+3. **A free detection signal nobody uses**, if the project ever turns to defences: honest peers whose
+   advertisement is refused by every replica get `False` back from `declare_averager` and throw it
+   away (`matchmaking.py:535`, and again at 544; no other caller checks it). §6.3 measured 0/32
+   honest peers noticing they had been erased from discovery.
 
 Before claiming novelty on β thresholds, read *Secure Distributed Training at Scale* (BTARD, ICML 2022,
 arXiv:2106.11257), especially its threat model and Appendices F and G. It assumes a **fixed** Byzantine
