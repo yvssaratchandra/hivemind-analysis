@@ -93,10 +93,11 @@ scales with the peer count. What these runs were actually for is in §6.1.
 | brief item | question | answer | where |
 |---|---|---|---|
 | 1 | cost of an eclipse | **5 identities, ~0.5 s**, at any network size from 50 to 10 000 | §6.2 |
-| 2 | α → β at the discovery layer | 5 identities take **100 %** of the victim's candidate list | §6.3 |
+| 2 | α → β at the discovery layer | 5 identities take **100 %** of the victim's candidate list, **from ~one advertisement lifetime after they arrive** | §6.3, §6.9 |
 | 2 | α → β at the averaging group | α 0.062 → mean β **0.315**, a 5× amplification from one identity | §6.4 |
 | 2b | decay under re-formation | naive sheds (1/5), **tracking does not (5/7)**; next bucket predicted **5/5** | §6.5 |
 | 2 | α → β, quietly | selective read gives the same capture with **0 detection signal, 0 collateral** | §6.7 |
+| — | does history protect the victim? | no: warm records delay capture by **one record lifetime**, then it is total | §6.9 |
 | 3 | β → learning harm, plain vs robust aggregation | **not started** | — |
 
 **Reading the results directory.** Filenames carry the configuration:
@@ -111,7 +112,7 @@ scales with the peer count. What these runs were actually for is in §6.1.
 | `step3_capture_groups_forced_mmt<t>_k1.csv` | the fix that **failed** — kept because §6.4 explains why |
 | `step3_capture_groups_decoupled_d<t>_k<k>.csv` | the fix that works, `<t>` the attacker's declare time |
 | `step4_reformation_<arm>.csv` | re-formation arms: none / naive / tracking |
-| `step5_selective.csv`, `_cached.csv` | selective-read vs write-censorship, caching off / on |
+| `step5_selective*.csv` | selective-read vs write-censorship; `_cached` caching on, `_warmN` N warm-up rounds, `_settleN` N seconds for warm records to expire |
 
 ---
 
@@ -598,6 +599,15 @@ The naive arm's 1/5 matches the 1-in-4 chance of a frozen bucket coinciding with
 **re-formation does shed an attacker that declines to use information it already holds**. It sheds
 nothing otherwise: every input to `update_key_on_group_assembled` is in the leader's broadcast.
 
+**The root cause is transparency to participants, not predictability.** This is worth stating
+precisely, because the obvious reading is wrong. `group_id = DHTID.generate()` with no `source` hashes
+255 random bits (`routing.py:270`) — it is unpredictable to anyone outside the group, and no amount of
+observation from outside yields the victim's next bucket. What breaks it is that the shuffle's *every*
+input (`group_id`, `peer_ids`, public config) is handed to every member in the leader's broadcast, so
+a peer that has shared **one** group with the victim computes the answer exactly, forever after. The
+implied fix follows from that framing and not from the other one: seed the shuffle on a value
+contributed by members and revealed only after placement, so holding the broadcast is not enough.
+
 **Prediction accuracy is the sturdier claim.** 5/5 exact, and it is measured independently of whether
 matchmaking then cooperated — the attacker wins the group only ~57 % of the time (§6.4), so β alone
 understates how good the prediction is. Join predictions to outcomes on `group_id`, never on `round`:
@@ -663,6 +673,63 @@ own cache, and that has not been tested.
 write-censorship needs no subclassing. Selective read needs `DHTProtocol.rpc_find` patched before any
 node is built (handlers bind at registration, `servicer.py:117`) and `DHTNode` rather than `DHT`, since
 `DHT` hides its node in a forked subprocess. Path of least resistance, not a considered choice.
+
+**Root cause, stated precisely.** `group_id` plays no part in this attack — do not carry the §6.5
+framing across. Two properties carry it: `node_id` is self-chosen (`node.py:171`) and accepted verbatim
+off the wire (`protocol.py:150`), which grants custody; and `rpc_find` receives `context: P2PContext`
+(`protocol.py:333`), which lets a custodian answer differently depending on who asked. Remove either
+and the attack collapses — binding `node_id` to the PeerID removes custody, and stripping requester
+identity from the read path removes selectivity (though it would also break the routing-table
+maintenance that `rpc_find` performs at `protocol.py:338-339`).
+
+**Two limits on this result**, both being measured (see §6.9 once run):
+- It captures the **candidate list**, not the assembled **group**. That gap is §6.3's stated caveat and
+  this section inherits it. It matters especially when the victim *leads*: a peer reads the list
+  regardless, and `pop_next_leader` (`matchmaking.py:479-497`) makes it wait to be contacted if no
+  candidate beats it, at which point honest peers — whose reads are *not* filtered here — can still
+  join it.
+- The swarm was built fresh, so no cached copies existed to leak. `add_candidate` **merges**
+  dictionaries from every responder (`node.py:834-837`), so a single honest peer holding a cached copy
+  reintroduces every honest entry, and `cache_nearest=1` (`node.py:112`) plants such a copy after every
+  successful lookup. The `--caching` arm shows no leak only because it is a cold first read.
+
+### 6.9 Measured: discovery attacks are delayed by one record lifetime, not defeated by history
+
+`step5_selective.py --warmup W`, 12 honest peers + 5 crafted node_ids. This qualifies §6.3 and §6.7,
+both of which built the swarm fresh and so measured a **cold first read** — a key nobody had ever
+written to. A real key has history.
+
+| warm-up state | honest declarations | censor: victim sees | selective: victim sees |
+|---|---|---|---|
+| cold (W=0) | 12/12 sel, 0/12 cen | 0 honest, 1 attacker | 0 honest, 1 attacker |
+| **warm, records live** (W≥1, 600 s lifetime) | 12/12 sel, 0/12 cen | **12 honest** — fails | **12 honest** — fails |
+| warm, records expired (5 s lifetime, 8 s settle) | 12/12 sel, 0/12 cen | 0 honest, 1 attacker | 0 honest, 1 attacker |
+
+**One warm-up round defeats both attacks outright, while any live copy remains.** Capture goes from
+1.00 to 0.00. This is not a partial leak — the victim sees the entire honest swarm.
+
+**The mechanism is residual storage, not caching.** Running with caching fully disabled gives the same
+failure, so it is not the victim's own cached copy. Honest peers that stored the record *before* the
+attacker arrived keep it in `protocol.storage` until it expires, they remain reachable in routing
+tables, and `add_candidate` **merges** every responder's dictionary (`node.py:834-837`) — so one
+surviving honest custodian reintroduces all twelve entries. The attacker is still lying: the filter
+fired 10 times rather than 5. It simply is not the only source any more.
+
+**This also qualifies the §6.3 censor arm**, which was committed before this was measured. Censoring
+writes stops *new* advertisements (0/12 accepted, as before) but does nothing about copies already
+stored elsewhere; the victim reads those instead.
+
+**But the window is one record lifetime.** Re-running with a realistic 5 s advertisement lifetime and
+an 8 s settle restores capture to 1.00 for both arms. Averaging advertisements are short-lived by
+design — `declare_averager` sets expiration to the peer's matchmaking deadline, seconds not minutes
+(`matchmaking.py:527-531`) — so in steady state every copy is refreshed continuously, and once the
+pre-attack copies lapse, the attacker owns every replica that receives the refresh.
+
+**Net effect on the claim.** "Five identities take 100 % of the victim's candidate list" stands, with a
+precondition that was previously implicit and is now measured: **it holds from roughly one
+advertisement lifetime after the Sybils arrive, not immediately.** For a defender that is the detection
+window; for an attacker it is a short wait. §6.2's custody result is unaffected — the attacker owns the
+addresses either way; what takes a lifetime is converting custody into control of what a reader sees.
 
 ### 6.8 From reading the source, not yet measured
 

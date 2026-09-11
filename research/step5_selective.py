@@ -185,6 +185,33 @@ async def run_arm(arm: str, args) -> dict:
     # The identity the attacker wants the victim to average with.
     attacker_ad = PeerID(bytes([0x00, 0x24]) + b"\xAB" * 34)
 
+    # Warm the swarm before the attacker arrives.
+    #
+    # Without this the measurement is a cold first read: the key has never been
+    # looked up, so no peer holds a cached copy and the attacker's replicas are the
+    # only possible source. A real network has been reading this key for hours.
+    # It matters because `add_candidate` *merges* dictionaries from every responder
+    # (`node.py:834-837`), so one honest peer answering from cache reintroduces
+    # every honest entry -- and `cache_nearest=1` (`node.py:112`) plants exactly
+    # such a copy on a peer along the path after each successful lookup.
+    warm_expiration = get_dht_time() + args.warm_expiration
+    for _ in range(args.warmup):
+        for peer in honest:
+            await group_key_manager(peer).declare_averager(
+                GROUP_KEY, peer.peer_id, expiration_time=warm_expiration
+            )
+        for peer in honest:
+            await group_key_manager(peer).get_averagers(GROUP_KEY, only_active=True)
+
+    # Let the warm-up records expire before the attacker arrives. Real averaging
+    # advertisements are short-lived -- `declare_averager` sets expiration to the
+    # peer's matchmaking deadline, seconds not minutes (`matchmaking.py:527-531`) --
+    # so in steady state every copy of the key is refreshed continuously. Whether
+    # the attack is permanently defeated by history or merely delayed by one record
+    # lifetime is exactly the difference between these two settings.
+    if args.settle:
+        await asyncio.sleep(args.settle)
+
     attackers = []
     if arm != "honest":
         for node_id in crafted_node_ids(GROUP_KEY, args.num_attackers):
@@ -246,6 +273,9 @@ async def run_arm(arm: str, args) -> dict:
     return dict(
         arm=arm,
         caching=args.caching,
+        warmup=args.warmup,
+        settle=args.settle,
+        warm_expiration=args.warm_expiration,
         num_honest=args.num_honest,
         num_attackers=len(attackers),
         alpha=len(attackers) / (args.num_honest + len(attackers)) if attackers else 0.0,
@@ -267,7 +297,7 @@ async def run_arm(arm: str, args) -> dict:
 async def main_async(args) -> None:
     rows = []
     for arm in args.arms:
-        print(f"=== arm: {arm} ===")
+        print(f"=== arm: {arm} (caching={args.caching}, warmup={args.warmup}) ===")
         started = time.perf_counter()
         row = await run_arm(arm, args)
         row["seconds"] = round(time.perf_counter() - started, 1)
@@ -289,7 +319,7 @@ async def main_async(args) -> None:
         print(f"  ({row['seconds']}s)\n")
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    suffix = "_cached" if args.caching else ""
+    suffix = ("_cached" if args.caching else "") + (f"_warm{args.warmup}" if args.warmup else "") + (f"_settle{args.settle:g}" if args.settle else "")
     path = RESULTS_DIR / f"step5_selective{suffix}.csv"
     with open(path, "w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
@@ -316,6 +346,12 @@ def main() -> None:
     parser.add_argument("--num-attackers", type=int, default=5, help="5 owns every replica; see step3_eclipse.py")
     parser.add_argument("--arms", nargs="+", default=["honest", "censor", "selective"])
     parser.add_argument("--caching", action="store_true", help="leave DHT caching on; measures the leak")
+    parser.add_argument("--warm-expiration", type=float, default=600.0,
+                        help="lifetime of warm-up records; real averaging ads live seconds, not minutes")
+    parser.add_argument("--settle", type=float, default=0.0,
+                        help="seconds to wait after warm-up so its records can expire before the attack")
+    parser.add_argument("--warmup", type=int, default=0,
+                        help="rounds of honest declare+read before the attacker joins, to populate caches")
     args = parser.parse_args()
     asyncio.run(main_async(args))
 
