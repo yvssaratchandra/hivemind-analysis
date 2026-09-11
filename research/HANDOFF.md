@@ -50,6 +50,7 @@ reliably pinned to α even with nobody attacking.
 | `research/step3_capture.py` | A malicious leader admitting only the victim and its own peers. Brief item 2, at the averaging group itself. |
 | `research/step4_reformation.py` | Does re-formation shed the attacker? Brief item 2b. Needs sharding switched on. |
 | `research/step5_selective.py` | Lying to the victim on read instead of censoring everyone on write. |
+| `research/step6_isolation.py` | Does list capture win the *group*? Adds DHT-only Sybils holding the key's replicas. |
 
 Results are in `research/results/*.csv` (tracked in git), tagged with the configuration that produced
 them — `step2_groups_16x8.csv` is 16 peers at group size 8. A trailing `_b` is an independent repeat.
@@ -98,6 +99,7 @@ scales with the peer count. What these runs were actually for is in §6.1.
 | 2b | decay under re-formation | naive sheds (1/5), **tracking does not (5/7)**; next bucket predicted **5/5** | §6.5 |
 | 2 | α → β, quietly | selective read gives the same capture with **0 detection signal, 0 collateral** | §6.7 |
 | — | does history protect the victim? | no: warm records delay capture by **one record lifetime**, then it is total | §6.9 |
+| 2 | does owning the list win the group? | **partly** — capture 0/12 → 4-5/13, β 0.104 → 0.250; filtering also makes the victim *lead* more often | §6.10 |
 | 3 | β → learning harm, plain vs robust aggregation | **not started** | — |
 
 **Reading the results directory.** Filenames carry the configuration:
@@ -113,6 +115,7 @@ scales with the peer count. What these runs were actually for is in §6.1.
 | `step3_capture_groups_decoupled_d<t>_k<k>.csv` | the fix that works, `<t>` the attacker's declare time |
 | `step4_reformation_<arm>.csv` | re-formation arms: none / naive / tracking |
 | `step5_selective*.csv` | selective-read vs write-censorship; `_cached` caching on, `_warmN` N warm-up rounds, `_settleN` N seconds for warm records to expire |
+| `step6_isolation_<arm>_k<k>_n<n>.csv` | group capture under selective / bidirectional filtering |
 
 ---
 
@@ -730,6 +733,56 @@ precondition that was previously implicit and is now measured: **it holds from r
 advertisement lifetime after the Sybils arrive, not immediately.** For a defender that is the detection
 window; for an attacker it is a short wait. §6.2's custody result is unaffected — the attacker owns the
 addresses either way; what takes a lifetime is converting custody into control of what a reader sees.
+
+### 6.10 Measured: owning the list is necessary but not sufficient, and filtering backfires
+
+`step6_isolation.py`, 8 peers, group size 4, 12 epochs, one training attacker (α = 0.125) plus **five
+DHT-only Sybils** with crafted node_ids holding the key's replicas. Answers the question §6.7 could not:
+does owning the victim's *candidate list* win the victim's *group*?
+
+| arm | victim led | group captured | mean β | honest peer in victim's group | responses filtered |
+|---|---|---|---|---|---|
+| honest (control) | 0/12 | 0/12 | 0.104 | 12/12 | — |
+| selective | **5/12** | 4/12 | 0.188 | 8/12 | 394 |
+| isolated | 3/13 | 5/13 | 0.250 | 8/13 | 21331 |
+
+**Partly, and less than §6.7 implies.** Capture goes from 0/12 to 4-5 of 12-13 rounds, and β roughly
+doubles over α. Real, but far from the 100 % list capture §6.7 reports — because capture requires the
+attacker to *also win leadership*. When it merely joins the victim's group alongside honest peers, β is
+diluted and nothing is captured. **Owning the candidate list is necessary, not sufficient.**
+
+**Filtering the victim's reads makes it more likely to lead — the attack partly defeats itself.**
+0/12 rounds in the control, **5/12** under `selective`. Starved of candidates, the victim finds nothing
+beating its own declared deadline, so `pop_next_leader` (`matchmaking.py:478-481`) stops searching and
+waits to be contacted. Hiding the victim from everyone else (`isolated`) pushes it back down to 3/13
+and capture up to 5/13, the predicted direction — but at n ≈ 12 that difference is **not significant**
+and should not be claimed as one.
+
+**Two structural findings from building this, both more durable than the numbers:**
+
+- **A declared deadline cannot be forged downward.** The `forged` arm was designed to show the victim a
+  fabricated early expiration, decoupling "win the election" from "have time to assemble" — the tension
+  §6.4 found limiting. It cannot work: expiration is simultaneously the record's **lifetime** and its
+  **leadership priority**, one field (`key_manager.py:60`, read back at `:88`). Lowering it to win the
+  election makes the advertisement expire instead of winning. The arm was abandoned rather than
+  reported.
+- **Custody is a precondition that is easy to omit.** The first version of this experiment gave the
+  attacker a random `node_id`, so it never held the key's replicas and filtered only **55** responses
+  across a whole run — the capture it reported (42-50 %) was admission control from §6.4 with the DHT
+  filter barely engaged. Adding five DHT-only Sybils took that to 394. **Check the filter count before
+  believing any number from this script.**
+
+**Threat-model note.** α counts *training* peers only, because only those submit gradients. The five
+Sybils hold DHT records and do no compute, which is the cheap half of the attack — a distinction worth
+keeping when comparing α across experiments.
+
+**Limits.** 12-13 rounds per arm, single run, no repeats: the ordering `honest < selective ≤ isolated`
+is clear but the gap between the two attack arms is not. 8 peers rather than 16, because **16 peers
+starve when `target_group_size` is bound on the gradient averager** — leader election is global, so
+groups form sequentially and only one or two assemble per matchmaking window. Three 16-peer attempts
+gave 4-6 of 16 peers ever averaging and **zero** victim rounds. §6.1's clique finding is the same
+pathology. Note that §2's step2 runs avoided it only because `averager_opts` never reached the gradient
+averager, so their leaders closed on deadline instead of holding groups open.
 
 ### 6.8 From reading the source, not yet measured
 
