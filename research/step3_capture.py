@@ -30,7 +30,7 @@ request fails for a reason that looks nothing like the real cause. So all peers 
 `CapturingGradientAverager` and behaviour is switched by a constructor argument.
 
 **The honest arm is the control and is not optional.** It is the same swarm with the same
-peer counts, with the attackers behaving normally. §6.1 found that honest membership does
+peer counts, with the attackers behaving normally. §4.8 of HANDOFF.md found that honest membership does
 not mix reliably, so the honest beta has to be *measured* rather than assumed to be alpha.
 
 Run one configuration at a time:
@@ -123,7 +123,7 @@ class CapturingGradientAverager(GradientAverager):
         matchmaking_time` (optimizer.py:562). Optimizer passes the same number to both, so
         the two cancel and every peer's scheduled_time lands on the shared epoch-end
         estimate however it is configured. That is why tuning matchmaking_time alone moved
-        capture only from 0% to 20% (HANDOFF.md section 6.4).
+        capture only from 0% to 20% (HANDOFF.md section 4.3).
 
         Forcing scheduled_time into the present makes the declared deadline
         `max(scheduled_time, now + min_matchmaking_time)` (matchmaking.py:527-531) fall
@@ -325,7 +325,7 @@ def main() -> None:
                              "to declare a deadline earlier than the shared epoch-end estimate")
     parser.add_argument("--no-force-schedule", action="store_true",
                         help="leave scheduled_time at its default, which is the pre-fix behaviour "
-                             "measured in HANDOFF.md section 6.4")
+                             "measured in HANDOFF.md section 4.3")
     parser.add_argument("--averaging-timeout", type=float, default=30.0)
     parser.add_argument("--run-id", type=str, default=None)
     parser.add_argument("--tag", type=str, default=None)

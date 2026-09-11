@@ -20,17 +20,23 @@ each adding one mechanism to the last:
     selective   admission control + filter the victim's reads (step5 + step3_capture)
     isolated    also hide the victim from everyone else's reads, so that if it does
                 lead, no honest peer knows to join it
-    forged      also show the victim a *fabricated* early expiration
+    chase       show the victim an *empty* list, so it leads by construction, and have
+                the attackers join it instead
 
-`forged` is the interesting one. HANDOFF section 6.4 found declaring early and having
-time to assemble are in tension: a 3.0s declare time won the election but collapsed
-capture to 5%, because the attacker's own group closes before the victim arrives.
-That tension only exists if the attacker must *really* declare early. It need not:
-`get_averagers` reads each candidate's expiration straight out of the record
-(`key_manager.py:88`), and the filter already rebuilds that dictionary, so the victim
-can be shown an early deadline while the attacker's real declaration stays late.
-The mismatch would normally be caught leader-side (`matchmaking.py:358`) but the
-attacker already overrides `_check_reasons_to_reject`.
+`chase` is the one that works. Rather than win the leadership race, it removes it: an
+empty candidate list leaves `pop_next_leader` nothing beating the victim's own deadline,
+so the victim waits to be contacted every round. The attackers declare *late* deadlines
+so they prefer to follow, and join it.
+
+A `forged` arm was planned -- show the victim a fabricated early expiration, decoupling
+"win the election" from "have time to assemble" (HANDOFF section 4.3). It cannot work:
+expiration is simultaneously the record's lifetime and its leadership priority, one
+field (`key_manager.py:60`, read back at `:88`), so lowering it to win the election makes
+the advertisement expire instead. Abandoned rather than reported.
+
+**Caching changes the result completely** (HANDOFF section 4.6): `rpc_find` also answers
+from `self.cache` and results are merged across responders, so honest peers holding a
+cached copy undo the filtering. Run both ways; `--no-cache` is not a detail.
 
 Measured per round: whether the victim led, its full group membership, beta, and
 whether any honest peer joined it.
@@ -39,7 +45,7 @@ Run:
     .venv/bin/python research/step6_isolation.py --arm honest
     .venv/bin/python research/step6_isolation.py --arm selective
     .venv/bin/python research/step6_isolation.py --arm isolated
-    .venv/bin/python research/step6_isolation.py --arm forged
+    .venv/bin/python research/step6_isolation.py --arm chase --attackers 3 --no-cache
 """
 
 from __future__ import annotations
@@ -570,7 +576,7 @@ def write_results(group_rows, train_rows, identities, args) -> None:
         row["member_peers"] = " ".join(str(identities.get(p, "?")) for p in row["members"].split())
 
     # The cache setting must be in the filename: it changes the result completely
-    # (see HANDOFF section 6.11) and without it the two runs of an arm overwrite
+    # (see HANDOFF section 4.6) and without it the two runs of an arm overwrite
     # each other. That happened once and lost the cached per-round data.
     cache_tag = "nocache" if args.no_cache else "cached"
     path = RESULTS_DIR / f"step6_isolation_{args.arm}_k{args.attackers}_n{args.num_peers}_{cache_tag}.csv"
