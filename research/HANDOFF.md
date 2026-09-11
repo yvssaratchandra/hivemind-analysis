@@ -822,9 +822,27 @@ Stated carefully, it is an obstacle and not a guarantee: it depends on cache hit
 lifetimes, and §6.9 showed that a short enough advertisement lifetime lets the attacker regain control
 once pre-attack copies lapse.
 
+**Replication: the caching-on arms are too noisy to quote rates for.** An independent repeat of both
+cached arms gives:
+
+| arm (caching on) | first run | repeat |
+|---|---|---|
+| honest — victim led | 1/12 | 7/13 |
+| honest — mean β | 0.417 | 0.231 |
+| chase — victim led | 7/12 | 2/12 |
+| chase — captured | **2/12** | **0/12** |
+
+The *conclusion* replicates — caching defeats the blinding attack, capture ≈ 0 either way — but the
+individual rates swing by a factor of seven. **Quote "0-2 of 12" and not a point estimate.** The
+no-cache arm is by contrast stable (8/8 here, 5/5 in an earlier smoke test at 5 epochs), because there
+the capture is structural rather than a race outcome. Anything measured at n ≈ 12 on a caching swarm
+needs repeats before it means anything.
+
 **Two honest caveats.**
-- *Confound.* Disabling caching by itself raises the victim's leading rate (1/12 → 6/13), so the "leads
-  every round" figure is not purely the blinding. Capture going 0/13 → 8/8 is unambiguous regardless.
+- *Confound.* Disabling caching by itself raises the victim's leading rate (1/12 → 6/13 in the first
+  pair of runs), so the "leads every round" figure is not purely the blinding. Capture going 0/13 → 8/8
+  is unambiguous regardless. Note the repeat put honest/cached leading at 7/13, which undercuts this
+  particular confound estimate too — see the replication table above.
 - *The attack can backfire.* `chase / cached` gives β = 0.167, **below** the 0.417 honest control: the
   attacker declares late deadlines to position itself as a follower, so when the blinding fails it
   simply participates less than an honest peer would. An attacker choosing this strategy against a

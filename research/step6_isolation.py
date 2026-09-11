@@ -569,7 +569,11 @@ def write_results(group_rows, train_rows, identities, args) -> None:
     for row in group_rows:
         row["member_peers"] = " ".join(str(identities.get(p, "?")) for p in row["members"].split())
 
-    path = RESULTS_DIR / f"step6_isolation_{args.arm}_k{args.attackers}_n{args.num_peers}.csv"
+    # The cache setting must be in the filename: it changes the result completely
+    # (see HANDOFF section 6.11) and without it the two runs of an arm overwrite
+    # each other. That happened once and lost the cached per-round data.
+    cache_tag = "nocache" if args.no_cache else "cached"
+    path = RESULTS_DIR / f"step6_isolation_{args.arm}_k{args.attackers}_n{args.num_peers}_{cache_tag}.csv"
     fields = ["peer", "round", "group_id", "group_size", "member_peers", "led", "members"]
     with open(path, "w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
