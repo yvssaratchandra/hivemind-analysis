@@ -50,7 +50,7 @@ requester's authenticated PeerID in hand.
 | Brief item | Status |
 |---|---|
 | (1) eclipse cost | **done** — §4.1 |
-| (2) α → β | **done** at three layers — §4.2, §4.3, §4.5, §4.6 |
+| (2) α → β | **done** at three layers — §4.2, §4.3, §4.5, §4.6 (group capture is total at Hivemind's defaults, given ~`bucket_size` identities) |
 | (2b) decay under re-formation | **done** — §4.4 |
 | (3) β → learning harm, plain vs Krum | **done** — §4.11 |
 
@@ -72,7 +72,9 @@ requester's authenticated PeerID in hand.
 
 Results are CSVs in `research/results/`, tracked in git, named for their configuration:
 `step2_groups_16x8.csv` = 16 peers at group size 8; `_b` = independent repeat;
-`step6_isolation_<arm>_k<k>_n<n>_<cached|nocache>.csv`;
+`step6_isolation_<arm>_k<k>_n<n>_<cache>[_b<bucket_size>][_r<repeat>].csv`, where `<cache>` is
+`cached`, `nocache`, or `no` plus the knobs disabled, and the bucket and repeat suffixes appear only
+when they differ from the default;
 `step7_poison_<attack>_w<weight>_<agg>_b<beta>_s<seed>.csv`.
 
 ### Canonical baseline
@@ -239,11 +241,11 @@ Same capture; only `censor` also fires the detection signal and destroys discove
 unchanged at five identities, because dictionaries from multiple responders are **merged**
 (`node.py:834-837`) so every replica holder must lie the same way.
 
-### 4.6 Owning the list is necessary but not sufficient; blinding works but caching defeats it
+### 4.6 Owning the list is necessary but not sufficient; blinding works at Hivemind's defaults
 
-`step6_isolation.py`, 8 peers, group size 4, training attackers plus **5 DHT-only Sybils** holding the
-key's replicas. (α counts *training* peers — only those submit gradients. DHT-only Sybils cost a process
-and no compute.)
+`step6_isolation.py`, 8 peers, group size 4, training attackers plus DHT-only Sybils holding the key's
+replicas. (α counts *training* peers — only those submit gradients. DHT-only Sybils cost a process and
+no compute.)
 
 **Filtering alone converts list capture into group capture only partly** — 0/12 → 4–5/13 rounds, β
 0.104 → 0.250 — because capture also needs the attacker to *win leadership*. Worse, **filtering the
@@ -254,24 +256,63 @@ beating its own deadline, so it waits to be contacted. The attack partly defeats
 construction; the attackers declare late deadlines and simply join it; honest peers are hidden from the
 victim's key so they cannot.
 
-| config | victim led | captured | mean β | honest in victim's group |
-|---|---|---|---|---|
-| honest / cached | 1/12 | 0/12 | 0.417 | 12/12 |
-| honest / no-cache | 6/13 | 0/13 | 0.308 | 13/13 |
-| chase / cached | 7/12 | 0–2/12 | 0.167 | 10/12 |
-| **chase / no-cache** | **8/8** | **8/8** | **0.646** | **0/8** |
+**The cost is `bucket_size` identities, not `num_replicas`.** At Hivemind's default `bucket_size = 20`,
+**caching fully enabled**:
 
-**With caching off the capture is total.** With caching on — the shipped default — it fails. `rpc_find`
-also answers from `self.cache` (`protocol.py:344`) and results are merged, so any honest peer holding a
-cached copy becomes an unwitting responder that undoes the filtering; `cache_nearest=1` plants such a
-copy after every successful lookup.
+| crafted Sybils | victim led | captured | mean β | honest in victim's group | filtered responses |
+|---|---|---|---|---|---|
+| 5 | 15/16 | **0/16** | 0.500 | 16/16 | 3.9k |
+| **25** | 10/10 | **10/10** | **0.733** | **0/10** | **81k** |
+| **40** | 11/11 | **11/11** | **0.742** | **0/11** | 39k |
 
-**The principle across §4.5, §4.6 and §4.7: an attacker with custody can *add* to what a victim sees but
-cannot reliably *remove*.** Removal needs every responder to cooperate, and caching keeps recruiting
-honest ones. DHT caching — a performance feature — is an accidental defence against this whole class.
+A lookup seeds its traversal from the `bucket_size` nodes nearest the key in the victim's routing table
+(`node.py:629-633`, `bucket_size` default 20 at `node.py:104`). Five crafted identities win *custody* —
+they are the `num_replicas = 5` nearest, so they hold the record (§4.1) — but they are only 5 of the 20
+seeds. The other 15 are honest, they answer truthfully, and `add_candidate` merges their answer back in
+(`node.py:834-837`). Minting 20+ identities makes the whole seed set attacker-owned and the filtering
+becomes total. The filtered-response count rising from 3.9k to 81k is that made visible: every lookup
+now goes to the attacker and nobody else.
 
-*The attack can backfire:* `chase / cached` gives β 0.167, **below** the honest control, because the
-attacker declares late deadlines to follow and so participates less than an honest peer would.
+**This costs essentially nothing.** §4.1 measured crafted identities at ~0.1 s each and no compute, so
+the step from 5 to 25 is about two seconds of minting. The attack does not need a caching-free network,
+a shrunken routing table, or a small swarm.
+
+**Two hypotheses were falsified getting here. Do not re-run them.**
+
+- *"Caching defeats it."* This section originally said so: `rpc_find` also answers from `self.cache`
+  (`protocol.py:344`) and results are merged, so a cached honest copy undoes the filtering. Caching is
+  real but it is not the barrier — at 25 Sybils the attack is total **with caching on**. Caching has
+  still never been isolated on its own; `--no-cache-locally` / `--no-cache-nearest` /
+  `--no-cache-on-store` exist for that.
+- *"The swarm must be larger than the routing table."* Shrinking `bucket_size` to 4 restores the attack
+  (7/11 captured, 70k filtered) which looked like confirmation. It is not: padding the swarm with
+  honest DHT-only nodes to **14 → 26 → 54 → 104 nodes** at `bucket_size 20` left capture at 0–1/15
+  throughout, with filtered counts flat at 3–13k. Idle filler nodes never enter the victim's routing
+  table, so from the victim's point of view the swarm never grew. Total node count is irrelevant; what
+  matters is who occupies the seed set. `--filler-nodes` exists and is not worth re-running for this.
+
+The `bucket_size` ladder at 5 Sybils locates the boundary exactly where the seed-set account predicts —
+between 4 and 8, i.e. at the number of crafted identities, **not** near the 14-node swarm size:
+
+| bucket size | captured | filtered |
+|---|---|---|
+| 4 | **7/11** | 70k |
+| 8 | 0/15 | 5.4k |
+| 12 | 0/15 | 4.7k |
+| 20 | 0/16 | 3.9k |
+
+**The honest control is healthy at every configuration** and is what rules out "the swarm broke": 0
+captures, an honest peer in the victim's group every round, all 8 training peers visible throughout, at
+bucket sizes 4 and 20 and at 104 nodes.
+
+**The principle across §4.5, §4.6 and §4.7, corrected: an attacker with custody can *add* to what a
+victim sees but cannot reliably *remove* — until it owns the victim's whole seed set.** Removal needs
+every responder the victim asks to cooperate. Custody (5 identities) is not enough, because the victim
+asks 20 peers, not 5. Owning all 20 is the real precondition, and it is cheap.
+
+*The attack backfires when under-resourced:* at 5 Sybils `chase` gives β at or below the honest control,
+because the attacker declares late deadlines to follow and so participates less than an honest peer
+would. That is the arm failing, not the mechanism.
 
 ### 4.7 History delays the discovery attacks by one record lifetime; it does not defeat them
 
@@ -495,10 +536,23 @@ result, in priority order.
 **Status: code-level claim, verified by reading, NOT yet measured.** Everything below cites the line
 that supports it, but no experiment has been run. Treat it as a designed attack, not a result.
 
-Every read-filtering attack so far (§4.5, §4.6) is defeated by DHT caching, for one structural reason:
-the attacker can only **remove** entries from a response, and `add_candidate` (`node.py:834-837`)
-*merges* every responder's dictionary, so one honest peer answering from cache undoes the filtering
-(§4.7, §4.6). Removal needs universal cooperation; caching keeps recruiting honest responders.
+Every read-filtering attack so far (§4.5, §4.6) fails on this testbed, for one structural reason: the
+attacker can only **remove** entries from a response, and `add_candidate` (`node.py:834-837`) *merges*
+every responder's dictionary, so one honest peer that answers undoes the filtering (§4.7, §4.6).
+Removal needs universal cooperation.
+
+**Read §4.6 before leaning on this.** This step was introduced as the only attack that works against a
+real deployment with DHT caching enabled. **That premise is false.** §4.6 now measures the blinding
+attack capturing 10/10 and 11/11 rounds at Hivemind's *default* `bucket_size` with caching fully on,
+once the attacker mints 25 identities instead of 5. Read-filtering is not defeated by caching; it was
+under-resourced. Caching alone has never been isolated as a defence.
+
+**The case for this step is the custody row, and that row still stands.** Read-filtering needs ~20
+crafted identities *and* the custody they buy; a forged withdrawal needs **no custody at all** — any
+peer can write the record. That is a genuine difference in precondition, and it is what makes this
+worth building. The "versus cached copies" row should be read as untested rather than as an advantage.
+
+
 
 **A forged withdrawal inverts that: it is an addition, so merging, caching and replication all work
 for the attacker instead of against it.** Four facts compose:
@@ -527,7 +581,7 @@ which nothing in the tree reads (§4.2's unused detection signal).
 |---|---|---|
 | Mechanism | remove entries from a response | add a record |
 | Versus merge semantics | fights them | **exploits them** |
-| Versus cached copies | cached honest copies win | **later expiration overwrites them** |
+| Versus cached copies | *untested — §4.6's caching claim was falsified, not confirmed* | **later expiration overwrites them** |
 | Needs custody (5 crafted node_ids)? | yes | **no — any peer can write** |
 | Detection signal | honest `declare_averager` returns False | same, and equally unread |
 
@@ -536,8 +590,9 @@ One DHT write per peer to be hidden, refreshed when the forged expiration nears.
 readable straight off the group key.
 
 **This also completes the follower path.** §4.6 showed an attacker can capture a victim's group by
-joining it as a follower, but only if honest peers are excluded — which needed read-filtering, which
-caching defeats. A forged withdrawal excludes them without custody and without winning any race.
+joining it as a follower, but only if honest peers are excluded — which needs read-filtering, which
+needs custody *and* ~`bucket_size` crafted identities. A forged withdrawal excludes them **without
+custody and without winning any race**, which is the standing advantage.
 
 **Build it as `research/step8_withdrawal.py`**, modelled on `step5_selective.py` (which already drives
 the real `GroupKeyManager` through the `NodeAsDHT` adapter, so key construction and subkey choice stay
@@ -556,6 +611,17 @@ returning `False`, and **run it with caching on** — that is the whole point.
    suppresses a peer. Not checked.
 
 ### Loose ends, in descending order of interest
+
+- **Isolate caching on its own** (§4.6). Reach was measured and is the dominant cause; caching was
+  assumed and never tested separately. `step6_isolation.py` now takes `--no-cache-locally`,
+  `--no-cache-nearest` and `--no-cache-on-store` individually, and `--bucket-size`. The run that
+  settles it is `chase` at `--bucket-size 4` with each cache knob disabled singly: if capture is
+  already total with all caching on, caching contributes nothing at realistic routing, and the
+  "accidental defence" framing should go entirely.
+- **Does the identity cost track `bucket_size` as the account predicts?** §4.6 says the attacker needs
+  to own the victim's whole seed set, so the cost should be ~`bucket_size` identities and should rise
+  if `bucket_size` does. Measured at the default 20 (25 identities suffice, 5 do not). A run at
+  `--bucket-size 40` with 25 and 45 Sybils would confirm the relationship rather than the single point.
 
 - **Interception latency.** §4.1 measures Sybil build time and settled capture, never the interval. A
   Sybil intercepts nothing until it is in the routing tables of peers routing toward the key. Have the

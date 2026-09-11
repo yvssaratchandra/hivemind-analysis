@@ -84,6 +84,33 @@ VICTIM = 0
 
 # --------------------------------------------------------------------------
 # The task (identical to steps 1-5)
+def run_filler_dht(index, initial_peers, stop_event, args) -> None:
+    """An honest DHT-only node. No filter, no training, a random node_id.
+
+    These exist to make the swarm larger than a routing table. A lookup seeds its
+    traversal from `routing_table.get_nearest_neighbors(key_id, bucket_size)`
+    (`node.py:629-633`); while the swarm has fewer than `bucket_size` nodes (20 by
+    default) the victim seeds with *every* peer it knows and reaches the whole network in
+    one hop, so custody of the key's replicas buys the attacker nothing and every
+    read-filtering arm fails for a reason that has nothing to do with the attack. That is
+    what HANDOFF section 4.6 originally mistook for a caching defence.
+
+    Padding with cheap honest nodes fixes it at the source instead of shrinking
+    `bucket_size` as a stand-in: the routing table keeps Hivemind's own default and the
+    swarm grows past it. They cost one process plus a `p2pd` and no compute, and they
+    take no part in averaging -- alpha counts training peers only.
+    """
+    del index  # each filler just needs a distinct random node_id, which DHT generates
+    dht = DHT(initial_peers=initial_peers, host_maddrs=LOCALHOST, start=True, **dht_opts(args))
+    try:
+        stop_event.wait()
+    finally:
+        try:
+            dht.shutdown()
+        except Exception:
+            pass
+
+
 # --------------------------------------------------------------------------
 
 
@@ -107,6 +134,58 @@ def make_data(num_samples: int, seed: int, noise_std: float = 0.01):
 def distance_to_optimum(model: nn.Module, optimum: torch.Tensor) -> float:
     with torch.no_grad():
         return float(torch.norm(model.weight.detach().flatten() - optimum))
+
+
+# --------------------------------------------------------------------------
+# DHT knobs this experiment varies
+# --------------------------------------------------------------------------
+
+
+def dht_opts(args) -> dict:
+    """Every DHT knob this experiment treats as a variable, in one place.
+
+    **Caching** is a first-class variable, not a detail. `rpc_find` also answers from
+    `self.cache` (`protocol.py:344`) and `add_candidate` *merges* every responder's
+    dictionary (`node.py:834-837`), so an honest peer holding a cached copy becomes an
+    unwitting responder that undoes the attacker's filtering. `cache_nearest=1`
+    (`node.py:112`) plants such a copy after every successful lookup. The three knobs are
+    separable because they plant copies by different routes, and only isolating them says
+    which one carries the defence.
+
+    **Bucket size** is the other half, and HANDOFF section 4.6 missed it. A lookup seeds
+    its traversal from `routing_table.get_nearest_neighbors(key_id, bucket_size)`
+    (`node.py:629-633`) and `bucket_size` defaults to 20 (`node.py:104`). This swarm is
+    8 training peers + 5 DHT-only Sybils + a bootstrap = 14 nodes, *fewer than
+    bucket_size*, so the victim seeds with every peer it knows and contacts the whole
+    swarm directly -- custody of the key's replicas buys nothing when there is no routing
+    to subvert. Caching supplies the content an honest peer serves; reach is what makes
+    the victim ask it. Both are needed for the defence, and lowering bucket_size is the
+    cheap stand-in for a swarm larger than a routing table.
+    """
+    opts = dict(bucket_size=args.bucket_size)
+    if args.no_cache_locally:
+        opts.update(cache_locally=False, cache_size=0)
+    if args.no_cache_nearest:
+        opts.update(cache_nearest=0)
+    if args.no_cache_on_store:
+        opts.update(cache_on_store=False)
+    return opts
+
+
+def cache_tag(args) -> str:
+    """Filename tag naming every cache knob in force.
+
+    HANDOFF section 5: a filename that loses a variable lets two runs overwrite each
+    other, which has already cost this project data once.
+    """
+    off = [name for name, disabled in (("local", args.no_cache_locally),
+                                       ("nearest", args.no_cache_nearest),
+                                       ("onstore", args.no_cache_on_store)) if disabled]
+    if not off:
+        return "cached"
+    if len(off) == 3:
+        return "nocache"
+    return "no" + "-".join(off)
 
 
 # --------------------------------------------------------------------------
@@ -308,13 +387,7 @@ def run_peer(peer_index, initial_peers, metrics, group_log, roster, filter_confi
     if attacking:
         _FILTER = filter_config
 
-    # Caching is a first-class variable here, not a detail. `rpc_find` also answers
-    # from `self.cache` (`protocol.py:344`) and `add_candidate` *merges* every
-    # responder's dictionary (`node.py:834-837`), so any honest peer that has cached
-    # the key becomes an unwitting responder that undoes the attacker's filtering.
-    # With cache_nearest=1 (`node.py:112`) every successful lookup plants such a copy.
-    cache_opts = dict(cache_locally=False, cache_nearest=0, cache_on_store=False, cache_size=0) if args.no_cache else {}
-    dht = DHT(initial_peers=initial_peers, host_maddrs=LOCALHOST, start=True, **cache_opts)
+    dht = DHT(initial_peers=initial_peers, host_maddrs=LOCALHOST, start=True, **dht_opts(args))
 
     roster[peer_index] = str(dht.peer_id)
     metrics.put(dict(kind="identity", peer=peer_index, peer_id=str(dht.peer_id)))
@@ -440,8 +513,7 @@ def run_sybil_dht(index, initial_peers, filter_config, stop_event, args) -> None
     group_key = f"{args.run_id}_grad_averager.0b"
     node_id = crafted_node_ids(group_key, args.sybil_nodes)[index]
 
-    cache_opts = dict(cache_locally=False, cache_nearest=0, cache_on_store=False, cache_size=0) if args.no_cache else {}
-    dht = DHT(initial_peers=initial_peers, host_maddrs=LOCALHOST, node_id=node_id, start=True, **cache_opts)
+    dht = DHT(initial_peers=initial_peers, host_maddrs=LOCALHOST, node_id=node_id, start=True, **dht_opts(args))
     try:
         stop_event.wait()
     finally:
@@ -474,12 +546,32 @@ def main() -> None:
     parser.add_argument("--chase-declare-time", type=float, default=25.0,
                         help="chase arm: a late deadline, so the attacker follows the victim rather than leading")
     parser.add_argument("--no-cache", action="store_true",
-                        help="disable DHT caching swarm-wide; isolates whether caches defeat read-filtering")
+                        help="shorthand for all three --no-cache-* flags; kept so the recorded runs reproduce")
+    parser.add_argument("--no-cache-locally", action="store_true",
+                        help="do not cache values this peer reads (node.py:111)")
+    parser.add_argument("--no-cache-nearest", action="store_true",
+                        help="do not push a copy to the nearest node after a lookup (node.py:112)")
+    parser.add_argument("--no-cache-on-store", action="store_true",
+                        help="do not update the cache after a store (node.py:115)")
+    parser.add_argument("--repeat", type=int, default=0,
+                        help="index of this repeat; appended to the filename so repeats do not "
+                             "overwrite each other. HANDOFF section 5: rates on a caching swarm at "
+                             "this size are noisy, so a single run is not a result")
+    parser.add_argument("--bucket-size", type=int, default=20,
+                        help="Kademlia k, and the number of peers a lookup seeds its traversal from "
+                             "(node.py:104,629-633). Below the swarm size this forces a genuinely "
+                             "nearest-first traversal instead of contacting everyone; see dht_opts()")
+    parser.add_argument("--filler-nodes", type=int, default=0,
+                        help="honest DHT-only nodes with random node_ids, added purely to push the "
+                             "swarm past bucket_size so lookups have to route; see run_filler_dht()")
     parser.add_argument("--sybil-nodes", type=int, default=5,
                         help="DHT-only Sybils holding the key's replicas; 5 = total custody (step3_eclipse)")
     parser.add_argument("--averaging-timeout", type=float, default=30.0)
     parser.add_argument("--run-id", type=str, default=None)
     args = parser.parse_args()
+
+    if args.no_cache:  # the shorthand sets all three
+        args.no_cache_locally = args.no_cache_nearest = args.no_cache_on_store = True
 
     if args.target_batch_size is None:
         args.target_batch_size = 100 * args.num_peers
@@ -530,6 +622,14 @@ def main() -> None:
     # replicas before any honest peer advertises on it.
     stop_sybils = mp.Event()
     sybils = []
+    for index in range(args.filler_nodes):
+        filler = mp.Process(
+            target=run_filler_dht,
+            args=(index, initial_peers, stop_sybils, args),
+            name=f"filler-{index}", daemon=False,
+        )
+        filler.start()
+        sybils.append(filler)
     if args.arm != "honest":
         for index in range(args.sybil_nodes):
             sybil = mp.Process(
@@ -539,7 +639,13 @@ def main() -> None:
             )
             sybil.start()
             sybils.append(sybil)
-        time.sleep(3)  # let them join and announce before the swarm forms
+
+    if sybils:
+        # Let every DHT-only node join and land in routing tables before any honest peer
+        # advertises. Scaled by count: with dozens of fillers a flat 3s is not enough for
+        # the last of them to be reachable, and a filler nobody knows about does not make
+        # the swarm any larger from the victim's point of view.
+        time.sleep(3 + 0.15 * len(sybils))
 
     started = time.perf_counter()
     try:
@@ -575,11 +681,15 @@ def write_results(group_rows, train_rows, identities, args) -> None:
     for row in group_rows:
         row["member_peers"] = " ".join(str(identities.get(p, "?")) for p in row["members"].split())
 
-    # The cache setting must be in the filename: it changes the result completely
-    # (see HANDOFF section 4.6) and without it the two runs of an arm overwrite
-    # each other. That happened once and lost the cached per-round data.
-    cache_tag = "nocache" if args.no_cache else "cached"
-    path = RESULTS_DIR / f"step6_isolation_{args.arm}_k{args.attackers}_n{args.num_peers}_{cache_tag}.csv"
+    # Every variable that changes the result goes in the filename -- see cache_tag().
+    stem = f"step6_isolation_{args.arm}_k{args.attackers}_n{args.num_peers}_{cache_tag(args)}"
+    if args.bucket_size != 20:  # 20 is Hivemind's own default; only tag departures from it
+        stem += f"_b{args.bucket_size}"
+    if args.filler_nodes:
+        stem += f"_f{args.filler_nodes}"
+    if args.repeat:
+        stem += f"_r{args.repeat}"
+    path = RESULTS_DIR / f"{stem}.csv"
     fields = ["peer", "round", "group_id", "group_size", "member_peers", "led", "members"]
     with open(path, "w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
