@@ -186,7 +186,16 @@ traceback first.
   **not** achieve this: `Optimizer` forwards `averager_opts` only to the state averager
   (`optim/optimizer.py:263`) and never to `_make_gradient_averager` (`optimizer.py:300-315`), despite
   the docstring at `optimizer.py:157` saying it reaches both. The only supported route to the averager
-  that forms the groups β is computed from is `grad_averager_factory`. This was wrong here for two
+  that forms the groups β is computed from is `grad_averager_factory`.
+
+  **Verified empirically, not just read from source**, since this one is easy to disbelieve. Capturing
+  the `GradientAverager`'s actual kwargs while passing `averager_opts=dict(target_group_size=3)` shows
+  `target_group_size` absent — it receives only what `_make_gradient_averager` hardcodes. Passing
+  `averager_opts=dict(bogus_kwarg_xyz=1)` instead raises
+  `TypeError: DecentralizedAverager.__init__() got an unexpected keyword argument 'bogus_kwarg_xyz'`,
+  which is the state averager (constructed first, `optimizer.py:253`) rejecting it. So the option
+  reaches one averager and not the other, exactly as the code reads. The docstring is an upstream
+  defect: following it gives silent non-application rather than an error. This was wrong here for two
   commits; it is invisible whenever `num_peers == group_size`, which is why the 8-peer results were
   unaffected and correct. `report()` now warns when an observed group size disagrees with the requested
   one, which is the check that would have caught it.
