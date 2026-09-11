@@ -218,6 +218,19 @@ python3 -m venv .venv                                    # 3.14.7 here; the firs
 .venv/bin/python research/step2_groups.py --num-peers 8 --group-size 8 --max-epoch 20
 ```
 
+**Remote convention: `origin` is the fork, and nothing is ever pushed to Hivemind upstream.** A fresh
+clone of the fork already satisfies this. If you add upstream to pull in changes, add it under a
+different name and disable pushing to it:
+
+```bash
+git remote add upstream git@github.com:learning-at-home/hivemind.git
+git remote set-url --push upstream DISABLED_no_pushing_to_upstream
+```
+
+The first machine had these the other way round — `origin` pointing at `learning-at-home/hivemind` and
+the fork as `analysis` — so a bare `git push` there would have targeted upstream. Check
+`git remote -v` before pushing on a machine you have not used before.
+
 Two steps in there are not obvious, and both cost time to rediscover:
 
 - **`--no-build-isolation` is needed on Python 3.14.** `pyproject.toml` pins the build requirement to
