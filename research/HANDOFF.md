@@ -305,8 +305,27 @@ round and mixes fairly.
 `initial_group_bits = ""` makes the reshuffle a **no-op** (`key_manager.py:104` discards its own output
 when the bits are empty). So this measures a swarm with *no redistribution running*. With sharding
 enabled, groupmates are forced into distinct buckets (§4.4) and cliques of this kind cannot form the
-same way. The finding is about the shipped default, not about a sharded deployment — and it is an
-assumption, not a measurement, that real deployments run the default.
+same way. **The finding is about the shipped default, not about a sharded deployment.**
+
+How well-founded is "the shipped default is what deployments run"? Three levels of evidence:
+
+- **Verified in code, and the strongest of the three because it does not depend on surveying anyone:**
+  `hivemind.Optimizer` exposes **no parameter** for `initial_group_bits` — nothing under
+  `hivemind/optim/` references it — and `averager_opts` cannot substitute, because it reaches only the
+  *state* averager and never `_make_gradient_averager` (see §5). So an Optimizer-based deployment
+  **cannot** enable sharding on the averager whose groups β is computed from without reaching past the
+  public API with a custom `grad_averager_factory`.
+- **Verified by inspection.** In-repo, the only code setting it is `benchmarks/benchmark_averaging.py`
+  (which drives `DecentralizedAverager` directly, not `Optimizer`) and `tests/test_averaging.py`. The
+  ALBERT example — the repo's only `Optimizer`-based example — passes `averager_opts` whose
+  `AveragerArguments` (`examples/albert/arguments.py:47`) contains *only* `target_group_size`.
+  Externally, `mryab/collaborative-training/run_trainer.py` — the DeDLOC / sahajBERT public run, by
+  hivemind's lead author — contains no occurrence of `initial_group_bits` at all.
+- **Not checked.** Petals: GitHub code search needs a login and the public docs do not answer it.
+  Petals is inference plus *client-side* fine-tuning, so it may not exercise `hivemind.Optimizer`'s
+  gradient averaging at all — but that is a **conjecture**, not evidence. Private deployments are
+  likewise unknown. If either turns out to configure a custom `grad_averager_factory`, this section's
+  scope narrows.
 
 **Why it matters for β.** The assumption that β ≈ α rests on membership being a fresh random draw.
 Hivemind does not implement one in this configuration. It produced a fair draw at 24 peers and did not
