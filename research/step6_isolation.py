@@ -133,8 +133,14 @@ async def _filtering_rpc_find(self, request: dht_pb2.FindRequest, context) -> dh
     requester = str(context.remote_id)
     asking_is_victim = requester == victim
 
+    # The attacker's own peers always get the truth. In the `chase` arm they must be
+    # able to see the victim in order to join it, and hiding it from them would make
+    # the attack hide the target from itself.
+    if requester in set(config.get("attacker_peers", [])):
+        return response
+
     # Everyone except the victim is served honestly, unless we are also hiding the
-    # victim from them (the `isolated` and `forged` arms).
+    # victim from them (the `isolated` and `chase` arms).
     if not asking_is_victim and not config.get("hide_victim_from_others"):
         return response
 
@@ -150,6 +156,17 @@ async def _filtering_rpc_find(self, request: dht_pb2.FindRequest, context) -> dh
         allowed = set(config["allowed"])
         victim_subkey = config["victim_subkey"]
         forged = config.get("forged_expiration")
+
+        # `chase`: show the victim *nothing*. With an empty candidate list
+        # `pop_next_leader` has nothing to compare against, so the victim stops
+        # searching and waits to be contacted -- it leads every round, by
+        # construction. That converts the leadership race from something the
+        # attacker must win into something it decides, and the attacker then
+        # simply joins the victim instead of the other way round.
+        if asking_is_victim and config.get("blind_victim"):
+            item.value = self.serializer.dumps(DictionaryDHTValue(maxsize=original.maxsize))
+            config["lies"] = config.get("lies", 0) + 1
+            continue
 
         for subkey, entry in original.items():
             if asking_is_victim:
@@ -285,7 +302,13 @@ def run_peer(peer_index, initial_peers, metrics, group_log, roster, filter_confi
     if attacking:
         _FILTER = filter_config
 
-    dht = DHT(initial_peers=initial_peers, host_maddrs=LOCALHOST, start=True)
+    # Caching is a first-class variable here, not a detail. `rpc_find` also answers
+    # from `self.cache` (`protocol.py:344`) and `add_candidate` *merges* every
+    # responder's dictionary (`node.py:834-837`), so any honest peer that has cached
+    # the key becomes an unwitting responder that undoes the attacker's filtering.
+    # With cache_nearest=1 (`node.py:112`) every successful lookup plants such a copy.
+    cache_opts = dict(cache_locally=False, cache_nearest=0, cache_on_store=False, cache_size=0) if args.no_cache else {}
+    dht = DHT(initial_peers=initial_peers, host_maddrs=LOCALHOST, start=True, **cache_opts)
 
     roster[peer_index] = str(dht.peer_id)
     metrics.put(dict(kind="identity", peer=peer_index, peer_id=str(dht.peer_id)))
@@ -297,8 +320,10 @@ def run_peer(peer_index, initial_peers, metrics, group_log, roster, filter_confi
         filter_config["victim_subkey"] = _peer_id_bytes(roster[VICTIM])
         filter_config["key_id"] = DHTID.generate(source=group_key).to_bytes()
         filter_config["allowed"] = [_peer_id_bytes(roster[i]) for i in attacker_indices]
-        filter_config["hide_victim_from_others"] = args.arm in ("isolated", "forged")
-        filter_config["forged_expiration"] = args.forged_expiration if args.arm == "forged" else None
+        filter_config["hide_victim_from_others"] = args.arm in ("isolated", "chase")
+        filter_config["blind_victim"] = args.arm == "chase"
+        filter_config["attacker_peers"] = [roster[i] for i in attacker_indices]
+        filter_config["forged_expiration"] = None
         filter_config["ready"] = True
     barrier.wait()
 
@@ -325,8 +350,14 @@ def run_peer(peer_index, initial_peers, metrics, group_log, roster, filter_confi
             peer_index=peer_index,
             admit=admit,
             victim_id=roster[VICTIM],
-            force_early_schedule=attacking,
-            override_min_matchmaking_time=args.attacker_declare_time if attacking else None,
+            # In `chase` the attacker wants to be a follower, not a leader: it declares
+            # a late deadline so `pop_next_leader` ranks the victim above it and it
+            # requests to join. In the other arms it declares early to win the election.
+            force_early_schedule=attacking and args.arm != "chase",
+            override_min_matchmaking_time=(
+                args.chase_declare_time if attacking and args.arm == "chase"
+                else args.attacker_declare_time if attacking else None
+            ),
             # averager_opts never reaches the gradient averager (optimizer.py:263),
             # so the group size has to be bound here.
             target_group_size=args.group_size,
@@ -403,7 +434,8 @@ def run_sybil_dht(index, initial_peers, filter_config, stop_event, args) -> None
     group_key = f"{args.run_id}_grad_averager.0b"
     node_id = crafted_node_ids(group_key, args.sybil_nodes)[index]
 
-    dht = DHT(initial_peers=initial_peers, host_maddrs=LOCALHOST, node_id=node_id, start=True)
+    cache_opts = dict(cache_locally=False, cache_nearest=0, cache_on_store=False, cache_size=0) if args.no_cache else {}
+    dht = DHT(initial_peers=initial_peers, host_maddrs=LOCALHOST, node_id=node_id, start=True, **cache_opts)
     try:
         stop_event.wait()
     finally:
@@ -418,7 +450,7 @@ def run_sybil_dht(index, initial_peers, filter_config, stop_event, args) -> None
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--arm", choices=["honest", "selective", "isolated", "forged"], required=True)
+    parser.add_argument("--arm", choices=["honest", "selective", "isolated", "chase"], required=True)
     parser.add_argument("--attackers", type=int, default=1, help="peers 1..k; peer 0 is the victim")
     parser.add_argument("--num-peers", type=int, default=16)
     parser.add_argument("--group-size", type=int, default=8)
@@ -433,8 +465,10 @@ def main() -> None:
                         help="large: start advertising early (see HANDOFF 6.4)")
     parser.add_argument("--attacker-declare-time", type=float, default=1.5,
                         help="small: short rolling deadline, the value that wins the election")
-    parser.add_argument("--forged-expiration", type=float, default=0.05,
-                        help="seconds from now to show the victim as the attacker's deadline")
+    parser.add_argument("--chase-declare-time", type=float, default=25.0,
+                        help="chase arm: a late deadline, so the attacker follows the victim rather than leading")
+    parser.add_argument("--no-cache", action="store_true",
+                        help="disable DHT caching swarm-wide; isolates whether caches defeat read-filtering")
     parser.add_argument("--sybil-nodes", type=int, default=5,
                         help="DHT-only Sybils holding the key's replicas; 5 = total custody (step3_eclipse)")
     parser.add_argument("--averaging-timeout", type=float, default=30.0)

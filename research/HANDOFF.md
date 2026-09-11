@@ -100,6 +100,7 @@ scales with the peer count. What these runs were actually for is in §6.1.
 | 2 | α → β, quietly | selective read gives the same capture with **0 detection signal, 0 collateral** | §6.7 |
 | — | does history protect the victim? | no: warm records delay capture by **one record lifetime**, then it is total | §6.9 |
 | 2 | does owning the list win the group? | **partly** — capture 0/12 → 4-5/13, β 0.104 → 0.250; filtering also makes the victim *lead* more often | §6.10 |
+| 2 | blind the victim entirely (`chase`) | **8/8 total capture, 0 honest peers, β 0.646** — but only with DHT caching off; **caching defeats it** (2/12) | §6.11 |
 | 3 | β → learning harm, plain vs robust aggregation | **not started** | — |
 
 **Reading the results directory.** Filenames carry the configuration:
@@ -115,7 +116,7 @@ scales with the peer count. What these runs were actually for is in §6.1.
 | `step3_capture_groups_decoupled_d<t>_k<k>.csv` | the fix that works, `<t>` the attacker's declare time |
 | `step4_reformation_<arm>.csv` | re-formation arms: none / naive / tracking |
 | `step5_selective*.csv` | selective-read vs write-censorship; `_cached` caching on, `_warmN` N warm-up rounds, `_settleN` N seconds for warm records to expire |
-| `step6_isolation_<arm>_k<k>_n<n>.csv` | group capture under selective / bidirectional filtering |
+| `step6_isolation_<arm>_k<k>_n<n>.csv` | group capture under selective / bidirectional / chase filtering |
 
 ---
 
@@ -783,6 +784,51 @@ groups form sequentially and only one or two assemble per matchmaking window. Th
 gave 4-6 of 16 peers ever averaging and **zero** victim rounds. §6.1's clique finding is the same
 pathology. Note that §2's step2 runs avoided it only because `averager_opts` never reached the gradient
 averager, so their leaders closed on deadline instead of holding groups open.
+
+### 6.11 Measured: blind the victim and it leads every round — but DHT caching defeats it
+
+`step6_isolation.py --arm chase`, 8 peers, group size 4, 3 training attackers (α = 0.375) plus 5
+DHT-only Sybils, 12 epochs.
+
+**The `chase` design.** Rather than fight the leadership race (§6.4, §6.10), remove it. Serve the victim
+an **empty** candidate list: with nothing to compare against, `pop_next_leader` finds no candidate
+beating the victim's own deadline, so it stops searching and waits to be contacted — it leads **by
+construction**. The attackers then declare *late* deadlines so they prefer to follow, and simply join
+it. Honest peers are hidden from the victim's key so they do not join too.
+
+| config | victim led | group captured | mean β | honest peer in victim's group |
+|---|---|---|---|---|
+| honest / cached | 1/12 | 0/12 | 0.417 | 12/12 |
+| honest / no-cache | 6/13 | 0/13 | 0.308 | 13/13 |
+| chase / cached | 7/12 | 2/12 | 0.167 | 10/12 |
+| **chase / no-cache** | **8/8** | **8/8** | **0.646** | **0/8** |
+
+**With caching off the capture is total**: every round, zero honest peers in the victim's group, β =
+0.646 against α = 0.375. Both honest controls give β ≈ α, which is what says the measurement is sound.
+
+**With caching on — the shipped default — the same attack fails**, 2/12. This is the sharpest defensive
+result in the project so far, and it generalises §6.9: `rpc_find` also answers from `self.cache`
+(`protocol.py:344`) and `add_candidate` **merges** every responder's dictionary (`node.py:834-837`), so
+any honest peer that has cached the key becomes an unwitting responder that undoes the filtering.
+`cache_nearest=1` (`node.py:112`) plants such a copy after every successful lookup, continuously, in a
+live training swarm.
+
+**The principle across §6.7, §6.9 and §6.11:** an attacker holding custody can **add** to what the
+victim sees but cannot reliably **remove**. Removal needs every responder to cooperate, and caching
+keeps recruiting new honest ones. DHT caching is a performance feature that works as an accidental
+defence against this whole class of read-filtering attack.
+
+Stated carefully, it is an obstacle and not a guarantee: it depends on cache hit rates and record
+lifetimes, and §6.9 showed that a short enough advertisement lifetime lets the attacker regain control
+once pre-attack copies lapse.
+
+**Two honest caveats.**
+- *Confound.* Disabling caching by itself raises the victim's leading rate (1/12 → 6/13), so the "leads
+  every round" figure is not purely the blinding. Capture going 0/13 → 8/8 is unambiguous regardless.
+- *The attack can backfire.* `chase / cached` gives β = 0.167, **below** the 0.417 honest control: the
+  attacker declares late deadlines to position itself as a follower, so when the blinding fails it
+  simply participates less than an honest peer would. An attacker choosing this strategy against a
+  caching swarm is worse off than doing nothing.
 
 ### 6.8 From reading the source, not yet measured
 
