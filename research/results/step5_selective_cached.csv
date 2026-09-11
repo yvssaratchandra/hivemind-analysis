@@ -1,0 +1,4 @@
+arm,caching,num_honest,num_attackers,alpha,honest_declarations_accepted,honest_declarations_total,victim_list_size,victim_sees_honest,victim_sees_attacker,bystander_list_size,bystander_sees_honest,bystander_sees_attacker,selective_responses_filtered,seconds
+honest,True,12,0,0.0,12,12,12,12,0,12,12,0,0,2.5
+censor,True,12,5,0.29411764705882354,0,12,1,0,1,1,0,1,0,4.5
+selective,True,12,5,0.29411764705882354,12,12,1,0,1,13,12,1,5,3.6

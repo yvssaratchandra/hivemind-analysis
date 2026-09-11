@@ -48,6 +48,8 @@ reliably pinned to α even with nobody attacking.
 | `research/step3_eclipse_live.py` | The same, on a live swarm of real `DHTNode`s. Brief item 1, live layer. |
 | `research/step3_candidates.py` | Attacker share of the victim's candidate list, by flooding and by eclipse. Brief item 2, discovery layer. |
 | `research/step3_capture.py` | A malicious leader admitting only the victim and its own peers. Brief item 2, at the averaging group itself. |
+| `research/step4_reformation.py` | Does re-formation shed the attacker? Brief item 2b. Needs sharding switched on. |
+| `research/step5_selective.py` | Lying to the victim on read instead of censoring everyone on write. |
 
 Results are in `research/results/*.csv` (tracked in git), tagged with the configuration that produced
 them — `step2_groups_16x8.csv` is 16 peers at group size 8. A trailing `_b` is an independent repeat.
@@ -93,6 +95,8 @@ scales with the peer count. What these runs were actually for is in §6.1.
 | 1 | cost of an eclipse | **5 identities, ~0.5 s**, at any network size from 50 to 10 000 | §6.2 |
 | 2 | α → β at the discovery layer | 5 identities take **100 %** of the victim's candidate list | §6.3 |
 | 2 | α → β at the averaging group | α 0.062 → mean β **0.315**, a 5× amplification from one identity | §6.4 |
+| 2b | decay under re-formation | naive sheds (1/5), **tracking does not (5/7)**; next bucket predicted **5/5** | §6.5 |
+| 2 | α → β, quietly | selective read gives the same capture with **0 detection signal, 0 collateral** | §6.7 |
 | 3 | β → learning harm, plain vs robust aggregation | **not started** | — |
 
 **Reading the results directory.** Filenames carry the configuration:
@@ -106,6 +110,8 @@ scales with the peer count. What these runs were actually for is in §6.1.
 | `step3_capture_groups_<arm>_k<k>_n<n>.csv` | malicious leader, naive configuration |
 | `step3_capture_groups_forced_mmt<t>_k1.csv` | the fix that **failed** — kept because §6.4 explains why |
 | `step3_capture_groups_decoupled_d<t>_k<k>.csv` | the fix that works, `<t>` the attacker's declare time |
+| `step4_reformation_<arm>.csv` | re-formation arms: none / naive / tracking |
+| `step5_selective.csv`, `_cached.csv` | selective-read vs write-censorship, caching off / on |
 
 ---
 
@@ -564,7 +570,101 @@ group formation as well as capturing the victim, which was not its aim.
 (`matchmaking.py:478-481`), and `identity_path` makes PeerIDs choosable, so they can be ground
 offline. That would matter for the rounds the attacker still loses.
 
-### 6.5 From reading the source, not yet measured
+### 6.5 Measured: re-formation sheds a naive attacker, not a tracking one
+
+`step4_reformation.py`, 16 peers, group size 4, 4 buckets, staggered start, 5 epochs. Brief item 2b.
+Sharding has to be switched on first (§6.6 below explains why the default gives nothing to decay
+under); the only route is `grad_averager_factory`.
+
+| arm | attacker behaviour | shared victim's group | mean β | prediction |
+|---|---|---|---|---|
+| none | no attacker | 0/6 | 0.000 | — |
+| naive | freezes its bucket, stays put | 1/5 | 0.067 | — |
+| **tracking** | recomputes the victim's next bucket | **5/7** | **0.179** | **5/5 exact** |
+
+**The tracking attacker locks on and never loses the victim**, including across bucket changes:
+
+```
+r0  bucket=10  [0 4 8 12]   β=0.000
+r1  bucket=00  [11 0]       β=0.000
+r2  bucket=00  [0 7 1 15]   β=0.250   <- locks on
+r3  bucket=00  [0 2 14 1]   β=0.250
+r4  bucket=01  [0 12 1 5]   β=0.250   <- victim rotates, attacker follows
+r5  bucket=10  [6 1 0 11]   β=0.250
+r6  bucket=10  [1 3 0 5]    β=0.250
+```
+
+The naive arm's 1/5 matches the 1-in-4 chance of a frozen bucket coinciding with the victim's, so
+**re-formation does shed an attacker that declines to use information it already holds**. It sheds
+nothing otherwise: every input to `update_key_on_group_assembled` is in the leader's broadcast.
+
+**Prediction accuracy is the sturdier claim.** 5/5 exact, and it is measured independently of whether
+matchmaking then cooperated — the attacker wins the group only ~57 % of the time (§6.4), so β alone
+understates how good the prediction is. Join predictions to outcomes on `group_id`, never on `round`:
+`round` is a per-peer counter that desyncs permanently the first time two peers sit in different
+groups. That error produced a spurious 2/5 before it was caught.
+
+**Honest limits.** 5–7 rounds is a thin decay curve; the arms separate clearly but this is suggestive,
+not conclusive. Longer runs are blocked by §6.6.
+
+### 6.6 Measured: sharding starves peers, and degrades even when provisioned correctly
+
+Found while trying to run §6.5, and all three effects trace to the same missing hook:
+`update_key_on_not_enough_peers` (`key_manager.py:107-109`) is `pass  # to be implemented in
+subclasses`, no subclass implements it, and `matchmaking.py:538` calls it for real.
+
+- **Starvation.** `group_bits` only ever changes inside `update_key_on_group_assembled`
+  (`key_manager.py:94`), so a peer that cannot assemble a group cannot change bucket — it is stuck
+  where it is, permanently. At 16 peers: **8/16 never joined a single group** at group size 4,
+  **12/16** at group size 2.
+- **`matchmaking_time = 5 s` is too short once sharded.** A bucket's candidate pool is small, so
+  leaders close on their deadline with 2 of 4 members; the undersized groups scatter unevenly, strand
+  peers, and it cascades. At 15 s: **16/16 peers, every group full, zero failures**, and 96 s instead
+  of 337 s. This is now the script default.
+- **Metastability.** `rng.sample(range(num_buckets), group_size)` is a permutation only while
+  `num_buckets == group_size` *and* every bucket forms one full group, so a balanced layout sustains
+  itself but a single undersized group breaks the invariant permanently. Clean at 4 epochs, 63
+  failures by 10. Bucket occupancy is a random walk with absorbing states.
+
+Consequence for the brief: "decay under periodic re-formation" cannot be measured over long runs on a
+swarm this size, because the mechanism degrades faster than the decay it is meant to produce.
+
+### 6.7 Measured: lie to the victim on read — same power, no detection signal, no collateral
+
+`step5_selective.py`, 12 honest peers + 5 crafted node_ids, one process. The §6.3 attack refuses to
+*store* honest advertisements; this one stores everything honestly and filters only what the victim
+*reads*. `rpc_find` receives `context: P2PContext` (`protocol.py:333`), so a responder knows the
+TLS-authenticated PeerID of the reader before building its reply — the same primitive the malicious
+leader uses on `context.remote_id`.
+
+| arm | honest declarations accepted | victim sees | bystander sees |
+|---|---|---|---|
+| honest (control) | 12/12 | 12 honest, 0 attacker | 12 honest, 0 attacker |
+| censor (§6.3) | **0/12** | 0 honest, 1 attacker | **0 honest** — swarm broken |
+| **selective** | **12/12** | **0 honest, 1 attacker** | **12 honest, 1 attacker** |
+
+**Same capture, none of the noise.** Both arms reduce the victim's candidate list to the attacker
+alone. Only `censor` also (a) makes every honest `declare_averager` return False — the detection
+signal §6.3 found nobody reads, but which a one-line upstream fix would expose — and (b) destroys
+discovery for the whole swarm, which stalls training for everyone and is operationally obvious. The
+selective arm leaves both intact: the bystander's view is identical to the control's.
+
+**Cost is unchanged**: five identities, because dictionaries from multiple responders are merged
+(`node.py:834-838`), so every replica holder must lie the same way. Total custody (§6.2) is a
+precondition, not an optimisation. Exactly 5 responses were filtered per run, one per replica.
+
+**Caching does not leak here.** `rpc_find` also answers from `self.cache` (`protocol.py:344`) and
+caching is on by default, so an honest peer on the lookup path could in principle hand the victim a
+cached honest copy. Measured with `--caching`: **identical result, no leak.** Stated narrowly — this
+is a cold first read. A victim that had already read the key in an earlier round might answer from its
+own cache, and that has not been tested.
+
+**Why §6.3 did it the loud way:** `record_validator` is a supported `DHTNode.create` argument, so
+write-censorship needs no subclassing. Selective read needs `DHTProtocol.rpc_find` patched before any
+node is built (handlers bind at registration, `servicer.py:117`) and `DHTNode` rather than `DHT`, since
+`DHT` hides its node in a forked subprocess. Path of least resistance, not a considered choice.
+
+### 6.8 From reading the source, not yet measured
 
 These came out of reading `hivemind/averaging/matchmaking.py` and are the reason the project is worth
 finishing. They are code-level claims with line references. Two of them have since been measured and
