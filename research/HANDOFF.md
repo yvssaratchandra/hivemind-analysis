@@ -29,7 +29,7 @@ or something an attacker *chooses*?
 **Standing constraint: never modify anything under `hivemind/`.** All work is additive under
 `research/`, via supported hooks or subclasses.
 
-### The two architectural facts everything rests on
+### The three architectural facts everything rests on
 
 **Peers carry two identities.** The libp2p **PeerID** is `multihash(sha256(pubkey))`, TLS-authenticated,
 unforgeable. The Kademlia **`node_id`** — which decides *which DHT records a peer stores* — is
@@ -42,6 +42,27 @@ custody is decided by the unverified identity.
 (`matchmaking.py:478-481`). The leader then admits followers in arrival order (`matchmaking.py:273`),
 and `_check_reasons_to_reject` (`matchmaking.py:341-368`) runs on the *leader's own machine* with the
 requester's authenticated PeerID in hand.
+
+**Two different thresholds decide what an attack costs, and both are the victim's own DHT settings —
+not properties of the network.**
+
+| | parameter | default | what it buys |
+|---|---|---|---|
+| **Custody** of a record | `num_replicas` | 5 | you are one of the peers that *stores* the key (§4.1) |
+| **Control of a lookup** | `bucket_size` | 20 | you are *every* peer the victim asks (§4.6) |
+
+Custody is not control. A lookup seeds its traversal from the `bucket_size` nodes nearest the key in the
+victim's routing table (`node.py:629-633`), so holding the 5 replicas still leaves 15 honest peers being
+asked, and `add_candidate` merges their answers back in (`node.py:834-837`).
+
+**`bucket_size` is not the size of the routing table.** It is Kademlia's *k*, the capacity of one
+k-bucket; the table is many buckets and splits as it fills (`routing.py:31-33`). The same number is
+*reused* as the `k` passed to `get_nearest_neighbors`, which walks outward from the bucket nearest the
+key across the whole table until it has `k` candidates. Only that second meaning matters here: it is how
+many peers a lookup asks. Confusing the two cost this project a falsified hypothesis — see §4.6.
+
+Neither threshold scales with swarm size, which is why the attacks in §4.1 and §4.6 cost the same at
+10 000 peers as at 50.
 
 ---
 
