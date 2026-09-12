@@ -1,0 +1,12 @@
+check,detail,expected_survivors,hidden,repeat,survivors,written
+scale,hide 1/40,39,1,0,39,1
+scale,hide 1/40,39,1,1,39,1
+scale,hide 20/40,20,20,0,20,20
+scale,hide 20/40,20,20,1,20,20
+scale,hide 39/40,1,39,0,1,39
+scale,hide 39/40,1,39,1,1,39
+custody,random node_id,39,1,0,39,1
+custody,random node_id,39,1,1,39,1
+custody,crafted node_id,39,1,0,39,1
+custody,crafted node_id,39,1,1,39,1
+fightback,30.0s,0,1,0,0,30

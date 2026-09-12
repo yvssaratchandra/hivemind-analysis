@@ -75,6 +75,9 @@ Neither threshold scales with swarm size, which is why the attacks in §4.1 and 
 | (2b) decay under re-formation | **done** — §4.4 |
 | (3) β → learning harm, plain vs Krum | **done** — §4.11 |
 
+Beyond the brief: **§4.12** — a forged withdrawal removes a peer from discovery with one DHT write,
+no crafted identities and no custody, and the peer cannot undo it.
+
 ### Code
 
 | File | What it does |
@@ -90,6 +93,7 @@ Neither threshold scales with swarm size, which is why the attacks in §4.1 and 
 | `step5_selective.py` | Lying to the victim on read instead of censoring everyone on write. |
 | `step6_isolation.py` | Does list capture win the *group*? Adds DHT-only Sybils holding the key's replicas. |
 | `step7_poison.py` | Brief item 3: poisoning the all-reduce, plain averaging vs coordinate median. |
+| `step8_withdrawal.py` | Forging a withdrawal: deleting a peer from discovery with one DHT write. |
 
 Results are CSVs in `research/results/`, tracked in git, named for their configuration:
 `step2_groups_16x8.csv` = 16 peers at group size 8; `_b` = independent repeat;
@@ -529,6 +533,69 @@ discarding the property that makes Hivemind scale.
 - Control variance is 0.55–0.74 across seeds. The 35–148× effect is far outside it; the median result
   (0.5–2.3×) is not, so the defence claim rests on three seeds rather than one.
 
+### 4.12 A forged withdrawal deletes a peer from discovery, with one write and no custody
+
+`step8_withdrawal.py`, real `DHTNode`s driving the real `GroupKeyManager`. No training — this is a
+DHT-layer result, so a run takes seconds.
+
+**What a withdrawal is.** The group key is a DHT dictionary: subkey = a peer's PeerID, value = `True`
+("looking for a group") or `False` ("no longer looking"), each with an expiration.
+`get_averagers(only_active=True)` skips `False` entries (`key_manager.py:87`), so a withdrawn peer is
+invisible to anyone seeking partners. A subkey holds one value and `TimedStorage.store` overwrites only
+if the new expiration is **strictly later** (`timed_storage.py:81-82`), so Hivemind's own withdrawal uses
+`np.nextafter(expiration, +inf)` (`key_manager.py:61`) — later by ~1e-16 s, enough to win the comparison
+without extending the record's life.
+
+**The attack is to pick a different number.** Nothing checks who writes under a subkey: it is an
+unverified `peer_id.to_bytes()`, and there is no `record_validator` anywhere in `hivemind/averaging/`.
+Write `False` under an honest peer's subkey with a *far-future* expiration.
+
+| check | result |
+|---|---|
+| control: 12 peers declare, all visible to a bystander | 12/12 |
+| **1. forged write under another peer's subkey accepted?** | **yes** |
+| **2. victim hidden from a *third* peer?** | **yes**, other 11 unaffected |
+| **3. victim's own re-declaration?** | **rejected** — `declare_averager` returns `False`, stays invisible |
+| 4. expiration accepted up to | **+10 years**; no upper bound found |
+
+Check 4 finds a *floor*, not a ceiling: a forgery below the victim's current expiry is rejected, which is
+`timed_storage.py:81-82` working as documented. Above it, nothing caps the value — one write suppresses a
+peer for as long as the attacker cares to name.
+
+**Check 3 is what makes this a suppression rather than a per-round race.** The victim's honest
+re-declaration carries a near-term expiration and loses the comparison, so it cannot advertise itself back
+into existence. Measured directly: 30 re-declarations over 30 seconds, **visible on 0 of them**.
+
+**It scales cleanly and needs no custody** (2 repeats each, at 12 and at 40 honest peers):
+
+| swarm | hidden / attempted | survivors still visible | writes accepted |
+|---|---|---|---|
+| 12 peers | 1/1, 3/3, 6/6, 11/11 | all | all |
+| 40 peers | 1/1, 20/20, 39/39 | all | all |
+
+Perfectly targeted — every intended peer disappears, every other peer remains. And the attacker's
+`node_id` makes **no difference**: random and crafted behave identically. That is the headline contrast
+with §4.6, where read-filtering needs `bucket_size` = 20 crafted identities *and* the custody they buy.
+
+| | read-filtering (§4.5–4.6) | forged withdrawal |
+|---|---|---|
+| Mechanism | remove entries from a response | **add a record** |
+| Versus merge semantics | fights them | **exploits them** |
+| Crafted identities needed | **~20** (`bucket_size`) | **0** |
+| Custody of the key's replicas | required | **not required** |
+| Cost per hidden peer | — | **one DHT write** |
+| Victim can undo it | n/a | **no** |
+
+**Detection.** The suppressed peer's own `declare_averager` returns `False` every time — the DHT tells it
+exactly what is happening. Nothing in Hivemind reads that value (`matchmaking.py:535,544`; no other
+caller), which is §4.2's unused signal showing up again as the one clean way to notice this.
+
+**Not yet measured:** whether hiding honest peers converts into *group* capture and a measured β on a
+training swarm. §4.6 is the warning here — owning the candidate list is necessary but not sufficient,
+because capture also needs the leadership race. That is the next experiment.
+
+---
+
 ## 5. Methodology notes
 
 **What replicates and what does not.** Results where the mechanism *removes* a race are stable across
@@ -575,84 +642,30 @@ averager, state averager), because `DecentralizedAverager` extends `mp.Process`.
 **All four brief items are measured** (§4.1-4.11). What follows is work that would strengthen the
 result, in priority order.
 
-### Step 8 — the forged withdrawal (do this first; strongest remaining candidate)
+### Step 8 — the forged withdrawal: **measured, see §4.12**
 
-**Status: code-level claim, verified by reading, NOT yet measured.** Everything below cites the line
-that supports it, but no experiment has been run. Treat it as a designed attack, not a result.
+Built and measured as `step8_withdrawal.py`. Everything the design predicted holds: the forged write is
+accepted, the victim vanishes from third parties' candidate lists, its own re-declaration is rejected,
+expirations up to +10 years are accepted, it scales to hiding 39 of 40 peers with no collateral, and the
+attacker's `node_id` is irrelevant — **no custody, no crafted identities, one DHT write per peer**.
 
-Every read-filtering attack so far (§4.5, §4.6) fails on this testbed, for one structural reason: the
-attacker can only **remove** entries from a response, and `add_candidate` (`node.py:834-837`) *merges*
-every responder's dictionary, so one honest peer that answers undoes the filtering (§4.7, §4.6).
-Removal needs universal cooperation.
+**What remains is the half §4.6 warns about: does hiding honest peers convert into *group* capture?**
+Owning the candidate list is necessary but not sufficient, because capture also needs the leadership
+race (§4.6: filtering alone moved capture only 0/12 → 4–5/13). The experiment is `step6_isolation.py`'s
+`chase` arm with the read-filter replaced by forged withdrawals:
 
-**Read §4.6 before leaning on this.** This step was introduced as the only attack that works against a
-real deployment with DHT caching enabled. **That premise is false.** §4.6 now measures the blinding
-attack capturing 10/10 and 11/11 rounds at Hivemind's *default* `bucket_size` with caching fully on,
-once the attacker mints 25 identities instead of 5. Read-filtering is not defeated by caching; it was
-under-resourced. Caching alone has never been isolated as a defence.
+- hide every honest peer from the group key, leave the victim and the attackers advertising;
+- the victim then has only attackers to choose from, and the attackers can join it;
+- measure β at the assembled group, against `step6`'s existing honest control.
 
-**The case for this step is the custody row, and that row still stands.** Read-filtering needs ~20
-crafted identities *and* the custody they buy; a forged withdrawal needs **no custody at all** — any
-peer can write the record. That is a genuine difference in precondition, and it is what makes this
-worth building. The "versus cached copies" row should be read as untested rather than as an advantage.
+If that works it is the whole chain at a cost of one write per honest peer and **zero crafted
+identities** — strictly cheaper than §4.6's 20. If it does not, the reason will be the leadership race,
+and §4.3's `--attacker-declare-time` is the lever.
 
-
-
-**A forged withdrawal inverts that: it is an addition, so merging, caching and replication all work
-for the attacker instead of against it.** Four facts compose:
-
-1. **Hivemind withdraws a peer by writing `False` under its subkey**, with
-   `expiration = nextafter(expiration_time, +inf)` (`key_manager.py:61`) — deliberately the smallest
-   increment *above*, so a withdrawal outranks the declaration it cancels.
-2. **Later expiration wins, and an earlier one is rejected** (`timed_storage.py:81-84`):
-   `if self.data[key].expiration_time < expiration_time: overwrite` else `return False`.
-3. **`get_averagers(only_active=True)` skips `False` entries** (`key_manager.py:87`) — the victim
-   performs the removal itself.
-4. **The subkey is an unverified `peer_id.to_bytes()`** (`key_manager.py:64`); nothing checks the
-   writer owns it, `PeerID.__init__` validates nothing, and **there is no `record_validator` on
-   averaging keys at all** (verified: no reference to `record_validator` anywhere in
-   `hivemind/averaging/`).
-
-So: **write `value=False` under an honest peer's subkey with a far-future expiration, and that peer
-disappears from every peer's candidate list.** Because of fact 2 this is not a per-round race — it also
-**blocks that peer's own re-declarations** until the forged expiration lapses, since its honest
-`declare_averager` carries a nearer expiration and is rejected. Its `declare_averager` returns `False`,
-which nothing in the tree reads (§4.2's unused detection signal).
-
-**What it costs, and why it matters for a real deployment:**
-
-| | read-filtering (§4.5–4.6) | forged withdrawal |
-|---|---|---|
-| Mechanism | remove entries from a response | add a record |
-| Versus merge semantics | fights them | **exploits them** |
-| Versus cached copies | *untested — §4.6's caching claim was falsified, not confirmed* | **later expiration overwrites them** |
-| Needs custody (5 crafted node_ids)? | yes | **no — any peer can write** |
-| Detection signal | honest `declare_averager` returns False | same, and equally unread |
-
-Dropping the custody precondition is the point: no eclipse, no crafted `node_id`s, no five identities.
-One DHT write per peer to be hidden, refreshed when the forged expiration nears. Target PeerIDs are
-readable straight off the group key.
-
-**This also completes the follower path.** §4.6 showed an attacker can capture a victim's group by
-joining it as a follower, but only if honest peers are excluded — which needs read-filtering, which
-needs custody *and* ~`bucket_size` crafted identities. A forged withdrawal excludes them **without
-custody and without winning any race**, which is the standing advantage.
-
-**Build it as `research/step8_withdrawal.py`**, modelled on `step5_selective.py` (which already drives
-the real `GroupKeyManager` through the `NodeAsDHT` adapter, so key construction and subkey choice stay
-Hivemind's). Arms: `honest` control; `forge` writing withdrawals for all honest peers but the victim.
-Measure the victim's candidate list, a bystander's list, whether honest `declare_averager` calls start
-returning `False`, and **run it with caching on** — that is the whole point.
-
-**Verify before believing it, in this order:**
-1. A forged `False` under another peer's subkey is accepted at all (fact 4). If a validator or
-   signature check rejects it, the attack is dead and that is the finding.
-2. It survives merging with cached honest copies (facts 1-2) — the claim caching cannot defeat it.
-3. The suppressed peer's later honest re-declaration is **rejected** (fact 2), which is the difference
-   between a one-shot suppression and a per-round race.
-4. Whether the DHT bounds how far in the future an expiration may be. `timed_storage.py:76` only
-   rejects expirations in the *past*; if some upper bound exists elsewhere it limits how long one write
-   suppresses a peer. Not checked.
+Also worth measuring, and cheap now the harness exists: **how a real swarm behaves under it**, since
+every §4.12 run was on a static advertisement. A peer whose advertisement is refreshed every round by
+`_declare_averager_periodically` (`matchmaking.py:524-538`) will retry constantly; §4.12's fight-back
+check covers 30 s of that, but not a full training run.
 
 ### Loose ends, in descending order of interest
 

@@ -1,0 +1,10 @@
+check,detail,result
+control,12/12 declared,True
+forged_write_accepted,+3600.0s,True
+victim_hidden_from_bystander,others 11/11,True
+redeclaration_blocked,declare returned False,True
+expiration_ceiling,+10s,False
+expiration_ceiling,+1h,True
+expiration_ceiling,+1d,True
+expiration_ceiling,+1y,True
+expiration_ceiling,+10y,True
