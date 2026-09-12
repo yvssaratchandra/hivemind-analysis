@@ -277,59 +277,78 @@ beating its own deadline, so it waits to be contacted. The attack partly defeats
 construction; the attackers declare late deadlines and simply join it; honest peers are hidden from the
 victim's key so they cannot.
 
-**The cost is `bucket_size` identities, not `num_replicas`.** At Hivemind's default `bucket_size = 20`,
-**caching fully enabled**:
+**The cost is `bucket_size` crafted identities, not `num_replicas`.** A 28-run campaign, every run 15
+epochs at 8 training peers / group size 4 / 3 training attackers, **caching on unless stated**.
+"Captured" counts rounds where the victim's group held no honest peer.
 
-| crafted Sybils | victim led | captured | mean β | honest in victim's group | filtered responses |
+| block | config | runs | capture rate | mean β | honest in victim's group |
 |---|---|---|---|---|---|
-| 5 | 15/16 | **0/16** | 0.500 | 16/16 | 3.9k |
-| **25** | 10/10 | **10/10** | **0.733** | **0/10** | **81k** |
-| **40** | 11/11 | **11/11** | **0.742** | **0/11** | 39k |
+| control | 5 Sybils (custody only) | 2 | **0 %** | 0.350 | present every round |
+| threshold | 10 Sybils | 2 | 3 % | 0.391 | present |
+| threshold | 15 Sybils | 2 | 13 % | 0.305 | present |
+| threshold | 18 Sybils | 2 | 14 % | 0.436 | present |
+| **threshold** | **20 Sybils = `bucket_size`** | 2 | **100 %** | 0.657 | **none** |
+| threshold | 22 Sybils | 2 | 100 % | 0.688 | none |
+| headline | 25 Sybils | 3 | **100 %** | 0.706 | **none** |
+| headline | 40 Sybils | 2 | 100 % | 0.696 | none |
 
-A lookup seeds its traversal from the `bucket_size` nodes nearest the key in the victim's routing table
-(`node.py:629-633`, `bucket_size` default 20 at `node.py:104`). Five crafted identities win *custody* —
+**The step is exactly at `bucket_size`.** 18 identities give 14 %, 20 give 100 %. Below the threshold the
+attack is partial and probabilistic — honest peers left in the seed set sometimes fail to answer in time
+— and at the threshold it is total.
+
+**Three controls, each ruling out a different alternative explanation.**
+
+| control | result | rules out |
+|---|---|---|
+| 5 crafted + **20 honest filler nodes** (same node count as 25 crafted) | **0 %**, honest present | node count, process load |
+| `--no-cache` at 25 Sybils | **100 %**, identical to caching on | caching being the barrier |
+| honest arm at `bucket_size` 20, 40, and with 20 fillers | **0 %** captures, honest present | the swarm being broken |
+
+**The causal prediction was tested and held.** If the cost is `bucket_size`, doubling `bucket_size`
+should double it. At `--bucket-size 40`:
+
+| Sybils | capture rate | honest in group |
+|---|---|---|
+| 25 (enough for bucket 20, not for 40) | **9 %** | present |
+| 45 | **100 %** | none |
+
+The same 25 identities that capture totally at `bucket_size` 20 fail at 40. That is a falsifiable
+prediction of the seed-set account which the swarm-size and caching accounts do not make.
+
+**Why.** A lookup seeds its traversal from the `bucket_size` nodes nearest the key in the victim's
+routing table (`node.py:629-633`, default 20 at `node.py:104`). Five crafted identities win *custody* —
 they are the `num_replicas = 5` nearest, so they hold the record (§4.1) — but they are only 5 of the 20
-seeds. The other 15 are honest, they answer truthfully, and `add_candidate` merges their answer back in
-(`node.py:834-837`). Minting 20+ identities makes the whole seed set attacker-owned and the filtering
-becomes total. The filtered-response count rising from 3.9k to 81k is that made visible: every lookup
-now goes to the attacker and nobody else.
+seeds. The other 15 are honest, answer truthfully, and `add_candidate` merges their answer back in
+(`node.py:834-837`). Own all 20 and the filtering is total. The filtered-response count rising from
+~2.7k at 5 Sybils to 34–52k at 25–40 is the same fact seen from the attacker's side.
 
-**This costs essentially nothing.** §4.1 measured crafted identities at ~0.1 s each and no compute, so
-the step from 5 to 25 is about two seconds of minting. The attack does not need a caching-free network,
-a shrunken routing table, or a small swarm.
+**This costs essentially nothing.** §4.1 measured crafted identities at ~0.1 s each with no compute, so
+20 identities is about two seconds of minting. The attack needs no caching-free network, no shrunken
+routing table, and no small swarm.
+
+**Caching is not a defence here, and that is now measured rather than assumed.** At 25 Sybils capture is
+100 % with caching on *and* with all three cache knobs disabled. Caching only ever mattered while honest
+peers still occupied part of the seed set — it gave them something to answer with. Once they are out of
+the seed set there is nobody left to cache.
 
 **Two hypotheses were falsified getting here. Do not re-run them.**
 
-- *"Caching defeats it."* This section originally said so: `rpc_find` also answers from `self.cache`
-  (`protocol.py:344`) and results are merged, so a cached honest copy undoes the filtering. Caching is
-  real but it is not the barrier — at 25 Sybils the attack is total **with caching on**. Caching has
-  still never been isolated on its own; `--no-cache-locally` / `--no-cache-nearest` /
-  `--no-cache-on-store` exist for that.
+- *"Caching defeats it."* This section originally said so. Settled above: identical capture with caching
+  on and off.
 - *"The swarm must be larger than the routing table."* Shrinking `bucket_size` to 4 restores the attack
-  (7/11 captured, 70k filtered) which looked like confirmation. It is not: padding the swarm with
-  honest DHT-only nodes to **14 → 26 → 54 → 104 nodes** at `bucket_size 20` left capture at 0–1/15
-  throughout, with filtered counts flat at 3–13k. Idle filler nodes never enter the victim's routing
-  table, so from the victim's point of view the swarm never grew. Total node count is irrelevant; what
-  matters is who occupies the seed set. `--filler-nodes` exists and is not worth re-running for this.
+  at 5 Sybils (7/11 captured) which looked like confirmation — but that is the same seed-set law, since
+  5 crafted identities cover a seed set of 4. Padding the swarm with honest DHT-only nodes to
+  **26 → 54 → 104 nodes** at `bucket_size 20` left capture at 0–1/15 throughout. Idle fillers never
+  enter the victim's routing table, so from the victim's point of view the swarm never grew. Total node
+  count is irrelevant; seed-set occupancy is everything.
 
-The `bucket_size` ladder at 5 Sybils locates the boundary exactly where the seed-set account predicts —
-between 4 and 8, i.e. at the number of crafted identities, **not** near the 14-node swarm size:
-
-| bucket size | captured | filtered |
-|---|---|---|
-| 4 | **7/11** | 70k |
-| 8 | 0/15 | 5.4k |
-| 12 | 0/15 | 4.7k |
-| 20 | 0/16 | 3.9k |
-
-**The honest control is healthy at every configuration** and is what rules out "the swarm broke": 0
-captures, an honest peer in the victim's group every round, all 8 training peers visible throughout, at
-bucket sizes 4 and 20 and at 104 nodes.
+**All 28 runs had all 8 training peers visible to each other**, so averaging was real throughout (§3).
 
 **The principle across §4.5, §4.6 and §4.7, corrected: an attacker with custody can *add* to what a
 victim sees but cannot reliably *remove* — until it owns the victim's whole seed set.** Removal needs
 every responder the victim asks to cooperate. Custody (5 identities) is not enough, because the victim
-asks 20 peers, not 5. Owning all 20 is the real precondition, and it is cheap.
+asks `bucket_size` peers, not `num_replicas`. Owning all of them is the real precondition, and it is
+cheap.
 
 *The attack backfires when under-resourced:* at 5 Sybils `chase` gives β at or below the honest control,
 because the attacker declares late deadlines to follow and so participates less than an honest peer
@@ -538,7 +557,11 @@ this sample size, and repeat before believing a rate.**
 - **`offload_optimizer=False`** so `model.weight` is the live value being measured.
 - **Each peer needs its own `RSAPrivateKey`** via `tracker_opts`; forked children otherwise share one
   process-wide key and collide when publishing progress.
-- **Filenames must encode every variable that changes the result** (e.g. `_cached` / `_nocache`), or
+- **Filenames must encode every variable that changes the result** — and this has now bitten twice.
+  The second time, `--sybil-nodes` was missing from `step6_isolation.py`'s output name, so runs at 5,
+  25 and 40 crafted identities all wrote the same file and silently overwrote each other. The summaries
+  survived only because they were also in the run logs. When adding a knob, add it to the filename in
+  the same edit. (e.g. `_cached` / `_nocache`), or
   runs overwrite each other. This happened once and lost data.
 
 **Resource envelope.** Each peer is **4 Python processes plus one `p2pd`** (trainer, DHT, gradient
@@ -633,16 +656,9 @@ returning `False`, and **run it with caching on** — that is the whole point.
 
 ### Loose ends, in descending order of interest
 
-- **Isolate caching on its own** (§4.6). Reach was measured and is the dominant cause; caching was
-  assumed and never tested separately. `step6_isolation.py` now takes `--no-cache-locally`,
-  `--no-cache-nearest` and `--no-cache-on-store` individually, and `--bucket-size`. The run that
-  settles it is `chase` at `--bucket-size 4` with each cache knob disabled singly: if capture is
-  already total with all caching on, caching contributes nothing at realistic routing, and the
-  "accidental defence" framing should go entirely.
-- **Does the identity cost track `bucket_size` as the account predicts?** §4.6 says the attacker needs
-  to own the victim's whole seed set, so the cost should be ~`bucket_size` identities and should rise
-  if `bucket_size` does. Measured at the default 20 (25 identities suffice, 5 do not). A run at
-  `--bucket-size 40` with 25 and 45 Sybils would confirm the relationship rather than the single point.
+- **Does the §4.6 law hold at a third `bucket_size`?** Measured at 20 (step at 20) and 40 (25 fail, 45
+  work). A run at `--bucket-size 8` with 5 and 10 Sybils would give a third point on the line at almost
+  no cost, and would also check the low end where `num_replicas = 5` and `bucket_size` are close.
 
 - **Interception latency.** §4.1 measures Sybil build time and settled capture, never the interval. A
   Sybil intercepts nothing until it is in the routing tables of peers routing toward the key. Have the

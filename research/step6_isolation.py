@@ -685,6 +685,11 @@ def write_results(group_rows, train_rows, identities, args) -> None:
     stem = f"step6_isolation_{args.arm}_k{args.attackers}_n{args.num_peers}_{cache_tag(args)}"
     if args.bucket_size != 20:  # 20 is Hivemind's own default; only tag departures from it
         stem += f"_b{args.bucket_size}"
+    if args.arm != "honest" and args.sybil_nodes != 5:
+        # The number of crafted identities is the whole finding of section 4.6, and it was
+        # missing here: runs at 25 and 40 sybils overwrote each other *and* the 5-sybil
+        # baseline before this was caught. 5 is the recorded default, so only tag departures.
+        stem += f"_s{args.sybil_nodes}"
     if args.filler_nodes:
         stem += f"_f{args.filler_nodes}"
     if args.repeat:
