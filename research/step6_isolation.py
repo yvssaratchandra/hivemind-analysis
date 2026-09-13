@@ -68,7 +68,7 @@ from hivemind.dht.protocol import DHTProtocol
 from hivemind.dht.routing import DHTID
 from hivemind.dht.storage import DictionaryDHTValue
 from hivemind.optim.grad_averager import GradientAverager
-from hivemind.p2p import P2PContext
+from hivemind.p2p import P2PContext, PeerID
 from hivemind.proto import averaging_pb2, dht_pb2
 from hivemind.utils.crypto import RSAPrivateKey
 from hivemind.utils.timed_storage import get_dht_time
@@ -403,7 +403,11 @@ def run_peer(peer_index, initial_peers, metrics, group_log, roster, filter_confi
         filter_config["blind_victim"] = args.arm == "chase"
         filter_config["attacker_peers"] = [roster[i] for i in attacker_indices]
         filter_config["forged_expiration"] = None
-        filter_config["ready"] = True
+        # `withdraw` does no DHT-layer filtering at all: every peer answers every read
+        # honestly, and the only attacker action is forged records written through the
+        # public store API. Leaving the filter armed here would confound the comparison
+        # with `chase`, which is precisely what this arm is meant to isolate.
+        filter_config["ready"] = args.arm != "withdraw"
     barrier.wait()
 
     admit = None
@@ -494,6 +498,57 @@ def crafted_node_ids(target_key: str, count: int) -> list:
     return [DHTID(int(target) ^ i) for i in range(count)]
 
 
+def run_forger(initial_peers, roster, stop_event, args) -> None:
+    """Suppress every honest peer's advertisement by forging its withdrawal.
+
+    This is the section 4.12 primitive applied to a live training swarm. A peer advertises
+    by writing True under its own PeerID as a subkey of the group key, and withdraws by
+    writing False (`key_manager.py:46-67`); a subkey holds one value and only a *strictly
+    later* expiration overwrites it (`timed_storage.py:81-82`). Nothing checks who writes,
+    so writing False under an honest peer's subkey with a far-future expiration both hides
+    it and blocks its own re-declarations, which carry a near-term expiration and lose.
+
+    What this arm is testing: whether that converts into *group* capture. Section 4.6 is
+    the warning -- owning the candidate list is necessary but not sufficient, because
+    capture also needs the leadership race.
+
+    Unlike every other arm, this attacker has **no crafted node_id and no custody**. It is
+    an ordinary peer issuing ordinary writes, which is the whole point of the comparison.
+    """
+    victim_and_attackers = set(range(0, args.attackers + 1))  # peer 0 is the victim
+    dht = DHT(initial_peers=initial_peers, host_maddrs=LOCALHOST, start=True, **dht_opts(args))
+    group_key = f"{args.run_id}_grad_averager.0b"
+
+    # The roster is filled by each peer right after its DHT starts; poll rather than join
+    # the barrier, so a slow forger can never deadlock the swarm.
+    deadline = time.perf_counter() + 60
+    while len(roster) < args.num_peers and time.perf_counter() < deadline:
+        time.sleep(0.2)
+
+    targets = [_peer_id_bytes(roster[i]) for i in sorted(roster)
+               if int(i) not in victim_and_attackers]
+    accepted = rejected = 0
+    try:
+        while not stop_event.is_set():
+            for target in targets:
+                try:
+                    ok = dht.store(key=group_key, subkey=target, value=False,
+                                   expiration_time=get_dht_time() + args.forge_seconds)
+                    accepted += int(bool(ok))
+                    rejected += int(not ok)
+                except Exception:
+                    rejected += 1
+            print(f"forger: pass done, {accepted} accepted / {rejected} rejected", flush=True)
+            stop_event.wait(args.forge_interval)
+    finally:
+        print(f"forger: {len(targets)} honest peers targeted, "
+              f"{accepted} writes accepted, {rejected} rejected", flush=True)
+        try:
+            dht.shutdown()
+        except Exception:
+            pass
+
+
 def run_sybil_dht(index, initial_peers, filter_config, stop_event, args) -> None:
     """A DHT-only Sybil: holds a replica of the averaging key and filters reads of it.
 
@@ -528,7 +583,10 @@ def run_sybil_dht(index, initial_peers, filter_config, stop_event, args) -> None
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--arm", choices=["honest", "selective", "isolated", "chase"], required=True)
+    parser.add_argument("--arm", choices=["honest", "selective", "isolated", "chase", "withdraw"],
+                        required=True,
+                        help="`withdraw` replaces read-filtering with forged withdrawals (section 4.12): "
+                             "no crafted node_ids, no custody, one DHT write per honest peer")
     parser.add_argument("--attackers", type=int, default=1, help="peers 1..k; peer 0 is the victim")
     parser.add_argument("--num-peers", type=int, default=16)
     parser.add_argument("--group-size", type=int, default=8)
@@ -564,6 +622,15 @@ def main() -> None:
     parser.add_argument("--filler-nodes", type=int, default=0,
                         help="honest DHT-only nodes with random node_ids, added purely to push the "
                              "swarm past bucket_size so lookups have to route; see run_filler_dht()")
+    parser.add_argument("--no-forge", action="store_true",
+                        help="withdraw arm without the forger: leaves the malicious leader and its "
+                             "admission control in place, so it isolates what the forgery itself "
+                             "contributes. Without this control the arm cannot distinguish its own "
+                             "mechanism from section 4.3's")
+    parser.add_argument("--forge-seconds", type=float, default=3600.0,
+                        help="withdraw arm: how far ahead a forged withdrawal expires")
+    parser.add_argument("--forge-interval", type=float, default=5.0,
+                        help="withdraw arm: seconds between refresh passes")
     parser.add_argument("--sybil-nodes", type=int, default=5,
                         help="DHT-only Sybils holding the key's replicas; 5 = total custody (step3_eclipse)")
     parser.add_argument("--averaging-timeout", type=float, default=30.0)
@@ -630,7 +697,14 @@ def main() -> None:
         )
         filler.start()
         sybils.append(filler)
-    if args.arm != "honest":
+    if args.arm == "withdraw" and not args.no_forge:
+        # No crafted node_ids and no custody -- that is the claim being tested. A single
+        # ordinary peer issues the forged withdrawals.
+        forger = mp.Process(target=run_forger, args=(initial_peers, roster, stop_sybils, args),
+                            name="forger", daemon=False)
+        forger.start()
+        sybils.append(forger)
+    elif args.arm != "honest":
         for index in range(args.sybil_nodes):
             sybil = mp.Process(
                 target=run_sybil_dht,
@@ -690,6 +764,8 @@ def write_results(group_rows, train_rows, identities, args) -> None:
         # missing here: runs at 25 and 40 sybils overwrote each other *and* the 5-sybil
         # baseline before this was caught. 5 is the recorded default, so only tag departures.
         stem += f"_s{args.sybil_nodes}"
+    if args.arm == "withdraw" and args.no_forge:
+        stem += "_noforge"
     if args.filler_nodes:
         stem += f"_f{args.filler_nodes}"
     if args.repeat:

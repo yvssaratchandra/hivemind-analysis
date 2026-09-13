@@ -533,7 +533,7 @@ discarding the property that makes Hivemind scale.
 - Control variance is 0.55–0.74 across seeds. The 35–148× effect is far outside it; the median result
   (0.5–2.3×) is not, so the defence claim rests on three seeds rather than one.
 
-### 4.12 A forged withdrawal deletes a peer from discovery, with one write and no custody
+### 4.12 A forged withdrawal deletes a peer from discovery — but discovery is not membership
 
 `step8_withdrawal.py`, real `DHTNode`s driving the real `GroupKeyManager`. No training — this is a
 DHT-layer result, so a run takes seconds.
@@ -590,9 +590,38 @@ with §4.6, where read-filtering needs `bucket_size` = 20 crafted identities *an
 exactly what is happening. Nothing in Hivemind reads that value (`matchmaking.py:535,544`; no other
 caller), which is §4.2's unused signal showing up again as the one clean way to notice this.
 
-**Not yet measured:** whether hiding honest peers converts into *group* capture and a measured β on a
-training swarm. §4.6 is the warning here — owning the candidate list is necessary but not sufficient,
-because capture also needs the leadership race. That is the next experiment.
+**It does not convert into group capture, and that is measured.** `step6_isolation.py --arm withdraw`
+runs the §4.3 malicious leader on a training swarm with a forger suppressing every honest peer's
+advertisement, and `--no-forge` is the same arm with the forger switched off — so the difference between
+them is the forgery's own contribution, and nothing else.
+
+First attempt, 8 peers / group 4 / **3 attackers**, was useless: both arms captured ~100 % (17/17,
+19/19, 21/21 without the forger). At α = 0.375 the malicious leader alone is already **saturated**, so
+there was no headroom for the forgery to show in. A ceiling is not a result.
+
+Repeated at **1 attacker**, where §4.3 leaves room, 3 repeats each:
+
+| arm | capture per run | mean | honest peer in victim's group |
+|---|---|---|---|
+| leader only (`--no-forge`) | 69 %, 31 %, 75 % | 58 % | 31 %, 69 %, 25 % |
+| leader + forged withdrawals | 44 %, 88 %, 56 % | 62 % | 56 %, 12 %, 44 % |
+
+**The spread inside each arm is far larger than the gap between them.** At this sample size the forgery
+has no detectable effect on capture. Distinguishing a difference this small against this variance would
+need roughly 20 runs per arm, not 3.
+
+**And the mechanism says not to expect one.** Forging a withdrawal hides a peer's *advertisement*, so
+the victim cannot **find** it. It does not stop that peer **reading** the group key, seeing the victim,
+and asking to join its group. Group membership is settled at the admission layer — who the leader lets
+in (`matchmaking.py:341-368`) — not at the discovery layer. Suppressing a peer from discovery does not
+keep it out of a group it can still see, and excluding it still takes the admission control §4.3 already
+provides.
+
+**So what this primitive actually is: a censorship and availability attack, not a capture attack.** A
+suppressed peer cannot be found by anyone, so nobody recruits it — it is excluded from training
+altogether, cannot re-advertise itself, and the DHT tells it so in a return value nothing reads. That is
+real harm, and unusually cheap and durable harm, but it is *availability*, not control over whose
+gradients mix with whose. Do not report it as the latter.
 
 ---
 
@@ -642,30 +671,27 @@ averager, state averager), because `DecentralizedAverager` extends `mp.Process`.
 **All four brief items are measured** (§4.1-4.11). What follows is work that would strengthen the
 result, in priority order.
 
-### Step 8 — the forged withdrawal: **measured, see §4.12**
+### Step 8 — the forged withdrawal: **measured, and narrower than hoped (§4.12)**
 
-Built and measured as `step8_withdrawal.py`. Everything the design predicted holds: the forged write is
-accepted, the victim vanishes from third parties' candidate lists, its own re-declaration is rejected,
-expirations up to +10 years are accepted, it scales to hiding 39 of 40 peers with no collateral, and the
-attacker's `node_id` is irrelevant — **no custody, no crafted identities, one DHT write per peer**.
+Built as `step8_withdrawal.py` and `step6_isolation.py --arm withdraw`. At the discovery layer it does
+everything the design predicted: the forged write is accepted, the victim vanishes from third parties'
+lists, its own re-declaration is rejected, +10 year expirations are accepted, it scales to hiding 39 of
+40 peers with no collateral, and the attacker's `node_id` is irrelevant — no custody, no crafted
+identities, one write per peer.
 
-**What remains is the half §4.6 warns about: does hiding honest peers convert into *group* capture?**
-Owning the candidate list is necessary but not sufficient, because capture also needs the leadership
-race (§4.6: filtering alone moved capture only 0/12 → 4–5/13). The experiment is `step6_isolation.py`'s
-`chase` arm with the read-filter replaced by forged withdrawals:
+**But it does not convert into group capture.** Against a `--no-forge` control that keeps the malicious
+leader and drops only the forgery, capture was 58 % without it and 62 % with it, against within-arm
+spreads of 31–75 % and 44–88 %. No detectable effect, and §4.12 gives the mechanism: discovery and
+membership are different layers, and a peer hidden from discovery can still read the key, see the
+victim, and ask to join.
 
-- hide every honest peer from the group key, leave the victim and the attackers advertising;
-- the victim then has only attackers to choose from, and the attackers can join it;
-- measure β at the assembled group, against `step6`'s existing honest control.
+**It is therefore a censorship/availability primitive**, and should be written up as one. That is still
+worth having — it is cheap, durable, targeted, and the victim cannot undo it — but it is not a cheaper
+route to β, and §4.3's admission control remains the thing that actually decides membership.
 
-If that works it is the whole chain at a cost of one write per honest peer and **zero crafted
-identities** — strictly cheaper than §4.6's 20. If it does not, the reason will be the leadership race,
-and §4.3's `--attacker-declare-time` is the lever.
-
-Also worth measuring, and cheap now the harness exists: **how a real swarm behaves under it**, since
-every §4.12 run was on a static advertisement. A peer whose advertisement is refreshed every round by
-`_declare_averager_periodically` (`matchmaking.py:524-538`) will retry constantly; §4.12's fight-back
-check covers 30 s of that, but not a full training run.
+**If anyone wants to settle the capture question properly**, it needs ~20 runs per arm at 1 attacker,
+not 3. The variance at this swarm size is what §5 warns about, and it is larger than any effect the
+forgery could plausibly have.
 
 ### Loose ends, in descending order of interest
 
