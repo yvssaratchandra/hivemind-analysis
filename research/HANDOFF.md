@@ -239,6 +239,41 @@ none — see §4.8).
 The tracking attacker locks on at round 2 and is in every subsequent group, following the victim across
 bucket changes.
 
+#### Scaled: the prediction never degrades, converting it to co-occurrence does
+
+`group_size` is also the bucket count, so **peers per bucket = `num_peers / group_size`** is the
+variable that matters, not swarm size. At 16 peers a bucket holds exactly one group, so predicting the
+bucket *is* joining the group. Swept with **4 attacker identities** throughout, 2 repeats, 12 epochs:
+
+| peers | per bucket | none | naive | **tracking** | bucket predicted |
+|---|---|---|---|---|---|
+| 16 | 4 = 1 group | 0 % | 56 % | **84 %** | 12/12, 13/13 |
+| 32 | 8 = 2 groups | 0 % | 40 % | **72 %** | 14/14, 11/11 |
+| 48 | 12 = 3 groups | 0 % | 18 % | **38 %** | 3/3, 10/10 |
+
+**The prediction mechanism is exact at every size: 63 of 63 across six runs.** It cannot degrade with
+scale, because it is a shared seed and an index — neither depends on how many peers exist.
+
+What degrades is turning a correct bucket into a shared *group*: 84 % → 72 % → 38 % as a bucket goes
+from holding one group to three. **Tracking still roughly doubles the naive control at every size**
+(84/56, 72/40, 38/18), and the `none` arm is 0 % throughout, so the effect is the tracking itself and
+not the extra identities.
+
+**Two things this scaling exposed, both worth carrying forward:**
+
+- **Tracking has a bootstrap problem.** A peer can only predict if it is *in* the victim's group to read
+  the `group_id` and member list. With a **single** attacker at 48 peers it never got in across 9
+  rounds — no seed, no tracking, nothing to measure. Identities are ~0.1 s each (§4.1), so the realistic
+  attacker runs several and needs one of them to land beside the victim once. `--attackers` now makes
+  this a variable, which turns "does tracking work" into "how many identities does tracking cost".
+- **That same flag inflates the controls**, because four frozen identities get four independent chances.
+  The naive rates above are far higher than §4.4's original single-attacker 1/5. **Compare tracking
+  against naive at matched `k`**, never against the older numbers.
+
+**Where this points:** tracking reduces "find the victim in the whole swarm" to "find the victim in one
+bucket", exactly and indefinitely. Converting that to group membership is a separate step, and §4.3's
+admission control is the thing that does it exactly. The two compose and have not been measured together.
+
 **The root cause is transparency to participants, not predictability.** `group_id = DHTID.generate()`
 hashes 255 random bits (`routing.py:270`) — genuinely unpredictable from outside. What breaks it is that
 every input to the reshuffle is handed to every member in the leader's broadcast, so a peer that shared

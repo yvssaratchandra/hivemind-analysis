@@ -73,7 +73,24 @@ WEIGHTS_SEED = 1234
 MODEL_INIT_SEED = 0
 
 VICTIM = 0
-ATTACKER = 1
+ATTACKER = 1  # first attacker; see attacker_indices()
+
+
+def attacker_indices(args) -> range:
+    """Peers 1..k are the attacker.
+
+    Tracking has a bootstrap problem that only shows up at scale: a peer can only predict
+    where the victim goes next if it is *in the victim's group* to read the group_id and
+    member list. At 16 peers with 4 buckets that happens often by chance. At 48 it is
+    roughly one round in twelve, and a single attacker can run a whole training job
+    without ever getting in.
+
+    Identities are free (section 4.1: ~0.1s each), so the realistic attacker runs several
+    and only needs one of them to land beside the victim once. Making this a variable turns
+    "does tracking work" into "how many identities does tracking cost", which is the
+    question the rest of the project is posed in.
+    """
+    return range(1, args.attackers + 1)
 
 
 # --------------------------------------------------------------------------
@@ -208,7 +225,7 @@ def run_peer(peer_index, initial_peers, metrics, log, done_count, all_done, vict
     metrics.put(dict(kind="identity", peer=peer_index, peer_id=str(dht.peer_id)))
 
     mode = "honest"
-    if args.arm != "none" and peer_index == ATTACKER:
+    if args.arm != "none" and peer_index in attacker_indices(args):
         mode = args.arm
 
     # Spread peers across buckets at startup. Every peer being handed the same
@@ -313,6 +330,11 @@ def main() -> None:
                         help="15s not 5s: with sharding a bucket's candidate pool is small and "
                              "5s closes groups early, which starves peers (see module docstring)")
     parser.add_argument("--averaging-timeout", type=float, default=30.0)
+    parser.add_argument("--attackers", type=int, default=1,
+                        help="peers 1..k, all in the chosen arm; raises the chance one of them "
+                             "lands beside the victim and can start tracking (see attacker_indices)")
+    parser.add_argument("--repeat", type=int, default=0,
+                        help="repeat index, appended to the filename so repeats do not overwrite")
     parser.add_argument("--run-id", type=str, default=None)
     args = parser.parse_args()
 
@@ -329,7 +351,11 @@ def main() -> None:
 
     print(f"arm={args.arm}  {args.num_peers} peers  group size {args.group_size}  "
           f"{2 ** nbits} buckets ('{args.group_bits}')  {args.max_epoch} epochs")
-    print(f"victim = peer {VICTIM}" + (f", attacker = peer {ATTACKER}" if args.arm != "none" else "") + "\n")
+    roles = f"victim = peer {VICTIM}"
+    if args.arm != "none":
+        ks = attacker_indices(args)
+        roles += f", attacker = peer{'s' if args.attackers > 1 else ''} {ks.start}..{ks.stop - 1}"
+    print(roles + "\n")
 
     mp.set_start_method("fork", force=True)  # Python 3.14 defaults to forkserver; averagers do not pickle
 
@@ -407,7 +433,15 @@ def write_results(log_rows, train_rows, identities, args) -> None:
     for row in log_rows:
         row["member_peers"] = " ".join(str(identities.get(p, "?")) for p in row["members"].split())
 
-    path = RESULTS_DIR / f"step4_reformation_{args.arm}.csv"
+    # Every variable that changes the result belongs in the name. HANDOFF section 5:
+    # this has already cost this project data twice, most recently when runs at 5, 25 and
+    # 40 crafted identities all wrote the same file.
+    stem = f"step4_reformation_{args.arm}_n{args.num_peers}_g{args.group_size}"
+    if args.attackers != 1:
+        stem += f"_k{args.attackers}"
+    if args.repeat:
+        stem += f"_r{args.repeat}"
+    path = RESULTS_DIR / f"{stem}.csv"
     fields = ["peer", "round", "group_id", "group_size", "member_peers", "bits_next",
               "bits_own_rule", "predicted_victim_bits", "victim_in_group", "members"]
     with open(path, "w", newline="") as handle:
@@ -461,7 +495,8 @@ def report(log_rows, identities, args, elapsed: float) -> None:
     for rnd in victim_rounds:
         row = by_peer_round[(VICTIM, rnd)]
         members = [m for m in row["member_peers"].split() if m != "?"]
-        attackers = sum(1 for m in members if int(m) == ATTACKER) if args.arm != "none" else 0
+        attackers = (sum(1 for m in members if int(m) in attacker_indices(args))
+                     if args.arm != "none" else 0)
         beta = attackers / len(members) if members else 0.0
         betas.append(beta)
         print(f"{rnd:>5} {row['bits_next']:>14} {' '.join(members):>22} {beta:>6.3f}")
@@ -472,7 +507,7 @@ def report(log_rows, identities, args, elapsed: float) -> None:
         print(f"\nmean beta, first third : {sum(early) / len(early):.3f}")
         print(f"mean beta, last third  : {sum(late) / len(late):.3f}")
         print(f"mean beta, all rounds  : {sum(betas) / len(betas):.3f}")
-        print(f"rounds attacker shared the victim's group: "
+        print(f"rounds an attacker shared the victim's group: "
               f"{sum(1 for b in betas if b > 0)}/{len(betas)}")
 
     # Prediction accuracy, independent of whether matchmaking then cooperated.
@@ -489,7 +524,7 @@ def report(log_rows, identities, args, elapsed: float) -> None:
         }
         hits, misses = 0, []
         for row in log_rows:
-            if row["peer"] != ATTACKER or not row["predicted_victim_bits"]:
+            if row["peer"] not in attacker_indices(args) or not row["predicted_victim_bits"]:
                 continue
             actual = victim_bits_by_group.get(row["group_id"])
             if actual is None:

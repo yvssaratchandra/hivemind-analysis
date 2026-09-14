@@ -98,9 +98,24 @@ makes 25 identities fail where 45 succeed. Padding the swarm to 104 nodes change
 
 Hivemind can reshuffle peers into new groups between rounds. The shuffle is seeded on the group
 identifier and indexed by each member's position — both handed to every member. A peer that
-shares **one** group with the victim can compute where the victim goes next, forever. Measured:
-the tracking attacker predicted the victim's next bucket **5 of 5** times and was in its group
-in 5 of 7 rounds, against 1 of 5 for an attacker that does not track.
+shares **one** group with the victim can compute where the victim goes next, forever.
+
+The prediction is exact and stays exact as the swarm grows — **63 of 63 correct** across swarms of
+16, 32 and 48 peers. It cannot degrade with scale, because it is a shared seed and an index, and
+neither depends on how many peers exist.
+
+What scale changes is only how often a correct bucket also means a shared *group*, since a bucket
+holds more than one group once the swarm is large enough:
+
+| peers | peers per bucket | no attacker | attacker that does not track | tracking attacker |
+|---|---|---|---|---|
+| 16 | 4 (one group) | 0 % | 56 % | **84 %** |
+| 32 | 8 (two groups) | 0 % | 40 % | **72 %** |
+| 48 | 12 (three groups) | 0 % | 18 % | **38 %** |
+
+Tracking roughly doubles the non-tracking control at every size. It reduces "find the victim in the
+whole swarm" to "find the victim in one bucket", exactly and indefinitely; converting that into group
+membership is the separate step that §3.1's admission control performs exactly.
 
 ### 3.4 A quarter of a group moves the model 35–148× off target
 
