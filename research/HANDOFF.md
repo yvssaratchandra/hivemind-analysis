@@ -75,8 +75,15 @@ Neither threshold scales with swarm size, which is why the attacks in §4.1 and 
 | (2b) decay under re-formation | **done** — §4.4 |
 | (3) β → learning harm, plain vs Krum | **done** — §4.11 |
 
-Beyond the brief: **§4.12** — a forged withdrawal removes a peer from discovery with one DHT write,
-no crafted identities and no custody, and the peer cannot undo it.
+Beyond the brief: **§4.12** — a forged withdrawal removes a peer from discovery with one DHT write, no
+crafted identities and no custody, and the peer cannot undo it. Measured with a control, it does **not**
+convert into group capture; it is a censorship and availability primitive. Do not cite it as a capture
+attack.
+
+**`FINDINGS.md` is the argument on its own** — background, the six control-plane surfaces, the findings
+that matter, limitations, future work — written to be handed to someone with no context. This file is
+the working record behind it: every run, every trap, every falsified hypothesis. Start there, come here
+for detail.
 
 ### Code
 
@@ -97,6 +104,7 @@ no crafted identities and no custody, and the peer cannot undo it.
 
 Results are CSVs in `research/results/`, tracked in git, named for their configuration:
 `step2_groups_16x8.csv` = 16 peers at group size 8; `_b` = independent repeat;
+`step4_reformation_<arm>_n<peers>_g<group_size>[_k<attackers>][_r<repeat>].csv`;
 `step6_isolation_<arm>_k<k>_n<n>_<cache>[_b<bucket_size>][_r<repeat>].csv`, where `<cache>` is
 `cached`, `nocache`, or `no` plus the knobs disabled, and the bucket and repeat suffixes appear only
 when they differ from the default;
@@ -728,7 +736,46 @@ route to β, and §4.3's admission control remains the thing that actually decid
 not 3. The variance at this swarm size is what §5 warns about, and it is larger than any effect the
 forgery could plausibly have.
 
+### Where this sits in the literature (searched 2026-09; `QA_NOTES.md` Q15 predates this)
+
+Q15 established that nobody has analysed Hivemind's DHT security, and that both Hivemind papers state
+the uniform-`node_id` assumption and defer the analysis. That still holds. **What Q15 does not cover is
+the group-formation thesis**, and there the space is much busier than it looks:
+
+- **GRANITE** (arXiv:2504.17471) is the closest work and says it in the abstract: *"Byzantine nodes can
+  poison models and manipulate peer sampling to amplify their influence."* Its defence adjusts
+  aggregation thresholds on *"estimated Byzantine density in the neighbourhood of each node"*, giving
+  exponential decay. That is α → β amplification and its decay, already with a defence.
+- **Byzantine-tolerant peer sampling is an established subfield** — Honeybee (arXiv:2402.16201), Basalt,
+  RAPTEE.
+- **Pasquini, Raynal & Troncoso** (IEEE S&P 2023, arXiv:2205.08443) already argue decentralized learning
+  *"does not offer any security advantage over federated learning"*. The **same EPFL group** wrote the
+  sandtrap paper (arXiv:2303.03829) — they own this space, so check their recent output first.
+- **Near miss worth knowing precisely:** sandtrap isolates a victim, but by *crafted values on a fixed
+  graph* — the paper says the effect is *"similar to an attack in which the connections of the victim
+  to the network are removed"*. Similar to. It does not remove them. This project's attacks act on
+  membership, which is a different mechanism.
+
+**So do not frame this as "robust aggregation's threat model is wrong".** That is taken. What appears
+untouched is **election-and-admission group assembly** — every competitor above is random peer sampling
+over a graph, where Hivemind elects a leader by self-declared deadline and lets it admit by identity.
+That is a different protocol shape with a different attack surface, and it is where §4.3, §4.6 and §4.4
+live. **Verify that gap before any novelty claim rests on it**; four searches is not a literature review.
+
+The framing model to copy is Sridhar et al., *Content Censorship in IPFS* (NDSS 2024): a known attack
+class, one deployed system, rigorous measurement, mitigation. Venue shape is NDSS / USENIX / EuroS&P,
+not an ML theory venue.
+
+PDFs of all of the above were downloaded to `~/Downloads/hivemind-security-papers/` on the second
+machine — **not in the repo**, so re-fetch them if that machine is gone.
+
 ### Loose ends, in descending order of interest
+
+- **Compose tracking with admission control.** §4.4 scaled shows tracking puts an attacker in the
+  victim's *bucket* exactly and indefinitely (63/63 predictions), but converting that to the victim's
+  *group* falls to 38 % once a bucket holds three groups. §4.3's admission control converts group
+  presence into capture exactly. The two have never been run together, and that composition is the
+  obvious strongest attack this project has not measured.
 
 - **Does the §4.6 law hold at a third `bucket_size`?** Measured at 20 (step at 20) and 40 (25 fail, 45
   work). A run at `--bucket-size 8` with 5 and 10 Sybils would give a third point on the line at almost
