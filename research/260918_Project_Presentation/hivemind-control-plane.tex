@@ -1,0 +1,432 @@
+% =============================================================================
+% Hivemind control-plane security -- project presentation
+% Target: ~10 minutes. Slides are visual prompts for the speaker, not handouts.
+% Build:  pdflatex hivemind-control-plane.tex   (twice, for the section list)
+% =============================================================================
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Chalmers}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, fit, backgrounds}
+\usepackage{array}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, allcolors=ChalmersPurple}
+
+\colorlet{okgreen}{ChalmersGreen}
+\colorlet{badred}{ChalmersRed}
+
+% Control plane = red throughout; data plane = green. Used consistently so the
+% audience learns the coding on slide 3 and can read every later diagram.
+\colorlet{ctl}{ChalmersRed}
+\colorlet{dat}{ChalmersGreen}
+
+\title{Who Decides Who You Train With?\\Control-Plane Attacks on Hivemind}
+\author{Sarat Yellapragada}
+\institute{Chalmers University of Technology}
+\date{2026-09-18}
+
+\shorttitle{\ChalmersSectionName}
+
+\chalmersheadline{logo+word}
+\chalmerssectiondividers{solid}
+\chalmersfooterpages{both}
+
+% =============================================================================
+\begin{document}
+\titleframe
+
+% =============================================================================
+\section{Background}
+% =============================================================================
+
+% --- What Hivemind is --------------------------------------------------------
+% SAY: volunteers, no server, nobody trusts anybody. Peers train locally, then
+% periodically average gradients -- but only inside a small GROUP, reassembled
+% every round. Groups are the unit of trust.
+\begin{frame}{Training a model on machines nobody controls}
+\centering
+\vspace{3mm}
+\begin{tikzpicture}[
+    >=Stealth,
+    peer/.style={circle, draw=ChalmersGrey, fill=ChalmersPurple!12,
+                 minimum size=9mm, font=\scriptsize},
+    grp/.style={draw=ChalmersPurple, thick, rounded corners,
+                inner sep=4mm, dashed}
+]
+    \node[peer] (a) at (0,0)      {};
+    \node[peer] (b) at (1.1,0.7)  {};
+    \node[peer] (c) at (1.0,-0.7) {};
+    \begin{scope}[on background layer]
+        \node[grp, fit=(a)(b)(c), label={[font=\scriptsize\bfseries,
+              text=ChalmersPurple]below:group}] {};
+    \end{scope}
+
+    \node[peer] (d) at (4.2,0.6)  {};
+    \node[peer] (e) at (5.3,-0.1) {};
+    \node[peer] (f) at (4.3,-0.8) {};
+    \begin{scope}[on background layer]
+        \node[grp, fit=(d)(e)(f)] {};
+    \end{scope}
+
+    \node[peer] (g) at (8.4,0.5)  {};
+    \node[peer] (h) at (9.5,-0.3) {};
+    \node[peer] (i) at (8.5,-0.9) {};
+    \begin{scope}[on background layer]
+        \node[grp, fit=(g)(h)(i)] {};
+    \end{scope}
+
+    \node[font=\small\bfseries, text=ChalmersGrey] at (2.7,1.6)  {no server};
+    \node[font=\small\bfseries, text=ChalmersGrey] at (6.9,1.6)  {no identity check};
+    \node[font=\small\bfseries, text=ChalmersGrey] at (10.4,1.6) {anyone can join};
+
+    \draw[->, thick, ChalmersPurple] (2.2,-1.9) -- (9.4,-1.9)
+        node[midway, below, font=\small] {groups reassemble every round};
+\end{tikzpicture}
+\end{frame}
+
+% --- The stack: control plane vs data plane ----------------------------------
+% SAY: this is the whole talk in one slide. Byzantine-robust ML lives in the
+% green bands -- it defends the VALUES peers send. The red bands decide WHO is
+% in your group. Nobody has looked at the red bands.
+\begin{frame}{Two planes. The literature only defends one.}
+\centering
+\vspace{2mm}
+\begin{tikzpicture}[
+    band/.style={draw=ChalmersGrey, rounded corners=1pt, text width=64mm,
+                 minimum height=9mm, align=left, font=\small, inner sep=3mm},
+    tag/.style={font=\scriptsize\bfseries, text width=22mm, align=left}
+]
+    \node[band, fill=dat!10]  (l5) at (0,0)      {\textbf{Optimizer} \quad accumulate, average, apply};
+    \node[band, fill=dat!10]  (l4) at (0,-1.15)  {\textbf{All-reduce} \quad average inside the group};
+    \node[band, fill=ctl!14, draw=ctl, very thick] (l3) at (0,-2.30)
+        {\textbf{Matchmaking} \quad advertise, elect a leader, admit members};
+    \node[band, fill=ctl!14, draw=ctl, very thick] (l2) at (0,-3.45)
+        {\textbf{Kademlia DHT} \quad who stores what, who answers a lookup};
+    \node[band, fill=ChalmersGrey!12] (l1) at (0,-4.60)
+        {\textbf{libp2p} \quad authenticated connections};
+
+    \node[tag, text=dat, right=5mm of l5] {data plane};
+    \node[tag, text=dat, right=5mm of l4] {\emph{what} you send};
+    \node[tag, text=ctl, right=5mm of l3] {CONTROL PLANE};
+    \node[tag, text=ctl, right=5mm of l2] {\emph{who} you send it to};
+    \node[tag, text=ChalmersGrey, right=5mm of l1] {sound};
+
+    \node[font=\footnotesize\itshape, text=dat, left=4mm of l4, text width=24mm,
+          align=right] {Krum, median,\\BTARD};
+    \node[font=\footnotesize\itshape, text=ctl, left=4mm of l3, text width=24mm,
+          align=right] {unexamined};
+\end{tikzpicture}
+\end{frame}
+
+% --- Two identities ----------------------------------------------------------
+% SAY: every peer carries two names. One is a hash of a public key -- forging it
+% is impossible. The other decides which DHT records you store, and you just...
+% pick it. Routing never consults the sound one.
+\begin{frame}{Every peer has two names. Only one is checked.}
+\centering
+\vspace{4mm}
+\begin{tikzpicture}[
+    card/.style={draw, rounded corners, text width=48mm, minimum height=34mm,
+                 align=center, font=\small, inner sep=5mm}
+]
+    \node[card, fill=dat!10, draw=dat, very thick] (p) {%
+        \textbf{\large PeerID}\\[3mm]
+        {\footnotesize \texttt{multihash(sha256(pubkey))}}\\[4mm]
+        {\color{dat}\bfseries TLS-authenticated}\\
+        {\footnotesize unforgeable}};
+
+    \node[card, fill=ctl!12, draw=ctl, very thick, right=14mm of p] (n) {%
+        \textbf{\large node\_id}\\[3mm]
+        {\footnotesize decides \emph{which records you store}}\\[4mm]
+        {\color{ctl}\bfseries chosen by the peer}\\
+        {\footnotesize accepted verbatim}};
+
+    \node[font=\footnotesize, text=ChalmersGrey, below=3mm of p] {verified};
+    \node[font=\footnotesize\bfseries, text=ctl, below=3mm of n]
+        {custody is decided here};
+\end{tikzpicture}
+
+\vspace{4mm}
+{\small\itshape Routing never consults the sound identity.}
+\end{frame}
+
+% --- Group formation is a race ----------------------------------------------
+% SAY: how a group actually forms. Four steps, and the attacker controls two of
+% them outright. Deadline is self-chosen. Admission runs on the leader's own
+% machine, with your authenticated ID in hand -- so it can pick by identity.
+\begin{frame}{A group is not sampled. It is raced for.}
+\centering
+\vspace{2mm}
+\begin{tikzpicture}[
+    >=Stealth, node distance=5mm,
+    step/.style={draw, rounded corners, text width=24mm, minimum height=22mm,
+                 align=center, font=\footnotesize, inner sep=3mm,
+                 fill=ChalmersPurple!8},
+    hot/.style={step, fill=ctl!14, draw=ctl, very thick}
+]
+    \node[step] (a) {\textbf{1. Advertise}\\[2mm] write a record with a deadline};
+    \node[hot, right=of a] (b) {\textbf{2. Elect}\\[2mm] earliest deadline leads};
+    \node[step, right=of b] (c) {\textbf{3. Request}\\[2mm] others ask to join};
+    \node[hot, right=of c] (d) {\textbf{4. Admit}\\[2mm] leader accepts or rejects};
+
+    \draw[->, thick, ChalmersGrey] (a) -- (b);
+    \draw[->, thick, ChalmersGrey] (b) -- (c);
+    \draw[->, thick, ChalmersGrey] (c) -- (d);
+
+    \node[font=\scriptsize\bfseries, text=ctl, below=3mm of b, text width=30mm,
+          align=center] {deadline is self-chosen};
+    \node[font=\scriptsize\bfseries, text=ctl, below=3mm of d, text width=32mm,
+          align=center] {runs on the leader's machine,\\by identity};
+\end{tikzpicture}
+
+\vspace{5mm}
+{\small Nothing in this sequence is a random draw.}
+\end{frame}
+
+% =============================================================================
+\section{What I built}
+% =============================================================================
+
+% --- The harness -------------------------------------------------------------
+% SAY: everything is measured on real swarms -- real DHT, real p2pd, real
+% averaging -- never a simulation. Core Hivemind is never modified; every attack
+% uses a supported hook or the public API. 8 to 104 nodes on one machine.
+\begin{frame}{Measured, not simulated}
+\centering
+\vspace{3mm}
+\begin{tikzpicture}[
+    stage/.style={draw, rounded corners, text width=26mm, minimum height=17mm,
+                  align=center, font=\footnotesize, inner sep=2.5mm},
+    base/.style={stage, fill=dat!10, draw=dat},
+    atk/.style={stage, fill=ctl!12, draw=ctl}
+]
+    \node[base] (s1) {\textbf{Baseline}\\[1mm]{\scriptsize does the swarm really average?}};
+    \node[base, right=5mm of s1] (s2) {\textbf{Group membership}\\[1mm]{\scriptsize who averages with whom}};
+    \node[atk,  right=5mm of s2] (s3) {\textbf{Eclipse}\\[1mm]{\scriptsize owning a DHT record}};
+    \node[atk,  right=5mm of s3] (s4) {\textbf{Capture}\\[1mm]{\scriptsize owning the victim's group}};
+
+    \node[atk, below=6mm of s1] (s5) {\textbf{Re-formation}\\[1mm]{\scriptsize following the victim}};
+    \node[atk, right=5mm of s5] (s6) {\textbf{Selective lying}\\[1mm]{\scriptsize what the victim sees}};
+    \node[atk, right=5mm of s6] (s7) {\textbf{Poisoning}\\[1mm]{\scriptsize what it costs the model}};
+    \node[atk, right=5mm of s7] (s8) {\textbf{Withdrawal}\\[1mm]{\scriptsize erasing a peer}};
+\end{tikzpicture}
+
+\vspace{6mm}
+{\small
+\textcolor{ChalmersGrey}{Live swarms, 8--104 nodes\quad\textbar\quad}
+\textcolor{ChalmersGrey}{real DHT + real averaging\quad\textbar\quad}
+\textbf{core Hivemind never modified}}
+\end{frame}
+
+% =============================================================================
+\section{Findings}
+% =============================================================================
+
+% --- beta is chosen ----------------------------------------------------------
+% SAY: alpha = your share of the swarm. beta = your share of one group. The
+% whole robust-ML literature assumes beta is roughly alpha, because membership
+% is a random draw. It isn't. When you lead, you admit exactly whom you like.
+% One identity next to the victim = half the group.
+\begin{frame}{$\beta$ is chosen, not inherited}
+\centering
+\vspace{2mm}
+
+{\large $\alpha$ = share of the \emph{swarm} \qquad
+        $\beta$ = share of one \emph{group}}
+
+\vspace{6mm}
+\begin{tikzpicture}[x=1cm, y=1cm]
+    \foreach \kk/\bb/\yy in {1/0.500/0, 2/0.667/-1.1, 4/0.800/-2.2} {
+        \node[font=\small, anchor=east] at (-0.2,\yy) {$k=\kk$};
+        \fill[ctl!25] ({0},{\yy-0.35}) rectangle ({8},{\yy+0.35});
+        \fill[ctl]    ({0},{\yy-0.35}) rectangle ({\bb*8},{\yy+0.35});
+        \node[font=\small\bfseries, anchor=west, text=ctl] at (8.3,\yy)
+            {$\beta = \bb$};
+    }
+    \node[font=\footnotesize, text=ChalmersGrey, anchor=west] at (0,-3.2)
+        {attacker peers beside the victim $\Rightarrow$ $\beta = k/(k{+}1)$, no variance};
+\end{tikzpicture}
+
+\vspace{6mm}
+{\small One identity, $\alpha = 0.06$ \quad$\longrightarrow$\quad
+ mean $\beta = 0.32$ \quad
+ \textbf{\textcolor{ctl}{8$\times$ amplification}}}
+\end{frame}
+
+% --- cost of control ---------------------------------------------------------
+% SAY: two thresholds, and neither grows with the network. Custody = 5. But
+% custody isn't control: a reader asks 20 peers, so the 15 honest answers get
+% merged back in. Own all 20 and the victim sees only what you show it.
+% Identities cost 0.1 seconds. 50 peers or 10,000 -- same price.
+\begin{frame}{What control costs}
+\centering
+\vspace{4mm}
+\renewcommand{\arraystretch}{1.9}
+{\small
+\begin{tabular}{@{} >{\bfseries}p{5.2cm}
+                    >{\centering\arraybackslash}p{3.0cm}
+                    >{\centering\arraybackslash}p{3.6cm} @{}}
+    \toprule
+    Capability & Identities & Grows with swarm? \\
+    \midrule
+    Store a given record
+        & \textcolor{ctl}{\Large\bfseries 5}
+        & \textcolor{okgreen}{\bfseries no} \\
+    Decide what a lookup returns
+        & \textcolor{ctl}{\Large\bfseries 20}
+        & \textcolor{okgreen}{\bfseries no} \\
+    \bottomrule
+\end{tabular}}
+
+\vspace{7mm}
+{\small
+Threshold measured \textbf{exactly} at 20 --- 18 identities gives 14\%, 20 gives 100\%.\\[2mm]
+Swarm padded 14 $\rightarrow$ 104 nodes: \textbf{no change}.\\[2mm]
+\textcolor{ChalmersGrey}{An identity costs \textasciitilde0.1\,s to mint.}}
+\end{frame}
+
+% --- following the victim ----------------------------------------------------
+% SAY: Hivemind reshuffles peers between rounds -- that's meant to dilute your
+% exposure. But the shuffle is seeded on a value every group member already
+% holds. Share ONE group with the victim and you can compute where it goes next,
+% forever. 63 out of 63 correct. It cannot degrade with scale.
+\begin{frame}{The mechanism meant to lose you}
+\centering
+\vspace{3mm}
+
+{\large Re-formation reshuffles peers between rounds \quad
+ \textcolor{ChalmersGrey}{---\ so exposure should decay}}
+
+\vspace{5mm}
+\begin{tikzpicture}[
+    >=Stealth,
+    b/.style={draw=ChalmersGrey, rounded corners, minimum width=17mm,
+              minimum height=10mm, font=\scriptsize}
+]
+    \node[b, fill=ChalmersPurple!10] (r1) {round $n$};
+    \node[b, fill=ChalmersPurple!10, right=14mm of r1] (r2) {round $n{+}1$};
+    \node[b, fill=ChalmersPurple!10, right=14mm of r2] (r3) {round $n{+}2$};
+    \draw[->, very thick, ctl] (r1) -- (r2);
+    \draw[->, very thick, ctl] (r2) -- (r3);
+    \node[font=\scriptsize\bfseries, text=ctl, above=2mm of r2] {predicted};
+    \node[font=\scriptsize\bfseries, text=ctl, above=2mm of r3] {predicted};
+\end{tikzpicture}
+
+\vspace{5mm}
+{\Large\bfseries\color{ctl} 63 / 63 buckets predicted correctly}
+
+\vspace{2mm}
+{\small across swarms of 16, 32 and 48 peers ---
+ \textcolor{ChalmersGrey}{a shared seed and an index; neither depends on swarm size}}
+\end{frame}
+
+% --- what it costs the model -------------------------------------------------
+% SAY: so what? With one poisoning peer in four: a flipped gradient alone does
+% nothing -- the mean dilutes it. Add the sender-declared weight, which is
+% applied verbatim, and the same gradient moves the model 35 to 148 times
+% further from the optimum. Coordinate median takes almost all of it back.
+\begin{frame}{What $\beta = \frac{1}{4}$ costs the model}
+\centering
+\vspace{6mm}
+\begin{tikzpicture}[x=1cm, y=1cm]
+    \foreach \lbl/\ww/\col/\yy in {%
+        {no attack}/0.1/ChalmersGrey/0,
+        {poison alone}/0.1/ChalmersGrey/-1.0,
+        {poison $+$ declared weight}/6.0/ctl/-2.0,
+        {$+$ coordinate median}/0.2/dat/-3.0}
+    {
+        \node[font=\small, anchor=east] at (-0.2,\yy) {\lbl};
+        \fill[\col] ({0},{\yy-0.3}) rectangle ({\ww},{\yy+0.3});
+    }
+    \node[font=\small\bfseries, text=ctl, anchor=west] at (6.2,-2.0)
+        {35--148$\times$};
+    \node[font=\small\bfseries, text=dat, anchor=west] at (0.4,-3.0)
+        {recovered};
+\end{tikzpicture}
+
+\vspace{8mm}
+{\small distance from the true optimum, relative to no attack}
+\end{frame}
+
+% --- robust aggregation fails by construction --------------------------------
+% SAY: and this is the part that matters for the literature. Krum and median
+% both have preconditions on GROUP SIZE. They assume n is given to you. But the
+% attacker is the leader -- it closes the group when it likes, and the minimum
+% is two. At n=2 both rules tolerate zero attackers.
+\begin{frame}{The attacker picks the denominator}
+\centering
+\vspace{3mm}
+
+{\small Krum needs $2f + 2 < n$ \qquad median needs $q < n/2$ \qquad
+ \textcolor{ChalmersGrey}{---\ both assume $n$ is given}}
+
+\vspace{5mm}
+\renewcommand{\arraystretch}{1.7}
+{\small
+\begin{tabular}{@{} >{\centering\arraybackslash}p{3.4cm}
+                    >{\centering\arraybackslash}p{2.6cm}
+                    >{\centering\arraybackslash}p{2.6cm}
+                    >{\centering\arraybackslash}p{3.0cm} @{}}
+    \toprule
+    Group size $n$ & Krum tolerates & Median tolerates & Attacker achieves \\
+    \midrule
+    \textbf{2} \quad{\scriptsize(the minimum)} & 0 & 0 & \textcolor{ctl}{\bfseries 0.500} \\
+    4  & 0 & 0.25 & \textcolor{ctl}{\bfseries 0.667} \\
+    8  & 0.25 & 0.375 & \textcolor{ctl}{\bfseries 0.800} \\
+    \bottomrule
+\end{tabular}}
+
+\vspace{6mm}
+{\small Every precondition fails \textbf{before a single gradient is crafted}.}
+\end{frame}
+
+% =============================================================================
+\section{Where this goes}
+% =============================================================================
+
+% --- next steps + honesty ----------------------------------------------------
+% SAY: two defences are buildable right now, and the interesting part is that
+% one works and one can't. Signing the records kills the cheap attacks. Nothing
+% fixes an attacker who wins the election and admits whom it pleases.
+% Be honest about limits: small swarms on one machine, toy model, no defence
+% evaluated yet. And the adjacent literature is busy -- peer sampling is taken;
+% election-and-admission assembly looks open.
+\begin{frame}{Next}
+\vspace{4mm}
+\begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+        {\large\bfseries Build the two defences}
+        \vspace{3mm}
+        \begin{itemize}
+            \setlength{\itemsep}{3mm}
+            \item[\textcolor{dat}{$\blacksquare$}] {\small Sign the averaging records\\
+                  {\scriptsize\color{ChalmersGrey}the machinery already exists elsewhere in the code}}
+            \item[\textcolor{dat}{$\blacksquare$}] {\small Hide the reshuffle seed until after placement\\
+                  {\scriptsize\color{ChalmersGrey}breaks the tracking attacker}}
+            \item[\textcolor{ctl}{$\blacksquare$}] {\small \textbf{Neither touches admission control}}
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+        {\large\bfseries Known limits}
+        \vspace{3mm}
+        \begin{itemize}
+            \setlength{\itemsep}{3mm}
+            \item {\small 8--104 nodes, one machine}
+            \item {\small toy model, by design}
+            \item {\small no defence evaluated yet}
+        \end{itemize}
+    \end{column}
+\end{columns}
+
+\vspace{7mm}
+\centering
+{\small\itshape The cheap bugs have cheap fixes.\quad
+ \textcolor{ctl}{The structural one does not.}}
+\end{frame}
+
+\end{document}
