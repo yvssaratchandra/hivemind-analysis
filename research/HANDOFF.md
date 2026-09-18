@@ -373,15 +373,35 @@ seeds. The other 15 are honest, answer truthfully, and `add_candidate` merges th
 20 identities is about two seconds of minting. The attack needs no caching-free network, no shrunken
 routing table, and no small swarm.
 
-**Caching is not a defence here, and that is now measured rather than assumed.** At 25 Sybils capture is
-100 % with caching on *and* with all three cache knobs disabled. Caching only ever mattered while honest
-peers still occupied part of the seed set — it gave them something to answer with. Once they are out of
-the seed set there is nobody left to cache.
+**Caching sets the price: it is what makes 5 identities insufficient.** The full 2×2, from the recorded
+runs:
+
+| Sybils | caching | captured |
+|---|---|---|
+| 5 | **off** | **8/8** |
+| 5 | on | **0/15** |
+| 25 | on | 15/15 |
+| 25 | off | 7/7 |
+
+**With caching off, `num_replicas` = 5 identities are enough.** `rpc_find` answers `NOT_FOUND` unless the
+peer holds the key in `storage` *or* `cache` (`protocol.py:343-351`), so with caching disabled only the 5
+replicas can answer at all and owning them is total control. Caching gives the other 15 seeds copies to
+answer with — `cache_on_store` (a peer caches its own advertisement after writing it), `cache_locally`
+(caches what it reads), `cache_nearest=1` (each lookup plants a copy on a peer along the path) — and then
+you need all 20.
+
+So the law is not "you need `bucket_size` identities" flatly. It is: **own every peer the victim asks
+that has a copy.** Caching decides how many that is, raising the cost 4× from `num_replicas` to
+`bucket_size`. It is not a defence — 20 identities is ~2 s of minting (§4.1) — but it is not irrelevant
+either, and an earlier version of this section was wrong in both directions.
 
 **Two hypotheses were falsified getting here. Do not re-run them.**
 
-- *"Caching defeats it."* This section originally said so. Settled above: identical capture with caching
-  on and off.
+- *"Caching defeats it."* Half right, and the correction matters. Caching does not *defeat* the attack:
+  at 25 Sybils capture is 100 % with caching on and with all three knobs disabled. But the claim that
+  capture is "identical with caching on and off" was only ever tested at 25 Sybils, where the seed set is
+  already fully owned. **At 5 Sybils it is 8/8 off versus 0/15 on.** Caching changes the required number
+  of identities, not the outcome once you have them.
 - *"The swarm must be larger than the routing table."* Shrinking `bucket_size` to 4 restores the attack
   at 5 Sybils (7/11 captured) which looked like confirmation — but that is the same seed-set law, since
   5 crafted identities cover a seed set of 4. Padding the swarm with honest DHT-only nodes to

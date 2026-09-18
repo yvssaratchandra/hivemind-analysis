@@ -89,10 +89,17 @@ amplification**.
 Both thresholds are the victim's own DHT parameters, not properties of the network. Identities
 cost ~0.1 s each to mint.
 
-Custody alone is not control: five identities hold the record, but a reader asks twenty peers
-and the fifteen honest answers are merged back in. Confirmed over a 28-run campaign — capture
-steps from 14 % at 18 identities to **100 % at exactly 20**, and doubling `bucket_size` to 40
-makes 25 identities fail where 45 succeed. Padding the swarm to 104 nodes changes nothing.
+Custody alone is not control: five identities hold the record, but a reader asks twenty peers,
+and opportunistic caching means the other fifteen have copies to answer with — which are merged
+back in. Confirmed over a 28-run campaign: capture steps from 14 % at 18 identities to **100 % at
+exactly 20**, doubling `bucket_size` to 40 makes 25 identities fail where 45 succeed, and padding
+the swarm to 104 nodes changes nothing.
+
+Caching is what sets that price. With it disabled only the five replicas can answer at all, and
+five identities give total control (8/8 captured); with it enabled the same five give none (0/15).
+So the rule is *own every peer the victim asks that holds a copy* — caching raises how many that is
+from `num_replicas` to `bucket_size`, a 4× cost increase and no more, since 20 identities is about
+two seconds of minting.
 
 ### 3.3 The mechanism meant to dilute exposure does not
 
