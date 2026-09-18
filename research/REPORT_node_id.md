@@ -78,6 +78,13 @@ Two points about what this shows:
 - **The verdict comes from an independent honest peer**, not the attacker's own state. That peer ranks the crafted identity nearest and admits it to its routing table.
 - **The attacker's PeerID is genuine.** It is a real hash of a real keypair and would survive any TLS check. The cryptographic identity is sound; it simply has no bearing on custody.
 
+**A companion check** (`research/repro_id_pairing.py`, ~15 s) shows why the crafted address is reachable
+at all: `rpc_find` returns `nearest_node_ids` and `nearest_peer_ids` as two aligned arrays
+(`protocol.py:366-367`), so every lookup answer hands over the dialling address for each `node_id` it
+names. The pairing is *transmitted*, never derived — and never checked. A responder may name any
+`(node_id, peer_id)` couple and the receiver files it in its routing table; dialling later proves the
+PeerID via TLS, but never the entitlement to that `node_id`.
+
 ## Expected result
 
 A peer's routing address should be derived from, or bound to, its authenticated public key — as in libp2p's own Kad-DHT (keyed on PeerID) or Ethereum's discovery after Geth v1.9.0 (node ID derived from the secp256k1 key).
