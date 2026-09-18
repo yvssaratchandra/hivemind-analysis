@@ -40,10 +40,10 @@ git clone <this repo> && cd hivemind
 python3 -m venv .venv
 .venv/bin/pip install -e .          # also fetches the p2pd binary
 .venv/bin/pip install -r requirements.txt
-.venv/bin/python research/repro_node_id.py
+.venv/bin/python research/reproduce_node_id.py
 ```
 
-The script (`research/repro_node_id.py`, ~60 lines) starts a bootstrap node, four ordinary peers, and one peer that asks for a deliberately arbitrary identifier — `0xDEADBEEF` repeated to 160 bits, visibly not a hash output:
+The script (`research/reproduce_node_id.py`, ~60 lines) starts a bootstrap node, four ordinary peers, and one peer that asks for a deliberately arbitrary identifier — `0xDEADBEEF` repeated to 160 bits, visibly not a hash output:
 
 ```python
 CHOSEN = DHTID(0xDEADBEEFDEADBEEFDEADBEEFDEADBEEFDEADBEEF)
@@ -78,7 +78,7 @@ Two points about what this shows:
 - **The verdict comes from an independent honest peer**, not the attacker's own state. That peer ranks the crafted identity nearest and admits it to its routing table.
 - **The attacker's PeerID is genuine.** It is a real hash of a real keypair and would survive any TLS check. The cryptographic identity is sound; it simply has no bearing on custody.
 
-**A companion check** (`research/repro_id_pairing.py`, ~15 s) shows why the crafted address is reachable
+**A companion check** (`research/reproduce_id_pairing.py`, ~15 s) shows why the crafted address is reachable
 at all: `rpc_find` returns `nearest_node_ids` and `nearest_peer_ids` as two aligned arrays
 (`protocol.py:366-367`), so every lookup answer hands over the dialling address for each `node_id` it
 names. The pairing is *transmitted*, never derived — and never checked. A responder may name any

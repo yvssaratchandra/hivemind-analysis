@@ -1,34 +1,3 @@
-"""
-Minimal reproduction: `node_id` and `peer_id` travel together in every lookup
-answer, and the pairing is asserted rather than proven.
-
-Hivemind peers carry two independent identities — the Kademlia `node_id` (which
-decides custody) and the libp2p `PeerID` (which decides how to dial). Because
-they are independent, a peer cannot *derive* one from the other, so the pairing
-has to be transmitted: `rpc_find` returns two aligned arrays,
-`nearest_node_ids` and `nearest_peer_ids` (`dht/protocol.py:366-367`,
-`proto/dht.proto:57-58`).
-
-Contrast libp2p's own Kad-DHT, where a peer's DHT position *is* a function of
-its PeerID, so nothing needs carrying.
-
-This script wraps `rpc_find`, captures one genuine response, and checks each
-pair against ground truth built from the node objects themselves.
-
-Expected: both arrays present, equal length, index-aligned, every pair correct.
-
-They are correct here because every node is honest. **Nothing in the protocol
-checks the pairing** — a responder may name any (node_id, peer_id) couple it
-likes and the receiver files it in its routing table. Dialling later proves the
-PeerID via TLS, but never that the peer was entitled to that node_id. See
-`REPORT_node_id.md`.
-
-Run:
-    .venv/bin/python research/repro_id_pairing.py
-
-Loopback only; ~15 s.
-"""
-
 import asyncio
 
 from hivemind.dht.node import DHTNode
@@ -40,10 +9,6 @@ from hivemind.proto import dht_pb2
 LOCALHOST = ["/ip4/127.0.0.1/tcp/0"]
 captured = []
 
-# Wrap rpc_find *before* any node exists: handlers are bound at registration
-# (`getattr(servicer, method_name)`, `p2p/servicer.py:117`), so a later
-# replacement would never be seen. The type annotations are load-bearing too —
-# `_collect_rpc_handlers` reads them and raises at startup without them.
 _original_rpc_find = DHTProtocol.rpc_find
 
 
@@ -64,7 +29,6 @@ async def main() -> None:
     initial_peers = [str(addr) for addr in await bootstrap.get_visible_maddrs()]
     nodes = [await DHTNode.create(initial_peers=initial_peers, host_maddrs=LOCALHOST) for _ in range(4)]
 
-    # ground truth: who those node_ids actually belong to
     truth = {int(node.node_id): str(node.peer_id) for node in [bootstrap, *nodes]}
     await asyncio.sleep(2)
 
