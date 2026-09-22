@@ -67,14 +67,58 @@ Prime Intellect archived its peer-to-peer protocol and pivoted to agents; Gensyn
 moved since January 2026. Dying targets make bad theses.
 
 ### Others if more breadth is wanted
-Lattica (Rust, libp2p, decentralised AI), Exo, Kalavai, Bacalhau, Fluence, Codex, drand.
+Vetted September 2026 and confirmed to run libp2p with a Kademlia DHT: Lattica (Rust, cross-NAT
+inference and training), SwarmLLM (Rust, single binary), KwaaiNet (Hivemind/Petals-compatible),
+Hyperspace (libp2p v3, large deployment). Unvetted: Bacalhau, Fluence, Codex, drand.
+**Rejected on inspection: Exo and Kalavai** — see the delegation split below for why.
 
-## Ethereum
+## Ethereum and IPFS
 
-Not "more of the same if time permits". Treat it as the **control case**: discv5 already has the
-binding Hivemind lacks, since the node ID is derived from the secp256k1 key. Measuring the residual
-attack surface where the fix is *present* is what turns the framework from a list of bugs into
-something with predictive power. That is the part that reads as research rather than pentesting.
+Not "more of the same if time permits". These serve two distinct purposes, and both are needed.
+
+**As the control case.** discv5 already has the binding Hivemind lacks, since the node ID is
+derived from the secp256k1 key. Measuring the residual attack surface where the fix is *present*
+is what turns the framework from a list of bugs into something with predictive power. That is the
+part that reads as research rather than pentesting, and "secure for the most part" is not the same
+as secure — where the mature designs still fall short is itself a research question.
+
+**As the source of the fixes.** The mitigations these systems deploy are concrete, battle-tested
+and retrofittable, which is what lets a study of a weaker platform end in an engineering result
+rather than a bug report. The two mechanisms that matter here:
+
+- **Node ID derived from the key.** discv5 computes the DHT identifier from the secp256k1 public
+  key, so placing yourself next to a chosen target costs key grinding rather than a constructor
+  argument. libp2p's own Kad-DHT goes further and identifies peers by the `PeerID` itself. This is
+  exactly the binding Hivemind omits, and it is the fix a retrofit would port.
+- **Signed, sequence-numbered records.** An Ethereum node record is signed by the node's own key
+  and carries a sequence number, so a third party can neither forge it nor roll it back to an
+  earlier state. Compare Hivemind, where there is no `record_validator` anywhere under
+  `hivemind/averaging/` and a forged withdrawal is accepted with an arbitrary future expiration
+  (`FINDINGS.md`, `HANDOFF.md` §4.12).
+
+Each defence also has a cost — grinding raises the price of chosen placement without making it
+infinite, and signatures add latency and complexity a small project may have declined on purpose.
+Recovering *why* a project skipped the binding is as much a part of the framework as showing that
+it did.
+
+## Delegation split
+
+The thesis projects advertised in `THESIS_AD.md` start 21 January 2027 and must run parallel to
+this track, not consume it.
+
+**Mine.** The comparative framework itself; the Hivemind depth, including the open items in
+`HANDOFF.md` §6 — the `reject` control for §4.13 and the roster-equivocation experiment — and the
+Petals feasibility spike below. Petals is the primary target of *this* track precisely because it
+reuses Hivemind's own DHT, and for the same reason it should not be advertised to a student.
+
+**Delegated.** One smaller platform per student, applying the method already validated on
+Hivemind, ending in a retrofit borrowed from discv5 or the libp2p Kad-DHT. Each student fills a
+column of the table above and their mitigation result feeds back into the framework. Candidates,
+vetted September 2026: Lattica, SwarmLLM, KwaaiNet, with Hyperspace as a larger-deployment option
+and Waku as the non-ML alternative. **Kalavai and Exo were checked and rejected** — Kalavai is
+pool-based around a seed node acting as a central control plane, and Exo's discovery is
+local-network only (mDNS, UDP broadcast, Thunderbolt), so neither has an open-internet DHT
+control plane to attack.
 
 ## Constraint to settle early
 
