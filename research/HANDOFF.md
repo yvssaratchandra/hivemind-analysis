@@ -80,6 +80,15 @@ crafted identities and no custody, and the peer cannot undo it. Measured with a 
 convert into group capture; it is a censorship and availability primitive. Do not cite it as a capture
 attack.
 
+**§4.13** — a leader that accepts a follower and then goes silent denies it averaging for its whole
+step, at the cost of one identity and a `sleep()`. This is the first **Deny** result in the project;
+everything before it measures capture. Spike only — the control that decides whether it is a finding
+has not been run yet, and §4.13 says which.
+
+**§4.14** — four short GitHub-issue-format reproductions of the identity flaws, written to be handed
+to a reviewer on their own. These formalise what §4.1 assumes rather than adding new attacks, except
+`forged_pairs_report.md`, which is a **negative** result worth keeping.
+
 **`FINDINGS.md` is the argument on its own** — background, the six control-plane surfaces, the findings
 that matter, limitations, future work — written to be handed to someone with no context. This file is
 the working record behind it: every run, every trap, every falsified hypothesis. Start there, come here
@@ -101,6 +110,16 @@ for detail.
 | `step6_isolation.py` | Does list capture win the *group*? Adds DHT-only Sybils holding the key's replicas. |
 | `step7_poison.py` | Brief item 3: poisoning the all-reduce, plain averaging vs coordinate median. |
 | `step8_withdrawal.py` | Forging a withdrawal: deleting a peer from discovery with one DHT write. |
+| `step9_stall.py` | §4.13. A leader accepts a follower then sends nothing. `--no-attack` is the baseline. |
+| `reproduce_node_id.py` | A peer chooses its own `node_id`; honest peers accept it and route records to it. |
+| `reproduce_id_pairing.py` | `(node_id, peer_id)` pairs ride in every lookup answer, asserted and unchecked. |
+| `reproduce_forged_pairs.py` | Whether forging those pairs is *exploitable*. Mostly not — see §4.14. |
+| `reproduce_group_key_capture.py` | The group-key hash protects nothing: K is a forward hash of a public string. |
+
+Each `reproduce_*.py` has a matching short report: `node_id_creation_report.md`,
+`id_pairing_report.md`, `forged_pairs_report.md`, `group_key_capture_report.md`, plus
+`stall_report.md` for `step9`. These are written in the user's own voice for a supervisor — keep that
+register if you edit them. `REPORT_node_id.md` is a longer earlier version of the first.
 
 Results are CSVs in `research/results/`, tracked in git, named for their configuration:
 `step2_groups_16x8.csv` = 16 peers at group size 8; `_b` = independent repeat;
@@ -125,7 +144,7 @@ arm**, never against 0.1492. See §4.11.
 
 ---
 
-## 3. Two traps that cost the most time
+## 3. Three traps that cost the most time
 
 ### Trap 1 — a swarm that looks like it is training together, but is not
 
@@ -156,6 +175,26 @@ pickles the process object — and an averager does not pickle. Every peer dies 
 `Optimizer.__init__`, and the parent waits forever, so you see a hang with the real traceback buried in
 the child's output. Every script calls `mp.set_start_method("fork", force=True)`. Any new script needs
 it. **If a swarm fails to start, read the child traceback first.**
+
+### Trap 3 — the RPC handler name embeds the servicer class name
+
+Cost two full runs on `step9_stall.py`. Handlers are registered under `<prefix>::<ClassName>.<method>`,
+so a swarm mixing stock `DecentralizedAverager` with a subclass **fails to connect in both directions**:
+
+```
+ControlFailure: Connect failed. msg=failed to negotiate protocol:
+  protocols not supported: [stall_spike::DecentralizedAverager.rpc_join_group]
+```
+
+It presents as ordinary matchmaking failure — `failed to request potential leader`, repeating forever —
+not as a naming error, and only the buried `ControlFailure` names the cause. **Every peer must be the
+same class**, with attacker behaviour switched by a constructor flag. `step6_isolation.py` does this
+already (all peers are `IsolatingGradientAverager`, honest ones with `admit=None`); `step9_stall.py`
+takes `stall=False`.
+
+Related, and also load-bearing: overriding an RPC handler **requires type annotations**, because
+`p2p/servicer.py:_collect_rpc_handlers` reads them to register the handler and raises at startup
+without them.
 
 ---
 
@@ -688,6 +727,86 @@ gradients mix with whose. Do not report it as the latter.
 
 ---
 
+### 4.13 A leader can accept a follower and stall it for its entire step — **spike, control not yet run**
+
+Prompted by the supervisor's framing: at each step, ask whether an attacker can **Deny, Delay or
+Tamper**. Every finding above is *capture*; this is the first **Deny** result, where the attacker gains
+nothing and the victim simply loses the round.
+
+`step9_stall.py`, 1 attacker + 1 honest averager, driving `DecentralizedAverager` directly (no
+Optimizer, no model — deliberately the smallest harness that answers the question). The attacker wins
+leadership by declaring the earlier deadline, then forwards `ACCEPTED` and withholds everything after
+it.
+
+| arm | result |
+|---|---|
+| `--no-attack` (honest leader) | averaged in **0.03 s** |
+| stall | 5 full stalls + 1 truncated; **120 s step consumed, never averaged** |
+
+**The timeout law holds exactly.** Measured 22.97–23.00 s per stall against a predicted 23.0 s. The
+prediction is `matchmaking.py:216`: `time_to_expiration + request_timeout`, where `time_to_expiration`
+derives from `get_request_expiration_time()` — the **follower's own** declared expiration. So the
+victim's patience is set by the victim (`min_matchmaking_time` 20 + `request_timeout` 3). The attacker
+cannot lengthen it, and does not need to.
+
+**Why the victim does not learn.** There *is* an exclusion list, but `past_attempts` is keyed on
+`(peer_id, expiration_time)` pairs (`:497`, filtered at `:510`) — an *advertisement*, not a *peer*.
+Every averager re-declares with a fresh expiration each `min_matchmaking_time` (`:529-536`), minting a
+pair that is not in the set. The attacker chose its own `min_matchmaking_time` (6 s against a 23 s
+stall), so it refreshes three or four times per stall and is never excluded for more than one cycle.
+Laundering needs no special behaviour — re-declaring is ordinary; the attacker only sets the rate.
+
+**Same structural pattern as the `node_id` finding: the security decision keys on a field the attacker
+chooses.** Worth carrying into the thesis framework as a second instance on a different axis.
+
+**Nothing penalises delay.** Two ban mechanisms exist and neither can see this:
+
+| mechanism | catches | why it misses |
+|---|---|---|
+| `allreduce.py:115` `banned_senders` | peers not sending chunks in time | scoped to one `AllReduceRunner`; matchmaking never reached allreduce |
+| `dht/node.py:182` `Blacklist(blacklist_time=5.0, backoff_rate)` | **non-responsive** peers, exponential backoff | the attacker answers `rpc_find` and replied `ACCEPTED` — it is never silent |
+
+Both key on *silence*; this attacker is talkative and useless. Hivemind already has the concept of a
+backoff blacklist, just nowhere it would fire here.
+
+**What has NOT been run, and why the finding is not yet safe to cite.** The `reject` control — a leader
+that refuses immediately. If refusal costs the victim the same as stalling, this is just "a failed round
+takes a round" and there is no finding. Also unmeasured: whether `pause_search` (`:214`) silences the
+victim's own advertisement during the wait, and harm across a real training run. Report as a spike.
+
+**Cheapest candidate defence**, if the project turns to defences: make `past_attempts` peer-keyed with
+backoff instead of pair-keyed. Small, and testable against this exact harness — which would give the
+defence datapoint `FINDINGS.md` §5 currently lists as missing.
+
+---
+
+### 4.14 The identity flaws, written up as standalone reproductions
+
+Four short GitHub-issue-format reports with matching scripts (listed in §2). They formalise what §4.1
+already assumes rather than adding attacks — except the third, which is a negative result.
+
+- **`node_id` is caller-supplied** (`node.py:171`) and never compared against the authenticated
+  `context.remote_id`, which appears exactly once in the whole `hivemind/dht/` tree (`protocol.py:151`)
+  and is never read again. `DHTID.generate()` is SHA1 of random bits; the keypair is never an input.
+- **The `(node_id, peer_id)` pairing is transmitted, not derived** — two parallel arrays in every
+  lookup answer (`protocol.py:366-367`), zipped back together by the receiver (`:301-306`) with no
+  check. The routing table is literally two dicts, a stored association rather than a computation.
+  This is the IPFS ID-mapping question answered: there is no such table, the mapping rides the wire.
+- **Forging those pairs is mostly not exploitable** — *negative result, keep it.* One attacker serving
+  4 forged pairs at distance 0 took **4 of 5** returned lookup slots, but the record still stored on
+  **5/5 real replicas** and read back fine, because `store` skips candidates that do not answer
+  (`node.py:412-431`). The asymmetry is the point: inventing peers that are not there gains little,
+  owning the peers that genuinely are nearest takes the record outright.
+- **The group-key hash protects nothing.** The objection "K is a hash, how can the attacker sit next to
+  it?" dissolves because K is a *forward* hash of a public string — `f"{prefix}.0b{group_bits}"`
+  (`key_manager.py:42-44`), the run name every peer shares. The hash constrains where the *record*
+  goes, not where the *attacker* goes, since `node_id` is a free parameter rather than a hash output
+  the attacker must produce. Measured: 5 crafted nodes at K, K^1…K^4 took **5/5 replicas, 0/6 honest**.
+  Contrast with S/Kademlia puzzles, where the ID *is* constrained to be a hash output and proximity
+  genuinely costs work.
+
+---
+
 ## 5. Methodology notes
 
 **What replicates and what does not.** Results where the mechanism *removes* a race are stable across
@@ -790,6 +909,17 @@ PDFs of all of the above were downloaded to `~/Downloads/hivemind-security-paper
 machine — **not in the repo**, so re-fetch them if that machine is gone.
 
 ### Loose ends, in descending order of interest
+
+- **Run the `reject` control for §4.13.** Cheapest open item and the one that decides whether the stall
+  is a finding at all: a leader that refuses immediately, versus one that accepts and stalls. If the
+  victim pays the same either way, §4.13 reduces to "a failed round takes a round". Everything else in
+  §4.13's expansion list is downstream of this answer.
+
+- **Walk the whole protocol as Deny / Delay / Tamper / Select.** The supervisor's frame, plus a fourth
+  axis. Deny/Delay/Tamper is the standard Byzantine message-handling decomposition and exhausts what a
+  participant can do to a message it *handles* — but it cannot express control over *who is in the
+  group*, which is where β = k/(k+1) lives and where the literature is thinnest. §4.13 is the only Deny
+  cell filled; Tamper (wrong `group_id`, inconsistent `ordered_peer_ids`) is untouched.
 
 - **Compose tracking with admission control.** §4.4 scaled shows tracking puts an attacker in the
   victim's *bucket* exactly and indefinitely (63/63 predictions), but converting that to the victim's
