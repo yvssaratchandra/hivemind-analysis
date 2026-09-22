@@ -1,11 +1,12 @@
-# Master Thesis: Identity Binding Flaws in Peer-to-Peer AI Platforms (30 hp)
+# Master Thesis: Control-Plane Security in Peer-to-Peer AI Platforms (30 hp)
 
 *Draft advertisement for the Chalmers career portal. Start: 21 January 2027.*
 
 Alternative titles, same project:
 
+- Master Thesis: Identity Binding Flaws in Peer-to-Peer AI Platforms (30 hp) — narrower, and
+  accurate only if the student takes the discovery workflow and an identifier-binding retrofit
 - Master Thesis: Identity Flaws in Peer-to-Peer AI Platforms (30 hp)
-- Master Thesis: Control-Plane Security in Peer-to-Peer AI Platforms (30 hp)
 
 ---
 
