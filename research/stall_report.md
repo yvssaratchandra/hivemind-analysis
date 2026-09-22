@@ -65,10 +65,38 @@ leader ACCEPTED 12D3KooW9wQXvqVS...
 Measured 22.97 to 23.00 s against a predicted 23.0 s, so the timeout law holds exactly: the victim's
 patience is its own `min_matchmaking_time + request_timeout`.
 
-The part that matters is the repetition. Giving up on a stalling leader does not help, because the
-victim goes straight back to `pop_next_leader`, picks the same attacker again (it still holds the
-earliest declared deadline) and is stalled again. Five full stalls plus one truncated by the step
-deadline consumed the entire 120 s step. Against a baseline that averaged in 0.03 s.
+The part that matters is the repetition. Five full stalls plus one truncated by the step deadline
+consumed the entire 120 s step, against a baseline that averaged in 0.03 s.
+
+**Why giving up does not help the victim.** There *is* an exclusion list, but it is keyed on the
+wrong thing. `pop_next_leader` records the leader it just tried as a **pair**:
+
+```python
+# matchmaking.py:497, filtered at :510
+self.past_attempts.add((maybe_next_leader, entry.expiration_time))
+...
+if peer == self.peer_id or (peer, peer_expiration_time) in self.past_attempts:
+    continue
+```
+
+So the victim excludes an *advertisement*, not a *peer*. Meanwhile every averager re-declares itself
+with a fresh expiration every `min_matchmaking_time` (`:529-536`), which mints a pair that is not in
+`past_attempts` and re-enters the queue. The attacker sets its own `min_matchmaking_time` — 6 s here
+against the victim's 23 s stall — so it refreshes three or four times per stall and is never
+excluded for more than one cycle.
+
+The attacker does not even have to do anything unusual to launder its record. Re-declaring is
+ordinary protocol behaviour; it only controls the rate.
+
+**And nothing penalises the delay.** Hivemind has two ban mechanisms and neither can see this:
+
+| mechanism | what it catches | why it misses the stall |
+|---|---|---|
+| `allreduce.py:115` `banned_senders` | peers that do not send tensor chunks in time | scoped to one `AllReduceRunner` and discarded after; matchmaking never got far enough to start an allreduce |
+| `dht/node.py:182` `Blacklist(blacklist_time=5.0, backoff_rate)` | **non-responsive** peers, with exponential backoff | the attacker is perfectly responsive — it answers `rpc_find`, and it answered `rpc_join_group` with `ACCEPTED` |
+
+There is no reputation and no cross-round memory of who wasted your last round. Hivemind has the
+concept of a backoff blacklist, just not anywhere it would fire here.
 
 ## Notes
 Cost to the attacker: one identity, one accepted stream, and a sleep. No Sybils, no crafted
