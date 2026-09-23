@@ -84,11 +84,19 @@ effect end when the attacker stops?).
 **Why this matters more than it looks.** Every defence in Hivemind detects *omission*. `banned_senders`
 fires on peers that miss a chunk deadline. The DHT `Blacklist` fires on peers that stop responding.
 `request_timeout`, `next_chunk_timeout`, `sender_timeout`, `reducer_timeout` — all of them watch for
-silence. **Nothing detects commission.**
+silence.
+
+This does **not** mean Hivemind accepts every active message. Record validators and protocol checks
+reject some malformed, stale or incompatible input — `BAD_SCHEMA_HASH`, `BAD_EXPIRATION_TIME`,
+`BAD_GROUP_ID`, `BAD_GROUP_KEY`, `DUPLICATE_PEER_ID`, `PROTOCOL_VIOLATION`. The narrower gap is that
+none of these detects a **protocol-valid lie**: a false but well-formed routing identity, a selective
+lookup answer, a forged withdrawal, an accepted-then-stalled join, or a dishonest averaging weight.
 
 That is why the stall worked: the attacker answered every DHT query and actively replied `ACCEPTED`, so
 it was never silent and never visible. Stated generally, **Hivemind's fault-tolerance model is
-crash-fault; a Byzantine peer that stays online and keeps talking is outside it entirely.**
+dominant fault-handling path is crash/omission-oriented; protocol-valid Byzantine behaviour is only
+partly checked.** C11.Delay is the exception that proves it: past `wait_timeout` the attacker's
+commission becomes omission, and the `Blacklist` then fires.
 
 And it shows in the results below: **every demonstrated attack in this project is by commission. Not
 one is by omission.** That is a gap in what has been tried as much as a property of the system.
@@ -149,7 +157,7 @@ from the authenticated key — would change every row here.**
 
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
-| 11 | Averaging availability exchange *(also E01)* | **D — C11.Obs** | **D — C11.Delay** | **D — C11.D** | **partly X — C11.T** | — |
+| 11 | Averaging availability exchange *(also E01)* | **D — C11.Obs** | **D — C11.Delay** | **D — C11.D** | **partly X — C11.T** | **D — C7.S** |
 | 12 | Candidate priority and leader choice *(local, also E01)* | open | open | open | open | **D — C12.S** |
 | 13 | Join negotiation and admission *(also E01)* | open | open | **D — C13.D** | open | **D — C13.S** |
 | 14 | Group roster distribution | open | open | = 13 | open | = 13 |
@@ -161,9 +169,17 @@ from the authenticated key — would change every row here.**
 
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
-| 16 | Role and work assignment *(local)* | open | open | open | open | — |
-| 17 | All-reduce exchange *(payload too)* | open | open | open | **D — C17.T** | — |
+| 16 | Role and work assignment *(local)* | open | open | open | open | open |
+| 17 | All-reduce exchange *(payload too)* | open | open | open | **D — C17.T** | open |
 | 18 | Session failure and recovery | open | open | open | open | open |
+
+Select is `open`, not `—`, at 16 and 17. The leader supplies the ordered roster that assigns reducers,
+and follower-side assembly only checks membership and aligned list lengths; a peer also holds a
+separate stream per reducer and can condition its behaviour on the destination or shard. Both
+mechanisms exist in code; neither selective attack has been demonstrated.
+
+Checkpoint 11 Select reuses C7.S: that experiment controlled which averaging advertisements reached
+the victim. It is the L3 consequence of a demonstrated L2 lookup attack, not a new experiment.
 
 ### L5 — Optimizer · *control data: the progress records that drive 9 and 10*
 
@@ -212,6 +228,108 @@ question, since those are the two control-plane layers. The **Observe** and **De
 attacker's ability to see the victim was assumed rather than measured. C11.Obs is the first direct
 measurement of that assumption at the availability exchange, and C11.Delay is the project's first
 Delay result of any kind.
+
+---
+
+### Runtime trace — messages mapped to checkpoints
+
+#### Question
+
+Does the 21-checkpoint map match what honest nodes actually send, and which checkpoints have no
+separate network message?
+
+#### Work performed
+
+`trace_control_messages.py` ran four honest peers for 18 seconds. It captured messages at the caller's
+P2P boundary, exercised both averagers, and explicitly triggered state download. It kept public DHT
+operations separate from wire RPCs because the plain key is hashed before transmission.
+
+The full trace is in `results/trace_lifecycle.jsonl`; concise inventories are in
+`results/trace_lifecycle_inventory.md` and `results/trace_lifecycle_inventory.json`. Every one of the
+18,274 wire frames has its exact protobuf bytes, decoded control fields, sender, receiver, correlation
+ID, sequence number, description and outcome. All stored protobufs were decoded again and their lengths
+and SHA-256 hashes were checked.
+
+#### Observations
+
+The trace found **9,127 RPC calls across all six training RPC families**:
+
+| RPC | Calls | What it carried | Main checkpoints |
+|---|---:|---|---|
+| `rpc_ping` | 8 | node identity, time and reachability result | 2, 3 |
+| `rpc_store` | 841 | hashed key, value, expiration, cache flag and acceptance | 3, 5, 6, 8; transports 9, 11, 19, 21 |
+| `rpc_find` | 8,238 | hashed key, stored value and nearest-peer referrals | 3, 4, 7; transports 9, 11, 19 |
+| `rpc_join_group` | 20 | join request, admission, redirect/error or final roster | 13, 14, 18; supplies 15 and 16 |
+| `rpc_aggregate_part` | 18 | group, peer, weight, tensor shard and result/error code | 17, 18 |
+| `rpc_download_state` | 2 | state request, metadata and tensor chunks | 20 |
+
+The earlier result of 39,454 `rpc_ping` messages was wrong. A received `rpc_find` or `rpc_store` calls
+`rpc_ping` as a **local helper** to update routing state. Handler-side tracing counted those function
+calls as network pings. Caller-side tracing found eight real ping requests and eight responses: four
+requested reachability validation and four did not.
+
+Logical DHT activity was also classified before key hashing: 1,463 advertisement reads, 27 writes and
+24 withdrawals; 28 progress reads, 91 writes and 4 withdrawals; and 2 donor-list reads and 64 donor
+writes. These are logical operations, not extra wire messages. One logical operation may cause many
+iterative `rpc_find` calls, and one `rpc_store` may carry several records.
+
+| # | Trace evidence | What the trace establishes |
+|---:|---|---|
+| 1 | Four `bootstrap_start` / `bootstrap_complete` pairs | Node startup occurred, but Identify, TLS, NAT and relay traffic is inside p2pd and was not captured. |
+| 2 | 8 `PingRequest` + 8 `PingResponse` | Reachability, DHT time and availability are real wire fields. |
+| 3 | Ping plus the `peer.node_id` fields in DHT RPCs | Peers exchange routing identities; routing-table admission and eviction are local consequences. |
+| 4 | `FindResponse.nearest_node_ids` + `nearest_peer_ids` | Lookup responders send the node-ID/PeerID referrals used by the caller. |
+| 5 | `rpc_store`; 840 ordinary and 1 cache record | Responsibility transfer uses the store protocol, but cannot be distinguished from other replication from the protobuf alone. |
+| 6 | 841 store request/response pairs; 795 accepted and 46 rejected records | Publication and replica acceptance cross the wire explicitly. |
+| 7 | 8,238 find request/response pairs; 8,085 found dictionaries and 153 misses | Iterative lookups construct the caller's view from values and referrals. |
+| 8 | Expiration in every store; advertisement/progress writes and withdrawals | Refresh and withdrawal send stores. Natural expiration is local and sends no message. |
+| 9 | 91 progress writes, 28 reads, 4 withdrawals | Progress exchange is carried by DHT store/find, not a separate optimizer RPC. |
+| 10 | No distinct message | Synchronisation is a local decision over progress records already received at checkpoint 9. |
+| 11 | 27 advertisement writes, 1,463 reads, 24 withdrawals | Averaging availability is carried by DHT records, not a matchmaking RPC. |
+| 12 | No distinct message | Candidate ranking and leader choice are local decisions over checkpoint-11 records. |
+| 13 | 20 `JoinRequest`; 20 `ACCEPTED`; 2 `GROUP_DISBANDED` | Join admission and refusal/recovery codes share the `rpc_join_group` stream. |
+| 14 | 18 `BEGIN_ALLREDUCE` frames | The leader sends `group_id`, ordered peer IDs and gathered metadata on the join stream. |
+| 15 | No distinct message | The next group key is derived locally from the roster and group ID received at checkpoint 14. |
+| 16 | No distinct message | Reduction roles and shard ownership are derived locally from the ordered roster. |
+| 17 | 18 `PART_FOR_AVERAGING` + 18 `AVERAGED_PART` frames | Each all-reduce frame carries `group_id`, `peer_id`, sender weight and tensor data. |
+| 18 | `GROUP_DISBANDED` observed; all error/cancellation codes retained in the static inventory | Session control shares the join and aggregation streams; a healthy run does not exercise every failure code. |
+| 19 | 64 donor-priority writes and 2 donor-list reads | Donor discovery and priority are DHT records; donor selection is local. |
+| 20 | 2 download requests + 2 data frames, one per averager | State metadata and tensor chunks cross `rpc_download_state`; installation is local. |
+| 21 | Progress withdrawals from all 4 peers; advertisement withdrawals also observed | Shutdown/withdrawal reuses DHT store. Donor records normally disappear by expiration rather than a separate shutdown message. |
+
+#### Result
+
+The runtime trace supports the 21-checkpoint map, but it shows that the checkpoints are **not 21
+message types**. There are six application RPC families. Several checkpoints share one RPC; four are
+wholly local decisions, and others combine a received message with a local decision. The trace also
+confirms that the gradient and state averagers each run their own matchmaking, all-reduce and download
+paths.
+
+This is application-level coverage, not whole-stack packet coverage. The tracer records protobufs at
+the Python caller boundary, not bytes sniffed from the transport. It does not record p2p framing,
+`END_OF_STREAM` markers, exact `RPCError` frames, connection-close/reset packets, or internal
+p2pd/libp2p discovery, handshake, NAT, relay and multiplexing traffic. The unrelated MoE expert RPCs
+also remain outside the training-path scope.
+
+Nor does one healthy 18-second run prove that every valid branch occurred. It observed `ACCEPTED`,
+`BEGIN_ALLREDUCE`, `PART_FOR_AVERAGING`, `AVERAGED_PART` and `GROUP_DISBANDED`; the remaining defined
+failure and cancellation codes are present in the static inventory but were not exercised. Different
+client modes, churn, network paths and failure injections can produce additional instances of the same
+protocol families.
+
+#### Decision
+
+**Use this mapping as the message inventory for the training path.** It validates where control data
+crosses a peer boundary, but it does **not** fill the map's `Obs` security column: recording an honest
+run is not evidence that an attacker can observe or predict a victim's traffic.
+
+#### Next step
+
+Use the correlation IDs and exact protobufs as the baseline for one controlled mutation at a time:
+delay, deny, tamper or select. Add separate instrumentation for local decisions at checkpoints 3, 10,
+12, 15, 16, 19 and 20. Capture P2P framing, exact error/end markers and connection closure for
+checkpoint 18, and add p2pd-level tracing if checkpoint 1 becomes an experimental target. Repeat the
+inventory under client mode, churn and injected failure before calling the dynamic trace exhaustive.
 
 ---
 

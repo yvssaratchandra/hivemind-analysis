@@ -1,0 +1,396 @@
+{
+  "averaging_message_code_coverage": [
+    {
+      "code": "NO_CODE",
+      "description": "No explicit averaging control code.",
+      "number": 0,
+      "observed_count": 0
+    },
+    {
+      "code": "REQUEST_JOIN",
+      "description": "Defined enum value; normal join requests use JoinRequest and do not carry this code.",
+      "number": 1,
+      "observed_count": 0
+    },
+    {
+      "code": "ACCEPTED",
+      "description": "Leader provisionally accepts the follower.",
+      "number": 2,
+      "observed_count": 20
+    },
+    {
+      "code": "BEGIN_ALLREDUCE",
+      "description": "Leader sends the final ordered group roster.",
+      "number": 3,
+      "observed_count": 18
+    },
+    {
+      "code": "PART_FOR_AVERAGING",
+      "description": "Send a tensor shard and its averaging weight.",
+      "number": 4,
+      "observed_count": 18
+    },
+    {
+      "code": "AVERAGED_PART",
+      "description": "Return the averaged tensor shard.",
+      "number": 5,
+      "observed_count": 18
+    },
+    {
+      "code": "NOT_DECLARED",
+      "description": "Reject a request for an undeclared group.",
+      "number": 6,
+      "observed_count": 0
+    },
+    {
+      "code": "NOT_A_LEADER",
+      "description": "Redirect the requester to the current leader.",
+      "number": 7,
+      "observed_count": 0
+    },
+    {
+      "code": "BAD_EXPIRATION_TIME",
+      "description": "Reject an incompatible group deadline.",
+      "number": 8,
+      "observed_count": 0
+    },
+    {
+      "code": "BAD_SCHEMA_HASH",
+      "description": "Reject an incompatible tensor schema.",
+      "number": 9,
+      "observed_count": 0
+    },
+    {
+      "code": "BAD_GROUP_ID",
+      "description": "Reject an unknown group identifier.",
+      "number": 10,
+      "observed_count": 0
+    },
+    {
+      "code": "DUPLICATE_PEER_ID",
+      "description": "Reject a duplicate peer identity.",
+      "number": 11,
+      "observed_count": 0
+    },
+    {
+      "code": "GROUP_IS_FULL",
+      "description": "Reject because the group has no free slot.",
+      "number": 12,
+      "observed_count": 0
+    },
+    {
+      "code": "NOT_LOOKING_FOR_GROUP",
+      "description": "Reject because the peer is unavailable.",
+      "number": 13,
+      "observed_count": 0
+    },
+    {
+      "code": "PROTOCOL_VIOLATION",
+      "description": "Report an invalid protocol sequence or value.",
+      "number": 14,
+      "observed_count": 0
+    },
+    {
+      "code": "INTERNAL_ERROR",
+      "description": "Report an internal averaging failure.",
+      "number": 15,
+      "observed_count": 0
+    },
+    {
+      "code": "CANCELLED",
+      "description": "Cancel participation in the current all-reduce.",
+      "number": 16,
+      "observed_count": 0
+    },
+    {
+      "code": "GROUP_DISBANDED",
+      "description": "Leader closes the proposed group.",
+      "number": 17,
+      "observed_count": 2
+    },
+    {
+      "code": "BAD_GROUP_KEY",
+      "description": "Reject an obsolete or incompatible group key.",
+      "number": 18,
+      "observed_count": 0
+    }
+  ],
+  "boundary": [
+    "Caller-side capture records sent and returned application protobufs, including failed calls with no response.",
+    "Plain DHT keys exist only in logical_operation rows; wire DHT messages contain hashed key IDs.",
+    "Unobserved enum codes remain in the static inventory; most are error or cancellation branches, while REQUEST_JOIN is defined but not carried by JoinRequest.",
+    "A synthetic trace_ended outcome marks a call whose caller process ended before it reported completion or failure.",
+    "Transport, security-handshake, peer-discovery, NAT, relay, and multiplexing messages inside p2pd are outside this trace."
+  ],
+  "exact_wire_messages": 18274,
+  "logical_operation_count": 1703,
+  "logical_operations": [
+    {
+      "count": 1463,
+      "description": "Publish, read, or withdraw an expiring matchmaking advertisement.",
+      "kind": "advertisement.get"
+    },
+    {
+      "count": 27,
+      "description": "Publish, read, or withdraw an expiring matchmaking advertisement.",
+      "kind": "advertisement.store"
+    },
+    {
+      "count": 24,
+      "description": "Publish, read, or withdraw an expiring matchmaking advertisement.",
+      "kind": "advertisement.withdraw"
+    },
+    {
+      "count": 2,
+      "description": "Publish, read, or withdraw state-donor priority.",
+      "kind": "donor.get"
+    },
+    {
+      "count": 64,
+      "description": "Publish, read, or withdraw state-donor priority.",
+      "kind": "donor.store"
+    },
+    {
+      "count": 28,
+      "description": "Publish, read, or withdraw expiring training progress.",
+      "kind": "progress.get"
+    },
+    {
+      "count": 91,
+      "description": "Publish, read, or withdraw expiring training progress.",
+      "kind": "progress.store"
+    },
+    {
+      "count": 4,
+      "description": "Publish, read, or withdraw expiring training progress.",
+      "kind": "progress.withdraw"
+    }
+  ],
+  "observed_wire": [
+    {
+      "code": "PART_FOR_AVERAGING",
+      "count": 18,
+      "description": "Send a tensor shard and its averaging weight.",
+      "direction": "request",
+      "message_type": "AveragingData",
+      "rpc": "rpc_aggregate_part"
+    },
+    {
+      "code": "AVERAGED_PART",
+      "count": 18,
+      "description": "Return the averaged tensor shard.",
+      "direction": "response",
+      "message_type": "AveragingData",
+      "rpc": "rpc_aggregate_part"
+    },
+    {
+      "code": null,
+      "count": 2,
+      "description": "Request a complete shared state snapshot.",
+      "direction": "request",
+      "message_type": "DownloadRequest",
+      "rpc": "rpc_download_state"
+    },
+    {
+      "code": null,
+      "count": 2,
+      "description": "Return one metadata or tensor chunk from shared state.",
+      "direction": "response",
+      "message_type": "DownloadData",
+      "rpc": "rpc_download_state"
+    },
+    {
+      "code": null,
+      "count": 8238,
+      "description": "Ask for DHT records and nearer peers.",
+      "direction": "request",
+      "message_type": "FindRequest",
+      "rpc": "rpc_find"
+    },
+    {
+      "code": null,
+      "count": 8238,
+      "description": "Return found records and routing referrals.",
+      "direction": "response",
+      "message_type": "FindResponse",
+      "rpc": "rpc_find"
+    },
+    {
+      "code": null,
+      "count": 20,
+      "description": "Request admission using schema, deadline, mode, group key, and gathered metadata.",
+      "direction": "request",
+      "message_type": "JoinRequest",
+      "rpc": "rpc_join_group"
+    },
+    {
+      "code": "ACCEPTED",
+      "count": 20,
+      "description": "Leader provisionally accepts the follower.",
+      "direction": "response",
+      "message_type": "MessageFromLeader",
+      "rpc": "rpc_join_group"
+    },
+    {
+      "code": "BEGIN_ALLREDUCE",
+      "count": 18,
+      "description": "Leader sends the final ordered group roster.",
+      "direction": "response",
+      "message_type": "MessageFromLeader",
+      "rpc": "rpc_join_group"
+    },
+    {
+      "code": "GROUP_DISBANDED",
+      "count": 2,
+      "description": "Leader closes the proposed group.",
+      "direction": "response",
+      "message_type": "MessageFromLeader",
+      "rpc": "rpc_join_group"
+    },
+    {
+      "code": null,
+      "count": 8,
+      "description": "Ask for identity, liveness, time, and optional reachability validation.",
+      "direction": "request",
+      "message_type": "PingRequest",
+      "rpc": "rpc_ping"
+    },
+    {
+      "code": null,
+      "count": 8,
+      "description": "Return identity, DHT time, and reachability result.",
+      "direction": "response",
+      "message_type": "PingResponse",
+      "rpc": "rpc_ping"
+    },
+    {
+      "code": null,
+      "count": 841,
+      "description": "Ask a DHT peer to retain expiring records.",
+      "direction": "request",
+      "message_type": "StoreRequest",
+      "rpc": "rpc_store"
+    },
+    {
+      "code": null,
+      "count": 841,
+      "description": "Report which DHT records were accepted.",
+      "direction": "response",
+      "message_type": "StoreResponse",
+      "rpc": "rpc_store"
+    }
+  ],
+  "record_count": 30809,
+  "rpc_family_coverage": [
+    {
+      "checkpoints": [
+        2,
+        3
+      ],
+      "layer": "L2 DHT",
+      "observed": true,
+      "request": "PingRequest",
+      "response": "PingResponse",
+      "rpc": "rpc_ping",
+      "stream": false
+    },
+    {
+      "checkpoints": [
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "layer": "L2 DHT",
+      "observed": true,
+      "request": "StoreRequest",
+      "response": "StoreResponse",
+      "rpc": "rpc_store",
+      "stream": false
+    },
+    {
+      "checkpoints": [
+        3,
+        4,
+        7
+      ],
+      "layer": "L2 DHT",
+      "observed": true,
+      "request": "FindRequest",
+      "response": "FindResponse",
+      "rpc": "rpc_find",
+      "stream": false
+    },
+    {
+      "checkpoints": [
+        13,
+        14,
+        18
+      ],
+      "layer": "L3 Matchmaking",
+      "observed": true,
+      "request": "JoinRequest",
+      "response": "MessageFromLeader",
+      "rpc": "rpc_join_group",
+      "stream": true
+    },
+    {
+      "checkpoints": [
+        17,
+        18
+      ],
+      "layer": "L4 All-reduce",
+      "observed": true,
+      "request": "AveragingData",
+      "response": "AveragingData",
+      "rpc": "rpc_aggregate_part",
+      "stream": true
+    },
+    {
+      "checkpoints": [
+        20
+      ],
+      "layer": "L6 State transfer",
+      "observed": true,
+      "request": "DownloadRequest",
+      "response": "DownloadData",
+      "rpc": "rpc_download_state",
+      "stream": true
+    }
+  ],
+  "scope": "Hivemind Python application-level training protocols; excludes p2pd/libp2p internals and MoE expert RPCs.",
+  "wire_message_count": 18274,
+  "wire_outcomes": [
+    {
+      "count": 18,
+      "outcome": "completed",
+      "rpc": "rpc_aggregate_part"
+    },
+    {
+      "count": 2,
+      "outcome": "completed",
+      "rpc": "rpc_download_state"
+    },
+    {
+      "count": 8238,
+      "outcome": "completed",
+      "rpc": "rpc_find"
+    },
+    {
+      "count": 20,
+      "outcome": "consumer_closed",
+      "rpc": "rpc_join_group"
+    },
+    {
+      "count": 8,
+      "outcome": "completed",
+      "rpc": "rpc_ping"
+    },
+    {
+      "count": 841,
+      "outcome": "completed",
+      "rpc": "rpc_store"
+    }
+  ]
+}
