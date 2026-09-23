@@ -17,27 +17,36 @@ What control data do Hivemind peers exchange from startup to shutdown, and where
 needs the attacker to recognise the victim, predict its next key, or see its request. If it cannot
 observe, the other four often do not arise.
 
-## Control plane, or control data?
+## Scope: what counts as the control plane here
 
-These are not the same thing, and the difference decides what belongs here.
+**The control plane is defined by function, not by layer.** Anything that carries a decision — who is
+trusted, who is involved, what happens next — is control plane, wherever in the stack it travels. A
+layer is "data plane" only in respect of the payload it moves.
 
-**Control plane** is a property of a *layer*: the layers that decide who talks to whom. In Hivemind
-that is **L2 (DHT) and L3 (Matchmaking) only**. `FINDINGS.md` labels L4 and L5 as data plane, and that
-is correct.
+So **all 21 checkpoints below are control plane.** `FINDINGS.md` labels L4 and L5 as data plane, which
+is true of the tensors they move and misleading about everything else they carry. Role assignment,
+session recovery and donor selection are decisions driven by peer-supplied data, and they belong here
+even though the layers around them move tensors.
 
-**Control data** is any field that decides who is trusted, who is involved, or what happens next. It
-appears in **every** layer, including the data-plane ones. That is what this document audits, which is
-why L4, L5 and L6 have rows: role assignment, session recovery and donor selection are all decisions
-driven by peer-supplied data, even though the layers around them move tensors.
+The clearest case is C17.T, the largest number in the project. All-reduce moves tensors, but the
+35–148× displacement was **not** caused by tensor values — a sign-flipped gradient alone was lost in
+the average. The damage came from the sender-supplied `weight`, applied exactly as received. The
+control field did the work.
 
-**19 of the 21 checkpoints carry control data only.** Two are mixed — 17 and 20 — where control fields
-travel alongside payload.
+### In scope
 
-The clearest case for the distinction is C17.T, the biggest number in the project. All-reduce is the
-data plane, but the 35–148× displacement was **not** caused by tensor values. A sign-flipped gradient
-alone was lost in the average. The damage came from the sender-supplied `weight` — a control field
-riding the data channel, applied exactly as received. So the worst data-plane result is really a
-control-data finding.
+- An attacker must not be able to decide **which group it sits in**, or **who else is in that group**.
+- An attacker must not be able to **manipulate control messages** — forge them, suppress them, delay
+  them, or send different versions to different peers — to gain an advantage.
+
+### Out of scope
+
+- **Making aggregation Byzantine-tolerant.** Robust aggregation rules are a separate research area.
+  This project measures what control-plane capture *costs* the model, but fixing the aggregation is
+  not the goal. C17.T is in scope because the unvalidated `weight` is a control field; crafting better
+  gradients is not.
+- **Payload contents.** For checkpoints 17 and 20 the control fields are in scope and the tensors
+  themselves are only the yardstick for harm.
 
 ## How this document is organised
 
@@ -141,17 +150,17 @@ from the authenticated key — would change every row here.**
 | 14 | Group roster distribution | open | open | = 13 | open | = 13 |
 | 15 | Next-group-key derivation *(local)* | open | open | open | open | **D — C15.S** |
 
-### L4 — All-reduce · *data plane; control data in 16, 18, and the weight field of 17*
+### L4 — All-reduce · *control data: roles (16), recovery (18), the weight and group id in 17*
 
 `hivemind/averaging/allreduce.py`, `partition.py`. Reduce-scatter over the assembled group.
 
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
 | 16 | Role and work assignment *(local)* | open | open | open | open | — |
-| 17 | All-reduce exchange **(mixed)** | open | open | open | **D — C17.T** | — |
+| 17 | All-reduce exchange *(payload too)* | open | open | open | **D — C17.T** | — |
 | 18 | Session failure and recovery | open | open | open | open | open |
 
-### L5 — Optimizer · *data plane; the progress records in 9-10 are control data*
+### L5 — Optimizer · *control data: the progress records that drive 9 and 10*
 
 `hivemind/optim/optimizer.py`, `progress_tracker.py`. Accumulate, average, apply.
 **Cross-layer note:** progress records ride the DHT but are **signed** (`progress_tracker.py:108`),
@@ -162,7 +171,7 @@ while L3's advertisements are not. Same machinery, applied in one place and not 
 | 9 | Training-progress exchange | open | open | open | open | open |
 | 10 | Progress and synchronisation decision *(local)* | open | open | open | open | open |
 
-### L6 — State transfer · *data plane; donor priority in 19 is control data*
+### L6 — State transfer · *control data: donor priority and selection (19), state metadata (20)*
 
 `hivemind/averaging/averager.py` + `hivemind/optim/state_averager.py`. **Not one of the five layers in
 `FINDINGS.md`** — it is neither all-reduce nor matchmaking nor the plain optimizer step, and it needs
@@ -172,7 +181,7 @@ installed with no validation. Every other finding *nudges* a model; this one wou
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
 | 19 | State-donor advertisement and selection | open | open | open | open | open |
-| 20 | State download and installation **(mixed)** | open | open | open | open | open |
+| 20 | State download and installation *(payload too)* | open | open | open | open | open |
 
 ### Spanning L2 / L3 / L5
 
