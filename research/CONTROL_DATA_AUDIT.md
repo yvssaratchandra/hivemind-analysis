@@ -144,7 +144,7 @@ from the authenticated key — would change every row here.**
 
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
-| 11 | Averaging availability exchange | open | open | **D — C11.D** | **X — C11.T** | — |
+| 11 | Averaging availability exchange | **D — C11.Obs** | **D — C11.Delay** | **D — C11.D** | **X — C11.T** | — |
 | 12 | Candidate priority and leader choice *(local)* | open | open | open | open | open |
 | 13 | Join negotiation and admission | open | open | **D — C13.D** | open | **D — C13.S** |
 | 14 | Group roster distribution | open | open | = 13 | open | = 13 |
@@ -195,16 +195,18 @@ installed with no validation. Every other finding *nudges* a model; this one wou
 |---|---|---|
 | L1 libp2p | 1 | **0** |
 | L2 DHT | 2–8 | 5 |
-| L3 Matchmaking | 11–15 | 5 |
+| L3 Matchmaking | 11–15 | 7 |
 | L4 All-reduce | 16–18 | 1 |
 | L5 Optimizer | 9–10 | **0** |
 | L6 State transfer | 19–20 | **0** |
 | spanning | 21 | 1 |
 
-**12 of roughly 90 cells.** The work sits almost entirely in L2 and L3 — correct for the research
+**14 of roughly 90 cells.** The work sits almost entirely in L2 and L3 — correct for the research
 question, since those are the two control-plane layers. The **Observe** and **Delay** columns are empty
-everywhere, including under findings already treated as settled, where the attacker's ability to see
-the victim was assumed rather than measured.
+**everywhere except checkpoint 11**, including under findings already treated as settled, where the
+attacker's ability to see the victim was assumed rather than measured. C11.Obs is the first direct
+measurement of that assumption at the availability exchange, and C11.Delay is the project's first
+Delay result of any kind.
 
 ---
 
@@ -291,6 +293,104 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
 - **Decision.** **Demonstrated, but narrower than it looks.** Against the control it does **not** become
   group capture. Availability and censorship, not control over who trains with whom.
 - **Next step.** None, settled.
+
+### C11.Obs — Checkpoint 11, Observe: what can an attacker see of who is looking for a group?
+
+- **Question.** Discovery records are public by construction. What does that hand an attacker, and at
+  what cost? Every Select result in this project assumes the attacker can recognise its victim; before
+  this, only C15.S had measured any part of that.
+- **Attacker position.** One ordinary peer. Random `node_id`, no custody, no crafted identity.
+- **Quadrant.** **observe/predict** — a prerequisite capability, not an action.
+- **Work performed.** `step10_delay.py --phase 1`, 8 honest peers, 2 repeats.
+- **Observations.** The observer saw **8/8 advertisers in 3 ms**, with each advertiser's declared
+  expiration readable. That expiration is not incidental metadata: it *is* the leadership priority,
+  sorted on at `matchmaking.py:478-481`. An ordinary peer therefore reads the election order off the
+  DHT before the election happens.
+- **Result.** Observation here is free and total, and needs none of the position C6.S and C7.S require.
+- **Decision.** **Demonstrated.** Confirms the capability the Select findings assumed.
+- **Next step.** None for this cell. The Observe column elsewhere is still empty.
+
+### C11.Delay — Checkpoint 11, Delay: can a slow answer hide a peer that is looking for a group?
+
+- **Question.** Every defence Hivemind has detects silence. What does an attacker that answers, but
+  late, cost the victim?
+- **Attacker position.** **One** ordinary peer. Contributes no gradients, holds no custody, crafts no
+  identity.
+- **Quadrant.** direct · **commission** · blanket (selective is available via `context.remote_id`) ·
+  the effect ends when the attacker stops.
+- **Work performed.** `step10_delay.py --phase 2/3/4`; 8-peer DHT swarms for the mechanism, 4-peer
+  averaging swarms plus one slow DHT-only peer for the end-to-end arm.
+
+- **Observations.**
+
+  *Why a slow answer is not diluted.* `get_averagers` calls `dht.get(key, latest=True)`
+  (`key_manager.py:79`), which sets `sufficient_expiration_time = float("inf")` (`node.py:542-543`).
+  `_SearchState.add_candidate` ends a search only when
+  `expiration_time >= sufficient_expiration_time` (`node.py:844-845`) — never, against infinity. **A
+  matchmaking read cannot short-circuit on a good answer,** so fast honest responders cannot rescue
+  the victim.
+
+  *Latency.* One slow responder of eight sets the victim's whole read time: 0.5 s → 0.504,
+  1.5 s → 1.506, 2.9 s → 2.913, against a 0.003 s control. **It does not stack** — 1, 2 and 4 slow
+  peers all give ~2.91 s, because traversal is parallel and tracks the single slowest responder.
+  Extra attackers buy nothing, which is what makes one peer the entire cost.
+
+  *The cliff at `wait_timeout`, in both directions.* At 0.5/1.5/2.9 s the slow peer is **never
+  blacklisted**. At 3.5 s the latency returns to 0.003 s and the peer **is** blacklisted, the RPC
+  having timed out (`protocol.py:292`, default 3 s). Crossing the timeout converts commission into
+  omission, and Hivemind's existing defence then works exactly as designed. 2.9 s is maximum damage
+  at zero detection.
+
+  *Harm: a moving advertiser set, not a static one.* Delay does not shrink a static set — 8/8 seen in
+  every arm. It shrinks a changing one. A newly advertising peer is seen by the control in ~50 ms
+  every time; under delay it can be missed entirely, and the threshold moves with the delay:
+
+  | advertisement lifetime | no delay | 0.5 s | 1.5 s | 2.9 s |
+  |---|---|---|---|---|
+  | 1 s | 3/3 | 2/3 | **0/3** | **0/3** |
+  | 2 s | 3/3 | 3/3 | **0/3** | **0/3** |
+  | 3 s | 3/3 | 3/3 | 3/3 | **0/3** |
+  | **5 s** | 3/3 | 3/3 | 3/3 | **0/3** |
+  | 8 s | 3/3 | 3/3 | 3/3 | 3/3 |
+
+  Observed staleness is 1.1–2.8× the delay throughout, so the invisibility threshold is ≈ 2× delay —
+  **a number the attacker chooses.** This is the falsifiable prediction of the account below, tested
+  at three delays and held at all three.
+
+  **`min_matchmaking_time` defaults to 5.0 s** (`averager.py:121`) and the advertisement expiration is
+  `get_dht_time() + min_matchmaking_time`, so Hivemind's shipped advertisement lifetime sits inside
+  the band a 2.9 s attacker makes invisible.
+
+  *Why the record disappears.* It is fetched, then discarded. Candidates merge per subkey into a
+  `DictionaryDHTValue` (`node.py:832-835`), but `get_averagers` reads the result with `.items()`
+  (`key_manager.py:84`), which calls `_remove_outdated()` first (`timed_storage.py:96-99`). An
+  advertisement that expires during a read the attacker stretched is collected and then dropped on
+  the way out.
+
+  *End to end.* Stock `DecentralizedAverager` peers — no subclass anywhere, because the attack is
+  purely at the DHT layer — with one extra peer that contributes no gradients and only answers
+  `rpc_find` slowly. 4 peers, `min_matchmaking_time` 5.0 s, 6 repeats:
+
+  | arm | peer-steps averaged | elapsed | errors |
+  |---|---|---|---|
+  | control | **24/24** | 0.0–0.1 s | none |
+  | delay 2.9 s | **17/24** | 5.9–92.9 s, median 92.9 s | 7 × `AllreduceException: could not find a group` |
+
+  Per repeat the delay arm gave 4/4, **0/4**, 3/4, 4/4, 3/4, 3/4 — one repeat lost the whole swarm's
+  round. **The control arm contains the same attacker node with the delay switched off**, so node
+  count and process load are controlled for and §4.6's filler-node confound cannot apply.
+
+- **Result.** One ordinary peer that never trains, holds no custody and crafts no identity can stretch
+  every matchmaking read to just under `wait_timeout`, which makes advertisements at Hivemind's
+  default lifetime invisible and cost roughly a third of averaging attempts outright. Compare C7.S,
+  where interfering with a victim's view needed `bucket_size` = 20 crafted identities *and* custody.
+- **Decision.** **Demonstrated**, with the scale caveat below. The between-repeat spread (0/4 to 4/4)
+  is far larger than any single number here, so quote the range, not the 17/24.
+- **Next step.** **Does it survive a larger swarm?** At 4–8 peers one slow responder is a large
+  fraction of the routing table. The traversal still waits for the slowest peer it actually contacts,
+  so the effect should persist — but that is an argument, not a measurement, and it is the claim the
+  finding most needs. After that: selective delay aimed at one victim via `context.remote_id`, and
+  whether the victim's starved candidate list makes it lead, as filtering did in §4.6.
 
 ### C11.D — Checkpoint 11, Deny: can an attacker remove a peer's advertisement?
 
@@ -407,9 +507,12 @@ The map decides the order, not intuition.
    rosters to different followers costs it nothing extra. Untested.
 4. **Open L5.** False or selectively hidden progress, forced catch-up, forced state download. Note its
    records are signed and L3's are not — understand why before proposing signing as a defence.
-5. **Try an omission attack, anywhere.** Every demonstrated result so far is commission. Refusing to
-   serve `rpc_find` is the obvious first one, and it is the only quadrant where Hivemind's existing
-   defences would actually fire — which makes it the honest test of whether they work.
+5. **Try an omission attack, anywhere.** Every demonstrated result is still commission. C11.Delay
+   partly discharges this: it does not perform an omission attack, but it **locates the boundary**
+   between the two. The same attacker, same position, same method, is invisible at 2.9 s and detected
+   and neutralised at 3.5 s — the first time in this project that one of Hivemind's existing defences
+   has been observed firing. What remains is a deliberate omission arm, refusing to serve `rpc_find`,
+   to check the defence works when the silence is sustained rather than incidental.
 6. **Fill the Observe column.** Several findings assume the attacker can recognise the victim. Only
    C15.S measured it.
 
