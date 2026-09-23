@@ -28,7 +28,11 @@ one; the machinery that decides group membership sits two layers below it.
 | 4 | **All-reduce** — reduce-scatter over the assembled group | data |
 | 3 | **Matchmaking** — advertise, elect a leader, admit members | **control** |
 | 2 | **Kademlia DHT** — who stores which record, who answers a lookup | **control** |
-| 1 | **libp2p transport** — authenticated connections | sound |
+| 1 | **libp2p transport** — authenticated connections | sound* |
+
+\* The transport crypto is sound. **Bootstrap peer selection also sits in this layer and is
+unexamined** — which peers you first learn the network from is a real surface that "authenticated
+connections" does not cover. See `CONTROL_PLANE_AUDIT.md`, checkpoint 1.
 
 ### Two identities, one of them unverified
 
