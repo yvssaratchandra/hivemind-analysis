@@ -32,7 +32,7 @@ one; the machinery that decides group membership sits two layers below it.
 
 \* The transport crypto is sound. **Bootstrap peer selection also sits in this layer and is
 unexamined** — which peers you first learn the network from is a real surface that "authenticated
-connections" does not cover. See `CONTROL_PLANE_AUDIT.md`, checkpoint 1.
+connections" does not cover. See `CONTROL_DATA_AUDIT.md`, checkpoint 1.
 
 ### Two identities, one of them unverified
 

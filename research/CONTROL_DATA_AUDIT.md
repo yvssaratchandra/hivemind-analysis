@@ -17,6 +17,28 @@ What control data do Hivemind peers exchange from startup to shutdown, and where
 needs the attacker to recognise the victim, predict its next key, or see its request. If it cannot
 observe, the other four often do not arise.
 
+## Control plane, or control data?
+
+These are not the same thing, and the difference decides what belongs here.
+
+**Control plane** is a property of a *layer*: the layers that decide who talks to whom. In Hivemind
+that is **L2 (DHT) and L3 (Matchmaking) only**. `FINDINGS.md` labels L4 and L5 as data plane, and that
+is correct.
+
+**Control data** is any field that decides who is trusted, who is involved, or what happens next. It
+appears in **every** layer, including the data-plane ones. That is what this document audits, which is
+why L4, L5 and L6 have rows: role assignment, session recovery and donor selection are all decisions
+driven by peer-supplied data, even though the layers around them move tensors.
+
+**19 of the 21 checkpoints carry control data only.** Two are mixed — 17 and 20 — where control fields
+travel alongside payload.
+
+The clearest case for the distinction is C17.T, the biggest number in the project. All-reduce is the
+data plane, but the 35–148× displacement was **not** caused by tensor values. A sign-flipped gradient
+alone was lost in the average. The damage came from the sender-supplied `weight` — a control field
+riding the data channel, applied exactly as received. So the worst data-plane result is really a
+control-data finding.
+
 ## How this document is organised
 
 Two views, answering two different questions.
@@ -81,7 +103,7 @@ which controls admission, which exposes the victim to a stall or a malicious red
 `D` = demonstrated in a live swarm. `X` = prevented, with reason. `open` = nobody has looked.
 `—` = does not apply.
 
-### L1 — libp2p transport
+### L1 — libp2p transport · *control plane*
 
 `hivemind/p2p/`. Authenticated connections. `FINDINGS.md` calls this layer sound, which is true of the
 transport crypto — but **bootstrap peer selection also lives here and is unexamined.** Which peers you
@@ -91,7 +113,7 @@ first learn the network from is a real surface that "authenticated connections" 
 |---:|---|---|---|---|---|---|
 | 1 | Bootstrap and transport discovery | open | open | open | open | open |
 
-### L2 — Kademlia DHT
+### L2 — Kademlia DHT · *control plane*
 
 `hivemind/dht/`. Who stores which record, who answers a lookup. **A single fix — deriving `node_id`
 from the authenticated key — would change every row here.**
@@ -106,7 +128,7 @@ from the authenticated key — would change every row here.**
 | 7 | Record lookup and local-view construction | open | open | open | **D — C7.T** | **D — C7.S** |
 | 8 | Record refresh, withdrawal, expiration | open | open | open | **D — C8.T** | open |
 
-### L3 — Matchmaking
+### L3 — Matchmaking · *control plane*
 
 `hivemind/averaging/matchmaking.py`, `key_manager.py`. Advertise, elect a leader, admit members.
 **A single fix — signing advertisement records — would change rows 11 and 15.**
@@ -119,17 +141,17 @@ from the authenticated key — would change every row here.**
 | 14 | Group roster distribution | open | open | = 13 | open | = 13 |
 | 15 | Next-group-key derivation *(local)* | open | open | open | open | **D — C15.S** |
 
-### L4 — All-reduce
+### L4 — All-reduce · *data plane; control data in 16, 18, and the weight field of 17*
 
 `hivemind/averaging/allreduce.py`, `partition.py`. Reduce-scatter over the assembled group.
 
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
 | 16 | Role and work assignment *(local)* | open | open | open | open | — |
-| 17 | All-reduce exchange | open | open | open | **D — C17.T** | — |
+| 17 | All-reduce exchange **(mixed)** | open | open | open | **D — C17.T** | — |
 | 18 | Session failure and recovery | open | open | open | open | open |
 
-### L5 — Optimizer
+### L5 — Optimizer · *data plane; the progress records in 9-10 are control data*
 
 `hivemind/optim/optimizer.py`, `progress_tracker.py`. Accumulate, average, apply.
 **Cross-layer note:** progress records ride the DHT but are **signed** (`progress_tracker.py:108`),
@@ -140,7 +162,7 @@ while L3's advertisements are not. Same machinery, applied in one place and not 
 | 9 | Training-progress exchange | open | open | open | open | open |
 | 10 | Progress and synchronisation decision *(local)* | open | open | open | open | open |
 
-### L6 — State transfer
+### L6 — State transfer · *data plane; donor priority in 19 is control data*
 
 `hivemind/averaging/averager.py` + `hivemind/optim/state_averager.py`. **Not one of the five layers in
 `FINDINGS.md`** — it is neither all-reduce nor matchmaking nor the plain optimizer step, and it needs
@@ -150,7 +172,7 @@ installed with no validation. Every other finding *nudges* a model; this one wou
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
 | 19 | State-donor advertisement and selection | open | open | open | open | open |
-| 20 | State download and installation | open | open | open | open | open |
+| 20 | State download and installation **(mixed)** | open | open | open | open | open |
 
 ### Spanning L2 / L3 / L5
 
