@@ -145,7 +145,7 @@ from the authenticated key — would change every row here.**
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
 | 11 | Averaging availability exchange | **D — C11.Obs** | **D — C11.Delay** | **D — C11.D** | **X — C11.T** | — |
-| 12 | Candidate priority and leader choice *(local)* | open | open | open | open | open |
+| 12 | Candidate priority and leader choice *(local)* | open | open | open | open | **D — C12.S** |
 | 13 | Join negotiation and admission | open | open | **D — C13.D** | open | **D — C13.S** |
 | 14 | Group roster distribution | open | open | = 13 | open | = 13 |
 | 15 | Next-group-key derivation *(local)* | open | open | open | open | **D — C15.S** |
@@ -195,13 +195,13 @@ installed with no validation. Every other finding *nudges* a model; this one wou
 |---|---|---|
 | L1 libp2p | 1 | **0** |
 | L2 DHT | 2–8 | 5 |
-| L3 Matchmaking | 11–15 | 7 |
+| L3 Matchmaking | 11–15 | 8 |
 | L4 All-reduce | 16–18 | 1 |
 | L5 Optimizer | 9–10 | **0** |
 | L6 State transfer | 19–20 | **0** |
 | spanning | 21 | 1 |
 
-**14 of roughly 90 cells.** The work sits almost entirely in L2 and L3 — correct for the research
+**15 of roughly 90 cells.** The work sits almost entirely in L2 and L3 — correct for the research
 question, since those are the two control-plane layers. The **Observe** and **Delay** columns are empty
 **everywhere except checkpoint 11**, including under findings already treated as settled, where the
 attacker's ability to see the victim was assumed rather than measured. C11.Obs is the first direct
@@ -446,6 +446,78 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
 - **Result.** Lowering it to win the election makes the advertisement expire instead.
 - **Decision.** **Prevented** — not by a check, but by the data model. Recorded so nobody retries it.
 - **Next step.** None. Do not retry.
+
+### C12.S — Checkpoint 12, Select: can an attacker win the leader election at will?
+
+- **Question.** Leadership is the bottleneck for everything else — C13.S showed admission is exact
+  once the attacker leads (β = k/(k+1), no variance), so whatever decides the election decides
+  capture. C11.T established that the deadline cannot be *undercut*. Can it be won anyway?
+- **Attacker position.** One ordinary peer. No custody, no crafted `node_id`. It does need a low
+  `peer_id`, which is cheap — see below.
+- **Quadrant.** direct · commission · blanket · persists while the attacker keeps declaring.
+- **Work performed.** `step10_delay.py --phase 5`, swarms of 8, 32, 64 and 128 honest peers,
+  4 rounds per arm, the election sampled at five points across each matchmaking window.
+
+- **Observations.**
+
+  *The move.* `pop_next_leader` compares **tuples**: `(entry.expiration_time, leader.to_bytes())`
+  against `(self.declared_expiration_time, self.peer_id.to_bytes())` (`matchmaking.py:478-481`).
+  At equal expiration it falls through to `peer_id`, lowest wins. So the attacker does not need an
+  earlier deadline — it needs the **same** deadline and a lower `peer_id`. Matching costs no
+  lifetime, which is exactly what C11.T's data-model defence fails to cover: that defence stops you
+  going *below* the minimum and says nothing about matching it.
+
+  *The input is free.* Reading the current deadlines is C11.Obs: 3 ms, ordinary peer, no custody.
+
+  *Mirroring the global minimum is fragile.* Peers re-declare continuously, so the earliest record
+  on the key is often one about to expire; copying it buys a dead advertisement. Measured directly
+  — at 32 peers the naive attacker alternated between mirroring a fresh 5.0 s deadline and a 0.48 s
+  one, and was invisible in half the samples. **Mirror the earliest *joinable* deadline instead**:
+  a leader closer than `request_timeout` cannot be joined in time anyway (`matchmaking.py:53`
+  requires `request_timeout < min_matchmaking_time`).
+
+  *Result, honest peers following the attacker:*
+
+  | swarm | blind (§4.3's strategy) | mirror global min | **mirror joinable min** |
+  |---|---|---|---|
+  | 32 | 20 % (ad alive 4/20 samples) | 50 % (10/20) | **100 % (20/20)** |
+  | 128 | 15 % (3/20) | 100 % (20/20) | **100 % (20/20)** |
+
+  Two repeats each, identical both times. **Whenever the attacker's advertisement was alive and its
+  `peer_id` lowest, it took 100 % of followers — 640/640 and 2560/2560.** The election outcome is
+  deterministic; only how long the advertisement survives varies, and matching the deadline is what
+  makes it survive the whole window.
+
+  *It does not decay with swarm size*, unlike every other attack here. C11.Delay fell to 3/6 at 48
+  peers with a random address and C15.S fell from 84 % to 38 %, because both depend on the attacker
+  occupying a position among many. This one is a comparison between two tuples whose components the
+  attacker controls, so more honest peers simply means more peers reaching the same answer.
+
+  *Cost of the low `peer_id`.* `PeerID` is a hash of a public key, so being lowest of N costs about
+  N keypairs in expectation — linear, not exponential — and `identity_path` makes it choosable
+  offline (`HANDOFF.md` §6 lists this as an open lever). **Not measured here:** the role was
+  assigned to whichever node already held the lowest id, which measures what grinding buys without
+  grinding. The linear cost is an argument, not a measurement.
+
+  *A latent inconsistency, worth its own look.* The election uses **two different orderings of the
+  same identity**. `leader_queue.top()` breaks ties through `HeapEntry(order=True)`
+  (`timed_storage.py:44-47`) on `PeerID.__lt__`, which compares **base58 strings**
+  (`datastructures.py:51-54`); the follow decision compares **raw bytes**
+  (`matchmaking.py:478-481`). They agree for equal-length identifiers, so nothing breaks today.
+
+- **Result.** An attacker that reads the key, matches the earliest joinable deadline and holds a low
+  `peer_id` is followed by **every honest peer, in every sample, at 32 and at 128** — against 15–20 %
+  for the blind strategy §4.3 measured. C11.T is sidestepped rather than defeated: it forbids
+  undercutting, and this never undercuts.
+- **Decision.** **Demonstrated for the election itself.** The election is computed by applying
+  Hivemind's own comparison rule to real records written by the real `GroupKeyManager`, sampled
+  across the window — faithful to the rule, but **not a live matchmaking run**. §4.3's blind attacker
+  reached 57–67 % in live matchmaking against this method's 15–20 %, so the two must be reconciled
+  before the 100 % is quoted as a capture rate. **Do not report this as capture yet.**
+- **Next step.** Rerun against live `DecentralizedAverager` matchmaking and compare. If it holds,
+  this composes with C13.S — leadership at will, then exact admission — which is the strongest chain
+  this project has. Then: does `past_attempts` exclusion erode it across rounds, since the attacker
+  re-declares the same deadline each time?
 
 ### C13.D — Checkpoint 13, Deny: can a leader accept a peer and then stall it?
 

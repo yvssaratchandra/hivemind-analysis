@@ -68,6 +68,7 @@ from hivemind.utils.timed_storage import get_dht_time
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 LOCALHOST = ["/ip4/127.0.0.1/tcp/0"]
 
+REQUEST_TIMEOUT = 3.0  # hivemind default (averager.py:122)
 PREFIX = "step10_grad_averager"
 GROUP_KEY = f"{PREFIX}.0b"
 
@@ -359,6 +360,145 @@ def phase4_arm(num_peers: int, delay: float, matchmaking_time: float, run_id: st
     return rows
 
 
+# --------------------------------------------------------------------------- phase 5
+
+
+def would_follow(own_peer_id: PeerID, own_expiration: float, candidates: list) -> PeerID | None:
+    """Hivemind's leader choice, reproduced exactly. Returns the leader, or None if this peer leads.
+
+    Two steps, and they use **two different orderings of the same identity**:
+
+      1. `leader_queue.top()` returns the earliest entry. The queue is a `TimedStorage`
+         whose heap holds `HeapEntry(expiration_time, key)` as an `order=True` dataclass
+         (`timed_storage.py:44-47`), so ties on expiration fall through to `key`, a
+         `PeerID` — and `PeerID.__lt__` compares **base58 strings**
+         (`datastructures.py:51-54`).
+      2. The follow decision compares that candidate against this peer's own declaration
+         using **raw bytes**: `(entry.expiration_time, leader.to_bytes()) > (own_expiration,
+         own.to_bytes())` (`matchmaking.py:478-481`). Greater means "do not follow", i.e. lead.
+
+    The two orderings agree for equal-length identifiers but are not the same comparison.
+    """
+    if not candidates:
+        return None
+    leader, leader_expiration = min(candidates, key=lambda c: (c[1], c[0].to_base58()))
+    if (leader_expiration, leader.to_bytes()) > (own_expiration, own_peer_id.to_bytes()):
+        return None
+    return leader
+
+
+async def phase5_arm(
+    num_honest: int, arm: str, blind_time: float, lifetime: float, rounds: int, repeat: int,
+    attacker_lowest_id: bool = False,
+):
+    """Can an attacker that *reads* the advertisements win the leader election?
+
+    Leadership is the whole bottleneck: section 4.3 showed that when the attacker leads,
+    admission is exact (beta = k/(k+1), no variance). So the election is where capture is
+    decided.
+
+    C11.T established that an attacker cannot *undercut* the earliest deadline, because
+    expiration is simultaneously the record's lifetime and its priority -- declaring earlier
+    makes the advertisement expire rather than win. This tests the move that sidesteps that:
+    read the current advertisements (C11.Obs, free), **match the minimum exactly**, and take
+    the tie on `peer_id`. Matching costs no lifetime at all.
+
+    Arms:
+      `none`   -- no attacker. Baseline for how leadership falls among honest peers.
+      `blind`  -- section 4.3's strategy: declare a fixed early deadline without reading.
+      `mirror` -- declare exactly the minimum observed expiration.
+
+    **The election is sampled repeatedly across the matchmaking window, not once.** That is
+    the whole point of C11.T: an advertisement declared early wins while it exists and then
+    expires, so a single snapshot flatters the blind attacker enormously. Sampling over the
+    window is what makes the lifetime cost visible.
+
+    The tie-break is decided by the attacker's `peer_id`, which it does not choose here, so
+    each sample records whether the attacker's id was the lowest. Reporting the follow rate
+    conditional on that separates the two ingredients -- mirroring and the tie-break --
+    without needing to grind an identity first.
+    """
+    bootstrap, honest, attacker = await build_swarm(num_honest)
+    if attacker_lowest_id:
+        # Grinding a low peer_id is cheap -- PeerID is a hash of a public key, and to be the
+        # lowest of N you need about N keypairs in expectation, not exponential work. Rather
+        # than grind here, the role is assigned to whichever node already holds the lowest
+        # id, which measures exactly what grinding would buy. `identity_path` makes PeerIDs
+        # choosable offline in a real attack (HANDOFF section 6).
+        pool = honest + [attacker]
+        pool.sort(key=lambda n: n.peer_id.to_bytes())
+        attacker, honest = pool[0], pool[1:]
+    rows = []
+    try:
+        for rnd in range(rounds):
+            now = get_dht_time()
+            declared = {}
+            for node in honest:
+                exp = now + lifetime
+                await manager(node).declare_averager(GROUP_KEY, node.peer_id, expiration_time=exp)
+                declared[node.peer_id] = exp
+
+            observed = await manager(attacker).get_averagers(GROUP_KEY, only_active=True)
+            attacker_exp = None
+            if arm == "blind":
+                attacker_exp = now + blind_time
+            elif arm == "mirror" and observed:
+                attacker_exp = min(e for _, e in observed)  # verbatim, no undercut
+            elif arm == "mirror_live" and observed:
+                # Mirroring the *global* minimum is fragile: peers re-declare continuously, so
+                # the earliest record on the key is often one about to expire, and copying it
+                # buys a dead advertisement. A leader whose deadline is closer than
+                # `request_timeout` cannot be joined in time anyway -- matchmaking.py:53
+                # requires request_timeout < min_matchmaking_time for that reason. So mirror
+                # the earliest deadline that is still joinable.
+                live = [e for _, e in observed if e - now > REQUEST_TIMEOUT]
+                attacker_exp = min(live) if live else None
+            if attacker_exp is not None:
+                await manager(attacker).declare_averager(
+                    GROUP_KEY, attacker.peer_id, expiration_time=attacker_exp
+                )
+
+            # sample the election across the window the honest peers declared for
+            for frac in (0.1, 0.3, 0.5, 0.7, 0.9):
+                target = now + lifetime * frac
+                while get_dht_time() < target:
+                    await asyncio.sleep(min(0.1, target - get_dht_time()))
+                board = await manager(honest[0]).get_averagers(GROUP_KEY, only_active=True)
+                ids = [pid for pid, _ in board]
+                attacker_visible = attacker.peer_id in ids
+                attacker_lowest = bool(ids) and min(ids, key=lambda x: x.to_bytes()) == attacker.peer_id
+
+                follows_attacker = leaders = 0
+                for node in honest:
+                    cands = [(pid, e) for pid, e in board if pid != node.peer_id]
+                    leader = would_follow(node.peer_id, declared[node.peer_id], cands)
+                    if leader is None:
+                        leaders += 1
+                    elif leader == attacker.peer_id:
+                        follows_attacker += 1
+
+                rows.append(
+                    dict(
+                        repeat=repeat,
+                        round=rnd,
+                        window_frac=frac,
+                        num_honest=num_honest,
+                        arm=arm,
+                        attacker_lowest_id_by_design=int(attacker_lowest_id),
+                        lifetime_s=lifetime,
+                        attacker_declared=round(attacker_exp - now, 3) if attacker_exp else None,
+                        attacker_visible=int(attacker_visible),
+                        attacker_id_lowest=int(attacker_lowest),
+                        honest_following_attacker=follows_attacker,
+                        honest_leading_themselves=leaders,
+                        advertisers_visible=len(board),
+                    )
+                )
+    finally:
+        await shutdown(bootstrap, honest, attacker)
+    return rows
+
+
 # --------------------------------------------------------------------------- phase 2
 
 
@@ -458,7 +598,9 @@ def write_csv(rows, name):
 
 async def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--phase", type=int, required=True, choices=[1, 2, 3, 4])
+    ap.add_argument("--phase", type=int, required=True, choices=[1, 2, 3, 4, 5])
+    ap.add_argument("--rounds", type=int, default=6, help="phase 5 election rounds per arm")
+    ap.add_argument("--blind-time", type=float, default=1.0, help="phase 5 blind arm deadline")
     ap.add_argument("--num-peers", type=int, default=4, help="phase 4 averaging peers")
     ap.add_argument("--matchmaking-time", type=float, default=5.0, help="phase 4, hivemind default 5.0")
     ap.add_argument("--group-size", type=int, default=None, help="phase 4 target_group_size (default: all peers)")
@@ -509,6 +651,42 @@ async def main():
             f"_l{'-'.join(f'{x:g}' for x in args.ad_lifetimes)}"
         )
         write_csv(all_rows, f"step10_stale_n{args.num_honest}_{tag}.csv")
+        return
+
+    if args.phase == 5:
+        print(f"phase 5 -- leader election, {args.num_honest} honest peers + 1 attacker")
+        all_rows = []
+        for r in range(args.repeats):
+            arms_run = (
+                ("none", False), ("blind", True), ("mirror", True), ("mirror_live", True),
+            )
+            for arm, low in arms_run:
+                rows = await phase5_arm(
+                    args.num_honest, arm, args.blind_time, args.lifetime, args.rounds, r,
+                    attacker_lowest_id=low,
+                )
+                tot = sum(x["honest_following_attacker"] for x in rows)
+                den = sum(x["num_honest"] for x in rows)
+                low = sum(x["attacker_id_lowest"] for x in rows)
+                vis = sum(x["attacker_visible"] for x in rows)
+                won = sum(x["honest_following_attacker"] for x in rows if x["attacker_id_lowest"])
+                wdn = sum(x["num_honest"] for x in rows if x["attacker_id_lowest"])
+                cond = f"{won}/{wdn}" if wdn else "n/a"
+                label = arm + ("+lowid" if low else "")
+                print(
+                    f"  repeat {r} {label:<14} followers {tot:>5}/{den:<6} "
+                    f"({100*tot/den:5.1f}%)  ad visible {vis}/{len(rows)} samples"
+                    f"  id lowest {low}/{len(rows)}  followers when lowest: {cond}"
+                )
+                all_rows += rows
+        # HANDOFF section 5, and this is the second time it has bitten in one session: the
+        # arm set changes the result, so it must be in the filename. Without it a rerun with
+        # different arms silently overwrites the previous one.
+        armtag = "-".join(sorted({a + ("L" if low else "") for a, low in arms_run}))
+        write_csv(
+            all_rows,
+            f"step10_election_n{args.num_honest}_l{args.lifetime:g}_b{args.blind_time:g}_{armtag}.csv",
+        )
         return
 
     if args.phase == 4:
