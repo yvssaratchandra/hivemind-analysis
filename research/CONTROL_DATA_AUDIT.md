@@ -380,17 +380,47 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
   round. **The control arm contains the same attacker node with the delay switched off**, so node
   count and process load are controlled for and §4.6's filler-node confound cannot apply.
 
-- **Result.** One ordinary peer that never trains, holds no custody and crafts no identity can stretch
-  every matchmaking read to just under `wait_timeout`, which makes advertisements at Hivemind's
-  default lifetime invisible and cost roughly a third of averaging attempts outright. Compare C7.S,
-  where interfering with a victim's view needed `bucket_size` = 20 crafted identities *and* custody.
-- **Decision.** **Demonstrated**, with the scale caveat below. The between-repeat spread (0/4 to 4/4)
-  is far larger than any single number here, so quote the range, not the 17/24.
-- **Next step.** **Does it survive a larger swarm?** At 4–8 peers one slow responder is a large
-  fraction of the routing table. The traversal still waits for the slowest peer it actually contacts,
-  so the effect should persist — but that is an argument, not a measurement, and it is the claim the
-  finding most needs. After that: selective delay aimed at one victim via `context.remote_id`, and
-  whether the victim's starved candidate list makes it lead, as filtering did in §4.6.
+  At 8 peers with group size 4, 4 repeats: control 8/8 every time at 0.0–0.1 s; delay gave
+  **0/8, 0/8, 0/8, 8/8**. The outcome is bimodal — three repeats lost the entire round and one was
+  untouched — not a graded slowdown. Either the attacker sits in the critical path or it does not.
+
+  *Scale, and the correction it forces.* A **random** `node_id` is not enough once the swarm
+  outgrows the routing table. One slow responder still set the read latency at 8 and 24 peers
+  (~2.91 s against ~0.005 s), but at 48 peers only **3 of 6 repeats** showed any effect at all; the
+  rest ran at control latency. This is C7.S's seed-set law again: a slow responder only matters if
+  the victim actually asks it.
+
+  *Address choice fixes that, and costs 0.1 s.* Giving the attacker a `node_id` at XOR distance 0
+  from the group key — C6.S's crafted address, one identity — makes it a replica, so it is asked
+  every time:
+
+  | 48-peer swarm, one attacker | effect present | latency | blacklisted |
+  |---|---|---|---|
+  | random `node_id` | **3/6** | 0.007 s or 2.91 s | 0 |
+  | **crafted `node_id`** | **4/4** | 2.904–2.906 s | **0** |
+
+  The attacker count is identical in both arms — only the address differs — so the difference is
+  attributable to address choice and nothing else, which is the same control §4.1 used for custody.
+  **C11.Delay therefore composes with C6.S:** one crafted identity buys the position, and one
+  `sleep()` inside `wait_timeout` does the rest.
+
+- **Result.** **One peer with one crafted address** can stretch every matchmaking read to just under
+  `wait_timeout`, which makes advertisements at Hivemind's default lifetime invisible and costs
+  averaging outright — at 8 peers, three rounds in four. It never trains, contributes no gradients,
+  and is never blacklisted. Compare C7.S, where interfering with a victim's *view* needed
+  `bucket_size` = 20 crafted identities plus custody; this needs **one**, because it does not have to
+  outvote the honest answers, only outlast them.
+- **Decision.** **Demonstrated**, for a crafted address. For a *random* address it is probabilistic
+  and decays with swarm size (3/6 at 48 peers) — state which one is meant. The between-repeat spread
+  is bimodal rather than noisy: quote the pattern (0/8, 0/8, 0/8, 8/8), not a mean.
+- **Next step.** Three, in order. **Selective delay** — `rpc_find` receives `context: P2PContext`
+  (`protocol.py:333`), so the attacker can slow one victim and serve everyone else honestly, as C7.S
+  does for filtering; that removes the collateral and should remove any chance of the swarm noticing.
+  **Does a starved candidate list make the victim lead?** §4.6 measured 0/12 → 5/12 under filtering;
+  if delay reproduces it, this becomes a Select result at a twentieth of the cost. **And the cheapest
+  defence to test:** `get_averagers` asks for `latest=True`, which forbids the search from ever
+  short-circuiting; whether it genuinely needs the very latest value, or would tolerate a bounded
+  staleness, decides whether this whole cell closes with a one-line change.
 
 ### C11.D — Checkpoint 11, Deny: can an attacker remove a peer's advertisement?
 

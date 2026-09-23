@@ -59,6 +59,7 @@ import hivemind
 from hivemind.averaging import DecentralizedAverager
 from hivemind.averaging.key_manager import GroupKeyManager
 from hivemind.dht.node import DHTNode
+from hivemind.dht.routing import DHTID
 from hivemind.dht.protocol import DHTProtocol
 from hivemind.p2p import P2PContext, PeerID
 from hivemind.proto import dht_pb2
@@ -286,7 +287,8 @@ async def phase3_arm(num_honest: int, delay: float, ad_lifetime: float, window: 
 # --------------------------------------------------------------------------- phase 4
 
 
-def phase4_arm(num_peers: int, delay: float, matchmaking_time: float, run_id: str, repeat: int):
+def phase4_arm(num_peers: int, delay: float, matchmaking_time: float, run_id: str, repeat: int,
+               group_size: int | None = None):
     """End to end: does DHT-layer delay degrade real averaging?
 
     Phases 1-3 measure the DHT read in isolation. This runs stock `DecentralizedAverager`
@@ -315,7 +317,9 @@ def phase4_arm(num_peers: int, delay: float, matchmaking_time: float, run_id: st
             [torch.zeros(4)],
             dht,
             prefix=run_id,
-            target_group_size=num_peers,
+            # HANDOFF section 5: binding target_group_size at 16 peers starves the swarm,
+            # so vary swarm size and group size independently rather than tying them.
+            target_group_size=group_size or num_peers,
             min_group_size=2,
             min_matchmaking_time=matchmaking_time,
             request_timeout=3.0,
@@ -358,7 +362,9 @@ def phase4_arm(num_peers: int, delay: float, matchmaking_time: float, run_id: st
 # --------------------------------------------------------------------------- phase 2
 
 
-async def phase2_arm(num_honest: int, num_slow: int, delay: float, lifetime: float, reads: int, repeat: int):
+async def phase2_arm(
+    num_honest: int, num_slow: int, delay: float, lifetime: float, reads: int, repeat: int, craft: bool = False
+):
     """Delay: does one slow responder stretch a victim's candidate read, and does it
     change what the victim sees?
 
@@ -368,6 +374,8 @@ async def phase2_arm(num_honest: int, num_slow: int, delay: float, lifetime: flo
     SLOW.clear()
     DELAYS_APPLIED.clear()
     bootstrap, honest, victim = await build_swarm(num_honest)
+    initial_addrs = [str(a) for a in await bootstrap.get_visible_maddrs()]
+    crafted = None
     rows = []
     try:
         deadline = get_dht_time() + lifetime
@@ -379,15 +387,31 @@ async def phase2_arm(num_honest: int, num_slow: int, delay: float, lifetime: flo
         # a warm read so routing tables are populated in both arms alike
         await manager(victim).get_averagers(GROUP_KEY, only_active=True)
 
-        # arm the slow responders -- everyone except the victim is a candidate
-        for node in honest[:num_slow]:
-            SLOW[id(node.protocol)] = (delay, None)
+        # arm the slow responders -- everyone except the victim is a candidate.
+        # With --craft the crafted node is the *only* attacker, otherwise the arm would
+        # contain two of them and conflate address choice with attacker count.
+        if not craft:
+            for node in honest[:num_slow]:
+                SLOW[id(node.protocol)] = (delay, None)
+
+        # With a random node_id the attacker is only slow *if the victim happens to ask it*,
+        # which stops being reliable once the swarm outgrows the routing table -- the same
+        # seed-set law as C7.S. Crafting the id to XOR distance 0 from the group key puts the
+        # attacker among the replicas, so it is asked every time. Cost is C6.S's: ~0.1 s.
+        crafted = None
+        if craft and delay > 0:
+            target = DHTID.generate(source=GROUP_KEY)
+            crafted = await DHTNode.create(
+                node_id=DHTID(int(target)), initial_peers=initial_addrs, host_maddrs=LOCALHOST
+            )
+            SLOW[id(crafted.protocol)] = (delay, None)
 
         for i in range(reads):
             t0 = time.perf_counter()
             seen = await manager(victim).get_averagers(GROUP_KEY, only_active=True)
             elapsed = time.perf_counter() - t0
-            banned = sum(1 for n in honest if n.peer_id in victim.blacklist)
+            watch = honest[:num_slow] + ([crafted] if crafted is not None else [])
+            banned = sum(1 for n in watch if n.peer_id in victim.blacklist)
             rows.append(
                 dict(
                     repeat=repeat,
@@ -399,11 +423,14 @@ async def phase2_arm(num_honest: int, num_slow: int, delay: float, lifetime: flo
                     advertisers_seen=len(seen),
                     advertisers_declared=accepted,
                     slow_peers_blacklisted=banned,
+                    crafted_node_id=int(craft),
                 )
             )
     finally:
         SLOW.clear()
         await shutdown(bootstrap, honest, victim)
+        if crafted is not None:
+            await crafted.shutdown()
     return rows
 
 
@@ -434,12 +461,15 @@ async def main():
     ap.add_argument("--phase", type=int, required=True, choices=[1, 2, 3, 4])
     ap.add_argument("--num-peers", type=int, default=4, help="phase 4 averaging peers")
     ap.add_argument("--matchmaking-time", type=float, default=5.0, help="phase 4, hivemind default 5.0")
+    ap.add_argument("--group-size", type=int, default=None, help="phase 4 target_group_size (default: all peers)")
     ap.add_argument("--num-honest", type=int, default=8)
     ap.add_argument("--lifetime", type=float, default=30.0, help="declared availability lifetime (s)")
     ap.add_argument("--reads", type=int, default=5, help="candidate reads per arm (phase 2)")
     ap.add_argument("--repeats", type=int, default=2)
     ap.add_argument("--delays", type=float, nargs="+", default=[0.0, 0.5, 1.5, 2.9, 3.5])
     ap.add_argument("--slow", type=int, nargs="+", default=[1], help="how many responders are slow")
+    ap.add_argument("--craft", action="store_true",
+                    help="phase 2: the slow peer gets a node_id at XOR distance 0 from the group key")
     ap.add_argument("--ad-lifetimes", type=float, nargs="+", default=[1.0, 2.0, 5.0, 20.0])
     ap.add_argument("--window", type=float, default=12.0, help="phase 3 polling window (s), same in both arms")
     args = ap.parse_args()
@@ -489,13 +519,14 @@ async def main():
         all_rows = []
         for r in range(args.repeats):
             for d in [0.0] + [x for x in args.delays if 0 < x < 3.0]:
-                rows = phase4_arm(args.num_peers, d, args.matchmaking_time, f"step10d{r}{int(d*10)}", r)
+                rows = phase4_arm(args.num_peers, d, args.matchmaking_time, f"step10d{r}{int(d*10)}", r,
+                                  group_size=args.group_size)
                 ok = sum(x["averaged"] for x in rows)
                 el = [x["elapsed_s"] for x in rows]
                 arm = "control" if d == 0 else f"delay {d}s"
                 print(f"  repeat {r} {arm:<12} averaged {ok}/{len(rows)}  elapsed {min(el):.1f}-{max(el):.1f}s")
                 all_rows += rows
-        write_csv(all_rows, f"step10_e2e_n{args.num_peers}_mm{args.matchmaking_time:g}.csv")
+        write_csv(all_rows, f"step10_e2e_n{args.num_peers}_g{args.group_size or args.num_peers}_mm{args.matchmaking_time:g}.csv")
         return
 
     print(f"phase 2 -- Delay, {args.num_honest} honest peers, wait_timeout=3.0s")
@@ -509,10 +540,14 @@ async def main():
             for d in args.delays:
                 if d == 0.0:
                     continue
-                rows = await phase2_arm(args.num_honest, k, d, args.lifetime, args.reads, r)
+                rows = await phase2_arm(args.num_honest, k, d, args.lifetime, args.reads, r, craft=args.craft)
                 summarise(rows, f"{k} slow @ {d}s")
                 all_rows += rows
-    write_csv(all_rows, f"step10_delay_n{args.num_honest}_k{'-'.join(map(str, args.slow))}_reads{args.reads}.csv")
+    write_csv(
+        all_rows,
+        f"step10_delay_n{args.num_honest}_k{'-'.join(map(str, args.slow))}"
+        f"_d{'-'.join(f'{x:g}' for x in args.delays)}_{'crafted' if args.craft else 'random'}.csv",
+    )
 
 
 if __name__ == "__main__":
