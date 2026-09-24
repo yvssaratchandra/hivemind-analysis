@@ -53,6 +53,7 @@ from pathlib import Path
 
 import multiprocessing as mp
 
+import numpy as np
 import torch
 
 import hivemind
@@ -389,7 +390,7 @@ def would_follow(own_peer_id: PeerID, own_expiration: float, candidates: list) -
 
 async def phase5_arm(
     num_honest: int, arm: str, blind_time: float, lifetime: float, rounds: int, repeat: int,
-    attacker_lowest_id: bool = False,
+    attacker_lowest_id: bool = False, attacker_latency: float = 0.0,
 ):
     """Can an attacker that *reads* the advertisements win the leader election?
 
@@ -439,11 +440,26 @@ async def phase5_arm(
                 declared[node.peer_id] = exp
 
             observed = await manager(attacker).get_averagers(GROUP_KEY, only_active=True)
+            if attacker_latency:
+                # A real attacker's read and write cross a network. Loopback makes both ~3 ms,
+                # which is the best case and must not be reported as the general one. This
+                # spends the budget between reading and declaring, where it actually hurts:
+                # every millisecond here is lifetime the advertisement never gets.
+                await asyncio.sleep(attacker_latency)
             attacker_exp = None
             if arm == "blind":
                 attacker_exp = now + blind_time
             elif arm == "mirror" and observed:
                 attacker_exp = min(e for _, e in observed)  # verbatim, no undercut
+            elif arm == "undercut" and observed:
+                # C11.T calls undercutting prevented, on the grounds that lowering the
+                # deadline to win makes the advertisement expire instead. That holds for
+                # lowering by seconds. np.nextafter lowers it by ~2.4e-7 s at these
+                # timestamps -- 240 nanoseconds of lifetime for an outright win that needs
+                # no low peer_id at all. Same primitive hivemind itself uses for withdrawal
+                # (key_manager.py:60), pointed the other way.
+                live = [e for _, e in observed if e - now > REQUEST_TIMEOUT]
+                attacker_exp = float(np.nextafter(min(live), -np.inf)) if live else None
             elif arm == "mirror_live" and observed:
                 # Mirroring the *global* minimum is fragile: peers re-declare continuously, so
                 # the earliest record on the key is often one about to expire, and copying it
@@ -485,6 +501,7 @@ async def phase5_arm(
                         num_honest=num_honest,
                         arm=arm,
                         attacker_lowest_id_by_design=int(attacker_lowest_id),
+                        attacker_latency_s=attacker_latency,
                         lifetime_s=lifetime,
                         attacker_declared=round(attacker_exp - now, 3) if attacker_exp else None,
                         attacker_visible=int(attacker_visible),
@@ -496,6 +513,52 @@ async def phase5_arm(
                 )
     finally:
         await shutdown(bootstrap, honest, attacker)
+    return rows
+
+
+# --------------------------------------------------------------------------- phase 6
+
+
+async def phase6_arm(num_honest: int, samples: int, repeat: int):
+    """Baseline cost of a DHT write and a DHT read, on an otherwise healthy swarm.
+
+    Everything else in this file measures what an attacker does to these numbers. This
+    measures the numbers themselves, which is what the protocol's own timeouts have to be
+    read against: `wait_timeout` 3 s bounds one RPC, `min_matchmaking_time` 5 s is the whole
+    advertisement lifetime.
+
+    `declare_averager` is the write (`key_manager.py:57-68`, a `dht.store` to `num_replicas`
+    peers). `get_averagers` is the read (`key_manager.py:79`, a `dht.get` with `latest=True`,
+    which forbids the traversal from short-circuiting). Loopback, so these are floors: a real
+    deployment pays network round trips on top.
+    """
+    bootstrap, honest, observer = await build_swarm(num_honest)
+    rows = []
+    try:
+        for i in range(samples):
+            deadline = get_dht_time() + 30.0
+            node = honest[i % len(honest)]
+            t0 = time.perf_counter()
+            ok = await manager(node).declare_averager(GROUP_KEY, node.peer_id, expiration_time=deadline)
+            t_write = time.perf_counter() - t0
+
+            t0 = time.perf_counter()
+            seen = await manager(observer).get_averagers(GROUP_KEY, only_active=True)
+            t_read = time.perf_counter() - t0
+
+            rows.append(
+                dict(
+                    repeat=repeat,
+                    sample=i,
+                    num_honest=num_honest,
+                    write_s=round(t_write, 5),
+                    read_s=round(t_read, 5),
+                    write_accepted=int(bool(ok)),
+                    advertisers_seen=len(seen),
+                )
+            )
+    finally:
+        await shutdown(bootstrap, honest, observer)
     return rows
 
 
@@ -598,9 +661,12 @@ def write_csv(rows, name):
 
 async def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--phase", type=int, required=True, choices=[1, 2, 3, 4, 5])
+    ap.add_argument("--phase", type=int, required=True, choices=[1, 2, 3, 4, 5, 6])
+    ap.add_argument("--samples", type=int, default=12, help="phase 6 write/read samples")
     ap.add_argument("--rounds", type=int, default=6, help="phase 5 election rounds per arm")
     ap.add_argument("--blind-time", type=float, default=1.0, help="phase 5 blind arm deadline")
+    ap.add_argument("--attacker-latency", type=float, nargs="+", default=[0.0],
+                    help="phase 5: seconds between the attacker reading and declaring")
     ap.add_argument("--num-peers", type=int, default=4, help="phase 4 averaging peers")
     ap.add_argument("--matchmaking-time", type=float, default=5.0, help="phase 4, hivemind default 5.0")
     ap.add_argument("--group-size", type=int, default=None, help="phase 4 target_group_size (default: all peers)")
@@ -653,17 +719,35 @@ async def main():
         write_csv(all_rows, f"step10_stale_n{args.num_honest}_{tag}.csv")
         return
 
+    if args.phase == 6:
+        print(f"phase 6 -- baseline DHT write and read cost, {args.num_honest} honest peers")
+        all_rows = []
+        for r in range(args.repeats):
+            rows = await phase6_arm(args.num_honest, args.samples, r)
+            w = sorted(x["write_s"] for x in rows)
+            rd = sorted(x["read_s"] for x in rows)
+            print(
+                f"  repeat {r}  write median {w[len(w)//2]*1000:7.2f} ms (min {w[0]*1000:.2f} max {w[-1]*1000:.2f})"
+                f"   read median {rd[len(rd)//2]*1000:7.2f} ms (min {rd[0]*1000:.2f} max {rd[-1]*1000:.2f})"
+            )
+            all_rows += rows
+        write_csv(all_rows, f"step10_baseline_rw_n{args.num_honest}_s{args.samples}.csv")
+        return
+
     if args.phase == 5:
         print(f"phase 5 -- leader election, {args.num_honest} honest peers + 1 attacker")
         all_rows = []
         for r in range(args.repeats):
-            arms_run = (
-                ("none", False), ("blind", True), ("mirror", True), ("mirror_live", True),
+            # undercut carries NO low peer_id -- that is the point of the arm.
+            arms_run = tuple(
+                (arm, low, lat)
+                for lat in args.attacker_latency
+                for arm, low in (("none", False), ("mirror_live", True), ("undercut", False))
             )
-            for arm, low in arms_run:
+            for arm, low, lat in arms_run:
                 rows = await phase5_arm(
                     args.num_honest, arm, args.blind_time, args.lifetime, args.rounds, r,
-                    attacker_lowest_id=low,
+                    attacker_lowest_id=low, attacker_latency=lat,
                 )
                 tot = sum(x["honest_following_attacker"] for x in rows)
                 den = sum(x["num_honest"] for x in rows)
@@ -672,7 +756,7 @@ async def main():
                 won = sum(x["honest_following_attacker"] for x in rows if x["attacker_id_lowest"])
                 wdn = sum(x["num_honest"] for x in rows if x["attacker_id_lowest"])
                 cond = f"{won}/{wdn}" if wdn else "n/a"
-                label = arm + ("+lowid" if low else "")
+                label = arm + ("+lowid" if low else "") + (f"@{lat:g}s" if lat else "")
                 print(
                     f"  repeat {r} {label:<14} followers {tot:>5}/{den:<6} "
                     f"({100*tot/den:5.1f}%)  ad visible {vis}/{len(rows)} samples"
@@ -682,7 +766,8 @@ async def main():
         # HANDOFF section 5, and this is the second time it has bitten in one session: the
         # arm set changes the result, so it must be in the filename. Without it a rerun with
         # different arms silently overwrites the previous one.
-        armtag = "-".join(sorted({a + ("L" if low else "") for a, low in arms_run}))
+        armtag = "-".join(sorted({a + ("L" if low else "") for a, low, _ in arms_run}))
+        armtag += "_lat" + "-".join(f"{x:g}" for x in args.attacker_latency)
         write_csv(
             all_rows,
             f"step10_election_n{args.num_honest}_l{args.lifetime:g}_b{args.blind_time:g}_{armtag}.csv",

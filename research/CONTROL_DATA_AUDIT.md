@@ -144,7 +144,7 @@ from the authenticated key — would change every row here.**
 
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
-| 11 | Averaging availability exchange | **D — C11.Obs** | **D — C11.Delay** | **D — C11.D** | **X — C11.T** | — |
+| 11 | Averaging availability exchange | **D — C11.Obs** | **D — C11.Delay** | **D — C11.D** | **partly X — C11.T** | — |
 | 12 | Candidate priority and leader choice *(local)* | open | open | open | open | **D — C12.S** |
 | 13 | Join negotiation and admission | open | open | **D — C13.D** | open | **D — C13.S** |
 | 14 | Group roster distribution | open | open | = 13 | open | = 13 |
@@ -443,9 +443,20 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
 - **Work performed.** Attempted as a `forged` arm in `step6_isolation.py`; abandoned after code reading.
 - **Observations.** Expiration is one field doing two jobs — the record's **lifetime** and its
   **leadership priority** (`key_manager.py:60`, read back at `:88`).
-- **Result.** Lowering it to win the election makes the advertisement expire instead.
-- **Decision.** **Prevented** — not by a check, but by the data model. Recorded so nobody retries it.
-- **Next step.** None. Do not retry.
+- **Result.** Lowering it *by a meaningful amount* to win the election makes the advertisement expire
+  instead. §4.3's blind attacker declaring `now + 1` against `now + 5` pays four fifths of its window.
+- **Decision.** **Partly wrong as originally recorded — see C12.S.** The verdict was written as
+  "lowering it to win makes it expire", without a bound, and that over-generalises. Expirations are
+  absolute timestamps around 1.79e9, where one float step is **2.4e-7 s**. Undercutting the minimum
+  by `np.nextafter(min, -inf)` wins the comparison outright and costs 240 nanoseconds of
+  advertisement life — not a tradeoff in any practical sense. Measured in C12.S: 100 % of honest
+  peers followed the attacker at 32 peers, with the attacker holding the lowest `peer_id` in **0 of
+  40** samples, so the win came from the deadline alone.
+- **Next step.** The original arm — forging a *doctored record for someone else*, which needs custody
+  — is still not worth retrying, and that part of the verdict stands. What was wrong is the general
+  claim that the data model prevents undercutting. It prevents *large* undercuts. It is the same
+  primitive hivemind itself uses for withdrawal (`key_manager.py:60`, `nextafter` upward to win the
+  strictly-later comparison), pointed the other way.
 
 ### C12.S — Checkpoint 12, Select: can an attacker win the leader election at will?
 
@@ -493,7 +504,30 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
   occupying a position among many. This one is a comparison between two tuples whose components the
   attacker controls, so more honest peers simply means more peers reaching the same answer.
 
-  *Cost of the low `peer_id`.* `PeerID` is a hash of a public key, so being lowest of N costs about
+  *The low `peer_id` turns out to be unnecessary.* Matching the deadline exactly needs the tie-break,
+  but **undercutting it by one float step does not.** Expirations are absolute timestamps around
+  1.79e9, so `np.nextafter(min, -inf)` wins outright at a cost of 2.4e-7 s of advertisement life.
+  At 32 peers, 2 repeats, the `undercut` arm took **100 % of followers while holding the lowest
+  `peer_id` in 0 of 40 samples** — the win came from the deadline alone. This is what corrects
+  C11.T, whose "prevented" verdict was written without a bound.
+
+  *Network latency does not close the window.* The attacker must read the key and then declare, and
+  on a real network both cross the wire. Sweeping an artificial delay between the read and the
+  declaration, at 32 peers with the default 5 s window:
+
+  | attacker latency | none | mirror joinable + low id | undercut |
+  |---|---|---|---|
+  | 0 s | 0 % | 100 % | 100 % |
+  | 0.5 s | 0 % | 100 % | 100 % |
+  | 1 s | 0 % | 100 % | 100 % |
+  | 2 s | 0 % | 100 % | 100 % |
+
+  Both variants tolerate 2 s between reading and declaring. **This is still loopback for the DHT
+  operations themselves**, so it bounds the attacker's own think-time, not the full round-trip cost
+  of a real deployment — the honest reading is that the margin exists, not that it has been measured
+  on a real network.
+
+  *Cost of the low `peer_id`, if the matching variant is used anyway.* `PeerID` is a hash of a public key, so being lowest of N costs about
   N keypairs in expectation — linear, not exponential — and `identity_path` makes it choosable
   offline (`HANDOFF.md` §6 lists this as an open lever). **Not measured here:** the role was
   assigned to whichever node already held the lowest id, which measures what grinding buys without

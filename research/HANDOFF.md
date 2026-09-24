@@ -3,7 +3,7 @@
 Everything a new session needs: what the project is, where it stands, what is known, and what to do
 next. Written to be read without any prior conversation.
 
-Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-09-11
+Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-09-24
 
 ---
 
@@ -85,9 +85,25 @@ step, at the cost of one identity and a `sleep()`. This is the first **Deny** re
 everything before it measures capture. Spike only — the control that decides whether it is a finding
 has not been run yet, and §4.13 says which.
 
+**§4.15** — checkpoints 11 and 12. An attacker that answers `rpc_find` late, but inside
+`wait_timeout`, is never blacklisted and makes advertisements at hivemind's default 5 s lifetime
+invisible; cost is one crafted address. And an attacker that reads the group key can win the leader
+election outright, at 32 and at 128 peers, by matching or undercutting the earliest deadline. The
+election result is computed from real records rather than observed live, so **do not quote it as a
+capture rate yet**.
+
 **§4.14** — four short GitHub-issue-format reproductions of the identity flaws, written to be handed
 to a reviewer on their own. These formalise what §4.1 assumes rather than adding new attacks, except
 `forged_pairs_report.md`, which is a **negative** result worth keeping.
+
+**`CONTROL_DATA_AUDIT.md` is where the work is now driven from.** It maps 21 control checkpoints
+across six layers, crossed with observe / delay / deny / tamper / select, and carries a worksheet per
+filled cell. It supersedes this file for *what to do next*: the map decides the order, not intuition.
+Two definitions in it matter and are not obvious. The control plane is defined **by function, not by
+layer**, so all 21 checkpoints qualify even where the surrounding layer moves tensors. And a cell is a
+family of experiments, split by direct versus induced and by **omission versus commission**, which is
+the distinction that turned out to matter most: every defence hivemind has detects silence, and every
+attack demonstrated in this project is a peer that answers and lies.
 
 **`FINDINGS.md` is the argument on its own** — background, the six control-plane surfaces, the findings
 that matter, limitations, future work — written to be handed to someone with no context. This file is
@@ -115,6 +131,9 @@ for detail.
 | `reproduce_id_pairing.py` | `(node_id, peer_id)` pairs ride in every lookup answer, asserted and unchecked. |
 | `reproduce_forged_pairs.py` | Whether forging those pairs is *exploitable*. Mostly not — see §4.14. |
 | `reproduce_group_key_capture.py` | The group-key hash protects nothing: K is a forward hash of a public string. |
+| `step10_delay.py` | §4.15. Six phases at checkpoints 11 and 12: observe, delay, staleness, end-to-end averaging, leader election, and baseline write/read cost. |
+| `make_map_sheet.py` | Renders Part 1 of the audit as a one-page PDF. Parses the audit, so it cannot drift. |
+| `make_timing_sheet.py` | Renders the DHT timing reference as a one-page PDF from the result CSVs. |
 
 Each `reproduce_*.py` has a matching short report: `node_id_creation_report.md`,
 `id_pairing_report.md`, `forged_pairs_report.md`, `group_key_capture_report.md`, plus
@@ -144,7 +163,7 @@ arm**, never against 0.1492. See §4.11.
 
 ---
 
-## 3. Three traps that cost the most time
+## 3. Four traps that cost the most time
 
 ### Trap 1 — a swarm that looks like it is training together, but is not
 
@@ -195,6 +214,18 @@ takes `stall=False`.
 Related, and also load-bearing: overriding an RPC handler **requires type annotations**, because
 `p2p/servicer.py:_collect_rpc_handlers` reads them to register the handler and raises at startup
 without them.
+
+### Trap 4: `pgrep -f` matches the shell that is running it
+
+Cost a 37 minute dead job and, worse, three wrong status reports. A background run was wrapped in
+`while pgrep -f "step10_delay.py --phase 5" >/dev/null; do sleep 5; done` so it would wait for an
+earlier run to finish. That pattern matches the wrapper's **own** command line, so the condition was
+permanently true and the queued work never started. Checking on it with `pgrep -f "phase 6"` had the
+same fault and kept reporting "still running" when nothing was.
+
+Two habits fix it. Use a bracket pattern, `pgrep -f "[s]tep10_delay"`, which cannot match the literal
+string in its own argv. And when a check disagrees with reality, resolve it by PID
+(`ps -eo pid,etime,args`, then `kill -0`) rather than trusting a second grep of the same shape.
 
 ---
 
@@ -556,6 +587,65 @@ anywhere, while `matchmaking.py:538` calls it for real.
   its pipeline; the ALBERT example has every peer load the whole corpus and shuffle with a seed derived
   from its own public key.
 
+### 4.15 Checkpoints 11 and 12: answering late, and winning every election
+
+`step10_delay.py`. Full worksheets are in `CONTROL_DATA_AUDIT.md` under C11.Obs, C11.Delay and C12.S;
+this is the summary.
+
+**Observation is free and total (C11.Obs).** One ordinary peer, random `node_id`, no custody, sees
+8/8 advertisers in 3 ms with every declared expiration readable. That expiration *is* the leadership
+priority (`matchmaking.py:478-481`), so an ordinary peer reads the election order before the election
+happens. Every Select result in this project assumed this capability; now it is measured.
+
+**A slow answer is not diluted (C11.Delay).** `get_averagers` calls `dht.get(key, latest=True)`
+(`key_manager.py:79`), which sets `sufficient_expiration_time` to infinity (`node.py:542-543`), and
+`add_candidate` ends a search only when `expiration >= sufficient` (`node.py:844-845`), which against
+infinity is never. **A matchmaking read cannot short-circuit**, so one slow responder sets the whole
+read time: 0.5 -> 0.504 s, 1.5 -> 1.506, 2.9 -> 2.913, against 0.003 control. It does **not stack**:
+1, 2 and 4 slow peers all give ~2.91 s, because traversal is parallel and tracks the slowest peer
+contacted.
+
+**There is a cliff at `wait_timeout`, and it cuts both ways.** Below 3 s the attacker is never
+blacklisted. At 3.5 s latency returns to control *and the peer is blacklisted*, the RPC having timed
+out. Crossing the timeout converts commission into omission and the existing defence then works. This
+is the first time in this project that one of hivemind's own defences has been observed firing.
+
+**The harm is to a moving advertiser set.** A new advertiser reaches the control in ~50 ms every
+time; under delay it can be missed entirely, and the invisibility threshold tracks the delay (about
+2x). `min_matchmaking_time` defaults to 5.0 s (`averager.py:121`) and the advertisement expiration is
+`now + min_matchmaking_time`, so **the shipped lifetime sits inside the band a 2.9 s attacker makes
+invisible**. The record is fetched and then dropped: candidates merge per subkey into a
+`DictionaryDHTValue` (`node.py:832-835`), but `get_averagers` reads it with `.items()`, which calls
+`_remove_outdated()` first (`timed_storage.py:96-99`).
+
+**Cost is one crafted address, not one lucky peer.** With a *random* `node_id` the effect decays with
+swarm size: reliable at 8 and 24 peers, only 3 of 6 repeats at 48. With a `node_id` at XOR distance 0
+from the group key, 4 of 4 at 48 peers. Attacker count is identical in both arms, so the difference is
+address choice alone. End to end, stock averagers plus one peer that contributes no gradients: at 4
+peers 17/24 steps averaged against 24/24 control; at 8 peers with group size 4 the pattern was
+0/8, 0/8, 0/8, 8/8, bimodal rather than graded.
+
+**Leadership can be won outright (C12.S).** `pop_next_leader` compares **tuples**,
+`(expiration, peer_id.to_bytes())`, so an attacker can either match the earliest joinable deadline and
+take the tie on a low `peer_id`, or undercut it by `np.nextafter`, which at these absolute timestamps
+(~1.79e9) costs **2.4e-7 s** of advertisement life. Both took **100 % of followers at 32 and at 128
+peers**, two repeats each, and the undercut variant held the lowest `peer_id` in **0 of 40** samples,
+so it needs no identity advantage at all. Both tolerated 2 s of injected latency between reading the
+key and declaring. Unlike every other attack here, it does **not decay with swarm size**, because it
+is a comparison between two tuples whose components the attacker controls.
+
+**This corrects C11.T.** That worksheet recorded undercutting as *prevented, do not retry*, on the
+grounds that lowering the deadline shortens the advertisement. True for lowering by seconds, false for
+one float step. The verdict was written without a bound and that is what made it wrong; the map now
+reads `partly X`.
+
+**Scope, and it is the thing to close next.** C12.S computes the election by applying hivemind's own
+comparison rule to real records written by the real `GroupKeyManager`, sampled across the window. That
+is faithful to the rule but **not a live matchmaking run**: §4.3's blind attacker reached 57-67 % live
+where this method scores that strategy at 15-20 %. Reconcile the two before quoting 100 % as a capture
+rate. The low `peer_id` cost is also reasoned rather than measured, and all DHT operations are
+loopback.
+
 Background: `HIVEMIND_EXPLAINED.md` (how the system works), `GROUP_FORMATION.md` (group formation and
 attacker control), `QA_NOTES.md` (Q&A log + literature review — **no published work analyses Hivemind's
 DHT security**).
@@ -839,8 +929,17 @@ this sample size, and repeat before believing a rate.**
   The second time, `--sybil-nodes` was missing from `step6_isolation.py`'s output name, so runs at 5,
   25 and 40 crafted identities all wrote the same file and silently overwrote each other. The summaries
   survived only because they were also in the run logs. When adding a knob, add it to the filename in
-  the same edit. (e.g. `_cached` / `_nocache`), or
-  runs overwrite each other. This happened once and lost data.
+  the same edit. **This has now happened four times.** Twice more in `step10_delay.py`: a stale-sweep
+  name keyed only on `--reads`, which that phase does not even use, and an election name that omitted
+  the arm set, so a rerun with different arms silently replaced the previous one. Both names now carry
+  every variable that changes the result. The rule is not "name the important knobs", it is **name
+  every knob the run varies**, including ones that feel like presentation.
+
+- **A control that finishes early is not a control.** `step10_delay.py` phase 3 first gave both arms
+  the same *number of reads* rather than the same *wall-clock window*. The fast arm completed all its
+  reads before the advertisement under test was even written, so both arms observed nothing and the
+  result looked like a null. Matching arms means matching the thing the attacker changes: if the
+  attack changes how long an operation takes, equalise time, not iterations.
 
 **Resource envelope.** Each peer is **4 Python processes plus one `p2pd`** (trainer, DHT, gradient
 averager, state averager), because `DecentralizedAverager` extends `mp.Process`. ~350–520 MB per peer.
@@ -907,6 +1006,25 @@ not an ML theory venue.
 
 PDFs of all of the above were downloaded to `~/Downloads/hivemind-security-papers/` on the second
 machine — **not in the repo**, so re-fetch them if that machine is gone.
+
+### From the audit, in the order the map gives
+
+`CONTROL_DATA_AUDIT.md` Part 3 carries the current ordering. The top items as of this handoff:
+
+1. **Reconcile C12.S against live matchmaking.** The election result is computed from real records
+   using hivemind's own rule, not observed in a running swarm. This is the single thing standing
+   between "wins the election" and "captures the group", and §4.3 already provides the live baseline
+   to compare against.
+2. **Run the `reject` control for C13.D.** Still the cheapest open item, and it decides whether the
+   stall in §4.13 is a finding at all.
+3. **Open L6 entirely.** State transfer, every cell empty, donor priority self-declared and
+   downloaded tensors installed unvalidated. The only place an attacker replaces a model rather than
+   nudging it.
+4. **Checkpoint 14 Tamper.** A leader controls the roster for free, so sending *conflicting* rosters
+   to different followers costs it nothing extra. Untested.
+5. **An omission attack, anywhere.** Every demonstrated result is commission. C11.Delay locates the
+   boundary, since the same attacker crossing `wait_timeout` is detected and neutralised, but nobody
+   has run a deliberate omission arm.
 
 ### Loose ends, in descending order of interest
 
