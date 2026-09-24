@@ -678,12 +678,25 @@ not the attack.
 **Refusing is not free to the victim either.** `reject` loses no steps but its p90 is 5.25 s against
 the baseline's 0.16 s: a peer that picks the attacker burns about five seconds finding another leader.
 
-**Scope, and it is the thing to close next.** C12.S computes the election by applying hivemind's own
-comparison rule to real records written by the real `GroupKeyManager`, sampled across the window. That
-is faithful to the rule but **not a live matchmaking run**: §4.3's blind attacker reached 57-67 % live
-where this method scores that strategy at 15-20 %. Reconcile the two before quoting 100 % as a capture
-rate. The low `peer_id` cost is also reasoned rather than measured, and all DHT operations are
-loopback.
+**Reconciled against live matchmaking, and the headline does not survive.** `step12_election_live.py`
+runs the same strategies against real `DecentralizedAverager` swarms. At 15 honest peers, group size 4,
+4 rounds, 3 repeats: the attacker **leads 4 of 4 rounds** in both the blind and the undercut arm, with
+no compute, confirming the leadership claim live. But **followers per round is pinned at 3 in every
+repeat and both arms**, which is `target_group_size - 1`: 43 % of honest peers at 7, **20 % at 15**.
+The share halves as the swarm doubles.
+
+**The 100 % was an artifact of a missing capacity constraint.** The simulated election asked,
+independently for each peer, whether it would prefer the attacker, and every peer did. A live leader
+seats `target_group_size - 1` followers and the rest form their own group. The *comparison* does not
+decay with swarm size; the *outcome* does, so §4.15's scale-independence claim applies to the wrong
+half. Blind and undercut are also indistinguishable live, both leading 4/4 and seating 3, where the
+simulation separated them 15-20 % against 100 %.
+
+**And it is not a denial attack.** Honest availability was 60/60 in both attack arms against 64/64
+baseline. Leading every round costs the swarm nothing by itself; what it buys is
+`target_group_size - 1` seats, which is where C13.S's admission control would have to do the rest.
+
+The low `peer_id` cost is still reasoned rather than measured, and all DHT operations are loopback.
 
 Background: `HIVEMIND_EXPLAINED.md` (how the system works), `GROUP_FORMATION.md` (group formation and
 attacker control), `QA_NOTES.md` (Q&A log + literature review — **no published work analyses Hivemind's
@@ -1066,10 +1079,10 @@ machine — **not in the repo**, so re-fetch them if that machine is gone.
 
 `CONTROL_DATA_AUDIT.md` Part 3 carries the current ordering. The top items as of this handoff:
 
-1. **Reconcile C12.S against live matchmaking.** The election result is computed from real records
-   using hivemind's own rule, not observed in a running swarm. This is the single thing standing
-   between "wins the election" and "captures the group", and §4.3 already provides the live baseline
-   to compare against.
+1. **Compose C12.S with C13.S.** Leading every round is now established live, and it is bounded to
+   `target_group_size - 1` seats per round. The open question is what admission control does with
+   those seats, which is where β = k/(k+1) would come from. Note that §4.3's 57-67 % is a *capture*
+   rate and not a leadership rate; the two were compared as if interchangeable once already.
 2. **E01 is done** (audit Part 1b), and with it the `reject` control for §4.13. See below; what
    remains open at L4 and L6 is now higher priority than anything at L3.
 

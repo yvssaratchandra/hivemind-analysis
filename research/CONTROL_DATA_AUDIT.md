@@ -64,6 +64,13 @@ conditional recovery branch.
 
 **The empty cells matter as much as the full ones.** Empty means nobody has looked, not that it is safe.
 
+**A local decision has no independent attack surface.** Checkpoint 12 makes its choice inside a peer's
+own process, over checkpoint-11 records, and sends nothing. An attacker cannot delay, deny or tamper
+with a computation running in someone else's process; it can only act on the inputs, which is what
+C11.Delay, C11.D and C11.T already record. Observe is the same: the rule is deterministic over inputs
+C11.Obs showed are public, so predicting another peer's choice is reading checkpoint 11. Those four
+cells therefore read `= 11` rather than `open`, in the same sense row 14 reads `= 13`.
+
 **The grid is not the whole scope.** Absent checks do belong in it, sited at the decision they should
 protect, which is what C3.T is. But strategies that chain checkpoints, and questions about what an
 attacker costs, span rows; those live in the experiment register, Part 1b, and are cross-referenced
@@ -158,7 +165,7 @@ from the authenticated key — would change every row here.**
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
 | 11 | Averaging availability exchange *(also E01)* | **D — C11.Obs** | **D — C11.Delay** | **D — C11.D** | **partly X — C11.T** | **D — C7.S** |
-| 12 | Candidate priority and leader choice *(local, also E01)* | open | open | open | open | **D — C12.S** |
+| 12 | Candidate priority and leader choice *(local, also E01)* | = 11 | = 11 | = 11 | = 11 | **D — C12.S** |
 | 13 | Join negotiation and admission *(also E01)* | open | open | **D — C13.D** | open | **D — C13.S** |
 | 14 | Group roster distribution | open | open | = 13 | open | = 13 |
 | 15 | Next-group-key derivation *(local)* | open | open | open | open | **D — C15.S** |
@@ -744,15 +751,44 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
   `peer_id` is followed by **every honest peer, in every sample, at 32 and at 128** — against 15–20 %
   for the blind strategy §4.3 measured. C11.T is sidestepped rather than defeated: it forbids
   undercutting, and this never undercuts.
-- **Decision.** **Demonstrated for the election itself.** The election is computed by applying
-  Hivemind's own comparison rule to real records written by the real `GroupKeyManager`, sampled
-  across the window — faithful to the rule, but **not a live matchmaking run**. §4.3's blind attacker
-  reached 57–67 % in live matchmaking against this method's 15–20 %, so the two must be reconciled
-  before the 100 % is quoted as a capture rate. **Do not report this as capture yet.**
-- **Next step.** Rerun against live `DecentralizedAverager` matchmaking and compare. If it holds,
-  this composes with C13.S — leadership at will, then exact admission — which is the strongest chain
-  this project has. Then: does `past_attempts` exclusion erode it across rounds, since the attacker
-  re-declares the same deadline each time?
+  *Reconciled against live matchmaking, and the headline does not survive.* `step12_election_live.py`
+  runs the same strategies against real `DecentralizedAverager` swarms, with the attacker's
+  declaration patched into `PotentialLeaders._declare_averager_periodically`. 15 honest peers, group
+  size 4, 4 rounds, 3 repeats:
+
+  | arm | led | followers per round | honest availability |
+  |---|---|---|---|
+  | none | 0/4 | — | 64/64 |
+  | blind (`now + 1 s`) | **4/4** | **3** | 60/60 |
+  | undercut (`nextafter`) | **4/4** | **3** | 60/60 |
+
+  **Leadership transfers. Follower share does not.** The attacker wins the election every round, live,
+  with no compute, exactly as claimed. But followers per round is pinned at **3 in every repeat and
+  both arms**, which is `target_group_size - 1`. At 7 honest peers that is 43 % of them; at 15 it is
+  20 %. **The share halves as the swarm doubles.**
+
+  **The 100 % was an artifact of the simulated election having no capacity constraint.** It computed,
+  independently for every peer, whether that peer would prefer the attacker, and every peer did. A
+  live leader seats `target_group_size - 1` followers and the rest form their own group. The comparison
+  does not decay with swarm size; the outcome does.
+
+  **Blind and undercut are indistinguishable live**, both leading 4/4 and seating 3, where the
+  simulation separated them 15-20 % against 100 %. That separation was about how long an advertisement
+  survives across sampling points, which stops mattering once a single leadership win per round is
+  enough.
+
+  **It is not a denial attack.** Honest availability is 60/60 in both attack arms against a 64/64
+  baseline. Leading every round costs the swarm nothing by itself.
+
+- **Decision.** **Leadership demonstrated live; the 100 % follower share is withdrawn.** An attacker
+  that reads the key and undercuts by one float step leads every round at no compute cost, confirmed
+  in a running swarm. What it converts that into is bounded by group capacity, so quote
+  `target_group_size - 1` peers per round, not a fraction of the swarm, and do not describe the attack
+  as scale-independent in its effect.
+- **Next step.** Compose with C13.S. Leading every round is established; the open question is what
+  admission control does with the `target_group_size - 1` slots the attacker controls, which is where
+  β = k/(k+1) would come from. Also still open: whether `past_attempts` erodes the share across longer
+  runs than 4 rounds.
 
 ### C13.D — Checkpoint 13, Deny: can a leader accept a peer and then stall it?
 
