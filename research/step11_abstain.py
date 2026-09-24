@@ -187,17 +187,26 @@ def run_arm(arm: str, honest: int, group_size: int, rounds: int, matchmaking_tim
             # so its advertisement is on the key before the honest peers look, and never wait
             # on its control, which only completes if somebody follows it.
             if attacker is not None:
-                attacker.step(wait=False, allow_retries=False, timeout=60)
+                attacker.step(wait=False, allow_retries=True, timeout=60)
                 time.sleep(0.5)
             started = time.perf_counter()
-            controls = [p.step(wait=False, allow_retries=False, timeout=60) for p in peers]
+            # allow_retries=True is deliberate and load-bearing. With retries off, a peer left
+            # over when groups fill greedily is a permanent failure, and no peer count makes
+            # both N and N+1 divisible by the group size, so the arms would be compared on a
+            # parity artefact that tracks what the attacker's behaviour does to the effective
+            # population rather than on denial. With retries, a failure means the peer could
+            # not average within the budget despite trying again, which is the real question.
+            controls = [p.step(wait=False, allow_retries=True, timeout=60) for p in peers]
 
             # Poll rather than collecting results in order. Reading control.result()
             # sequentially charges every later peer the wait of an earlier stalled one, so a
             # peer that averaged instantly records the stall's duration. That is
             # time-to-collect, not time-to-average, and it makes the stall arm look uniform.
             done: dict[int, tuple[int, str, float]] = {}
-            while len(done) < len(controls) and time.perf_counter() - started < 75:
+            # Poll past the step timeout so a step that times out resolves as its own error
+            # rather than as this loop giving up. A "NotFinished" row therefore means the
+            # control never resolved at all, which is a hang, not a harness artefact.
+            while len(done) < len(controls) and time.perf_counter() - started < 90:
                 for i, control in enumerate(controls):
                     if i in done or not control.done():
                         continue

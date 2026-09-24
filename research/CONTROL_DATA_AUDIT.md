@@ -343,7 +343,7 @@ touch, so a reader arriving from the grid or from Part 3 finds them either way.
 
 | ID | Checkpoints | Question | Status |
 |---|---|---|---|
-| **E01** | 11 availability, 12 leader choice, 13 admission | Can one peer repeatedly deny averaging to others without contributing any training work, and what does each unit of attacker resource buy in victim disruption? | **live combined experiment needed** |
+| **E01** | 11 availability, 12 leader choice, 13 admission | Can one peer repeatedly deny averaging to others without contributing any training work, and what does each unit of attacker resource buy in victim disruption? | **done.** Abstention is free and invisible but harms nobody; all the harm is the stall. Carries the `reject` control for C13.D. |
 
 ### E01 — advertise, never follow, and decide what to do with whoever arrives
 
@@ -378,11 +378,36 @@ touch, so a reader arriving from the grid or from Part 3 finds them either way.
   ever excluded or blacklisted**, since the claim under test is that abstention leaves no trace; and
   attacker CPU, memory and traffic, which are the first real entries for a cost model.
 
-- **The claim it would establish.** Whether leadership can be exploited repeatedly without contributing
-  training work, and how much victim disruption each unit of attacker resource buys. The existing
-  results suggest it: C11.Delay's and C12.S's attackers contribute no gradients, and hivemind ships
-  `auxiliary` and `client_mode` as supported non-contributing roles (`averager.py:78`, `allreduce.py:103`).
-  None of that demonstrates the complete strategy.
+- **Result.** `step11_abstain.py`, 15 honest peers plus one attacker, group size 4, 4 rounds, **6
+  repeats**. Peer count chosen so no arm carries a structural orphan: the attack arms have 16
+  participants (4+4+4+4) and `reject` effectively has 15 (4+4+4+3, all at or above `min_group_size`).
+
+  | arm | averaged | median | p90 | errors |
+  |---|---|---|---|---|
+  | honest baseline | **384/384** | 0.11 s | 0.16 s | none |
+  | abstain + serve | **360/360** | 0.10 s | 0.14 s | none |
+  | abstain + reject | **360/360** | 0.10 s | **5.25 s** | none |
+  | abstain + stall | **336/360** | **3.09 s** | 5.25 s | 24 `AllreduceException` |
+
+  **Abstention is free and invisible, and harms nobody.** The attacker sent **zero** `rpc_join_group`
+  messages in every arm while receiving 36, 60 and 88, so the strategy works exactly as described and
+  costs no compute. But arms 2 and 3 are indistinguishable from the honest baseline. Declining to
+  follow, on its own, disrupts nothing.
+
+  **All of the harm is the stall**, and it is consistent rather than noisy: **56 of 60 in every one of
+  the six repeats**, never varying. The `serve` arm lost 12 steps in an earlier 3-repeat run and then
+  scored 60/60 six times, so that was a one-off and is not a finding.
+
+  **A tail cost with no failures.** `reject` never loses a step but its p90 is 5.25 s against the
+  baseline's 0.16 s: a peer that picks the attacker wastes about five seconds finding another leader.
+  Refusing is not free to the victim, it is merely survivable.
+
+- **Decision.** **Demonstrated, and largely negative for the abstention hypothesis.** Abstention is a
+  free and untraceable *position*, not an attack. What costs the swarm anything is the hostile act
+  performed from that position. That is worth knowing precisely because the position is unpoliced:
+  nothing in hivemind ties the right to be followed to having contributed, and `auxiliary` and
+  `client_mode` (`averager.py:78`, `allreduce.py:103`) make non-contribution a supported role.
+- **Next step.** None for E01 itself. The redundancy finding below belongs in C13.D.
 
 ---
 
@@ -746,9 +771,16 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
 - **Decision.** **Demonstrated, but not yet attributable.** The control has not been run — a leader that
   refuses immediately. If refusal costs the victim the same, this reduces to "a failed round takes a
   round" and there is no finding.
-- **Next step.** **TODO: run the `reject` arm, as arms 3 and 4 of E01** (Part 1b). It was the
-  cheapest open item in the project and is now folded into E01, so that the abstention arms share
-  one advertising policy and one honest baseline. Do not run it standalone.
+- **The `reject` control, run as arms 3 and 4 of E01.** **The stall result stands.** Refusing
+  immediately cost the victim no steps at all (360/360) while stalling cost 24 of 360, and the median
+  latency was 0.10 s against 3.09 s, a **31x** difference. So stalling is strictly worse than
+  refusing, and C13.D is not merely "a failed round takes a round".
+- **But the severity is a property of the deployment, not of the attack, and the original worksheet
+  does not say so.** C13.D measured total denial with **one** honest peer, which had no alternative.
+  At 15 honest peers the same attack denies only **6.7 %** of steps, because a stalled peer recovers
+  *within* a single `step()`: the stall times out, matchmaking continues, another leader is found.
+  Quote the denial as conditional on scarce alternatives.
+- **Next step.** None. The control is run and E01 carries the numbers.
 
 ### C13.S — Checkpoint 13, Select: can a leader choose its group?
 

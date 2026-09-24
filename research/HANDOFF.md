@@ -640,6 +640,34 @@ grounds that lowering the deadline shortens the advertisement. True for lowering
 one float step. The verdict was written without a bound and that is what made it wrong; the map now
 reads `partly X`.
 
+### 4.16 E01: abstention is free and invisible, and harms nobody
+
+`step11_abstain.py`, 15 honest peers plus one attacker, group size 4, 6 repeats. Peer count chosen
+so no arm carries a structural orphan. Full worksheet in the audit's Part 1b.
+
+| arm | averaged | median | p90 |
+|---|---|---|---|
+| honest baseline | 384/384 | 0.11 s | 0.16 s |
+| abstain + serve | 360/360 | 0.10 s | 0.14 s |
+| abstain + reject | 360/360 | 0.10 s | **5.25 s** |
+| abstain + stall | **336/360** | **3.09 s** | 5.25 s |
+
+The attacker sent **zero** `rpc_join_group` messages in every arm while receiving 36, 60 and 88, so
+abstention works exactly as described and costs no compute. But **it harms nobody**: serving and
+rejecting are indistinguishable from the baseline. Declining to follow is a free and untraceable
+*position*, not an attack. All the harm is the hostile act performed from it.
+
+**The `reject` control settles §4.13: the stall result stands.** Refusing immediately cost no steps
+at all; stalling cost 24 of 360 and 31x the median latency. Stalling is strictly worse than refusing.
+
+**But §4.13's denial is conditional and the section does not say so.** It measured total denial with
+**one** honest peer, which had no alternative. At 15 the same attack denies **6.7 %** of steps,
+because a stalled peer recovers inside a single `step()`. Severity tracks the victim's redundancy,
+not the attack.
+
+**Refusing is not free to the victim either.** `reject` loses no steps but its p90 is 5.25 s against
+the baseline's 0.16 s: a peer that picks the attacker burns about five seconds finding another leader.
+
 **Scope, and it is the thing to close next.** C12.S computes the election by applying hivemind's own
 comparison rule to real records written by the real `GroupKeyManager`, sampled across the window. That
 is faithful to the rule but **not a live matchmaking run**: §4.3's blind attacker reached 57-67 % live
@@ -1032,19 +1060,9 @@ machine — **not in the repo**, so re-fetch them if that machine is gone.
    using hivemind's own rule, not observed in a running swarm. This is the single thing standing
    between "wins the election" and "captures the group", and §4.3 already provides the live baseline
    to compare against.
-2. **Finish E01**, the first entry in the audit's experiment register (Part 1b): advertise, never
-   follow, and vary what the attacker does with whoever arrives. It absorbs the `reject` control that
-   decides whether the stall in §4.13 is a finding at all. Do not run that control standalone.
+2. **E01 is done** (audit Part 1b), and with it the `reject` control for §4.13. See below; what
+   remains open at L4 and L6 is now higher priority than anything at L3.
 
-   **In flight as of this handoff.** `step11_abstain.py` exists and the mechanics are established:
-   abstention is a class-level patch of `Matchmaking._request_join_group` returning `None` with no
-   network call, gated on a fork-inherited flag, so the peer keeps advertising and can still lead. Four
-   harness defects were found and fixed before any result was trusted; they are in §5 because each one
-   would have produced a confident wrong answer. **No result is settled yet.** The last uncorrected run
-   suggested that `serve`, the arm where the attacker behaves perfectly honestly apart from never
-   following, lost more averaging steps than `stall` did, but the baseline had four participants
-   against five in every other arm, and at group size 2 an odd count always orphans one peer. That
-   comparison has to be redone against a participant-matched baseline before it means anything.
 3. **Open L6 entirely.** State transfer, every cell empty, donor priority self-declared and
    downloaded tensors installed unvalidated. The only place an attacker replaces a model rather than
    nudging it.
