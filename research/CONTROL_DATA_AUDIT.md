@@ -64,6 +64,11 @@ conditional recovery branch.
 
 **The empty cells matter as much as the full ones.** Empty means nobody has looked, not that it is safe.
 
+**The grid is not the whole scope.** Absent checks do belong in it, sited at the decision they should
+protect, which is what C3.T is. But strategies that chain checkpoints, and questions about what an
+attacker costs, span rows; those live in the experiment register, Part 1b, and are cross-referenced
+from the cells they touch.
+
 ## A cell is a family of experiments, not one
 
 Within any one cell, distinguish:
@@ -144,9 +149,9 @@ from the authenticated key — would change every row here.**
 
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
-| 11 | Averaging availability exchange | **D — C11.Obs** | **D — C11.Delay** | **D — C11.D** | **partly X — C11.T** | — |
-| 12 | Candidate priority and leader choice *(local)* | open | open | open | open | **D — C12.S** |
-| 13 | Join negotiation and admission | open | open | **D — C13.D** | open | **D — C13.S** |
+| 11 | Averaging availability exchange *(also E01)* | **D — C11.Obs** | **D — C11.Delay** | **D — C11.D** | **partly X — C11.T** | — |
+| 12 | Candidate priority and leader choice *(local, also E01)* | open | open | open | open | **D — C12.S** |
+| 13 | Join negotiation and admission *(also E01)* | open | open | **D — C13.D** | open | **D — C13.S** |
 | 14 | Group roster distribution | open | open | = 13 | open | = 13 |
 | 15 | Next-group-key derivation *(local)* | open | open | open | open | **D — C15.S** |
 
@@ -207,6 +212,59 @@ question, since those are the two control-plane layers. The **Observe** and **De
 attacker's ability to see the victim was assumed rather than measured. C11.Obs is the first direct
 measurement of that assumption at the availability exchange, and C11.Delay is the project's first
 Delay result of any kind.
+
+---
+
+## Part 1b — experiment register
+
+Some questions do not sit in one cell. An absent check belongs at the decision it should protect, so
+absences *are* cell-shaped: C3.T is exactly that, the missing comparison between `node_id` and the
+authenticated `context.remote_id`. But a strategy that chains several checkpoints, or that asks what a
+whole attacker *costs*, spans rows. Those are registered here and cross-referenced from the cells they
+touch, so a reader arriving from the grid or from Part 3 finds them either way.
+
+| ID | Checkpoints | Question | Status |
+|---|---|---|---|
+| **E01** | 11 availability, 12 leader choice, 13 admission | Can one peer repeatedly deny averaging to others without contributing any training work, and what does each unit of attacker resource buy in victim disruption? | **live combined experiment needed** |
+
+### E01 — advertise, never follow, and decide what to do with whoever arrives
+
+- **Why it is not a single cell.** The strategy touches three checkpoints and its point is the
+  *absence* of any link between advertising and contributing. Leadership is passive
+  (`matchmaking.py:157`: the follower initiates), so declining to follow emits no signal and is
+  indistinguishable from losing a matchmaking race. The attacker never enters a state where anything
+  is expected of it.
+- **This is also where the `reject` control lives.** C13.D measured a leader that accepts a follower
+  and stalls it, but never ran the control that decides whether stalling costs the victim more than an
+  immediate refusal would. Arms 3 and 4 below are that control. **Do not run it separately.**
+
+- **Arms.** Advertising policy is identical across all four, so the only variable is what the attacker
+  does with an arriving follower. Adaptive deadline manipulation (C12.S) is tested separately, which
+  means the attacker leads only sometimes here; that is deliberate, and isolates the question.
+
+  1. honest baseline, no attacker;
+  2. attacker never follows, but serves incoming followers honestly;
+  3. attacker never follows, and rejects incoming requests immediately;
+  4. attacker never follows, and accepts then stalls.
+
+  Arm 2 is the one that is easy to skip and should not be. It separates abstention from malice: if the
+  swarm degrades in arm 2 alone, that is a finding about occupying leadership without contributing,
+  independent of any hostile act.
+
+- **Swarm.** Enough honest peers that alternative groups can form, otherwise arm 2 is indistinguishable
+  from arm 3 by construction.
+
+- **Measure.** Join requests actually received by the attacker; victim averaging success and recovery
+  time; how often the victim re-selects the attacker across rounds (`past_attempts` is keyed on
+  `(peer, expiration)` at `:497` and `:510`, so re-declaration launders it); **whether the attacker is
+  ever excluded or blacklisted**, since the claim under test is that abstention leaves no trace; and
+  attacker CPU, memory and traffic, which are the first real entries for a cost model.
+
+- **The claim it would establish.** Whether leadership can be exploited repeatedly without contributing
+  training work, and how much victim disruption each unit of attacker resource buys. The existing
+  results suggest it: C11.Delay's and C12.S's attackers contribute no gradients, and hivemind ships
+  `auxiliary` and `client_mode` as supported non-contributing roles (`averager.py:78`, `allreduce.py:103`).
+  None of that demonstrates the complete strategy.
 
 ---
 
@@ -570,7 +628,9 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
 - **Decision.** **Demonstrated, but not yet attributable.** The control has not been run — a leader that
   refuses immediately. If refusal costs the victim the same, this reduces to "a failed round takes a
   round" and there is no finding.
-- **Next step.** **TODO — run the `reject` arm.** Cheapest open item in the project.
+- **Next step.** **TODO: run the `reject` arm, as arms 3 and 4 of E01** (Part 1b). It was the
+  cheapest open item in the project and is now folded into E01, so that the abstention arms share
+  one advertising policy and one honest baseline. Do not run it standalone.
 
 ### C13.S — Checkpoint 13, Select: can a leader choose its group?
 
@@ -636,7 +696,8 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
 
 The map decides the order, not intuition.
 
-1. **Run the `reject` control (C13.D).** Cheapest, and it decides whether the stall result stands.
+1. **Run E01** (Part 1b). Cheapest, and it absorbs the `reject` control that decides whether C13.D's
+   stall result stands, so that control is no longer a separate item.
 2. **Open L6 entirely.** Donor priority is self-declared, installed tensors are unchecked. The only
    place an attacker replaces a model rather than nudging it, and every cell is empty.
 3. **Open checkpoint 14 Tamper.** A leader controls the roster for free, so sending *conflicting*

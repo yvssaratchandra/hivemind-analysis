@@ -1015,8 +1015,10 @@ machine — **not in the repo**, so re-fetch them if that machine is gone.
    using hivemind's own rule, not observed in a running swarm. This is the single thing standing
    between "wins the election" and "captures the group", and §4.3 already provides the live baseline
    to compare against.
-2. **Run the `reject` control for C13.D.** Still the cheapest open item, and it decides whether the
-   stall in §4.13 is a finding at all.
+2. **Run E01**, the first entry in the audit's experiment register (Part 1b): advertise, never follow,
+   and vary what the attacker does with whoever arrives. It absorbs the `reject` control that decides
+   whether the stall in §4.13 is a finding at all, and it tests the strategy that costs an attacker no
+   compute at all. Do not run the `reject` control standalone.
 3. **Open L6 entirely.** State transfer, every cell empty, donor priority self-declared and
    downloaded tensors installed unvalidated. The only place an attacker replaces a model rather than
    nudging it.
