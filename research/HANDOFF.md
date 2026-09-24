@@ -3,7 +3,7 @@
 Everything a new session needs: what the project is, where it stands, what is known, and what to do
 next. Written to be read without any prior conversation.
 
-Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-09-24
+Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-09-25
 
 ---
 
@@ -95,6 +95,16 @@ capture rate yet**.
 **§4.14** — four short GitHub-issue-format reproductions of the identity flaws, written to be handed
 to a reviewer on their own. These formalise what §4.1 assumes rather than adding new attacks, except
 `forged_pairs_report.md`, which is a **negative** result worth keeping.
+
+**Thesis supervision material is separate from the research.** `THESIS_AD.md` is the advertisement
+for the 30 hp projects starting 21 January 2027, and now opens with a portal-format short
+description under the chosen title *Securing Aggregation Coordination in Decentralized AI Training*.
+`THESIS_TOPIC.md` holds the delegation split: Petals and the Hivemind depth stay on this track,
+smaller platforms go to students. Two decisions in the ad are load-bearing and easy to undo by
+accident — the scope is the **whole aggregation pipeline** (when a round starts, who is admitted,
+what role and weight), not matchmaking alone; and it is written in **functions rather than Hivemind's
+mechanisms**, so that a student on a gossip- or coordinator-based platform does not conclude the
+project fails to apply.
 
 **`CONTROL_DATA_AUDIT.md` is where the work is now driven from.** It maps 21 control checkpoints
 across six layers, crossed with observe / delay / deny / tamper / select, and carries a worksheet per

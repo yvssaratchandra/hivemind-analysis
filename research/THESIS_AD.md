@@ -10,6 +10,49 @@ Alternative titles, same project:
 
 ---
 
+## Short description (portal format)
+
+Chosen title: **Securing Aggregation Coordination in Decentralized AI Training**. One paragraph, in
+the house style of the department's other advertisements — question, mechanism, what the project
+does, how it is evaluated, and the trade-off.
+
+> Decentralized training platforms such as Hivemind, Petals and Lattica let volunteer machines train
+> a shared model over the open internet with no central server, coordinating through libp2p and a
+> Kademlia DHT. Security research on these systems has concentrated on what peers send:
+> Byzantine-robust aggregation rules bound how many malicious contributions a group can absorb,
+> assuming the adversarial share of a group is roughly its share of the network. That assumption is
+> produced elsewhere. However a platform is built, something must decide when a round of aggregation
+> happens, whose contributions are combined together, and how much each contribution counts — and
+> those decisions are typically driven by data the peers themselves supply. Architectures differ in
+> how they make them, through leader election, gossip, peer sampling or a coordinating node, and the
+> security consequences differ accordingly. Preliminary work on Hivemind shows the assumption can
+> fail there: a peer chooses its own DHT identifier, availability records are unsigned, membership is
+> settled by a self-declared deadline and one participant's admission decision, so a small global
+> presence can become a majority of a specific group. This project asks how far that generalizes. It
+> will map how one decentralized AI platform makes these three decisions, identify which inputs are
+> accepted without verification, implement and measure the resulting attacks on a local testbed, and
+> compare against mitigations used in mature peer-to-peer systems such as Ethereum's discv5 and
+> libp2p's own DHT, where identifiers are bound to cryptographic keys. One mitigation will be
+> retrofitted and evaluated, weighing the guarantee recovered against the cost in latency, complexity
+> and openness to new peers.
+
+**Two framing decisions behind it, both deliberate.**
+
+*The scope is the whole aggregation pipeline, not matchmaking alone.* "Aggregation coordination"
+covers when a round starts (progress reporting, L5), who is admitted (matchmaking, L3), and what role
+and weight each member gets (all-reduce, L4). That matches where the evidence sits: L3 is well
+covered, L4 has one result, **L5 is empty**.
+
+*It is written in functions, not in Hivemind's mechanisms.* An earlier draft used advertisements,
+leader election and rosters, which would let a student on a gossip-based or coordinator-based platform
+conclude the project does not apply. The three decisions above are requirements any such system must
+meet; leader election, gossip, sampling and a scheduler are different answers to them. This also means
+a platform that centralises one decision yields a finding rather than a null — which is exactly why
+Kalavai (pool-based around a seed node) and Exo (local-network discovery only) were rejected as
+targets.
+
+---
+
 ## Motivation
 
 Training and serving large neural networks normally requires a datacentre. A growing number of
