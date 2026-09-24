@@ -132,6 +132,7 @@ for detail.
 | `reproduce_forged_pairs.py` | Whether forging those pairs is *exploitable*. Mostly not — see §4.14. |
 | `reproduce_group_key_capture.py` | The group-key hash protects nothing: K is a forward hash of a public string. |
 | `step10_delay.py` | §4.15. Six phases at checkpoints 11 and 12: observe, delay, staleness, end-to-end averaging, leader election, and baseline write/read cost. |
+| `step11_abstain.py` | E01. Advertise, never follow, and vary the response to arrivals: honest, serve, reject, stall. Carries the `reject` control for C13.D. |
 | `make_map_sheet.py` | Renders Part 1 of the audit as a one-page PDF. Parses the audit, so it cannot drift. |
 | `make_timing_sheet.py` | Renders the DHT timing reference as a one-page PDF from the result CSVs. |
 
@@ -935,6 +936,22 @@ this sample size, and repeat before believing a rate.**
   every variable that changes the result. The rule is not "name the important knobs", it is **name
   every knob the run varies**, including ones that feel like presentation.
 
+- **A control must match on everything except the behaviour under test, including population.**
+  E01's first arms compared a four-peer honest baseline against five-peer attack arms, because the
+  attacker was simply added. At group size 2 an odd number of declared peers always orphans one, so
+  the attacker's mere presence changed the outcome regardless of what it did. The baseline now puts an
+  ordinary honest peer where the attacker goes. Ask what the arm changes *other* than behaviour.
+
+- **An attacker that is never invoked produces a clean-looking null.** E01's first version constructed
+  the attacker but never called `step()` on it, so it never entered matchmaking, never advertised and
+  sat inert while honest peers paired among themselves. Every arm looked identical and the run would
+  have read as "abstention has no effect". The guard is to assert the attacker actually acted:
+  E01 checks that the abstaining peer emitted abstentions and received join requests.
+
+- **Do not identify a participant by its behaviour.** The same run inferred which peer was the attacker
+  from "whoever abstained", which made its join count zero by construction in the arms where it never
+  needed to abstain. Record identities explicitly.
+
 - **A control that finishes early is not a control.** `step10_delay.py` phase 3 first gave both arms
   the same *number of reads* rather than the same *wall-clock window*. The fast arm completed all its
   reads before the advertisement under test was even written, so both arms observed nothing and the
@@ -1015,10 +1032,19 @@ machine — **not in the repo**, so re-fetch them if that machine is gone.
    using hivemind's own rule, not observed in a running swarm. This is the single thing standing
    between "wins the election" and "captures the group", and §4.3 already provides the live baseline
    to compare against.
-2. **Run E01**, the first entry in the audit's experiment register (Part 1b): advertise, never follow,
-   and vary what the attacker does with whoever arrives. It absorbs the `reject` control that decides
-   whether the stall in §4.13 is a finding at all, and it tests the strategy that costs an attacker no
-   compute at all. Do not run the `reject` control standalone.
+2. **Finish E01**, the first entry in the audit's experiment register (Part 1b): advertise, never
+   follow, and vary what the attacker does with whoever arrives. It absorbs the `reject` control that
+   decides whether the stall in §4.13 is a finding at all. Do not run that control standalone.
+
+   **In flight as of this handoff.** `step11_abstain.py` exists and the mechanics are established:
+   abstention is a class-level patch of `Matchmaking._request_join_group` returning `None` with no
+   network call, gated on a fork-inherited flag, so the peer keeps advertising and can still lead. Four
+   harness defects were found and fixed before any result was trusted; they are in §5 because each one
+   would have produced a confident wrong answer. **No result is settled yet.** The last uncorrected run
+   suggested that `serve`, the arm where the attacker behaves perfectly honestly apart from never
+   following, lost more averaging steps than `stall` did, but the baseline had four participants
+   against five in every other arm, and at group size 2 an odd count always orphans one peer. That
+   comparison has to be redone against a participant-matched baseline before it means anything.
 3. **Open L6 entirely.** State transfer, every cell empty, donor priority self-declared and
    downloaded tensors installed unvalidated. The only place an attacker replaces a model rather than
    nudging it.
