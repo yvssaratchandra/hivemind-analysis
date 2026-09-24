@@ -1124,7 +1124,20 @@ python3 -m venv .venv                                    # 3.13 and 3.14 both us
 .venv/bin/python research/step2_groups.py --num-peers 8 --group-size 8 --max-epoch 20
 ```
 
-Two steps are not obvious and both cost time to rediscover:
+**Turn on the hooks. This is per clone and git will not do it for you:**
+
+```bash
+git config core.hooksPath research/hooks
+```
+
+`research/hooks/pre-commit` regenerates `control_data_map.pdf` whenever
+`CONTROL_DATA_AUDIT.md` is staged, and `hivemind_dht_timings.pdf` whenever one of the timing CSVs is.
+Both generators parse their sources so they cannot disagree with them about content, but they only run
+when invoked -- which is how the map sheet spent a commit showing three stale cells. The hook stages
+the PDF only when the rendered text actually changes, so a reflow does not create noise commits. Skip
+it for one commit with `git commit --no-verify`.
+
+Three steps are not obvious and all cost time to rediscover:
 
 - **`--no-build-isolation` on Python 3.14.** `pyproject.toml` pins `grpcio-tools>=1.33.2,<1.68`, but
   cp314 wheels start at 1.75.1, so an isolated build compiles a pre-3.14 grpcio-tools from source. The
