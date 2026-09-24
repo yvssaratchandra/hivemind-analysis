@@ -18,38 +18,53 @@ does, how it is evaluated, and the trade-off.
 
 > Decentralized training platforms such as Hivemind, Petals and Lattica let volunteer machines train
 > a shared model over the open internet with no central server, coordinating through libp2p and a
-> Kademlia DHT. Security research on these systems has concentrated on what peers send:
-> Byzantine-robust aggregation rules bound how many malicious contributions a group can absorb,
-> assuming the adversarial share of a group is roughly its share of the network. That assumption is
-> produced elsewhere. However a platform is built, something must decide when a round of aggregation
-> happens, whose contributions are combined together, and how much each contribution counts — and
-> those decisions are typically driven by data the peers themselves supply. Architectures differ in
-> how they make them, through leader election, gossip, peer sampling or a coordinating node, and the
-> security consequences differ accordingly. Preliminary work on Hivemind shows the assumption can
-> fail there: a peer chooses its own DHT identifier, availability records are unsigned, membership is
-> settled by a self-declared deadline and one participant's admission decision, so a small global
-> presence can become a majority of a specific group. This project asks how far that generalizes. It
-> will map how one decentralized AI platform makes these three decisions, identify which inputs are
-> accepted without verification, implement and measure the resulting attacks on a local testbed, and
-> compare against mitigations used in mature peer-to-peer systems such as Ethereum's discv5 and
+> Kademlia DHT. Byzantine-robust aggregation is what defends these systems against malicious
+> contributions, and each rule states its tolerance as a condition over the set of participants in a
+> single aggregation — Krum, for instance, tolerates `f` Byzantine workers among `n` while
+> `2f + 2 < n`. Whether a deployed system's coordination mechanisms actually deliver participant sets
+> that satisfy such conditions is a separate question, and one that has received far less attention
+> than the aggregation rules themselves. However a platform is built, something must decide when a
+> round of aggregation happens, whose contributions are combined together, and how much each
+> contribution counts. Those decisions are typically driven by data the participants themselves
+> supply, and architectures differ in how they make them — leader election, gossip, peer sampling, or
+> a coordinating node — so the security consequences differ too. This project asks whether such
+> mechanisms preserve the participant assumptions the aggregation method depends on, and if not, what
+> an attacker would have to control in order to violate them. It will map how one decentralized AI
+> platform makes these three decisions, identify which inputs are accepted without verification,
+> implement and measure the resulting attacks on a local testbed under an explicit attacker model,
+> and compare against mitigations used in mature peer-to-peer systems such as Ethereum's discv5 and
 > libp2p's own DHT, where identifiers are bound to cryptographic keys. One mitigation will be
-> retrofitted and evaluated, weighing the guarantee recovered against the cost in latency, complexity
+> retrofitted and evaluated, weighing the security benefit against the cost in latency, complexity
 > and openness to new peers.
 
-**Two framing decisions behind it, both deliberate.**
+**Four framing decisions behind it, all deliberate. Do not undo them by accident when editing.**
 
-*The scope is the whole aggregation pipeline, not matchmaking alone.* "Aggregation coordination"
-covers when a round starts (progress reporting, L5), who is admitted (matchmaking, L3), and what role
-and weight each member gets (all-reduce, L4). That matches where the evidence sits: L3 is well
-covered, L4 has one result, **L5 is empty**.
+*No preliminary Hivemind findings.* An earlier draft listed implementation properties — self-chosen
+DHT identifier, unsigned availability records, membership settled by a self-declared deadline — and
+concluded from them that a small network presence can become a group majority. Those properties do
+not establish that conclusion on their own; it needs the experimental setup and the attacker
+assumptions alongside it. Those belong in a longer proposal. **The advertisement poses it as a
+question and must not present the outcome as predetermined.**
 
-*It is written in functions, not in Hivemind's mechanisms.* An earlier draft used advertisements,
-leader election and rosters, which would let a student on a gossip-based or coordinator-based platform
-conclude the project does not apply. The three decisions above are requirements any such system must
-meet; leader election, gossip, sampling and a scheduler are different answers to them. This also means
-a platform that centralises one decision yields a finding rather than a null — which is exactly why
-Kalavai (pool-based around a seed node) and Exo (local-network discovery only) were rejected as
-targets.
+*The literature claim is narrow.* Robust aggregation can assume a bound on malicious participants
+**without** assuming each group is representative of the network — Krum studies a worker set with a
+bounded number of Byzantine members and claims nothing about how that set was formed. So the
+defensible question is not "is the β ≈ α assumption wrong", it is **whether the implementation's
+coordination mechanisms preserve the participant assumptions the aggregation method requires**.
+
+*"Security benefit", not "the guarantee recovered".* No formally specified guarantee and no proof are
+intended contributions here, so claiming to recover a guarantee overstates what a retrofit plus
+measurement can deliver.
+
+*Functions, not Hivemind's mechanisms.* An earlier draft used advertisements, leader election and
+rosters, which would let a student on a gossip- or coordinator-based platform conclude the project
+does not apply. The three decisions are requirements any such system must meet; leader election,
+gossip, sampling and a scheduler are answers to them, not alternatives. A platform that centralises
+one decision then yields a finding rather than a null — the same reasoning that already rejected
+Kalavai (pool-based around a seed node) and Exo (local-network discovery only).
+
+Internal note, not part of the advertisement: the pipeline scope matches where our evidence sits —
+L3 well covered, L4 one result, **L5 empty**.
 
 ---
 
