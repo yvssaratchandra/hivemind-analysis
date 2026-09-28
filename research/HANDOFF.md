@@ -3,7 +3,44 @@
 Everything a new session needs: what the project is, where it stands, what is known, and what to do
 next. Written to be read without any prior conversation.
 
-Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-09-25
+Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-09-28
+
+---
+
+## Current thread — public-WAN matchmaking feasibility (2026-09-28)
+
+The immediate question is whether reading the current averaging advertisements, choosing the earliest
+*joinable* deadline, and publishing a slightly earlier one can still win leadership when DHT operations
+cross the public internet. The local live result in §4.16 and `CONTROL_DATA_AUDIT.md` C12.S is **4/4
+rounds led** by both blind and adaptive undercutting, with **3 followers per round** at group size 4.
+The earlier 100% follower-share figure came from an election calculation without the live group's
+capacity limit. **No WAN read-to-publication or end-to-end election result has been measured.**
+
+The agreed first study is observational: find an active public collaboration using Hivemind's actual
+`DecentralizedAverager`/`Optimizer` matchmaker and a published bootstrap peer plus exact averaging
+group key (or run prefix and current group bits). Sample active advertisements and timed DHT reads
+frequently enough to see deadlines that may last only seconds, over a shorter period than the original
+24-hour/every-few-minutes suggestion. Record the deadline margin **at read completion**. Publication,
+visibility to other peers, and follower-contact times need a separate measurement; a read-only crawl
+cannot establish them, and a positive timing margin would be necessary but not sufficient evidence
+of an election win. The cadence and duration are not yet chosen. The user wants to brainstorm this
+before coding or contacting a live swarm.
+
+**Target search, 2026-09-28:** no suitable *currently live* public averaging swarm was verified from
+project sources and status pages. Petals advertises inference servers, not this averaging election,
+and its [health dashboard](https://health.petals.dev/) could not be checked. [Gensyn RL Swarm](https://docs.gensyn.ai/testnet/rl-swarm)
+is officially paused; its Hivemind use is DHT gossip, not averaging matchmaking. [Pluralis Node0](https://github.com/PluralisResearch/node0)
+was a genuine public Hivemind training run but is historical. Current [Agora](https://github.com/PluralisResearch/agora/blob/main/agora_server/src/agora_server/core/all_reduce/matchmaking.py)
+forms groups by collected peer IDs rather than earliest expiration, and its [published run config](https://github.com/PluralisResearch/agora/blob/main/run.json)
+has no seeds. [OpenDiLoCo](https://github.com/PrimeIntellect-ai/OpenDiLoCo) used Hivemind averaging
+but is unmaintained. This does **not** prove that no community run exists. The search did not connect
+to any swarm; next find a current operator-published bootstrap and run prefix, then verify its code
+path before designing the observation.
+
+**Local-only draft:** `research/observe_dht_key.py` is untracked, unrun and not on the remote. It was
+created before the user asked for code; its defaults do not reflect the shorter, more frequent study
+now under discussion. Do not treat it as an approved or validated crawler, and do not commit it as
+part of this handoff.
 
 ---
 
@@ -80,17 +117,16 @@ crafted identities and no custody, and the peer cannot undo it. Measured with a 
 convert into group capture; it is a censorship and availability primitive. Do not cite it as a capture
 attack.
 
-**§4.13** — a leader that accepts a follower and then goes silent denies it averaging for its whole
-step, at the cost of one identity and a `sleep()`. This is the first **Deny** result in the project;
-everything before it measures capture. Spike only — the control that decides whether it is a finding
-has not been run yet, and §4.13 says which.
+**§4.13** — a leader that accepts a follower and then goes silent can deny it averaging, at the cost
+of one identity and a `sleep()`. The E01 `reject` control is complete: immediate refusal lost no steps
+while stalling lost 24/360 at 15 honest peers. The original two-peer spike overstated the general
+severity; recovery depends on how many alternative peers are available (§4.16).
 
 **§4.15** — checkpoints 11 and 12. An attacker that answers `rpc_find` late, but inside
 `wait_timeout`, is never blacklisted and makes advertisements at hivemind's default 5 s lifetime
-invisible; cost is one crafted address. And an attacker that reads the group key can win the leader
-election outright, at 32 and at 128 peers, by matching or undercutting the earliest deadline. The
-election result is computed from real records rather than observed live, so **do not quote it as a
-capture rate yet**.
+invisible; cost is one crafted address. Reading the group key and undercutting the earliest joinable
+deadline wins the *comparison* in the local simulation; §4.16 then confirms leadership in a live local
+swarm while limiting actual followers to `target_group_size - 1`. No public-WAN timing result exists.
 
 **§4.14** — four short GitHub-issue-format reproductions of the identity flaws, written to be handed
 to a reviewer on their own. These formalise what §4.1 assumes rather than adding new attacks, except
@@ -639,11 +675,11 @@ peers 17/24 steps averaged against 24/24 control; at 8 peers with group size 4 t
 **Leadership can be won outright (C12.S).** `pop_next_leader` compares **tuples**,
 `(expiration, peer_id.to_bytes())`, so an attacker can either match the earliest joinable deadline and
 take the tie on a low `peer_id`, or undercut it by `np.nextafter`, which at these absolute timestamps
-(~1.79e9) costs **2.4e-7 s** of advertisement life. Both took **100 % of followers at 32 and at 128
-peers**, two repeats each, and the undercut variant held the lowest `peer_id` in **0 of 40** samples,
-so it needs no identity advantage at all. Both tolerated 2 s of injected latency between reading the
-key and declaring. Unlike every other attack here, it does **not decay with swarm size**, because it
-is a comparison between two tuples whose components the attacker controls.
+(~1.79e9) costs **2.4e-7 s** of advertisement life. In the *independent per-peer election
+calculation*, both were preferred by 100% of followers at 32 and 128 peers, two repeats each; the
+undercut variant held the lowest `peer_id` in **0 of 40** samples. Both tolerated 2 s of injected
+think-time between reading the key and declaring, but DHT operations were loopback. The comparison
+does not decay with swarm size; live follower share does, because of group capacity (§4.16).
 
 **This corrects C11.T.** That worksheet recorded undercutting as *prevented, do not retry*, on the
 grounds that lowering the deadline shortens the advertisement. True for lowering by seconds, false for
@@ -869,7 +905,7 @@ gradients mix with whose. Do not report it as the latter.
 
 ---
 
-### 4.13 A leader can accept a follower and stall it for its entire step — **spike, control not yet run**
+### 4.13 A leader can accept a follower and stall it — **controlled in E01**
 
 Prompted by the supervisor's framing: at each step, ask whether an attacker can **Deny, Delay or
 Tamper**. Every finding above is *capture*; this is the first **Deny** result, where the attacker gains
@@ -911,10 +947,11 @@ chooses.** Worth carrying into the thesis framework as a second instance on a di
 Both key on *silence*; this attacker is talkative and useless. Hivemind already has the concept of a
 backoff blacklist, just nowhere it would fire here.
 
-**What has NOT been run, and why the finding is not yet safe to cite.** The `reject` control — a leader
-that refuses immediately. If refusal costs the victim the same as stalling, this is just "a failed round
-takes a round" and there is no finding. Also unmeasured: whether `pause_search` (`:214`) silences the
-victim's own advertisement during the wait, and harm across a real training run. Report as a spike.
+**The `reject` control is complete.** E01 (§4.16) found no lost steps under immediate refusal, versus
+24/360 under stalling at 15 honest peers, so the stall is worse than a failed join. The two-peer result
+above is a worst case with no alternative partner; do not generalise its total denial to larger swarms.
+Still unmeasured: whether `pause_search` (`:214`) silences the victim's own advertisement during the
+wait, and harm across a real training run.
 
 **Cheapest candidate defence**, if the project turns to defences: make `past_attempts` peer-keyed with
 backoff instead of pair-keyed. Small, and testable against this exact harness — which would give the
@@ -1097,11 +1134,6 @@ machine — **not in the repo**, so re-fetch them if that machine is gone.
 
 ### Loose ends, in descending order of interest
 
-- **Run the `reject` control for §4.13.** Cheapest open item and the one that decides whether the stall
-  is a finding at all: a leader that refuses immediately, versus one that accepts and stalls. If the
-  victim pays the same either way, §4.13 reduces to "a failed round takes a round". Everything else in
-  §4.13's expansion list is downstream of this answer.
-
 - **Walk the whole protocol as Deny / Delay / Tamper / Select.** The supervisor's frame, plus a fourth
   axis. Deny/Delay/Tamper is the standard Byzantine message-handling decomposition and exhausts what a
   participant can do to a message it *handles* — but it cannot express control over *who is in the
@@ -1124,18 +1156,18 @@ machine — **not in the repo**, so re-fetch them if that machine is gone.
   what a defender would need to catch the attack in flight.
 - **Settle §4.8** by fixing peer count and varying timing noise deliberately (pin cores, inject
   latency), to see whether clique structure follows the noise rather than the peer count.
-- **Grind a low `peer_id`.** The tie-break for equal deadlines is the lowest `peer_id`
+- **Grind a low `peer_id` only for the equal-deadline variant.** The tie-break is the lowest `peer_id`
   (`matchmaking.py:478-481`) and `identity_path` makes PeerIDs choosable, so they can be ground offline.
-  That is the lever for the ~40 % of rounds the attacker still loses (§4.3).
+  The one-float-step undercut wins the comparison without this advantage (C12.S).
 - **Censorship as opposed to custody.** §4.1's attacker nodes serve honestly. Refusing to serve on
   `rpc_find` is a separate experiment; §4.2 does the store-side half.
 - **A free detection signal nobody uses** (§4.2), if the project turns to defences.
 
 ### Things that did not work — do not retry without reading why
 
-- **Forged deadlines.** Expiration is simultaneously the record's **lifetime** and its **leadership
-  priority** — one field (`key_manager.py:60`, read back at `:88`). Lowering it to win the election
-  makes the advertisement expire instead of winning.
+- **Large deadline undercuts.** Expiration is simultaneously the record's **lifetime** and its
+  **leadership priority** (`key_manager.py:60`, read back at `:88`). Lowering it by seconds can make the
+  advertisement expire; C12.S showed that undercutting by one float step avoids this failure.
 - **16-peer runs with a bound `target_group_size`** — see §5.
 - **`chase` against a caching swarm** — β below the honest control (§4.6).
 
