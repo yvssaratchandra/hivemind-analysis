@@ -1,0 +1,11 @@
+phase,arm,trial,bucket_size,honest_nodes,attacker_nodes,target_rank,target_id,target_source,discovery_exact,baseline_bucket_active,baseline_bucket_depth,join_active_attacker,flood_active_attacker,flood_replacement_attacker,flood_bucket_active,flood_bucket_replacements,flood_nearest_attacker,wire_attacker,wire_count,honest_active_lost,all_attackers_active,honest_read_ok
+confirm,random,0,20,21,20,0,203395191637081364166729369004431968863751435247,dht_lookup,True,20,0,13,20,0,17,0,9,9,20,0,True,True
+confirm,random,0,20,21,20,1,280169919013475144959639413620941503097502569416,dht_lookup,True,20,0,13,20,0,17,0,9,9,20,0,True,True
+confirm,random,0,20,21,20,2,355249150042259669120029494407078887195978754365,dht_lookup,True,20,0,13,20,0,17,0,9,9,20,0,True,True
+confirm,random,0,20,21,20,3,25879592931449821999917597017417652518299052156,dht_lookup,True,20,0,12,20,0,17,0,9,9,20,0,True,True
+confirm,random,0,20,21,20,4,583250492643114539218552082574643051878522909522,dht_lookup,True,20,0,10,20,0,17,0,9,9,20,0,True,True
+confirm,crafted,0,20,21,20,0,203395191637081364166729369004431968863751435247,dht_lookup,True,20,0,20,20,0,20,0,20,20,20,0,True,True
+confirm,crafted,0,20,21,20,1,280169919013475144959639413620941503097502569416,dht_lookup,True,20,0,19,19,1,20,1,19,19,20,0,False,True
+confirm,crafted,0,20,21,20,2,355249150042259669120029494407078887195978754365,dht_lookup,True,20,0,18,19,1,20,1,19,19,20,0,False,True
+confirm,crafted,0,20,21,20,3,25879592931449821999917597017417652518299052156,dht_lookup,True,20,0,17,19,1,20,1,19,19,20,0,False,True
+confirm,crafted,0,20,21,20,4,583250492643114539218552082574643051878522909522,dht_lookup,True,20,0,16,19,1,20,1,19,19,20,0,False,True

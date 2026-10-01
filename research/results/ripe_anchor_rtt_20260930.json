@@ -1,0 +1,641 @@
+{
+  "source": "RIPE Atlas active anchor-mesh IPv4 ICMP ping latest results",
+  "api_catalog": "https://atlas.ripe.net/api/v2/anchor-measurements/",
+  "collected_at_utc": "2026-09-30T11:31:15.627519+00:00",
+  "caveat": "Seven selected anchors are a convenience sample; ICMP RTT is a proxy for libp2p RTT, not a WAN guarantee.",
+  "anchors": [
+    {
+      "country": "SE",
+      "city": "Stockholm",
+      "anchor_id": 2284,
+      "probe_id": 6851,
+      "measurement_id": 26933017,
+      "measurement_url": "https://atlas.ripe.net/api/v2/measurements/26933017/latest/"
+    },
+    {
+      "country": "US",
+      "city": "New York",
+      "anchor_id": 1818,
+      "probe_id": 6574,
+      "measurement_id": 22252930,
+      "measurement_url": "https://atlas.ripe.net/api/v2/measurements/22252930/latest/"
+    },
+    {
+      "country": "BR",
+      "city": "S\u00e3o Paulo",
+      "anchor_id": 1974,
+      "probe_id": 6659,
+      "measurement_id": 23211433,
+      "measurement_url": "https://atlas.ripe.net/api/v2/measurements/23211433/latest/"
+    },
+    {
+      "country": "JP",
+      "city": "Chofu, Tokyo, Japan",
+      "anchor_id": 4574,
+      "probe_id": 7689,
+      "measurement_id": 148679069,
+      "measurement_url": "https://atlas.ripe.net/api/v2/measurements/148679069/latest/"
+    },
+    {
+      "country": "IN",
+      "city": "Mumbai",
+      "anchor_id": 2519,
+      "probe_id": 6954,
+      "measurement_id": 29350966,
+      "measurement_url": "https://atlas.ripe.net/api/v2/measurements/29350966/latest/"
+    },
+    {
+      "country": "ZA",
+      "city": "Johannesburg",
+      "anchor_id": 1444,
+      "probe_id": 6569,
+      "measurement_id": 22128031,
+      "measurement_url": "https://atlas.ripe.net/api/v2/measurements/22128031/latest/"
+    },
+    {
+      "country": "AU",
+      "city": "Sydney",
+      "anchor_id": 1491,
+      "probe_id": 6427,
+      "measurement_id": 17692049,
+      "measurement_url": "https://atlas.ripe.net/api/v2/measurements/17692049/latest/"
+    }
+  ],
+  "edges": [
+    {
+      "source": "US",
+      "destination": "SE",
+      "source_probe_id": 6574,
+      "destination_probe_id": 6851,
+      "timestamp": 1790767618,
+      "rtt_ms": [
+        99.137802,
+        99.128984,
+        99.076072
+      ]
+    },
+    {
+      "source": "BR",
+      "destination": "SE",
+      "source_probe_id": 6659,
+      "destination_probe_id": 6851,
+      "timestamp": 1790767614,
+      "rtt_ms": [
+        208.556893,
+        208.637984,
+        208.575682
+      ]
+    },
+    {
+      "source": "JP",
+      "destination": "SE",
+      "source_probe_id": 7689,
+      "destination_probe_id": 6851,
+      "timestamp": 1790767623,
+      "rtt_ms": [
+        265.73583,
+        265.012041,
+        263.033779
+      ]
+    },
+    {
+      "source": "IN",
+      "destination": "SE",
+      "source_probe_id": 6954,
+      "destination_probe_id": 6851,
+      "timestamp": 1790767618,
+      "rtt_ms": [
+        147.321191,
+        147.220287,
+        147.280602
+      ]
+    },
+    {
+      "source": "ZA",
+      "destination": "SE",
+      "source_probe_id": 6569,
+      "destination_probe_id": 6851,
+      "timestamp": 1790767612,
+      "rtt_ms": [
+        190.981025,
+        190.834162,
+        190.888113
+      ]
+    },
+    {
+      "source": "AU",
+      "destination": "SE",
+      "source_probe_id": 6427,
+      "destination_probe_id": 6851,
+      "timestamp": 1790767615,
+      "rtt_ms": [
+        298.580979,
+        298.503873,
+        298.547094
+      ]
+    },
+    {
+      "source": "SE",
+      "destination": "US",
+      "source_probe_id": 6851,
+      "destination_probe_id": 6574,
+      "timestamp": 1790767782,
+      "rtt_ms": [
+        93.894782,
+        99.175507,
+        99.404097
+      ]
+    },
+    {
+      "source": "BR",
+      "destination": "US",
+      "source_probe_id": 6659,
+      "destination_probe_id": 6574,
+      "timestamp": 1790767773,
+      "rtt_ms": [
+        110.504933,
+        110.673989,
+        123.348074
+      ]
+    },
+    {
+      "source": "JP",
+      "destination": "US",
+      "source_probe_id": 7689,
+      "destination_probe_id": 6574,
+      "timestamp": 1790767785,
+      "rtt_ms": [
+        161.588774,
+        161.859854,
+        162.231295
+      ]
+    },
+    {
+      "source": "IN",
+      "destination": "US",
+      "source_probe_id": 6954,
+      "destination_probe_id": 6574,
+      "timestamp": 1790767783,
+      "rtt_ms": [
+        279.643371,
+        240.084329,
+        232.913011
+      ]
+    },
+    {
+      "source": "ZA",
+      "destination": "US",
+      "source_probe_id": 6569,
+      "destination_probe_id": 6574,
+      "timestamp": 1790767779,
+      "rtt_ms": [
+        226.508876,
+        225.521825,
+        225.850765
+      ]
+    },
+    {
+      "source": "AU",
+      "destination": "US",
+      "source_probe_id": 6427,
+      "destination_probe_id": 6574,
+      "timestamp": 1790767784,
+      "rtt_ms": [
+        210.378311,
+        239.842989,
+        239.067807
+      ]
+    },
+    {
+      "source": "SE",
+      "destination": "BR",
+      "source_probe_id": 6851,
+      "destination_probe_id": 6659,
+      "timestamp": 1790767789,
+      "rtt_ms": [
+        208.68321,
+        208.856524,
+        208.812843
+      ]
+    },
+    {
+      "source": "US",
+      "destination": "BR",
+      "source_probe_id": 6574,
+      "destination_probe_id": 6659,
+      "timestamp": 1790767560,
+      "rtt_ms": [
+        124.81384,
+        124.790857,
+        124.779615
+      ]
+    },
+    {
+      "source": "JP",
+      "destination": "BR",
+      "source_probe_id": 7689,
+      "destination_probe_id": 6659,
+      "timestamp": 1790767793,
+      "rtt_ms": [
+        289.901649,
+        291.952053,
+        290.019768
+      ]
+    },
+    {
+      "source": "IN",
+      "destination": "BR",
+      "source_probe_id": 6954,
+      "destination_probe_id": 6659,
+      "timestamp": 1790767556,
+      "rtt_ms": [
+        227.779523,
+        227.80687,
+        227.825935
+      ]
+    },
+    {
+      "source": "AU",
+      "destination": "BR",
+      "source_probe_id": 6427,
+      "destination_probe_id": 6659,
+      "timestamp": 1790767795,
+      "rtt_ms": [
+        304.547957,
+        304.634535,
+        304.621626
+      ]
+    },
+    {
+      "source": "US",
+      "destination": "JP",
+      "source_probe_id": 6574,
+      "destination_probe_id": 7689,
+      "timestamp": 1790767659,
+      "rtt_ms": [
+        160.483636,
+        160.415444,
+        160.849462
+      ]
+    },
+    {
+      "source": "BR",
+      "destination": "JP",
+      "source_probe_id": 6659,
+      "destination_probe_id": 7689,
+      "timestamp": 1790767654,
+      "rtt_ms": [
+        627.909244,
+        289.696203,
+        290.145801
+      ]
+    },
+    {
+      "source": "IN",
+      "destination": "JP",
+      "source_probe_id": 6954,
+      "destination_probe_id": 7689,
+      "timestamp": 1790767662,
+      "rtt_ms": [
+        155.774006,
+        155.474325,
+        157.309801
+      ]
+    },
+    {
+      "source": "ZA",
+      "destination": "JP",
+      "source_probe_id": 6569,
+      "destination_probe_id": 7689,
+      "timestamp": 1790767656,
+      "rtt_ms": [
+        377.082257,
+        376.439095,
+        377.112094
+      ]
+    },
+    {
+      "source": "AU",
+      "destination": "JP",
+      "source_probe_id": 6427,
+      "destination_probe_id": 7689,
+      "timestamp": 1790767657,
+      "rtt_ms": [
+        273.899415,
+        273.617009,
+        273.877282
+      ]
+    },
+    {
+      "source": "SE",
+      "destination": "IN",
+      "source_probe_id": 6851,
+      "destination_probe_id": 6954,
+      "timestamp": 1790767596,
+      "rtt_ms": [
+        147.624933,
+        147.262223,
+        147.243775
+      ]
+    },
+    {
+      "source": "US",
+      "destination": "IN",
+      "source_probe_id": 6574,
+      "destination_probe_id": 6954,
+      "timestamp": 1790767604,
+      "rtt_ms": [
+        284.997839,
+        284.654675,
+        284.66677
+      ]
+    },
+    {
+      "source": "BR",
+      "destination": "IN",
+      "source_probe_id": 6659,
+      "destination_probe_id": 6954,
+      "timestamp": 1790767601,
+      "rtt_ms": [
+        227.855257,
+        227.808014,
+        227.830885
+      ]
+    },
+    {
+      "source": "JP",
+      "destination": "IN",
+      "source_probe_id": 7689,
+      "destination_probe_id": 6954,
+      "timestamp": 1790767839,
+      "rtt_ms": [
+        155.080972,
+        155.457961,
+        155.399965
+      ]
+    },
+    {
+      "source": "ZA",
+      "destination": "IN",
+      "source_probe_id": 6569,
+      "destination_probe_id": 6954,
+      "timestamp": 1790767594,
+      "rtt_ms": [
+        297.0075,
+        297.055997,
+        297.049462
+      ]
+    },
+    {
+      "source": "AU",
+      "destination": "IN",
+      "source_probe_id": 6427,
+      "destination_probe_id": 6954,
+      "timestamp": 1790767603,
+      "rtt_ms": [
+        509.600443,
+        495.112141,
+        502.96941
+      ]
+    },
+    {
+      "source": "SE",
+      "destination": "ZA",
+      "source_probe_id": 6851,
+      "destination_probe_id": 6569,
+      "timestamp": 1790767675,
+      "rtt_ms": [
+        190.946994,
+        191.003061,
+        190.916866
+      ]
+    },
+    {
+      "source": "US",
+      "destination": "ZA",
+      "source_probe_id": 6574,
+      "destination_probe_id": 6569,
+      "timestamp": 1790767671,
+      "rtt_ms": [
+        225.922824,
+        225.810819,
+        225.958994
+      ]
+    },
+    {
+      "source": "JP",
+      "destination": "ZA",
+      "source_probe_id": 7689,
+      "destination_probe_id": 6569,
+      "timestamp": 1790767674,
+      "rtt_ms": [
+        377.179499,
+        376.834687,
+        377.010433
+      ]
+    },
+    {
+      "source": "IN",
+      "destination": "ZA",
+      "source_probe_id": 6954,
+      "destination_probe_id": 6569,
+      "timestamp": 1790767670,
+      "rtt_ms": [
+        297.092639,
+        297.211405,
+        297.214291
+      ]
+    },
+    {
+      "source": "AU",
+      "destination": "ZA",
+      "source_probe_id": 6427,
+      "destination_probe_id": 6569,
+      "timestamp": 1790767676,
+      "rtt_ms": [
+        441.440955,
+        441.285261,
+        441.308888
+      ]
+    },
+    {
+      "source": "SE",
+      "destination": "AU",
+      "source_probe_id": 6851,
+      "destination_probe_id": 6427,
+      "timestamp": 1790767649,
+      "rtt_ms": [
+        298.466264,
+        298.550614,
+        298.492909
+      ]
+    },
+    {
+      "source": "US",
+      "destination": "AU",
+      "source_probe_id": 6574,
+      "destination_probe_id": 6427,
+      "timestamp": 1790767647,
+      "rtt_ms": [
+        239.823293,
+        239.706628,
+        239.916092
+      ]
+    },
+    {
+      "source": "BR",
+      "destination": "AU",
+      "source_probe_id": 6659,
+      "destination_probe_id": 6427,
+      "timestamp": 1790767646,
+      "rtt_ms": [
+        304.645298,
+        304.620583,
+        304.594508
+      ]
+    },
+    {
+      "source": "JP",
+      "destination": "AU",
+      "source_probe_id": 7689,
+      "destination_probe_id": 6427,
+      "timestamp": 1790767645,
+      "rtt_ms": [
+        274.041356,
+        273.834297,
+        274.005563
+      ]
+    },
+    {
+      "source": "IN",
+      "destination": "AU",
+      "source_probe_id": 6954,
+      "destination_probe_id": 6427,
+      "timestamp": 1790767653,
+      "rtt_ms": [
+        467.696942,
+        515.470239,
+        460.084522
+      ]
+    },
+    {
+      "source": "ZA",
+      "destination": "AU",
+      "source_probe_id": 6569,
+      "destination_probe_id": 6427,
+      "timestamp": 1790767653,
+      "rtt_ms": [
+        441.246274,
+        441.193759,
+        441.22485
+      ]
+    }
+  ],
+  "same_region": [
+    {
+      "country": "SE",
+      "source_city": "Malm\u00f6",
+      "destination_city": "Stockholm",
+      "source_probe_id": 6350,
+      "destination_probe_id": 6851,
+      "timestamp": 1790767618,
+      "rtt_ms": [
+        9.4029,
+        9.409548,
+        9.464199
+      ]
+    },
+    {
+      "country": "US",
+      "source_city": "Durham",
+      "destination_city": "New York",
+      "source_probe_id": 6379,
+      "destination_probe_id": 6574,
+      "timestamp": 1790767780,
+      "rtt_ms": [
+        12.524406,
+        12.666739,
+        12.771352
+      ]
+    },
+    {
+      "country": "BR",
+      "source_city": "Porto Alegre",
+      "destination_city": "S\u00e3o Paulo",
+      "source_probe_id": 6349,
+      "destination_probe_id": 6659,
+      "timestamp": 1790767796,
+      "rtt_ms": [
+        16.392736,
+        16.31283,
+        16.517635
+      ]
+    },
+    {
+      "country": "JP",
+      "source_city": "Tokyo",
+      "destination_city": "Chofu, Tokyo, Japan",
+      "source_probe_id": 6370,
+      "destination_probe_id": 7689,
+      "timestamp": 1790767662,
+      "rtt_ms": [
+        8.103614,
+        5.854244,
+        6.573287
+      ]
+    },
+    {
+      "country": "IN",
+      "source_city": "Delhi",
+      "destination_city": "Mumbai",
+      "source_probe_id": 6953,
+      "destination_probe_id": 6954,
+      "timestamp": 1790767596,
+      "rtt_ms": [
+        23.225357,
+        23.334913,
+        23.396369
+      ]
+    },
+    {
+      "country": "ZA",
+      "source_city": "Cape Town",
+      "destination_city": "Johannesburg",
+      "source_probe_id": 7062,
+      "destination_probe_id": 6569,
+      "timestamp": 1790767676,
+      "rtt_ms": [
+        19.122915,
+        18.946671,
+        19.080378
+      ]
+    },
+    {
+      "country": "AU",
+      "source_city": "Brisbane",
+      "destination_city": "Sydney",
+      "source_probe_id": 6849,
+      "destination_probe_id": 6427,
+      "timestamp": 1790767651,
+      "rtt_ms": [
+        12.069863,
+        12.082662,
+        11.968362
+      ]
+    }
+  ],
+  "missing_pairs": [
+    [
+      "SE",
+      "JP"
+    ],
+    [
+      "BR",
+      "ZA"
+    ],
+    [
+      "ZA",
+      "BR"
+    ]
+  ]
+}

@@ -150,7 +150,7 @@ from the authenticated key — would change every row here.**
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
 | 2 | DHT reachability and time check | open | open | open | open | open |
-| 3 | Routing admission, liveness, eviction | open | open | open | **D — C3.T** | open |
+| 3 | Routing admission, liveness, eviction | open | open | open | **D — C3.T** | **D — C3.S** |
 | 4 | Lookup referrals | open | open | open | **D — C7.T** | open |
 | 5 | Record responsibility transfer | open | open | open | open | open |
 | 6 | Record publication and replication | open | open | open | open | **D — C6.S** |
@@ -167,7 +167,7 @@ from the authenticated key — would change every row here.**
 | 11 | Averaging availability exchange *(also E01)* | **D — C11.Obs** | **D — C11.Delay** | **D — C11.D** | **partly X — C11.T** | **D — C7.S** |
 | 12 | Candidate priority and leader choice *(local, also E01)* | = 11 | = 11 | = 11 | = 11 | **D — C12.S** |
 | 13 | Join negotiation and admission *(also E01)* | open | open | **D — C13.D** | open | **D — C13.S** |
-| 14 | Group roster distribution | open | open | = 13 | open | = 13 |
+| 14 | Group roster distribution | open | open | = 13 | **D — C14.T** | = 13 |
 | 15 | Next-group-key derivation *(local)* | open | open | open | open | **D — C15.S** |
 
 ### L4 — All-reduce · *control data: roles (16), recovery (18), the weight and group id in 17*
@@ -176,14 +176,15 @@ from the authenticated key — would change every row here.**
 
 | # | Checkpoint | Obs | Delay | Deny | Tamper | Select |
 |---:|---|---|---|---|---|---|
-| 16 | Role and work assignment *(local)* | open | open | open | open | open |
+| 16 | Role and work assignment *(local)* | open | open | open | = 14 | **D — C14.T** |
 | 17 | All-reduce exchange *(payload too)* | open | open | open | **D — C17.T** | open |
 | 18 | Session failure and recovery | open | open | open | open | open |
 
-Select is `open`, not `—`, at 16 and 17. The leader supplies the ordered roster that assigns reducers,
-and follower-side assembly only checks membership and aligned list lengths; a peer also holds a
-separate stream per reducer and can condition its behaviour on the destination or shard. Both
-mechanisms exist in code; neither selective attack has been demonstrated.
+The leader supplies the ordered roster that assigns reducers, and follower-side assembly only checks
+self-inclusion and aligned list lengths. C14.T demonstrates the cross-layer consequence: personalized
+roster permutations make several peers derive the same local reducer index and silently mix unrelated
+tensor coordinates. Select remains open at 17: a group member also holds a separate stream per reducer
+and could condition its behaviour on the destination or shard, but that action is still untested.
 
 Checkpoint 11 Select reuses C7.S: that experiment controlled which averaging advertisements reached
 the victim. It is the L3 consequence of a demonstrated L2 lookup attack, not a new experiment.
@@ -222,14 +223,14 @@ installed with no validation. Every other finding *nudges* a model; this one wou
 | layer | checkpoints | cells with evidence |
 |---|---|---|
 | L1 libp2p | 1 | **0** |
-| L2 DHT | 2–8 | 5 |
-| L3 Matchmaking | 11–15 | 8 |
-| L4 All-reduce | 16–18 | 1 |
+| L2 DHT | 2–8 | 6 |
+| L3 Matchmaking | 11–15 | 9 |
+| L4 All-reduce | 16–18 | 2 |
 | L5 Optimizer | 9–10 | **0** |
 | L6 State transfer | 19–20 | **0** |
 | spanning | 21 | 1 |
 
-**15 of roughly 90 cells.** The work sits almost entirely in L2 and L3 — correct for the research
+**18 of roughly 90 cells.** The work sits almost entirely in L2 and L3 — correct for the research
 question, since those are the two control-plane layers. The **Observe** and **Delay** columns are empty
 **everywhere except checkpoint 11**, including under findings already treated as settled, where the
 attacker's ability to see the victim was assumed rather than measured. C11.Obs is the first direct
@@ -438,6 +439,36 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
   Nothing verifies it — not at advertisement, not on contact.
 - **Decision.** **Demonstrated.** Root cause the other L2 results depend on.
 - **Next step.** None, settled.
+
+### C3.S — Checkpoint 3, Select: can targeted peers enter the five nearest honest nodes' tables?
+
+- **Question.** Can attacker-owned DHT nodes near a known averaging key enter the routing tables of
+  the five nearest honest peers and dominate their referrals for that key? Does a full bucket evict
+  live honest entries?
+- **Attacker position.** Ordinary reachable DHT peers with chosen `node_id` values; the key is known.
+- **Work performed.** `step18_routing_admission.py` used real localhost DHT/libp2p pings and find
+  RPCs. It compared random versus key-adjacent identities against the same honest node IDs. It first
+  warmed honest routing tables, then measured target admission before and after direct pings. A small
+  gate used 9 honest nodes and 4 attackers at `bucket_size=4`; four paired confirmations used 21
+  honest nodes and 20 attackers at Hivemind's default `bucket_size=20`. The last confirmation found
+  the five target peers by an ordinary DHT traversal rather than using the test harness's global view,
+  and checked whether an honest advertisement could still be read.
+- **Observations.** The small gate returned crafted peers in **20/20** referral slots versus **8/20**
+  for random peers. At the default size, the crafted arms returned attacker peers in **96, 100, 96,
+  and 96 of 100** slots across the five targets; paired random arms returned **60, 45, 50, and 45**.
+  The DHT traversal correctly identified all five closest honest peers in the last paired trial.
+  Some crafted peers remained in replacement lists rather than active buckets, and **no live honest
+  table entry was evicted** in any arm. The honest advertisement remained readable in both arms of
+  the final trial.
+- **Result.** Chosen identities plus ordinary contact can dominate referrals from the five nearest
+  honest peers. **Admission alone did not censor a record or disrupt a read.** The damaging selective
+  lookup behaviour requires a separate malicious response, as already tested in C7.S.
+- **Decision.** **Demonstrated as a local routing mechanism, not a new standalone attack.** The
+  direct-contact runs assumed the attacker knew the targets; the final DHT traversal discharged that
+  assumption in one local default-size swarm. These localhost, warmed-table runs do not measure WAN
+  admission time, churn, or the success rate of a complete attack on a public swarm.
+- **Next step.** Track 4: independently test failure of the five closest nodes. Do not present this
+  admission result as denial or as evidence that honest entries were forced out.
 
 ### C6.S — Checkpoint 6, Select: can an attacker choose which records it stores?
 
@@ -671,8 +702,8 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
 - **Question.** Leadership is the bottleneck for everything else — C13.S showed admission is exact
   once the attacker leads (β = k/(k+1), no variance), so whatever decides the election decides
   capture. C11.T established that the deadline cannot be *undercut*. Can it be won anyway?
-- **Attacker position.** One ordinary peer. No custody, no crafted `node_id`. It does need a low
-  `peer_id`, which is cheap — see below.
+- **Attacker position.** One ordinary peer. No custody and no crafted `node_id`. A low `peer_id` is
+  needed only for the equal-deadline variant; either kind of earlier deadline wins without it.
 - **Quadrant.** direct · commission · blanket · persists while the attacker keeps declaring.
 - **Work performed.** `step10_delay.py --phase 5`, swarms of 8, 32, 64 and 128 honest peers,
   4 rounds per arm, the election sampled at five points across each matchmaking window.
@@ -763,9 +794,9 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
   | undercut (`nextafter`) | **4/4** | **3** | 60/60 |
 
   **Leadership transfers. Follower share does not.** The attacker wins the election every round, live,
-  with no compute, exactly as claimed. But followers per round is pinned at **3 in every repeat and
-  both arms**, which is `target_group_size - 1`. At 7 honest peers that is 43 % of them; at 15 it is
-  20 %. **The share halves as the swarm doubles.**
+  while serving the toy all-reduce normally when selected. But followers per round is pinned at **3
+  in every repeat and both arms**, which is `target_group_size - 1`. At 7 honest peers that is 43 % of
+  them; at 15 it is 20 %. **The share halves as the swarm doubles.**
 
   **The 100 % was an artifact of the simulated election having no capacity constraint.** It computed,
   independently for every peer, whether that peer would prefer the attacker, and every peer did. A
@@ -780,15 +811,99 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
   **It is not a denial attack.** Honest availability is 60/60 in both attack arms against a 64/64
   baseline. Leading every round costs the swarm nothing by itself.
 
-- **Decision.** **Leadership demonstrated live; the 100 % follower share is withdrawn.** An attacker
-  that reads the key and undercuts by one float step leads every round at no compute cost, confirmed
-  in a running swarm. What it converts that into is bounded by group capacity, so quote
-  `target_group_size - 1` peers per round, not a fraction of the swarm, and do not describe the attack
-  as scale-independent in its effect.
-- **Next step.** Compose with C13.S. Leading every round is established; the open question is what
-  admission control does with the `target_group_size - 1` slots the attacker controls, which is where
-  β = k/(k+1) would come from. Also still open: whether `past_attempts` erodes the share across longer
-  runs than 4 rounds.
+  *Blind fixed-deadline pilot.* `step13_blind_leader.py` removed the adaptive lookup. The attacker
+  knew the group key, as any peer must in order to advertise on it, but did not call `get_averagers`
+  or send an outbound join request. In one localhost run with 7 honest peers, one attacker, group size
+  4, one launch-jitter seed and 10 rounds per arm, a fixed `now + 4 s` deadline led **10/10** rounds
+  versus **8/10** for the passive `now + 5 s` control. Every win seated exactly three followers. All **140**
+  honest peer-steps completed. The guards recorded zero DHT-advertisement reads, zero attacker join
+  attempts, zero cleanup leaks and zero harness cancellations, and **69/69** incoming follower
+  expirations were deliberately ignored. The two control-arm losses ended in an attacker
+  `AllreduceException` after its deadline, without harming the honest peers. Raw output:
+  `results/step13_blind_leader_{rounds,events}_full_20260928_final_full_n7_g4_r10_s1313.csv`.
+
+  This passes the pilot's pre-registered signal (`early >= 8/10` and `early > normal`), but **10/10 is
+  an observed count, not evidence that the true probability is 100%**. This is not an honest-peer
+  baseline: both arms wait passively to lead, and the control already led 8/10. Each arm used a
+  freshly generated PeerID set; launch jitter and DHT node positions were seeded. The fixed arm order
+  is another pilot limitation. The result has not been repeated across seeds, identities, arm orders,
+  swarm sizes or network conditions. It shows that reading competing deadlines was unnecessary in
+  this setup, not that the group key can be unknown or that a fixed one-second advantage universally
+  guarantees leadership. The attacker also served an ordinary four-element all-reduce when selected,
+  so this experiment does not establish a resource-free attack.
+
+  *Adaptive known-key test on the real DHT and matchmaker.* The fixed-deadline pilot was not a sound
+  answer to the question "how does the attacker know what earlier means?" Two staged tests now answer
+  that narrower question without reading any hidden schedule from the harness.
+
+  1. `step14_adaptive_leader.py` used real Hivemind DHT nodes and five independently advertised
+     deadlines. Given only its own `GroupKeyManager`, the attacker called `get_averagers`, selected the
+     earliest deadline with enough time left to join, and published `np.nextafter(deadline, -inf)`.
+     An independent observer saw all six records and the attacker strictly first in **10/10** fresh-key
+     confirmation trials (after a 1/1 smoke test). This proves DHT visibility and ordering, not
+     leadership.
+  2. `step15_adaptive_leader_live.py` then used stock `DecentralizedAverager` matchmaking and all-reduce
+     over the real local DHT/libp2p stack: three honest peers, one attacker, target group size four.
+     Each paired trial used fresh DHT and averager processes; arm order alternated. The attacker polled
+     the DHT every 50 ms, observed whatever viable records arrived for 100 ms, and acted without knowing
+     the honest population or their schedules. It never sent a join request. In the final confirmation,
+     the one-ULP undercut produced a complete capture—three followers and a completed attacker
+     all-reduce—in **10/10 observed trials**. Publishing one ULP after the latest observed deadline
+     produced **0/10** captures. All **60/60** honest peer-steps completed, with no hard cancellations,
+     cleanup leaks or outbound attacker joins. The undercut group completed in a median **0.497 s**;
+     the late control took **4.714 s** before the honest group completed and the unused attacker was
+     cancelled. Raw output:
+     `results/step15_adaptive_live_{rounds,events}_confirm_20260928_trace_confirm_h3_g4_r10_s1515.csv`.
+
+  The trace also exposed a DHT acknowledgement subtlety: in two successful undercut trials the honest
+  peers found the record and joined before the attacker's aggregate `store()` call returned, so the
+  declaration task was cancelled without a completed store result. A pre-await event is therefore the
+  causal write-attempt record; the three received joins are the stronger evidence that the publication
+  propagated. This matches Hivemind's stock declaration loop, which does not condition matchmaking on
+  the aggregate store boolean.
+
+  **Scope.** The participant knows the exact current group key, as it must to advertise. Hivemind offers
+  no practical way to enumerate an actually unknown key. This is a five-node, below-`bucket_size`,
+  localhost mechanism test with favourable latency—not a WAN or public-swarm result. The attacker is
+  **training-conditional**, not free: it avoids following and training when it loses, but it still
+  polls and writes the DHT, serves join streams and performs the ordinary all-reduce when selected.
+  Finally, 10/10 is an observed count under these conditions, not proof of 100% probability.
+
+  *Routed, measured-delay follow-up (2026-09-30).* `collect_ripe_anchor_rtt.py` saved public
+  [RIPE Atlas anchor-mesh](https://atlas.ripe.net/docs/apis/rest-api-reference/anchor-measurements/)
+  IPv4 ping results for seven countries in
+  `results/ripe_anchor_rtt_20260930.json`. Five countries (SE, US, BR, IN, AU) had a complete directed
+  RTT matrix; median cross-region link RTT was **233.4 ms**, with pair medians from **99.1 to 503.0 ms**.
+  `step19_wan_delay_leader.py` reused Hivemind's DHT, libp2p matchmaking and all-reduce in fresh local
+  swarms with **28 DHT peers** (23 routing-only fillers, above default `bucket_size=20`) and four
+  averagers. It imposed one measured pairwise RTT per DHT find/store RPC and a half-RTT per
+  join-stream direction. Within each paired delay comparison, the key, DHT node IDs, attacker policy
+  and schedule seed were held fixed; the swarm was restarted between arms, producing fresh PeerIDs.
+  Instrumentation counted 20 distinct attacker lookup
+  responders per run, including responders outside its initial nearest-neighbour seed in one pair.
+
+  | Honest deadline window | No added delay | Measured RTTs | Control |
+  |---|---|---|---|
+  | 5–7 s, three paired seeds | undercut captured **3/3** | undercut captured **0/3** | all **18/18** honest steps completed |
+  | 11–15 s, one matched seed | — | undercut captured **1/1** | late-deadline arm **0/1**, all **6/6** honest steps completed |
+
+  In the short-window delayed runs, attacker reads took a median **0.79–0.93 s** versus
+  **0.06–0.07 s** without delay. Two delayed trials never published; one published an independently
+  DHT-visible undercut but got no followers. The long-window delayed run read in **0.92 s**, wrote in
+  **1.16 s**, and seated all three followers. Two earlier long-window delayed seeds also captured
+  **2/2** against **0/2** late controls; these were before the fixed-key cross-delay pairing change,
+  though each attack/control pair itself used the same key. Raw paired outputs are
+  `results/step19_wan_delay_{rounds,events}_{smoke_20260930_short_paired_f23_r1_s1922,confirm_20260930_short_confirm_f23_r2_s1923,smoke_20260930_long_matched_f23_r1_s1925}.csv`.
+
+- **Decision.** **Latency-sensitive local attack, not a demonstrated public-WAN attack.** The
+  below-bucket `step15` result alone was inadequate. The routed follow-up shows both a successful
+  measured-delay case and a deadline boundary where the same policy fails. Its RIPE sample is a small
+  spatial sample of ICMP pings, not a full distribution of Hivemind traffic. The emulator omits
+  packet loss, churn, DHT ping and connection-setup delay, and all-reduce delay. It does not establish
+  how often this attack succeeds on a real deployment or that an unknown key can be targeted.
+- **Next step.** If presenting this as a real-network attack, measure on a multi-host deployment or
+  an authorized live averaging swarm, with TCP/libp2p RTT, loss, churn, lookup paths and the margin
+  remaining when the DHT read finishes. Otherwise present it only as a conditional local result.
 
 ### C13.D — Checkpoint 13, Deny: can a leader accept a peer and then stall it?
 
@@ -829,6 +944,52 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
 - **Result.** β is chosen, not inherited. The bottleneck is winning leadership, not filtering.
 - **Decision.** **Demonstrated.** The project's main result.
 - **Next step.** Grind a low `peer_id` — the tie-break for equal deadlines (`matchmaking.py:478-481`).
+
+### C14.T — Checkpoints 14 and 16, Tamper/Select: can a leader give peers conflicting reducer indices?
+
+- **Question.** The leader broadcasts the ordered group roster in `BEGIN_ALLREDUCE`, and roster position
+  becomes the reducer index. Can a malicious leader send a different permutation to each follower so
+  several peers believe they own the same index?
+- **Attacker position.** Current group leader. No DHT custody, routing control, Sybils or network race
+  is needed after leadership has been obtained.
+- **Quadrant.** direct · commission · blanket within the group · model corruption can persist.
+- **Mechanism.** `leader_assemble_group` creates and shuffles the roster, then each follower receives it
+  on a separate authenticated join stream (`matchmaking.py:371-388`, `:317-323`). A follower checks only
+  that its own PeerID appears and that the roster and `gathered` lists have equal length (`:391-405`).
+  It does not check a common roster digest, agreement with admitted members, uniqueness, or cross-peer
+  consistency. `group_id` is leader supplied and is not bound to the roster. All-reduce assigns shard
+  *i* to the peer at roster position *i*; data messages carry the common group ID but no roster hash or
+  logical coordinate. Equal-shaped shards from different coordinates are therefore accepted.
+- **Small gate.** `step16_roster_equivocation.py` ran Hivemind's real `AllReduceRunner` RPC over libp2p
+  with two peers and two equal shards. The common-roster control completed with the correct average
+  `[5, 550]`. With leader view `[L,F]` and follower view `[F,L]`, both peers completed cleanly with no
+  bans or fallback but produced `[500,55]` and `[55,500]`. This established silent corruption before
+  adding matchmaking.
+- **Wire-level confirmation.** `step17_roster_equivocation_live.py` used four real
+  `DecentralizedAverager` peers, the local DHT, authenticated join streams and stock all-reduce. The
+  designated leader was an explicit precondition, not an election result. In the attack arm it kept
+  the same four unique PeerIDs and group ID but swapped each recipient into the leader's own roster
+  index, reordering `gathered` in lockstep. Every peer began with the identical tensor `[0,1,2,4]`, so
+  correct averaging must leave it unchanged; four one-float shards made coordinate confusion
+  shape-valid.
+- **Observed result.** After a 1/1 paired smoke test, five fresh paired trials produced **0/5** silent
+  corruptions in the common-roster control and **5/5** under equivocation. All **40/40** steps across
+  both arms completed. Every control output was correct; all **20/20 attacked peer outputs were
+  wrong**, with maximum absolute error between **2.25 and 3.0**. All 15 malicious `BEGIN_ALLREDUCE`
+  messages retained exactly the canonical membership set and assigned the recipient the leader's
+  reducer index. There were zero reducer bans, fallback elements, RPC/all-reduce errors, timeouts,
+  hard cancellations or cleanup leaks. Raw output:
+  `results/step17_roster_live_{rounds,events}_confirm_20260928_confirm_t5_s1717.csv`.
+- **Result.** **A malicious leader can silently corrupt honest tensors without changing a model update.**
+  It changes only control data: the order of authenticated PeerIDs in the final roster. Network delay
+  does not remove the capability because the conflicting messages travel on the leader's existing join
+  streams; delay affects completion time, not whether the recipient-specific payload is valid.
+- **Decision.** **Demonstrated end to end on the real local Hivemind protocol path.** The conditional
+  statement matters: this establishes what a malicious leader can do, not how often it becomes leader.
+  Unlike the deadline-undercut experiment, the attack itself contains no DHT timing assumption.
+- **Next step.** Move to routing-table flooding, the third presentation track. A defence should make
+  the ordered roster independently derivable or bind it into a transcript/group identifier that peers
+  cross-check; a leader signature alone is insufficient because the leader is the equivocator.
 
 ### C15.S — Checkpoint 15, Select: does re-forming groups shed the attacker?
 
@@ -880,23 +1041,52 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
 
 ## Part 3 — what to do next
 
-The map decides the order, not intuition.
+This is the canonical **four-track** experiment queue. The staging rule is permanent: for every track,
+run the smallest mechanism test first, inspect the trace and controls, and scale only if that gate
+produces a signal. A successful smoke test is not itself the headline result.
 
-1. **Run E01** (Part 1b). Cheapest, and it absorbs the `reject` control that decides whether C13.D's
-   stall result stands, so that control is no longer a separate item.
-2. **Open L6 entirely.** Donor priority is self-declared, installed tensors are unchecked. The only
+1. **Adaptive, training-conditional leader capture — conditional local evidence, not a public-WAN claim.** This combines the
+   first two questions: learn real advertised deadlines from the known group key, undercut the earliest
+   viable one, never follow another leader, and act only when followers select the attacker.
+   `step14_adaptive_leader.py` passed 1/1 smoke plus 10/10 independent-observer DHT trials.
+   `step15_adaptive_leader_live.py` then passed 1/1 smoke plus **10/10 complete captures** against
+   **0/10** late-deadline controls on real local Hivemind matchmaking; all 60 honest peer-steps
+   completed. This remains known-key, below-`bucket_size`, localhost evidence with unrealistically short
+   DHT paths. It repeats an existing timing mechanism and is not accepted as evidence that the attack
+   works on a real routed Hivemind deployment. `step19_wan_delay_leader.py` now adds 23 DHT-only
+   peers and measured inter-region RTTs: at a 5–7 s deadline window, undercut captured **3/3**
+   zero-delay groups but **0/3** delayed groups; at 11–15 s it captured **1/1** delayed groups against
+   **0/1** late controls. This tests a routed, latency-sensitive local mechanism, not public-WAN
+   success. See C12.S for the RTT source and emulation limits.
+2. **Malicious-leader roster/index equivocation — confirmed.** `step16_roster_equivocation.py` first
+   showed silent coordinate mixing over the real libp2p all-reduce. `step17_roster_equivocation_live.py`
+   then injected recipient-specific rosters through actual `BEGIN_ALLREDUCE` streams. Five fresh paired
+   trials gave **0/5** corrupt controls and **5/5** silently corrupt attack runs; all 20 attacked peers
+   completed with wrong tensors and zero bans, fallback elements or errors. This attack assumes the
+   adversary is already leader, but the malicious action itself has no DHT timing dependency.
+3. **Flood the routing tables of the five peers closest to the group key — admission confirmed,
+   standalone disruption not shown.** `step18_routing_admission.py` found that key-adjacent identities
+   dominated **96–100/100** lookup referrals across five targets at default `bucket_size=20`, versus
+   **45–60/100** for random identities in four paired trials. A stock DHT lookup found all five target
+   peers in the final trial, and an honest advertisement was still readable. No live honest routing
+   entry was displaced. This is an enabling mechanism for C7.S, not a fifth independent attack.
+4. **Simulate failure of the five peers closest to the group key — next.** In a local testbed, stop or blackhole
+   those peers and measure lookup success, latency and recovery. This is a controlled resilience test,
+   not authorization to disrupt a public network.
+
+After those four presentation tracks:
+
+5. **Open L6 entirely.** Donor priority is self-declared, installed tensors are unchecked. The only
    place an attacker replaces a model rather than nudging it, and every cell is empty.
-3. **Open checkpoint 14 Tamper.** A leader controls the roster for free, so sending *conflicting*
-   rosters to different followers costs it nothing extra. Untested.
-4. **Open L5.** False or selectively hidden progress, forced catch-up, forced state download. Note its
+6. **Open L5.** False or selectively hidden progress, forced catch-up, forced state download. Note its
    records are signed and L3's are not — understand why before proposing signing as a defence.
-5. **Try an omission attack, anywhere.** Every demonstrated result is still commission. C11.Delay
+7. **Try an omission attack, anywhere.** Every demonstrated result is still commission. C11.Delay
    partly discharges this: it does not perform an omission attack, but it **locates the boundary**
    between the two. The same attacker, same position, same method, is invisible at 2.9 s and detected
    and neutralised at 3.5 s — the first time in this project that one of Hivemind's existing defences
    has been observed firing. What remains is a deliberate omission arm, refusing to serve `rpc_find`,
    to check the defence works when the silence is sustained rather than incidental.
-6. **Fill the Observe column.** Several findings assume the attacker can recognise the victim. Only
+8. **Fill the Observe column.** Several findings assume the attacker can recognise the victim. Only
    C15.S measured it.
 
 **Method.** Test single actions before chains. Use the smallest swarm that exposes the mechanism, then

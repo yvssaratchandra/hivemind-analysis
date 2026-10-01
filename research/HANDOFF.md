@@ -3,18 +3,108 @@
 Everything a new session needs: what the project is, where it stands, what is known, and what to do
 next. Written to be read without any prior conversation.
 
-Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-09-28
+Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-10-01
 
 ---
 
-## Current thread — public-WAN matchmaking feasibility (2026-09-28)
+## Current thread — prioritized attack experiments (2026-09-30)
 
-The immediate question is whether reading the current averaging advertisements, choosing the earliest
-*joinable* deadline, and publishing a slightly earlier one can still win leadership when DHT operations
-cross the public internet. The local live result in §4.16 and `CONTROL_DATA_AUDIT.md` C12.S is **4/4
-rounds led** by both blind and adaptive undercutting, with **3 followers per round** at group size 4.
-The earlier 100% follower-share figure came from an election calculation without the live group's
-capacity limit. **No WAN read-to-publication or end-to-end election result has been measured.**
+**Moving-machine handoff (2026-10-01).** The latest WAN-like timing result is a *local emulation*,
+not a crawl of a public swarm. Its source measurements, harness, exact CSV traces and interpretation
+are in `results/ripe_anchor_rtt_20260930.json`, `step19_wan_delay_leader.py`,
+`results/step19_wan_delay_{rounds,events}_*.csv` and `CONTROL_DATA_AUDIT.md` C12.S. The profile has
+five fully connected regions (SE, US, BR, IN, AU), with a median cross-region ICMP RTT of 233.4 ms
+and pair medians from 99.1 to 503.0 ms. It is a small spatial sample, **not** a representative
+worldwide latency distribution or a measurement of Hivemind TCP/libp2p traffic.
+
+The decisive paired short-window runs used 28 DHT peers, four averagers and a 5–7 s honest deadline
+window: the one-ULP undercut captured **3/3** zero-delay groups but **0/3** with measured RTTs. One
+delayed ad became visible yet drew no followers. With an 11–15 s window, a matched delayed run gave
+**1/1** capture for undercut versus **0/1** for the late-deadline control. All honest steps completed.
+The local emulator delays DHT find/store and join-stream RPCs, but not packet loss, churn, DHT pings,
+connection setup or all-reduce. The exact group key is known to the attacker. Do not report these
+counts as a public-WAN success rate or as proof of 100% leadership.
+
+To inspect or rerun on the new machine, use the repository Python environment from the repo root:
+
+```text
+python research/step19_wan_delay_leader.py --phase smoke --scales 0 1 --arms undercut --fillers 23 --rounds 1 --seed 1922 --schedule-min 5 --schedule-max 7 --label NEW_SHORT_CHECK
+python research/step19_wan_delay_leader.py --phase smoke --scales 1 --arms late undercut --fillers 23 --rounds 1 --seed 1925 --schedule-min 11 --schedule-max 15 --label NEW_LONG_CHECK
+```
+
+Use a new label so existing CSVs are not overwritten. `step19` imports `step15_adaptive_leader_live.py`
+and uses the saved RIPE profile by default; it starts many local processes and needs localhost socket
+access. First inspect the committed CSVs before rerunning. The next *small* observational test is a
+passive reader on a CPU-only local Hivemind swarm: record each DHT read duration, the earliest active
+advertised deadline, and remaining time **at read completion**. This tests the crawler's method, not
+public-swarm availability. Scale to a multi-host test only if this gate produces usable measurements.
+
+**Prime Intellect lead.** Its [April 2024 overview](https://www.primeintellect.ai/blog/our-approach-to-distributed-training)
+mentions Hivemind and a base image for launching one's own run, not a public bootstrap and group key.
+Its Hivemind-based [OpenDiLoCo](https://github.com/PrimeIntellect-ai/OpenDiLoCo) is explicitly marked
+unmaintained. The [INTELLECT-1 run](https://www.primeintellect.ai/blog/intellect-1-release) has ended;
+its [PRIME framework](https://github.com/PrimeIntellect-ai/prime-diloco) publicly documents an
+ElasticDeviceMesh rather than the Hivemind matchmaking path studied here. No currently joinable public
+Hivemind averaging swarm was verified from these sources. Prime's published
+[OpenDiLoCo training script](https://github.com/PrimeIntellect-ai/OpenDiLoCo/blob/main/open_diloco/train_fsdp.py)
+requires CUDA/NCCL;
+the original machine had CPU-only PyTorch, so the relevant low-cost path is a toy Hivemind control-plane
+swarm, not full OpenDiLoCo training. A new machine's hardware should be checked afresh.
+
+`CONTROL_DATA_AUDIT.md` Part 3 is the canonical **four-track** queue. The rule for every track is fixed:
+start with the smallest mechanism test, inspect its trace and controls, and run a larger confirmation
+only when that gate shows a signal.
+
+Track 1—adaptive deadline undercutting—has **conditional local evidence, not public-WAN attack
+evidence**. `step14`/`step15` used only five localhost DHT nodes below the default bucket size.
+The new `step19` follow-up used 28 DHT peers (23 routing-only), real Hivemind matchmaking and
+all-reduce, and local delays derived from RIPE Atlas anchor pings. With the same known key and DHT
+IDs across paired arms, a 5–7 s deadline window yielded **3/3** zero-delay captures but **0/3**
+measured-delay captures. At 11–15 s, the measured-delay undercut captured **1/1** against **0/1**
+late-deadline controls; two earlier seeds also captured **2/2**. This is a latency-sensitive routed
+localhost result, not a live deployment result: ICMP pings are only a small proxy sample, and the
+emulator omits loss, churn, DHT ping and connection-setup delay. A genuinely unknown group key remains
+untargetable. C12.S has the exact traces and limitations.
+
+Track 2—malicious-leader roster/index equivocation—is now confirmed and is the stronger result.
+The roster position in `BEGIN_ALLREDUCE` is the reducer index, but followers do not verify that peers
+received one common roster. `step16_roster_equivocation.py` first used the real libp2p all-reduce with
+two peers: the honest view produced `[5,550]`, while views `[L,F]` and `[F,L]` completed without errors
+but produced `[500,55]` and `[55,500]`. `step17_roster_equivocation_live.py` then used four real
+`DecentralizedAverager` peers and rewrote the actual `BEGIN_ALLREDUCE` message separately for each
+follower, retaining the same four authenticated PeerIDs and group ID.
+
+After a 1/1 smoke gate, five fresh paired confirmations produced **0/5** silent corruptions in the
+common-roster control and **5/5** under equivocation. Every control output was correct; all **20/20**
+attacked peer outputs were wrong even though all steps completed. There were zero reducer bans,
+fallback elements, errors, timeouts, harness cancellations or cleanup leaks. This attack assumes the
+adversary is already the legitimate group leader; that precondition was forced rather than measured.
+The malicious action itself uses existing authenticated join streams and does not rely on DHT timing.
+Results are under `research/results/step17_roster_live_*_20260928_{smoke,confirm}_*.csv`.
+
+Track 3—routing admission near the group key—is complete as a mechanism test. `step18_routing_admission.py`
+used real DHT/libp2p pings and find RPCs. Its small gate used 9 honest nodes, 4 attackers and
+`bucket_size=4`; four paired default-parameter trials used 21 honest nodes, 20 attackers and
+`bucket_size=20`. Across the five closest honest nodes, targeted identities occupied **96, 100, 96,
+and 96 of 100** returned lookup slots, versus **60, 45, 50, and 45** for random identity controls.
+The last trial found the five targets by an ordinary DHT traversal, and an honest advertisement
+remained readable. **No live honest routing entry was displaced.** Some attacker identities stayed
+on replacement lists and were not returned. This reinforces the admission precondition for C7.S;
+flooding alone did not cause denial or censorship. All runs were localhost and warmed the honest
+tables before introducing the attacker, so they do not measure public-WAN timing or churn.
+
+The next queued experiment is track 4: controlled failure of the five closest DHT nodes, measuring
+lookup success, latency and recovery.
+
+## Previous thread — public-WAN matchmaking feasibility (2026-09-28)
+
+The remaining WAN question is whether reading current averaging advertisements, choosing the earliest
+*joinable* deadline, and publishing a slightly earlier one can win leadership across the public
+internet. `step15` observed **10/10** local captures versus **0/10** late controls, but that
+below-`bucket_size` result is rejected as evidence for this WAN claim. The earlier 100% follower-share
+figure also came from an election calculation without the live group's capacity limit. `step19` now
+tests read-to-publication and end-to-end election on a routed local swarm with measured-delay emulation;
+its results are conditional on the deadline window, and **no public-WAN result has been measured**.
 
 The agreed first study is observational: find an active public collaboration using Hivemind's actual
 `DecentralizedAverager`/`Optimizer` matchmaker and a published bootstrap peer plus exact averaging
@@ -23,8 +113,9 @@ frequently enough to see deadlines that may last only seconds, over a shorter pe
 24-hour/every-few-minutes suggestion. Record the deadline margin **at read completion**. Publication,
 visibility to other peers, and follower-contact times need a separate measurement; a read-only crawl
 cannot establish them, and a positive timing margin would be necessary but not sufficient evidence
-of an election win. The cadence and duration are not yet chosen. The user wants to brainstorm this
-before coding or contacting a live swarm.
+of an election win. The cadence and duration are not yet chosen. As of 2026-10-01, the user wants to
+start with a small **local passive-crawler gate** before any public-swarm work. Do not contact a live
+swarm without verifying its operator, bootstrap address, exact key and permission/scope.
 
 **Target search, 2026-09-28:** no suitable *currently live* public averaging swarm was verified from
 project sources and status pages. Petals advertises inference servers, not this averaging election,
@@ -179,6 +270,14 @@ for detail.
 | `reproduce_group_key_capture.py` | The group-key hash protects nothing: K is a forward hash of a public string. |
 | `step10_delay.py` | §4.15. Six phases at checkpoints 11 and 12: observe, delay, staleness, end-to-end averaging, leader election, and baseline write/read cost. |
 | `step11_abstain.py` | E01. Advertise, never follow, and vary the response to arrivals: honest, serve, reject, stall. Carries the `reject` control for C13.D. |
+| `step13_blind_leader.py` | Fixed-deadline passive-leader pilot. Useful mechanism check, not the realistic adaptive result. |
+| `step14_adaptive_leader.py` | Track 1 stage A: read real DHT advertisements, undercut the earliest joinable deadline, and verify ordering independently. |
+| `step15_adaptive_leader_live.py` | Track 1 stage B: the same adaptive policy against real local matchmaking and all-reduce, with a late-deadline control. |
+| `collect_ripe_anchor_rtt.py` | Collect a small reproducible RIPE Atlas anchor-mesh ping matrix for WAN-delay emulation. |
+| `step19_wan_delay_leader.py` | Track 1 routed local follow-up: compare adaptive leadership with and without measured pairwise RTTs. |
+| `step16_roster_equivocation.py` | Track 2 stage A: smallest real-libp2p test of conflicting reducer indices and silent coordinate mixing. |
+| `step17_roster_equivocation_live.py` | Track 2 stage B: a malicious leader rewrites actual per-follower `BEGIN_ALLREDUCE` rosters in a live local swarm. |
+| `step18_routing_admission.py` | Track 3: compare random versus key-adjacent identities in five nearest honest peers' routing tables and actual find responses. |
 | `make_map_sheet.py` | Renders Part 1 of the audit as a one-page PDF. Parses the audit, so it cannot drift. |
 | `make_timing_sheet.py` | Renders the DHT timing reference as a one-page PDF from the result CSVs. |
 
@@ -699,7 +798,8 @@ so no arm carries a structural orphan. Full worksheet in the audit's Part 1b.
 | abstain + stall | **336/360** | **3.09 s** | 5.25 s |
 
 The attacker sent **zero** `rpc_join_group` messages in every arm while receiving 36, 60 and 88, so
-abstention works exactly as described and costs no compute. But **it harms nobody**: serving and
+abstention works exactly as described and requires no training contribution while it is not selected.
+Its CPU, memory and network costs were not measured. But **it harms nobody**: serving and
 rejecting are indistinguishable from the baseline. Declining to follow is a free and untraceable
 *position*, not an attack. All the harm is the hostile act performed from it.
 
@@ -717,7 +817,7 @@ the baseline's 0.16 s: a peer that picks the attacker burns about five seconds f
 **Reconciled against live matchmaking, and the headline does not survive.** `step12_election_live.py`
 runs the same strategies against real `DecentralizedAverager` swarms. At 15 honest peers, group size 4,
 4 rounds, 3 repeats: the attacker **leads 4 of 4 rounds** in both the blind and the undercut arm, with
-no compute, confirming the leadership claim live. But **followers per round is pinned at 3 in every
+normal toy all-reduce service when selected, confirming the leadership claim live. But **followers per round is pinned at 3 in every
 repeat and both arms**, which is `target_group_size - 1`: 43 % of honest peers at 7, **20 % at 15**.
 The share halves as the swarm doubles.
 
@@ -1114,23 +1214,13 @@ machine — **not in the repo**, so re-fetch them if that machine is gone.
 
 ### From the audit, in the order the map gives
 
-`CONTROL_DATA_AUDIT.md` Part 3 carries the current ordering. The top items as of this handoff:
-
-1. **Compose C12.S with C13.S.** Leading every round is now established live, and it is bounded to
-   `target_group_size - 1` seats per round. The open question is what admission control does with
-   those seats, which is where β = k/(k+1) would come from. Note that §4.3's 57-67 % is a *capture*
-   rate and not a leadership rate; the two were compared as if interchangeable once already.
-2. **E01 is done** (audit Part 1b), and with it the `reject` control for §4.13. See below; what
-   remains open at L4 and L6 is now higher priority than anything at L3.
-
-3. **Open L6 entirely.** State transfer, every cell empty, donor priority self-declared and
-   downloaded tensors installed unvalidated. The only place an attacker replaces a model rather than
-   nudging it.
-4. **Checkpoint 14 Tamper.** A leader controls the roster for free, so sending *conflicting* rosters
-   to different followers costs it nothing extra. Untested.
-5. **An omission attack, anywhere.** Every demonstrated result is commission. C11.Delay locates the
-   boundary, since the same attacker crossing `wait_timeout` is detected and neutralised, but nobody
-   has run a deliberate omission arm.
+`CONTROL_DATA_AUDIT.md` Part 3 is the canonical queue; do not maintain a second copy here. It now
+contains four attack tracks requested for the presentation: adaptive training-conditional leadership,
+malicious-leader roster/index equivocation, routing-table flooding around the group key, and simulated
+failure of the five closest peers. Track 1 now has a routed local measured-delay follow-up but remains
+unproven on a public WAN. Track 2 is confirmed end to end after its smoke gate. Track 3 confirmed routing
+admission but no standalone disruption; track 4 is next. Every track advances only after its smallest
+test and controls have been inspected.
 
 ### Loose ends, in descending order of interest
 
@@ -1138,7 +1228,8 @@ machine — **not in the repo**, so re-fetch them if that machine is gone.
   axis. Deny/Delay/Tamper is the standard Byzantine message-handling decomposition and exhausts what a
   participant can do to a message it *handles* — but it cannot express control over *who is in the
   group*, which is where β = k/(k+1) lives and where the literature is thinnest. §4.13 is the only Deny
-  cell filled; Tamper (wrong `group_id`, inconsistent `ordered_peer_ids`) is untouched.
+  cell filled. Inconsistent `ordered_peer_ids` is now C14.T's demonstrated Tamper result; wrong
+  `group_id` and destination-conditioned all-reduce streams remain open.
 
 - **Compose tracking with admission control.** §4.4 scaled shows tracking puts an attacker in the
   victim's *bucket* exactly and indefinitely (63/63 predictions), but converting that to the victim's

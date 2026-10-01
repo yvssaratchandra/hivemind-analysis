@@ -1,0 +1,11 @@
+arm,trial,leader_id,begin_messages,completed,failed,clean_allreduce,correct,all_agree,silent_wrong,max_abs_error,outputs,hard_cancellations,stage_leaks
+control,0,12D3KooWCXqXSkkx8njQxDRTBZsh37PeTWGUCcgWYiihXULseMZh,3,4,0,1,4,1,0,0.000000,"[[0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0]]",,
+equivocate,0,12D3KooWMEQ86ryYAouqaFBUT4LSKqioZ5BYidLsPzF2bWQe9azy,3,4,0,1,0,0,1,3.000000,"[[1.75, 0.75, 1.5, 3.0], [3.0, 0.75, 1.5, 1.75], [1.5, 0.75, 1.75, 3.0], [0.75, 1.75, 1.5, 3.0]]",,
+equivocate,1,12D3KooWPPRWkycZd6vkhH5Kq7M3yPXFoaWvLAzBoqHhqgzfGGBf,3,4,0,1,0,0,1,3.000000,"[[1.0, 1.75, 2.5, 1.75], [1.0, 1.75, 1.75, 2.5], [1.75, 1.75, 2.5, 1.0], [1.0, 1.75, 2.5, 1.75]]",,
+control,1,12D3KooWGvyojAkmC4iFbCb685qrDWXKm9koMBTx1dhBtuSbUQLU,3,4,0,1,4,1,0,0.000000,"[[0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0]]",,
+control,2,12D3KooWKG14wdiy7NoQuco6j6oNbYvchvxQYMXapxrAgSB6Ethy,3,4,0,1,4,1,0,0.000000,"[[0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0]]",,
+equivocate,2,12D3KooWSxtJbF1G5XiYzzSczQRpRawH9GckcHkgaMNFbhoH4yX4,3,4,0,1,0,0,1,3.000000,"[[1.0, 1.75, 2.5, 1.75], [1.0, 1.75, 2.5, 1.75], [1.0, 1.75, 1.75, 2.5], [1.75, 1.75, 2.5, 1.0]]",,
+equivocate,3,12D3KooWGpRBgU9fLUAf918DARwqmzd4A3oi4m9w31eKKAfHZuuG,3,4,0,1,0,0,1,2.250000,"[[0.5, 1.25, 1.75, 3.5], [0.5, 1.25, 3.5, 1.75], [0.5, 1.75, 1.25, 3.5], [1.75, 1.25, 0.5, 3.5]]",,
+control,3,12D3KooWRFKrq2iRLG2WbEtRnhtruwGM22rSDgYSGuv9Pwv2bAQA,3,4,0,1,4,1,0,0.000000,"[[0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0]]",,
+control,4,12D3KooWRUUDGieRucAavDeVrW7iV4ZXnPxz1nNVTgH5ZVruQVA4,3,4,0,1,4,1,0,0.000000,"[[0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0], [0.0, 1.0, 2.0, 4.0]]",,
+equivocate,4,12D3KooWCosPKis9wSc6YcbqF5nybiapZQhBYP3JAT9y3wwFBJ3u,3,4,0,1,0,0,1,3.000000,"[[1.75, 0.75, 1.5, 3.0], [1.5, 0.75, 1.75, 3.0], [0.75, 1.75, 1.5, 3.0], [3.0, 0.75, 1.5, 1.75]]",,

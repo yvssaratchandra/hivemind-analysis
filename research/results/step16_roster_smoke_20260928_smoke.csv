@@ -1,0 +1,5 @@
+arm,peer_index,peer_id,roster_indices,self_roster_index,initial,expected,output,completed,correct,banned_senders,failed_elements,error
+control,0,12D3KooWKAvge2CPMBxe7Z27Hb6qkCMuJxMgTDT96qxrkG4TWwvz,0;1,0,"[0.0, 100.0]","[5.0, 550.0]","[5.0, 550.0]",1,1,0,0,
+control,1,12D3KooWGeGB9FFtrQs4Lxc7X1Ecbpa7d85LBPPhh3NZpAHTvPRk,0;1,1,"[10.0, 1000.0]","[5.0, 550.0]","[5.0, 550.0]",1,1,0,0,
+equivocate,0,12D3KooWEV4DPrB8hgQNYcKqctyxWhDMa2qeEUpJbthVD89Bgmmi,0;1,0,"[0.0, 100.0]","[5.0, 550.0]","[500.0, 55.0]",1,0,0,0,
+equivocate,1,12D3KooWKSe5rafgHZTnACYPh5DFvnknmzQDFodpdatfxX8Z6zbN,1;0,0,"[10.0, 1000.0]","[5.0, 550.0]","[55.0, 500.0]",1,0,0,0,

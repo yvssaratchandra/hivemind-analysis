@@ -1,0 +1,3 @@
+arm,round,deadline_offset_s,attacker_id,attacker_led,follower_count,attacker_status,attacker_error,honest_completed,honest_failed,honest_errors,declarations,declaration_accepted,forbidden_dht_advertisement_reads,forbidden_outbound_joins,attacker_joins_received,inbound_deadlines_ignored,harness_cancellations,stage_leaks,elapsed_s
+normal,0,5.0,12D3KooWQWryeryjS4qyLwaPbHze43jutaQ9eUHEZjRnv2LMJa3h,1,3,completed,,7,0,,1,1,0,0,3,3,,,0.569
+early,0,4.0,12D3KooWJGSR4WtwsDfnGCJ3HeoVryYwi412dSfMiuJo37L7CLZi,1,3,completed,,7,0,,1,1,0,0,3,3,,,0.559
