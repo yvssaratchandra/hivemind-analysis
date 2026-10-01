@@ -51,6 +51,37 @@ medians; these are **not public-WAN results**. Raw runs:
 derived timing table: `results/step20_forged_priority_sweep_sweep_20261002_a_analysis.csv`.
 Rebuild the timing table with `.venv/bin/python research/analyze_step20.py ROUND_CSV EVENT_CSV`.
 
+### Presentation handoff — Hivemind Attacks (2026-10-02)
+
+The talk is in `presentations/261002_hivemind_attacks/`. Use `hivemind-attacks.tex` as
+the main source and `hivemind-attacks-notes.tex` for slides with speaker notes; the
+standard and notes PDFs are included. The eight main slides present two attacks, with
+deadline undercutting as one backup slide. This deck uses matchmaking eclipse plus the
+newer roster-equivocation result in place of the older weight-inflation recommendation
+in `ATTACK_PRESENTATION.md`.
+
+- **Targeted matchmaking eclipse:** with cached records and default lookup width 20,
+  18 crafted DHT identities captured 4/30 victim rounds; 20 captured 20/20. Separate
+  malicious training peers joined the victim, and no other honest peer entered its
+  captured group. This was a local eight-training-peer test. See section 4.6 and C7.S.
+- **Roster equivocation:** in five paired local trials, 0/5 common-roster controls and
+  5/5 attacks had corrupted output; all 20 attacked peer outputs were wrong, while all
+  40 steps completed. The attacker was already the group leader by experimental setup.
+  See C14.T and `results/step17_roster_live_*_confirm_20260928_*.csv`.
+- **Backup deadline result:** the five-origin, three-seed delay-emulation sweep captured
+  15/15 groups with an 11–15 s deadline window and 0/15 with a 5–7 s window. This used a
+  28-node local swarm, injected RTTs derived from RIPE Atlas pings, and a known group key.
+  It is not evidence of public-WAN success; details are in
+  `meetings/2026-10-02_meeting_agenda.md` and `results/step19_wan_delay_rounds_smoke_r5_*.csv`.
+
+The eclipse and roster attacks were tested separately. The roster result establishes
+what a malicious leader can do, not how often it wins leadership. PDFs were compiled
+with temporary Tectonic 0.17 and visually checked; rebuilding with the documented
+`latexmk` commands requires full TeX Live/Beamer packages, which were absent from the
+machine's `texlive-basic` install. See the presentation folder's README. The project
+workflow and one-paragraph plan TL;DR preference are recorded in root `AGENTS.md` and
+`.codex/config.toml`.
+
 **Moving-machine handoff (2026-10-01).** The latest WAN-like timing result is a *local emulation*,
 not a crawl of a public swarm. Its source measurements, harness, exact CSV traces and interpretation
 are in `results/ripe_anchor_rtt_20260930.json`, `step19_wan_delay_leader.py`,
