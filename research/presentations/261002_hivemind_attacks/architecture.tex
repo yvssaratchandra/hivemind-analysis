@@ -1,0 +1,310 @@
+% Overview and four visual steps for a network-security audience with basic FL/ML knowledge.
+% Included by hivemind-control-plane.tex; shares its styles and speaker notes.
+
+\begin{frame}{Inside a Hivemind peer}
+\begin{visual}
+  % An overview of components, with only the language boundary connected.
+  \fill[ChalmersPurple!4,rounded corners=3mm]
+    (1.8,2.1) rectangle (12.6,5.25);
+  \node[anchor=west,font=\small\bfseries,text=ChalmersPurple]
+    at (2.2,4.94) {Hivemind\quad\textbar\quad Python};
+
+  \foreach \xx/\yy/\name/\purpose in {
+    4.55/4.23/{All-reduce}/{Averages group gradients.},
+    9.85/4.23/{Optimizer}/{Schedules averaging.},
+    4.55/3.2/{Hivemind DHT}/{Stores peer metadata.},
+    9.85/3.2/{Matchmaking}/{Forms temporary groups.}} {
+    \node[box,draw=none,fill=white,minimum width=4.6cm,minimum height=0.85cm,
+      inner sep=0pt] at (\xx,\yy) {};
+    \node[font=\small\bfseries,text=ChalmersPurple] at (\xx,\yy+0.17) {\name};
+    \node[quiet,text=ink] at (\xx,\yy-0.18) {\purpose};
+  }
+
+  \node[box,draw=none,fill=ChalmersPurple!9,minimum width=7.8cm,
+    minimum height=0.42cm,inner sep=0pt,font=\footnotesize,text=ChalmersPurple]
+    at (7.2,2.43) {P2P wrapper + bindings};
+
+  \draw[<->,ChalmersPurple!75,line width=1pt] (7.2,2.17)--(7.2,1.37);
+  \node[anchor=west,font=\footnotesize,text=muted]
+    at (7.4,1.77) {Unix-domain sockets};
+
+  % Nesting denotes a library inside the Go daemon, not another process.
+  \fill[ChalmersCyan!7,rounded corners=3mm]
+    (3.1,0.17) rectangle (11.3,1.32);
+  \node[font=\small\bfseries,text=ChalmersPurple] at (7.2,1.05)
+    {p2pd\quad\textbar\quad Go};
+  \node[box,draw=none,fill=white,minimum width=7.4cm,minimum height=0.5cm,
+    inner sep=0pt] at (7.2,0.57) {};
+  \node[font=\small\bfseries,text=ChalmersPurple] at (4.8,0.57) {libp2p};
+  \node[quiet,text=ink] at (8.3,0.57) {Connects peers securely.};
+\end{visual}
+\note{This is a map of components; the following slides explain their interactions.
+The optimizer coordinates local training and averaging. The DHT stores discovery and
+progress metadata, matchmaking forms temporary groups, and all-reduce computes a
+weighted gradient average. The shared networking interface is Python's P2P wrapper
+and daemon bindings. Python components can span several processes.
+\par p2pd is a separate Go process containing libp2p. The single arrow represents local
+RPCs and streams over Unix-domain sockets: Python connects to the daemon, and incoming
+streams can reach a Python client listener. Lower-level bindings also support IPv4/TCP;
+Hivemind creates Unix sockets by default. libp2p handles authenticated, encrypted peer
+connections. Gradients bypass DHT storage.
+\par Sources: p2p/p2p\_daemon.py:42,165--166,227,255;\\
+p2p/p2p\_daemon\_bindings/control.py:57--64,157--165; setup.py:113--116;
+progress\_tracker.py:220,247; optimizer.py:528,613--630;
+key\_manager.py:62--80; averager.py:428--464,543--554.}
+\end{frame}
+
+\begin{frame}{Hivemind's training loop}
+\begin{visual}
+  \node[heading] at (2.3,5.15) {1\quad Train locally};
+  \node[heading] at (7.3,5.15) {2\quad Average in a group};
+  \node[heading] at (12.15,5.15) {3\quad Update locally};
+  \draw[ChalmersPurple!45,fill=ChalmersPurple!3,rounded corners=3mm]
+    (0.3,1.65) rectangle (4.3,4.55);
+  \node[heading,text=ChalmersPurple] at (2.3,4.1) {Peer 1};
+  \node[box,draw=muted!55,fill=white,inner sep=1.5mm,minimum width=12mm,
+    minimum height=8mm] (data) at (1.25,3.0) {data};
+  \node[box,fill=white,inner sep=1.5mm,minimum width=14mm,minimum height=10mm,
+    font=\small] (model) at (3.15,3.0) {full\\model};
+  \draw[flow] (data)--(model);
+  \node[quiet] at (2.3,2.12) {compute a local gradient};
+
+  \draw[ChalmersPurple!50,dashed,rounded corners=4mm]
+    (5.15,1.65) rectangle (9.55,4.55);
+  \node[peer,minimum size=11mm] (p1) at (6.15,3.8) {P1};
+  \node[peer,minimum size=11mm] (p2) at (8.55,3.8) {P2};
+  \node[peer,minimum size=11mm] (p3) at (7.35,2.4) {P3};
+  \draw[dataflow] (p1)--(p2);
+  \draw[dataflow] (p2)--(p3);
+  \draw[dataflow] (p3)--(p1);
+  \node[quiet,text=dat] at (7.35,1.23) {peers exchange gradients};
+  \draw[flow] (4.4,3.1)--(5.05,3.1);
+
+  \draw[ChalmersPurple!45,fill=ChalmersPurple!3,rounded corners=3mm]
+    (10.35,1.65) rectangle (14.0,4.55);
+  \node[heading,text=ChalmersPurple] at (12.175,4.1) {Peer 1};
+  \node[box,draw=dat!65,fill=white,inner sep=2mm,minimum width=22mm,
+    minimum height=10mm] (updated) at (12.175,3.0) {updated model};
+  \draw[->,dat,line width=1.2pt] (9.7,3.0)--(updated.west);
+  \node[quiet] at (12.175,2.12) {apply average gradient};
+
+  \draw[flow,rounded corners=2mm] (12.175,1.55)--(12.175,0.65)--(2.3,0.65)--(2.3,1.55);
+  \node[font=\footnotesize,text=ChalmersPurple,fill=white,inner sep=1mm] at (7.2,0.65) {repeat};
+  \node[quiet] at (7.2,0.05) {Every peer keeps its own data and full model\quad\textbar\quad no central aggregation server};
+\end{visual}
+\note{Follow Peer 1 from left to right; it is the same machine in all three stages.
+First, its own data and full model produce a local gradient, a vector describing a training
+update. Second, it joins ready peers in a temporary group and exchanges gradients with them.
+The circles P1,P2,P3 are Peers 1,2,3, all doing the same job. Third, Peer 1 applies the group
+average to its local model and continues training. Its groupmates do the same. This is the
+basic repeated operation Hivemind enables without a central aggregation server.
+\par Unlike a server-based FL diagram, the middle is a group of training peers, not an extra
+service. Later averaging operations assemble groups again, although membership need not change.
+Different groups need not have identical model states. Raw data stays in the local training
+pipeline; this does not guarantee gradient privacy. Bootstrap contacts help enter the network,
+not coordinate learning. Sources: HIVEMIND\_EXPLAINED sections 1,4,6--8; HANDOFF 4.10.}
+\end{frame}
+
+% \begin{frame}{Hivemind's training loop}
+% \begin{visual}
+%   \node[heading] at (2.2,5.15) {Train at different speeds};
+%   \node[heading] at (6.65,5.15) {One shared target};
+%   \node[heading] at (11.55,5.15) {Average + update};
+
+%   % Illustrative local sample contributions, not individual batch quotas.
+%   \foreach \name/\yy/\width/\samples in {
+%     P1/4.45/2.4/600,P2/3.86/1.6/400,P3/3.27/0.8/200} {
+%     \node[font=\footnotesize\bfseries,text=ChalmersPurple,anchor=east]
+%       at (0.83,\yy) {\name};
+%     \fill[ChalmersCyan!65,rounded corners=0.7mm]
+%       (1.0,\yy-0.13) rectangle (1.0+\width,\yy+0.13);
+%     \node[font=\footnotesize,text=muted,anchor=west]
+%       at (3.58,\yy) {\samples};
+%   }
+%   \draw[flow] (4.45,3.86)--(5.15,3.86);
+%   \node[box,draw=none,fill=ChalmersPurple!6,minimum width=2.65cm,
+%     minimum height=1.75cm,inner sep=0pt] at (6.65,3.86) {};
+%   \node[font=\LARGE\bfseries,text=ChalmersPurple] at (6.65,4.09) {1,200};
+%   \node[quiet] at (6.65,3.53) {samples / epoch};
+%   \draw[flow] (8.05,3.86)--(8.8,3.86);
+
+%   \draw[ChalmersPurple!40,dashed,rounded corners=3mm]
+%     (8.97,2.99) rectangle (14.0,4.78);
+%   \node[peer,minimum size=8mm] (t1) at (9.9,4.24) {P1};
+%   \node[peer,minimum size=8mm] (t2) at (13.07,4.24) {P2};
+%   \node[peer,minimum size=8mm] (t3) at (11.48,3.52) {P3};
+%   \draw[dataflow,line width=0.8pt] (t1)--(t2);
+%   \draw[dataflow,line width=0.8pt] (t2)--(t3);
+%   \draw[dataflow,line width=0.8pt] (t3)--(t1);
+%   \node[quiet] at (2.2,2.78) {local samples accumulated};
+%   \node[quiet] at (11.55,2.78) {temporary averaging group};
+%   \draw[flow] (12.8,2.39)--(1.6,2.39);
+%   \node[font=\footnotesize,text=ChalmersPurple,fill=white,inner sep=1mm]
+%     at (7.2,2.39) {Next epoch: train + form groups again};
+
+%   % Optional redistribution is distinct from the normal epoch cycle above.
+%   \node[font=\small\bfseries,text=ChalmersPurple] at (1.95,1.5) {Optional sharding};
+%   \node[quiet] at (1.95,1.04) {off by default};
+%   \draw[ChalmersPurple!40,dashed,rounded corners=2mm]
+%     (3.65,0.65) rectangle (6.85,1.88);
+%   \node[quiet,font=\scriptsize,text=muted,fill=white,inner sep=0.5mm]
+%     at (5.25,1.88) {one group};
+%   \foreach \xx/\member in {4.17/1,4.89/2,5.61/3,6.33/4}
+%     \node[peer,minimum size=5.5mm,font=\scriptsize\bfseries] at (\xx,1.24) {\member};
+%   \draw[flow] (7.0,1.24)--(7.85,1.24);
+%   \foreach \xx/\bits/\member in {8.65/00/1,10.15/01/2,11.65/10/3,13.15/11/4} {
+%     \node[box,draw=ChalmersPurple!25,fill=ChalmersPurple!3,minimum width=1.12cm,
+%       minimum height=1.28cm,inner sep=0pt] at (\xx,1.24) {};
+%     \node[font=\footnotesize\ttfamily,text=muted] at (\xx,1.61) {\bits};
+%     \node[peer,minimum size=5.5mm,font=\scriptsize\bfseries] at (\xx,1.02) {\member};
+%   }
+%   \node[quiet] at (10.9,0.25) {different discovery buckets next round};
+%   \node[quiet] at (3.7,0.25) {Default: groupmates may repeat};
+% \end{visual}
+% \note{An epoch is a shared training-sample target, not a data pass or a per-peer quota.
+% Faster peers contribute more minibatches: 600+400+200=1200 is an illustration.
+% Peers retain local data and full models. The progress tracker exchanges sample counts
+% and speeds through the DHT, estimates epoch end, and schedules matchmaking near it;
+% this is not an exact barrier. Temporary groups average gradients, peers update, then
+% later averaging operations run matchmaking again. Their membership may repeat.
+% \par The separate four-peer example shows optional sharding. Group assembly assigns
+% members distinct next discovery buckets using the shared group ID and member positions.
+% The example has enough suffix bits for four distinct assignments. These boxes are
+% rendezvous buckets, not assembled groups. Ordinary co-members separate next round;
+% an attacker can compute the same assignments and follow. Empty group bits make this
+% a no-op by default. Next keys change on assembly, not at a global epoch barrier.
+% \par Sources: optimizer.py:54--67,559--567; progress\_tracker.py:128--149,308--322;
+% averager.py:120,427--459,501--512; key\_manager.py:94--104;
+% matchmaking.py:387,404; HANDOFF 4.4,4.8.}
+% \end{frame}
+
+\begin{frame}{How a group forms}
+\begin{visual}
+  \node[heading,text=ChalmersPurple] at (1.55,5.2) {Peer 1};
+  \node[box,draw=ctl!50,fill=ctl!6,inner sep=2mm,font=\small\bfseries]
+    at (5.45,5.2) {DHT replicas};
+  \node[heading,text=ChalmersPurple] at (9.1,5.2) {Peer 2};
+  \node[heading,text=ChalmersPurple] at (12.85,5.2) {Peer 3};
+  \foreach \xx in {1.55,5.45,9.1,12.85}
+    \draw[muted!45,dashed] (\xx,4.8)--(\xx,0.65);
+  \draw[->,muted!65] (0.3,4.45)--(0.3,1.1);
+  \node[quiet,rotate=90] at (0.08,2.75) {time};
+  \draw[control] (9.1,4.25)--node[above,font=\footnotesize]{availability + deadline}(5.45,4.25);
+  \draw[control] (1.55,3.6)--node[above,font=\footnotesize]{lookup job / bucket}(5.45,3.6);
+  \draw[control] (5.45,2.95)--node[above,font=\footnotesize]{candidates + deadlines}(1.55,2.95);
+  \node[quiet,text=ctl,align=left,anchor=west] at (9.3,3.3) {earliest visible deadline\\becomes candidate leader};
+  \filldraw[fill=ctl!12,draw=ctl!60] (8.96,0.7) rectangle (9.24,2.6);
+  \draw[control] (1.55,2.25)--node[above,font=\footnotesize]{join request}(8.96,2.25);
+  \draw[control] (12.85,1.75)--node[above,font=\footnotesize]{join request}(9.24,1.75);
+  \draw[control] (8.96,1.2)--node[above,font=\footnotesize]{member list + group ID}(1.55,1.2);
+  \draw[control] (9.24,0.85)--node[above,font=\footnotesize]{member list}(12.85,0.85);
+  \node[box,draw=none,fill=ChalmersCream,minimum width=13.6cm,inner sep=2mm] at (7.2,0.15)
+    {The temporary leader checks requests and admits members.};
+\end{visual}
+\note{Read this as a sequence diagram, downward in time. Only selected messages are shown;
+all searching peers can publish advertisements. A job and optional bucket identify a DHT
+rendezvous key. Records advertise a PeerID, availability and an expiry that also serves as
+the intended matchmaking deadline. Peers look up candidates and prefer the earliest visible
+deadline, with PeerID as tie-breaker. There is no consensus election or guaranteed common view.
+\par Peer 2 is the candidate leader in this example. Others send it direct join RPCs. It checks
+compatibility and protocol fields, admits followers, then distributes the group ID and member
+list when full or when its deadline permits. The leader assembles the group; it is not the
+sole gradient reducer. Groups form again for later averaging. Moving to different DHT buckets
+is optional: the default empty group bits leave the rendezvous key unchanged. Sources:
+key\_manager.py:43--104; matchmaking.py:262--405,469--498; HANDOFF sections 1,4.3,4.8.}
+\end{frame}
+
+\begin{frame}{All-reduce: averaging within the group}
+\begin{visual}
+  \node[heading] at (2.05,5.15) {1\quad Split};
+  \node[heading] at (7.2,5.15) {2\quad Average each slice};
+  \node[heading] at (12.35,5.15) {3\quad Reassemble};
+  \foreach \peer/\yy/\a/\b/\c in {1/4.05/2/4/6,2/2.95/4/6/8,3/1.85/6/8/10} {
+    \node[quiet,anchor=east] at (0.95,\yy) {Peer \peer};
+    \foreach \xx/\val/\col in {1.45/\a/ChalmersCyan,2.25/\b/ChalmersGreen,3.05/\c/ChalmersPurple} {
+      \node[draw=\col!65,fill=\col!12,minimum width=7.5mm,minimum height=7mm,
+        inner sep=0pt,font=\normalsize\bfseries] at (\xx,\yy) {\val};
+    }
+    \node[quiet,anchor=east] at (11.3,\yy) {Peer \peer};
+    \foreach \xx/\val/\col in {11.8/4/ChalmersCyan,12.6/6/ChalmersGreen,13.4/8/ChalmersPurple} {
+      \node[draw=\col!65,fill=\col!12,minimum width=7.5mm,minimum height=7mm,
+        inner sep=0pt,font=\normalsize\bfseries] at (\xx,\yy) {\val};
+    }
+  }
+  \foreach \peer/\yy/\vals/\mean/\col in {
+    1/4.05/{2,4,6}/4/ChalmersCyan,
+    2/2.95/{4,6,8}/6/ChalmersGreen,
+    3/1.85/{6,8,10}/8/ChalmersPurple} {
+    \node[box,draw=\col!65,fill=\col!8,minimum width=4.0cm,minimum height=8mm,
+      inner sep=2mm] at (7.2,\yy)
+      {\textbf{Peer \peer}\quad $\operatorname{mean}(\vals)=\mean$};
+  }
+  \draw[dataflow,->] (3.65,2.95)--(4.85,2.95);
+  \draw[dataflow,->] (9.45,2.95)--(10.1,2.95);
+  \node[quiet] at (2.05,0.95) {local gradients};
+  \node[quiet] at (7.2,0.95) {a different reducer for each slice};
+  \node[quiet] at (12.45,0.95) {same group average};
+  \node[quiet] at (7.2,0.15)
+    {All-reduce: every group member obtains the aggregate\quad\textbar\quad equal-weight illustration};
+\end{visual}
+\note{All-reduce means all group members obtain the aggregate. The toy vectors make the
+operation concrete: each peer contributes three numbers, and the group average is [4,6,8].
+Peer 1 reduces the blue slice, Peer 2 the green slice, Peer 3 the purple slice. Each sender
+contacts the assigned reducer directly; this is not ring forwarding. The same group carries
+out all three stages. The DHT stores metadata; peers exchange gradient slices directly using
+libp2p, which may use transport relays underneath.
+\par Real gradients are long vectors, slices can have unequal sizes, and Hivemind uses a
+weighted mean. Reducers return averaged-minus-local deltas; peers reconstruct the result and
+the optimizer applies the update. Equal slices and equal weights here are explanatory choices.
+The temporary group leader is not a central aggregation server. Sources: allreduce.py:93--111,
+164--216,335--356; partition.py:242--260; HANDOFF 4.10--4.11.}
+\end{frame}
+
+\begin{frame}{Two IDs}
+\begin{visual}
+  \node[heading] at (3.5,5.12) {Place records};
+  \node[heading] at (10.9,5.12) {Contact peers};
+  \node[box,draw=ctl!40,fill=ctl!5,minimum width=5.8cm,minimum height=2.75cm]
+    at (3.5,3.3) {};
+  \node[box,minimum width=5.8cm,minimum height=2.75cm] at (10.9,3.3) {};
+  \node[heading,text=ctl] at (3.5,4.28) {Hivemind DHT: node\_id};
+  \node[heading,text=ChalmersPurple] at (10.9,4.28) {libp2p: PeerID};
+
+  \node[labeltext] at (3.5,3.5) {160-bit position in the DHT};
+  \node[quiet] at (3.5,2.85) {By default, the 5 nearest nodes\\(XOR distance) store each record.};
+  \node[labeltext,text=ctl,font=\small\bfseries] at (3.5,2.25) {chosen by the peer};
+  \node[labeltext] at (10.9,3.5) {identity derived from a public key};
+  \node[quiet] at (10.9,2.85) {libp2p resolves its address\\and authenticates the connection};
+  \node[labeltext,text=ChalmersPurple,font=\small\bfseries] at (10.9,2.25) {key ownership checked};
+
+  % Both identifiers belong to the same peer; there is no ID-conversion arrow.
+  \draw[muted!35,rounded corners=2mm,fill=white] (4.0,0.43) rectangle (10.05,1.78);
+  \node[font=\footnotesize\bfseries,text=muted] at (7.025,1.5) {One peer, two IDs};
+  \node[box,draw=muted!40,fill=white,inner sep=2mm,minimum width=2.2cm]
+    (key) at (1.6,0.88) {record key};
+  \node[box,draw=ctl!55,fill=ctl!5,inner sep=2mm,minimum width=2.9cm]
+    (pos) at (5.62,0.88) {nearest \texttt{node\_id}};
+  \node[box,inner sep=2mm,minimum width=2.1cm]
+    (endpoint) at (8.75,0.88) {PeerID};
+  \node[box,inner sep=2mm,minimum width=2.5cm]
+    (rpc) at (12.5,0.88) {connect + RPC};
+  \draw[control] (key)--(pos);
+  \draw[flow] (endpoint)--(rpc);
+  \node[quiet] at (7.2,0.02)
+    {The routing table stores both IDs; libp2p connects using PeerID.};
+\end{visual}
+\note{The DHT uses node\_id as a 160-bit XOR coordinate for routing and replica placement.
+It normally stores each record on the five nearest nodes, trying other candidates if stores
+fail. Additional cached copies can exist.
+\par PeerID identifies a libp2p endpoint through its public key. libp2p resolves network
+addresses and authenticates key ownership; PeerID itself is not an IP address.
+Hivemind builds its placement overlay on this networking layer, so the IDs have different jobs.
+The routing table stores both for each peer: select a node\_id, then use its associated
+PeerID to connect. One ID is not computed from the other. The diagram shows one holder;
+real lookups and replication involve several nodes.
+\par Separate roles do not require unrelated IDs. Here node\_id is random by default but
+can be chosen independently, without a key-derived binding to PeerID. Transport authentication
+therefore does not validate DHT placement or provide Sybil resistance.
+Sources: dht/routing.py:34--64,111; dht/node.py:105,171,411--462;
+dht/protocol.py:149--158; p2p\_daemon\_bindings/control.py:370.}
+\end{frame}

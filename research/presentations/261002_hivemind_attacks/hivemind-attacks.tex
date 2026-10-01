@@ -1,0 +1,269 @@
+% Hivemind Attacks — 2 October 2026. Eight main slides plus one Q&A backup.
+% Build from this directory with pdfLaTeX; evidence and caveats are in \note{}.
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Chalmers}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{pgfpages}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric,calc}
+
+\title{Hivemind Attacks}
+\subtitle{Two failures in aggregation coordination}
+\author{Sarat Yellapragada}
+\institute{Chalmers University of Technology}
+\date{2 October 2026}
+\shorttitle{\ChalmersSectionName}
+\chalmersheadline{logo}
+\chalmerssectiondividers{none}
+\chalmersfooterpages{both}
+\AtBeginSection[]{}
+\renewcommand{\Chalmersinsertpagenumber}{\insertframenumber\,/\,\insertmainframenumber}
+\setbeamerfont{frametitle}{size=\fontsize{19}{22}\selectfont,series=\bfseries}
+\setlength{\Chalmersframetitlebottom}{0mm}
+\ifdefined\presenternotes
+  \setbeameroption{show notes on second screen=right}
+\else
+  \setbeameroption{hide notes}
+\fi
+
+\colorlet{attack}{ChalmersRed}
+\colorlet{safe}{ChalmersGreen}
+\colorlet{dark}{ChalmersBlack}
+\colorlet{quiet}{ChalmersGrey}
+\tikzset{
+  >={Stealth[length=2.5mm]},
+  every node/.style={font=\small,text=dark},
+  panel/.style={rounded corners=2mm,draw=ChalmersPurple!35,fill=ChalmersPurple!6,
+    align=center,inner sep=3mm},
+  attackpanel/.style={panel,draw=attack!75,fill=attack!8},
+  peer/.style={circle,draw=ChalmersPurple,fill=ChalmersPurple!9,
+    minimum size=10mm,font=\small\bfseries},
+  badpeer/.style={peer,draw=attack,fill=attack!12,text=attack},
+  link/.style={->,thick,draw=ChalmersPurple},
+  badlink/.style={->,thick,draw=attack},
+}
+\newenvironment{canvas}{\centering\begin{tikzpicture}[x=1cm,y=1cm]
+  \path[use as bounding box] (0,0) rectangle (14.4,5.6);
+}{\end{tikzpicture}}
+
+\begin{document}
+
+\begin{chalmerscover}
+\begin{canvas}
+  \node[anchor=west,text=white,font=\fontsize{31}{35}\selectfont\bfseries]
+    at (0.25,4.25) {Hivemind Attacks};
+  \node[anchor=west,text=white,font=\large] at (0.25,3.35)
+    {Who joins the group? Who decides the averaging work?};
+  \node[anchor=west,text=white,align=left,font=\small] at (0.25,0.95)
+    {Sarat Yellapragada\\[1mm]Secura Lab, Chalmers University of Technology\\[1mm]2 October 2026};
+\end{canvas}
+\note{This is a roughly twelve-minute talk about two separately demonstrated control-plane attacks.
+The first changes who is seen during group discovery. The second changes the ordered group
+roster after an attacker is already leader. Neither experiment was run on a public WAN, and
+their composition has not been measured.}
+\end{chalmerscover}
+
+\section{The coordination path}
+\begin{frame}{Control messages decide the group}
+\begin{canvas}
+  \node[panel,minimum width=2.8cm,minimum height=1.65cm] (ads) at (1.85,3.30)
+    {DHT\\advertisements};
+  \node[panel,minimum width=2.8cm,minimum height=1.65cm] (view) at (5.45,3.30)
+    {Peer's local view\\and leader choice};
+  \node[panel,minimum width=2.8cm,minimum height=1.65cm] (roster) at (9.05,3.30)
+    {Leader sends an\\ordered roster};
+  \node[panel,minimum width=2.8cm,minimum height=1.65cm] (reduce) at (12.65,3.30)
+    {All-reduce\\averages tensors};
+  \draw[link] (ads)--(view);
+  \draw[link] (view)--(roster);
+  \draw[link] (roster)--(reduce);
+  \node[attackpanel,minimum width=4.0cm] at (4.1,1.30)
+    {Attack 1: control the lookup replies};
+  \node[attackpanel,minimum width=4.0cm] at (10.3,1.30)
+    {Attack 2: send conflicting rosters};
+  \draw[badlink] (4.1,1.7)--(4.1,2.35);
+  \draw[badlink] (10.3,1.7)--(10.3,2.35);
+\end{canvas}
+\note{Hivemind peers advertise availability under a group key in the DHT. A peer reads the
+advertisements, makes its local leader choice, then negotiates membership. The leader sends
+BEGIN\_ALLREDUCE on each join stream. The ordered roster determines which peer reduces which
+shard. The map in research/control\_data\_map.pdf places the two selected attacks at checkpoints
+7/13 and 14/16. This is a control-flow overview, not a claim that the attacks were combined.}
+\end{frame}
+
+\section{Attack 1: targeted matchmaking eclipse}
+\begin{frame}{Attack 1: give one victim an empty view}
+\begin{canvas}
+  \node[panel,minimum width=3.15cm,minimum height=1.1cm] at (2.0,4.55)
+    {Honest peers advertise\\under a known group key};
+  \node[attackpanel,minimum width=4.15cm,minimum height=1.35cm] (dht) at (7.10,4.40)
+    {Crafted DHT identities answer\\the victim's lookup};
+  \node[peer] (v) at (2.10,2.15) {V};
+  \node[panel,minimum width=3.25cm,minimum height=1.0cm] (empty) at (7.10,2.15)
+    {``No candidates found''};
+  \node[badpeer] (a) at (12.10,2.15) {A};
+  \draw[link] (2.0,4.0) -- (dht.west);
+  \draw[badlink] (dht.south) -- (empty.north);
+  \draw[badlink] (empty.west) -- node[above,font=\footnotesize] {filtered reply} (v.east);
+  \draw[badlink] (a.west) -- node[above,font=\footnotesize] {malicious peers join} (8.95,2.15);
+  \node[font=\small\bfseries,text=attack,align=center] at (7.20,0.70)
+    {Victim waits as leader; its group contains no other honest peer.};
+\end{canvas}
+\note{The DHT-only Sybils are not training participants. Their self-chosen node IDs are
+placed near the known matchmaking key; the attack filters honest advertisements from the
+victim's replies. An empty local list makes the victim wait as leader. Separate malicious
+training peers then join. No honest peer other than the victim enters a captured group.
+The attacker must control the lookup responders that have a cached copy, not just the five
+record replicas. Source: research/HANDOFF.md, section 4.6; research/CONTROL\_DATA\_AUDIT.md C7.S.}
+\end{frame}
+
+\begin{frame}{Eclipse: a lookup-width threshold}
+\begin{canvas}
+  \node[anchor=west,font=\small\bfseries] at (0.45,5.05) {Victim's lookup width};
+  \node[anchor=west,font=\small\bfseries] at (4.25,5.05) {Crafted DHT IDs};
+  \node[anchor=west,font=\small\bfseries] at (8.1,5.05) {Captured victim rounds};
+  \draw[ChalmersPurple!35] (0.45,4.73)--(13.95,4.73);
+  \foreach \yy/\width/\ids/\result/\bar in {
+    4.13/20/18/{4/30}/0.52,
+    3.22/20/20/{20/20}/4.00,
+    2.31/40/25/{9\%}/0.36,
+    1.40/40/45/{100\%}/4.00} {
+    \node[anchor=west,font=\small] at (0.45,\yy) {$k=\width$};
+    \node[anchor=west,font=\small] at (4.25,\yy) {\ids};
+    \fill[attack!75] (8.1,\yy-0.17) rectangle ++(\bar,0.35);
+    \node[anchor=west,font=\small\bfseries] at (12.40,\yy) {\result};
+  }
+  \node[anchor=west,font=\footnotesize,text=quiet] at (0.45,0.47)
+    {Local swarm; eight training peers, group size four, cached records.};
+\end{canvas}
+\note{At default bucket\_size = 20, 18 crafted identities captured 4 of 30 observed victim
+rounds, while 20 captured 20 of 20. At bucket\_size = 40, 25 identities captured 9 percent
+and 45 captured 100 percent in the recorded runs. The run lengths differ, so these are
+observed fractions, not estimated public-network probabilities. The campaign used eight
+training peers, three of them malicious, group size four, plus DHT-only identities. Five
+crafted IDs hold the replicas, but cached copies from other lookup responders defeat total
+filtering. Source: research/HANDOFF.md section 4.6 and raw step6\_isolation CSVs;
+research/CONTROL\_DATA\_AUDIT.md C7.S.}
+\end{frame}
+
+\section{Attack 2: roster equivocation}
+\begin{frame}{One group, conflicting reducer indices}
+\begin{canvas}
+  \node[badpeer] (leader) at (2.20,2.85) {L};
+  \node[anchor=west,font=\small\bfseries,text=attack] at (0.55,1.75)
+    {Malicious leader};
+  \node[panel,minimum width=3.35cm] at (2.25,4.68)
+    {One group ID\\Same four PeerIDs};
+  \node[panel,minimum width=5.6cm] (f1) at (10.50,4.35)
+    {To F1: [F1, L, F2, F3]};
+  \node[panel,minimum width=5.6cm] (f2) at (10.50,2.85)
+    {To F2: [F2, F1, L, F3]};
+  \node[panel,minimum width=5.6cm] (f3) at (10.50,1.35)
+    {To F3: [F3, F1, F2, L]};
+  \draw[badlink] (leader) -- (f1.west);
+  \draw[badlink] (leader) -- (f2.west);
+  \draw[badlink] (leader) -- (f3.west);
+  \node[anchor=west,font=\footnotesize,text=quiet] at (0.55,0.42)
+    {Illustrative permutations; roster position selects the shard reducer.};
+\end{canvas}
+\note{This assumes the attacker is already the legitimate leader; the experiment forced
+that precondition rather than measuring election frequency. The leader sends a separate
+BEGIN\_ALLREDUCE to each follower. It can preserve exactly the same authenticated PeerIDs,
+group ID, and gathered list length while swapping each recipient into the leader's reducer
+index. Followers verify their own membership but do not cross-check a common ordered roster.
+The shown permutations illustrate the mechanism; exact per-recipient payloads are in the
+step17 events CSV. Source: research/CONTROL\_DATA\_AUDIT.md C14.T, lines 948 onward.}
+\end{frame}
+
+\begin{frame}{Averaging completes; outputs are wrong}
+\begin{canvas}
+  \node[panel,minimum width=5.70cm,minimum height=2.65cm] at (3.62,3.48) {};
+  \node[font=\small\bfseries,text=ChalmersPurple] at (3.62,4.35) {Common roster};
+  \node[font=\fontsize{34}{38}\selectfont\bfseries,text=safe] at (3.62,3.42) {0/5};
+  \node[font=\small] at (3.62,2.65) {trials with corrupted output};
+  \node[attackpanel,minimum width=5.70cm,minimum height=2.65cm] at (10.78,3.48) {};
+  \node[font=\small\bfseries,text=attack] at (10.78,4.35) {Different rosters};
+  \node[font=\fontsize{34}{38}\selectfont\bfseries,text=attack] at (10.78,3.42) {5/5};
+  \node[font=\small] at (10.78,2.65) {trials with corrupted output};
+  \node[font=\small\bfseries] at (7.20,1.25)
+    {All 20 attacked peer outputs wrong. All 40 steps completed.};
+  \node[font=\footnotesize,text=quiet] at (7.20,0.72)
+    {Four real averagers, five paired local trials; no bans, fallbacks or timeouts.};
+\end{canvas}
+\note{Four real DecentralizedAverager peers used the local DHT, authenticated join streams,
+and stock all-reduce. In each trial every peer began with the same tensor [0,1,2,4]; a
+correct average should leave it unchanged. There were five fresh control/attack pairs.
+Every control output was correct; all 20 attacked peer outputs were wrong. All 40 steps
+across both arms completed, with zero reducer bans, fallback elements, RPC/all-reduce
+errors, timeouts, or hard cancellations. This measures tensor corruption, not downstream
+model convergence. Source: research/HANDOFF.md current thread; research/CONTROL\_DATA\_AUDIT.md
+C14.T; research/results/step17\_roster\_live\_rounds\_confirm\_20260928\_confirm\_t5\_s1717.csv.}
+\end{frame}
+
+\section{Interpretation}
+\begin{frame}{Two different trust boundaries}
+\begin{canvas}
+  \node[attackpanel,minimum width=6.2cm,minimum height=2.40cm] at (3.52,3.78) {};
+  \node[font=\small\bfseries,text=attack] at (3.52,4.62) {Discovery control};
+  \node[align=center,font=\small] at (3.52,3.72)
+    {Crafted DHT IDs filter the victim's view\\[1mm]
+     \(\rightarrow\) no other honest peer in its group};
+  \node[panel,minimum width=6.2cm,minimum height=2.40cm] at (10.88,3.78) {};
+  \node[font=\small\bfseries,text=ChalmersPurple] at (10.88,4.62) {Roster control};
+  \node[align=center,font=\small] at (10.88,3.72)
+    {An existing leader sends conflicting orders\\[1mm]
+     \(\rightarrow\) silent all-reduce corruption};
+  \node[panel,minimum width=12.9cm,minimum height=1.05cm] at (7.20,1.45)
+    {Both were demonstrated locally. They have not been combined or tested on a public swarm.};
+\end{canvas}
+\note{The first attack is a selection result, not by itself a measured model-poisoning result.
+The second is a silent tensor-corruption result conditional on leadership, not evidence
+that the attacker can always become leader. Both use Hivemind's real local protocol path.
+Neither experiment estimates success on a public WAN. A useful defence question for the
+first is how to bind DHT placement and constrain a victim's lookup view. For the second,
+members need agreement on one ordered roster, not merely a leader-signed message: the
+leader itself is the equivocator. These defence directions have not been evaluated here.}
+\end{frame}
+
+\begin{chalmerscover}
+\begin{canvas}
+  \node[text=white,font=\fontsize{31}{35}\selectfont\bfseries] at (7.2,3.45)
+    {Questions?};
+  \node[text=white,font=\large,align=center] at (7.2,2.40)
+    {Which coordination decision should be hardened first?};
+\end{canvas}
+\note{The two attacks answer different questions. If asked about becoming leader by
+undercutting a deadline, use the backup slide and state the WAN limitations. If asked
+about a combined attack, say it has not been measured. The next concrete experiment
+could test roster agreement and its overhead, while a public-WAN study would need an
+operator, a known group key, and permission to measure that run.}
+\end{chalmerscover}
+
+\appendix
+\renewcommand{\Chalmersinsertpagenumber}{Backup}
+\begin{frame}{Backup: deadline undercutting needs time}
+\begin{canvas}
+  \node[font=\small\bfseries] at (3.82,4.80) {5--7 s deadline window};
+  \node[font=\small\bfseries] at (10.58,4.80) {11--15 s deadline window};
+  \node[attackpanel,minimum width=5.45cm,minimum height=1.85cm] at (3.82,3.40)
+    {\Large\bfseries 0/15 captured\\[2mm]\small with injected regional delay};
+  \node[panel,minimum width=5.45cm,minimum height=1.85cm] at (10.58,3.40)
+    {\Large\bfseries 15/15 captured\\[2mm]\small with injected regional delay};
+  \node[panel,minimum width=12.55cm,minimum height=1.17cm] at (7.20,1.25)
+    {28-node local swarm; five RIPE-derived RTT regions; known group key. Not a public-WAN result.};
+\end{canvas}
+\note{This is deliberately a backup, not one of the two headline attacks. Five attacker
+origins times three seeds were tested per deadline window, with a 28-DHT-node localhost
+swarm and injected pairwise delays drawn from RIPE Atlas ICMP anchor pings. Long-window
+capture was 15/15, short-window capture 0/15; the default matchmaking time is five
+seconds. The emulator omits packet loss, churn, DHT pings, connection setup, and delay
+during all-reduce; it cannot establish success on a public swarm. Sources: research/meetings/
+2026-10-02\_meeting\_agenda.md and research/results/step19\_wan\_delay\_rounds\_smoke\_r5\_*.csv.
+The read/write timings already contain the DHT walk.}
+\end{frame}
+
+\end{document}

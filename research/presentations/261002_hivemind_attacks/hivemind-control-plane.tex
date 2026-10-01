@@ -1,0 +1,467 @@
+% Architecture -> discovery attack -> measured findings -> limitations.
+% About 12 minutes plus questions. Explanations and provenance live in \note{}.
+% Build from this directory; see README.md. Research notes live in the sibling support folder.
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Chalmers}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{pgfpages}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric,fit,backgrounds,calc}
+\title{Who decides who you train with?}
+\subtitle{Hivemind control-plane security}
+\author{Sarat Yellapragada}
+\institute{Chalmers University of Technology}
+\date{2026-09-18}
+\shorttitle{\ChalmersSectionName}
+\chalmersheadline{logo}
+\chalmerssectiondividers{none}
+\chalmersfooterpages{both}
+% This template version compares switch macros without expanding them.
+% Apply these two choices explicitly, without changing the shared theme.
+\AtBeginSection[]{}
+\renewcommand{\Chalmersinsertpagenumber}{\insertframenumber\,/\,\insertmainframenumber}
+\setbeamerfont{frametitle}{size=\fontsize{19}{22}\selectfont,series=\bfseries}
+\setlength{\Chalmersframetitlebottom}{0mm}
+\ifdefined\presenternotes
+  \setbeameroption{show notes on second screen=right}
+\else
+  \setbeameroption{hide notes}
+\fi
+\colorlet{ctl}{ChalmersRed}
+\colorlet{dat}{ChalmersGreen}
+\colorlet{ink}{ChalmersBlack}
+\colorlet{muted}{ChalmersGrey}
+\tikzset{
+  >={Stealth[length=2mm]},
+  every node/.style={font=\small,text=ink},
+  labeltext/.style={font=\small,align=center},
+  quiet/.style={font=\footnotesize,text=muted,align=center},
+  heading/.style={font=\normalsize\bfseries,align=center},
+  box/.style={rounded corners=2mm,draw=ChalmersPurple!25,fill=ChalmersPurple!5,
+    align=center,inner sep=3mm},
+  peer/.style={circle,draw=ChalmersPurple,fill=ChalmersPurple!10,
+    minimum size=9mm,inner sep=0pt,font=\small\bfseries,text=ChalmersPurple},
+  victim/.style={peer,fill=white,line width=1.1pt,double,double distance=1pt},
+  attacker/.style={diamond,aspect=1,draw=ctl,fill=ctl!12,
+    minimum size=10mm,inner sep=0pt,font=\small\bfseries,text=ctl},
+  flow/.style={->,line width=1.1pt,draw=ChalmersPurple},
+  control/.style={->,line width=1.1pt,draw=ctl},
+  dataflow/.style={<->,line width=1.2pt,draw=dat},
+}
+% A fixed canvas keeps diagrams at a consistent scale, without shrinking text.
+\newenvironment{visual}{\centering\begin{tikzpicture}[x=1cm,y=1cm]
+  \path[use as bounding box] (0,0) rectangle (14.4,5.6);
+}{\end{tikzpicture}}
+% Links stay in the lower margin so evidence tables do not crowd the visuals.
+\newcommand{\resultlink}[2]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south east,inner sep=0pt] at ([xshift=-8mm,yshift=7mm]current page.south east)
+      {\hyperlink{#1}{\beamergotobutton{#2}}};
+  \end{tikzpicture}%
+}
+\begin{document}
+
+% 1 --------------------------------------------------------------------------
+\begin{chalmerscover}
+\begin{visual}
+  \node[anchor=west,text=white,font=\fontsize{27}{31}\selectfont\bfseries,
+    align=left] at (0.2,4.3) {Hivemind};
+  \node[anchor=west,text=white,font=\large] at (0.2,2.7)
+    {};
+  \node[anchor=west,text=white,align=left,font=\small] at (0.2,0.95)
+    {Sarat Yellapragada\\[2mm]Secura Lab\\[2mm]Chalmers University of Technology\quad\textbar\quad18 September 2026};
+  % \draw[white!45,line width=1pt] (10.3,4.7)--(12.8,3.8)--(11.1,2.5)--cycle;
+  % \node[circle,draw=white,fill=ChalmersPurple,minimum size=13mm,
+  %   text=white,font=\large\bfseries] at (10.3,4.7) {V};
+  % \node[diamond,draw=white,fill=white!18!ChalmersPurple,minimum size=15mm,
+  %   text=white,font=\large\bfseries] at (12.8,3.8) {A};
+  % \node[circle,draw=white,fill=ChalmersPurple,minimum size=13mm] at (11.1,2.5) {};
+  % \draw[white,dashed,rounded corners=5mm] (9.3,1.65) rectangle (13.8,5.55);
+\end{visual}
+\note{Hivemind trains across independent machines. My project asks how an attacker can
+influence which machines average together, and what that does to learning. Walk through
+architecture first, then the experimental progress and results. V marks the victim;
+A marks an attacker.}
+\end{chalmerscover}
+
+\section{Architecture}
+\input{architecture.tex}
+
+% 7 --------------------------------------------------------------------------
+\begin{chalmerscover}
+\begin{visual}
+  \node[text=white,font=\fontsize{32}{36}\selectfont\bfseries] at (7.2,2.8) {Questions?};
+\end{visual}
+\note{Pause for questions on the architecture before continuing with project progress
+and the experimental findings.}
+\end{chalmerscover}
+
+\section{Attack surfaces}
+% 8 --------------------------------------------------------------------------
+\begin{frame}[label=result-custody]{1. Become the record holders}
+\begin{visual}
+  \node[box,draw=none,minimum width=5.8cm,minimum height=1.1cm,
+    inner sep=0pt] at (3.5,4.95) {};
+  \node[font=\small\bfseries,text=ChalmersPurple] at (3.5,5.13) {Known group discovery key};
+  \node[font=\footnotesize\ttfamily,text=ChalmersPurple] at (3.5,4.77)
+    {<prefix>.0b<group\_bits>};
+  \node[font=\Large,text=muted] at (7.2,4.95) {$+$};
+  \node[box,draw=none,minimum width=5.8cm,minimum height=1.1cm,inner sep=0pt,
+    font=\small\bfseries,text=ChalmersPurple] at (10.9,4.95) {Self-chosen \texttt{node\_id}};
+
+  % Leave a clear gap below the premise row and between the two lower blocks.
+  \node[box,fill=white,minimum width=3.9cm,minimum height=1.3cm]
+    (advertisements) at (2.65,2.4) {Group advertisements\\[2mm]$K$ = \texttt{my\_job.0b}};
+  \node[quiet] at (2.65,1.1) {Empty group bits by default};
+  \draw[control] (advertisements.east)--node[above,font=\footnotesize]{stored on}(7.55,2.4);
+  \draw[ctl!50,dashed,rounded corners=4mm,fill=ctl!3] (7.75,1.55) rectangle (14.0,3.25);
+  \node[heading,text=ctl] at (10.875,3.65) {5 nodes nearest to $K$};
+  \foreach \xx in {8.5,9.7,10.9,12.1,13.3}
+    \node[attacker,minimum size=9mm] at (\xx,2.4) {A};
+  \node[quiet] at (10.875,1.1) {Sybils with crafted \texttt{node\_id} values};
+  \node[labeltext,text=ChalmersPurple] at (7.2,0.25)
+    {All five replicas sit on attacker-run nodes.};
+\end{visual}
+\resultlink{table-custody_live}{Exact tables}
+\note{Ask: what if all five record holders are ours? The group discovery key has format
+\texttt{<prefix>.0b<group\_bits>}. Prefix names the averaging namespace; group\_bits is an
+optional binary shard suffix. Default empty bits give my\_job.0b, fixed for that prefix.
+A sharded example is my\_job.0b010; current co-members can predict the next shard.
+This discovery key is different from the random assembled group ID.
+\par Attackers independently choose node\_id values at XOR distances 0--4 from the key's
+hash and introduce these nodes into the overlay. With five replicas by default, all five
+holders are attacker-run. This is measured custody of advertisements under this key;
+honest cached copies can still exist. DHT-only Sybils need not train.
+\par Placement and reply filtering are stages of one attack. The next slide shows tailored
+replies. Five holders alone do not guarantee isolation; the later lookup experiment explains
+the additional coverage needed.
+Sources: HANDOFF 4.1,4.5--4.7; key\_manager.py:42--44;
+step5\_selective.py:158--161; dht/node.py:105,411--462.}
+\end{frame}
+
+% 9 --------------------------------------------------------------------------
+\begin{frame}[label=result-selective]{2. Give the victim a different view}
+\begin{visual}
+  % The replica placement was established on slide 8; focus here on the replies.
+  \node[box,draw=ctl!35,fill=ctl!4,minimum width=6.2cm,minimum height=0.8cm,
+    font=\small\bfseries,text=ctl] (replicas) at (7.2,4.85) {Attacker-run DHT replicas};
+  \draw[control] (5.2,4.4)--(3.5,3.28);
+  \draw[flow] (9.2,4.4)--(10.9,3.28);
+
+  \fill[ctl!4,rounded corners=3mm] (0.55,0.45) rectangle (6.45,3.15);
+  \fill[ChalmersPurple!4,rounded corners=3mm] (7.95,0.45) rectangle (13.85,3.15);
+  \node[quiet] at (3.5,2.85) {Reply to};
+  \node[quiet] at (10.9,2.85) {Reply to};
+  \node[heading] at (3.5,2.43) {the victim};
+  \node[heading] at (10.9,2.43) {other honest readers};
+
+  \node[attacker,minimum size=8mm] at (3.5,1.61) {A};
+  \node[peer,minimum size=7mm] at (9.65,1.61) {H};
+  \node[peer,minimum size=7mm] at (10.9,1.61) {H};
+  \node[attacker,minimum size=8mm] at (12.15,1.61) {A};
+  \node[quiet,text=ctl] at (3.5,0.85) {Attacker candidates only};
+  \node[quiet,text=ChalmersPurple] at (10.9,0.85) {Unfiltered candidates};
+  \node[labeltext,text=ChalmersPurple] at (7.2,0.0)
+    {Goal: steer the victim into an attacker-led group.};
+\end{visual}
+\resultlink{table-selective}{Exact tables}
+\note{Goal: steer the victim toward an attacker-led group, matching step5\_selective.
+Holders accept honest advertisements. Each responder checks the authenticated requester's
+PeerID: return the full dictionary to other readers, but retain only attacker advertisements
+for the victim. Symbols identify advertised candidates, not a formed group. Unfiltered
+replies include both honest (H) and attacker (A) advertisements.
+\par In the cold-key selective run, all 12 honest writes succeeded. The victim saw zero
+honest candidates and one attacker, while the bystander saw all 12 honest candidates and
+the attacker. This demonstrates selective discovery, not guaranteed admission or isolation.
+Honest replies can merge omitted entries back; in the warm-key control they did so.
+\par The later sustained-capture result uses a different policy: empty replies to the victim,
+hide the victim from other honest readers, and truthful replies to attackers, who join the
+victim. Twenty crafted identities covered the default lookup candidates; five replica holders
+alone were insufficient. Sources: HANDOFF 4.5--4.7; step5\_selective.py:84--111;
+results/step5\_selective.csv.}
+\end{frame}
+
+\section{Findings}
+% 10 --------------------------------------------------------------------------
+\begin{frame}[label=result-admission]{$\beta$ is chosen, not inherited}
+\begin{visual}
+  \node[labeltext,text=ChalmersPurple] at (7.2,5.1)
+    {When the attacker leads, it admits only the victim + its own peers.};
+  \foreach \xx/\title/\k/\share/\size in {
+    2.45/{1 attacker}/1/0.500/2,
+    7.2/{2 attackers}/2/0.667/3,
+    11.95/{4 attackers}/4/0.800/5} {
+    \fill[ChalmersPurple!4,rounded corners=3mm]
+      (\xx-2.075,1.25) rectangle (\xx+2.075,4.5);
+    \node[heading] at (\xx,4.06) {\title};
+    \node[quiet] at (\xx,3.58) {$\alpha=\k/16$ of the swarm};
+    \node[font=\Large,text=ctl] at (\xx,2.05) {$\beta=\share$};
+    \node[quiet] at (\xx,1.57) {\size\ peers in the group};
+  }
+
+  \node[victim,minimum size=6mm] at (2.0,2.87) {V};
+  \node[attacker,minimum size=6mm] at (2.9,2.87) {A};
+  \node[victim,minimum size=6mm] at (6.25,2.87) {V};
+  \foreach \xx in {7.2,8.15}
+    \node[attacker,minimum size=6mm] at (\xx,2.87) {A};
+  \node[victim,minimum size=6mm] at (10.35,2.87) {V};
+  \foreach \xx in {11.15,11.95,12.75,13.55}
+    \node[attacker,minimum size=6mm] at (\xx,2.87) {A};
+
+  \node[quiet] at (7.2,0.79)
+    {Target group size: 8\quad\textbar\quad minimum: 2 (default)};
+  \node[labeltext,text=ChalmersPurple] at (7.2,0.17)
+    {Even 50\% attacker share is outside Krum's guarantee.};
+\end{visual}
+\resultlink{table-admission}{Exact tables}
+\note{Transition: ``The goal is to steer the victim into an attacker-led group.
+When the attacker does lead, how much control does it have?''
+\par Setup: live local swarms, toy regression, unchanged core. Admission was measured
+separately from discovery filtering. All peers targeted eight members; the minimum remained
+two. The leader rejects other honest peers and can close below target at its deadline.
+\par Alpha is the swarm's attacker fraction; beta is the group's. These observed groups
+contain the victim plus k attackers, so beta=k/(k+1). Partially filled groups also occurred:
+the examples do not imply every attacker-led round includes all k attackers.
+For k=1, pairs occurred in 12/21 victim rounds. Beta=0.5 is 8 times alpha=1/16;
+mean beta=0.315 is about 5 times alpha, not 8.
+\par Krum requires 2f+2<n, with f Byzantine members among n. Even n=2,f=1 violates
+that condition. This removes its guarantee; Krum was not evaluated here.
+Sources: step3\_capture.py:138--159,220--250; averager.py:119; matchmaking.py:295--297;
+step3 capture CSVs d1.0 k1,2,4;
+\href{https://papers.nips.cc/paper/2017/file/f4b9ec30ad9f68f89b29639786cb62ef-Paper.pdf}{Blanchard et al., NIPS 2017}.}
+\end{frame}
+
+% 11 -------------------------------------------------------------------------
+\begin{frame}[label=result-lookup]{Caching}
+\begin{visual}
+  \node[quiet] at (7.2,5.33)
+    {Lookup starts with up to 20 nearest known peers (default)};
+
+%   % One arrow summarises the holders' selective replies for the same key.
+  \fill[ctl!5,rounded corners=3mm] (0.45,3.2) rectangle (4.05,4.88);
+  \node[heading,text=ctl] at (2.25,4.53) {5 Sybil holders};
+  \foreach \xx in {0.95,1.6,2.25,2.9,3.55}
+    \node[attacker,minimum size=5.5mm,font=\scriptsize\bfseries] at (\xx,3.83) {S};
+  \draw[control] (4.05,3.83)--(9.5,3.83);
+  \node[quiet,text=ctl] at (6.75,4.42) {Filtered replies};
+  \node[box,fill=white,draw=ctl!35,minimum width=3.2cm,minimum height=7mm,
+    inner sep=1mm,font=\small\bfseries,text=ctl] at (6.75,3.83) {A};
+
+  \fill[ChalmersPurple!5,rounded corners=3mm] (0.45,1.35) rectangle (4.05,2.95);
+  \node[heading] at (2.25,2.6) {Honest cache};
+  \node[peer,minimum size=7mm] at (2.25,1.95) {H};
+  \draw[flow] (4.05,1.95)--(9.5,1.95);
+  \node[quiet] at (6.75,2.54) {Cached reply};
+  \node[box,fill=white,minimum width=3.2cm,minimum height=7mm,
+    inner sep=1mm,text=ChalmersPurple] at (6.75,1.95)
+    {H1, H2, H3, \textcolor{ctl}{A}};
+
+  \fill[ChalmersPurple!4,rounded corners=3mm] (9.5,1.35) rectangle (14.1,4.88);
+  \node[heading] at (11.8,4.53) {Victim's lookup};
+  \node[victim] (reader) at (11.8,3.8) {V};
+  \draw[flow] (reader.south)--(11.8,3.0);
+  \node[box,fill=white,minimum width=4cm,minimum height=1.05cm,
+    inner sep=1mm] at (11.8,2.47)
+    {\footnotesize Merged candidates\\[2mm]
+     \textcolor{ChalmersPurple}{H1, H2, H3,} \textcolor{ctl}{\textbf{A}}};
+  \node[quiet,text=ChalmersPurple] at (11.8,1.64) {Honest candidates remain};
+
+  \draw[muted!30] (0.45,1.08)--(14.1,1.08);
+  \node[heading,text=ChalmersPurple] at (3.5,0.7) {5 Sybils: 0\% capture};
+  \node[heading,text=ctl] at (10.9,0.7) {20 Sybils: 100\% capture};
+  \node[quiet] at (7.2,0.14)
+    {Capture rates: separate empty-reply experiment\quad\textbar\quad caching on};
+\end{visual}
+\resultlink{table-lookup_threshold}{Exact tables}
+\note{Replicas store PeerID advertisements: availability and expiry, not gradients.
+S denotes DHT-only Sybil holders; A is an advertised training attacker. Arrows show replies
+for one key. Selective filtering returns only A, while an honest cache restores H1--H3.
+The result is a candidate list, not a formed group.
+\par Discovery uses latest=True and merges dictionary entries by PeerID: repeated replies
+advertising A still create one entry. A remains eligible, but selection follows deadline
+and PeerID order, not a one-in-four draw. An early deadline can favour A; honest entries
+prevent complete control of discovery. Existing local entries also survive until expiry.
+\par Rates below are separate chase runs: empty victim replies, attackers join the victim.
+8 training peers (3 attackers), additional DHT Sybils, caching on. Five Sybils: 0/15 and
+0/15 captured rounds; twenty: 11/11 and 9/9. Capture means victim plus attackers only.
+At 18, mean capture was 14 percent; bucket\_size=40: 25 Sybils gave 9 percent, 45 gave
+100 percent. Sources: HANDOFF 4.5--4.6; step5\_selective.py:100--107;
+matchmaking.py:478--481; dht/node.py:834--838; step6 chase cached CSVs.}
+\end{frame}
+
+% 12 -------------------------------------------------------------------------
+\begin{frame}[label=result-sustained]{Capture persisted across rounds}
+\begin{visual}
+  \node[labeltext] at (7.2,5.15)
+    {8 training peers (3 attackers)\quad+\quad25 DHT-only Sybils};
+  \node[heading,text=ChalmersPurple] at (3.0,4.5) {Run};
+  \node[heading,text=ChalmersPurple] at (7.2,4.5) {Captured rounds};
+  \node[heading,text=ChalmersPurple] at (11.4,4.5) {Recorded rounds};
+  \draw[ChalmersPurple!50,line width=0.7pt] (1.0,4.17)--(13.4,4.17);
+  \foreach \yy/\runindex/\roundtotal in {3.72/1/15,2.97/2/13,2.22/3/12} {
+    \node[font=\large] at (3.0,\yy) {\runindex};
+    \node[font=\large\bfseries] at (7.2,\yy) {\roundtotal};
+    \node[font=\large] at (11.4,\yy) {\roundtotal};
+    \draw[ChalmersPurple!15] (1.0,\yy-0.35)--(13.4,\yy-0.35);
+  }
+  \node[heading,text=ctl] at (7.2,1.44)
+    {All 40 recorded rounds: victim + attacker peers only.};
+  \node[quiet] at (7.2,0.86)
+    {Sybils joined before training\quad\textbar\quad caching on\quad\textbar\quad sharding off};
+  \draw[ChalmersPurple!25] (0.6,0.5)--(13.8,0.5);
+  \node[font=\small\bfseries,text=ChalmersPurple] at (2.25,0.13) {16 training peers};
+  \node[quiet,text=ink] at (7.0,0.13) {3 attempts\quad\textbar\quad0 victim rounds};
+  \node[quiet,text=ChalmersPurple] at (11.9,0.13) {Capture not assessable};
+  \node[quiet] at (7.2,-0.43)
+    {Arrival-to-capture delay unmeasured\quad\textbar\quad16-peer attempts: handoff report};
+\end{visual}
+\resultlink{table-sustained}{Exact tables}
+\note{Did capture persist when the victim averaged again? Each table row is a separate run.
+Captured means the victim averaged with attacker peers and no other honest peer.
+The captured count equals the recorded count in every run: 15/15,13/13,12/12---40/40.
+Each run trained for 15 epochs; epochs and averaging rounds are different counters,
+so the runs contain different numbers of recorded averaging rounds.
+\par These results use eight training peers, including three attackers, plus 25 DHT-only
+Sybils. Caching was on; sharding was off. Sybils joined before training. This establishes
+sustained capture after preparation, not arrival-to-capture latency.
+\par We also tried sixteen training peers. HANDOFF's configuration notes report three
+attempts with target group size explicitly set: only 4--6 peers ever averaged, and the
+victim had zero recorded rounds. There is no denominator for capture, so this is not a
+zero-percent result or evidence of protection at larger scale. Matching raw outputs were
+not located; the separate strip is a handoff report, not another measured capture rate.
+\par Sources: HANDOFF 4.6--4.7 and configuration traps (lines 690--692);
+step6 cached s25 repeats 1--3. Mechanism and timing details: PRESENTATION.md.}
+\end{frame}
+
+% 13 -------------------------------------------------------------------------
+\begin{frame}[label=result-tracking]{Tracking the bucket, chasing the group}
+\begin{visual}
+  \node[labeltext] at (7.2,5.15)
+    {Victim rounds with at least one attacker in the group};
+  \node[heading,text=ChalmersPurple] at (3.0,4.5) {Training peers};
+  \node[heading,text=ChalmersPurple] at (7.2,4.5) {Fixed bucket};
+  \node[heading,text=ChalmersPurple] at (11.4,4.5) {Tracks victim};
+  \draw[ChalmersPurple!50,line width=0.7pt] (1.0,4.17)--(13.4,4.17);
+  \foreach \yy/\population/\fixedrate/\trackingrate in {
+    3.72/16/56/84,2.97/32/40/72,2.22/48/18/38} {
+    \node[font=\large] at (3.0,\yy) {\population};
+    \node[font=\large] at (7.2,\yy) {\fixedrate\%};
+    \node[font=\large\bfseries] at (11.4,\yy) {\trackingrate\%};
+    \draw[ChalmersPurple!15] (1.0,\yy-0.35)--(13.4,\yy-0.35);
+  }
+  \node[labeltext] at (7.2,1.34)
+    {A correct bucket prediction does not guarantee the same averaging group.};
+  \node[quiet] at (7.2,0.72)
+    {Next-bucket predictions: 63/63 correct, using shared group information.};
+  \node[quiet] at (7.2,0.02)
+    {Sharding on\quad\textbar\quad4 discovery buckets\quad\textbar\quad4 attackers\quad\textbar\quad2 runs per setting};
+\end{visual}
+\resultlink{table-tracking}{Exact tables}
+\note{Here we enable optional sharding: peers use four discovery buckets to find averaging
+partners. The default has sharding off. An attacker first needs to share the victim's
+group. It receives the group\_id and ordered member list, calculates the victim's next
+bucket using the victim's index, and overrides its own assignment to follow. If they
+share another group, it gets fresh information; otherwise it cannot predict the victim's
+next move until they meet again. Attackers operate independently.
+\par The table measures victim rounds containing at least one attacker, not full capture.
+Other honest peers may remain. Fixed-bucket attackers stay in one bucket; tracking
+attackers follow when they can. Both arms have four attacker identities. Tracking helps
+at every size, but as buckets contain more groups, choosing the right bucket is less
+likely to produce the same group. Rates average two repeats; target group size is four.
+\par All 63 prediction records were correct across six runs and 49 distinct shared groups.
+Several attackers can predict the same transition. This does not establish permanent
+tracking. Tracking and selective admission were not measured together.
+Sources: HANDOFF 4.4; step4 CSVs; key\_manager.py:94--104; step4\_reformation.py:183--191.}
+\end{frame}
+
+% 14 -------------------------------------------------------------------------
+\begin{frame}[label=result-poisoning]{Poisoning: results and limits}
+\begin{visual}
+  \node[labeltext] at (7.2,5.15)
+    {8 training peers\quad\textbar\quad1 poisoner\quad\textbar\quad64-parameter regression};
+  \foreach \yy/\statement in {
+    4.0/{One peer reversed and scaled its outgoing gradients, then claimed an averaging weight of one million.},
+    2.85/{Weighted mean left honest peers farther from the optimum than in matching clean runs.},
+    1.7/{Coordinate median substantially reduced the damage across all three seeds.}} {
+    \fill[ChalmersPurple] (0.75,\yy) circle (1.1mm);
+    \node[anchor=west,text width=12.0cm,align=left,font=\normalsize]
+      at (1.1,\yy) {\statement};
+  }
+  \draw[ChalmersPurple!25] (0.6,0.83)--(13.8,0.83);
+  \node[quiet] at (7.2,0.43)
+    {Poisoning was tested separately from group capture.};
+  \node[quiet] at (7.2,0.02)
+    {Krum: theoretical limits only; no implementation or experiment.};
+\end{visual}
+\resultlink{table-poisoning}{Exact tables}
+\note{This separate learning experiment used eight peers and one poisoner on a small
+regression model. The attacker multiplied outgoing gradient slices by minus five and
+claimed an averaging weight of one million. Normally that weight reflects the sample
+count. The inflated claim made its bad gradient dominate the weighted average. Honest
+peers ended farther from the optimum than in matching clean runs. Coordinate median
+ignores declared weights and substantially reduced the damage.
+\par Poisoning and group capture were tested separately. Krum was considered
+theoretically, not implemented or tested. This is toy-model evidence, not transformer evidence.
+\par Metric: honest peers' mean Euclidean distance at epoch 20, divided by the same-seed
+clean weighted-mean control. Weighted poison: 45.69, 148.48, 35.01 times control;
+median: 0.92, 2.32, 0.50. Ordinary-weight sign flip has one seed: 0.80 times control.
+Target group size was four; actual membership was not recorded, so no fixed local
+beta or damage-versus-beta curve was established.
+Sources: HANDOFF 4.11; step7\_poison CSVs; exact appendix tables.}
+\end{frame}
+
+\section{Limitations}
+% 15 -------------------------------------------------------------------------
+\begin{frame}[label=result-limitations]{Limitations}
+\begin{visual}
+  \node[anchor=west,font=\small\bfseries,text=ChalmersPurple] at (2.65,5.23)
+    {Tested setting};
+  \node[anchor=west,font=\small\bfseries,text=ChalmersPurple] at (8.1,5.23)
+    {Limit of the evidence};
+  \draw[ChalmersPurple!50,line width=0.7pt] (0.45,4.86)--(14.0,4.86);
+  \foreach \yy/\topic/\testedsetting/\evidencelimit in {
+    4.38/{Model}/{Linear regression\\64 parameters}/{No transformer experiments},
+    3.51/{Network}/{8--104 nodes on one machine}/{Large-network routing untested},
+    2.64/{Timing}/{Sybils joined before training}/{Time to establish capture\\not measured},
+    1.77/{Attack}/{Stages tested separately}/{Full attack chain unmeasured},
+    0.90/{Krum}/{Theoretical limits only\\Not implemented}/{Needs full-gradient distances;\\reducers receive slices}} {
+    \node[anchor=west,font=\small\bfseries,text=ChalmersPurple,
+      text width=2cm,align=left] at (0.45,\yy) {\topic};
+    \node[anchor=west,font=\small,text width=4.8cm,align=left]
+      at (2.65,\yy) {\testedsetting};
+    \node[anchor=west,font=\small,text width=5.6cm,align=left]
+      at (8.1,\yy) {\evidencelimit};
+    \draw[ChalmersPurple!15] (0.45,\yy-0.43)--(14.0,\yy-0.43);
+  }
+  \node[quiet,anchor=west,align=left] at (0.45,0.02)
+    {Control-plane defences are untested; default group mixing remains unsettled.};
+\end{visual}
+\resultlink{table-index}{All experiment tables}
+\note{The toy regression is not transformer evidence. All swarms ran on one machine;
+idle fillers at 104 nodes did not expand the victim's routing view. Capture followed
+Sybil preparation. Default mixing differed at 16 and 24 peers; load was not controlled.
+The full attack chain remains unmeasured; poisoning did not record actual group composition.
+\par Krum is absent from the audited Hivemind and was not implemented in this project.
+I only checked its theoretical condition, 2f+2<n. Violating it removes the guarantee;
+it is not an experimental demonstration of Krum failing.
+\par Krum compares complete gradients using pairwise distances. A straightforward
+implementation collects the full gradient matrix (one vector per peer) at a trusted
+central coordinator. Hivemind's reducers receive assigned slices; trainers retain their
+own full gradients. Krum cannot directly replace this slice reducer. A central server
+is one option, not a requirement: distributed distances and consistent vector selection
+would need extra communication and coordination. Neither approach was implemented.
+\par Coordinate median WAS evaluated; control-plane defences remain untested.
+Sources: HANDOFF 4.6--4.11; step7\_poison.py; partition.py; Blanchard et al., NeurIPS 2017.}
+\end{frame}
+
+% \appendix
+% \renewcommand{\Chalmersinsertpagenumber}{A\insertframenumberinappendix\,/\,\insertappendixframenumber}
+% \section{Experiment tables}
+% \input{experiment-tables.tex}
+% \section{Backup}
+% \input{backup-robustness.tex}
+\end{document}

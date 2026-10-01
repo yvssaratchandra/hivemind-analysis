@@ -1,0 +1,625 @@
+% =============================================================================
+%  beamerthemeChalmers.sty
+%  ---------------------------------------------------------------------------
+%  UNOFFICIAL Beamer theme that approximates the 2026 Chalmers visual
+%  identity (group-wide brand launched in spring 2026), based on the
+%  Chalmers logotypes and the English PowerPoint master as references.
+%  This is NOT an official Chalmers product; for brand-critical or
+%  ceremonial materials, consult the Chalmers Brand Portal and your
+%  local communications officer.
+%
+%  Vibe-coded by Wenliang Zhang -- expect rough edges; bug reports and
+%  feature ideas are welcome at the project's GitHub repository:
+%      https://github.com/wenlzhang/chalmers-beamer
+%
+%  Licence:  MIT (covers the LaTeX/Beamer code).  The Chalmers
+%            logotypes shipped in logographics/ are NOT MIT-licensed;
+%            they remain Chalmers University of Technology trademarks
+%            and their use is governed by the Chalmers Brand Portal.
+%            See LICENSE and NOTICE for full details.
+%  ---------------------------------------------------------------------------
+%
+%  Reference:  "Powerpoint template -- Chalmers University of Technology
+%              (english)", May 2026 (.potx).
+%
+%  Quick usage in the main .tex file:
+%
+%      \documentclass[aspectratio=169]{beamer}
+%      \usetheme{Chalmers}
+%      \title{...}\subtitle{...}\author{...}
+%      \institute{...}\date{...}
+%      \shorttitle{...}        % optional: appears in the footline
+%
+%      \begin{document}
+%          \frame{\titlepage}                    % purple cover
+%          \begin{frame}{Outline}\tableofcontents\end{frame}
+%          \section{First section}               % triggers a purple divider
+%          \begin{frame}{A normal frame}...\end{frame}
+%      \end{document}
+%
+%  Logo files (PNG) expected in logographics/:
+%      Chalmers-wordmark.png            (purple wordmark for light slides)
+%      Chalmers-wordmark-white.png      (white  wordmark for purple slides)
+%      Chalmers-logo-avancez.png        (wordmark + avancez emblem, formal)
+%      Chalmers-logo-avancez-white.png  (white  variant for dark backgrounds)
+%
+%  See the accompanying README.md for the full command reference.
+% =============================================================================
+
+\ProvidesPackage{beamerthemeChalmers}[2026/05/22 v2.0 Chalmers Beamer theme]
+\mode<presentation>
+
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+\RequirePackage{etoolbox}
+
+% =============================================================================
+%  CUSTOMISATION QUICK-REFERENCE  (where to edit what)
+% =============================================================================
+%  Section  1   Colour palette          -- HEX values of every named colour
+%  Section  2   Typography              -- font family (Arial via helvet)
+%  Section  3   Beamer colour bindings  -- which palette colour drives what
+%  Section  4   Font sizes              -- per-element sizes (\Large, \huge,...)
+%  Section  5   Geometry                -- text margins, navigation symbols
+%  Section  6   Logo declarations       -- which PNG goes to which alias
+%  Section  7   Customisation commands  -- \shorttitle, \chalmersheadline, ...
+%  Section  8   Headline (logo placement) -- 2mm top, 6mm right, 12mm band
+%  Section  9   Frame title             -- font, position, no underline rule
+%  Section 10   Footline                -- purple rule + date|title|page
+%  Section 11   Title page (cover)      -- chalmerscover environment + \titleframe
+%  Section 12   Section dividers        -- three presets (progress/solid/none)
+%
+%  For quick recoloring, override the relevant colour in your .tex AFTER
+%  \usetheme{Chalmers}:
+%      \definecolor{ChalmersPurple}{HTML}{332085}   % switch to dark variant
+%      \setbeamercolor{frametitle}{fg=ChalmersBlack} % black titles instead
+% =============================================================================
+
+% -----------------------------------------------------------------------------
+% 1.  Chalmers 2026 colour palette
+%     The HEX values are taken verbatim from the theme XML of the official
+%     PowerPoint .potx (ppt/theme/theme1.xml).
+% -----------------------------------------------------------------------------
+% Primary
+\definecolor{ChalmersPurple}{HTML}{472DBE}      % Primary brand colour
+\definecolor{ChalmersPurpleDark}{HTML}{332085}  % Darker purple (hover/pressed)
+\definecolor{ChalmersPurpleLight}{HTML}{6746EB} % Lighter purple variant
+\definecolor{ChalmersPurpleSoft}{HTML}{9E92E8}  % Soft purple for backgrounds
+
+% Neutrals
+\definecolor{ChalmersCream}{HTML}{F0EDE6}       % Warm off-white background
+\definecolor{ChalmersBlack}{HTML}{222222}       % Body text (not pure black)
+\definecolor{ChalmersGrey}{HTML}{7F7F7F}        % Muted grey
+
+% Accent palette (data viz, callouts)
+\definecolor{ChalmersGreen}{HTML}{00B356}
+\definecolor{ChalmersLime}{HTML}{ADD739}
+\definecolor{ChalmersCyan}{HTML}{36B7F6}
+\definecolor{ChalmersTeal}{HTML}{61E9D2}
+\definecolor{ChalmersRed}{HTML}{D52515}
+\definecolor{ChalmersOrange}{HTML}{ED7122}
+\definecolor{ChalmersYellow}{HTML}{F6D62A}
+\definecolor{ChalmersPink}{HTML}{D987BA}
+
+% -----------------------------------------------------------------------------
+% 2.  Typography  (Arial in PPT  ->  Helvetica via the helvet package)
+% -----------------------------------------------------------------------------
+\RequirePackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+% -----------------------------------------------------------------------------
+% 3.  Beamer colour assignments
+% -----------------------------------------------------------------------------
+\setbeamercolor{structure}{fg=ChalmersPurple}
+\setbeamercolor{normal text}{fg=ChalmersBlack,bg=white}
+\setbeamercolor{alerted text}{fg=ChalmersRed}
+\setbeamercolor{example text}{fg=ChalmersGreen}
+
+\setbeamercolor{frametitle}{fg=ChalmersPurple}
+\setbeamercolor{framesubtitle}{fg=ChalmersGrey}
+
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{subtitle}{fg=white}
+\setbeamercolor{author}{fg=white}
+\setbeamercolor{institute}{fg=white}
+\setbeamercolor{date}{fg=white}
+
+\setbeamercolor{itemize item}{fg=ChalmersPurple}
+\setbeamercolor{itemize subitem}{fg=ChalmersPurpleLight}
+\setbeamercolor{itemize subsubitem}{fg=ChalmersPurpleSoft}
+\setbeamercolor{enumerate item}{fg=ChalmersPurple}
+
+\setbeamercolor{section in toc}{parent=structure}
+\setbeamercolor{subsection in toc}{fg=ChalmersGrey}
+\setbeamercolor{section divider current}{fg=white}
+\setbeamercolor{section divider shaded}{fg=white!50}
+\setbeamercolor{section title}{fg=white}
+
+\setbeamercolor{block title}{parent=frametitle}
+% Block body tracks the slide background.
+\setbeamercolor{block body}{parent=normal text}
+\setbeamercolor{block title alerted}{fg=white,bg=ChalmersRed}
+\setbeamercolor{block body alerted}{fg=ChalmersBlack,bg=ChalmersRed!8}
+\setbeamercolor{block title example}{fg=white,bg=ChalmersGreen}
+\setbeamercolor{block body example}{fg=ChalmersBlack,bg=ChalmersGreen!8}
+
+\setbeamertemplate{block begin}{%
+    \ifx\insertblocktitle\@empty
+    \else
+        \par\vskip\medskipamount%
+        \begin{beamercolorbox}[colsep*=.75ex]{block title}%
+            \usebeamerfont*{block title}\insertblocktitle%
+        \end{beamercolorbox}%
+        {\parskip0pt\par}%
+    \fi
+    \usebeamerfont{block body}%
+    \begin{beamercolorbox}[colsep*=.75ex,vmode]{block body}%
+}
+\setbeamertemplate{block end}{\end{beamercolorbox}\vskip\smallskipamount}
+
+\setbeamercolor{footline}{fg=ChalmersPurple,bg=white}
+\setbeamercolor{page number in head/foot}{fg=ChalmersPurple}
+
+% -----------------------------------------------------------------------------
+% 4.  Font sizes  (calibrated against the Chalmers PPT master:
+%     title 60pt cover / 32pt frame, body 18pt, footer 8pt)
+% -----------------------------------------------------------------------------
+\setbeamerfont{title}{family=\sffamily,series=\bfseries,size=\LARGE}
+\setbeamerfont{subtitle}{family=\sffamily,size=\Large}
+\setbeamerfont{author}{family=\sffamily,size=\normalsize}
+\setbeamerfont{institute}{family=\sffamily,size=\small}
+\setbeamerfont{date}{family=\sffamily,size=\small}
+\setbeamerfont{frametitle}{family=\sffamily,series=\bfseries,size=\Large}
+\setbeamerfont{framesubtitle}{family=\sffamily,size=\normalsize}
+\setbeamerfont{block title}{family=\sffamily,series=\bfseries}
+\setbeamerfont{footline}{family=\sffamily,size=\fontsize{7pt}{8pt}\selectfont}
+\setbeamerfont{section title}{family=\sffamily,series=\bfseries,size=\huge}
+\setbeamerfont{section in toc}{family=\sffamily,size=\large}
+\setbeamerfont{section in toc shaded}{family=\sffamily,size=\large}
+
+% -----------------------------------------------------------------------------
+% 5.  Geometry  (left/right margin matches the 4 mm guide in the PPT master)
+% -----------------------------------------------------------------------------
+\setbeamersize{text margin left=8mm,text margin right=8mm}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{caption}[numbered]
+
+% -----------------------------------------------------------------------------
+% 6.  Logos  (all official 2026 Chalmers assets, English)
+%
+%     The naming scheme is  ChalmersLogo<Variant><Colour>  where
+%
+%       <Variant>  =  (empty) | Horiz | Vert | VertFull
+%                       (empty)   = horizontal, avancez + CHALMERS + subtitle
+%                       Horiz     = horizontal, avancez + CHALMERS (no subtitle)
+%                       Vert      = vertical,   avancez + CHALMERS (no subtitle)
+%                       VertFull  = vertical,   avancez + CHALMERS + subtitle
+%       <Colour>   =  (empty) | White | Black
+%                       (empty)   = Chalmers purple (#472DBE)
+%                       White     = white (for use on coloured backgrounds)
+%                       Black     = black  (for monochrome / print)
+%
+%     A separate ChalmersWordmark* family is the plain "CHALMERS" wordmark
+%     (no avancez emblem, no subtitle), useful when a very compact mark is
+%     wanted.
+%
+%     The convenience command \chalmerslogo{<variant>}{<colour>}{<height>}
+%     defined below lets you place any variant directly inside a frame.
+% -----------------------------------------------------------------------------
+% Each logo is sized so that it fits comfortably inside the 12 mm
+% headline band defined later.  The emblem-only variant gets the full
+% band height; the wider variants are scaled down so their total visual
+% mass is similar to the emblem.
+% --- Horizontal, avancez + CHALMERS + UNIVERSITY OF TECHNOLOGY ---
+\pgfdeclareimage[height=10mm]{ChalmersLogo}{logographics/Chalmers-logo-purple}
+\pgfdeclareimage[height=10mm]{ChalmersLogoWhite}{logographics/Chalmers-logo-white}
+\pgfdeclareimage[height=10mm]{ChalmersLogoBlack}{logographics/Chalmers-logo-black}
+% --- Horizontal, avancez + CHALMERS (no subtitle) ---
+\pgfdeclareimage[height=10mm]{ChalmersLogoHoriz}{logographics/Chalmers-logo-horiz-purple}
+\pgfdeclareimage[height=10mm]{ChalmersLogoHorizWhite}{logographics/Chalmers-logo-horiz-white}
+\pgfdeclareimage[height=10mm]{ChalmersLogoHorizBlack}{logographics/Chalmers-logo-horiz-black}
+% --- Vertical, avancez + CHALMERS (no subtitle) ---
+\pgfdeclareimage[height=18mm]{ChalmersLogoVert}{logographics/Chalmers-logo-vert-purple}
+\pgfdeclareimage[height=18mm]{ChalmersLogoVertWhite}{logographics/Chalmers-logo-vert-white}
+\pgfdeclareimage[height=18mm]{ChalmersLogoVertBlack}{logographics/Chalmers-logo-vert-black}
+% --- Vertical, avancez + CHALMERS + UNIVERSITY OF TECHNOLOGY ---
+\pgfdeclareimage[height=22mm]{ChalmersLogoVertFull}{logographics/Chalmers-logo-vert-full-purple}
+\pgfdeclareimage[height=22mm]{ChalmersLogoVertFullWhite}{logographics/Chalmers-logo-vert-full-white}
+\pgfdeclareimage[height=22mm]{ChalmersLogoVertFullBlack}{logographics/Chalmers-logo-vert-full-black}
+% --- Plain CHALMERS wordmark (no avancez, no subtitle) ---
+\pgfdeclareimage[height=7mm]{ChalmersWordmark}{logographics/Chalmers-wordmark-purple}
+\pgfdeclareimage[height=7mm]{ChalmersWordmarkWhite}{logographics/Chalmers-wordmark-white}
+\pgfdeclareimage[height=7mm]{ChalmersWordmarkBlack}{logographics/Chalmers-wordmark-black}
+% --- Standalone avancez emblem (no CHALMERS text) -- DEFAULT, slightly larger ---
+\pgfdeclareimage[height=12mm]{ChalmersEmblem}{logographics/Chalmers-emblem-purple}
+\pgfdeclareimage[height=12mm]{ChalmersEmblemWhite}{logographics/Chalmers-emblem-white}
+\pgfdeclareimage[height=12mm]{ChalmersEmblemBlack}{logographics/Chalmers-emblem-black}
+
+% Convenience command for ad-hoc logo placement, e.g.
+%     \chalmerslogo{vert-full}{purple}{25mm}
+% Variants: full | horiz | vert | vert-full | wordmark
+% Colours : purple | white | black
+% Height  : any LaTeX length, e.g. 12mm, 1cm
+\newcommand{\chalmerslogo}[3]{%
+    \includegraphics[height=#3]{logographics/Chalmers-#1-#2}%
+}
+
+% -----------------------------------------------------------------------------
+% 7.  User-facing customisation commands
+%
+%   \shorttitle{<text>}      shorter title shown in the footer (optional)
+%   \chalmersheadline{<key>} selects the logo style for ALL slides at once.
+%                            Keys (default: logo):
+%                              logo          -> avancez emblem only        (DEFAULT)
+%                              word          -> CHALMERS wordmark only
+%                              logo+word     -> avancez + CHALMERS (compact)
+%                              logo+word+sub -> avancez + CHALMERS + UNIV. OF TECH.
+%                            The cover and section dividers automatically use
+%                            the matching white variant -- you change ONE key
+%                            and every slide type follows suit.
+% -----------------------------------------------------------------------------
+\newcommand{\insertshorttitle@chalmers}{\inserttitle}
+\newcommand{\shorttitle}[1]{\renewcommand{\insertshorttitle@chalmers}{#1}}
+
+\newcommand{\Chalmerslogostyle}{logo}
+\newcommand{\chalmersheadline}[1]{\renewcommand{\Chalmerslogostyle}{#1}}
+
+% Page-number style in the footer:
+%   current  -> "5"          (DEFAULT)
+%   both     -> "5 / 20"     (current / total)
+\newcommand{\Chalmerspagenumberstyle}{current}
+\newcommand{\chalmersfooterpages}[1]{\renewcommand{\Chalmerspagenumberstyle}{#1}}
+\newcommand{\Chalmersinsertpagenumber}{%
+    \ifstrequal{\Chalmerspagenumberstyle}{both}%
+        {\insertframenumber\,/\,\inserttotalframenumber}%
+        {\insertframenumber}%
+}
+
+% Outline frame helper.
+% Usage in the .tex:    \outlineframe
+% Style switch:         \chalmersoutline{show|hide}
+%   show  -- renders a Beamer frame with \tableofcontents   (DEFAULT)
+%   hide  -- \outlineframe becomes a no-op (drop the outline entirely
+%            from the deck without removing the call from the .tex)
+\newcommand{\Chalmersoutlinestyle}{show}
+\newcommand{\chalmersoutline}[1]{\renewcommand{\Chalmersoutlinestyle}{#1}}
+\newcommand{\outlineframe}{%
+    \ifstrequal{\Chalmersoutlinestyle}{hide}{}{%
+        \begin{frame}{Outline}
+            \vfill
+            \hspace{8mm}\begin{minipage}{0.85\paperwidth}
+                \Chalmersrenderoutlinelist
+            \end{minipage}%
+            \vfill
+        \end{frame}%
+    }%
+}
+
+% Internal helpers used by templates: pick the right logo image based on the
+% currently selected style.  Purple variant for light slides (headline);
+% white variant for dark slides (cover, section dividers).
+\newcommand{\Chalmersinsertlogopurple}{%
+    \ifstrequal{\Chalmerslogostyle}{word}{\pgfuseimage{ChalmersWordmark}}{%
+    \ifstrequal{\Chalmerslogostyle}{logo+word}{\pgfuseimage{ChalmersLogoHoriz}}{%
+    \ifstrequal{\Chalmerslogostyle}{logo+word+sub}{\pgfuseimage{ChalmersLogo}}{%
+        \pgfuseimage{ChalmersEmblem}}}}%
+}
+\newcommand{\Chalmersinsertlogowhite}{%
+    \ifstrequal{\Chalmerslogostyle}{word}{\pgfuseimage{ChalmersWordmarkWhite}}{%
+    \ifstrequal{\Chalmerslogostyle}{logo+word}{\pgfuseimage{ChalmersLogoHorizWhite}}{%
+    \ifstrequal{\Chalmerslogostyle}{logo+word+sub}{\pgfuseimage{ChalmersLogoWhite}}{%
+        \pgfuseimage{ChalmersEmblemWhite}}}}%
+}
+
+% -----------------------------------------------------------------------------
+% 8.  Headline -- small Chalmers wordmark, right-aligned, on every normal frame
+%     The background canvas is left as a plain colour fill (white by default);
+%     we use the headline area to host the logo because Beamer reliably draws
+%     headlines on every frame, without TikZ overlay positioning issues.
+% -----------------------------------------------------------------------------
+% A fixed 12 mm vertical band, 2 mm down from the slide top, hosts the
+% logo flush with the right edge (6 mm right margin).  These three
+% lengths are kept IDENTICAL across normal frames, the cover, and section
+% dividers so the logo sits at exactly the same spot on every slide type.
+\newlength{\Chalmerslogotop}    \setlength{\Chalmerslogotop}{2mm}
+\newlength{\Chalmerslogoright}  \setlength{\Chalmerslogoright}{5mm}
+\newlength{\Chalmerslogoheight} \setlength{\Chalmerslogoheight}{12mm}
+
+\newcommand{\Chalmerslogoheader}[1]{%
+    \vspace*{\Chalmerslogotop}%
+    \hbox to \paperwidth{\hfill#1\hspace*{\Chalmerslogoright}}\par%
+}
+
+\setbeamertemplate{headline}{\Chalmerslogoheader{\Chalmersinsertlogopurple}}
+\setbeamercolor{background canvas}{bg=white}
+
+% -----------------------------------------------------------------------------
+% 9.  Frame title:  bold purple text, left-aligned, no rule, tight spacing
+%
+%     The vertical padding above and below the title is exposed as two
+%     tunable lengths so the gap to the headline logo band (above, see
+%     Sec. 8) and to the body content (below) can be adjusted without
+%     editing the template body.
+%
+%     The default lengths are theme-level spacing choices.  Outline
+%     and content frames share this template, so user overrides in the
+%     .tex preamble remain consistent across ordinary titled frames
+%     (e.g.
+%         \setlength{\Chalmersframetitlebottom}{0.5mm})
+%     to adjust the title-to-body gap.
+% -----------------------------------------------------------------------------
+\newlength{\Chalmersframetitletop}    \setlength{\Chalmersframetitletop}{-9mm}
+\newlength{\Chalmersframetitlebottom} \setlength{\Chalmersframetitlebottom}{-4mm}
+
+\setbeamertemplate{frametitle}{%
+    \vspace{\Chalmersframetitletop}%
+    \begin{beamercolorbox}[wd=\paperwidth,leftskip=8mm,rightskip=8mm]{frametitle}%
+        \usebeamerfont{frametitle}\insertframetitle%
+        \ifx\insertframesubtitle\@empty\else\\[0.5mm]%
+            {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}%
+        \fi%
+    \end{beamercolorbox}%
+    \vspace{\Chalmersframetitlebottom}%
+}
+
+% -----------------------------------------------------------------------------
+% 10. Footline:  date  |  short title  |  slide number
+%     Thin purple rule above, with equal vertical padding above and below
+%     the footer text (1 mm each).  The side slots are measured to the
+%     same width, so the title remains centred even when the date and
+%     page-number strings have different lengths.  Reorder, swap or
+%     remove the slots by overriding this template in your own .tex file
+%     -- see README.
+% -----------------------------------------------------------------------------
+\newlength{\Chalmersfooterleftwidth}
+\newlength{\Chalmersfooterrightwidth}
+\newlength{\Chalmersfootersidewidth}
+\newlength{\Chalmersfootertitlewidth}
+\newcommand{\Chalmersfooterrow}{%
+    \settowidth{\Chalmersfooterleftwidth}{\insertdate}%
+    \settowidth{\Chalmersfooterrightwidth}{\Chalmersinsertpagenumber}%
+    \setlength{\Chalmersfootersidewidth}{\Chalmersfooterleftwidth}%
+    \ifdim\Chalmersfooterrightwidth>\Chalmersfootersidewidth
+        \setlength{\Chalmersfootersidewidth}{\Chalmersfooterrightwidth}%
+    \fi
+    \setlength{\Chalmersfootertitlewidth}{%
+        \dimexpr\paperwidth-16mm-2\Chalmersfootersidewidth\relax}%
+    \hbox to \paperwidth{\hspace*{8mm}%
+        \makebox[\Chalmersfootersidewidth][l]{\insertdate}%
+        \makebox[\Chalmersfootertitlewidth][c]{\insertshorttitle@chalmers}%
+        \makebox[\Chalmersfootersidewidth][r]{\Chalmersinsertpagenumber}%
+        \hspace*{8mm}}%
+}
+\setbeamertemplate{footline}{%
+    \hbox to \paperwidth{\hspace*{8mm}%
+        {\usebeamercolor[fg]{footline}\rule{\dimexpr\paperwidth-16mm\relax}{0.3pt}}%
+        \hspace*{8mm}}%
+    \vspace{1mm}%
+    \usebeamercolor[fg]{footline}\usebeamerfont{footline}%
+    \Chalmersfooterrow%
+    \vspace{1mm}%
+}
+
+% -----------------------------------------------------------------------------
+% 11. Title page  (purple background, white logo, large white title)
+%
+%     Strategy: override the headline template (NOT use [plain]) so the
+%     white logo lands at exactly the same x,y as on normal frames.  Set
+%     the background canvas colour, clear the footline, suppress the
+%     frametitle.  All body content lives between \chalmerscover ...
+%     \endchalmerscover (or use \titleframe for the default layout).
+% -----------------------------------------------------------------------------
+% Environment for user-customised title / cover content.
+% Inside the environment the user gets:
+%     - purple background        (background canvas bg = ChalmersPurple)
+%     - white logo top-right     (same x,y as on every other slide)
+%     - no footline, no frame title
+% The user supplies whatever body content they wish.
+\newenvironment{chalmerscover}{%
+    \begingroup
+    \setbeamercolor{background canvas}{bg=ChalmersPurple}%
+    \setbeamertemplate{headline}{\Chalmerslogoheader{\Chalmersinsertlogowhite}}%
+    \setbeamertemplate{footline}{}%
+    \setbeamertemplate{frametitle}{}%
+    \begin{frame}%
+}{%
+    \end{frame}%
+    \endgroup
+}
+
+% Default cover: pulls title/subtitle/author/institute/date from metadata.
+% Title and author block are grouped together and placed slightly above
+% vertical centre -- with the logo top-right and the left side otherwise
+% empty, this gives the cover a balanced, magazine-like layout.  Users
+% who want a fully custom layout should use the \begin{chalmerscover}
+% environment instead.
+\newcommand{\Chalmersinsertrole}{}
+\newcommand{\role}[1]{\renewcommand{\Chalmersinsertrole}{#1}}
+\newcommand{\Chalmersinsertplace}{}
+\newcommand{\place}[1]{\renewcommand{\Chalmersinsertplace}{#1}}
+
+\newcommand{\titleframe}{%
+    \begin{chalmerscover}
+        \vskip 0pt plus 1fil
+        \vspace{-6mm}
+        \hspace{8mm}\begin{minipage}{0.85\paperwidth}
+            \usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par
+            \ifx\insertsubtitle\@empty\else
+                \vspace{1mm}%
+                \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+            \fi
+            \vspace{12mm}%
+            \usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par
+            \ifx\Chalmersinsertrole\@empty\else
+                \vspace{1mm}%
+                \usebeamerfont{institute}\usebeamercolor[fg]{institute}\Chalmersinsertrole\par
+            \fi
+            \ifx\insertinstitute\@empty\else
+                \vspace{1mm}%
+                \usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par
+            \fi
+            \vspace{5mm}%
+            \usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par
+            \ifx\Chalmersinsertplace\@empty\else
+                \vspace{1mm}%
+                \usebeamerfont{date}\usebeamercolor[fg]{date}\Chalmersinsertplace\par
+            \fi
+        \end{minipage}%
+        \vskip 0pt plus 5fil
+    \end{chalmerscover}
+}
+
+% Beamer's \titlepage is redirected to \titleframe for users who prefer the
+% standard idiom \frame{\titlepage}.
+\renewcommand{\titlepage}{\titleframe}
+
+% -----------------------------------------------------------------------------
+% 12. Section divider  (purple full-bleed, white section title, white logo)
+%     Triggered automatically at every \section{...}.
+%
+%     We capture the section name ourselves into \ChalmersSectionName because
+%     Beamer's \insertsection can expand to empty inside \AtBeginSection in
+%     some versions (an ordering bug between the section hook and the macro
+%     update).  Capturing the name via a \section wrapper avoids the issue.
+% -----------------------------------------------------------------------------
+\makeatletter
+\newcommand{\ChalmersSectionName}{}
+\let\Chalmers@oldsection\section
+\renewcommand\section{%
+    \@ifstar{\Chalmers@section@star}{\Chalmers@section@nostar}%
+}
+\newcommand\Chalmers@section@nostar{%
+    \@ifnextchar[{\Chalmers@section@opt}{\Chalmers@section@noopt}%
+}
+\def\Chalmers@section@opt[#1]#2{%
+    \gdef\ChalmersSectionName{#2}%
+    \Chalmers@oldsection[#1]{#2}%
+}
+\def\Chalmers@section@noopt#1{%
+    \gdef\ChalmersSectionName{#1}%
+    \Chalmers@oldsection{#1}%
+}
+\def\Chalmers@section@star#1{%
+    \gdef\ChalmersSectionName{#1}%
+    \Chalmers@oldsection*{#1}%
+}
+\makeatother
+
+% --- Section-divider style selector -----------------------------------------
+% \chalmerssectiondividers{<style>} -- choose how section pages look:
+%
+%   progress  (default)  white bg, list of all sections, current shown solid
+%                        purple + bold, others dimmed grey.  Same look as
+%                        the outline page; gives the audience a "you are
+%                        here" cue without breaking the visual flow.
+%   solid                purple full-bleed slide with the current section
+%                        name centred in large white text.  Use for longer
+%                        decks where a dramatic break between parts helps.
+%   none                 disable section dividers entirely (short decks).
+%
+% Override \AtBeginSection in your own .tex file for fully custom content.
+\newcommand{\Chalmerssectiondividerstyle}{progress}
+\newcommand{\chalmerssectiondividers}[1]{%
+    \renewcommand{\Chalmerssectiondividerstyle}{#1}%
+}
+
+% --- The three preset section-divider implementations -----------------------
+% `progress`: purple full-bleed background (same as the cover) + a list of
+% all sections styled like the outline page, with the current section in
+% solid white + bold, the others in dimmed white.
+% Manual section list: reads .toc directly and renders each section
+% (current section solid white + bold, others dim white).  This works
+% reliably inside \AtBeginSection where Beamer's own \tableofcontents
+% suppresses the current section.
+\newlength{\Chalmerssectionlistitemsep}
+\setlength{\Chalmerssectionlistitemsep}{2.5mm}
+
+\makeatletter
+\newcommand{\Chalmers@sectionlist@spacer}{%
+    \ifChalmers@sectionlist@first
+        \Chalmers@sectionlist@firstfalse
+    \else
+        \vspace{\Chalmerssectionlistitemsep}%
+    \fi
+}
+
+\newif\ifChalmers@sectionlist@first
+
+\newcommand{\Chalmersrenderoutlinelist}{%
+    \begingroup
+        \catcode`\@=11\relax % @ as letter, so the .toc tokens parse correctly
+        \@ifundefined{babel@toc}{}{\let\babel@toc\@gobbletwo}%
+        \Chalmers@sectionlist@firsttrue
+        \def\beamer@sectionintoc##1##2##3##4##5{%
+            \Chalmers@sectionlist@spacer
+            {\usebeamerfont{section in toc}\usebeamercolor[fg]{section in toc}##2}\par
+        }%
+        \IfFileExists{\jobname.toc}{\@input{\jobname.toc}}{}%
+    \endgroup
+}
+
+\newcommand{\Chalmersrendersectionlist}{%
+    \begingroup
+        \catcode`\@=11\relax % @ as letter, so the .toc tokens parse correctly
+        \@ifundefined{babel@toc}{}{\let\babel@toc\@gobbletwo}%
+        \Chalmers@sectionlist@firsttrue
+        % Compare by section NAME (string equality) -- the section counter
+        % does not always match inside \AtBeginSection, but the name we
+        % captured in \ChalmersSectionName always does.
+        \def\beamer@sectionintoc##1##2##3##4##5{%
+            \Chalmers@sectionlist@spacer
+            \edef\Chalmers@thissec{##2}%
+            \edef\Chalmers@currsec{\ChalmersSectionName}%
+            \ifx\Chalmers@thissec\Chalmers@currsec
+                {\usebeamerfont{section in toc}\bfseries\usebeamercolor[fg]{section divider current}##2}\par
+            \else
+                {\usebeamerfont{section in toc}\mdseries\usebeamercolor[fg]{section divider shaded}##2}\par
+            \fi
+        }%
+        \IfFileExists{\jobname.toc}{\@input{\jobname.toc}}{}%
+    \endgroup
+}
+\makeatother
+
+\newcommand{\Chalmersprogresssectiondivider}{%
+    \begingroup
+    \setbeamercolor{background canvas}{bg=ChalmersPurple}%
+    \setbeamertemplate{headline}{\Chalmerslogoheader{\Chalmersinsertlogowhite}}%
+    \setbeamertemplate{footline}{}%
+    \setbeamertemplate{frametitle}{}%
+    % Current section: bold, solid, and high contrast.  Other sections
+    % are the same size but dimmed.  Both inherit the active
+    % `section in toc` font so user theme customisations still apply.
+    \begin{frame}
+        \vfill
+        \hspace{8mm}\begin{minipage}{0.85\paperwidth}
+            \Chalmersrendersectionlist
+        \end{minipage}%
+        \vfill
+    \end{frame}
+    \endgroup
+}
+
+\newcommand{\Chalmerssolidsectiondivider}{%
+    \begingroup
+    \setbeamercolor{background canvas}{bg=ChalmersPurple}%
+    \setbeamertemplate{headline}{\Chalmerslogoheader{\Chalmersinsertlogowhite}}%
+    \setbeamertemplate{footline}{}%
+    \setbeamertemplate{frametitle}{}%
+    \begin{frame}
+        \vfill
+        \hspace{8mm}{\usebeamerfont{section title}\usebeamercolor[fg]{section title}\ChalmersSectionName}%
+        \vfill
+    \end{frame}
+    \endgroup
+}
+
+\AtBeginSection[]{%
+    \ifstrequal{\Chalmerssectiondividerstyle}{none}{}{%
+    \ifstrequal{\Chalmerssectiondividerstyle}{solid}{\Chalmerssolidsectiondivider}{%
+        \Chalmersprogresssectiondivider}}%
+}
+
+\mode<all>
