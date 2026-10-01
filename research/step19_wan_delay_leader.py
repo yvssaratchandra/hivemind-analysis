@@ -175,6 +175,8 @@ def run_trial(
     seed: int,
     fillers: int,
     label: str,
+    key_label: str,
+    attacker_region: Optional[str],
     schedule_min: float,
     schedule_max: float,
 ) -> tuple[dict, list[dict]]:
@@ -186,9 +188,11 @@ def run_trial(
         for index in range(5 + fillers)
     ]
     REGION_BY_ID = {int(node_id): REGIONS[(index + round_id) % len(REGIONS)] for index, node_id in enumerate(node_ids)}
+    if attacker_region is not None:
+        REGION_BY_ID[int(node_ids[1])] = attacker_region
     # Fresh DHT processes isolate arms, so reuse the exact key across delay
     # conditions; key-dependent routing must not confound the comparison.
-    run_id = f"e19_{label}_{round_id}"
+    run_id = f"e19_{key_label}_{round_id}"
     TARGET_KEY_ID = DHTID.generate(source=f"{run_id}.0b")
     PEER_REGIONS.clear()
 
@@ -227,6 +231,8 @@ def run_trial(
         profile="ripe_anchor_rtt_20260930.json",
         schedule_min_s=schedule_min,
         schedule_max_s=schedule_max,
+        attacker_region=REGION_BY_ID[int(node_ids[1])],
+        key_label=key_label,
     )
     current = [event for event in events if event["round"] == round_id]
     row["target_rpc_find"] = sum(event["kind"] == "wan_target_rpc_find" for event in current)
@@ -275,6 +281,8 @@ def main() -> int:
     parser.add_argument("--schedule-min", type=float, default=11.0)
     parser.add_argument("--schedule-max", type=float, default=15.0)
     parser.add_argument("--label", default="")
+    parser.add_argument("--key-label", default="", help="reuse a prior group key while writing distinct result files")
+    parser.add_argument("--attacker-region", choices=REGIONS, help="override only the attacker's region")
     parser.add_argument("--scales", nargs="+", type=float, default=[0.0, 1.0])
     parser.add_argument("--arms", nargs="+", choices=baseline.ARMS, default=list(baseline.ARMS))
     args = parser.parse_args()
@@ -297,6 +305,7 @@ def main() -> int:
         flush=True,
     )
     label = args.label or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    key_label = args.key_label or label
     rows: list[dict] = []
     events: list[dict] = []
     with mp.Manager() as manager:
@@ -314,6 +323,8 @@ def main() -> int:
                     seed=args.seed,
                     fillers=args.fillers,
                     label=label,
+                    key_label=key_label,
+                    attacker_region=args.attacker_region,
                     schedule_min=args.schedule_min,
                     schedule_max=args.schedule_max,
                 )

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">How DHT delay affects a deadline-undercutting attack</title>
+  <desc id="desc">Two measured local Hivemind timelines on the same seconds scale. The final DHT read and write include their routing walks, but earlier polling reads and bootstrap are omitted. In an 11–15 second honest scheduling window, the final read took 0.92 seconds, the store returned 1.16 seconds later, and the third incoming join request reached the attacker 1.67 seconds after that; 5.49 seconds remained until the attacker's advertised expiration. In a 5–7 second window, the final read took 0.92 seconds, the store returned 1.17 seconds later, and zero join requests reached the attacker in the remaining 2.68 seconds. These examples do not establish a minimum threshold.</desc>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #17243a; }
+    .muted { fill: #52627a; }
+    .small { font-size: 15px; }
+    .bartext { font-size: 15px; font-weight: 700; fill: #fff; text-anchor: middle; }
+    .duration { font-size: 14px; font-weight: 700; text-anchor: middle; }
+    .tick { font-size: 14px; fill: #52627a; text-anchor: middle; }
+    .grid { stroke: #e7edf5; stroke-width: 1; }
+  </style>
+
+  <rect width="1200" height="700" fill="#f6f8fc"/>
+  <text x="48" y="54" font-size="29" font-weight="750">Where the deadline time goes</text>
+  <text x="48" y="86" class="muted" font-size="17">Measured local Hivemind runs with WAN-like delays · 28 DHT peers · same time scale in both rows</text>
+  <rect x="48" y="105" width="1104" height="41" rx="10" fill="#e9f1ff"/>
+  <text x="66" y="132" font-size="16">With a 233 ms median link RTT, observed calls took about <tspan font-weight="700">0.9 s per DHT read</tspan> and <tspan font-weight="700">1.2 s per DHT write</tspan>.</text>
+
+  <rect x="48" y="162" width="1104" height="178" rx="16" fill="#fff" stroke="#dce5ef"/>
+  <rect x="48" y="352" width="1104" height="178" rx="16" fill="#fff" stroke="#dce5ef"/>
+
+  <!-- One horizontal scale: 72 pixels per second, starting at x=295. -->
+  <g>
+    <line class="grid" x1="295" x2="295" y1="216" y2="485"/>
+    <line class="grid" x1="439" x2="439" y1="216" y2="485"/>
+    <line class="grid" x1="583" x2="583" y1="216" y2="485"/>
+    <line class="grid" x1="727" x2="727" y1="216" y2="485"/>
+    <line class="grid" x1="871" x2="871" y1="216" y2="485"/>
+    <line class="grid" x1="1015" x2="1015" y1="216" y2="485"/>
+  </g>
+
+  <text x="72" y="196" font-size="19" font-weight="750" fill="#16845e">SUCCESS</text>
+  <text x="72" y="222" class="muted small">11–15 s deadline window</text>
+  <text x="72" y="246" class="muted small">3/3 delayed trials captured</text>
+  <text x="72" y="275" class="muted small">Example run shown</text>
+
+  <!-- Successful run: final read 0.915, store 1.158, last join 1.668, slack 5.488. -->
+  <rect x="295" y="240" width="66" height="45" rx="5" fill="#366fce"/>
+  <rect x="361" y="240" width="83" height="45" fill="#e58a2d"/>
+  <rect x="444" y="240" width="120" height="45" fill="#199768"/>
+  <rect x="564" y="240" width="395" height="45" rx="5" fill="#d9e5f1"/>
+  <text class="bartext" x="328" y="269">read</text>
+  <text class="bartext" x="402" y="269">write</text>
+  <text class="bartext" x="504" y="269">3 joins arrive</text>
+  <text x="761" y="269" font-size="15" font-weight="700" text-anchor="middle" fill="#314b68">time left</text>
+  <text class="duration" x="328" y="309">0.92 s</text>
+  <text class="duration" x="402" y="309">1.16 s</text>
+  <text class="duration" x="504" y="309">1.67 s</text>
+  <text class="duration" x="761" y="309">5.49 s</text>
+  <line x1="959" x2="959" y1="226" y2="298" stroke="#ae2941" stroke-width="3"/>
+  <text x="959" y="219" font-size="14" font-weight="700" text-anchor="middle" fill="#ae2941">deadline</text>
+
+  <text x="72" y="386" font-size="19" font-weight="750" fill="#bf4050">FAILURE</text>
+  <text x="72" y="412" class="muted small">5–7 s deadline window</text>
+  <text x="72" y="436" class="muted small">0/3 delayed trials captured</text>
+  <text x="72" y="465" class="muted small">One visible ad, no joins</text>
+
+  <!-- Failed run: final read 0.918, store 1.172, no joins before 2.680 slack expires. -->
+  <rect x="295" y="430" width="66" height="45" rx="5" fill="#366fce"/>
+  <rect x="361" y="430" width="84" height="45" fill="#e58a2d"/>
+  <rect x="445" y="430" width="193" height="45" rx="5" fill="#d96565"/>
+  <text class="bartext" x="328" y="459">read</text>
+  <text class="bartext" x="403" y="459">write</text>
+  <text class="bartext" x="541" y="459">0 joins arrived</text>
+  <text class="duration" x="328" y="499">0.92 s</text>
+  <text class="duration" x="403" y="499">1.17 s</text>
+  <text class="duration" x="541" y="499">2.68 s</text>
+  <line x1="638" x2="638" y1="416" y2="488" stroke="#ae2941" stroke-width="3"/>
+  <text x="638" y="409" font-size="14" font-weight="700" text-anchor="middle" fill="#ae2941">deadline</text>
+
+  <line x1="295" x2="1015" y1="546" y2="546" stroke="#7f91aa" stroke-width="2"/>
+  <g class="tick">
+    <text x="295" y="568">0</text>
+    <text x="439" y="568">2</text>
+    <text x="583" y="568">4</text>
+    <text x="727" y="568">6</text>
+    <text x="871" y="568">8</text>
+    <text x="1015" y="568">10</text>
+  </g>
+  <text x="655" y="596" class="muted" font-size="16" text-anchor="middle">Seconds since the attacker started its final DHT read</text>
+
+  <rect x="48" y="616" width="1104" height="57" rx="11" fill="#eaf4ef"/>
+  <text x="66" y="640" font-size="17" font-weight="700">What this supports: 11–15 s worked; 5–7 s failed in these trials.</text>
+  <text x="66" y="661" class="muted" font-size="15">Read/write include DHT walks; green ends at third join request, red is idle time. Earlier polls omitted; 7–11 s untested.</text>
+</svg>

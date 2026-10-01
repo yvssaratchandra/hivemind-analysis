@@ -7,7 +7,7 @@ Branch `research/net-security` · remote `origin` (the fork) · last updated 202
 
 ---
 
-## Current thread — prioritized attack experiments (2026-09-30)
+## Current thread — prioritized attack experiments (2026-10-01)
 
 **Moving-machine handoff (2026-10-01).** The latest WAN-like timing result is a *local emulation*,
 not a crawl of a public swarm. Its source measurements, harness, exact CSV traces and interpretation
@@ -25,16 +25,45 @@ The local emulator delays DHT find/store and join-stream RPCs, but not packet lo
 connection setup or all-reduce. The exact group key is known to the attacker. Do not report these
 counts as a public-WAN success rate or as proof of 100% leadership.
 
+**Stockholm and timeline follow-up (2026-10-01).** `step19_wan_delay_leader.py` now accepts
+`--attacker-region SE` to place the attacker in Stockholm and `--key-label` to reuse a prior group
+key while saving results under a new output label. In one delayed 11–15 s smoke run (seed 1925), the
+attacker led with all three honest followers and all three honest steps completed. From its first DHT
+read, it spent 2.46 s on earlier reads and waits, 0.77 s on its final DHT read, and 1.09 s on its
+DHT write; the third join request reached it 1.23 s after the write returned, leaving 5.63 s before its
+advertised expiration. In one delayed 5–7 s Stockholm smoke run (seed 1922), it made 27 reads but
+never published an advertisement, captured no group, and all honest steps completed. These are
+**single local trials**, not a Stockholm success rate or a minimum viable deadline.
+
+The updated `results/step19_five_region_deadline_view.{png,svg}` starts at the *first* attacker DHT
+read, includes earlier polling, and compares Stockholm, New York and São Paulo examples beside the
+five-region link-RTT matrix. Rebuild it with `.venv/bin/python research/plot_step19_five_regions.py`; the script
+uses the committed CSV traces and needs `matplotlib`, which is not in the project's requirements.
+The older `results/step19_deadline_timeline.{png,svg}` is a static two-run overview; use the
+five-region plot for the measured attacker-polling timeline. Timed DHT read/write calls include
+Hivemind's routing work, so do not add a separate DHT-walk delay to those bars. The time from write
+return to the third join request
+also includes a verification DHT read; it is **not** time to finish averaging. In the São Paulo short
+example, a visible ad received zero incoming joins in its remaining 2.68 s, but that does not prove
+why peers joined elsewhere. Bootstrap and connection setup remain unmeasured. The selected long runs
+had warmed routing tables and did not demonstrate newly discovered DHT hops beyond their initial
+20 responders. Mumbai and Sydney are RTT inputs only, not measured attacker-origin timelines.
+
 To inspect or rerun on the new machine, use the repository Python environment from the repo root:
 
 ```text
-python research/step19_wan_delay_leader.py --phase smoke --scales 0 1 --arms undercut --fillers 23 --rounds 1 --seed 1922 --schedule-min 5 --schedule-max 7 --label NEW_SHORT_CHECK
-python research/step19_wan_delay_leader.py --phase smoke --scales 1 --arms late undercut --fillers 23 --rounds 1 --seed 1925 --schedule-min 11 --schedule-max 15 --label NEW_LONG_CHECK
+.venv/bin/python research/step19_wan_delay_leader.py --phase smoke --scales 0 1 --arms undercut --fillers 23 --rounds 1 --seed 1922 --schedule-min 5 --schedule-max 7 --label NEW_SHORT_CHECK
+.venv/bin/python research/step19_wan_delay_leader.py --phase smoke --scales 1 --arms late undercut --fillers 23 --rounds 1 --seed 1925 --schedule-min 11 --schedule-max 15 --label NEW_LONG_CHECK
+.venv/bin/python research/step19_wan_delay_leader.py --phase smoke --scales 1 --arms undercut --fillers 23 --rounds 1 --seed 1925 --schedule-min 11 --schedule-max 15 --attacker-region SE --key-label 20260930_long_matched --label NEW_SE_LONG_CHECK
+.venv/bin/python research/step19_wan_delay_leader.py --phase smoke --scales 1 --arms undercut --fillers 23 --rounds 1 --seed 1922 --schedule-min 5 --schedule-max 7 --attacker-region SE --key-label 20260930_short_paired --label NEW_SE_SHORT_CHECK
+.venv/bin/python research/plot_step19_five_regions.py
 ```
 
 Use a new label so existing CSVs are not overwritten. `step19` imports `step15_adaptive_leader_live.py`
 and uses the saved RIPE profile by default; it starts many local processes and needs localhost socket
-access. First inspect the committed CSVs before rerunning. The next *small* observational test is a
+access. The plotting script has fixed input filenames, so a new run label does not silently change its
+figure. Install `matplotlib` into `.venv` if you need to regenerate the plot. First inspect the committed
+CSVs before rerunning. The next *small* observational test is a
 passive reader on a CPU-only local Hivemind swarm: record each DHT read duration, the earliest active
 advertised deadline, and remaining time **at read completion**. This tests the crawler's method, not
 public-swarm availability. Scale to a multi-host test only if this gate produces usable measurements.
@@ -128,10 +157,9 @@ but is unmaintained. This does **not** prove that no community run exists. The s
 to any swarm; next find a current operator-published bootstrap and run prefix, then verify its code
 path before designing the observation.
 
-**Local-only draft:** `research/observe_dht_key.py` is untracked, unrun and not on the remote. It was
-created before the user asked for code; its defaults do not reflect the shorter, more frequent study
-now under discussion. Do not treat it as an approved or validated crawler, and do not commit it as
-part of this handoff.
+**Local-only crawler draft:** The earlier `research/observe_dht_key.py` draft is absent from this
+worktree and not on the remote. Do not expect it after pulling or treat it as an approved crawler;
+the passive-reader gate above still needs implementation.
 
 ---
 
@@ -275,6 +303,7 @@ for detail.
 | `step15_adaptive_leader_live.py` | Track 1 stage B: the same adaptive policy against real local matchmaking and all-reduce, with a late-deadline control. |
 | `collect_ripe_anchor_rtt.py` | Collect a small reproducible RIPE Atlas anchor-mesh ping matrix for WAN-delay emulation. |
 | `step19_wan_delay_leader.py` | Track 1 routed local follow-up: compare adaptive leadership with and without measured pairwise RTTs. |
+| `plot_step19_five_regions.py` | Rebuild the five-region RTT matrix and measured deadline timelines from saved traces. |
 | `step16_roster_equivocation.py` | Track 2 stage A: smallest real-libp2p test of conflicting reducer indices and silent coordinate mixing. |
 | `step17_roster_equivocation_live.py` | Track 2 stage B: a malicious leader rewrites actual per-follower `BEGIN_ALLREDUCE` rosters in a live local swarm. |
 | `step18_routing_admission.py` | Track 3: compare random versus key-adjacent identities in five nearest honest peers' routing tables and actual find responses. |
