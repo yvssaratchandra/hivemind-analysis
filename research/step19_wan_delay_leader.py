@@ -177,6 +177,8 @@ def run_trial(
     label: str,
     key_label: str,
     attacker_region: Optional[str],
+    safety_margin: float,
+    observation_window: float,
     schedule_min: float,
     schedule_max: float,
 ) -> tuple[dict, list[dict]]:
@@ -210,8 +212,8 @@ def run_trial(
         rounds=1,
         seed=trial_seed,
         request_timeout=2.5,
-        safety_margin=1.0,
-        observation_window=0.3,
+        safety_margin=safety_margin,
+        observation_window=observation_window,
         schedule_min=schedule_min,
         schedule_max=schedule_max,
         step_timeout=28.0,
@@ -283,6 +285,20 @@ def main() -> int:
     parser.add_argument("--label", default="")
     parser.add_argument("--key-label", default="", help="reuse a prior group key while writing distinct result files")
     parser.add_argument("--attacker-region", choices=REGIONS, help="override only the attacker's region")
+    parser.add_argument(
+        "--safety-margin",
+        type=float,
+        default=1.0,
+        help="seconds of padding the attacker adds to request_timeout before an advertisement "
+        "counts as worth undercutting; 0 makes it willing to gamble on marginal targets",
+    )
+    parser.add_argument(
+        "--observation-window",
+        type=float,
+        default=0.3,
+        help="seconds a candidate must persist before the attacker commits; 0 means act on "
+        "first sighting",
+    )
     parser.add_argument("--scales", nargs="+", type=float, default=[0.0, 1.0])
     parser.add_argument("--arms", nargs="+", choices=baseline.ARMS, default=list(baseline.ARMS))
     args = parser.parse_args()
@@ -324,6 +340,8 @@ def main() -> int:
                     fillers=args.fillers,
                     label=label,
                     key_label=key_label,
+                    safety_margin=args.safety_margin,
+                    observation_window=args.observation_window,
                     attacker_region=args.attacker_region,
                     schedule_min=args.schedule_min,
                     schedule_max=args.schedule_max,
@@ -343,7 +361,7 @@ def main() -> int:
         PEER_REGIONS = None
 
     RESULTS.mkdir(exist_ok=True)
-    tag = f"{args.phase}_{label}_f{args.fillers}_r{rounds}_s{args.seed}"
+    tag = f"{args.phase}_{label}_f{args.fillers}_r{rounds}_s{args.seed}_m{args.safety_margin:g}_o{args.observation_window:g}"
     summary_path = RESULTS / f"step19_wan_delay_rounds_{tag}.csv"
     events_path = RESULTS / f"step19_wan_delay_events_{tag}.csv"
     write_csv(summary_path, rows)
