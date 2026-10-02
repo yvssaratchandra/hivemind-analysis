@@ -7,7 +7,77 @@ Branch `research/net-security` · remote `origin` (the fork) · last updated 202
 
 ---
 
-## Current thread — prioritized attack experiments (2026-10-02)
+## Current thread — suppression, and two realism corrections (2026-10-02, later)
+
+**Read this before trusting the undercutting result.** Two settings in `step19` were unrealistic, and
+fixing both together destroys the attack. Stockholm, 3 seeds per cell:
+
+| deadline window | start spread | captured |
+|---|---|---|
+| 11–15 s (wide) | 0.3 s | 3/3 |
+| 11–15 s (wide) | 3.0 s | 2/3 |
+| 11–11.4 s (tight) | 0.3 s | 3/3 |
+| **11–11.4 s (tight)** | **3.0 s** | **0/3** |
+
+Neither change alone is fatal; together they are. Undercutting needs a *gap* to get below and a
+*stable* target to aim at. Tight deadlines remove the gap, and the tie-break then falls to `peer_id`,
+which this attacker does not grind. Spread arrivals remove the stable target, because a peer can
+advertise *after* the attacker has already committed. **Both settings are the realistic ones**, taken
+from Hivemind's defaults rather than chosen: arrival spread is bounded by the progress-tracker refresh
+period (0.5–10 s, default 3 s, `progress_tracker.py:85-87`), and `Optimizer` converges deadlines on
+the shared epoch-end estimate (`optimizer.py:558-566`, already in §4.3). Runs:
+`results/step19_wan_delay_{rounds,events}_smoke_rl_*.csv`. Caveat: 3 seeds per cell, and 11–11.4 s is
+an approximation of "converged", not a spread measured from a real `Optimizer` swarm.
+
+`--jitter`, `--safety-margin` and `--observation-window` are now flags on `step19`, and all three
+appear in output filenames, so these runs cannot silently overwrite earlier ones.
+
+**`step21_mass_suppression.py` — new. The discovery gate passes completely.** step20 forged *one*
+peer reactively and captured 0/10; §4.12 gives the reason — suppression is one-directional, so a peer
+hidden from others can still read the key and still ask to join. This forges `False` for **every**
+peer in the attacker's roster, at a far-future expiration, repeatedly, while advertising normally.
+8 repeats × 2 arms, seeds 2101–2108:
+
+| | control | suppress |
+|---|---|---|
+| views showing an honest peer | **73/73** | **0/20** |
+| views showing only the attacker | 0/73 | **20/20** |
+| forgeries accepted | — | 24/24 |
+| attacker led | 8/8 | 8/8 |
+| honest steps completed | 17/24 | 17/24 |
+
+Total separation at the discovery layer with **zero crafted DHT identities** — §4.6 reached the same
+blinding with ~`bucket_size` = 20 of them, and this has no timing race. **But it changes no outcome,
+and the reason is a flaw in the control, not a null result.** Honest peers get an explicit
+`scheduled_time` of 11–15 s (`step15:415-416`); the attacker gets none and falls back to
+`now + min_matchmaking_time` = 5 s (`averager.py:393-395`), so its deadline is earliest by
+construction and it wins in *both* arms. A ceiling effect.
+
+**Next experiment, designed and not run.** Give the attacker a deadline *later* than every honest peer
+(`schedule_max + 2 s`) so it leads 0/8 in the control. Prediction, from `pop_next_leader` only
+following candidates with a lower `(expiration, peer_id)`: each suppressed honest peer sees only a
+candidate it will not follow, so it waits as leader, and the attacker joins one of them. That yields
+one group of {honest, attacker} at **β = 0.5** plus two honest peers that fail to average — capture
+and denial from one action. It is the forgery route to `step6_isolation.py`'s `chase` arm, which
+needed ~20 crafted identities to blind the victim's lookups.
+
+Three things to carry forward about `step21`:
+
+- **Reacting does not work at all.** The first version waited for a read before forging and achieved
+  nothing, because a group assembles in roughly the time one DHT read takes (1.04 s). The working
+  version pre-suppresses from a known roster before the round starts.
+- **That roster is assumed, not acquired.** The attacker is seeded from `wan.PEER_REGIONS`, justified
+  by a real run having many epochs. The experiment does not demonstrate obtaining the peer IDs.
+- **17/24 honest completions in *both* arms.** This harness has a baseline failure rate that would
+  mask a small denial effect.
+
+**Answered along the way, worth keeping.** A matchmaking read is *always* a full DHT walk: it goes
+through `dht.get(key, latest=True)`, which sets `sufficient_expiration_time = inf` (`node.py:542-543`),
+and nothing clears infinity, so the traversal never short-circuits and the local cache is never a
+shortcut. Measured: read #1 1.025 s, #2 1.020 s, #3 1.023 s — flat. So ~5 sequential round trips is a
+recurring per-operation cost, not a warm-up.
+
+## Previous thread — prioritized attack experiments (2026-10-02)
 
 **Meeting presentation (2026-10-02).** The current deck is
 `presentations/261002_hivemind_attacks/hivemind-attacks-revised.pdf` (also saved as
@@ -376,6 +446,7 @@ for detail.
 | `step15_adaptive_leader_live.py` | Track 1 stage B: the same adaptive policy against real local matchmaking and all-reduce, with a late-deadline control. |
 | `collect_ripe_anchor_rtt.py` | Collect a small reproducible RIPE Atlas anchor-mesh ping matrix for WAN-delay emulation. |
 | `step19_wan_delay_leader.py` | Track 1 routed local follow-up: compare adaptive leadership with and without measured pairwise RTTs. |
+| `step21_mass_suppression.py` | Forge `False` for every peer in the attacker's roster, repeatedly, and advertise normally. Discovery gate passes 20/20; outcome untested because the control is rigged. |
 | `plot_step19_five_regions.py` | Rebuild the five-region RTT matrix and measured deadline timelines from saved traces. |
 | `step16_roster_equivocation.py` | Track 2 stage A: smallest real-libp2p test of conflicting reducer indices and silent coordinate mixing. |
 | `step17_roster_equivocation_live.py` | Track 2 stage B: a malicious leader rewrites actual per-follower `BEGIN_ALLREDUCE` rosters in a live local swarm. |

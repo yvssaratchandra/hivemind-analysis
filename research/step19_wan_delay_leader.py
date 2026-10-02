@@ -179,6 +179,7 @@ def run_trial(
     attacker_region: Optional[str],
     safety_margin: float,
     observation_window: float,
+    jitter: float,
     schedule_min: float,
     schedule_max: float,
 ) -> tuple[dict, list[dict]]:
@@ -217,7 +218,7 @@ def run_trial(
         schedule_min=schedule_min,
         schedule_max=schedule_max,
         step_timeout=28.0,
-        jitter=0.3,
+        jitter=jitter,
         run_id=run_id,
         node_ids=node_ids,
         round_offset=round_id,
@@ -293,6 +294,14 @@ def main() -> int:
         "counts as worth undercutting; 0 makes it willing to gamble on marginal targets",
     )
     parser.add_argument(
+        "--jitter",
+        type=float,
+        default=0.3,
+        help="spread of peer start times in seconds. Real peers start when their progress view says "
+        "the epoch is ending, so the spread is bounded by the tracker refresh period "
+        "(min 0.5 s, default 3 s, max 10 s in progress_tracker.py:85-87)",
+    )
+    parser.add_argument(
         "--observation-window",
         type=float,
         default=0.3,
@@ -342,6 +351,7 @@ def main() -> int:
                     key_label=key_label,
                     safety_margin=args.safety_margin,
                     observation_window=args.observation_window,
+                    jitter=args.jitter,
                     attacker_region=args.attacker_region,
                     schedule_min=args.schedule_min,
                     schedule_max=args.schedule_max,
@@ -361,7 +371,7 @@ def main() -> int:
         PEER_REGIONS = None
 
     RESULTS.mkdir(exist_ok=True)
-    tag = f"{args.phase}_{label}_f{args.fillers}_r{rounds}_s{args.seed}_m{args.safety_margin:g}_o{args.observation_window:g}"
+    tag = f"{args.phase}_{label}_f{args.fillers}_r{rounds}_s{args.seed}_m{args.safety_margin:g}_o{args.observation_window:g}_j{args.jitter:g}"
     summary_path = RESULTS / f"step19_wan_delay_rounds_{tag}.csv"
     events_path = RESULTS / f"step19_wan_delay_events_{tag}.csv"
     write_csv(summary_path, rows)
