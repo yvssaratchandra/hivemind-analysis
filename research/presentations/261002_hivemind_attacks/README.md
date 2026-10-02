@@ -13,3 +13,19 @@ python research/presentations/261002_hivemind_attacks/render_hivemind_attacks.py
 That command requires `rsvg-convert` and `pdfunite`. If pdfLaTeX is available, compile `hivemind-attacks.tex` for a Beamer version; compile `hivemind-attacks-notes.tex` for slides alongside presenter notes. The Beamer wrapper was generated but could not be compiled in this environment because no TeX compiler is installed. The supplied combined PDF was rendered and visually checked here.
 
 Primary evidence: `research/step8_withdrawal.py`; `research/step20_wan_forged_priority.py` and its `research/results/step20_forged_priority_sweep_sweep_20261002_a_*.csv` results; `research/step17_roster_equivocation_live.py` and its `research/results/step17_roster_live_*_confirm_20260928_confirm_t5_s1717.csv` results. See also `research/CONTROL_DATA_AUDIT.md` C8.T and C14.T. The Chalmers emblem is from the bundled `logographics/` assets; see `LICENSE` and `NOTICE`.
+
+## Rendered output
+
+`render_hivemind_attacks.py` writes the combined PDF to `../rendered/`, not into this
+folder, so the folder can be zipped and uploaded to Overleaf without carrying a 1.4 MB
+build artefact that Overleaf would rebuild anyway.
+
+## Uploading to Overleaf
+
+Zip this whole folder. `hivemind-attacks.tex` is the main document; it needs only
+`slides/*.pdf` and the standard `graphicx`, `tikz` and `pgfpages` packages, so it
+compiles without the Chalmers theme. The theme and `logographics/` are used by
+`hivemind-control-plane.tex`, which is a separate entry point.
+
+`slides/*.svg` are the editable source artwork. Overleaf does not need them; drop them
+from the zip if upload size matters.

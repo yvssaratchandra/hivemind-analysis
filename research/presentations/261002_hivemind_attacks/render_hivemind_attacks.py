@@ -17,6 +17,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SLIDES = ROOT / "slides"
+# Build outputs live outside the deck folder so it can be zipped straight to Overleaf.
+RENDERED = ROOT.parent / "rendered"
 W, H = 1280, 720
 P = "#472DBE"
 PD = "#332085"
@@ -534,7 +536,8 @@ def main():
         pdf = SLIDES / f"{i:02d}.pdf"
         subprocess.run(["rsvg-convert", "-f", "pdf", "-o", str(pdf), str(svg)], check=True)
         pdfs.append(str(pdf))
-    combined = ROOT / "hivemind-attacks.pdf"
+    RENDERED.mkdir(exist_ok=True)
+    combined = RENDERED / "261002_hivemind_attacks.pdf"
     subprocess.run(["pdfunite", *pdfs, str(combined)], check=True)
     # Add invisible internal links over the appendix references on result slides.
     # pdfunite emits a conventional xref table, so an incremental PDF update
@@ -616,8 +619,8 @@ def main():
         ])
     tex.append(r"\end{document}")
     (ROOT / "hivemind-attacks.tex").write_text("\n".join(tex)+"\n", encoding="utf-8")
-    (ROOT / "hivemind-attacks-revised.pdf").write_bytes(combined.read_bytes())
-    print(f"Rendered {len(slides)} slides to {ROOT / 'hivemind-attacks.pdf'}")
+    (RENDERED / "261002_hivemind_attacks-revised.pdf").write_bytes(combined.read_bytes())
+    print(f"Rendered {len(slides)} slides to {combined}")
 
 
 if __name__ == "__main__":
