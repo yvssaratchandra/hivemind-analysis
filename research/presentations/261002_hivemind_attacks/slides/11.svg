@@ -21,18 +21,14 @@
 <polygon points="974,228 963.4,233.5 963.4,222.5" fill="#D52515"/>
 <rect x="982" y="196" width="215" height="64" rx="10" fill="#FCEEEB" stroke="none" stroke-width="2"/>
 <text x="1089.5" y="237" fill="#D52515" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="bold" text-anchor="middle">Wait for joins</text>
-<rect x="82" y="300" width="540" height="230" rx="12" fill="#F8F7FC" stroke="none" stroke-width="2"/>
+<rect x="82" y="300" width="540" height="182" rx="12" fill="#F8F7FC" stroke="none" stroke-width="2"/>
 <text x="352" y="346" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="bold" text-anchor="middle">Experiment 1 · where the attacker sits</text>
-<text x="112" y="404" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">5 attacker origins × 2 honest windows</text>
-<text x="112" y="444" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">3 seeds each, so 30 runs in total</text>
-<text x="112" y="484" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">A seed sets the node IDs and the</text>
-<text x="112" y="524" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">honest deadline schedule</text>
-<rect x="658" y="300" width="540" height="230" rx="12" fill="#FCEEEB" stroke="none" stroke-width="2"/>
+<text x="112" y="424" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="normal" text-anchor="start">5 origins × 2 deadline windows</text>
+<text x="112" y="470" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="normal" text-anchor="start">3 seeds each · 30 runs</text>
+<rect x="658" y="300" width="540" height="182" rx="12" fill="#FCEEEB" stroke="none" stroke-width="2"/>
 <text x="928" y="346" fill="#D52515" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="bold" text-anchor="middle">Experiment 2 · is the failure ours?</text>
-<text x="688" y="404" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">It ignores ads with under 3.5 s left</text>
-<text x="688" y="444" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">1.0 s of that is padding we chose</text>
-<text x="688" y="484" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">Set our padding to zero and retry</text>
-<text x="688" y="524" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">from Stockholm, the cheapest origin</text>
-<text x="640" y="592" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="normal" text-anchor="middle">28 local DHT nodes, 5–6 per region</text>
-<text x="640" y="639" fill="#666666" font-family="Liberation Sans, Arial, sans-serif" font-size="23" font-weight="normal" text-anchor="middle">Injected delays on one machine · group key known to the attacker</text>
+<text x="688" y="424" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="normal" text-anchor="start">Remove the attacker&#x27;s own caution</text>
+<text x="688" y="470" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="normal" text-anchor="start">and retry from Stockholm</text>
+<text x="640" y="552" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="normal" text-anchor="middle">28 local DHT nodes, 5–6 per region</text>
+<text x="640" y="600" fill="#666666" font-family="Liberation Sans, Arial, sans-serif" font-size="23" font-weight="normal" text-anchor="middle">Injected delays on one machine · group key known to the attacker</text>
 </svg>
