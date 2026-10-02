@@ -1,0 +1,4 @@
+window,region,arm,seed,target_eligible,forgery_accepted,forgery_writes,forgery_writes_accepted,target_joined_attacker,target_completed_step,target_first_choice_was_forged_peer,target_saw_forgery,target_saw_forgery_before_first_join,first_join_minus_selection_s,first_join_minus_forgery_s,changed_view_minus_forgery_s,honest_completed,hard_cancellations,stage_leaks
+11-15,SE,control,1925,1,,0,0,0,0,1,0,0,-0.048,,,3,,
+11-15,SE,withdraw,1925,1,1,1,1,0,0,1,0,0,-0.046,-0.058,,3,,
+11-15,SE,inflate,1925,1,1,1,1,0,0,1,0,0,-0.047,-0.059,,3,,

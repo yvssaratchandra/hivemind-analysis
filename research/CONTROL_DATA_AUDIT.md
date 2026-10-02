@@ -529,6 +529,21 @@ Next step. **Decision** is `demonstrated`, `possible` (code inference only), or 
   always wins (`timed_storage.py:81-84`), so the victim cannot overwrite it.
 - **Result.** One DHT write removes a peer from discovery, durably. The honest peers do the filtering,
   so the observable misbehaviour belongs to innocent nodes.
+- **WAN-delay follow-up (2026-10-02).** `step20_wan_forged_priority.py` paired a later-advertising
+  attacker with a no-forgery control, a forged `False` withdrawal, and a forged `True` record with
+  far-future expiration. One random-position DHT identity, 28 DHT nodes, five attacker regions, and
+  5–7 s / 11–15 s honest windows; one paired seed per region/window. Each attack trial had an accepted
+  forgery (**10/10** per attack; **29/29** individual writes), but the latest-scheduled honest peer
+  joined the attacker **0/10** per attack and **0/10** in the control. All **90/90** honest steps
+  completed. In **0/20** attack trials did a recorded victim read show the intended forged state
+  before its first join. This policy forges only one peer chosen from the first usable read. In five
+  of ten region/window setups, that peer differed from the victim's first choice; where it matched,
+  the victim selected that peer before the forged view arrived. Fourteen
+  trials later showed the intended state in the target's lookup, **0.48–1.60 s after the write**;
+  these were all too late for its first join. See the raw
+  `step20_forged_priority_sweep_sweep_20261002_a_{rounds,events}.csv` and derived `_analysis.csv`.
+  This is local RTT emulation and a single-seed policy test, not a public-WAN failure rate or a
+  general impossibility result; forging all earlier honest peers was not tested.
 - **Decision.** **Demonstrated, but narrower than it looks.** Against the control it does **not** become
   group capture. Availability and censorship, not control over who trains with whom.
 - **Next step.** None, settled.

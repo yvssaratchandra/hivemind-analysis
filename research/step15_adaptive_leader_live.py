@@ -495,6 +495,10 @@ def run_arm(
                     group_size=group_size,
                     hidden_schedule_min_s=f"{min(scheduled_times) - base:.6f}",
                     hidden_schedule_max_s=f"{max(scheduled_times) - base:.6f}",
+                    honest_peer_ids=json.dumps([str(peer.peer_id) for peer in honest_peers]),
+                    honest_deadlines=json.dumps(scheduled_times),
+                    honest_statuses=json.dumps([outcomes[f"honest_{index}"][0]
+                                                 for index in range(honest_count)]),
                     attacker_led=int(bool(begin_events)),
                     full_capture=int(full_capture),
                     follower_count=len(follower_ids),

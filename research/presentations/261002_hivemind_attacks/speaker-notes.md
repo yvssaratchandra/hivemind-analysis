@@ -1,0 +1,64 @@
+# Hivemind control-plane attacks — speaker notes
+
+## 1. Hivemind
+
+Today I will revisit last week's open questions, then discuss three attack ideas. Forged withdrawal and deadline inflation target public availability records; the third attack assumes the adversary has already become group leader. The evidence is local or from WAN-delay emulation; there is no public live-swarm measurement yet.
+
+## 2. Last week → today
+
+The minutes asked whether leadership can be made certain without knowing group key K, and proposed a live Hivemind crawler to collect advertisers, deadlines, and read latency. The search had not identified a live public averaging swarm. For this crawler, group_key is the correct term: it is the exact matchmaking advertisement key, constructed as prefix.0b<group_bits>. Joining a training run also requires its bootstrap peers, shared averaging prefix, and compatible training configuration; the group key alone is not enough. Our earlier key-targeted strategies do not establish 100% success for an unknown key. A passive observer draft exists at research/observe_dht_key.py, but it has not been run on a verified public averaging swarm. The latest timing evidence is a local 28-node test using delays derived from RIPE Atlas anchor-to-anchor ICMP ping RTTs in Sweden, the United States, Brazil, India, and Australia. The saved source profile is research/results/ripe_anchor_rtt_20260930.json. These are injected delays, not measurements of a public Hivemind network. These questions remain open. Today's three attacks are separate experiments, not a proven end-to-end chain.
+
+## 3. 1. Forged withdrawal
+
+Hivemind stores availability under a group key and a peer-ID subkey. An ordinary DHT peer can publish a False record under another peer's ID, with a far-future expiration. This says the peer is no longer looking for a group. Since these availability records are not owner-bound and the storage rule keeps the later expiration, the honest peer's normal shorter re-advertisement can be rejected. The effect is on discovery: a reader omits that peer. It does not prove the peer stops training. The attacker does not need to choose a DHT ID near K or control its replicas.
+
+## 4. Withdrawal: two separate tests
+
+The local mechanism test is research/step8_withdrawal.py. It compares a no-forgery control to an attack, checks visibility through a separate reader, and lets the honest peer try to publish again. A scale run tests targeted hiding among 12 and 40 honest peers. The follow-up is research/step20_wan_forged_priority.py: 28 localhost DHT nodes, 23 routing-only fillers, three honest averagers and one attacker; RTTs are injected from five geographic profiles. The attacker reads once, selects one earlier honest advertiser, publishes its own deadline one representable float later, and concurrently forges that selected peer's withdrawal. A paired control does not forge. The scored target is the latest-scheduled honest peer, identified after the run. There is one seed per region/window, so this follow-up is exploratory. No public network was involved.
+
+## 5. Withdrawal: results
+
+The strongest result is discovery censorship. The scale test hid all 39 intended targets in a 40-peer swarm while preserving the single nontarget’s visibility. In the re-advertisement test the honest victim did not restore its record in 30 attempts. The separate WAN-delay emulation shows that the attacker did not capture the target under this reactive policy: 0 of 10 withdrawal trials, exactly as in 0 of 10 controls. All 10 attack trials accepted a forgery; the target never saw the forged state in a recorded read before its first join. All 30 honest steps in that arm completed. The result does not establish that forged withdrawal cannot ever redirect group formation. It establishes that a one-peer first-read strategy did not do so here. See Appendix A1 for local discovery and Appendix A2 for the step20 timing follow-up.
+
+## 6. 2. Deadline inflation
+
+This is a second use of the unsigned availability record. Instead of writing False, the attacker writes True under honest peer H's ID, with a far-future expiration. The record remains visible, but H appears to have a later matchmaking deadline; the attacker's own deadline is then earlier in the local ordering. The timestamps on the slide are illustrative. In the implementation, expiration is both record lifetime and leader priority. This is why a far-future expiration can both win storage and move H behind A. But the target must see the forged value before it chooses whom to contact; merely getting the write accepted is insufficient. This attack still needs the group key K to target its record, but not a crafted DHT node ID.
+
+## 7. Inflation: measure the race to V’s view
+
+This is the inflation arm of research/step20_wan_forged_priority.py. In each run the attacker waits for its first usable DHT read, selects one earlier honest advertiser H, gives its own ad a deadline one floating-point step after H, and concurrently writes a True record for H with expiration one hour later. The control arm makes no forgery. We compare the target's candidate view before first join, actual first contact, and whether it ends up with the attacker. There are five attacker regional RTT profiles, two honest deadline windows (5–7 s and 11–15 s), and one paired seed per region/window. This is local RTT emulation. The critical sequence is read, choose, write, DHT visibility to the target, then target join; measuring only write acceptance misses the race.
+
+## 8. Accepted writes did not change V’s join
+
+All ten inflation attack trials got an accepted forgery. Yet none of the recorded target reads before its first join showed the intended altered state, and none of the targets joined the attacker. The paired no-forgery controls also captured zero of ten. Seven of the ten target views later showed the inflated record 0.504 to 1.579 seconds after the write, after the first join decision. Looking across both forgery arms, five of ten region/window settings targeted a peer other than the target's first choice; in the remaining settings the target selected H before the modified value arrived. The scope is a reactive strategy that forges one peer from the attacker's first usable read. Other strategies and actual public-WAN propagation remain untested.
+
+## 9. 3. One group, conflicting reducer indices
+
+This attack begins only after the adversary is group leader. The leader sends a separate BEGIN_ALLREDUCE message over each follower's authenticated join stream. All messages can contain the same group ID and exactly the same four peer IDs, while permuting their order. A roster position determines a reducer index for a tensor shard. Since followers do not compare a common roster commitment, they can assign the same shard to different reducers, and equal-shaped shards can be mixed without a protocol error. The pictured permutations are illustrative. This slide is explicitly conditional; the experiment deliberately arranged leadership and says nothing about WAN election probability.
+
+## 10. Roster test: change only the ordering
+
+Research/step17_roster_equivocation_live.py used four real local Hivemind DecentralizedAverager peers, a local DHT, authenticated matchmaking join streams, and the stock all-reduce implementation. Each peer starts with the same tensor [0,1,2,4]; a correct average must leave it unchanged. Four equal one-float shards make coordinate mixups type- and shape-valid. Five fresh paired trials compare a control with one common ordered roster to an attack where the predesignated leader sends each follower a personalized permutation of the same four unique IDs. The gathered list is reordered consistently and the group ID is unchanged. We check every output and the protocol's bans, fallback elements, errors, timeouts, and completion status. Leadership is a controlled precondition, not an observed election result.
+
+## 11. Wrong tensors, successful steps
+
+In five paired local trials, none of the common-roster controls corrupted output and all five equivocation trials did. All 20 attacked peer outputs were wrong; their maximum absolute errors were 2.25 to 3.0. All 40 averaging steps across control and attack arms completed. The tested failure indicators—reducer bans, fallback elements, RPC and all-reduce errors, timeouts, hard cancellations—stayed clear. That does not mean the attack is unobservable: the conflicting messages and outputs are observable if captured. Nor does it establish downstream optimizer behavior or lasting model damage. It establishes silent corruption of averaged tensors under an already malicious leader, through the real local protocol path. The concrete attacked tensor shown is the first recorded peer output from attack trial 0: [1.75, 0.75, 1.5, 3.0], compared with the correct [0, 1, 2, 4]. See Appendix A3 and the step17 raw CSV.
+
+## 12. A1. Withdrawal discovery tests
+
+These are the recorded local discovery scale checks from step8_withdrawal_phase2.csv and step8_withdrawal_phase2_n40.csv. There are two repeats for every target count. Both repeats hid all selected targets and preserved every nontarget. The 40-peer largest setting hid 39 of 39 selected targets, leaving one non-target visible. The separate 30-second refresh test in each swarm size attempted 30 honest re-advertisements; none restored the victim. The ordinary random-ID writer had no chosen placement near K. These results concern discovery, not proof that targets stopped training. For the separate WAN-delay group-capture follow-up, use Appendix A2.
+
+## 13. A2. Forged-record trials
+
+This table lists all ten region/window settings: five regional RTT profiles, 5–7-second and 11–15-second windows, and one seed per setting. Each cell shows target captures divided by recorded trials. The rows are generated directly from the saved analysis CSV. The attacker used one random-position DHT identity and forged one peer selected from its first usable read. The capture score is whether the retrospectively selected latest-scheduled honest target joined the attacker. 'View before join' means the recorded target lookup showed the intended changed state before first join. Across both attacks, 29 of 29 individual forged writes were accepted; some trials attempted more than one write. This is local WAN-delay emulation, not a real public network. Raw rounds and event traces are saved beside the derived analysis CSV.
+
+## 14. A3. Reducer-index trials
+
+Each row is one fresh paired control and equivocation trial. 'Correct' counts peers whose output equals the unchanged input tensor. Maximum absolute error is computed from attacked peer output, and 'Steps' counts successful completions in both arms. Consult the raw CSV for every tensor output and associated events for the transmitted rosters. These five trials are a local confirmation, not a WAN deployment or a model-convergence study.
+
+## Evidence files
+
+- `research/step8_withdrawal.py` and `research/CONTROL_DATA_AUDIT.md` (C8.T).
+- `research/step20_wan_forged_priority.py`, `research/analyze_step20.py`, and `research/results/step20_forged_priority_sweep_sweep_20261002_a_{rounds,events,analysis}.csv`.
+- `research/step17_roster_equivocation_live.py` and `research/results/step17_roster_live_{rounds,events}_confirm_20260928_confirm_t5_s1717.csv`.
+- `research/observe_dht_key.py` is an unrun draft, not a source of live measurements.

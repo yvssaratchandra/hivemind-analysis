@@ -3,11 +3,53 @@
 Everything a new session needs: what the project is, where it stands, what is known, and what to do
 next. Written to be read without any prior conversation.
 
-Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-10-01
+Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-10-02
 
 ---
 
-## Current thread — prioritized attack experiments (2026-10-01)
+## Current thread — prioritized attack experiments (2026-10-02)
+
+**Meeting presentation (2026-10-02).** The current deck is
+`presentations/261002_hivemind_attacks/hivemind-attacks-revised.pdf` (also saved as
+`hivemind-attacks.pdf` in that folder). Its 14 slides cover last week's questions,
+forged withdrawal, deadline inflation, and roster equivocation explicitly as a post-leader attack,
+with three linked evidence appendices. Each attack has mechanism, method, and result slides.
+`render_hivemind_attacks.py` is the editable source; it regenerates the SVG/PDF artwork, Beamer
+wrapper, and `speaker-notes.md`. The latest requested edits simplify slides 2–5, name RIPE Atlas
+as the delay source, explain the expiration-based overwrite rule, and put withdrawal results in
+one table. No live public averaging-swarm crawl has been run; `observe_dht_key.py` remains a draft.
+
+**Forged-priority WAN-delay follow-up (2026-10-02).** `step20_wan_forged_priority.py` reuses the
+28-node `step19` local RTT emulator to test two no-key-adjacent-ID attacks: forge an earlier honest
+peer's advertisement as withdrawn (`False`), or keep it active (`True`) but inflate its expiration.
+This run forges **one peer chosen from the attacker's first usable DHT read**, not every potential
+earlier leader. The attacker declares its own deadline **one ULP later** than that peer's, and
+issues its own publication and the forgery concurrently. It therefore never claims the globally
+earliest deadline. The scored victim is the latest-scheduled honest peer, chosen after the fact by
+the harness; the attacker does not learn hidden schedules. Each of five attacker origins (Stockholm,
+New York, São Paulo, Mumbai, Sydney) was tested once at both 5–7 s and 11–15 s honest windows, with
+fresh paired control/withdraw/inflate swarms: **30 trials, one seed per region/window**.
+The group key, DHT node IDs and deadline schedule are paired; fresh swarms generate fresh libp2p
+PeerIDs between arms.
+
+All **20/20** attack trials had an accepted forgery (**29/29** individual forged writes accepted);
+both attacks captured the scored victim **0/10**, as did the no-forgery control (**0/10**).
+All **90/90** honest steps completed, without hard cancellation or stage leak. In **0/20** attack
+trials did a recorded target read show the intended forged state before its first join. In five of
+the ten region/window setups, the peer the attacker forged was *not* the peer the victim first chose.
+In the other five, the victim chose that peer before seeing the forged state. Fourteen attack trials
+recorded the intended forged state in a later target lookup, first
+observed **0.48–1.60 s after write completion**; all were after the first join. The other six had no
+later target read showing it. The zero-delay mechanism gate confirms the write itself works: another
+honest peer saw the withdrawal/inflation roughly **7 ms** after acceptance, but the scored victim had
+already started joining. This is an observed failure of these two *reactive* policies under the
+tested conditions, not a proof that every forged-ad strategy fails. In particular, it does not
+test an attacker that knows or forges every earlier honest peer. Signed, owner-bound advertisements
+would also close the forgery primitive. The RTTs are injected into a localhost swarm from RIPE ICMP
+medians; these are **not public-WAN results**. Raw runs:
+`results/step20_forged_priority_{gate_gate_20261002_b,sweep_sweep_20261002_a}_{rounds,events}.csv`;
+derived timing table: `results/step20_forged_priority_sweep_sweep_20261002_a_analysis.csv`.
+Rebuild the timing table with `.venv/bin/python research/analyze_step20.py ROUND_CSV EVENT_CSV`.
 
 **Moving-machine handoff (2026-10-01).** The latest WAN-like timing result is a *local emulation*,
 not a crawl of a public swarm. Its source measurements, harness, exact CSV traces and interpretation
