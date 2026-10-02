@@ -29,7 +29,7 @@ INK = "#222222"
 GRAY = "#666666"
 LINE = "#D7D3E8"
 BG = "#FFFFFF"
-TOTAL = 18
+TOTAL = 15
 
 
 def e(s: object) -> str:
@@ -154,8 +154,8 @@ add(s, "The minutes asked whether leadership can be made certain without knowing
 
 # Setup, before the attacks: the measured RTT profile the emulator uses.
 s = Slide("The delay profile: RIPE Atlas anchor RTTs", 3, "Setup · emulated delays")
-s.text(640, 148, "RIPE Atlas is a global measurement network whose anchor hosts continuously ping", 26, INK, anchor="middle")
-s.text(640, 182, "each other; we took the median of three ICMP replies per directed pair.", 26, INK, anchor="middle")
+s.text(640, 148, "RIPE Atlas is a global measurement network whose anchor hosts continuously", 26, INK, anchor="middle")
+s.text(640, 182, "ping each other. Each cell is the median of three ICMP replies.", 26, INK, anchor="middle")
 
 rtt = [[9, 99, 209, 147, 298],
        [99, 13, 125, 285, 240],
@@ -192,7 +192,7 @@ s.text(995, 468, "range across the 20 links", 24, GRAY, anchor="middle")
 s.text(995, 546, "Each region holds 5–6 of the", 24, INK, anchor="middle")
 s.text(995, 578, "28 nodes in the swarm", 24, INK, anchor="middle")
 
-s.text(640, 639, "Link RTTs, not DHT operation times · measured 30 Sep 2026 · profile saved as ripe_anchor_rtt_20260930.json", 22, GRAY, anchor="middle")
+s.text(640, 639, "Link RTTs, not DHT operation times · measured 30 September 2026", 22, GRAY, anchor="middle")
 
 add(s, "RIPE Atlas is a global internet measurement network run by the RIPE NCC: thousands of small probes and a few hundred better-connected anchor hosts that continuously ping one another, with the results published openly. We took anchor-to-anchor ICMP round-trip times between the five regions on 30 September 2026 and used the median of three replies per directed pair. The matrix is slightly asymmetric because each direction was measured separately. Median between regions is 233 milliseconds, with the twenty inter-region links spanning 99 to 503 milliseconds; Sydney to Mumbai is the worst at 503. These are link round-trip times, not the cost of a DHT operation: one Hivemind read or write takes roughly five sequential round trips on top of this. The numbers feed the emulator used for both the forged-priority and the undercutting experiments, with each region holding five or six of the 28 nodes. The ping times are real measurements; the Hivemind traffic they delay is local.")
 
@@ -247,9 +247,9 @@ for y, label, result in results:
     s.text(758, y, result, 28, INK)
 s.line(90, 391, 1195, 391, LINE, 1)
 s.text(640, 606, "Group capture was tested locally with delays derived from RIPE Atlas pings.", 25, GRAY, anchor="middle")
-exact_tables(s, "A1")
+# exact_tables(s, "A1")  # appendix disabled
 
-add(s, "The strongest result is discovery censorship. The scale test hid all 39 intended targets in a 40-peer swarm while preserving the single nontarget’s visibility. In the re-advertisement test the honest victim did not restore its record in 30 attempts. The separate WAN-delay emulation shows that the attacker did not capture the target under this reactive policy: 0 of 10 withdrawal trials, exactly as in 0 of 10 controls. All 10 attack trials accepted a forgery; the target never saw the forged state in a recorded read before its first join. All 30 honest steps in that arm completed. The result does not establish that forged withdrawal cannot ever redirect group formation. It establishes that a one-peer first-read strategy did not do so here. See Appendix A1 for local discovery and Appendix A2 for the step20 timing follow-up.")
+add(s, "The strongest result is discovery censorship. The scale test hid all 39 intended targets in a 40-peer swarm while preserving the single nontarget’s visibility. In the re-advertisement test the honest victim did not restore its record in 30 attempts. The separate WAN-delay emulation shows that the attacker did not capture the target under this reactive policy: 0 of 10 withdrawal trials, exactly as in 0 of 10 controls. All 10 attack trials accepted a forgery; the target never saw the forged state in a recorded read before its first join. All 30 honest steps in that arm completed. The result does not establish that forged withdrawal cannot ever redirect group formation. It establishes that a one-peer first-read strategy did not do so here. Local discovery counts are in step8_withdrawal_phase2.csv; the timing follow-up is in the step20 sweep CSV.")
 
 # Inflation mechanism: the same availability field is also the priority.
 s = Slide("2. Deadline inflation", 7, "Deadline inflation · mechanism")
@@ -318,9 +318,9 @@ s.text(339, 548, "V picked a peer", 27, INK)
 s.arrow(615, 539, 711, 539, P, 2)
 s.text(747, 548, "forged view appeared later", 27, INK)
 s.text(640, 611, "One reactive, single-peer policy; other strategies remain untested.", 26, GRAY, anchor="middle")
-exact_tables(s, "A2")
+# exact_tables(s, "A2")  # appendix disabled
 
-add(s, "All ten inflation attack trials got an accepted forgery. Yet none of the recorded target reads before its first join showed the intended altered state, and none of the targets joined the attacker. The paired no-forgery controls also captured zero of ten. Seven of the ten target views later showed the inflated record 0.504 to 1.579 seconds after the write, after the first join decision. Looking across both forgery arms, five of ten region/window settings targeted a peer other than the target's first choice; in the remaining settings the target selected H before the modified value arrived. The scope is a reactive strategy that forges one peer from the attacker's first usable read. Other strategies and actual public-WAN propagation remain untested.")
+add(s, "All ten inflation attack trials got an accepted forgery. Yet none of the recorded target reads before its first join showed the intended altered state, and none of the targets joined the attacker. The paired no-forgery controls also captured zero of ten. Seven of the ten target views later showed the inflated record 0.504 to 1.579 seconds after the write, after the first join decision. Per-trial figures are in the step20 sweep CSV. Looking across both forgery arms, five of ten region/window settings targeted a peer other than the target's first choice; in the remaining settings the target selected H before the modified value arrived. The scope is a reactive strategy that forges one peer from the attacker's first usable read. Other strategies and actual public-WAN propagation remain untested.")
 
 # Attack 4 mechanism: read every advertised deadline, then declare one step earlier.
 s = Slide("3. Deadline undercutting", 10, "Deadline undercutting · mechanism")
@@ -334,7 +334,7 @@ for i, (name, when) in enumerate([("H1", "now + 11.4 s"), ("H2", "now + 12.8 s")
     s.text(291, 334 + i * 60, when, 28, INK)
 s.rect(82, 496, 465, 62, RL, radius=7)
 s.text(111, 538, "A", 29, RED, weight="bold")
-s.text(291, 538, "now + 11.4 s − 1 ulp", 28, RED)
+s.text(291, 538, "now + 11.4 s − one float step", 28, RED)
 s.arrow(567, 400, 711, 400, RED, 3)
 s.lines(639, 356, ["undercut the", "earliest"], 24, RED, 30, anchor="middle")
 s.box(737, 262, 465, 200, fill=RL, stroke="none", radius=12)
@@ -343,7 +343,7 @@ s.text(969, 369, "earliest deadline wins", 26, INK, anchor="middle")
 s.text(969, 423, "A leads; A admits whom it likes", 26, RED, anchor="middle")
 s.text(969, 525, "Cost to A: one identity,", 26, GRAY, anchor="middle")
 s.text(969, 560, "no compute, no crafted node ID", 26, GRAY, anchor="middle")
-s.text(640, 633, "One ulp is 2.4×10⁻⁷ s here · enough to win the comparison, no advertisement life lost", 23, GRAY, anchor="middle")
+s.text(640, 633, "A float step is 2.4×10⁻⁷ s at these timestamps · wins the ordering, costs no advertisement life", 23, GRAY, anchor="middle")
 
 add(s, "This is the third use of the unsigned, self-declared deadline, and the simplest. The attacker does not forge anyone else's record: it reads the advertisements at the group key, takes the earliest deadline it can see, and declares its own one floating-point step earlier. np.nextafter moves the value by 2.4e-7 seconds at these timestamps, which wins the ordering in pop_next_leader while giving up no meaningful advertisement lifetime. Winning the election is what matters, because the leader decides admission. The cost is one identity, no computation and no crafted DHT node ID; it does require the group key. Unlike attacks 1 and 2 this needs no forgery at all, so there is no third-party record to validate.")
 
@@ -359,12 +359,12 @@ s.arrow(922, 228, 974, 228, RED, 3)
 process(s, 982, 196, 215, "Wait for joins", RED)
 s.box(82, 300, 540, 230, fill="#F8F7FC", stroke="none", radius=12)
 s.text(352, 346, "Experiment 1 · where the attacker sits", 26, P, weight="bold", anchor="middle")
-s.lines(112, 400, ["5 origins: Stockholm, New York, São Paulo,", "Mumbai, Sydney · RTTs from RIPE Atlas pings",
-                   "2 honest windows: 5–7 s and 11–15 s", "3 seeds each → 30 runs"], 25, INK, 38)
+s.lines(112, 404, ["5 attacker origins × 2 honest windows", "3 seeds each, so 30 runs in total",
+                   "A seed sets the node IDs and the", "honest deadline schedule"], 25, INK, 40)
 s.box(658, 300, 540, 230, fill=RL, stroke="none", radius=12)
 s.text(928, 346, "Experiment 2 · is the failure ours?", 26, RED, weight="bold", anchor="middle")
-s.lines(688, 400, ["Our attacker skips any ad with under 3.5 s left", "(request_timeout 2.5 + our own 1.0 margin)",
-                   "Set both that margin and the 0.3 s confirmation", "wait to zero · Stockholm, the cheapest origin"], 25, INK, 38)
+s.lines(688, 404, ["It ignores ads with under 3.5 s left", "1.0 s of that is padding we chose",
+                   "Set our padding to zero and retry", "from Stockholm, the cheapest origin"], 25, INK, 40)
 s.text(640, 589, "28 local DHT nodes, 5–6 per region · above bucket_size 20, so lookups must route", 26, INK, anchor="middle")
 s.text(640, 639, "Injected delays on one machine · no loss, churn or connection setup · key known to A", 23, GRAY, anchor="middle")
 
@@ -382,11 +382,9 @@ for i, name in enumerate(["Stockholm", "New York", "São Paulo", "Mumbai", "Sydn
     s.text(700, y, "3 / 3", 28, GREEN, weight="bold", anchor="middle")
     s.text(1010, y, "0 / 3", 28, RED, weight="bold", anchor="middle")
 s.line(100, 500, 1193, 500, LINE, 1)
-s.text(106, 547, "Location changes cost, not outcome:", 26, P, weight="bold")
-s.text(640, 547, "read + write 2.1 s from Stockholm, 3.7 s from Sydney", 26, INK)
-s.text(106, 596, "Removing our own caution:", 26, RED, weight="bold")
-s.text(474, 596, "published 1/3 → 3/3, led 0/3 → 1/3, captured 0/3 either way", 26, INK)
-s.text(640, 655, "Figure: results/step19_region_sweep.png · raw runs: step19_wan_delay_*_r5_*.csv", 23, GRAY, anchor="middle")
+s.text(640, 551, "Location changes the cost, not the outcome:", 27, P, weight="bold", anchor="middle")
+s.text(640, 589, "read + write takes 2.1 s from Stockholm and 3.7 s from Sydney", 27, INK, anchor="middle")
+s.text(640, 645, "Removing the attacker's own caution still captured 0 / 3 in the 5–7 s window", 23, GRAY, anchor="middle")
 
 add(s, "The attacker's location does not change whether it wins. All five origins captured three of three rounds with an 11 to 15 second honest deadline window, and zero of three with a 5 to 7 second window, which is Hivemind's shipped default. What location does change is cost: read plus write takes 2.1 seconds from Stockholm and 3.7 from Sydney, and fitting that against mean round-trip time gives roughly 4.8 sequential round trips for a read and 5.8 for a write, with near-zero intercepts, so the critical path is almost pure network time. The short window fails earlier than expected: in 14 of 15 runs the attacker never published at all, because by the time its read returns no advertisement still has 3.5 seconds of life. Since 1.0 second of that threshold was our own padding, we removed it along with the confirmation wait. The attacker then published in every run and won leadership once, but still never assembled a group, so the failure at the default is protocol timing rather than our conservatism. One caveat: this is noisy. An earlier run with the same seed and settings drew two followers and cost an honest peer its step, where the sweep run drew one and cost none.")
 
@@ -454,81 +452,85 @@ s.text(816, 447, "20/20 attacked outputs wrong", 26, RED, weight="bold")
 s.line(82, 505, 1197, 505, LINE, 1)
 s.text(640, 553, "All 40 steps completed; tested failure indicators stayed clear.", 29, INK, anchor="middle")
 s.text(640, 605, "Tensor corruption measured locally; downstream training damage was not tested.", 24, GRAY, anchor="middle")
-exact_tables(s, "A3")
+# exact_tables(s, "A3")  # appendix disabled
 
-add(s, "In five paired local trials, none of the common-roster controls corrupted output and all five equivocation trials did. All 20 attacked peer outputs were wrong; their maximum absolute errors were 2.25 to 3.0. All 40 averaging steps across control and attack arms completed. The tested failure indicators—reducer bans, fallback elements, RPC and all-reduce errors, timeouts, hard cancellations—stayed clear. That does not mean the attack is unobservable: the conflicting messages and outputs are observable if captured. Nor does it establish downstream optimizer behavior or lasting model damage. It establishes silent corruption of averaged tensors under an already malicious leader, through the real local protocol path. The concrete attacked tensor shown is the first recorded peer output from attack trial 0: [1.75, 0.75, 1.5, 3.0], compared with the correct [0, 1, 2, 4]. See Appendix A3 and the step17 raw CSV.")
+add(s, "In five paired local trials, none of the common-roster controls corrupted output and all five equivocation trials did. All 20 attacked peer outputs were wrong; their maximum absolute errors were 2.25 to 3.0. All 40 averaging steps across control and attack arms completed. The tested failure indicators—reducer bans, fallback elements, RPC and all-reduce errors, timeouts, hard cancellations—stayed clear. That does not mean the attack is unobservable: the conflicting messages and outputs are observable if captured. Nor does it establish downstream optimizer behavior or lasting model damage. It establishes silent corruption of averaged tensors under an already malicious leader, through the real local protocol path. The concrete attacked tensor shown is the first recorded peer output from attack trial 0: [1.75, 0.75, 1.5, 3.0], compared with the correct [0, 1, 2, 4]. See the step17 raw CSV.")
 
-# Appendix A1: local discovery and refresh evidence.
-s = Slide("A1. Withdrawal discovery tests", 16, "Appendix · exact results")
-s.text(640, 150, "One ordinary random-ID writer · counts below matched in both repeats", 25, GRAY, anchor="middle")
-cols=[85,310,534,764,1005]
-for x,h in zip(cols,["Honest peers","Targets / run","Hidden / run","Others visible","Repeats"]):
-    s.text(x, 216, h, 25, P, weight="bold")
-s.line(80, 239, 1200, 239, LINE, 2)
-import csv
-row_index=0
-for count,file in [(12,"step8_withdrawal_phase2.csv"),(40,"step8_withdrawal_phase2_n40.csv")]:
-    with (ROOT.parent.parent/"results"/file).open(newline="") as handle:
-        scale=[r for r in csv.DictReader(handle) if r["check"]=="scale"]
-    targets=sorted({int(r["written"]) for r in scale})
-    for target in targets:
-        group=[r for r in scale if int(r["written"])==target]
-        assert all(int(r["hidden"])==target and int(r["survivors"])==count-target for r in group)
-        y=285+row_index*38
-        values=[str(count),str(target),str(target),f"{count-target} / {count-target}",str(len(group))]
-        for x,value in zip(cols,values):s.text(x,y,value,26,INK)
-        row_index+=1
-s.text(640, 578, "Separate refresh test: 0/30 attempts restored H in each swarm size.", 25, INK, anchor="middle")
-s.text(640, 614, "Source: step8_withdrawal_phase2.csv and step8_withdrawal_phase2_n40.csv", 21, GRAY, anchor="middle")
-exact_tables(s, "A2")
-add(s, "These are the recorded local discovery scale checks from step8_withdrawal_phase2.csv and step8_withdrawal_phase2_n40.csv. There are two repeats for every target count. Both repeats hid all selected targets and preserved every nontarget. The 40-peer largest setting hid 39 of 39 selected targets, leaving one non-target visible. The separate 30-second refresh test in each swarm size attempted 30 honest re-advertisements; none restored the victim. The ordinary random-ID writer had no chosen placement near K. These results concern discovery, not proof that targets stopped training. For the separate WAN-delay group-capture follow-up, use Appendix A2.")
-
-# Appendix: every RTT/window setting, not just the aggregate.
-s = Slide("A2. Forged-record trials", 17, "Appendix · exact results")
-s.text(640, 151, "Targets that joined A / trials · one seed per region and deadline window", 25, GRAY, anchor="middle")
-cols=[82,302,523,745,960]
-for x,h in zip(cols,["RTT origin","Window","Control","Withdrawal","Inflation"]):
-    s.text(x, 204, h, 25, P, weight="bold")
-s.line(80, 222, 1200, 222, LINE, 2)
-import csv
-with (ROOT.parent.parent / "results" / "step20_forged_priority_sweep_sweep_20261002_a_analysis.csv").open(newline="") as handle:
-    wan = list(csv.DictReader(handle))
-regions={"SE":"Sweden","US":"United States","BR":"Brazil","IN":"India","AU":"Australia"}
-controls=[r for r in wan if r["arm"]=="control"]
-for i,row in enumerate(controls):
-    y=260+i*32
-    if i==5: s.line(80, y-24, 1200, y-24, LINE, 1)
-    result=[]
-    for arm in ["control","withdraw","inflate"]:
-        a=[r for r in wan if r["region"]==row["region"] and r["window"]==row["window"] and r["arm"]==arm]
-        result.append(f'{sum(int(r["target_joined_attacker"]) for r in a)} / {len(a)}')
-    for x,value in zip(cols,[regions[row["region"]],row["window"]+" s",*result]):
-        s.text(x,y,value,23,INK)
-s.text(640, 606, "Forgery accepted in 20/20 attack trials (29/29 writes); all 90 honest steps completed.", 23, INK, anchor="middle")
-s.text(640, 650, "28-node local RTT emulation · source: step20 sweep_20261002_a analysis + event CSVs", 21, GRAY, anchor="middle")
-
-add(s, "This table lists all ten region/window settings: five regional RTT profiles, 5–7-second and 11–15-second windows, and one seed per setting. Each cell shows target captures divided by recorded trials. The rows are generated directly from the saved analysis CSV. The attacker used one random-position DHT identity and forged one peer selected from its first usable read. The capture score is whether the retrospectively selected latest-scheduled honest target joined the attacker. 'View before join' means the recorded target lookup showed the intended changed state before first join. Across both attacks, 29 of 29 individual forged writes were accepted; some trials attempted more than one write. This is local WAN-delay emulation, not a real public network. Raw rounds and event traces are saved beside the derived analysis CSV.")
-
-# Appendix: exact per-trial tensor correctness and error.
-s = Slide("A3. Reducer-index trials", 18, "Appendix · exact results")
-s.text(640, 153, "Four peers · five paired local trials · identical input [0, 1, 2, 4]", 26, GRAY, anchor="middle")
-cols=[90,263,518,781,1080]
-heads=["Trial","Control correct","Attack correct","Max. abs. error","Steps"]
-for x,h in zip(cols,heads):
-    s.text(x, 228, h, 25, P, weight="bold")
-s.line(84, 249, 1205, 249, LINE, 2)
-with (ROOT.parent.parent / "results" / "step17_roster_live_rounds_confirm_20260928_confirm_t5_s1717.csv").open(newline="") as handle:
-    data = list(csv.DictReader(handle))
-for i in range(5):
-    ctrl=next(r for r in data if r["arm"]=="control" and r["trial"]==str(i))
-    atk=next(r for r in data if r["arm"]=="equivocate" and r["trial"]==str(i))
-    y=304+i*52
-    vals=[str(i+1),f'{ctrl["correct"]} / 4',f'{atk["correct"]} / 4',f'{float(atk["max_abs_error"]):.2f}',f'{int(ctrl["completed"])+int(atk["completed"])} / 8']
-    for x,value in zip(cols,vals):s.text(x,y,value,28,INK)
-s.text(640, 595, "No bans, fallback elements, RPC/all-reduce errors, timeouts, or hard cancellations.", 24, INK, anchor="middle")
-s.text(640, 646, "Source: step17_roster_live_rounds_confirm_20260928_confirm_t5_s1717.csv", 22, GRAY, anchor="middle")
-
-add(s, "Each row is one fresh paired control and equivocation trial. 'Correct' counts peers whose output equals the unchanged input tensor. Maximum absolute error is computed from attacked peer output, and 'Steps' counts successful completions in both arms. Consult the raw CSV for every tensor output and associated events for the transmitted rosters. These five trials are a local confirmation, not a WAN deployment or a model-convergence study.")
+# --- Appendix slides disabled for the 2 October talk ---------------------
+# Re-enable by uncommenting this block, restoring TOTAL and `targets`,
+# and the three exact_tables() calls on the result slides.
+#
+# # Appendix A1: local discovery and refresh evidence.
+# s = Slide("A1. Withdrawal discovery tests", 16, "Appendix · exact results")
+# s.text(640, 150, "One ordinary random-ID writer · counts below matched in both repeats", 25, GRAY, anchor="middle")
+# cols=[85,310,534,764,1005]
+# for x,h in zip(cols,["Honest peers","Targets / run","Hidden / run","Others visible","Repeats"]):
+#     s.text(x, 216, h, 25, P, weight="bold")
+# s.line(80, 239, 1200, 239, LINE, 2)
+# import csv
+# row_index=0
+# for count,file in [(12,"step8_withdrawal_phase2.csv"),(40,"step8_withdrawal_phase2_n40.csv")]:
+#     with (ROOT.parent.parent/"results"/file).open(newline="") as handle:
+#         scale=[r for r in csv.DictReader(handle) if r["check"]=="scale"]
+#     targets=sorted({int(r["written"]) for r in scale})
+#     for target in targets:
+#         group=[r for r in scale if int(r["written"])==target]
+#         assert all(int(r["hidden"])==target and int(r["survivors"])==count-target for r in group)
+#         y=285+row_index*38
+#         values=[str(count),str(target),str(target),f"{count-target} / {count-target}",str(len(group))]
+#         for x,value in zip(cols,values):s.text(x,y,value,26,INK)
+#         row_index+=1
+# s.text(640, 578, "Separate refresh test: 0/30 attempts restored H in each swarm size.", 25, INK, anchor="middle")
+# s.text(640, 614, "Source: step8_withdrawal_phase2.csv and step8_withdrawal_phase2_n40.csv", 21, GRAY, anchor="middle")
+# # exact_tables(s, "A2")  # appendix disabled
+# add(s, "These are the recorded local discovery scale checks from step8_withdrawal_phase2.csv and step8_withdrawal_phase2_n40.csv. There are two repeats for every target count. Both repeats hid all selected targets and preserved every nontarget. The 40-peer largest setting hid 39 of 39 selected targets, leaving one non-target visible. The separate 30-second refresh test in each swarm size attempted 30 honest re-advertisements; none restored the victim. The ordinary random-ID writer had no chosen placement near K. These results concern discovery, not proof that targets stopped training. For the separate WAN-delay group-capture follow-up, use Appendix A2.")
+#
+# # Appendix: every RTT/window setting, not just the aggregate.
+# s = Slide("A2. Forged-record trials", 17, "Appendix · exact results")
+# s.text(640, 151, "Targets that joined A / trials · one seed per region and deadline window", 25, GRAY, anchor="middle")
+# cols=[82,302,523,745,960]
+# for x,h in zip(cols,["RTT origin","Window","Control","Withdrawal","Inflation"]):
+#     s.text(x, 204, h, 25, P, weight="bold")
+# s.line(80, 222, 1200, 222, LINE, 2)
+# import csv
+# with (ROOT.parent.parent / "results" / "step20_forged_priority_sweep_sweep_20261002_a_analysis.csv").open(newline="") as handle:
+#     wan = list(csv.DictReader(handle))
+# regions={"SE":"Sweden","US":"United States","BR":"Brazil","IN":"India","AU":"Australia"}
+# controls=[r for r in wan if r["arm"]=="control"]
+# for i,row in enumerate(controls):
+#     y=260+i*32
+#     if i==5: s.line(80, y-24, 1200, y-24, LINE, 1)
+#     result=[]
+#     for arm in ["control","withdraw","inflate"]:
+#         a=[r for r in wan if r["region"]==row["region"] and r["window"]==row["window"] and r["arm"]==arm]
+#         result.append(f'{sum(int(r["target_joined_attacker"]) for r in a)} / {len(a)}')
+#     for x,value in zip(cols,[regions[row["region"]],row["window"]+" s",*result]):
+#         s.text(x,y,value,23,INK)
+# s.text(640, 606, "Forgery accepted in 20/20 attack trials (29/29 writes); all 90 honest steps completed.", 23, INK, anchor="middle")
+# s.text(640, 650, "28-node local RTT emulation · source: step20 sweep_20261002_a analysis + event CSVs", 21, GRAY, anchor="middle")
+#
+# add(s, "This table lists all ten region/window settings: five regional RTT profiles, 5–7-second and 11–15-second windows, and one seed per setting. Each cell shows target captures divided by recorded trials. The rows are generated directly from the saved analysis CSV. The attacker used one random-position DHT identity and forged one peer selected from its first usable read. The capture score is whether the retrospectively selected latest-scheduled honest target joined the attacker. 'View before join' means the recorded target lookup showed the intended changed state before first join. Across both attacks, 29 of 29 individual forged writes were accepted; some trials attempted more than one write. This is local WAN-delay emulation, not a real public network. Raw rounds and event traces are saved beside the derived analysis CSV.")
+#
+# # Appendix: exact per-trial tensor correctness and error.
+# s = Slide("A3. Reducer-index trials", 18, "Appendix · exact results")
+# s.text(640, 153, "Four peers · five paired local trials · identical input [0, 1, 2, 4]", 26, GRAY, anchor="middle")
+# cols=[90,263,518,781,1080]
+# heads=["Trial","Control correct","Attack correct","Max. abs. error","Steps"]
+# for x,h in zip(cols,heads):
+#     s.text(x, 228, h, 25, P, weight="bold")
+# s.line(84, 249, 1205, 249, LINE, 2)
+# with (ROOT.parent.parent / "results" / "step17_roster_live_rounds_confirm_20260928_confirm_t5_s1717.csv").open(newline="") as handle:
+#     data = list(csv.DictReader(handle))
+# for i in range(5):
+#     ctrl=next(r for r in data if r["arm"]=="control" and r["trial"]==str(i))
+#     atk=next(r for r in data if r["arm"]=="equivocate" and r["trial"]==str(i))
+#     y=304+i*52
+#     vals=[str(i+1),f'{ctrl["correct"]} / 4',f'{atk["correct"]} / 4',f'{float(atk["max_abs_error"]):.2f}',f'{int(ctrl["completed"])+int(atk["completed"])} / 8']
+#     for x,value in zip(cols,vals):s.text(x,y,value,28,INK)
+# s.text(640, 595, "No bans, fallback elements, RPC/all-reduce errors, timeouts, or hard cancellations.", 24, INK, anchor="middle")
+# s.text(640, 646, "Source: step17_roster_live_rounds_confirm_20260928_confirm_t5_s1717.csv", 22, GRAY, anchor="middle")
+#
+# add(s, "Each row is one fresh paired control and equivocation trial. 'Correct' counts peers whose output equals the unchanged input tensor. Maximum absolute error is computed from attacked peer output, and 'Steps' counts successful completions in both arms. Consult the raw CSV for every tensor output and associated events for the transmitted rosters. These five trials are a local confirmation, not a WAN deployment or a model-convergence study.")
 
 def main():
     SLIDES.mkdir(exist_ok=True)
@@ -553,7 +555,7 @@ def main():
         raise RuntimeError("PDF page tree does not match rendered slides")
     root = int(re.findall(rb"/Root (\d+) 0 R", source)[-1])
     last_object = max(int(value) for value in re.findall(rb"(?:^|\n)(\d+) 0 obj\b", source))
-    targets = [(6, 16), (9, 17), (15, 18), (16, 17)]
+    targets: list[tuple[int, int]] = []
     additions: list[tuple[int, bytes]] = []
     for offset, (from_page, to_page) in enumerate(targets, 1):
         annot_id = last_object + offset

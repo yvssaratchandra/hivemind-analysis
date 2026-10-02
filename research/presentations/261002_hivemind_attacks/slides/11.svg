@@ -5,7 +5,7 @@
 <line x1="64" y1="686" x2="1218" y2="686" stroke="#472DBE" stroke-width="1"/>
 <text x="64" y="709" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="18" font-weight="normal" text-anchor="start">2026-10-02</text>
 <text x="640" y="709" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="18" font-weight="normal" text-anchor="middle">Deadline undercutting · method</text>
-<text x="1218" y="709" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="18" font-weight="normal" text-anchor="end">11 / 18</text>
+<text x="1218" y="709" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="18" font-weight="normal" text-anchor="end">11 / 15</text>
 <text x="640" y="149" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="27" font-weight="normal" text-anchor="middle">Same key, node IDs and honest schedule; only the attacker&#x27;s region changes.</text>
 <rect x="82" y="196" width="232" height="64" rx="10" fill="#F1EEFF" stroke="none" stroke-width="2"/>
 <text x="198.0" y="237" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="bold" text-anchor="middle">Read ads at K</text>
@@ -23,16 +23,16 @@
 <text x="1089.5" y="237" fill="#D52515" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="bold" text-anchor="middle">Wait for joins</text>
 <rect x="82" y="300" width="540" height="230" rx="12" fill="#F8F7FC" stroke="none" stroke-width="2"/>
 <text x="352" y="346" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="bold" text-anchor="middle">Experiment 1 · where the attacker sits</text>
-<text x="112" y="400" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">5 origins: Stockholm, New York, São Paulo,</text>
-<text x="112" y="438" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">Mumbai, Sydney · RTTs from RIPE Atlas pings</text>
-<text x="112" y="476" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">2 honest windows: 5–7 s and 11–15 s</text>
-<text x="112" y="514" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">3 seeds each → 30 runs</text>
+<text x="112" y="404" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">5 attacker origins × 2 honest windows</text>
+<text x="112" y="444" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">3 seeds each, so 30 runs in total</text>
+<text x="112" y="484" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">A seed sets the node IDs and the</text>
+<text x="112" y="524" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">honest deadline schedule</text>
 <rect x="658" y="300" width="540" height="230" rx="12" fill="#FCEEEB" stroke="none" stroke-width="2"/>
 <text x="928" y="346" fill="#D52515" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="bold" text-anchor="middle">Experiment 2 · is the failure ours?</text>
-<text x="688" y="400" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">Our attacker skips any ad with under 3.5 s left</text>
-<text x="688" y="438" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">(request_timeout 2.5 + our own 1.0 margin)</text>
-<text x="688" y="476" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">Set both that margin and the 0.3 s confirmation</text>
-<text x="688" y="514" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">wait to zero · Stockholm, the cheapest origin</text>
+<text x="688" y="404" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">It ignores ads with under 3.5 s left</text>
+<text x="688" y="444" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">1.0 s of that is padding we chose</text>
+<text x="688" y="484" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">Set our padding to zero and retry</text>
+<text x="688" y="524" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">from Stockholm, the cheapest origin</text>
 <text x="640" y="589" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="normal" text-anchor="middle">28 local DHT nodes, 5–6 per region · above bucket_size 20, so lookups must route</text>
 <text x="640" y="639" fill="#666666" font-family="Liberation Sans, Arial, sans-serif" font-size="23" font-weight="normal" text-anchor="middle">Injected delays on one machine · no loss, churn or connection setup · key known to A</text>
 </svg>

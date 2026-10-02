@@ -5,7 +5,7 @@
 <line x1="64" y1="686" x2="1218" y2="686" stroke="#472DBE" stroke-width="1"/>
 <text x="64" y="709" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="18" font-weight="normal" text-anchor="start">2026-10-02</text>
 <text x="640" y="709" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="18" font-weight="normal" text-anchor="middle">Deadline undercutting · mechanism</text>
-<text x="1218" y="709" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="18" font-weight="normal" text-anchor="end">10 / 18</text>
+<text x="1218" y="709" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="18" font-weight="normal" text-anchor="end">10 / 15</text>
 <text x="640" y="151" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="27" font-weight="normal" text-anchor="middle">Read every advertised deadline, then declare one step earlier than all of them.</text>
 <text x="91" y="221" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="29" font-weight="bold" text-anchor="start">Advertised at K</text>
 <text x="91" y="269" fill="#666666" font-family="Liberation Sans, Arial, sans-serif" font-size="24" font-weight="normal" text-anchor="start">Peer</text>
@@ -19,7 +19,7 @@
 <text x="291" y="454" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="28" font-weight="normal" text-anchor="start">now + 13.8 s</text>
 <rect x="82" y="496" width="465" height="62" rx="7" fill="#FCEEEB" stroke="none" stroke-width="1"/>
 <text x="111" y="538" fill="#D52515" font-family="Liberation Sans, Arial, sans-serif" font-size="29" font-weight="bold" text-anchor="start">A</text>
-<text x="291" y="538" fill="#D52515" font-family="Liberation Sans, Arial, sans-serif" font-size="28" font-weight="normal" text-anchor="start">now + 11.4 s − 1 ulp</text>
+<text x="291" y="538" fill="#D52515" font-family="Liberation Sans, Arial, sans-serif" font-size="28" font-weight="normal" text-anchor="start">now + 11.4 s − one float step</text>
 <line x1="567" y1="400" x2="711" y2="400" stroke="#D52515" stroke-width="3"/>
 <polygon points="711,400 700.4,405.5 700.4,394.5" fill="#D52515"/>
 <text x="639" y="356" fill="#D52515" font-family="Liberation Sans, Arial, sans-serif" font-size="24" font-weight="normal" text-anchor="middle">undercut the</text>
@@ -30,5 +30,5 @@
 <text x="969" y="423" fill="#D52515" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="normal" text-anchor="middle">A leads; A admits whom it likes</text>
 <text x="969" y="525" fill="#666666" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="normal" text-anchor="middle">Cost to A: one identity,</text>
 <text x="969" y="560" fill="#666666" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="normal" text-anchor="middle">no compute, no crafted node ID</text>
-<text x="640" y="633" fill="#666666" font-family="Liberation Sans, Arial, sans-serif" font-size="23" font-weight="normal" text-anchor="middle">One ulp is 2.4×10⁻⁷ s here · enough to win the comparison, no advertisement life lost</text>
+<text x="640" y="633" fill="#666666" font-family="Liberation Sans, Arial, sans-serif" font-size="23" font-weight="normal" text-anchor="middle">A float step is 2.4×10⁻⁷ s at these timestamps · wins the ordering, costs no advertisement life</text>
 </svg>
