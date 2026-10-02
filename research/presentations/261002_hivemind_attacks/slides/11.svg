@@ -33,6 +33,6 @@
 <text x="688" y="444" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">1.0 s of that is padding we chose</text>
 <text x="688" y="484" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">Set our padding to zero and retry</text>
 <text x="688" y="524" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="25" font-weight="normal" text-anchor="start">from Stockholm, the cheapest origin</text>
-<text x="640" y="589" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="normal" text-anchor="middle">28 local DHT nodes, 5–6 per region · above bucket_size 20, so lookups must route</text>
-<text x="640" y="639" fill="#666666" font-family="Liberation Sans, Arial, sans-serif" font-size="23" font-weight="normal" text-anchor="middle">Injected delays on one machine · no loss, churn or connection setup · key known to A</text>
+<text x="640" y="592" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="26" font-weight="normal" text-anchor="middle">28 local DHT nodes, 5–6 per region</text>
+<text x="640" y="639" fill="#666666" font-family="Liberation Sans, Arial, sans-serif" font-size="23" font-weight="normal" text-anchor="middle">Injected delays on one machine · group key known to the attacker</text>
 </svg>

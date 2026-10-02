@@ -299,7 +299,6 @@ s.text(1020, 450, "First join request", 27, INK, anchor="middle")
 s.arrow(658, 509, 831, 509, P, 3)
 s.text(744, 486, "trace reads", 22, P, anchor="middle")
 s.text(640, 611, "Compare timestamps: forged view before first join request?", 30, INK, anchor="middle")
-s.text(640, 657, "28 local DHT nodes · 5 RTT origins · 5–7 s / 11–15 s windows · paired control", 23, GRAY, anchor="middle")
 
 add(s, "This is the inflation arm of research/step20_wan_forged_priority.py. In each run the attacker waits for its first usable DHT read, selects one earlier honest advertiser H, gives its own ad a deadline one floating-point step after H, and concurrently writes a True record for H with expiration one hour later. The control arm makes no forgery. We compare the target's candidate view before first join, actual first contact, and whether it ends up with the attacker. There are five attacker regional RTT profiles, two honest deadline windows (5–7 s and 11–15 s), and one paired seed per region/window. This is local RTT emulation. The critical sequence is read, choose, write, DHT visibility to the target, then target join; measuring only write acceptance misses the race.")
 
@@ -343,7 +342,6 @@ s.text(969, 369, "earliest deadline wins", 26, INK, anchor="middle")
 s.text(969, 423, "A leads; A admits whom it likes", 26, RED, anchor="middle")
 s.text(969, 525, "Cost to A: one identity,", 26, GRAY, anchor="middle")
 s.text(969, 560, "no compute, no crafted node ID", 26, GRAY, anchor="middle")
-s.text(640, 633, "A float step is 2.4×10⁻⁷ s at these timestamps · wins the ordering, costs no advertisement life", 23, GRAY, anchor="middle")
 
 add(s, "This is the third use of the unsigned, self-declared deadline, and the simplest. The attacker does not forge anyone else's record: it reads the advertisements at the group key, takes the earliest deadline it can see, and declares its own one floating-point step earlier. np.nextafter moves the value by 2.4e-7 seconds at these timestamps, which wins the ordering in pop_next_leader while giving up no meaningful advertisement lifetime. Winning the election is what matters, because the leader decides admission. The cost is one identity, no computation and no crafted DHT node ID; it does require the group key. Unlike attacks 1 and 2 this needs no forgery at all, so there is no third-party record to validate.")
 
@@ -365,8 +363,8 @@ s.box(658, 300, 540, 230, fill=RL, stroke="none", radius=12)
 s.text(928, 346, "Experiment 2 · is the failure ours?", 26, RED, weight="bold", anchor="middle")
 s.lines(688, 404, ["It ignores ads with under 3.5 s left", "1.0 s of that is padding we chose",
                    "Set our padding to zero and retry", "from Stockholm, the cheapest origin"], 25, INK, 40)
-s.text(640, 589, "28 local DHT nodes, 5–6 per region · above bucket_size 20, so lookups must route", 26, INK, anchor="middle")
-s.text(640, 639, "Injected delays on one machine · no loss, churn or connection setup · key known to A", 23, GRAY, anchor="middle")
+s.text(640, 592, "28 local DHT nodes, 5–6 per region", 26, INK, anchor="middle")
+s.text(640, 639, "Injected delays on one machine · group key known to the attacker", 23, GRAY, anchor="middle")
 
 add(s, "Two experiments on research/step19_wan_delay_leader.py. The first varies only where the attacker sits: within a seed the group key, DHT node IDs and the honest peers' schedule are held fixed, so the five rows differ only in the attacker's region. Five origins, two honest deadline windows and three seeds give 30 runs. The second experiment answers the obvious objection to the first. Our attacker ignores any advertisement with less than 3.5 seconds of life left when its read returns; 2.5 of that is request_timeout, a real protocol floor, but 1.0 second is padding we chose, and it waits a further 0.3 seconds to confirm a candidate before committing. Both of those are ours, so we set them to zero and re-ran from Stockholm, the cheapest origin. The swarm is 28 local DHT nodes, above the default bucket size of 20, so lookups genuinely route. Delays are injected on one machine from RIPE Atlas ICMP medians; no Hivemind traffic crossed a wide-area network.")
 
@@ -382,9 +380,7 @@ for i, name in enumerate(["Stockholm", "New York", "São Paulo", "Mumbai", "Sydn
     s.text(700, y, "3 / 3", 28, GREEN, weight="bold", anchor="middle")
     s.text(1010, y, "0 / 3", 28, RED, weight="bold", anchor="middle")
 s.line(100, 500, 1193, 500, LINE, 1)
-s.text(640, 551, "Location changes the cost, not the outcome:", 27, P, weight="bold", anchor="middle")
-s.text(640, 589, "read + write takes 2.1 s from Stockholm and 3.7 s from Sydney", 27, INK, anchor="middle")
-s.text(640, 645, "Removing the attacker's own caution still captured 0 / 3 in the 5–7 s window", 23, GRAY, anchor="middle")
+s.text(640, 574, "5–7 s is Hivemind's shipped default.", 27, INK, anchor="middle")
 
 add(s, "The attacker's location does not change whether it wins. All five origins captured three of three rounds with an 11 to 15 second honest deadline window, and zero of three with a 5 to 7 second window, which is Hivemind's shipped default. What location does change is cost: read plus write takes 2.1 seconds from Stockholm and 3.7 from Sydney, and fitting that against mean round-trip time gives roughly 4.8 sequential round trips for a read and 5.8 for a write, with near-zero intercepts, so the critical path is almost pure network time. The short window fails earlier than expected: in 14 of 15 runs the attacker never published at all, because by the time its read returns no advertisement still has 3.5 seconds of life. Since 1.0 second of that threshold was our own padding, we removed it along with the confirmation wait. The attacker then published in every run and won leadership once, but still never assembled a group, so the failure at the default is protocol timing rather than our conservatism. One caveat: this is noisy. An earlier run with the same seed and settings drew two followers and cost an honest peer its step, where the sweep run drew one and cost none.")
 

@@ -26,7 +26,5 @@
 <text x="700" y="436" fill="#078945" font-family="Liberation Sans, Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">3 / 3</text>
 <text x="1010" y="436" fill="#D52515" font-family="Liberation Sans, Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">0 / 3</text>
 <line x1="100" y1="500" x2="1193" y2="500" stroke="#D7D3E8" stroke-width="1"/>
-<text x="640" y="551" fill="#472DBE" font-family="Liberation Sans, Arial, sans-serif" font-size="27" font-weight="bold" text-anchor="middle">Location changes the cost, not the outcome:</text>
-<text x="640" y="589" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="27" font-weight="normal" text-anchor="middle">read + write takes 2.1 s from Stockholm and 3.7 s from Sydney</text>
-<text x="640" y="645" fill="#666666" font-family="Liberation Sans, Arial, sans-serif" font-size="23" font-weight="normal" text-anchor="middle">Removing the attacker&#x27;s own caution still captured 0 / 3 in the 5–7 s window</text>
+<text x="640" y="574" fill="#222222" font-family="Liberation Sans, Arial, sans-serif" font-size="27" font-weight="normal" text-anchor="middle">5–7 s is Hivemind&#x27;s shipped default.</text>
 </svg>
