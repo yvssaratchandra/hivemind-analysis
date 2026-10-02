@@ -29,6 +29,7 @@ INK = "#222222"
 GRAY = "#666666"
 LINE = "#D7D3E8"
 BG = "#FFFFFF"
+TOTAL = 18
 
 
 def e(s: object) -> str:
@@ -47,7 +48,7 @@ class Slide:
             self.line(64, 686, 1218, 686, P, 1)
             self.text(64, 709, "2026-10-02", 18, P)
             self.text(640, 709, section, 18, P, anchor="middle")
-            self.text(1218, 709, f"{number} / 14", 18, P, anchor="end")
+            self.text(1218, 709, f"{number} / {TOTAL}", 18, P, anchor="end")
 
     def raw(self, value: str):
         self.parts.append(value)
@@ -345,8 +346,120 @@ exact_tables(s, "A3")
 
 add(s, "In five paired local trials, none of the common-roster controls corrupted output and all five equivocation trials did. All 20 attacked peer outputs were wrong; their maximum absolute errors were 2.25 to 3.0. All 40 averaging steps across control and attack arms completed. The tested failure indicators—reducer bans, fallback elements, RPC and all-reduce errors, timeouts, hard cancellations—stayed clear. That does not mean the attack is unobservable: the conflicting messages and outputs are observable if captured. Nor does it establish downstream optimizer behavior or lasting model damage. It establishes silent corruption of averaged tensors under an already malicious leader, through the real local protocol path. The concrete attacked tensor shown is the first recorded peer output from attack trial 0: [1.75, 0.75, 1.5, 3.0], compared with the correct [0, 1, 2, 4]. See Appendix A3 and the step17 raw CSV.")
 
+# Attack 4 mechanism: read every advertised deadline, then declare one step earlier.
+s = Slide("4. Deadline undercutting", 12, "Deadline undercutting · mechanism")
+s.text(640, 151, "Read every advertised deadline, then declare one step earlier than all of them.", 27, INK, anchor="middle")
+s.text(91, 221, "Advertised at K", 29, P, weight="bold")
+s.text(91, 269, "Peer", 24, GRAY)
+s.text(291, 269, "Deadline", 24, GRAY)
+s.line(91, 285, 537, 285, LINE, 2)
+for i, (name, when) in enumerate([("H1", "now + 11.4 s"), ("H2", "now + 12.8 s"), ("H3", "now + 13.8 s")]):
+    s.text(111, 334 + i * 60, name, 29, P, weight="bold")
+    s.text(291, 334 + i * 60, when, 28, INK)
+s.rect(82, 496, 465, 62, RL, radius=7)
+s.text(111, 538, "A", 29, RED, weight="bold")
+s.text(291, 538, "now + 11.4 s − 1 ulp", 28, RED)
+s.arrow(567, 400, 711, 400, RED, 3)
+s.lines(639, 356, ["undercut the", "earliest"], 24, RED, 30, anchor="middle")
+s.box(737, 262, 465, 200, fill=RL, stroke="none", radius=12)
+s.text(969, 311, "Leader election", 27, RED, weight="bold", anchor="middle")
+s.text(969, 369, "earliest deadline wins", 26, INK, anchor="middle")
+s.text(969, 423, "A leads; A admits whom it likes", 26, RED, anchor="middle")
+s.text(969, 525, "Cost to A: one identity,", 26, GRAY, anchor="middle")
+s.text(969, 560, "no compute, no crafted node ID", 26, GRAY, anchor="middle")
+s.text(640, 633, "One ulp is 2.4×10⁻⁷ s here · enough to win the comparison, no advertisement life lost", 23, GRAY, anchor="middle")
+
+add(s, "This is the third use of the unsigned, self-declared deadline, and the simplest. The attacker does not forge anyone else's record: it reads the advertisements at the group key, takes the earliest deadline it can see, and declares its own one floating-point step earlier. np.nextafter moves the value by 2.4e-7 seconds at these timestamps, which wins the ordering in pop_next_leader while giving up no meaningful advertisement lifetime. Winning the election is what matters, because the leader decides admission. The cost is one identity, no computation and no crafted DHT node ID; it does require the group key. Unlike attacks 1 and 2 this needs no forgery at all, so there is no third-party record to validate.")
+
+# Attack 4 method: isolate the attacker's origin, then isolate its own caution.
+s = Slide("Undercutting: two experiments", 13, "Deadline undercutting · method")
+s.text(640, 149, "Same key, node IDs and honest schedule; only the attacker's region changes.", 27, INK, anchor="middle")
+process(s, 82, 196, 232, "Read ads at K")
+s.arrow(322, 228, 374, 228, P, 3)
+process(s, 382, 196, 232, "Undercut earliest")
+s.arrow(622, 228, 674, 228, P, 3)
+process(s, 682, 196, 232, "Publish own ad", RED)
+s.arrow(922, 228, 974, 228, RED, 3)
+process(s, 982, 196, 215, "Wait for joins", RED)
+s.box(82, 300, 540, 230, fill="#F8F7FC", stroke="none", radius=12)
+s.text(352, 346, "Experiment 1 · where the attacker sits", 26, P, weight="bold", anchor="middle")
+s.lines(112, 400, ["5 origins: Stockholm, New York, São Paulo,", "Mumbai, Sydney · RTTs from RIPE Atlas pings",
+                   "2 honest windows: 5–7 s and 11–15 s", "3 seeds each → 30 runs"], 25, INK, 38)
+s.box(658, 300, 540, 230, fill=RL, stroke="none", radius=12)
+s.text(928, 346, "Experiment 2 · is the failure ours?", 26, RED, weight="bold", anchor="middle")
+s.lines(688, 400, ["Our attacker skips any ad with under 3.5 s left", "(request_timeout 2.5 + our own 1.0 margin)",
+                   "Set both that margin and the 0.3 s confirmation", "wait to zero · Stockholm, the cheapest origin"], 25, INK, 38)
+s.text(640, 589, "28 local DHT nodes, 5–6 per region · above bucket_size 20, so lookups must route", 26, INK, anchor="middle")
+s.text(640, 639, "Injected delays on one machine · no loss, churn or connection setup · key known to A", 23, GRAY, anchor="middle")
+
+add(s, "Two experiments on research/step19_wan_delay_leader.py. The first varies only where the attacker sits: within a seed the group key, DHT node IDs and the honest peers' schedule are held fixed, so the five rows differ only in the attacker's region. Five origins, two honest deadline windows and three seeds give 30 runs. The second experiment answers the obvious objection to the first. Our attacker ignores any advertisement with less than 3.5 seconds of life left when its read returns; 2.5 of that is request_timeout, a real protocol floor, but 1.0 second is padding we chose, and it waits a further 0.3 seconds to confirm a candidate before committing. Both of those are ours, so we set them to zero and re-ran from Stockholm, the cheapest origin. The swarm is 28 local DHT nodes, above the default bucket size of 20, so lookups genuinely route. Delays are injected on one machine from RIPE Atlas ICMP medians; no Hivemind traffic crossed a wide-area network.")
+
+# Where the delays came from: the measured RTT profile behind attacks 2 and 4.
+s = Slide("The delay profile: RIPE Atlas anchor RTTs", 14, "Deadline undercutting · method")
+s.text(640, 148, "RIPE Atlas is a global measurement network whose anchor hosts continuously ping", 26, INK, anchor="middle")
+s.text(640, 182, "each other; we took the median of three ICMP replies per directed pair.", 26, INK, anchor="middle")
+
+rtt = [[9, 99, 209, 147, 298],
+       [99, 13, 125, 285, 240],
+       [209, 111, 16, 228, 305],
+       [147, 240, 228, 23, 468],
+       [299, 239, 305, 503, 12]]
+names = ["Stockholm", "New York", "São Paulo", "Mumbai", "Sydney"]
+codes = ["SE", "US", "BR", "IN", "AU"]
+x0, y0, cw, ch = 243, 282, 97, 59
+
+def heat(value):
+    # white to muted red; the deck's RED at the top of the observed range
+    t = min(value / 520.0, 1.0) ** 0.85
+    r0, g0, b0 = 0xFF, 0xFF, 0xFF
+    r1, g1, b1 = 0xD5, 0x25, 0x15
+    return "#%02X%02X%02X" % (round(r0 + (r1 - r0) * t), round(g0 + (g1 - g0) * t), round(b0 + (b1 - b0) * t))
+
+s.text(x0 - 23, 262, "from \\ to", 21, GRAY, anchor="end")
+for j, code in enumerate(codes):
+    s.text(x0 + j * cw + cw / 2, 262, code, 24, P, weight="bold", anchor="middle")
+for i, name in enumerate(names):
+    s.text(x0 - 23, y0 + i * ch + 38, name, 24, INK, anchor="end")
+    for j, value in enumerate(rtt[i]):
+        s.rect(x0 + j * cw, y0 + i * ch, cw - 3, ch - 3, heat(value), LINE, 1)
+        s.text(x0 + j * cw + (cw - 3) / 2, y0 + i * ch + 38, value,
+               24, "#FFFFFF" if value > 330 else INK, weight="bold", anchor="middle")
+
+s.box(792, 268, 406, 230, fill="#F8F7FC", stroke="none", radius=12)
+s.text(995, 316, "233 ms", 46, P, weight="bold", anchor="middle")
+s.text(995, 352, "median between regions", 24, GRAY, anchor="middle")
+s.line(830, 386, 1160, 386, LINE, 1)
+s.text(995, 432, "99 – 503 ms", 38, P, weight="bold", anchor="middle")
+s.text(995, 468, "range across the 20 links", 24, GRAY, anchor="middle")
+s.text(995, 546, "Each region holds 5–6 of the", 24, INK, anchor="middle")
+s.text(995, 578, "28 nodes in the swarm", 24, INK, anchor="middle")
+
+s.text(640, 639, "Link RTTs, not DHT operation times · measured 30 Sep 2026 · profile saved as ripe_anchor_rtt_20260930.json", 22, GRAY, anchor="middle")
+
+add(s, "RIPE Atlas is a global internet measurement network run by the RIPE NCC: thousands of small probes and a few hundred better-connected anchor hosts that continuously ping one another, with the results published openly. We took anchor-to-anchor ICMP round-trip times between the five regions on 30 September 2026 and used the median of three replies per directed pair. The matrix is slightly asymmetric because each direction was measured separately. Median between regions is 233 milliseconds, with the twenty inter-region links spanning 99 to 503 milliseconds; Sydney to Mumbai is the worst at 503. These are link round-trip times, not the cost of a DHT operation: one Hivemind read or write takes roughly five sequential round trips on top of this. The numbers feed the emulator used for both the forged-priority and the undercutting experiments, with each region holding five or six of the 28 nodes. The ping times are real measurements; the Hivemind traffic they delay is local.")
+
+# Attack 4 result: the window decides, not the attacker's position.
+s = Slide("The window decides, not the attacker", 15, "Deadline undercutting · results")
+s.text(106, 186, "Attacker origin", 27, P, weight="bold")
+s.text(700, 186, "11–15 s window", 27, P, weight="bold", anchor="middle")
+s.text(1010, 186, "5–7 s window", 27, P, weight="bold", anchor="middle")
+s.line(100, 206, 1193, 206, LINE, 2)
+for i, name in enumerate(["Stockholm", "New York", "São Paulo", "Mumbai", "Sydney"]):
+    y = 252 + i * 46
+    s.text(106, y, name, 27, INK)
+    s.text(700, y, "3 / 3", 28, GREEN, weight="bold", anchor="middle")
+    s.text(1010, y, "0 / 3", 28, RED, weight="bold", anchor="middle")
+s.line(100, 500, 1193, 500, LINE, 1)
+s.text(106, 547, "Location changes cost, not outcome:", 26, P, weight="bold")
+s.text(640, 547, "read + write 2.1 s from Stockholm, 3.7 s from Sydney", 26, INK)
+s.text(106, 596, "Removing our own caution:", 26, RED, weight="bold")
+s.text(474, 596, "published 1/3 → 3/3, led 0/3 → 1/3, captured 0/3 either way", 26, INK)
+s.text(640, 655, "Figure: results/step19_region_sweep.png · raw runs: step19_wan_delay_*_r5_*.csv", 23, GRAY, anchor="middle")
+
+add(s, "The attacker's location does not change whether it wins. All five origins captured three of three rounds with an 11 to 15 second honest deadline window, and zero of three with a 5 to 7 second window, which is Hivemind's shipped default. What location does change is cost: read plus write takes 2.1 seconds from Stockholm and 3.7 from Sydney, and fitting that against mean round-trip time gives roughly 4.8 sequential round trips for a read and 5.8 for a write, with near-zero intercepts, so the critical path is almost pure network time. The short window fails earlier than expected: in 14 of 15 runs the attacker never published at all, because by the time its read returns no advertisement still has 3.5 seconds of life. Since 1.0 second of that threshold was our own padding, we removed it along with the confirmation wait. The attacker then published in every run and won leadership once, but still never assembled a group, so the failure at the default is protocol timing rather than our conservatism. One caveat: this is noisy. An earlier run with the same seed and settings drew two followers and cost an honest peer its step, where the sweep run drew one and cost none.")
+
 # Appendix A1: local discovery and refresh evidence.
-s = Slide("A1. Withdrawal discovery tests", 12, "Appendix · exact results")
+s = Slide("A1. Withdrawal discovery tests", 16, "Appendix · exact results")
 s.text(640, 150, "One ordinary random-ID writer · counts below matched in both repeats", 25, GRAY, anchor="middle")
 cols=[85,310,534,764,1005]
 for x,h in zip(cols,["Honest peers","Targets / run","Hidden / run","Others visible","Repeats"]):
@@ -371,7 +484,7 @@ exact_tables(s, "A2")
 add(s, "These are the recorded local discovery scale checks from step8_withdrawal_phase2.csv and step8_withdrawal_phase2_n40.csv. There are two repeats for every target count. Both repeats hid all selected targets and preserved every nontarget. The 40-peer largest setting hid 39 of 39 selected targets, leaving one non-target visible. The separate 30-second refresh test in each swarm size attempted 30 honest re-advertisements; none restored the victim. The ordinary random-ID writer had no chosen placement near K. These results concern discovery, not proof that targets stopped training. For the separate WAN-delay group-capture follow-up, use Appendix A2.")
 
 # Appendix: every RTT/window setting, not just the aggregate.
-s = Slide("A2. Forged-record trials", 13, "Appendix · exact results")
+s = Slide("A2. Forged-record trials", 17, "Appendix · exact results")
 s.text(640, 151, "Targets that joined A / trials · one seed per region and deadline window", 25, GRAY, anchor="middle")
 cols=[82,302,523,745,960]
 for x,h in zip(cols,["RTT origin","Window","Control","Withdrawal","Inflation"]):
@@ -397,7 +510,7 @@ s.text(640, 650, "28-node local RTT emulation · source: step20 sweep_20261002_a
 add(s, "This table lists all ten region/window settings: five regional RTT profiles, 5–7-second and 11–15-second windows, and one seed per setting. Each cell shows target captures divided by recorded trials. The rows are generated directly from the saved analysis CSV. The attacker used one random-position DHT identity and forged one peer selected from its first usable read. The capture score is whether the retrospectively selected latest-scheduled honest target joined the attacker. 'View before join' means the recorded target lookup showed the intended changed state before first join. Across both attacks, 29 of 29 individual forged writes were accepted; some trials attempted more than one write. This is local WAN-delay emulation, not a real public network. Raw rounds and event traces are saved beside the derived analysis CSV.")
 
 # Appendix: exact per-trial tensor correctness and error.
-s = Slide("A3. Reducer-index trials", 14, "Appendix · exact results")
+s = Slide("A3. Reducer-index trials", 18, "Appendix · exact results")
 s.text(640, 153, "Four peers · five paired local trials · identical input [0, 1, 2, 4]", 26, GRAY, anchor="middle")
 cols=[90,263,518,781,1080]
 heads=["Trial","Control correct","Attack correct","Max. abs. error","Steps"]
@@ -440,7 +553,7 @@ def main():
         raise RuntimeError("PDF page tree does not match rendered slides")
     root = int(re.findall(rb"/Root (\d+) 0 R", source)[-1])
     last_object = max(int(value) for value in re.findall(rb"(?:^|\n)(\d+) 0 obj\b", source))
-    targets = [(5, 12), (8, 13), (11, 14), (12, 13)]
+    targets = [(5, 16), (8, 17), (11, 18), (16, 17)]
     additions: list[tuple[int, bytes]] = []
     for offset, (from_page, to_page) in enumerate(targets, 1):
         annot_id = last_object + offset
@@ -477,6 +590,8 @@ def main():
         handle.write("- `research/step8_withdrawal.py` and `research/CONTROL_DATA_AUDIT.md` (C8.T).\n")
         handle.write("- `research/step20_wan_forged_priority.py`, `research/analyze_step20.py`, and `research/results/step20_forged_priority_sweep_sweep_20261002_a_{rounds,events,analysis}.csv`.\n")
         handle.write("- `research/step17_roster_equivocation_live.py` and `research/results/step17_roster_live_{rounds,events}_confirm_20260928_confirm_t5_s1717.csv`.\n")
+        handle.write("- `research/step19_wan_delay_leader.py`, `research/plot_step19_regions.py`, and `research/results/step19_wan_delay_{rounds,events}_smoke_{r5,mg}_*.csv`.\n")
+        handle.write("- `research/results/ripe_anchor_rtt_20260930.json` is the saved RIPE Atlas anchor RTT profile behind slides 14 and the emulated delays.\n")
         handle.write("- `research/observe_dht_key.py` is an unrun draft, not a source of live measurements.\n")
     # Keep the traditional Beamer entry points current for Overleaf/presenter notes.
     # The fixed-layout SVG/PDF artwork is the source of truth for visual placement.

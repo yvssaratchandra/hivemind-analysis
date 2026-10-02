@@ -44,15 +44,31 @@ Research/step17_roster_equivocation_live.py used four real local Hivemind Decent
 
 In five paired local trials, none of the common-roster controls corrupted output and all five equivocation trials did. All 20 attacked peer outputs were wrong; their maximum absolute errors were 2.25 to 3.0. All 40 averaging steps across control and attack arms completed. The tested failure indicators—reducer bans, fallback elements, RPC and all-reduce errors, timeouts, hard cancellations—stayed clear. That does not mean the attack is unobservable: the conflicting messages and outputs are observable if captured. Nor does it establish downstream optimizer behavior or lasting model damage. It establishes silent corruption of averaged tensors under an already malicious leader, through the real local protocol path. The concrete attacked tensor shown is the first recorded peer output from attack trial 0: [1.75, 0.75, 1.5, 3.0], compared with the correct [0, 1, 2, 4]. See Appendix A3 and the step17 raw CSV.
 
-## 12. A1. Withdrawal discovery tests
+## 12. 4. Deadline undercutting
+
+This is the third use of the unsigned, self-declared deadline, and the simplest. The attacker does not forge anyone else's record: it reads the advertisements at the group key, takes the earliest deadline it can see, and declares its own one floating-point step earlier. np.nextafter moves the value by 2.4e-7 seconds at these timestamps, which wins the ordering in pop_next_leader while giving up no meaningful advertisement lifetime. Winning the election is what matters, because the leader decides admission. The cost is one identity, no computation and no crafted DHT node ID; it does require the group key. Unlike attacks 1 and 2 this needs no forgery at all, so there is no third-party record to validate.
+
+## 13. Undercutting: two experiments
+
+Two experiments on research/step19_wan_delay_leader.py. The first varies only where the attacker sits: within a seed the group key, DHT node IDs and the honest peers' schedule are held fixed, so the five rows differ only in the attacker's region. Five origins, two honest deadline windows and three seeds give 30 runs. The second experiment answers the obvious objection to the first. Our attacker ignores any advertisement with less than 3.5 seconds of life left when its read returns; 2.5 of that is request_timeout, a real protocol floor, but 1.0 second is padding we chose, and it waits a further 0.3 seconds to confirm a candidate before committing. Both of those are ours, so we set them to zero and re-ran from Stockholm, the cheapest origin. The swarm is 28 local DHT nodes, above the default bucket size of 20, so lookups genuinely route. Delays are injected on one machine from RIPE Atlas ICMP medians; no Hivemind traffic crossed a wide-area network.
+
+## 14. The delay profile: RIPE Atlas anchor RTTs
+
+RIPE Atlas is a global internet measurement network run by the RIPE NCC: thousands of small probes and a few hundred better-connected anchor hosts that continuously ping one another, with the results published openly. We took anchor-to-anchor ICMP round-trip times between the five regions on 30 September 2026 and used the median of three replies per directed pair. The matrix is slightly asymmetric because each direction was measured separately. Median between regions is 233 milliseconds, with the twenty inter-region links spanning 99 to 503 milliseconds; Sydney to Mumbai is the worst at 503. These are link round-trip times, not the cost of a DHT operation: one Hivemind read or write takes roughly five sequential round trips on top of this. The numbers feed the emulator used for both the forged-priority and the undercutting experiments, with each region holding five or six of the 28 nodes. The ping times are real measurements; the Hivemind traffic they delay is local.
+
+## 15. The window decides, not the attacker
+
+The attacker's location does not change whether it wins. All five origins captured three of three rounds with an 11 to 15 second honest deadline window, and zero of three with a 5 to 7 second window, which is Hivemind's shipped default. What location does change is cost: read plus write takes 2.1 seconds from Stockholm and 3.7 from Sydney, and fitting that against mean round-trip time gives roughly 4.8 sequential round trips for a read and 5.8 for a write, with near-zero intercepts, so the critical path is almost pure network time. The short window fails earlier than expected: in 14 of 15 runs the attacker never published at all, because by the time its read returns no advertisement still has 3.5 seconds of life. Since 1.0 second of that threshold was our own padding, we removed it along with the confirmation wait. The attacker then published in every run and won leadership once, but still never assembled a group, so the failure at the default is protocol timing rather than our conservatism. One caveat: this is noisy. An earlier run with the same seed and settings drew two followers and cost an honest peer its step, where the sweep run drew one and cost none.
+
+## 16. A1. Withdrawal discovery tests
 
 These are the recorded local discovery scale checks from step8_withdrawal_phase2.csv and step8_withdrawal_phase2_n40.csv. There are two repeats for every target count. Both repeats hid all selected targets and preserved every nontarget. The 40-peer largest setting hid 39 of 39 selected targets, leaving one non-target visible. The separate 30-second refresh test in each swarm size attempted 30 honest re-advertisements; none restored the victim. The ordinary random-ID writer had no chosen placement near K. These results concern discovery, not proof that targets stopped training. For the separate WAN-delay group-capture follow-up, use Appendix A2.
 
-## 13. A2. Forged-record trials
+## 17. A2. Forged-record trials
 
 This table lists all ten region/window settings: five regional RTT profiles, 5–7-second and 11–15-second windows, and one seed per setting. Each cell shows target captures divided by recorded trials. The rows are generated directly from the saved analysis CSV. The attacker used one random-position DHT identity and forged one peer selected from its first usable read. The capture score is whether the retrospectively selected latest-scheduled honest target joined the attacker. 'View before join' means the recorded target lookup showed the intended changed state before first join. Across both attacks, 29 of 29 individual forged writes were accepted; some trials attempted more than one write. This is local WAN-delay emulation, not a real public network. Raw rounds and event traces are saved beside the derived analysis CSV.
 
-## 14. A3. Reducer-index trials
+## 18. A3. Reducer-index trials
 
 Each row is one fresh paired control and equivocation trial. 'Correct' counts peers whose output equals the unchanged input tensor. Maximum absolute error is computed from attacked peer output, and 'Steps' counts successful completions in both arms. Consult the raw CSV for every tensor output and associated events for the transmitted rosters. These five trials are a local confirmation, not a WAN deployment or a model-convergence study.
 
@@ -61,4 +77,6 @@ Each row is one fresh paired control and equivocation trial. 'Correct' counts pe
 - `research/step8_withdrawal.py` and `research/CONTROL_DATA_AUDIT.md` (C8.T).
 - `research/step20_wan_forged_priority.py`, `research/analyze_step20.py`, and `research/results/step20_forged_priority_sweep_sweep_20261002_a_{rounds,events,analysis}.csv`.
 - `research/step17_roster_equivocation_live.py` and `research/results/step17_roster_live_{rounds,events}_confirm_20260928_confirm_t5_s1717.csv`.
+- `research/step19_wan_delay_leader.py`, `research/plot_step19_regions.py`, and `research/results/step19_wan_delay_{rounds,events}_smoke_{r5,mg}_*.csv`.
+- `research/results/ripe_anchor_rtt_20260930.json` is the saved RIPE Atlas anchor RTT profile behind slides 14 and the emulated delays.
 - `research/observe_dht_key.py` is an unrun draft, not a source of live measurements.
