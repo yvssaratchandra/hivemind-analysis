@@ -1,3 +1,7 @@
 # Print-sheet build intermediates; the PDFs are the deliverables.
 control_data_map.html
 hivemind_dht_timings.html
+
+# Zipped copies of presentation folders: the sources are tracked, so these
+# are build artefacts that go stale as soon as the deck is re-rendered.
+presentations/*.zip
