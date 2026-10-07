@@ -1,0 +1,47 @@
+{
+  "type": "local prerequisite diagnostics, not an Exo peer experiment",
+  "capture_note": "Transcribed from the read-only tool outputs in this session; no Docker operations were rerun to generate this record.",
+  "cwd": "/home/sarat/Projects/hivemind-analysis",
+  "uid": 1000,
+  "gid": 1000,
+  "supplementary_gids": [
+    65534,
+    65534,
+    65534,
+    65534,
+    65534,
+    65534,
+    65534,
+    65534,
+    65534,
+    65534,
+    65534,
+    1000
+  ],
+  "docker_host": "unix:///var/run/docker.sock",
+  "socket": {
+    "path": "/var/run/docker.sock",
+    "is_socket": true,
+    "uid": 65534,
+    "gid": 65534,
+    "mode": "0o660",
+    "access_read": true,
+    "access_write": true
+  },
+  "unix_socket_creation": {
+    "ok": true
+  },
+  "unix_socket_connect": {
+    "ok": false,
+    "errno": 1,
+    "name": "EPERM",
+    "message": "[Errno 1] Operation not permitted"
+  },
+  "codex_network_disabled": "1",
+  "process_isolation": {
+    "NoNewPrivs": 1,
+    "Seccomp": 2
+  },
+  "experiment_started": false,
+  "interpretation": "Connection is blocked despite socket DAC access; active Codex execution policy is workspace-write with restricted networking. The specific enforcing component was not independently isolated."
+}

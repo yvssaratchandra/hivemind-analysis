@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "name": "stock",
+      "mode": "stock",
+      "minimum": 2
+    },
+    {
+      "name": "passive5",
+      "mode": "passive",
+      "minimum": 4
+    },
+    {
+      "name": "expire125",
+      "mode": "expire",
+      "minimum": 4,
+      "lifetime": 1.25
+    },
+    {
+      "name": "f2_d075",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 2,
+      "lifetime": 0.75
+    }
+  ],
+  "seeds": [
+    2201
+  ],
+  "patterns": [
+    "staggered"
+  ],
+  "timeout": 12,
+  "store_delay": 0
+}

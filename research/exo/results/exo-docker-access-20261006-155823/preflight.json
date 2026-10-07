@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-06T15:58:23.973164+00:00",
+  "source_revision": "21a54c5ea0230a3bec1e1a786d200126c7e34ec6",
+  "docker": "/usr/local/bin/docker",
+  "compose_version": "5.5.1",
+  "engine_version": null,
+  "available_host_memory_bytes": 12235927552,
+  "initial_available_memory_budget_bytes": 8589934592,
+  "memory_budget_is_unmeasured": true,
+  "memory_note": "Budget build and peer runtime separately. Caps are not reservations. /proc/meminfo may describe the host rather than a session's cgroup.",
+  "free_disk_bytes": 997440581632,
+  "host_cpu_count": 16,
+  "blockers": [
+    "Command failed (1): ['/usr/local/bin/docker', 'info', '--format', '{{json .ServerVersion}}']\npermission denied while trying to connect to the docker API at unix:///var/run/docker.sock\n"
+  ],
+  "session_cgroup_memory": {
+    "memory.max": "max",
+    "memory.current": "754855936"
+  },
+  "live_runtime_available": false
+}

@@ -1,0 +1,41 @@
+{"timestamp": "2026-10-07T13:22:59.831769+00:00", "phase": "bootstrap", "action": "begin"}
+{"timestamp": "2026-10-07T13:23:00.190693+00:00", "phase": "bootstrap", "action": "peer_started", "host": "control-peer-01", "container": "localai-control-92c93e762d1e-p01"}
+{"timestamp": "2026-10-07T13:23:01.745623+00:00", "phase": "bootstrap", "action": "log_capture_started", "container": "localai-control-92c93e762d1e-p01", "file": "peer-01.log"}
+{"timestamp": "2026-10-07T13:23:02.767379+00:00", "phase": "bootstrap", "action": "log_capture_started", "container": "localai-control-92c93e762d1e-observer", "file": "observer.jsonl"}
+{"timestamp": "2026-10-07T13:23:02.768268+00:00", "phase": "bootstrap", "action": "observer_started", "container": "localai-control-92c93e762d1e-observer"}
+{"timestamp": "2026-10-07T13:23:02.768974+00:00", "phase": "bootstrap", "action": "begin", "hosts": ["control-peer-01"], "seconds": 8}
+{"timestamp": "2026-10-07T13:23:12.057719+00:00", "phase": "bootstrap", "action": "witness_membership_match", "expected_count": 1, "seconds": 9.287232321999909}
+{"timestamp": "2026-10-07T13:23:28.539477+00:00", "phase": "bootstrap", "action": "end", "service_peer_count": 1, "first_witness_match_seconds": 9.287232321999909, "elapsed_seconds": 23.765119847999813, "final_witness_match": true, "witnesses_are_not_all_peers": true, "all_peer_membership_match": true}
+{"timestamp": "2026-10-07T13:23:28.539694+00:00", "phase": "join-2", "action": "begin", "new_peer_count": 1}
+{"timestamp": "2026-10-07T13:23:28.788987+00:00", "phase": "join-2", "action": "peer_started", "host": "control-peer-02", "container": "localai-control-92c93e762d1e-p02"}
+{"timestamp": "2026-10-07T13:23:30.153894+00:00", "phase": "join-2", "action": "log_capture_started", "container": "localai-control-92c93e762d1e-p02", "file": "peer-02.log"}
+{"timestamp": "2026-10-07T13:23:30.370250+00:00", "phase": "join-2", "action": "begin", "hosts": ["control-peer-01", "control-peer-02"], "seconds": 8}
+{"timestamp": "2026-10-07T13:23:47.155491+00:00", "phase": "join-2", "action": "witness_membership_match", "expected_count": 2, "seconds": 16.78513186700002}
+{"timestamp": "2026-10-07T13:24:03.756000+00:00", "phase": "join-2", "action": "end", "service_peer_count": 2, "first_witness_match_seconds": 16.78513186700002, "elapsed_seconds": 31.372059706000073, "final_witness_match": true, "witnesses_are_not_all_peers": true, "all_peer_membership_match": true}
+{"timestamp": "2026-10-07T13:24:03.756567+00:00", "phase": "join-4", "action": "begin", "new_peer_count": 2}
+{"timestamp": "2026-10-07T13:24:04.318704+00:00", "phase": "join-4", "action": "peer_started", "host": "control-peer-04", "container": "localai-control-92c93e762d1e-p04"}
+{"timestamp": "2026-10-07T13:24:04.326103+00:00", "phase": "join-4", "action": "peer_started", "host": "control-peer-03", "container": "localai-control-92c93e762d1e-p03"}
+{"timestamp": "2026-10-07T13:24:05.882570+00:00", "phase": "join-4", "action": "log_capture_started", "container": "localai-control-92c93e762d1e-p04", "file": "peer-04.log"}
+{"timestamp": "2026-10-07T13:24:06.006821+00:00", "phase": "join-4", "action": "log_capture_started", "container": "localai-control-92c93e762d1e-p03", "file": "peer-03.log"}
+{"timestamp": "2026-10-07T13:24:06.210638+00:00", "phase": "join-4", "action": "begin", "hosts": ["control-peer-01", "control-peer-02", "control-peer-03", "control-peer-04"], "seconds": 8}
+{"timestamp": "2026-10-07T13:24:22.778811+00:00", "phase": "join-4", "action": "witness_membership_match", "expected_count": 4, "seconds": 16.56795652599976}
+{"timestamp": "2026-10-07T13:24:39.077301+00:00", "phase": "join-4", "action": "end", "service_peer_count": 4, "first_witness_match_seconds": 16.56795652599976, "elapsed_seconds": 30.899411547000454, "final_witness_match": true, "witnesses_are_not_all_peers": true, "all_peer_membership_match": true}
+{"timestamp": "2026-10-07T13:24:39.077497+00:00", "phase": "steady-maintenance", "action": "begin", "hosts": ["control-peer-01", "control-peer-02", "control-peer-03", "control-peer-04"], "seconds": 15}
+{"timestamp": "2026-10-07T13:24:41.112522+00:00", "phase": "steady-maintenance", "action": "witness_membership_match", "expected_count": 4, "seconds": 2.0349857860001066}
+{"timestamp": "2026-10-07T13:25:04.929737+00:00", "phase": "steady-maintenance", "action": "end", "service_peer_count": 4, "first_witness_match_seconds": 2.0349857860001066, "elapsed_seconds": 23.811885650000477, "final_witness_match": true, "witnesses_are_not_all_peers": true, "all_peer_membership_match": true}
+{"timestamp": "2026-10-07T13:25:04.930319+00:00", "phase": "service-routing", "action": "begin"}
+{"timestamp": "2026-10-07T13:25:05.362469+00:00", "phase": "service-routing", "action": "log_capture_started", "container": "localai-control-92c93e762d1e-gateway", "file": "gateway.log"}
+{"timestamp": "2026-10-07T13:25:10.588331+00:00", "phase": "service-routing", "action": "end", "passed": true}
+{"timestamp": "2026-10-07T13:25:10.588425+00:00", "phase": "peer-departure", "action": "begin", "host": "control-peer-04"}
+{"timestamp": "2026-10-07T13:25:10.588490+00:00", "phase": "peer-departure", "action": "peer_kill", "host": "control-peer-04", "signal": "SIGKILL"}
+{"timestamp": "2026-10-07T13:25:10.829060+00:00", "phase": "peer-departure", "action": "begin", "hosts": ["control-peer-01", "control-peer-02", "control-peer-03"], "seconds": 55}
+{"timestamp": "2026-10-07T13:25:42.473059+00:00", "phase": "peer-departure", "action": "witness_membership_match", "expected_count": 3, "seconds": 31.643880480000007}
+{"timestamp": "2026-10-07T13:26:09.457585+00:00", "phase": "peer-departure", "action": "end", "service_peer_count": 3, "first_witness_match_seconds": 31.643880480000007, "elapsed_seconds": 58.62835094999991, "final_witness_match": true, "witnesses_are_not_all_peers": true}
+{"timestamp": "2026-10-07T13:26:09.459055+00:00", "phase": "peer-rejoin", "action": "begin", "host": "control-peer-04"}
+{"timestamp": "2026-10-07T13:26:09.459206+00:00", "phase": "peer-rejoin", "action": "peer_restart", "host": "control-peer-04"}
+{"timestamp": "2026-10-07T13:26:11.296636+00:00", "phase": "peer-rejoin", "action": "log_capture_started", "container": "localai-control-92c93e762d1e-p04", "file": "peer-04-rejoin.log"}
+{"timestamp": "2026-10-07T13:26:11.698231+00:00", "phase": "peer-rejoin", "action": "begin", "hosts": ["control-peer-01", "control-peer-02", "control-peer-03", "control-peer-04"], "seconds": 8}
+{"timestamp": "2026-10-07T13:26:21.092518+00:00", "phase": "peer-rejoin", "action": "witness_membership_match", "expected_count": 4, "seconds": 9.39420462399994}
+{"timestamp": "2026-10-07T13:26:37.605351+00:00", "phase": "peer-rejoin", "action": "end", "service_peer_count": 4, "first_witness_match_seconds": 9.39420462399994, "elapsed_seconds": 23.944766196999808, "final_witness_match": true, "witnesses_are_not_all_peers": true, "all_peer_membership_match": true}
+{"timestamp": "2026-10-07T13:26:37.605879+00:00", "phase": "shutdown", "action": "begin"}
+{"timestamp": "2026-10-07T13:26:43.686232+00:00", "phase": "shutdown", "action": "end"}

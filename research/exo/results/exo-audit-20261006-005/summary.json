@@ -1,0 +1,272 @@
+{
+  "results": [
+    {
+      "arm": "baseline",
+      "status": "observed",
+      "observations": {
+        "outcome": "no_send_control",
+        "event_id": null,
+        "per_service_marker_matches": {},
+        "indexed_occurrences": [],
+        "reasons": []
+      },
+      "probe_done": {
+        "acks": 0,
+        "control": {
+          "arm": "baseline",
+          "available_bytes": 136164352,
+          "marker_event_id": "c98f92ed-6d3f-5417-b20f-e4332990431b",
+          "origin": "3846fc9e-3eda-5402-8370-9e8d0a37fe54",
+          "origin_idx": 0,
+          "seed": 1901,
+          "session": {
+            "election_clock": 0,
+            "master_node_id": "6b67ea7ae1eb64d50411da8e99907e14"
+          },
+          "target_node_id": "f23cc4d6bc1e9052e776f5894ace9682"
+        },
+        "marker_event_id": "c98f92ed-6d3f-5417-b20f-e4332990431b",
+        "publications": 0,
+        "status": "baseline-no-publication",
+        "type": "done"
+      },
+      "session_unchanged": true,
+      "honest_identities_unchanged": true,
+      "security_vulnerability_validated": false
+    },
+    {
+      "arm": "self",
+      "status": "observed",
+      "observations": {
+        "outcome": "accepted",
+        "marker_is_synthetic": true,
+        "event_id": "9c991977-7899-5433-b850-a61e729b64a8",
+        "target_node_id": "79128499e4f7585d0bc8821ea8a80dc2",
+        "publisher_node_id": "79128499e4f7585d0bc8821ea8a80dc2",
+        "expected_available_bytes": 136164352,
+        "per_service_marker_matches": {
+          "honest-a": [],
+          "honest-b": [],
+          "attacker": [
+            0
+          ]
+        },
+        "indexed_occurrences": [
+          0
+        ],
+        "state_observations": {
+          "honest-a": {
+            "before_bytes": null,
+            "after_bytes": 136164352,
+            "matches_after": true
+          },
+          "honest-b": {
+            "before_bytes": null,
+            "after_bytes": 136164352,
+            "matches_after": true
+          }
+        },
+        "reasons": []
+      },
+      "probe_done": {
+        "acks": 1,
+        "control": {
+          "arm": "self",
+          "available_bytes": 136164352,
+          "marker_event_id": "9c991977-7899-5433-b850-a61e729b64a8",
+          "origin": "1819a27e-42df-51e2-acbd-9ee7d1062fc5",
+          "origin_idx": 0,
+          "seed": 1901,
+          "session": {
+            "election_clock": 0,
+            "master_node_id": "6f2d06a700e57f66cdda43a487626dc0"
+          },
+          "target_node_id": "79128499e4f7585d0bc8821ea8a80dc2"
+        },
+        "marker_event_id": "9c991977-7899-5433-b850-a61e729b64a8",
+        "publications": 1,
+        "status": "published-and-observed",
+        "type": "done"
+      },
+      "session_unchanged": true,
+      "honest_identities_unchanged": true,
+      "security_vulnerability_validated": false
+    },
+    {
+      "arm": "forged",
+      "status": "observed",
+      "observations": {
+        "outcome": "accepted",
+        "marker_is_synthetic": true,
+        "event_id": "a79291a6-4535-55e0-a69d-550cdfa03af3",
+        "target_node_id": "96fe02efa8aba6023324db7bf2abd318",
+        "publisher_node_id": "cf043c2aa6646a510dc10fdfa631f9b5",
+        "expected_available_bytes": 136164352,
+        "per_service_marker_matches": {
+          "honest-a": [],
+          "honest-b": [],
+          "attacker": [
+            0
+          ]
+        },
+        "indexed_occurrences": [
+          0
+        ],
+        "state_observations": {
+          "honest-a": {
+            "before_bytes": null,
+            "after_bytes": 136164352,
+            "matches_after": true
+          },
+          "honest-b": {
+            "before_bytes": null,
+            "after_bytes": 136164352,
+            "matches_after": true
+          }
+        },
+        "reasons": []
+      },
+      "probe_done": {
+        "acks": 1,
+        "control": {
+          "arm": "forged",
+          "available_bytes": 136164352,
+          "marker_event_id": "a79291a6-4535-55e0-a69d-550cdfa03af3",
+          "origin": "45de28af-0cab-5890-a1ed-af9fc6e85b81",
+          "origin_idx": 0,
+          "seed": 1901,
+          "session": {
+            "election_clock": 0,
+            "master_node_id": "96fe02efa8aba6023324db7bf2abd318"
+          },
+          "target_node_id": "96fe02efa8aba6023324db7bf2abd318"
+        },
+        "marker_event_id": "a79291a6-4535-55e0-a69d-550cdfa03af3",
+        "publications": 1,
+        "status": "published-and-observed",
+        "type": "done"
+      },
+      "session_unchanged": true,
+      "honest_identities_unchanged": true,
+      "security_vulnerability_validated": false
+    },
+    {
+      "arm": "stale-session",
+      "status": "observed",
+      "observations": {
+        "outcome": "not_observed",
+        "marker_is_synthetic": true,
+        "event_id": "e30fc23f-b24c-59f2-b96a-c5be510791e6",
+        "target_node_id": "f807a3d39a3a3ec121b21b93fc2b3efa",
+        "publisher_node_id": "f807a3d39a3a3ec121b21b93fc2b3efa",
+        "expected_available_bytes": 136164352,
+        "per_service_marker_matches": {
+          "honest-a": [],
+          "honest-b": [],
+          "attacker": []
+        },
+        "indexed_occurrences": [],
+        "state_observations": {
+          "honest-a": {
+            "before_bytes": null,
+            "after_bytes": null,
+            "matches_after": false
+          },
+          "honest-b": {
+            "before_bytes": null,
+            "after_bytes": null,
+            "matches_after": false
+          }
+        },
+        "reasons": [
+          "stale-session marker was not observed during this run"
+        ]
+      },
+      "probe_done": {
+        "acks": 0,
+        "control": {
+          "arm": "stale-session",
+          "available_bytes": 136164352,
+          "marker_event_id": "e30fc23f-b24c-59f2-b96a-c5be510791e6",
+          "origin": "03d69125-e0c9-51ea-9f59-4d8fd793f60d",
+          "origin_idx": 0,
+          "seed": 1901,
+          "session": {
+            "election_clock": -1,
+            "master_node_id": "fbc78b0d4c0e5124935304fccbbeeebd"
+          },
+          "target_node_id": "f807a3d39a3a3ec121b21b93fc2b3efa"
+        },
+        "marker_event_id": "e30fc23f-b24c-59f2-b96a-c5be510791e6",
+        "publications": 1,
+        "status": "stale-session-no-ack-window",
+        "type": "done"
+      },
+      "session_unchanged": true,
+      "honest_identities_unchanged": true,
+      "security_vulnerability_validated": false
+    },
+    {
+      "arm": "replay",
+      "status": "observed",
+      "observations": {
+        "outcome": "indexed_once",
+        "marker_is_synthetic": true,
+        "event_id": "933b74df-74ef-55c5-ae56-1e1c94a11e7c",
+        "target_node_id": "8ea41c22cedb58d6c9b7fb383be23208",
+        "publisher_node_id": "8ea41c22cedb58d6c9b7fb383be23208",
+        "expected_available_bytes": 136164352,
+        "per_service_marker_matches": {
+          "honest-a": [],
+          "honest-b": [],
+          "attacker": [
+            0
+          ]
+        },
+        "indexed_occurrences": [
+          0
+        ],
+        "state_observations": {
+          "honest-a": {
+            "before_bytes": null,
+            "after_bytes": 136164352,
+            "matches_after": true
+          },
+          "honest-b": {
+            "before_bytes": null,
+            "after_bytes": 136164352,
+            "matches_after": true
+          }
+        },
+        "reasons": []
+      },
+      "probe_done": {
+        "acks": 1,
+        "control": {
+          "arm": "replay",
+          "available_bytes": 136164352,
+          "marker_event_id": "933b74df-74ef-55c5-ae56-1e1c94a11e7c",
+          "origin": "88ae5192-f556-5c54-9a9f-66fd19a88f33",
+          "origin_idx": 0,
+          "seed": 1901,
+          "session": {
+            "election_clock": 0,
+            "master_node_id": "6ac80577f2effaae71ebbd822b18ed0d"
+          },
+          "target_node_id": "8ea41c22cedb58d6c9b7fb383be23208"
+        },
+        "marker_event_id": "933b74df-74ef-55c5-ae56-1e1c94a11e7c",
+        "publications": 2,
+        "status": "replay-observed-first-ack",
+        "type": "done"
+      },
+      "session_unchanged": true,
+      "honest_identities_unchanged": true,
+      "security_vulnerability_validated": false
+    }
+  ],
+  "positive_control_established": true,
+  "run_complete": true,
+  "security_vulnerability_validated": false,
+  "note": "Metadata acceptance is an observation, not proof of inference impact or a security boundary violation."
+}

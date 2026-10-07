@@ -1,0 +1,150 @@
+{
+  "attempts": [
+    {
+      "timestamp": "2026-10-07T14:09:27.846396+00:00",
+      "argv": [
+        "docker",
+        "exec",
+        "localai-control-e742dad6c85e-gateway",
+        "curl",
+        "--noproxy",
+        "*",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8080/v1/models"
+      ],
+      "exit_code": 7,
+      "stdout": "",
+      "stderr": "curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect to server\n"
+    },
+    {
+      "timestamp": "2026-10-07T14:09:33.000696+00:00",
+      "argv": [
+        "docker",
+        "exec",
+        "localai-control-e742dad6c85e-gateway",
+        "curl",
+        "--noproxy",
+        "*",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8080/v1/models"
+      ],
+      "exit_code": 56,
+      "stdout": "",
+      "stderr": "curl: (56) Recv failure: Connection reset by peer\n"
+    },
+    {
+      "timestamp": "2026-10-07T14:09:38.121807+00:00",
+      "argv": [
+        "docker",
+        "exec",
+        "localai-control-e742dad6c85e-gateway",
+        "curl",
+        "--noproxy",
+        "*",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8080/v1/models"
+      ],
+      "exit_code": 56,
+      "stdout": "",
+      "stderr": "curl: (56) Recv failure: Connection reset by peer\n"
+    },
+    {
+      "timestamp": "2026-10-07T14:09:48.368583+00:00",
+      "argv": [
+        "docker",
+        "exec",
+        "localai-control-e742dad6c85e-gateway",
+        "curl",
+        "--noproxy",
+        "*",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8080/v1/models"
+      ],
+      "exit_code": 56,
+      "stdout": "",
+      "stderr": "curl: (56) Recv failure: Connection reset by peer\n"
+    },
+    {
+      "timestamp": "2026-10-07T14:09:53.441035+00:00",
+      "argv": [
+        "docker",
+        "exec",
+        "localai-control-e742dad6c85e-gateway",
+        "curl",
+        "--noproxy",
+        "*",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8080/v1/models"
+      ],
+      "exit_code": 56,
+      "stdout": "",
+      "stderr": "curl: (56) Recv failure: Connection reset by peer\n"
+    },
+    {
+      "timestamp": "2026-10-07T14:09:58.515431+00:00",
+      "argv": [
+        "docker",
+        "exec",
+        "localai-control-e742dad6c85e-gateway",
+        "curl",
+        "--noproxy",
+        "*",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8080/v1/models"
+      ],
+      "exit_code": 56,
+      "stdout": "",
+      "stderr": "curl: (56) Recv failure: Connection reset by peer\n"
+    },
+    {
+      "timestamp": "2026-10-07T14:10:03.655497+00:00",
+      "argv": [
+        "docker",
+        "exec",
+        "localai-control-e742dad6c85e-gateway",
+        "curl",
+        "--noproxy",
+        "*",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8080/v1/models"
+      ],
+      "exit_code": 56,
+      "stdout": "",
+      "stderr": "curl: (56) Recv failure: Connection reset by peer\n"
+    },
+    {
+      "timestamp": "2026-10-07T14:10:13.114780+00:00",
+      "argv": [
+        "docker",
+        "exec",
+        "localai-control-e742dad6c85e-gateway",
+        "curl",
+        "--noproxy",
+        "*",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8080/v1/models"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"object\":\"list\",\"data\":[]}\n",
+      "stderr": ""
+    }
+  ],
+  "passed": true,
+  "scope": "read-only HTTP service routing, no inference"
+}

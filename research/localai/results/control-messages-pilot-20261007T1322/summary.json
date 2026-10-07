@@ -1,0 +1,316 @@
+{
+  "started": "2026-10-07T13:22:59.531734+00:00",
+  "status": "passed",
+  "label": "control-messages-pilot-20261007T1322",
+  "network": "localai-control-92c93e762d1e",
+  "configuration": {
+    "label": "control-messages-pilot-20261007T1322",
+    "image": null,
+    "observer_image": "localai-control-observer:edgevpn034-a3d5556",
+    "peers": 4,
+    "memory_mib": 256,
+    "reserve_mib": 4096,
+    "peer_cpus": 0.25,
+    "stage_seconds": 8,
+    "steady_seconds": 15,
+    "departure_seconds": 55,
+    "discovery_timeout": 90,
+    "interval": 5
+  },
+  "resources_before": {
+    "time": "2026-10-07T13:22:59.532281+00:00",
+    "memory_bytes": {
+      "MemTotal": 33186525184,
+      "MemAvailable": 22228860928,
+      "SwapTotal": 33186377728,
+      "SwapFree": 33184321536
+    },
+    "visible_cgroup": {
+      "memory.max": "max",
+      "memory.current": "1188450304",
+      "memory.swap.max": "max",
+      "cpu.max": "max 100000"
+    },
+    "logical_cpus": 16,
+    "workspace_free_bytes": 986620948480,
+    "tools": {
+      "docker": "/usr/local/bin/docker",
+      "go": null,
+      "local-ai": null
+    }
+  },
+  "stages": [
+    {
+      "phase": "bootstrap",
+      "service_peer_count": 1,
+      "first_witness_match_seconds": 9.287232321999909,
+      "elapsed_seconds": 23.765119847999813,
+      "final_witness_match": true,
+      "witnesses_are_not_all_peers": true,
+      "all_peer_membership_match": true
+    },
+    {
+      "phase": "join-2",
+      "service_peer_count": 2,
+      "first_witness_match_seconds": 16.78513186700002,
+      "elapsed_seconds": 31.372059706000073,
+      "final_witness_match": true,
+      "witnesses_are_not_all_peers": true,
+      "all_peer_membership_match": true
+    },
+    {
+      "phase": "join-4",
+      "service_peer_count": 4,
+      "first_witness_match_seconds": 16.56795652599976,
+      "elapsed_seconds": 30.899411547000454,
+      "final_witness_match": true,
+      "witnesses_are_not_all_peers": true,
+      "all_peer_membership_match": true
+    },
+    {
+      "phase": "steady-maintenance",
+      "service_peer_count": 4,
+      "first_witness_match_seconds": 2.0349857860001066,
+      "elapsed_seconds": 23.811885650000477,
+      "final_witness_match": true,
+      "witnesses_are_not_all_peers": true,
+      "all_peer_membership_match": true
+    },
+    {
+      "phase": "peer-departure",
+      "service_peer_count": 3,
+      "first_witness_match_seconds": 31.643880480000007,
+      "elapsed_seconds": 58.62835094999991,
+      "final_witness_match": true,
+      "witnesses_are_not_all_peers": true
+    },
+    {
+      "phase": "peer-rejoin",
+      "service_peer_count": 4,
+      "first_witness_match_seconds": 9.39420462399994,
+      "elapsed_seconds": 23.944766196999808,
+      "final_witness_match": true,
+      "witnesses_are_not_all_peers": true,
+      "all_peer_membership_match": true
+    }
+  ],
+  "randomness": "Fresh token and random peer/service identities; no seed interface",
+  "scope": "Model-free LocalAI federation, private LAN mDNS, diagnostic observer",
+  "observer_effect": "One extra libp2p peer; ledger sync enabled, no service or Alive announcement",
+  "docker_preflight": {
+    "argv": [
+      "docker",
+      "info",
+      "--format",
+      "{{.ServerVersion}}"
+    ],
+    "exit_code": 0,
+    "stdout": "29.8.2\n",
+    "stderr": ""
+  },
+  "source_revision": "a3d555653c0cbfd73ab59ab15beab80903e96484",
+  "instrumentation_sha256": {
+    "run_control_messages.py": "67755ca317b4450a98c63ec65aea7bf2a6db38bf9cc3f14f05348a1b95458630",
+    "observer_go_sources": {
+      "main.go": "09dabf0c39f2516df080d12b609df6be341709b16cd46eb8932454040aaec5e3",
+      "main_test.go": "ef1d2673c3c9904efbfe0ce7a52456eef65ab6401b0629ca0f993b6f7f407273",
+      "mdns_linux.go": "dbde74d17a2af9e040cf525e468e8b33a00fd0a369255623758897b4d61a6feb",
+      "mdns_linux_test.go": "ea0ed26dcd03f5af0540bece03452edf3c42731dda7cd86b3afc1beb25233976"
+    },
+    "observer_go_mod": "8bcb3913804744146544b07e371c2882e600ef23ab22db255d835bdf69d0eda3",
+    "observer_go_sum": "eab1128f30b00f848a40efb4c1c0a712286fafd96177bd60b5b43c9aed9596b1"
+  },
+  "image_id": "sha256:258fffca2f459177f1983eb9b31bbdc248b2faac833b094842fc5816a4e762ee",
+  "observer_image_id": "sha256:98ce2e9c6828cfa8eaf32a71d73324eeeb04d6b642a0b1cd9d93c29eeb2d31a9",
+  "target_service_peers": 4,
+  "memory_budget": {
+    "mem_available_bytes": 22259806208,
+    "reserve_mib": 4096,
+    "per_peer_ceiling_mib": 256,
+    "total_service_peer_ceiling_mib": 1024
+  },
+  "token_sha256": "6787acab64f4575318c69370bf69448eb30415a4f866907f821a593293a12084",
+  "actual_service_peers": 4,
+  "container_final_states": {
+    "localai-control-92c93e762d1e-p01": {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "localai-control-92c93e762d1e-p01"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":222349,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T13:23:00.02252588Z\",\"FinishedAt\":\"0001-01-01T00:00:00Z\"}\n",
+      "stderr": ""
+    },
+    "localai-control-92c93e762d1e-p02": {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "localai-control-92c93e762d1e-p02"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":242890,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T13:23:28.686012446Z\",\"FinishedAt\":\"0001-01-01T00:00:00Z\"}\n",
+      "stderr": ""
+    },
+    "localai-control-92c93e762d1e-p03": {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "localai-control-92c93e762d1e-p03"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":245847,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T13:24:04.060129946Z\",\"FinishedAt\":\"0001-01-01T00:00:00Z\"}\n",
+      "stderr": ""
+    },
+    "localai-control-92c93e762d1e-p04": {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "localai-control-92c93e762d1e-p04"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":274281,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T13:26:09.50340173Z\",\"FinishedAt\":\"2026-10-07T13:25:10.644861275Z\"}\n",
+      "stderr": ""
+    },
+    "localai-control-92c93e762d1e-gateway": {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "localai-control-92c93e762d1e-gateway"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":269460,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T13:25:05.150021305Z\",\"FinishedAt\":\"0001-01-01T00:00:00Z\"}\n",
+      "stderr": ""
+    },
+    "localai-control-92c93e762d1e-observer": {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "localai-control-92c93e762d1e-observer"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":222891,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T13:23:02.485920847Z\",\"FinishedAt\":\"0001-01-01T00:00:00Z\"}\n",
+      "stderr": ""
+    }
+  },
+  "cleanup": [
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "-v",
+        "localai-control-92c93e762d1e-p01"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-control-92c93e762d1e-p01\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "-v",
+        "localai-control-92c93e762d1e-p02"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-control-92c93e762d1e-p02\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "-v",
+        "localai-control-92c93e762d1e-p03"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-control-92c93e762d1e-p03\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "-v",
+        "localai-control-92c93e762d1e-p04"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-control-92c93e762d1e-p04\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "-v",
+        "localai-control-92c93e762d1e-gateway"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-control-92c93e762d1e-gateway\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "-v",
+        "localai-control-92c93e762d1e-observer"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-control-92c93e762d1e-observer\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "localai-control-92c93e762d1e"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-control-92c93e762d1e\n",
+      "stderr": ""
+    }
+  ],
+  "finished": "2026-10-07T13:26:43.686352+00:00",
+  "resources_after": {
+    "time": "2026-10-07T13:26:43.686707+00:00",
+    "memory_bytes": {
+      "MemTotal": 33186525184,
+      "MemAvailable": 22198730752,
+      "SwapTotal": 33186377728,
+      "SwapFree": 33184350208
+    },
+    "visible_cgroup": {
+      "memory.max": "max",
+      "memory.current": "1206247424",
+      "memory.swap.max": "max",
+      "cpu.max": "max 100000"
+    },
+    "logical_cpus": 16,
+    "workspace_free_bytes": 983254380544,
+    "tools": {
+      "docker": "/usr/local/bin/docker",
+      "go": null,
+      "local-ai": null
+    }
+  }
+}

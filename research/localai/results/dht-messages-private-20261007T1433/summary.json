@@ -1,0 +1,280 @@
+{
+  "started": "2026-10-07T14:32:29.225330+00:00",
+  "status": "passed",
+  "label": "dht-messages-private-20261007T1433",
+  "network": "localai-control-e26330e950f1",
+  "configuration": {
+    "label": "dht-messages-private-20261007T1433",
+    "image": "localai/localai:sha-a3d5556",
+    "observer_image": "localai-control-observer:dht-edgevpn034-a3d5556",
+    "memory_mib": 256,
+    "peer_cpus": 0.5,
+    "stage_seconds": 10,
+    "steady_seconds": 50,
+    "departure_seconds": 15,
+    "discovery_timeout": 90,
+    "interval": 3
+  },
+  "resources_before": {
+    "time": "2026-10-07T14:32:29.225519+00:00",
+    "memory_bytes": {
+      "MemTotal": 33186525184,
+      "MemAvailable": 20095422464,
+      "SwapTotal": 33186377728,
+      "SwapFree": 33183789056
+    },
+    "visible_cgroup": {
+      "memory.max": "max",
+      "memory.current": "1764286464",
+      "memory.swap.max": "max",
+      "cpu.max": "max 100000"
+    },
+    "logical_cpus": 16,
+    "workspace_free_bytes": 982402330624,
+    "tools": {
+      "docker": "/usr/local/bin/docker",
+      "go": null,
+      "local-ai": null
+    }
+  },
+  "stages": [
+    {
+      "phase": "bootstrap",
+      "service_peer_count": 1,
+      "first_witness_match_seconds": 7.291669840000395,
+      "elapsed_seconds": 17.616854976000468,
+      "final_witness_match": true,
+      "witnesses_are_not_all_peers": true,
+      "all_peer_membership_match": true,
+      "all_peer_membership_checks": 1
+    },
+    {
+      "phase": "join-advertisement",
+      "service_peer_count": 2,
+      "first_witness_match_seconds": 22.936363876999167,
+      "elapsed_seconds": 33.27104488899931,
+      "final_witness_match": true,
+      "witnesses_are_not_all_peers": true,
+      "all_peer_membership_match": true,
+      "all_peer_membership_checks": 1
+    },
+    {
+      "phase": "steady-maintenance",
+      "service_peer_count": 2,
+      "first_witness_match_seconds": 2.121342820000791,
+      "elapsed_seconds": 53.93568366799991,
+      "final_witness_match": true,
+      "witnesses_are_not_all_peers": true,
+      "all_peer_membership_match": true,
+      "all_peer_membership_checks": 1
+    },
+    {
+      "phase": "peer-departure",
+      "service_peer_count": 1,
+      "first_witness_match_seconds": null,
+      "elapsed_seconds": 15.209227058001488,
+      "final_witness_match": false,
+      "witnesses_are_not_all_peers": true
+    },
+    {
+      "phase": "peer-rejoin",
+      "service_peer_count": 2,
+      "first_witness_match_seconds": 7.40268140399894,
+      "elapsed_seconds": 17.806915178000054,
+      "final_witness_match": true,
+      "witnesses_are_not_all_peers": true,
+      "all_peer_membership_match": true,
+      "all_peer_membership_checks": 1
+    }
+  ],
+  "controller_pids_before": {
+    "pids.max": "512",
+    "pids.current": "44",
+    "pids.events": "max 901"
+  },
+  "randomness": "Fresh token and random peer/service identities; no seed interface",
+  "scope": "Two model-free LocalAI peers, private DHT bootstrap; mDNS also enabled",
+  "observer_effect": "Diagnostic KAD server plus EdgeVPN ledger participant; no LocalAI service/heartbeat",
+  "dht_capture_coverage": "Inbound DHT requests via decoded protobuf hook; no responses or observer outbound requests",
+  "dht_bytes": "Decoded protobuf re-encoding; no exact length-delimited frames or encrypted packets",
+  "dht_discovery_attribution": "mDNS and GossipSub direct bootstrap peers coexist; convergence is not DHT-only proof",
+  "docker_preflight": {
+    "argv": [
+      "docker",
+      "info",
+      "--format",
+      "{{.ServerVersion}}"
+    ],
+    "exit_code": 0,
+    "stdout": "29.8.2\n",
+    "stderr": ""
+  },
+  "source_revision": "a3d555653c0cbfd73ab59ab15beab80903e96484",
+  "image_id": "sha256:258fffca2f459177f1983eb9b31bbdc248b2faac833b094842fc5816a4e762ee",
+  "observer_image_id": "sha256:46013a24a4942bc203a1269008db3d04d2de989bf18bedd6422d8317cc6ec3ba",
+  "instrumentation_sha256": {
+    "run_dht_messages.py": "d1bda358f61b41f98a2f80382744e3c4070c234f144988339c72b7c16080c839",
+    "analyze_dht_messages.py": "a75e1cc4c332068e4ce3e0a2544bdb54a7cea489f7400d88d6d33aa8ae8704aa",
+    "run_control_messages.py": "b6d3ecde2091121ffd7cd2d06be333a9220382715c88f35544e19608990a8d49",
+    "run_baseline.py": "a21f1a9a7cf0b8289c7172a16ddaad9a79f21f14394bc7974dc79a4348202bbd",
+    "control-observer/Dockerfile": "4b6941625c84dd033b81407ee2c65a734a8eecc9def233c605e499229fc03a84",
+    "control-observer/go.mod": "8bcb3913804744146544b07e371c2882e600ef23ab22db255d835bdf69d0eda3",
+    "control-observer/go.sum": "eab1128f30b00f848a40efb4c1c0a712286fafd96177bd60b5b43c9aed9596b1",
+    "control-observer/main.go": "f56055caf32ab1d539385e58ac3cd9a9f6fa2d9924911ef4b1c225c121a60470",
+    "control-observer/mdns_linux.go": "dbde74d17a2af9e040cf525e468e8b33a00fd0a369255623758897b4d61a6feb",
+    "control-observer/main_test.go": "ef1d2673c3c9904efbfe0ce7a52456eef65ab6401b0629ca0f993b6f7f407273",
+    "control-observer/mdns_linux_test.go": "5573c628c2f82cbbef4174d5d11fe789fe20fedebc15799fca7939a6829dae56",
+    "control-observer/dht_capture.go": "4f25841dab769cf3946abf0b103272e54aa04c59b2c66f980637a2f64f9edcb9",
+    "control-observer/dht_capture_test.go": "c77a61903c017f97a57dbcaceceb7819570fdc8b9d907842ee0b0e8ec1e8a423"
+  },
+  "instrumentation_archive": "instrumentation/",
+  "token_sha256": "572c44a8f0fe2d48319b24729b8bcc1c8fb9684ea1eb281efeb3dde1bff93336",
+  "token_helper_cleanup": {
+    "argv": [
+      "docker",
+      "rm",
+      "-f",
+      "-v",
+      "localai-control-e26330e950f1-token"
+    ],
+    "exit_code": 0,
+    "stdout": "localai-control-e26330e950f1-token\n",
+    "stderr": ""
+  },
+  "bootstrap_multiaddr": "/ip4/172.18.0.2/tcp/4001/p2p/12D3KooWSuH4mKBT8veyTfwjLSaBCMuSNkL6B5zTkCTQFNVZ2CE6",
+  "observer_configuration": {
+    "bootstrap_peer_count": 0,
+    "bootstrap_policy": "private_sentinel_no_external_bootstrap",
+    "category": "startup",
+    "dht_enabled": true,
+    "dht_mode": "server",
+    "edgevpn_ledger_sync": "enabled; node.Start periodically publishes this observer's ledger snapshot",
+    "event": "observer_started",
+    "localai_records_added": false,
+    "mdns_enabled": false,
+    "observer_peer_id": "12D3KooWSuH4mKBT8veyTfwjLSaBCMuSNkL6B5zTkCTQFNVZ2CE6",
+    "private_address_policy": "private IP addresses explicitly accepted by the diagnostic observer",
+    "role": "passive_ledger_observer",
+    "schema": "localai-control-observer/v1",
+    "stream_event_note": "libp2p v0.48.0 Network.Notifiee reports listen and connection events, but has no stream callbacks",
+    "stream_events_available": false,
+    "timestamp_utc": "2026-10-07T14:32:31.580326642Z"
+  },
+  "actual_service_peers": 2,
+  "container_final_states": {
+    "localai-control-e26330e950f1-p01": {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "localai-control-e26330e950f1-p01"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":588579,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T14:32:32.249452152Z\",\"FinishedAt\":\"0001-01-01T00:00:00Z\"}\n",
+      "stderr": ""
+    },
+    "localai-control-e26330e950f1-p02": {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "localai-control-e26330e950f1-p02"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":598732,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T14:34:42.443232051Z\",\"FinishedAt\":\"2026-10-07T14:34:27.008802559Z\"}\n",
+      "stderr": ""
+    },
+    "localai-control-e26330e950f1-observer": {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "localai-control-e26330e950f1-observer"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":588418,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T14:32:31.422629354Z\",\"FinishedAt\":\"0001-01-01T00:00:00Z\"}\n",
+      "stderr": ""
+    }
+  },
+  "cleanup": [
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "-v",
+        "localai-control-e26330e950f1-p01"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-control-e26330e950f1-p01\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "-v",
+        "localai-control-e26330e950f1-p02"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-control-e26330e950f1-p02\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "-v",
+        "localai-control-e26330e950f1-observer"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-control-e26330e950f1-observer\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "localai-control-e26330e950f1"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-control-e26330e950f1\n",
+      "stderr": ""
+    }
+  ],
+  "finished": "2026-10-07T14:35:10.391919+00:00",
+  "resources_after": {
+    "time": "2026-10-07T14:35:10.392309+00:00",
+    "memory_bytes": {
+      "MemTotal": 33186525184,
+      "MemAvailable": 20631408640,
+      "SwapTotal": 33186377728,
+      "SwapFree": 33183797248
+    },
+    "visible_cgroup": {
+      "memory.max": "max",
+      "memory.current": "1739599872",
+      "memory.swap.max": "max",
+      "cpu.max": "max 100000"
+    },
+    "logical_cpus": 16,
+    "workspace_free_bytes": 982391541760,
+    "tools": {
+      "docker": "/usr/local/bin/docker",
+      "go": null,
+      "local-ai": null
+    }
+  },
+  "controller_pids_after": {
+    "pids.max": "512",
+    "pids.current": "44",
+    "pids.events": "max 901"
+  },
+  "log_capture_errors": []
+}

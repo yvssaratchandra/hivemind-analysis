@@ -1,0 +1,45 @@
+{
+  "Id": "sha256:98ce2e9c6828cfa8eaf32a71d73324eeeb04d6b642a0b1cd9d93c29eeb2d31a9",
+  "RepoTags": [
+    "localai-control-observer:edgevpn034-a3d5556"
+  ],
+  "RepoDigests": [
+    "localai-control-observer@sha256:98ce2e9c6828cfa8eaf32a71d73324eeeb04d6b642a0b1cd9d93c29eeb2d31a9"
+  ],
+  "Comment": "buildkit.dockerfile.v0",
+  "Created": "2026-10-07T15:18:14.067127264+02:00",
+  "Config": {
+    "Env": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    ],
+    "Entrypoint": [
+      "/control-observer"
+    ],
+    "WorkingDir": "/"
+  },
+  "Architecture": "amd64",
+  "Os": "linux",
+  "Size": 45449524,
+  "RootFS": {
+    "Type": "layers",
+    "Layers": [
+      "sha256:2352195d917ef6bfc7e15a64c73bbc7b0df9da64ce26697e13d55f6514d487d0"
+    ]
+  },
+  "Metadata": {
+    "LastTagTime": "2026-10-07T13:18:14.73556085Z"
+  },
+  "Descriptor": {
+    "mediaType": "application/vnd.oci.image.index.v1+json",
+    "digest": "sha256:98ce2e9c6828cfa8eaf32a71d73324eeeb04d6b642a0b1cd9d93c29eeb2d31a9",
+    "size": 855
+  },
+  "Identity": {
+    "Build": [
+      {
+        "Ref": "m37rmuhjpno0q4ikskruh5n32",
+        "CreatedAt": "2026-10-07T15:18:14.897032273+02:00"
+      }
+    ]
+  }
+}

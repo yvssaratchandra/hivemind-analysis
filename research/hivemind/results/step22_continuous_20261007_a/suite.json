@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "name": "stock4",
+      "mode": "stock",
+      "minimum": 4
+    },
+    {
+      "name": "passive5",
+      "mode": "passive",
+      "minimum": 4
+    },
+    {
+      "name": "expire125",
+      "mode": "expire",
+      "minimum": 4,
+      "lifetime": 1.25
+    },
+    {
+      "name": "f0p5_m0p05",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 0.5,
+      "lifetime": 2.085764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.05
+    },
+    {
+      "name": "f1_m0p05",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 1,
+      "lifetime": 1.085764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.05
+    },
+    {
+      "name": "f2_m0p05",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 2,
+      "lifetime": 0.585764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.05
+    },
+    {
+      "name": "f4_m0p05",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 4,
+      "lifetime": 0.335764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.05
+    }
+  ],
+  "seeds": [
+    2211,
+    2212,
+    2213
+  ],
+  "duration": 30.0,
+  "store_delay": 0
+}

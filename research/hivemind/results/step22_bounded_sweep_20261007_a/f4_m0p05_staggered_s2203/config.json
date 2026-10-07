@@ -1,0 +1,51 @@
+{
+  "case": {
+    "name": "f4_m0p05",
+    "mode": "refresh",
+    "minimum": 4,
+    "frequency": 4,
+    "lifetime": 0.335764,
+    "latency_guard": 0.03576375961303711,
+    "spare": 0.05
+  },
+  "seed": 2203,
+  "pattern": "staggered",
+  "launch_offsets": {
+    "X": 1.6590140677039384,
+    "H0": 1.6082357561698206,
+    "H1": 1.559202988851378,
+    "H2": 2.8439783798623264,
+    "H3": 0.8785236267320273,
+    "H4": 1.1957292941758766,
+    "H5": 2.3385784042461335,
+    "H6": 2.707929970209965
+  },
+  "participants": 8,
+  "honest_min": 2,
+  "target": 4,
+  "honest_ad_lifetime": 5,
+  "request_timeout": 3,
+  "step_timeout": 12,
+  "store_delay": 0,
+  "allreduce_timeout": 6.0,
+  "peer_ids": {
+    "X": "12D3KooWAEMzWAFupdmmUj3iQLWmM976tu8yPh1v2TnBEwqVisus",
+    "H0": "12D3KooW9wV1w8hGpmf2QFS44o1Z9yxYJEVFDtPvmEeeSWF3GEK1",
+    "H1": "12D3KooWQySTeJ97mmRsz6nFKhZbSnaHV34PdkHQ4zvvE9JrM2MY",
+    "H2": "12D3KooWM29kwLmLJ5fFYrrs8d1wdoczHMjGZLhAkPHuEaDEapBv",
+    "H3": "12D3KooWJYe7oaeRzkmzBrWVSKXaZ98nXnp4uXPQ56mJb8gsm8o4",
+    "H4": "12D3KooWKQYASmYrJjMm3EqLjcZAtgaKnUrf3V9RawNp7R75oFiz",
+    "H5": "12D3KooWMFPyoLAvGxKyEmo26kAuxd5XQPdfLZ1b7m3Cgzht5hrk",
+    "H6": "12D3KooWJR9a9XJEaoFJLMsV3qBxWV5bz3jwwLQjHv31MAczV79C"
+  },
+  "node_ids": [
+    "1365411359576711193358278894471795214754689580773",
+    "1458811911958575612668762280685144572746888888636",
+    "1178346180010492129434689176460658997148327886205",
+    "118538230992633159129741272249782457640867135751",
+    "565991820042850397590207294985282024797367784440",
+    "77504416259369709582330178660142467224681844761",
+    "1397975822716060696545901524046430803672463890119",
+    "654643157567353845799945735852716880476127040696"
+  ]
+}

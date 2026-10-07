@@ -1,0 +1,27 @@
+{
+  "recorded_at": "2026-10-06T15:15:37.191490+00:00",
+  "evidence_kind": "fixture_and_static_checks_only",
+  "fixture_tests": {
+    "command": "python3 -m unittest discover -s research/exo/audit/tests -v",
+    "exit_code": 0,
+    "tests_passed": 36,
+    "observed_output_tail": "Ran 36 tests in 0.015s\n\nOK"
+  },
+  "static_checks": {
+    "python_ast": "passed",
+    "three_service_private_config": "passed",
+    "markdown_file_links": "passed",
+    "git_diff_check": "passed"
+  },
+  "upstream_exo_worktree": "clean",
+  "hivemind_source_changes": [],
+  "source_revision": "21a54c5ea0230a3bec1e1a786d200126c7e34ec6",
+  "docker_compose_schema_validation": "unrun",
+  "image_build": "unrun",
+  "live_peer_experiment": "unrun",
+  "runtime_resource_measurements": "unrun",
+  "blockers": [
+    "Docker executable is unavailable in this session."
+  ],
+  "security_vulnerability_validated": false
+}

@@ -1,0 +1,125 @@
+name: exo-audit-20261006-004-baseline
+services:
+  attacker:
+    command:
+      - --namespace
+      - exo-audit-20261006-004-baseline
+      - --arm
+      - baseline
+      - --seed
+      - "1901"
+      - --timeout
+      - "270"
+    entrypoint:
+      - /opt/exo/.venv/bin/python
+      - /audit/probe.py
+    hostname: exo-attacker
+    image: exo-audit:21a54c5ea0230a3bec1e1a786d200126c7e34ec6
+    init: true
+    mem_limit: "2147483648"
+    memswap_limit: "2147483648"
+    networks:
+      peers: null
+    pull_policy: never
+    restart: 'no'
+    stop_grace_period: 10s
+    sysctls:
+      net.ipv6.conf.all.disable_ipv6: "0"
+      net.ipv6.conf.default.disable_ipv6: "0"
+    volumes:
+      - type: volume
+        source: attacker-state
+        target: /var/lib/exo
+        volume: {}
+      - type: bind
+        source: /home/sarat/Projects/hivemind-analysis/research/exo/audit
+        target: /audit
+        read_only: true
+        bind: {}
+      - type: bind
+        source: /home/sarat/Projects/hivemind-analysis/research/exo/results/exo-audit-20261006-004/baseline
+        target: /evidence
+        bind: {}
+  honest-a:
+    build:
+      context: /home/sarat/Projects/hivemind-analysis
+      dockerfile: research/exo/two-peer/Dockerfile
+      args:
+        EXO_REVISION: 21a54c5ea0230a3bec1e1a786d200126c7e34ec6
+    command:
+      - --no-worker
+      - --no-downloads
+      - --offline
+      - -v
+      - --namespace
+      - exo-audit-20261006-004-baseline
+    hostname: exo-honest-a
+    image: exo-audit:21a54c5ea0230a3bec1e1a786d200126c7e34ec6
+    init: true
+    mem_limit: "2147483648"
+    memswap_limit: "2147483648"
+    networks:
+      peers: null
+    pull_policy: never
+    restart: 'no'
+    stop_grace_period: 10s
+    sysctls:
+      net.ipv6.conf.all.disable_ipv6: "0"
+      net.ipv6.conf.default.disable_ipv6: "0"
+    volumes:
+      - type: volume
+        source: honest-a-state
+        target: /var/lib/exo
+        volume: {}
+      - type: bind
+        source: /home/sarat/Projects/hivemind-analysis/research/exo/audit
+        target: /audit
+        read_only: true
+        bind: {}
+  honest-b:
+    command:
+      - --no-worker
+      - --no-downloads
+      - --offline
+      - -v
+      - --namespace
+      - exo-audit-20261006-004-baseline
+    hostname: exo-honest-b
+    image: exo-audit:21a54c5ea0230a3bec1e1a786d200126c7e34ec6
+    init: true
+    mem_limit: "2147483648"
+    memswap_limit: "2147483648"
+    networks:
+      peers: null
+    pull_policy: never
+    restart: 'no'
+    stop_grace_period: 10s
+    sysctls:
+      net.ipv6.conf.all.disable_ipv6: "0"
+      net.ipv6.conf.default.disable_ipv6: "0"
+    volumes:
+      - type: volume
+        source: honest-b-state
+        target: /var/lib/exo
+        volume: {}
+      - type: bind
+        source: /home/sarat/Projects/hivemind-analysis/research/exo/audit
+        target: /audit
+        read_only: true
+        bind: {}
+networks:
+  peers:
+    name: exo-audit-20261006-004-baseline_peers
+    driver: bridge
+    ipam:
+      config:
+        - subnet: fd42:6578:6f:1::/64
+    internal: true
+    enable_ipv6: true
+volumes:
+  attacker-state:
+    name: exo-audit-20261006-004-baseline_attacker-state
+  honest-a-state:
+    name: exo-audit-20261006-004-baseline_honest-a-state
+  honest-b-state:
+    name: exo-audit-20261006-004-baseline_honest-b-state

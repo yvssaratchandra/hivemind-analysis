@@ -1,0 +1,3802 @@
+{
+  "analysis_errors": [],
+  "capture_metadata": {
+    "counts": {
+      "observer_started": 1,
+      "observer_stopping": 1,
+      "packet_capture_started": 1
+    },
+    "examples": [
+      {
+        "detail": {
+          "filter": "UDP source or destination port 5353 only",
+          "interface": "eth0"
+        },
+        "event": "packet_capture_started",
+        "file": "observer.jsonl",
+        "line": 1,
+        "observer_peer_id": "",
+        "timestamp": "2026-10-07T13:38:22.751969+00:00"
+      },
+      {
+        "detail": {
+          "dht_enabled": false,
+          "localai_records_added": false,
+          "mdns_enabled": true,
+          "role": "passive_ledger_observer",
+          "stream_events_available": false
+        },
+        "event": "observer_started",
+        "file": "observer.jsonl",
+        "line": 2,
+        "observer_peer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+        "timestamp": "2026-10-07T13:38:22.754628+00:00"
+      },
+      {
+        "detail": {
+          "reason": "terminated signal received"
+        },
+        "event": "observer_stopping",
+        "file": "observer.jsonl",
+        "line": 246,
+        "observer_peer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+        "timestamp": "2026-10-07T13:40:44.205532+00:00"
+      }
+    ],
+    "interpretation": "Observer startup/stop and packet-capture diagnostics describe the measurement setup; they are not LocalAI peer-to-peer control messages."
+  },
+  "capture_scope": {
+    "diff_semantics": "Record additions/changes/removals are differences between unique snapshots observed by this tap, compared to the prior unique snapshot per observer. They are not counts of application operations or independently transmitted records.",
+    "ledger_snapshot_semantics": "Each gossip_message contains a complete compressed EdgeVPN ledger block. Multiple buckets and records can coexist in one envelope.",
+    "observer_file": "observer.jsonl",
+    "phase_semantics": "Phase labels are assigned from the latest phases.jsonl transition at the event timestamp. A phase label is separate from the semantic lifecycle category.",
+    "received_from_peer_id_semantics": "Immediate relay peer observed by the tap; it is not necessarily the peer that originally published the ledger state."
+  },
+  "completion_audit": {
+    "file": "pilot-completion-audit.json",
+    "present": false
+  },
+  "counts": {
+    "block_index_max": 41,
+    "block_index_min": 4,
+    "body_gzip_json_decode_failures": 0,
+    "body_sha256_mismatches": 0,
+    "connections_already_open_at_observer_start": 0,
+    "distinct_raw_body_sha256_values": 38,
+    "duplicate_block_snapshot_receptions": 27,
+    "events_without_timestamp": 0,
+    "gossip_envelope_receptions": 65,
+    "malformed_or_unknown_events": 0,
+    "mdns_queries": 54,
+    "mdns_responses": 110,
+    "mdns_ttl_zero_resource_records": 0,
+    "observer_event_types": {
+      "gossip_message": 65,
+      "listen_address": 7,
+      "mdns_packet": 164,
+      "observer_started": 1,
+      "observer_stopping": 1,
+      "packet_capture_started": 1,
+      "peer_connection": 16
+    },
+    "parsed_observer_event_count": 255,
+    "peer_connections": 8,
+    "peer_disconnections": 8,
+    "peer_listen_events": 0,
+    "unique_block_hash_values_global": 38,
+    "unique_ledger_block_hashes_per_observer": 38
+  },
+  "input_files": {
+    "message_protocol_reference.json": true,
+    "model-controls.jsonl": true,
+    "observer.jsonl": true,
+    "peer-logs.jsonl": false,
+    "phases.jsonl": true,
+    "pilot-completion-audit.json": false,
+    "samples.jsonl": true,
+    "service-probe.json": true,
+    "summary.json": true
+  },
+  "lifecycle_categories": [
+    {
+      "description": "Peer discovery and transport connection events (mDNS is visible only if captured; DHT traffic may be outside this observer).",
+      "direct_event_counts": {
+        "listen_address_active_at_observer_registration": 4,
+        "mdns_queries": 54,
+        "mdns_responses": 110,
+        "peer_connections": 8
+      },
+      "event_count": 176,
+      "id": "discovery_and_connections",
+      "order": 1,
+      "phase_counts": {
+        "bootstrap": {
+          "observer_events": 61,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "join-2": {
+          "observer_events": 31,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "peer-departure": {
+          "observer_events": 12,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "peer-rejoin": {
+          "observer_events": 36,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "service-routing": {
+          "observer_events": 32,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "steady-maintenance": {
+          "observer_events": 4,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        }
+      },
+      "record_changes": []
+    },
+    {
+      "description": "User/peer registration records used by EdgeVPN admission checks.",
+      "direct_event_counts": {},
+      "event_count": 0,
+      "id": "membership_and_authorization",
+      "order": 2,
+      "phase_counts": {
+        "peer-departure": {
+          "observer_events": 0,
+          "record_additions": 0,
+          "record_changes": 5,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "peer-rejoin": {
+          "observer_events": 0,
+          "record_additions": 0,
+          "record_changes": 2,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "service-routing": {
+          "observer_events": 0,
+          "record_additions": 1,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        }
+      },
+      "record_changes": [
+        {
+          "action": "added",
+          "bucket": "users",
+          "bucket_metadata": {
+            "bucket": "users",
+            "category": "membership_and_authorization",
+            "known": true,
+            "meaning": "Peer authorization/user record (application ledger record inside full-block envelope; conditionally emitted by LocalAI gateway/tunnel listener)",
+            "nominal_schedule": "Every 10s maximum through Announce/backoff when nodeAnnounce is running",
+            "record_kind": "application ledger record inside full-block envelope; conditionally emitted by LocalAI gateway/tunnel listener",
+            "record_name": "Peer authorization/user record",
+            "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+            "source_notes": "FederatedServer.proxy and allocated local tunnel listeners call nodeAnnounce. EdgeVPN's ServiceProtocol handler checks the connecting peer's ID exists in users before forwarding the TCP stream. A worker process running only ExposeService does not itself call LocalAI nodeAnnounce in this code path.",
+            "source_reference": "LocalAI core/p2p/p2p.go:nodeAnnounce/allocateLocalService; core/p2p/federated_server.go:proxy; EdgeVPN pkg/services/services.go:RegisterService",
+            "value_fields": [
+              "PeerID",
+              "Timestamp"
+            ]
+          },
+          "count": 1,
+          "examples": [
+            {
+              "block_hash": "f43c845357a3e7058cf117d65cfe6b9d4e5ec7ce8f48c1d4cf7b9686715b68b5",
+              "block_index": 17,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "line": 148,
+              "message_sha256": "0b6c5c0d402b7ce393aaedce3506731e88184680ef8c0f78211577c6d926c647",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "service-routing",
+              "previous_observed_block_hash": "34aa90b7703ede8ad1827284cba7518fa9e66ec4ec32b7dd368bb20f8f21b5bc",
+              "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "value_summary": {
+                "fields": {
+                  "PeerID": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+                  "Timestamp": "2026-10-07 13:39:20.927536998 +0000 UTC m=+5.728633749"
+                },
+                "other_field_names": [],
+                "type": "object"
+              }
+            }
+          ],
+          "lifecycle_category": "membership_and_authorization",
+          "snapshot_lineage_counts": {
+            "direct_child_or_initial": 1
+          }
+        },
+        {
+          "action": "changed",
+          "bucket": "users",
+          "bucket_metadata": {
+            "bucket": "users",
+            "category": "membership_and_authorization",
+            "known": true,
+            "meaning": "Peer authorization/user record (application ledger record inside full-block envelope; conditionally emitted by LocalAI gateway/tunnel listener)",
+            "nominal_schedule": "Every 10s maximum through Announce/backoff when nodeAnnounce is running",
+            "record_kind": "application ledger record inside full-block envelope; conditionally emitted by LocalAI gateway/tunnel listener",
+            "record_name": "Peer authorization/user record",
+            "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+            "source_notes": "FederatedServer.proxy and allocated local tunnel listeners call nodeAnnounce. EdgeVPN's ServiceProtocol handler checks the connecting peer's ID exists in users before forwarding the TCP stream. A worker process running only ExposeService does not itself call LocalAI nodeAnnounce in this code path.",
+            "source_reference": "LocalAI core/p2p/p2p.go:nodeAnnounce/allocateLocalService; core/p2p/federated_server.go:proxy; EdgeVPN pkg/services/services.go:RegisterService",
+            "value_fields": [
+              "PeerID",
+              "Timestamp"
+            ]
+          },
+          "count": 7,
+          "examples": [
+            {
+              "block_hash": "a56f4fec29f93dda06c2bc1d622fe3dff9c055402a6d7be014b7dcc4c6d718b6",
+              "block_index": 21,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "line": 164,
+              "message_sha256": "c449c48a6bba307141f8aeefdc0d7f6f28d27ce8ac4e927fc8d5430469d14bec",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "peer-departure",
+              "previous_observed_block_hash": "b40b1a39f27538d3977643350acb367e6043499d96f308918f8b016e54704887",
+              "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "value_summary": {
+                "fields": {
+                  "PeerID": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+                  "Timestamp": "2026-10-07 13:39:32.305857393 +0000 UTC m=+17.106954145"
+                },
+                "other_field_names": [],
+                "type": "object"
+              }
+            },
+            {
+              "block_hash": "c1df66d232c9c3af471a16754bcf36b7908605ce5075bbac6b6f4232d738b848",
+              "block_index": 24,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "line": 173,
+              "message_sha256": "6934f17bdfc8aa1da96c5cd1ea34842d668b79f3fe5f6b367e5a7699c2c367f4",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "peer-departure",
+              "previous_observed_block_hash": "0385a53bb71a0ce2aeacda7b210378a440aceba55e147f504cd523828d6aead9",
+              "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "value_summary": {
+                "fields": {
+                  "PeerID": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+                  "Timestamp": "2026-10-07 13:39:44.439983241 +0000 UTC m=+29.241079994"
+                },
+                "other_field_names": [],
+                "type": "object"
+              }
+            },
+            {
+              "block_hash": "194a32f4aecb62c5f399189a465ebbac8938610d0aa34722ad31852d3980db74",
+              "block_index": 27,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "line": 178,
+              "message_sha256": "69e0986b26a7fd455c08f5334c220f1d147aa63d573ba31a6ac9b6e5ab0d7c01",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "peer-departure",
+              "previous_observed_block_hash": "fde9917d1e1c76f5f3d04ed2f915a5a388494803357473361f403b29f53cce36",
+              "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "value_summary": {
+                "fields": {
+                  "PeerID": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+                  "Timestamp": "2026-10-07 13:39:51.602495484 +0000 UTC m=+36.403592226"
+                },
+                "other_field_names": [],
+                "type": "object"
+              }
+            },
+            {
+              "block_hash": "0a20eaaecc580a350d51c471283ca5dc5360fb7a24f42a14261570c80d8de55e",
+              "block_index": 29,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "line": 182,
+              "message_sha256": "1049396718ce424265a810a29d262f1ab6bedcd9772f36da923d2366b3d643b3",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "peer-departure",
+              "previous_observed_block_hash": "3d8ded38b55598eaae0a03e3b4ac37b8bd0993e92ad8a81130d8503324f856e4",
+              "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "value_summary": {
+                "fields": {
+                  "PeerID": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+                  "Timestamp": "2026-10-07 13:39:59.574900012 +0000 UTC m=+44.375996763"
+                },
+                "other_field_names": [],
+                "type": "object"
+              }
+            }
+          ],
+          "lifecycle_category": "membership_and_authorization",
+          "snapshot_lineage_counts": {
+            "direct_child_or_initial": 7
+          }
+        }
+      ]
+    },
+    {
+      "description": "EdgeVPN services and LocalAI worker advertisement records.",
+      "direct_event_counts": {},
+      "event_count": 0,
+      "id": "service_registration_and_worker_discovery",
+      "order": 3,
+      "phase_counts": {
+        "bootstrap": {
+          "observer_events": 0,
+          "record_additions": 0,
+          "record_changes": 1,
+          "record_initially_present": 2,
+          "record_removals": 0
+        },
+        "join-2": {
+          "observer_events": 0,
+          "record_additions": 2,
+          "record_changes": 2,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "peer-departure": {
+          "observer_events": 0,
+          "record_additions": 0,
+          "record_changes": 2,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "peer-rejoin": {
+          "observer_events": 0,
+          "record_additions": 2,
+          "record_changes": 3,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "service-routing": {
+          "observer_events": 0,
+          "record_additions": 0,
+          "record_changes": 1,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "steady-maintenance": {
+          "observer_events": 0,
+          "record_additions": 0,
+          "record_changes": 1,
+          "record_initially_present": 0,
+          "record_removals": 0
+        }
+      },
+      "record_changes": [
+        {
+          "action": "added",
+          "bucket": "localai-control-7cb6742d52ac_federated",
+          "bucket_metadata": {
+            "bucket": "<P2PNetworkID>_federated, <P2PNetworkID>_worker, or <P2PNetworkID>_mlx_worker; if P2PNetworkID is empty: federated, worker, or mlx_worker",
+            "category": "service_registration_and_worker_discovery",
+            "known": true,
+            "meaning": "LocalAI federated/worker service advertisement (application ledger record inside full-block envelope)",
+            "nominal_schedule": "Every 20s maximum through Announce/backoff; every advertisement writes current LastSeen and immediately creates a ledger block",
+            "record_kind": "application ledger record inside full-block envelope",
+            "record_name": "LocalAI federated/worker service advertisement",
+            "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+            "source_notes": "The exact service ID is selected by the caller: FederatedID=\"federated\", LlamaCPPWorkerID=\"worker\", MLXWorkerID=\"mlx_worker\". NetworkID(prefix, serviceID) returns prefix + \"_\" + serviceID when prefix is nonempty, otherwise serviceID unchanged. In the current capture, the LocalAI app runs the federated mode, so its advertised NodeData bucket is <P2PNetworkID>_federated. This custom bucket is distinct from EdgeVPN\u2019s base \"services\" bucket. ID is hostname plus the random service name. TunnelAddress and ServiceID are empty in the initial ExposeService record and may be filled in local discovery state later.",
+            "source_reference": "LocalAI core/p2p/p2p.go:ExposeService; core/p2p/federated.go:NetworkID; core/p2p/node.go:service ID constants; core/schema/localai.go:NodeData; core/application/p2p.go:StartP2P",
+            "value_fields": [
+              "Name",
+              "ID",
+              "TunnelAddress",
+              "ServiceID",
+              "LastSeen"
+            ]
+          },
+          "count": 2,
+          "examples": [
+            {
+              "block_hash": "e25ca7d5398e37e259f60817961f348d1e02ff95444f9ab48e20fa5b8e7351aa",
+              "block_index": 8,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "cmrwoyredt",
+              "line": 90,
+              "message_sha256": "5784e093cb6b2072e2da6b8586720f7026d12a564362427f22da05ce7fbf0fa0",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "join-2",
+              "previous_observed_block_hash": "f6661f03767fe12a4240570afdba8c65570ebdd833e7a5f35620252ca0afc6c1",
+              "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+              "value_summary": {
+                "fields": {
+                  "ID": "control-peer-02-cmrwoyredt",
+                  "LastSeen": "2026-10-07T13:38:48.563452358Z",
+                  "Name": "cmrwoyredt",
+                  "ServiceID": ""
+                },
+                "other_field_names": [
+                  "TunnelAddress"
+                ],
+                "type": "object"
+              }
+            },
+            {
+              "block_hash": "5b874e9a2eed62347f004c68e79a00eb70a34a0fbafe23337aa9d18bd1a8ecb5",
+              "block_index": 35,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "ZtyTQcPSsc",
+              "line": 230,
+              "message_sha256": "b8da5e77f58fa14ea24e879761b3a31250370ba5347538cca2aefffade634bd4",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "peer-rejoin",
+              "previous_observed_block_hash": "c0ed05e44857df2ed91f1e322431baf55da7b901262eb1c756764d8faa53dded",
+              "received_from_peer_id": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj",
+              "value_summary": {
+                "fields": {
+                  "ID": "control-peer-02-ZtyTQcPSsc",
+                  "LastSeen": "2026-10-07T13:40:24.729623773Z",
+                  "Name": "ZtyTQcPSsc",
+                  "ServiceID": ""
+                },
+                "other_field_names": [
+                  "TunnelAddress"
+                ],
+                "type": "object"
+              }
+            }
+          ],
+          "lifecycle_category": "service_registration_and_worker_discovery",
+          "snapshot_lineage_counts": {
+            "direct_child_or_initial": 2
+          }
+        },
+        {
+          "action": "changed",
+          "bucket": "localai-control-7cb6742d52ac_federated",
+          "bucket_metadata": {
+            "bucket": "<P2PNetworkID>_federated, <P2PNetworkID>_worker, or <P2PNetworkID>_mlx_worker; if P2PNetworkID is empty: federated, worker, or mlx_worker",
+            "category": "service_registration_and_worker_discovery",
+            "known": true,
+            "meaning": "LocalAI federated/worker service advertisement (application ledger record inside full-block envelope)",
+            "nominal_schedule": "Every 20s maximum through Announce/backoff; every advertisement writes current LastSeen and immediately creates a ledger block",
+            "record_kind": "application ledger record inside full-block envelope",
+            "record_name": "LocalAI federated/worker service advertisement",
+            "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+            "source_notes": "The exact service ID is selected by the caller: FederatedID=\"federated\", LlamaCPPWorkerID=\"worker\", MLXWorkerID=\"mlx_worker\". NetworkID(prefix, serviceID) returns prefix + \"_\" + serviceID when prefix is nonempty, otherwise serviceID unchanged. In the current capture, the LocalAI app runs the federated mode, so its advertised NodeData bucket is <P2PNetworkID>_federated. This custom bucket is distinct from EdgeVPN\u2019s base \"services\" bucket. ID is hostname plus the random service name. TunnelAddress and ServiceID are empty in the initial ExposeService record and may be filled in local discovery state later.",
+            "source_reference": "LocalAI core/p2p/p2p.go:ExposeService; core/p2p/federated.go:NetworkID; core/p2p/node.go:service ID constants; core/schema/localai.go:NodeData; core/application/p2p.go:StartP2P",
+            "value_fields": [
+              "Name",
+              "ID",
+              "TunnelAddress",
+              "ServiceID",
+              "LastSeen"
+            ]
+          },
+          "count": 10,
+          "examples": [
+            {
+              "block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+              "block_index": 6,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "VjeZXwrLVQ",
+              "line": 61,
+              "message_sha256": "3fc4b90592856fee1430f24d2e154e20b84c9cc8af31b5096d875abf4693429b",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "bootstrap",
+              "previous_observed_block_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+              "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "value_summary": {
+                "fields": {
+                  "ID": "control-peer-01-VjeZXwrLVQ",
+                  "LastSeen": "2026-10-07T13:38:30.314683411Z",
+                  "Name": "VjeZXwrLVQ",
+                  "ServiceID": ""
+                },
+                "other_field_names": [
+                  "TunnelAddress"
+                ],
+                "type": "object"
+              }
+            },
+            {
+              "block_hash": "fbd85eac8d804cfad017ffacbe3288b014eac2c280dbd22ceda8230c60bc3e94",
+              "block_index": 11,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "VjeZXwrLVQ",
+              "line": 102,
+              "message_sha256": "5faa253be8c0d70cf2da5e6e4743338c0bff04b8b7595d8a8968ba94d50bf28c",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "join-2",
+              "previous_observed_block_hash": "aaf5375cda2f6692a1e810d91cb49951ad633a65729693c6a3a41d2308f7b106",
+              "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "value_summary": {
+                "fields": {
+                  "ID": "control-peer-01-VjeZXwrLVQ",
+                  "LastSeen": "2026-10-07T13:38:52.80743015Z",
+                  "Name": "VjeZXwrLVQ",
+                  "ServiceID": ""
+                },
+                "other_field_names": [
+                  "TunnelAddress"
+                ],
+                "type": "object"
+              }
+            },
+            {
+              "block_hash": "30b0d975c012281f5366cba802d625bb0d27ba402853379bc08b86593bf63a74",
+              "block_index": 13,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "cmrwoyredt",
+              "line": 110,
+              "message_sha256": "b4892285275ad6f2e8b48b136caf672f13a3fdbb7069cfe5c3685534ac0b7aa1",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "join-2",
+              "previous_observed_block_hash": "8567ac54b9db84ec4ef8900a2df4c8143f2b01e39b0508fd7c2a0bb6c2ca73a5",
+              "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+              "value_summary": {
+                "fields": {
+                  "ID": "control-peer-02-cmrwoyredt",
+                  "LastSeen": "2026-10-07T13:38:57.99473932Z",
+                  "Name": "cmrwoyredt",
+                  "ServiceID": ""
+                },
+                "other_field_names": [
+                  "TunnelAddress"
+                ],
+                "type": "object"
+              }
+            },
+            {
+              "block_hash": "a620fb9a7ff36ca24c41989fce11850cde823201a6d42a78383094f2c7de9495",
+              "block_index": 15,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "cmrwoyredt",
+              "line": 118,
+              "message_sha256": "3d1ac9b84ceb9e14a3307bb4060e0aee01af16072845f95565a992f5b2c210c5",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "steady-maintenance",
+              "previous_observed_block_hash": "5371bd2befbf9f1c1fd4f37cb64353bcfccfd4624a96eea24f27a13047f914f3",
+              "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+              "value_summary": {
+                "fields": {
+                  "ID": "control-peer-02-cmrwoyredt",
+                  "LastSeen": "2026-10-07T13:39:09.947036909Z",
+                  "Name": "cmrwoyredt",
+                  "ServiceID": ""
+                },
+                "other_field_names": [
+                  "TunnelAddress"
+                ],
+                "type": "object"
+              }
+            }
+          ],
+          "lifecycle_category": "service_registration_and_worker_discovery",
+          "snapshot_lineage_counts": {
+            "direct_child_or_initial": 10
+          }
+        },
+        {
+          "action": "present_at_first_observation",
+          "bucket": "localai-control-7cb6742d52ac_federated",
+          "bucket_metadata": {
+            "bucket": "<P2PNetworkID>_federated, <P2PNetworkID>_worker, or <P2PNetworkID>_mlx_worker; if P2PNetworkID is empty: federated, worker, or mlx_worker",
+            "category": "service_registration_and_worker_discovery",
+            "known": true,
+            "meaning": "LocalAI federated/worker service advertisement (application ledger record inside full-block envelope)",
+            "nominal_schedule": "Every 20s maximum through Announce/backoff; every advertisement writes current LastSeen and immediately creates a ledger block",
+            "record_kind": "application ledger record inside full-block envelope",
+            "record_name": "LocalAI federated/worker service advertisement",
+            "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+            "source_notes": "The exact service ID is selected by the caller: FederatedID=\"federated\", LlamaCPPWorkerID=\"worker\", MLXWorkerID=\"mlx_worker\". NetworkID(prefix, serviceID) returns prefix + \"_\" + serviceID when prefix is nonempty, otherwise serviceID unchanged. In the current capture, the LocalAI app runs the federated mode, so its advertised NodeData bucket is <P2PNetworkID>_federated. This custom bucket is distinct from EdgeVPN\u2019s base \"services\" bucket. ID is hostname plus the random service name. TunnelAddress and ServiceID are empty in the initial ExposeService record and may be filled in local discovery state later.",
+            "source_reference": "LocalAI core/p2p/p2p.go:ExposeService; core/p2p/federated.go:NetworkID; core/p2p/node.go:service ID constants; core/schema/localai.go:NodeData; core/application/p2p.go:StartP2P",
+            "value_fields": [
+              "Name",
+              "ID",
+              "TunnelAddress",
+              "ServiceID",
+              "LastSeen"
+            ]
+          },
+          "count": 1,
+          "examples": [
+            {
+              "block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+              "block_index": 4,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "none",
+              "file": "observer.jsonl",
+              "key": "VjeZXwrLVQ",
+              "line": 34,
+              "message_sha256": "41661b88138f1982fc85fb5aabb59b3d102fa4d92a476d47e1b6f7b6dccd194e",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "bootstrap",
+              "previous_observed_block_hash": null,
+              "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "value_summary": {
+                "fields": {
+                  "ID": "control-peer-01-VjeZXwrLVQ",
+                  "LastSeen": "2026-10-07T13:38:23.933760315Z",
+                  "Name": "VjeZXwrLVQ",
+                  "ServiceID": ""
+                },
+                "other_field_names": [
+                  "TunnelAddress"
+                ],
+                "type": "object"
+              }
+            }
+          ],
+          "lifecycle_category": "service_registration_and_worker_discovery",
+          "snapshot_lineage_counts": {
+            "direct_child_or_initial": 1
+          }
+        },
+        {
+          "action": "added",
+          "bucket": "services",
+          "bucket_metadata": {
+            "bucket": "services",
+            "category": "service_registration_and_worker_discovery",
+            "known": true,
+            "meaning": "EdgeVPN service route (application ledger record inside full-block envelope)",
+            "nominal_schedule": "Announce cap 60s; record is added if missing or if the PeerID has changed, using EdgeVPN's backoff ticker",
+            "record_kind": "application ledger record inside full-block envelope",
+            "record_name": "EdgeVPN service route",
+            "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+            "source_notes": "This EdgeVPN record resolves the service ID to its libp2p peer. It is distinct from LocalAI's NodeData advertisement; destination address is not a field in types.Service.",
+            "source_reference": "LocalAI core/p2p/p2p.go:ExposeService; EdgeVPN pkg/services/services.go:ExposeNetworkService; pkg/types/service.go (v0.34.0)",
+            "value_fields": [
+              "PeerID",
+              "Name"
+            ]
+          },
+          "count": 2,
+          "examples": [
+            {
+              "block_hash": "aaf5375cda2f6692a1e810d91cb49951ad633a65729693c6a3a41d2308f7b106",
+              "block_index": 10,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "cmrwoyredt",
+              "line": 92,
+              "message_sha256": "9dcf5d5122741b2d09be7959701f50129f2437750c0e89b4b5a9b0c4e823f607",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "join-2",
+              "previous_observed_block_hash": "f425df3aa16bc76c1088884d8c118f9a707d1cfa8edbdf7b7ec560b58d7e7c6d",
+              "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+              "value_summary": {
+                "fields": {
+                  "Name": "cmrwoyredt",
+                  "PeerID": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS"
+                },
+                "other_field_names": [],
+                "type": "object"
+              }
+            },
+            {
+              "block_hash": "c0ed05e44857df2ed91f1e322431baf55da7b901262eb1c756764d8faa53dded",
+              "block_index": 34,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "ZtyTQcPSsc",
+              "line": 228,
+              "message_sha256": "62d7b7d106301baf1131182fb4d528717f90f556aa74b79b341569715fe9ed45",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "peer-rejoin",
+              "previous_observed_block_hash": "9e662997a06e09e466dab529c8a821018f85e7d1d208369ecb7036438293f835",
+              "received_from_peer_id": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj",
+              "value_summary": {
+                "fields": {
+                  "Name": "ZtyTQcPSsc",
+                  "PeerID": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj"
+                },
+                "other_field_names": [],
+                "type": "object"
+              }
+            }
+          ],
+          "lifecycle_category": "service_registration_and_worker_discovery",
+          "snapshot_lineage_counts": {
+            "direct_child_or_initial": 2
+          }
+        },
+        {
+          "action": "present_at_first_observation",
+          "bucket": "services",
+          "bucket_metadata": {
+            "bucket": "services",
+            "category": "service_registration_and_worker_discovery",
+            "known": true,
+            "meaning": "EdgeVPN service route (application ledger record inside full-block envelope)",
+            "nominal_schedule": "Announce cap 60s; record is added if missing or if the PeerID has changed, using EdgeVPN's backoff ticker",
+            "record_kind": "application ledger record inside full-block envelope",
+            "record_name": "EdgeVPN service route",
+            "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+            "source_notes": "This EdgeVPN record resolves the service ID to its libp2p peer. It is distinct from LocalAI's NodeData advertisement; destination address is not a field in types.Service.",
+            "source_reference": "LocalAI core/p2p/p2p.go:ExposeService; EdgeVPN pkg/services/services.go:ExposeNetworkService; pkg/types/service.go (v0.34.0)",
+            "value_fields": [
+              "PeerID",
+              "Name"
+            ]
+          },
+          "count": 1,
+          "examples": [
+            {
+              "block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+              "block_index": 4,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "none",
+              "file": "observer.jsonl",
+              "key": "VjeZXwrLVQ",
+              "line": 34,
+              "message_sha256": "41661b88138f1982fc85fb5aabb59b3d102fa4d92a476d47e1b6f7b6dccd194e",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "bootstrap",
+              "previous_observed_block_hash": null,
+              "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "value_summary": {
+                "fields": {
+                  "Name": "VjeZXwrLVQ",
+                  "PeerID": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr"
+                },
+                "other_field_names": [],
+                "type": "object"
+              }
+            }
+          ],
+          "lifecycle_category": "service_registration_and_worker_discovery",
+          "snapshot_lineage_counts": {
+            "direct_child_or_initial": 1
+          }
+        }
+      ]
+    },
+    {
+      "description": "Periodic health heartbeats and refreshed LastSeen fields.",
+      "direct_event_counts": {},
+      "event_count": 0,
+      "id": "health_and_keepalive",
+      "order": 4,
+      "phase_counts": {
+        "bootstrap": {
+          "observer_events": 0,
+          "record_additions": 0,
+          "record_changes": 1,
+          "record_initially_present": 1,
+          "record_removals": 0
+        },
+        "join-2": {
+          "observer_events": 0,
+          "record_additions": 1,
+          "record_changes": 2,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "peer-departure": {
+          "observer_events": 0,
+          "record_additions": 0,
+          "record_changes": 3,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "peer-rejoin": {
+          "observer_events": 0,
+          "record_additions": 1,
+          "record_changes": 3,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "service-routing": {
+          "observer_events": 0,
+          "record_additions": 1,
+          "record_changes": 1,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "steady-maintenance": {
+          "observer_events": 0,
+          "record_additions": 0,
+          "record_changes": 1,
+          "record_initially_present": 0,
+          "record_removals": 0
+        }
+      },
+      "record_changes": [
+        {
+          "action": "added",
+          "bucket": "healthcheck",
+          "bucket_metadata": {
+            "bucket": "healthcheck",
+            "category": "health_and_keepalive",
+            "known": true,
+            "meaning": "EdgeVPN peer heartbeat (application ledger record inside full-block envelope)",
+            "nominal_schedule": "Announce interval 30s maximum; considered live for 15 minutes",
+            "record_kind": "application ledger record inside full-block envelope",
+            "record_name": "EdgeVPN peer heartbeat",
+            "reference_lifecycle_category": "3. Steady-state liveness, service discovery and ledger sync",
+            "source_notes": null,
+            "source_reference": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/services/alive.go (v0.34.0)",
+            "value_fields": []
+          },
+          "count": 3,
+          "examples": [
+            {
+              "block_hash": "f425df3aa16bc76c1088884d8c118f9a707d1cfa8edbdf7b7ec560b58d7e7c6d",
+              "block_index": 9,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+              "line": 91,
+              "message_sha256": "a0b235fe36430323cfa9aa5781e9fa11d70e91035cd5992bf6509f58b94b7380",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "join-2",
+              "previous_observed_block_hash": "e25ca7d5398e37e259f60817961f348d1e02ff95444f9ab48e20fa5b8e7351aa",
+              "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+              "value_summary": {
+                "type": "string",
+                "value": "2026-10-07T13:38:48Z"
+              }
+            },
+            {
+              "block_hash": "b40b1a39f27538d3977643350acb367e6043499d96f308918f8b016e54704887",
+              "block_index": 20,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "line": 152,
+              "message_sha256": "e0c8ef6aa9c1158aaa9dfa5db4cfc91a539afa81503cd57b0392fe99562c8fcc",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "service-routing",
+              "previous_observed_block_hash": "865ef3032f64e4b78f22d7e64637a4d3fe10826dd35df3237d5672ab7cc82073",
+              "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "value_summary": {
+                "type": "string",
+                "value": "2026-10-07T13:39:22Z"
+              }
+            },
+            {
+              "block_hash": "9e662997a06e09e466dab529c8a821018f85e7d1d208369ecb7036438293f835",
+              "block_index": 33,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj",
+              "line": 222,
+              "message_sha256": "84890fa31fcb6f7b00c190a6fde58a3c705bb8e08e8d5217b8012f2d48d09b9f",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "peer-rejoin",
+              "previous_observed_block_hash": "4834404ad39192b6ff3961b4567a1f376c04ac3c5fbff799574191f602709a77",
+              "received_from_peer_id": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj",
+              "value_summary": {
+                "type": "string",
+                "value": "2026-10-07T13:40:22Z"
+              }
+            }
+          ],
+          "lifecycle_category": "health_and_keepalive",
+          "snapshot_lineage_counts": {
+            "direct_child_or_initial": 3
+          }
+        },
+        {
+          "action": "changed",
+          "bucket": "healthcheck",
+          "bucket_metadata": {
+            "bucket": "healthcheck",
+            "category": "health_and_keepalive",
+            "known": true,
+            "meaning": "EdgeVPN peer heartbeat (application ledger record inside full-block envelope)",
+            "nominal_schedule": "Announce interval 30s maximum; considered live for 15 minutes",
+            "record_kind": "application ledger record inside full-block envelope",
+            "record_name": "EdgeVPN peer heartbeat",
+            "reference_lifecycle_category": "3. Steady-state liveness, service discovery and ledger sync",
+            "source_notes": null,
+            "source_reference": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/services/alive.go (v0.34.0)",
+            "value_fields": []
+          },
+          "count": 11,
+          "examples": [
+            {
+              "block_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+              "block_index": 5,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "line": 56,
+              "message_sha256": "58ce74e80cda23cdc5bc9a74a9087f618cdbc873141d067fc065900c6c852fca",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "bootstrap",
+              "previous_observed_block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+              "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "value_summary": {
+                "type": "string",
+                "value": "2026-10-07T13:38:26Z"
+              }
+            },
+            {
+              "block_hash": "f6661f03767fe12a4240570afdba8c65570ebdd833e7a5f35620252ca0afc6c1",
+              "block_index": 7,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "line": 69,
+              "message_sha256": "2ddaa56a7bea0e7ae8f797c3cfc433b5e5fdeba75c37589e5745d65c17e480de",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "join-2",
+              "previous_observed_block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+              "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "value_summary": {
+                "type": "string",
+                "value": "2026-10-07T13:38:41Z"
+              }
+            },
+            {
+              "block_hash": "8567ac54b9db84ec4ef8900a2df4c8143f2b01e39b0508fd7c2a0bb6c2ca73a5",
+              "block_index": 12,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+              "line": 104,
+              "message_sha256": "e07b7a85878ef7ed8a32620ab9963d48f7b7fe82006774084858ccc11998dd62",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "join-2",
+              "previous_observed_block_hash": "fbd85eac8d804cfad017ffacbe3288b014eac2c280dbd22ceda8230c60bc3e94",
+              "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+              "value_summary": {
+                "type": "string",
+                "value": "2026-10-07T13:38:53Z"
+              }
+            },
+            {
+              "block_hash": "5371bd2befbf9f1c1fd4f37cb64353bcfccfd4624a96eea24f27a13047f914f3",
+              "block_index": 14,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "line": 116,
+              "message_sha256": "2b96450d5c8a98fe4694a5920f990fcf893a22ff842e0a2ca92924350b418a13",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "steady-maintenance",
+              "previous_observed_block_hash": "30b0d975c012281f5366cba802d625bb0d27ba402853379bc08b86593bf63a74",
+              "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "value_summary": {
+                "type": "string",
+                "value": "2026-10-07T13:39:05Z"
+              }
+            }
+          ],
+          "lifecycle_category": "health_and_keepalive",
+          "snapshot_lineage_counts": {
+            "direct_child_or_initial": 11
+          }
+        },
+        {
+          "action": "present_at_first_observation",
+          "bucket": "healthcheck",
+          "bucket_metadata": {
+            "bucket": "healthcheck",
+            "category": "health_and_keepalive",
+            "known": true,
+            "meaning": "EdgeVPN peer heartbeat (application ledger record inside full-block envelope)",
+            "nominal_schedule": "Announce interval 30s maximum; considered live for 15 minutes",
+            "record_kind": "application ledger record inside full-block envelope",
+            "record_name": "EdgeVPN peer heartbeat",
+            "reference_lifecycle_category": "3. Steady-state liveness, service discovery and ledger sync",
+            "source_notes": null,
+            "source_reference": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/services/alive.go (v0.34.0)",
+            "value_fields": []
+          },
+          "count": 1,
+          "examples": [
+            {
+              "block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+              "block_index": 4,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "none",
+              "file": "observer.jsonl",
+              "key": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "line": 34,
+              "message_sha256": "41661b88138f1982fc85fb5aabb59b3d102fa4d92a476d47e1b6f7b6dccd194e",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "bootstrap",
+              "previous_observed_block_hash": null,
+              "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "value_summary": {
+                "type": "string",
+                "value": "2026-10-07T13:38:21Z"
+              }
+            }
+          ],
+          "lifecycle_category": "health_and_keepalive",
+          "snapshot_lineage_counts": {
+            "direct_child_or_initial": 1
+          }
+        }
+      ]
+    },
+    {
+      "description": "Federated application state such as synchronized model-name lists, when enabled.",
+      "direct_event_counts": {},
+      "event_count": 0,
+      "id": "shared_model_state",
+      "order": 5,
+      "phase_counts": {
+        "service-routing": {
+          "observer_events": 0,
+          "record_additions": 1,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        }
+      },
+      "record_changes": [
+        {
+          "action": "added",
+          "bucket": "shared_state",
+          "bucket_metadata": {
+            "bucket": "shared_state",
+            "category": "shared_model_state",
+            "known": true,
+            "meaning": "Shared model-name list (application ledger record inside full-block envelope)",
+            "nominal_schedule": "Federated LocalAI app checks state every 60s; AnnounceUpdate is also configured with 60s maximum and writes only when the value differs or is absent",
+            "record_kind": "application ledger record inside full-block envelope",
+            "record_name": "Shared model-name list",
+            "reference_lifecycle_category": "5. Optional model-state synchronization (federated application mode only)",
+            "source_notes": "This record lists model names, not weights or model files. If a peer sees a name it lacks, LocalAI submits a gallery installation operation. p2pSync is started by StartP2P only when the federated mode branch runs; a standalone worker-only P2P node does not run this model-state sync.",
+            "source_reference": "LocalAI core/application/p2p.go:StartP2P/syncState/p2pSync; EdgeVPN pkg/blockchain/ledger.go:AnnounceUpdate",
+            "value_fields": []
+          },
+          "count": 1,
+          "examples": [
+            {
+              "block_hash": "865ef3032f64e4b78f22d7e64637a4d3fe10826dd35df3237d5672ab7cc82073",
+              "block_index": 19,
+              "chain_relation": "direct_child_or_initial",
+              "diff_basis": "previous_observed_snapshot",
+              "file": "observer.jsonl",
+              "key": "models",
+              "line": 150,
+              "message_sha256": "7510a4c36e39f3aaac5ef0912e4cb7688c8386dfccc7c4ce411bb773cd0cfe68",
+              "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+              "phase": "service-routing",
+              "previous_observed_block_hash": "fcd21dd64b3a244f9705fdcf76f35c5dbf2e165a432659241282d0cc50fa83ef",
+              "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+              "value_summary": {
+                "item_count": 0,
+                "sample": [],
+                "type": "list"
+              }
+            }
+          ],
+          "lifecycle_category": "shared_model_state",
+          "snapshot_lineage_counts": {
+            "direct_child_or_initial": 1
+          }
+        }
+      ]
+    },
+    {
+      "description": "Encrypted gossip carries a compressed full-block ledger snapshot; the envelope can contain several record buckets.",
+      "direct_event_counts": {
+        "gossip_receptions": 65
+      },
+      "event_count": 65,
+      "id": "ledger_replication",
+      "order": 6,
+      "phase_counts": {
+        "bootstrap": {
+          "observer_events": 5,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "join-2": {
+          "observer_events": 12,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "peer-departure": {
+          "observer_events": 19,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "peer-rejoin": {
+          "observer_events": 17,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "service-routing": {
+          "observer_events": 8,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "steady-maintenance": {
+          "observer_events": 4,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        }
+      },
+      "record_changes": []
+    },
+    {
+      "description": "Observed state disappearance, branch/resync differences, stale/future records, and peer disconnects; none is an explicit leave message by itself.",
+      "direct_event_counts": {
+        "listen_address_closed": 3,
+        "peer_disconnections": 8
+      },
+      "event_count": 11,
+      "id": "churn_and_expiry",
+      "order": 7,
+      "phase_counts": {
+        "peer-departure": {
+          "observer_events": 2,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        },
+        "shutdown": {
+          "observer_events": 9,
+          "record_additions": 0,
+          "record_changes": 0,
+          "record_initially_present": 0,
+          "record_removals": 0
+        }
+      },
+      "record_changes": []
+    },
+    {
+      "description": "Unknown events or buckets retained for inspection rather than silently discarded.",
+      "direct_event_counts": {},
+      "event_count": 0,
+      "id": "unknown_or_unclassified",
+      "order": 8,
+      "phase_counts": {},
+      "record_changes": []
+    }
+  ],
+  "limitations": [
+    "One observer's local network vantage; relay IDs do not identify the original ledger publisher.",
+    "The lab disables DHT; no WAN behavior is measured. If mDNS capture is absent, discovery traffic may be outside this trace.",
+    "The run uses model-free peers. The gateway /v1/models probe is not model inference and no sharded inference workload is measured.",
+    "Observed removals are ledger state differences, not explicit leave messages. Peer disconnect, service loss, and eventual record expiry are reported as separate evidence.",
+    "A record or bucket removal means it was absent from a later snapshot received by this observer. That block may be from a stale, forked, or otherwise nonaccepted branch; block index and parent-hash lineage do not prove canonical acceptance. This trace cannot establish authoritative deletion, explicit departure, or prove that a leader-driven heartbeat-bucket scrub did or did not occur.",
+    "Repeated full snapshots can contain unchanged records. Counts of changed records are observed state differences, not record-level packet counts."
+  ],
+  "malformed_or_unknown_events": [],
+  "mdns_ttl_zero_observations": {
+    "count": 0,
+    "examples": [],
+    "interpretation": "DNS resource records with TTL 0 can signal DNS-level withdrawal/goodbye; they do not prove a LocalAI ledger leave or authoritative membership removal."
+  },
+  "membership_and_resources": {
+    "actual_service_peers": 2,
+    "container_resource_samples": {
+      "bootstrap": {
+        "localai-control-7cb6742d52ac-observer": {
+          "cpu_percent": {
+            "max": 0.6,
+            "median": 0.195,
+            "min": 0.05,
+            "p95": 0.6,
+            "sample_count": 4
+          },
+          "memory_mib": {
+            "max": 24.049999237060547,
+            "median": 23.674999713897705,
+            "min": 22.90999984741211,
+            "p95": 24.049999237060547,
+            "sample_count": 4
+          }
+        },
+        "localai-control-7cb6742d52ac-p01": {
+          "cpu_percent": {
+            "max": 1.4,
+            "median": 0.26,
+            "min": 0.06,
+            "p95": 1.4,
+            "sample_count": 4
+          },
+          "memory_mib": {
+            "max": 63.709999084472656,
+            "median": 63.13999938964844,
+            "min": 63.00999927520752,
+            "p95": 63.709999084472656,
+            "sample_count": 4
+          }
+        }
+      },
+      "join-2": {
+        "localai-control-7cb6742d52ac-observer": {
+          "cpu_percent": {
+            "max": 0.33,
+            "median": 0.1,
+            "min": 0.04,
+            "p95": 0.33,
+            "sample_count": 4
+          },
+          "memory_mib": {
+            "max": 26.149999618530273,
+            "median": 25.87999963760376,
+            "min": 25.399999618530273,
+            "p95": 26.149999618530273,
+            "sample_count": 4
+          }
+        },
+        "localai-control-7cb6742d52ac-p01": {
+          "cpu_percent": {
+            "max": 0.5,
+            "median": 0.16,
+            "min": 0.06,
+            "p95": 0.5,
+            "sample_count": 4
+          },
+          "memory_mib": {
+            "max": 63.89999961853027,
+            "median": 63.64999961853027,
+            "min": 63.39999961853027,
+            "p95": 63.89999961853027,
+            "sample_count": 4
+          }
+        },
+        "localai-control-7cb6742d52ac-p02": {
+          "cpu_percent": {
+            "max": 0.79,
+            "median": 0.135,
+            "min": 0.05,
+            "p95": 0.79,
+            "sample_count": 4
+          },
+          "memory_mib": {
+            "max": 61.15999984741211,
+            "median": 60.94999980926514,
+            "min": 60.90999984741211,
+            "p95": 61.15999984741211,
+            "sample_count": 4
+          }
+        }
+      },
+      "peer-departure": {
+        "localai-control-7cb6742d52ac-gateway": {
+          "cpu_percent": {
+            "max": 0.29,
+            "median": 0.12,
+            "min": 0.04,
+            "p95": 0.29,
+            "sample_count": 7
+          },
+          "memory_mib": {
+            "max": 51.50999927520752,
+            "median": 49.459999084472656,
+            "min": 45.40999984741211,
+            "p95": 51.50999927520752,
+            "sample_count": 7
+          }
+        },
+        "localai-control-7cb6742d52ac-observer": {
+          "cpu_percent": {
+            "max": 0.28,
+            "median": 0.1,
+            "min": 0.05,
+            "p95": 0.28,
+            "sample_count": 7
+          },
+          "memory_mib": {
+            "max": 26.479999542236328,
+            "median": 26.429999351501465,
+            "min": 26.179999351501465,
+            "p95": 26.479999542236328,
+            "sample_count": 7
+          }
+        },
+        "localai-control-7cb6742d52ac-p01": {
+          "cpu_percent": {
+            "max": 2.78,
+            "median": 0.15,
+            "min": 0.06,
+            "p95": 2.78,
+            "sample_count": 7
+          },
+          "memory_mib": {
+            "max": 74.1299991607666,
+            "median": 69.72999954223633,
+            "min": 67.46999931335449,
+            "p95": 74.1299991607666,
+            "sample_count": 7
+          }
+        }
+      },
+      "peer-rejoin": {
+        "localai-control-7cb6742d52ac-gateway": {
+          "cpu_percent": {
+            "max": 0.1,
+            "median": 0.06,
+            "min": 0.03,
+            "p95": 0.1,
+            "sample_count": 4
+          },
+          "memory_mib": {
+            "max": 52.02999973297119,
+            "median": 51.54999923706055,
+            "min": 51.519999504089355,
+            "p95": 52.02999973297119,
+            "sample_count": 4
+          }
+        },
+        "localai-control-7cb6742d52ac-observer": {
+          "cpu_percent": {
+            "max": 0.42,
+            "median": 0.1,
+            "min": 0.03,
+            "p95": 0.42,
+            "sample_count": 4
+          },
+          "memory_mib": {
+            "max": 29.059999465942383,
+            "median": 28.774999618530273,
+            "min": 26.489999771118164,
+            "p95": 29.059999465942383,
+            "sample_count": 4
+          }
+        },
+        "localai-control-7cb6742d52ac-p01": {
+          "cpu_percent": {
+            "max": 0.49,
+            "median": 0.125,
+            "min": 0.06,
+            "p95": 0.49,
+            "sample_count": 4
+          },
+          "memory_mib": {
+            "max": 73.94999980926514,
+            "median": 73.80999946594238,
+            "min": 73.42999935150146,
+            "p95": 73.94999980926514,
+            "sample_count": 4
+          }
+        },
+        "localai-control-7cb6742d52ac-p02": {
+          "cpu_percent": {
+            "max": 0.43,
+            "median": 0.31,
+            "min": 0.05,
+            "p95": 0.43,
+            "sample_count": 4
+          },
+          "memory_mib": {
+            "max": 59.15999984741211,
+            "median": 57.92499923706055,
+            "min": 54.88999938964844,
+            "p95": 59.15999984741211,
+            "sample_count": 4
+          }
+        }
+      },
+      "steady-maintenance": {
+        "localai-control-7cb6742d52ac-observer": {
+          "cpu_percent": {
+            "max": 0.06,
+            "median": 0.05,
+            "min": 0.04,
+            "p95": 0.06,
+            "sample_count": 3
+          },
+          "memory_mib": {
+            "max": 25.949999809265137,
+            "median": 25.9399995803833,
+            "min": 25.90999984741211,
+            "p95": 25.949999809265137,
+            "sample_count": 3
+          }
+        },
+        "localai-control-7cb6742d52ac-p01": {
+          "cpu_percent": {
+            "max": 0.21,
+            "median": 0.14,
+            "min": 0.05,
+            "p95": 0.21,
+            "sample_count": 3
+          },
+          "memory_mib": {
+            "max": 65.67999935150146,
+            "median": 65.66999912261963,
+            "min": 63.40999984741211,
+            "p95": 65.67999935150146,
+            "sample_count": 3
+          }
+        },
+        "localai-control-7cb6742d52ac-p02": {
+          "cpu_percent": {
+            "max": 0.22,
+            "median": 0.15,
+            "min": 0.08,
+            "p95": 0.22,
+            "sample_count": 3
+          },
+          "memory_mib": {
+            "max": 63.19999980926514,
+            "median": 62.959999084472656,
+            "min": 60.94999980926514,
+            "p95": 63.19999980926514,
+            "sample_count": 3
+          }
+        }
+      }
+    },
+    "file": "samples.jsonl",
+    "interpretation": "Docker stats are sampled container measurements; listed API nodes and LastSeen-filtered fresh hosts are reported separately because cached/stale IDs can remain listed.",
+    "malformed_lines": 0,
+    "phase_summaries": {
+      "bootstrap": {
+        "first_timestamp": "2026-10-07T13:38:24.993200+00:00",
+        "fresh_host_set_examples": [
+          [],
+          [
+            "control-peer-01"
+          ]
+        ],
+        "fresh_membership_count": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 0.0,
+          "p95": 1.0,
+          "sample_count": 4
+        },
+        "host_mem_available_bytes": {
+          "max": 21577490432.0,
+          "median": 21493317632.0,
+          "min": 21469474816.0,
+          "p95": 21577490432.0,
+          "sample_count": 4
+        },
+        "last_timestamp": "2026-10-07T13:38:41.489225+00:00",
+        "listed_api_node_count": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 0.0,
+          "p95": 1.0,
+          "sample_count": 4
+        },
+        "membership_witnesses": [
+          "control-peer-01"
+        ],
+        "sample_count": 4,
+        "stage_membership_check": "pass"
+      },
+      "join-2": {
+        "first_timestamp": "2026-10-07T13:38:46.763791+00:00",
+        "fresh_host_set_examples": [
+          [],
+          [
+            "control-peer-01"
+          ],
+          [
+            "control-peer-01",
+            "control-peer-02"
+          ]
+        ],
+        "fresh_membership_count": {
+          "max": 2.0,
+          "median": 2.0,
+          "min": 0.0,
+          "p95": 2.0,
+          "sample_count": 8
+        },
+        "host_mem_available_bytes": {
+          "max": 21557579776.0,
+          "median": 21531015168.0,
+          "min": 21500047360.0,
+          "p95": 21557579776.0,
+          "sample_count": 4
+        },
+        "last_timestamp": "2026-10-07T13:39:03.388529+00:00",
+        "listed_api_node_count": {
+          "max": 2.0,
+          "median": 2.0,
+          "min": 0.0,
+          "p95": 2.0,
+          "sample_count": 8
+        },
+        "membership_witnesses": [
+          "control-peer-01",
+          "control-peer-02"
+        ],
+        "sample_count": 4,
+        "stage_membership_check": "pass"
+      },
+      "peer-departure": {
+        "first_timestamp": "2026-10-07T13:39:28.089294+00:00",
+        "fresh_host_set_examples": [
+          [
+            "control-peer-01"
+          ],
+          [
+            "control-peer-01",
+            "control-peer-02"
+          ]
+        ],
+        "fresh_membership_count": {
+          "max": 2.0,
+          "median": 1.0,
+          "min": 1.0,
+          "p95": 2.0,
+          "sample_count": 7
+        },
+        "host_mem_available_bytes": {
+          "max": 21547851776.0,
+          "median": 21478481920.0,
+          "min": 21328777216.0,
+          "p95": 21547851776.0,
+          "sample_count": 7
+        },
+        "last_timestamp": "2026-10-07T13:40:12.168928+00:00",
+        "listed_api_node_count": {
+          "max": 2.0,
+          "median": 2.0,
+          "min": 2.0,
+          "p95": 2.0,
+          "sample_count": 7
+        },
+        "membership_witnesses": [
+          "control-peer-01"
+        ],
+        "sample_count": 7,
+        "stage_membership_check": "pass"
+      },
+      "peer-rejoin": {
+        "first_timestamp": "2026-10-07T13:40:22.269899+00:00",
+        "fresh_host_set_examples": [
+          [],
+          [
+            "control-peer-01"
+          ],
+          [
+            "control-peer-01",
+            "control-peer-02"
+          ]
+        ],
+        "fresh_membership_count": {
+          "max": 2.0,
+          "median": 2.0,
+          "min": 0.0,
+          "p95": 2.0,
+          "sample_count": 8
+        },
+        "host_mem_available_bytes": {
+          "max": 21325340672.0,
+          "median": 21218961408.0,
+          "min": 21164642304.0,
+          "p95": 21325340672.0,
+          "sample_count": 4
+        },
+        "last_timestamp": "2026-10-07T13:40:38.867788+00:00",
+        "listed_api_node_count": {
+          "max": 3.0,
+          "median": 2.0,
+          "min": 0.0,
+          "p95": 3.0,
+          "sample_count": 8
+        },
+        "membership_witnesses": [
+          "control-peer-01",
+          "control-peer-02"
+        ],
+        "sample_count": 4,
+        "stage_membership_check": "pass"
+      },
+      "steady-maintenance": {
+        "first_timestamp": "2026-10-07T13:39:05.382332+00:00",
+        "fresh_host_set_examples": [
+          [
+            "control-peer-01",
+            "control-peer-02"
+          ]
+        ],
+        "fresh_membership_count": {
+          "max": 2.0,
+          "median": 2.0,
+          "min": 2.0,
+          "p95": 2.0,
+          "sample_count": 6
+        },
+        "host_mem_available_bytes": {
+          "max": 21545754624.0,
+          "median": 21532647424.0,
+          "min": 21530112000.0,
+          "p95": 21545754624.0,
+          "sample_count": 3
+        },
+        "last_timestamp": "2026-10-07T13:39:14.769180+00:00",
+        "listed_api_node_count": {
+          "max": 2.0,
+          "median": 2.0,
+          "min": 2.0,
+          "p95": 2.0,
+          "sample_count": 6
+        },
+        "membership_witnesses": [
+          "control-peer-01",
+          "control-peer-02"
+        ],
+        "sample_count": 3,
+        "stage_membership_check": "pass"
+      }
+    },
+    "present": true,
+    "stages_from_summary": [
+      {
+        "all_peer_membership_match": true,
+        "elapsed_seconds": 16.617724676000762,
+        "final_witness_match": true,
+        "first_witness_match_seconds": 9.439534545000242,
+        "phase": "bootstrap",
+        "service_peer_count": 1,
+        "witnesses_are_not_all_peers": true
+      },
+      {
+        "all_peer_membership_match": true,
+        "elapsed_seconds": 16.94074409699988,
+        "final_witness_match": true,
+        "first_witness_match_seconds": 9.648476089999349,
+        "phase": "join-2",
+        "service_peer_count": 2,
+        "witnesses_are_not_all_peers": true
+      },
+      {
+        "all_peer_membership_match": true,
+        "elapsed_seconds": 9.301280046999636,
+        "final_witness_match": true,
+        "first_witness_match_seconds": 1.9929084659997898,
+        "phase": "steady-maintenance",
+        "service_peer_count": 2,
+        "witnesses_are_not_all_peers": true
+      },
+      {
+        "elapsed_seconds": 51.40301231199919,
+        "final_witness_match": true,
+        "first_witness_match_seconds": 24.31563264399938,
+        "phase": "peer-departure",
+        "service_peer_count": 1,
+        "witnesses_are_not_all_peers": true
+      },
+      {
+        "all_peer_membership_match": true,
+        "elapsed_seconds": 16.893213673999526,
+        "final_witness_match": true,
+        "first_witness_match_seconds": 9.582141944999421,
+        "phase": "peer-rejoin",
+        "service_peer_count": 2,
+        "witnesses_are_not_all_peers": true
+      }
+    ],
+    "target_service_peers": 2
+  },
+  "model_control_observations": {
+    "all_checks_empty": true,
+    "counts": {
+      "empty_model_probe": 3
+    },
+    "empty_model_checks": [
+      {
+        "configured_model_count": 0,
+        "host": "control-peer-01",
+        "line": 1,
+        "loaded_model_count": 0,
+        "phase": "bootstrap",
+        "verified_empty": true
+      },
+      {
+        "configured_model_count": 0,
+        "host": "control-peer-02",
+        "line": 2,
+        "loaded_model_count": 0,
+        "phase": "join-2",
+        "verified_empty": true
+      },
+      {
+        "configured_model_count": 0,
+        "host": "control-peer-02",
+        "line": 3,
+        "loaded_model_count": 0,
+        "phase": "peer-rejoin",
+        "verified_empty": true
+      }
+    ],
+    "examples": [
+      {
+        "event": "empty_model_probe",
+        "file": "model-controls.jsonl",
+        "line": 1,
+        "phase": "bootstrap",
+        "result": null,
+        "status": null,
+        "timestamp": "2026-10-07T13:38:22.568487+00:00"
+      },
+      {
+        "event": "empty_model_probe",
+        "file": "model-controls.jsonl",
+        "line": 2,
+        "phase": "join-2",
+        "result": null,
+        "status": null,
+        "timestamp": "2026-10-07T13:38:44.442248+00:00"
+      },
+      {
+        "event": "empty_model_probe",
+        "file": "model-controls.jsonl",
+        "line": 3,
+        "phase": "peer-rejoin",
+        "result": null,
+        "status": null,
+        "timestamp": "2026-10-07T13:40:19.927201+00:00"
+      }
+    ],
+    "file": "model-controls.jsonl",
+    "interpretation": "LocalAPI/model-control observations are separate from peer-to-peer ledger messages; a routed HTTP request is not counted as a gossip control message.",
+    "malformed_lines": 0,
+    "present": true
+  },
+  "observed_bucket_absences": [],
+  "phase_counts": {
+    "bootstrap": {
+      "gossip_receptions": 5,
+      "mdns_packets": 55,
+      "observer_events": 68,
+      "peer_connections": 2,
+      "peer_disconnections": 0,
+      "record_additions": 0,
+      "record_changes": 2,
+      "record_removals": 0,
+      "unique_block_snapshots": 3,
+      "unknown_events": 0
+    },
+    "join-2": {
+      "gossip_receptions": 12,
+      "mdns_packets": 29,
+      "observer_events": 43,
+      "peer_connections": 2,
+      "peer_disconnections": 0,
+      "record_additions": 3,
+      "record_changes": 4,
+      "record_removals": 0,
+      "unique_block_snapshots": 7,
+      "unknown_events": 0
+    },
+    "peer-departure": {
+      "gossip_receptions": 19,
+      "mdns_packets": 12,
+      "observer_events": 33,
+      "peer_connections": 0,
+      "peer_disconnections": 2,
+      "record_additions": 0,
+      "record_changes": 10,
+      "record_removals": 0,
+      "unique_block_snapshots": 10,
+      "unknown_events": 0
+    },
+    "peer-rejoin": {
+      "gossip_receptions": 17,
+      "mdns_packets": 34,
+      "observer_events": 53,
+      "peer_connections": 2,
+      "peer_disconnections": 0,
+      "record_additions": 3,
+      "record_changes": 8,
+      "record_removals": 0,
+      "unique_block_snapshots": 11,
+      "unknown_events": 0
+    },
+    "service-routing": {
+      "gossip_receptions": 8,
+      "mdns_packets": 30,
+      "observer_events": 40,
+      "peer_connections": 2,
+      "peer_disconnections": 0,
+      "record_additions": 3,
+      "record_changes": 2,
+      "record_removals": 0,
+      "unique_block_snapshots": 5,
+      "unknown_events": 0
+    },
+    "shutdown": {
+      "gossip_receptions": 0,
+      "mdns_packets": 0,
+      "observer_events": 10,
+      "peer_connections": 0,
+      "peer_disconnections": 6,
+      "record_additions": 0,
+      "record_changes": 0,
+      "record_removals": 0,
+      "unique_block_snapshots": 0,
+      "unknown_events": 0
+    },
+    "steady-maintenance": {
+      "gossip_receptions": 4,
+      "mdns_packets": 4,
+      "observer_events": 8,
+      "peer_connections": 0,
+      "peer_disconnections": 0,
+      "record_additions": 0,
+      "record_changes": 2,
+      "record_removals": 0,
+      "unique_block_snapshots": 2,
+      "unknown_events": 0
+    }
+  },
+  "protocol_reference": {
+    "available": true,
+    "error": null,
+    "evidence_status": {
+      "kind": "source_inference",
+      "notes": [
+        "Schedules below are configured intervals or expiry thresholds from source. EdgeVPN implements Announce and ledger synchronization with an exponential backoff ticker (5 second initial interval, randomized, configured maximum), so intervals are not exact packet timings.",
+        "The current harness profile disables DHT and leaves mDNS enabled; this states configuration intent, not proof that mDNS or any listed record was seen on the wire.",
+        "A record update creates a full new ledger block. Individual application records do not each map to distinct network packets."
+      ],
+      "runtime_status": "pending_capture_review"
+    },
+    "file": "message_protocol_reference.json",
+    "out_of_scope_for_model_free_run": [
+      "llama.cpp RPC worker protocol and tensor/model shard traffic",
+      "MLX distributed worker traffic",
+      "Actual inference payloads through /edgevpn/service/0.1",
+      "DHT routing/rendezvous advertisements when LOCALAI_P2P_DISABLE_DHT=true"
+    ],
+    "source_lifecycle_categories": [
+      {
+        "category": "1. Discovery and network join",
+        "records_or_messages": [
+          {
+            "kind": "transport control; no LocalAI ledger record",
+            "name": "mDNS peer discovery and libp2p connection setup",
+            "nominal_schedule": "Discovery interval configured to 10s; actual mDNS query/response cadence is implementation-managed",
+            "runtime_evidence": "mDNS packets observed",
+            "source": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/config/config.go:ToOpts (v0.34.0)"
+          },
+          {
+            "kind": "transport control; carries the ledger envelope after topic join",
+            "name": "GossipSub room join, subscription and mesh maintenance",
+            "nominal_schedule": "On network start and as libp2p GossipSub maintains the topic mesh; topic key refresh checked once per second, with room rejoin when OTP-derived key changes",
+            "runtime_evidence": "not directly visible in ledger capture",
+            "source": "EdgeVPN pkg/node/node.go:startNetwork and pkg/hub/hub.go:Start/joinRoom (v0.34.0)",
+            "stream_protocol_id": "No LocalAI application stream ID; GossipSub uses its library protocols"
+          },
+          {
+            "kind": "absent",
+            "name": "Explicit membership/join ledger record",
+            "notes": "The source paths inspected do not write a distinct peer-joined record. Peers join by discovering/connecting and participating in the token-derived pubsub room; later records advertise liveness/services.",
+            "runtime_evidence": "source says no explicit record exists"
+          }
+        ]
+      },
+      {
+        "category": "2. Initial service advertisement and authorization",
+        "records_or_messages": [
+          {
+            "bucket": "services",
+            "kind": "application ledger record inside full-block envelope",
+            "name": "EdgeVPN service route",
+            "nominal_schedule": "Announce cap 60s; record is added if missing or if the PeerID has changed, using EdgeVPN's backoff ticker",
+            "notes": "This EdgeVPN record resolves the service ID to its libp2p peer. It is distinct from LocalAI's NodeData advertisement; destination address is not a field in types.Service.",
+            "runtime_evidence": "bucket present in observed snapshots: services",
+            "source": "LocalAI core/p2p/p2p.go:ExposeService; EdgeVPN pkg/services/services.go:ExposeNetworkService; pkg/types/service.go (v0.34.0)"
+          },
+          {
+            "bucket": "<P2PNetworkID>_federated, <P2PNetworkID>_worker, or <P2PNetworkID>_mlx_worker; if P2PNetworkID is empty: federated, worker, or mlx_worker",
+            "kind": "application ledger record inside full-block envelope",
+            "name": "LocalAI federated/worker service advertisement",
+            "nominal_schedule": "Every 20s maximum through Announce/backoff; every advertisement writes current LastSeen and immediately creates a ledger block",
+            "notes": "The exact service ID is selected by the caller: FederatedID=\"federated\", LlamaCPPWorkerID=\"worker\", MLXWorkerID=\"mlx_worker\". NetworkID(prefix, serviceID) returns prefix + \"_\" + serviceID when prefix is nonempty, otherwise serviceID unchanged. In the current capture, the LocalAI app runs the federated mode, so its advertised NodeData bucket is <P2PNetworkID>_federated. This custom bucket is distinct from EdgeVPN\u2019s base \"services\" bucket. ID is hostname plus the random service name. TunnelAddress and ServiceID are empty in the initial ExposeService record and may be filled in local discovery state later.",
+            "runtime_evidence": "bucket present in observed snapshots: localai-control-7cb6742d52ac_federated",
+            "source": "LocalAI core/p2p/p2p.go:ExposeService; core/p2p/federated.go:NetworkID; core/p2p/node.go:service ID constants; core/schema/localai.go:NodeData; core/application/p2p.go:StartP2P"
+          },
+          {
+            "bucket": "users",
+            "kind": "application ledger record inside full-block envelope; conditionally emitted by LocalAI gateway/tunnel listener",
+            "name": "Peer authorization/user record",
+            "nominal_schedule": "Every 10s maximum through Announce/backoff when nodeAnnounce is running",
+            "notes": "FederatedServer.proxy and allocated local tunnel listeners call nodeAnnounce. EdgeVPN's ServiceProtocol handler checks the connecting peer's ID exists in users before forwarding the TCP stream. A worker process running only ExposeService does not itself call LocalAI nodeAnnounce in this code path.",
+            "runtime_evidence": "bucket present in observed snapshots: users",
+            "source": "LocalAI core/p2p/p2p.go:nodeAnnounce/allocateLocalService; core/p2p/federated_server.go:proxy; EdgeVPN pkg/services/services.go:RegisterService"
+          }
+        ]
+      },
+      {
+        "category": "3. Steady-state liveness, service discovery and ledger sync",
+        "records_or_messages": [
+          {
+            "bucket": "healthcheck",
+            "kind": "application ledger record inside full-block envelope",
+            "name": "EdgeVPN peer heartbeat",
+            "nominal_schedule": "Announce interval 30s maximum; considered live for 15 minutes",
+            "runtime_evidence": "bucket present in observed snapshots: healthcheck",
+            "source": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/services/alive.go (v0.34.0)"
+          },
+          {
+            "bucket": "<P2PNetworkID>_<service ID>; current federation bucket is <P2PNetworkID>_federated; other defined service IDs are <P2PNetworkID>_worker and <P2PNetworkID>_mlx_worker",
+            "kind": "application ledger record inside full-block envelope",
+            "name": "LocalAI service heartbeat/LastSeen refresh",
+            "nominal_schedule": "Every 20s maximum; ServiceDiscoverer polls the last local ledger block every 5s and marks NodeData offline when LastSeen is older than 40s",
+            "notes": "40s is a LocalAI application liveness test, separate from EdgeVPN's 15-minute healthcheck threshold.",
+            "runtime_evidence": "bucket present in observed snapshots: localai-control-7cb6742d52ac_federated",
+            "source": "LocalAI core/p2p/p2p.go:ExposeService/discoveryTunnels/ensureService; core/p2p/node.go:service ID constants; core/p2p/federated.go:NetworkID; core/schema/localai.go:NodeData.IsOnline"
+          },
+          {
+            "kind": "encrypted/compressed full-block GossipSub payload; not an individual application record",
+            "name": "Full-ledger synchronization",
+            "nominal_schedule": "10s maximum from LocalAI Ledger.SyncInterval; EdgeVPN publishes the current last block periodically even if no record changed",
+            "runtime_evidence": "65 gossip envelope receptions observed",
+            "source": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/node/node.go:Start; pkg/blockchain/ledger.go:Syncronizer"
+          }
+        ]
+      },
+      {
+        "category": "4. Federated selection and service access",
+        "records_or_messages": [
+          {
+            "kind": "local coordinator decision; no inter-peer control record",
+            "name": "Worker selection",
+            "nominal_schedule": "Per incoming federated TCP/API connection",
+            "runtime_evidence": "not directly visible in ledger capture",
+            "source": "LocalAI core/p2p/federated_server.go:proxy; core/p2p/federated.go:RandomServer/SelectLeastUsedServer"
+          },
+          {
+            "kind": "libp2p stream setup; stream then carries proxied service bytes (including inference request/response)",
+            "name": "Service stream open and authorization check",
+            "nominal_schedule": "Per proxied connection; no periodic control message",
+            "notes": "There is no additional LocalAI application-level hello record in the inspected path. Model-free test runs exercise no actual inference payload unless explicitly sent.",
+            "runtime_evidence": "not directly visible in ledger capture",
+            "source": "LocalAI core/p2p/p2p.go:proxyP2PConnection; EdgeVPN pkg/protocol/protocol.go; pkg/services/services.go:RegisterService",
+            "stream_protocol_id": "/edgevpn/service/0.1"
+          }
+        ]
+      },
+      {
+        "category": "5. Optional model-state synchronization (federated application mode only)",
+        "records_or_messages": [
+          {
+            "bucket": "shared_state",
+            "kind": "application ledger record inside full-block envelope",
+            "name": "Shared model-name list",
+            "nominal_schedule": "Federated LocalAI app checks state every 60s; AnnounceUpdate is also configured with 60s maximum and writes only when the value differs or is absent",
+            "notes": "This record lists model names, not weights or model files. If a peer sees a name it lacks, LocalAI submits a gallery installation operation. p2pSync is started by StartP2P only when the federated mode branch runs; a standalone worker-only P2P node does not run this model-state sync.",
+            "runtime_evidence": "bucket present in observed snapshots: shared_state",
+            "source": "LocalAI core/application/p2p.go:StartP2P/syncState/p2pSync; EdgeVPN pkg/blockchain/ledger.go:AnnounceUpdate"
+          }
+        ]
+      },
+      {
+        "category": "6. Graceful stop, crash expiry and rejoin",
+        "records_or_messages": [
+          {
+            "kind": "not found in inspected LocalAI federation lifecycle",
+            "name": "Explicit leave/de-registration",
+            "notes": "Cancellation stops LocalAI announce loops and closes listeners. The inspected stop path does not emit a dedicated leave message or delete a peer's services/users record. A full-block deletion is only sent by code paths that explicitly call ledger.Delete/DeleteBucket.",
+            "runtime_evidence": "not directly visible in ledger capture"
+          },
+          {
+            "kind": "local interpretation of stale NodeData; no wire deletion record",
+            "name": "LocalAI service expiry",
+            "nominal_schedule": "ServiceDiscoverer checks ledger every 5s; 40s age threshold",
+            "notes": "This does not remove the NodeData key from the replicated ledger. The EdgeVPN services and users buckets have no per-entry TTL in the inspected code, so stale keys may remain until overwritten or a bucket/key deletion is otherwise written.",
+            "runtime_evidence": "not directly visible in ledger capture",
+            "source": "LocalAI core/p2p/p2p.go:discoveryTunnels/ensureService; core/application/p2p.go:StopP2P"
+          },
+          {
+            "kind": "liveness filtering plus elected bucket maintenance",
+            "name": "EdgeVPN heartbeat expiry and scrub",
+            "nominal_schedule": "Leader recomputed during heartbeat callback; scrub threshold 900s; heartbeat interval 30s maximum; expiry threshold 15m",
+            "notes": "Leader is the currently active PeerID with the highest FNV-1a 32-bit hash. This is deterministic selection, not a persistent leader lease or consensus election. Bucket deletion is a full ledger update, not a distinct leave packet; peers subsequently repopulate their healthcheck entries.",
+            "runtime_evidence": "not directly visible in ledger capture",
+            "source": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/services/alive.go; pkg/utils/leader.go; pkg/blockchain/ledger.go:DeleteBucket"
+          },
+          {
+            "kind": "fresh network participation and repeated advertisements",
+            "name": "Rejoin after restart",
+            "nominal_schedule": "Startup plus each record's Announce schedule",
+            "notes": "No explicit rejoin record is defined. ExposeService creates a new random 10-character service name each process start; stale old service records are not explicitly removed by the inspected stop path.",
+            "runtime_evidence": "not directly visible in ledger capture"
+          }
+        ]
+      },
+      {
+        "category": "7. Periodic heartbeat-bucket maintenance leader",
+        "records_or_messages": [
+          {
+            "kind": "local computation over shared healthcheck state; no leader-election message",
+            "name": "Deterministic leader calculation",
+            "nominal_schedule": "Recomputed on heartbeat callback (30s maximum cadence)",
+            "notes": "Each peer starts its own 900s timer when the AliveNetworkService starts; there is no explicit term/lease or leader announcement. The threshold and action are source-derived; runtime occurrence requires a long run beyond 15 minutes and was not established by the short capture.",
+            "runtime_evidence": "not directly visible in ledger capture",
+            "source": "EdgeVPN pkg/services/alive.go and pkg/utils/leader.go (v0.34.0); LocalAI core/p2p/p2p.go:newNodeOpts"
+          }
+        ]
+      }
+    ],
+    "source_links": {
+      "edgevpn_alive_v034": "https://github.com/mudler/edgevpn/blob/v0.34.0/pkg/services/alive.go",
+      "edgevpn_hub_v034": "https://github.com/mudler/edgevpn/blob/v0.34.0/pkg/hub/message.go",
+      "edgevpn_leader_v034": "https://github.com/mudler/edgevpn/blob/v0.34.0/pkg/utils/leader.go",
+      "edgevpn_ledger_v034": "https://github.com/mudler/edgevpn/blob/v0.34.0/pkg/blockchain/ledger.go",
+      "edgevpn_protocol_v034": "https://github.com/mudler/edgevpn/blob/v0.34.0/pkg/protocol/protocol.go",
+      "edgevpn_service_v034": "https://github.com/mudler/edgevpn/blob/v0.34.0/pkg/services/services.go",
+      "localai_app_p2p_pinned": "https://github.com/mudler/LocalAI/blob/a3d555653c0cbfd73ab59ab15beab80903e96484/core/application/p2p.go",
+      "localai_federated_bucket_naming_pinned": "https://github.com/mudler/LocalAI/blob/a3d555653c0cbfd73ab59ab15beab80903e96484/core/p2p/federated.go#L11-L18",
+      "localai_p2p_node_constants_pinned": "https://github.com/mudler/LocalAI/blob/a3d555653c0cbfd73ab59ab15beab80903e96484/core/p2p/node.go#L11-L15",
+      "localai_p2p_pinned": "https://github.com/mudler/LocalAI/blob/a3d555653c0cbfd73ab59ab15beab80903e96484/core/p2p/p2p.go",
+      "localai_schema_pinned": "https://github.com/mudler/LocalAI/blob/a3d555653c0cbfd73ab59ab15beab80903e96484/core/schema/localai.go"
+    },
+    "source_pin": {
+      "edgevpn_module": "github.com/mudler/edgevpn v0.34.0",
+      "localai_commit": "a3d555653c0cbfd73ab59ab15beab80903e96484",
+      "localai_repository": "mudler/LocalAI",
+      "scope": "Federated discovery and service-advertisement lifecycle. DHT is disabled in the planned local capture, so DHT traffic is not expected. Model sharding RPC and actual inference are outside this catalogue."
+    },
+    "transport_and_envelopes": {
+      "ledger_gossip_envelope": {
+        "app_stream_protocol_id": null,
+        "interpretation": "A packet capture may show GossipSub control/data frames and encrypted hub payloads. Do not count each bucket record as its own protocol message.",
+        "publish_triggers": "Ledger Add/Delete writes a new block and immediately writes it to the hub queue; the periodic synchronizer also republishes the latest full block at its configured interval (10s maximum in LocalAI options).",
+        "source": [
+          "EdgeVPN pkg/blockchain/ledger.go:Syncronizer, Announce, Update, Add, DeleteBucket, writeData (v0.34.0)",
+          "EdgeVPN pkg/hub/message.go:Message (v0.34.0)",
+          "EdgeVPN pkg/hub/room.go:publishMessage/readLoop (v0.34.0)",
+          "EdgeVPN pkg/node/node.go:Start/startNetwork (v0.34.0)",
+          "EdgeVPN pkg/node/connection.go:handleEvents (v0.34.0)"
+        ],
+        "transport": "EdgeVPN GossipSub room/topic; the topic is derived from the token and rotates with its configured OTP interval",
+        "wire_layers": [
+          "Application record(s) are stored in a complete ledger Storage map.",
+          "The complete Block JSON has fields Index, Timestamp, Storage, Hash, PrevHash; EdgeVPN gzip-compresses it.",
+          "The compressed bytes are sealed by EdgeVPN's configured sealer before being written to the hub.",
+          "EdgeVPN publishes a JSON hub.Message with fields Message, SenderID, Annotations. SenderID is set from GossipSub's ReceivedFrom on receipt; Annotations is optional."
+        ]
+      },
+      "peer_discovery": {
+        "configuration": "LocalAI sets MDNS=true, Discovery.Interval=10s; DHT is enabled unless LOCALAI_P2P_DISABLE_DHT=true. The current model-free capture disables DHT.",
+        "dedicated_localai_stream_id": null,
+        "dht_status": "disabled_by_test_configuration; no DHT rendezvous Advertise/FindPeers is expected",
+        "expected": "libp2p mDNS discovery followed by peer connection and GossipSub topic participation",
+        "source": [
+          "LocalAI core/p2p/p2p.go:newNodeOpts (lines 390-446)",
+          "EdgeVPN pkg/config/config.go:ToOpts (v0.34.0)",
+          "EdgeVPN pkg/discovery/dht.go (v0.34.0)"
+        ]
+      }
+    }
+  },
+  "record_change_catalogue": [
+    {
+      "action": "added",
+      "bucket": "users",
+      "bucket_metadata": {
+        "bucket": "users",
+        "category": "membership_and_authorization",
+        "known": true,
+        "meaning": "Peer authorization/user record (application ledger record inside full-block envelope; conditionally emitted by LocalAI gateway/tunnel listener)",
+        "nominal_schedule": "Every 10s maximum through Announce/backoff when nodeAnnounce is running",
+        "record_kind": "application ledger record inside full-block envelope; conditionally emitted by LocalAI gateway/tunnel listener",
+        "record_name": "Peer authorization/user record",
+        "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+        "source_notes": "FederatedServer.proxy and allocated local tunnel listeners call nodeAnnounce. EdgeVPN's ServiceProtocol handler checks the connecting peer's ID exists in users before forwarding the TCP stream. A worker process running only ExposeService does not itself call LocalAI nodeAnnounce in this code path.",
+        "source_reference": "LocalAI core/p2p/p2p.go:nodeAnnounce/allocateLocalService; core/p2p/federated_server.go:proxy; EdgeVPN pkg/services/services.go:RegisterService",
+        "value_fields": [
+          "PeerID",
+          "Timestamp"
+        ]
+      },
+      "count": 1,
+      "examples": [
+        {
+          "block_hash": "f43c845357a3e7058cf117d65cfe6b9d4e5ec7ce8f48c1d4cf7b9686715b68b5",
+          "block_index": 17,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+          "line": 148,
+          "message_sha256": "0b6c5c0d402b7ce393aaedce3506731e88184680ef8c0f78211577c6d926c647",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "service-routing",
+          "previous_observed_block_hash": "34aa90b7703ede8ad1827284cba7518fa9e66ec4ec32b7dd368bb20f8f21b5bc",
+          "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "value_summary": {
+            "fields": {
+              "PeerID": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "Timestamp": "2026-10-07 13:39:20.927536998 +0000 UTC m=+5.728633749"
+            },
+            "other_field_names": [],
+            "type": "object"
+          }
+        }
+      ],
+      "lifecycle_category": "membership_and_authorization",
+      "snapshot_lineage_counts": {
+        "direct_child_or_initial": 1
+      }
+    },
+    {
+      "action": "changed",
+      "bucket": "users",
+      "bucket_metadata": {
+        "bucket": "users",
+        "category": "membership_and_authorization",
+        "known": true,
+        "meaning": "Peer authorization/user record (application ledger record inside full-block envelope; conditionally emitted by LocalAI gateway/tunnel listener)",
+        "nominal_schedule": "Every 10s maximum through Announce/backoff when nodeAnnounce is running",
+        "record_kind": "application ledger record inside full-block envelope; conditionally emitted by LocalAI gateway/tunnel listener",
+        "record_name": "Peer authorization/user record",
+        "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+        "source_notes": "FederatedServer.proxy and allocated local tunnel listeners call nodeAnnounce. EdgeVPN's ServiceProtocol handler checks the connecting peer's ID exists in users before forwarding the TCP stream. A worker process running only ExposeService does not itself call LocalAI nodeAnnounce in this code path.",
+        "source_reference": "LocalAI core/p2p/p2p.go:nodeAnnounce/allocateLocalService; core/p2p/federated_server.go:proxy; EdgeVPN pkg/services/services.go:RegisterService",
+        "value_fields": [
+          "PeerID",
+          "Timestamp"
+        ]
+      },
+      "count": 7,
+      "examples": [
+        {
+          "block_hash": "a56f4fec29f93dda06c2bc1d622fe3dff9c055402a6d7be014b7dcc4c6d718b6",
+          "block_index": 21,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+          "line": 164,
+          "message_sha256": "c449c48a6bba307141f8aeefdc0d7f6f28d27ce8ac4e927fc8d5430469d14bec",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "peer-departure",
+          "previous_observed_block_hash": "b40b1a39f27538d3977643350acb367e6043499d96f308918f8b016e54704887",
+          "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+          "value_summary": {
+            "fields": {
+              "PeerID": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "Timestamp": "2026-10-07 13:39:32.305857393 +0000 UTC m=+17.106954145"
+            },
+            "other_field_names": [],
+            "type": "object"
+          }
+        },
+        {
+          "block_hash": "c1df66d232c9c3af471a16754bcf36b7908605ce5075bbac6b6f4232d738b848",
+          "block_index": 24,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+          "line": 173,
+          "message_sha256": "6934f17bdfc8aa1da96c5cd1ea34842d668b79f3fe5f6b367e5a7699c2c367f4",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "peer-departure",
+          "previous_observed_block_hash": "0385a53bb71a0ce2aeacda7b210378a440aceba55e147f504cd523828d6aead9",
+          "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+          "value_summary": {
+            "fields": {
+              "PeerID": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "Timestamp": "2026-10-07 13:39:44.439983241 +0000 UTC m=+29.241079994"
+            },
+            "other_field_names": [],
+            "type": "object"
+          }
+        },
+        {
+          "block_hash": "194a32f4aecb62c5f399189a465ebbac8938610d0aa34722ad31852d3980db74",
+          "block_index": 27,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+          "line": 178,
+          "message_sha256": "69e0986b26a7fd455c08f5334c220f1d147aa63d573ba31a6ac9b6e5ab0d7c01",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "peer-departure",
+          "previous_observed_block_hash": "fde9917d1e1c76f5f3d04ed2f915a5a388494803357473361f403b29f53cce36",
+          "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+          "value_summary": {
+            "fields": {
+              "PeerID": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "Timestamp": "2026-10-07 13:39:51.602495484 +0000 UTC m=+36.403592226"
+            },
+            "other_field_names": [],
+            "type": "object"
+          }
+        },
+        {
+          "block_hash": "0a20eaaecc580a350d51c471283ca5dc5360fb7a24f42a14261570c80d8de55e",
+          "block_index": 29,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+          "line": 182,
+          "message_sha256": "1049396718ce424265a810a29d262f1ab6bedcd9772f36da923d2366b3d643b3",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "peer-departure",
+          "previous_observed_block_hash": "3d8ded38b55598eaae0a03e3b4ac37b8bd0993e92ad8a81130d8503324f856e4",
+          "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+          "value_summary": {
+            "fields": {
+              "PeerID": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+              "Timestamp": "2026-10-07 13:39:59.574900012 +0000 UTC m=+44.375996763"
+            },
+            "other_field_names": [],
+            "type": "object"
+          }
+        }
+      ],
+      "lifecycle_category": "membership_and_authorization",
+      "snapshot_lineage_counts": {
+        "direct_child_or_initial": 7
+      }
+    },
+    {
+      "action": "added",
+      "bucket": "localai-control-7cb6742d52ac_federated",
+      "bucket_metadata": {
+        "bucket": "<P2PNetworkID>_federated, <P2PNetworkID>_worker, or <P2PNetworkID>_mlx_worker; if P2PNetworkID is empty: federated, worker, or mlx_worker",
+        "category": "service_registration_and_worker_discovery",
+        "known": true,
+        "meaning": "LocalAI federated/worker service advertisement (application ledger record inside full-block envelope)",
+        "nominal_schedule": "Every 20s maximum through Announce/backoff; every advertisement writes current LastSeen and immediately creates a ledger block",
+        "record_kind": "application ledger record inside full-block envelope",
+        "record_name": "LocalAI federated/worker service advertisement",
+        "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+        "source_notes": "The exact service ID is selected by the caller: FederatedID=\"federated\", LlamaCPPWorkerID=\"worker\", MLXWorkerID=\"mlx_worker\". NetworkID(prefix, serviceID) returns prefix + \"_\" + serviceID when prefix is nonempty, otherwise serviceID unchanged. In the current capture, the LocalAI app runs the federated mode, so its advertised NodeData bucket is <P2PNetworkID>_federated. This custom bucket is distinct from EdgeVPN\u2019s base \"services\" bucket. ID is hostname plus the random service name. TunnelAddress and ServiceID are empty in the initial ExposeService record and may be filled in local discovery state later.",
+        "source_reference": "LocalAI core/p2p/p2p.go:ExposeService; core/p2p/federated.go:NetworkID; core/p2p/node.go:service ID constants; core/schema/localai.go:NodeData; core/application/p2p.go:StartP2P",
+        "value_fields": [
+          "Name",
+          "ID",
+          "TunnelAddress",
+          "ServiceID",
+          "LastSeen"
+        ]
+      },
+      "count": 2,
+      "examples": [
+        {
+          "block_hash": "e25ca7d5398e37e259f60817961f348d1e02ff95444f9ab48e20fa5b8e7351aa",
+          "block_index": 8,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "cmrwoyredt",
+          "line": 90,
+          "message_sha256": "5784e093cb6b2072e2da6b8586720f7026d12a564362427f22da05ce7fbf0fa0",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "join-2",
+          "previous_observed_block_hash": "f6661f03767fe12a4240570afdba8c65570ebdd833e7a5f35620252ca0afc6c1",
+          "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+          "value_summary": {
+            "fields": {
+              "ID": "control-peer-02-cmrwoyredt",
+              "LastSeen": "2026-10-07T13:38:48.563452358Z",
+              "Name": "cmrwoyredt",
+              "ServiceID": ""
+            },
+            "other_field_names": [
+              "TunnelAddress"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "block_hash": "5b874e9a2eed62347f004c68e79a00eb70a34a0fbafe23337aa9d18bd1a8ecb5",
+          "block_index": 35,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "ZtyTQcPSsc",
+          "line": 230,
+          "message_sha256": "b8da5e77f58fa14ea24e879761b3a31250370ba5347538cca2aefffade634bd4",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "peer-rejoin",
+          "previous_observed_block_hash": "c0ed05e44857df2ed91f1e322431baf55da7b901262eb1c756764d8faa53dded",
+          "received_from_peer_id": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj",
+          "value_summary": {
+            "fields": {
+              "ID": "control-peer-02-ZtyTQcPSsc",
+              "LastSeen": "2026-10-07T13:40:24.729623773Z",
+              "Name": "ZtyTQcPSsc",
+              "ServiceID": ""
+            },
+            "other_field_names": [
+              "TunnelAddress"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "lifecycle_category": "service_registration_and_worker_discovery",
+      "snapshot_lineage_counts": {
+        "direct_child_or_initial": 2
+      }
+    },
+    {
+      "action": "changed",
+      "bucket": "localai-control-7cb6742d52ac_federated",
+      "bucket_metadata": {
+        "bucket": "<P2PNetworkID>_federated, <P2PNetworkID>_worker, or <P2PNetworkID>_mlx_worker; if P2PNetworkID is empty: federated, worker, or mlx_worker",
+        "category": "service_registration_and_worker_discovery",
+        "known": true,
+        "meaning": "LocalAI federated/worker service advertisement (application ledger record inside full-block envelope)",
+        "nominal_schedule": "Every 20s maximum through Announce/backoff; every advertisement writes current LastSeen and immediately creates a ledger block",
+        "record_kind": "application ledger record inside full-block envelope",
+        "record_name": "LocalAI federated/worker service advertisement",
+        "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+        "source_notes": "The exact service ID is selected by the caller: FederatedID=\"federated\", LlamaCPPWorkerID=\"worker\", MLXWorkerID=\"mlx_worker\". NetworkID(prefix, serviceID) returns prefix + \"_\" + serviceID when prefix is nonempty, otherwise serviceID unchanged. In the current capture, the LocalAI app runs the federated mode, so its advertised NodeData bucket is <P2PNetworkID>_federated. This custom bucket is distinct from EdgeVPN\u2019s base \"services\" bucket. ID is hostname plus the random service name. TunnelAddress and ServiceID are empty in the initial ExposeService record and may be filled in local discovery state later.",
+        "source_reference": "LocalAI core/p2p/p2p.go:ExposeService; core/p2p/federated.go:NetworkID; core/p2p/node.go:service ID constants; core/schema/localai.go:NodeData; core/application/p2p.go:StartP2P",
+        "value_fields": [
+          "Name",
+          "ID",
+          "TunnelAddress",
+          "ServiceID",
+          "LastSeen"
+        ]
+      },
+      "count": 10,
+      "examples": [
+        {
+          "block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+          "block_index": 6,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "VjeZXwrLVQ",
+          "line": 61,
+          "message_sha256": "3fc4b90592856fee1430f24d2e154e20b84c9cc8af31b5096d875abf4693429b",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "bootstrap",
+          "previous_observed_block_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+          "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "value_summary": {
+            "fields": {
+              "ID": "control-peer-01-VjeZXwrLVQ",
+              "LastSeen": "2026-10-07T13:38:30.314683411Z",
+              "Name": "VjeZXwrLVQ",
+              "ServiceID": ""
+            },
+            "other_field_names": [
+              "TunnelAddress"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "block_hash": "fbd85eac8d804cfad017ffacbe3288b014eac2c280dbd22ceda8230c60bc3e94",
+          "block_index": 11,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "VjeZXwrLVQ",
+          "line": 102,
+          "message_sha256": "5faa253be8c0d70cf2da5e6e4743338c0bff04b8b7595d8a8968ba94d50bf28c",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "join-2",
+          "previous_observed_block_hash": "aaf5375cda2f6692a1e810d91cb49951ad633a65729693c6a3a41d2308f7b106",
+          "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "value_summary": {
+            "fields": {
+              "ID": "control-peer-01-VjeZXwrLVQ",
+              "LastSeen": "2026-10-07T13:38:52.80743015Z",
+              "Name": "VjeZXwrLVQ",
+              "ServiceID": ""
+            },
+            "other_field_names": [
+              "TunnelAddress"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "block_hash": "30b0d975c012281f5366cba802d625bb0d27ba402853379bc08b86593bf63a74",
+          "block_index": 13,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "cmrwoyredt",
+          "line": 110,
+          "message_sha256": "b4892285275ad6f2e8b48b136caf672f13a3fdbb7069cfe5c3685534ac0b7aa1",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "join-2",
+          "previous_observed_block_hash": "8567ac54b9db84ec4ef8900a2df4c8143f2b01e39b0508fd7c2a0bb6c2ca73a5",
+          "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+          "value_summary": {
+            "fields": {
+              "ID": "control-peer-02-cmrwoyredt",
+              "LastSeen": "2026-10-07T13:38:57.99473932Z",
+              "Name": "cmrwoyredt",
+              "ServiceID": ""
+            },
+            "other_field_names": [
+              "TunnelAddress"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "block_hash": "a620fb9a7ff36ca24c41989fce11850cde823201a6d42a78383094f2c7de9495",
+          "block_index": 15,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "cmrwoyredt",
+          "line": 118,
+          "message_sha256": "3d1ac9b84ceb9e14a3307bb4060e0aee01af16072845f95565a992f5b2c210c5",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "steady-maintenance",
+          "previous_observed_block_hash": "5371bd2befbf9f1c1fd4f37cb64353bcfccfd4624a96eea24f27a13047f914f3",
+          "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+          "value_summary": {
+            "fields": {
+              "ID": "control-peer-02-cmrwoyredt",
+              "LastSeen": "2026-10-07T13:39:09.947036909Z",
+              "Name": "cmrwoyredt",
+              "ServiceID": ""
+            },
+            "other_field_names": [
+              "TunnelAddress"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "lifecycle_category": "service_registration_and_worker_discovery",
+      "snapshot_lineage_counts": {
+        "direct_child_or_initial": 10
+      }
+    },
+    {
+      "action": "present_at_first_observation",
+      "bucket": "localai-control-7cb6742d52ac_federated",
+      "bucket_metadata": {
+        "bucket": "<P2PNetworkID>_federated, <P2PNetworkID>_worker, or <P2PNetworkID>_mlx_worker; if P2PNetworkID is empty: federated, worker, or mlx_worker",
+        "category": "service_registration_and_worker_discovery",
+        "known": true,
+        "meaning": "LocalAI federated/worker service advertisement (application ledger record inside full-block envelope)",
+        "nominal_schedule": "Every 20s maximum through Announce/backoff; every advertisement writes current LastSeen and immediately creates a ledger block",
+        "record_kind": "application ledger record inside full-block envelope",
+        "record_name": "LocalAI federated/worker service advertisement",
+        "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+        "source_notes": "The exact service ID is selected by the caller: FederatedID=\"federated\", LlamaCPPWorkerID=\"worker\", MLXWorkerID=\"mlx_worker\". NetworkID(prefix, serviceID) returns prefix + \"_\" + serviceID when prefix is nonempty, otherwise serviceID unchanged. In the current capture, the LocalAI app runs the federated mode, so its advertised NodeData bucket is <P2PNetworkID>_federated. This custom bucket is distinct from EdgeVPN\u2019s base \"services\" bucket. ID is hostname plus the random service name. TunnelAddress and ServiceID are empty in the initial ExposeService record and may be filled in local discovery state later.",
+        "source_reference": "LocalAI core/p2p/p2p.go:ExposeService; core/p2p/federated.go:NetworkID; core/p2p/node.go:service ID constants; core/schema/localai.go:NodeData; core/application/p2p.go:StartP2P",
+        "value_fields": [
+          "Name",
+          "ID",
+          "TunnelAddress",
+          "ServiceID",
+          "LastSeen"
+        ]
+      },
+      "count": 1,
+      "examples": [
+        {
+          "block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+          "block_index": 4,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "none",
+          "file": "observer.jsonl",
+          "key": "VjeZXwrLVQ",
+          "line": 34,
+          "message_sha256": "41661b88138f1982fc85fb5aabb59b3d102fa4d92a476d47e1b6f7b6dccd194e",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "bootstrap",
+          "previous_observed_block_hash": null,
+          "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "value_summary": {
+            "fields": {
+              "ID": "control-peer-01-VjeZXwrLVQ",
+              "LastSeen": "2026-10-07T13:38:23.933760315Z",
+              "Name": "VjeZXwrLVQ",
+              "ServiceID": ""
+            },
+            "other_field_names": [
+              "TunnelAddress"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "lifecycle_category": "service_registration_and_worker_discovery",
+      "snapshot_lineage_counts": {
+        "direct_child_or_initial": 1
+      }
+    },
+    {
+      "action": "added",
+      "bucket": "services",
+      "bucket_metadata": {
+        "bucket": "services",
+        "category": "service_registration_and_worker_discovery",
+        "known": true,
+        "meaning": "EdgeVPN service route (application ledger record inside full-block envelope)",
+        "nominal_schedule": "Announce cap 60s; record is added if missing or if the PeerID has changed, using EdgeVPN's backoff ticker",
+        "record_kind": "application ledger record inside full-block envelope",
+        "record_name": "EdgeVPN service route",
+        "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+        "source_notes": "This EdgeVPN record resolves the service ID to its libp2p peer. It is distinct from LocalAI's NodeData advertisement; destination address is not a field in types.Service.",
+        "source_reference": "LocalAI core/p2p/p2p.go:ExposeService; EdgeVPN pkg/services/services.go:ExposeNetworkService; pkg/types/service.go (v0.34.0)",
+        "value_fields": [
+          "PeerID",
+          "Name"
+        ]
+      },
+      "count": 2,
+      "examples": [
+        {
+          "block_hash": "aaf5375cda2f6692a1e810d91cb49951ad633a65729693c6a3a41d2308f7b106",
+          "block_index": 10,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "cmrwoyredt",
+          "line": 92,
+          "message_sha256": "9dcf5d5122741b2d09be7959701f50129f2437750c0e89b4b5a9b0c4e823f607",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "join-2",
+          "previous_observed_block_hash": "f425df3aa16bc76c1088884d8c118f9a707d1cfa8edbdf7b7ec560b58d7e7c6d",
+          "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+          "value_summary": {
+            "fields": {
+              "Name": "cmrwoyredt",
+              "PeerID": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS"
+            },
+            "other_field_names": [],
+            "type": "object"
+          }
+        },
+        {
+          "block_hash": "c0ed05e44857df2ed91f1e322431baf55da7b901262eb1c756764d8faa53dded",
+          "block_index": 34,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "ZtyTQcPSsc",
+          "line": 228,
+          "message_sha256": "62d7b7d106301baf1131182fb4d528717f90f556aa74b79b341569715fe9ed45",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "peer-rejoin",
+          "previous_observed_block_hash": "9e662997a06e09e466dab529c8a821018f85e7d1d208369ecb7036438293f835",
+          "received_from_peer_id": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj",
+          "value_summary": {
+            "fields": {
+              "Name": "ZtyTQcPSsc",
+              "PeerID": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj"
+            },
+            "other_field_names": [],
+            "type": "object"
+          }
+        }
+      ],
+      "lifecycle_category": "service_registration_and_worker_discovery",
+      "snapshot_lineage_counts": {
+        "direct_child_or_initial": 2
+      }
+    },
+    {
+      "action": "present_at_first_observation",
+      "bucket": "services",
+      "bucket_metadata": {
+        "bucket": "services",
+        "category": "service_registration_and_worker_discovery",
+        "known": true,
+        "meaning": "EdgeVPN service route (application ledger record inside full-block envelope)",
+        "nominal_schedule": "Announce cap 60s; record is added if missing or if the PeerID has changed, using EdgeVPN's backoff ticker",
+        "record_kind": "application ledger record inside full-block envelope",
+        "record_name": "EdgeVPN service route",
+        "reference_lifecycle_category": "2. Initial service advertisement and authorization",
+        "source_notes": "This EdgeVPN record resolves the service ID to its libp2p peer. It is distinct from LocalAI's NodeData advertisement; destination address is not a field in types.Service.",
+        "source_reference": "LocalAI core/p2p/p2p.go:ExposeService; EdgeVPN pkg/services/services.go:ExposeNetworkService; pkg/types/service.go (v0.34.0)",
+        "value_fields": [
+          "PeerID",
+          "Name"
+        ]
+      },
+      "count": 1,
+      "examples": [
+        {
+          "block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+          "block_index": 4,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "none",
+          "file": "observer.jsonl",
+          "key": "VjeZXwrLVQ",
+          "line": 34,
+          "message_sha256": "41661b88138f1982fc85fb5aabb59b3d102fa4d92a476d47e1b6f7b6dccd194e",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "bootstrap",
+          "previous_observed_block_hash": null,
+          "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "value_summary": {
+            "fields": {
+              "Name": "VjeZXwrLVQ",
+              "PeerID": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr"
+            },
+            "other_field_names": [],
+            "type": "object"
+          }
+        }
+      ],
+      "lifecycle_category": "service_registration_and_worker_discovery",
+      "snapshot_lineage_counts": {
+        "direct_child_or_initial": 1
+      }
+    },
+    {
+      "action": "added",
+      "bucket": "healthcheck",
+      "bucket_metadata": {
+        "bucket": "healthcheck",
+        "category": "health_and_keepalive",
+        "known": true,
+        "meaning": "EdgeVPN peer heartbeat (application ledger record inside full-block envelope)",
+        "nominal_schedule": "Announce interval 30s maximum; considered live for 15 minutes",
+        "record_kind": "application ledger record inside full-block envelope",
+        "record_name": "EdgeVPN peer heartbeat",
+        "reference_lifecycle_category": "3. Steady-state liveness, service discovery and ledger sync",
+        "source_notes": null,
+        "source_reference": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/services/alive.go (v0.34.0)",
+        "value_fields": []
+      },
+      "count": 3,
+      "examples": [
+        {
+          "block_hash": "f425df3aa16bc76c1088884d8c118f9a707d1cfa8edbdf7b7ec560b58d7e7c6d",
+          "block_index": 9,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+          "line": 91,
+          "message_sha256": "a0b235fe36430323cfa9aa5781e9fa11d70e91035cd5992bf6509f58b94b7380",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "join-2",
+          "previous_observed_block_hash": "e25ca7d5398e37e259f60817961f348d1e02ff95444f9ab48e20fa5b8e7351aa",
+          "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+          "value_summary": {
+            "type": "string",
+            "value": "2026-10-07T13:38:48Z"
+          }
+        },
+        {
+          "block_hash": "b40b1a39f27538d3977643350acb367e6043499d96f308918f8b016e54704887",
+          "block_index": 20,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+          "line": 152,
+          "message_sha256": "e0c8ef6aa9c1158aaa9dfa5db4cfc91a539afa81503cd57b0392fe99562c8fcc",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "service-routing",
+          "previous_observed_block_hash": "865ef3032f64e4b78f22d7e64637a4d3fe10826dd35df3237d5672ab7cc82073",
+          "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+          "value_summary": {
+            "type": "string",
+            "value": "2026-10-07T13:39:22Z"
+          }
+        },
+        {
+          "block_hash": "9e662997a06e09e466dab529c8a821018f85e7d1d208369ecb7036438293f835",
+          "block_index": 33,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj",
+          "line": 222,
+          "message_sha256": "84890fa31fcb6f7b00c190a6fde58a3c705bb8e08e8d5217b8012f2d48d09b9f",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "peer-rejoin",
+          "previous_observed_block_hash": "4834404ad39192b6ff3961b4567a1f376c04ac3c5fbff799574191f602709a77",
+          "received_from_peer_id": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj",
+          "value_summary": {
+            "type": "string",
+            "value": "2026-10-07T13:40:22Z"
+          }
+        }
+      ],
+      "lifecycle_category": "health_and_keepalive",
+      "snapshot_lineage_counts": {
+        "direct_child_or_initial": 3
+      }
+    },
+    {
+      "action": "changed",
+      "bucket": "healthcheck",
+      "bucket_metadata": {
+        "bucket": "healthcheck",
+        "category": "health_and_keepalive",
+        "known": true,
+        "meaning": "EdgeVPN peer heartbeat (application ledger record inside full-block envelope)",
+        "nominal_schedule": "Announce interval 30s maximum; considered live for 15 minutes",
+        "record_kind": "application ledger record inside full-block envelope",
+        "record_name": "EdgeVPN peer heartbeat",
+        "reference_lifecycle_category": "3. Steady-state liveness, service discovery and ledger sync",
+        "source_notes": null,
+        "source_reference": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/services/alive.go (v0.34.0)",
+        "value_fields": []
+      },
+      "count": 11,
+      "examples": [
+        {
+          "block_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+          "block_index": 5,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "line": 56,
+          "message_sha256": "58ce74e80cda23cdc5bc9a74a9087f618cdbc873141d067fc065900c6c852fca",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "bootstrap",
+          "previous_observed_block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+          "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "value_summary": {
+            "type": "string",
+            "value": "2026-10-07T13:38:26Z"
+          }
+        },
+        {
+          "block_hash": "f6661f03767fe12a4240570afdba8c65570ebdd833e7a5f35620252ca0afc6c1",
+          "block_index": 7,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "line": 69,
+          "message_sha256": "2ddaa56a7bea0e7ae8f797c3cfc433b5e5fdeba75c37589e5745d65c17e480de",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "join-2",
+          "previous_observed_block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+          "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "value_summary": {
+            "type": "string",
+            "value": "2026-10-07T13:38:41Z"
+          }
+        },
+        {
+          "block_hash": "8567ac54b9db84ec4ef8900a2df4c8143f2b01e39b0508fd7c2a0bb6c2ca73a5",
+          "block_index": 12,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+          "line": 104,
+          "message_sha256": "e07b7a85878ef7ed8a32620ab9963d48f7b7fe82006774084858ccc11998dd62",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "join-2",
+          "previous_observed_block_hash": "fbd85eac8d804cfad017ffacbe3288b014eac2c280dbd22ceda8230c60bc3e94",
+          "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+          "value_summary": {
+            "type": "string",
+            "value": "2026-10-07T13:38:53Z"
+          }
+        },
+        {
+          "block_hash": "5371bd2befbf9f1c1fd4f37cb64353bcfccfd4624a96eea24f27a13047f914f3",
+          "block_index": 14,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "line": 116,
+          "message_sha256": "2b96450d5c8a98fe4694a5920f990fcf893a22ff842e0a2ca92924350b418a13",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "steady-maintenance",
+          "previous_observed_block_hash": "30b0d975c012281f5366cba802d625bb0d27ba402853379bc08b86593bf63a74",
+          "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "value_summary": {
+            "type": "string",
+            "value": "2026-10-07T13:39:05Z"
+          }
+        }
+      ],
+      "lifecycle_category": "health_and_keepalive",
+      "snapshot_lineage_counts": {
+        "direct_child_or_initial": 11
+      }
+    },
+    {
+      "action": "present_at_first_observation",
+      "bucket": "healthcheck",
+      "bucket_metadata": {
+        "bucket": "healthcheck",
+        "category": "health_and_keepalive",
+        "known": true,
+        "meaning": "EdgeVPN peer heartbeat (application ledger record inside full-block envelope)",
+        "nominal_schedule": "Announce interval 30s maximum; considered live for 15 minutes",
+        "record_kind": "application ledger record inside full-block envelope",
+        "record_name": "EdgeVPN peer heartbeat",
+        "reference_lifecycle_category": "3. Steady-state liveness, service discovery and ledger sync",
+        "source_notes": null,
+        "source_reference": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/services/alive.go (v0.34.0)",
+        "value_fields": []
+      },
+      "count": 1,
+      "examples": [
+        {
+          "block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+          "block_index": 4,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "none",
+          "file": "observer.jsonl",
+          "key": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "line": 34,
+          "message_sha256": "41661b88138f1982fc85fb5aabb59b3d102fa4d92a476d47e1b6f7b6dccd194e",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "bootstrap",
+          "previous_observed_block_hash": null,
+          "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "value_summary": {
+            "type": "string",
+            "value": "2026-10-07T13:38:21Z"
+          }
+        }
+      ],
+      "lifecycle_category": "health_and_keepalive",
+      "snapshot_lineage_counts": {
+        "direct_child_or_initial": 1
+      }
+    },
+    {
+      "action": "added",
+      "bucket": "shared_state",
+      "bucket_metadata": {
+        "bucket": "shared_state",
+        "category": "shared_model_state",
+        "known": true,
+        "meaning": "Shared model-name list (application ledger record inside full-block envelope)",
+        "nominal_schedule": "Federated LocalAI app checks state every 60s; AnnounceUpdate is also configured with 60s maximum and writes only when the value differs or is absent",
+        "record_kind": "application ledger record inside full-block envelope",
+        "record_name": "Shared model-name list",
+        "reference_lifecycle_category": "5. Optional model-state synchronization (federated application mode only)",
+        "source_notes": "This record lists model names, not weights or model files. If a peer sees a name it lacks, LocalAI submits a gallery installation operation. p2pSync is started by StartP2P only when the federated mode branch runs; a standalone worker-only P2P node does not run this model-state sync.",
+        "source_reference": "LocalAI core/application/p2p.go:StartP2P/syncState/p2pSync; EdgeVPN pkg/blockchain/ledger.go:AnnounceUpdate",
+        "value_fields": []
+      },
+      "count": 1,
+      "examples": [
+        {
+          "block_hash": "865ef3032f64e4b78f22d7e64637a4d3fe10826dd35df3237d5672ab7cc82073",
+          "block_index": 19,
+          "chain_relation": "direct_child_or_initial",
+          "diff_basis": "previous_observed_snapshot",
+          "file": "observer.jsonl",
+          "key": "models",
+          "line": 150,
+          "message_sha256": "7510a4c36e39f3aaac5ef0912e4cb7688c8386dfccc7c4ce411bb773cd0cfe68",
+          "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+          "phase": "service-routing",
+          "previous_observed_block_hash": "fcd21dd64b3a244f9705fdcf76f35c5dbf2e165a432659241282d0cc50fa83ef",
+          "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+          "value_summary": {
+            "item_count": 0,
+            "sample": [],
+            "type": "list"
+          }
+        }
+      ],
+      "lifecycle_category": "shared_model_state",
+      "snapshot_lineage_counts": {
+        "direct_child_or_initial": 1
+      }
+    }
+  ],
+  "record_freshness": {
+    "interpretation": "A stale/future label compares a timestamp embedded in a captured record with the observer timestamp. Staleness alone does not establish that the application accepted, rejected, or routed traffic using that record.",
+    "observations": [
+      {
+        "bucket": "healthcheck",
+        "count": 102,
+        "examples": [
+          {
+            "age_seconds": 2.936,
+            "block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+            "block_index": 4,
+            "chain_relation": "direct_child_or_initial",
+            "diff_basis": "none",
+            "field": "value",
+            "file": "observer.jsonl",
+            "key": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+            "line": 34,
+            "message_sha256": "41661b88138f1982fc85fb5aabb59b3d102fa4d92a476d47e1b6f7b6dccd194e",
+            "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+            "phase": "bootstrap",
+            "previous_observed_block_hash": null,
+            "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+            "status": "fresh",
+            "threshold_seconds": 900
+          },
+          {
+            "age_seconds": 0.828,
+            "block_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+            "block_index": 5,
+            "chain_relation": "direct_child_or_initial",
+            "diff_basis": "previous_observed_snapshot",
+            "field": "value",
+            "file": "observer.jsonl",
+            "key": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+            "line": 56,
+            "message_sha256": "58ce74e80cda23cdc5bc9a74a9087f618cdbc873141d067fc065900c6c852fca",
+            "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+            "phase": "bootstrap",
+            "previous_observed_block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+            "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+            "status": "fresh",
+            "threshold_seconds": 900
+          },
+          {
+            "age_seconds": 4.317,
+            "block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+            "block_index": 6,
+            "chain_relation": "direct_child_or_initial",
+            "diff_basis": "previous_observed_snapshot",
+            "field": "value",
+            "file": "observer.jsonl",
+            "key": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+            "line": 61,
+            "message_sha256": "3fc4b90592856fee1430f24d2e154e20b84c9cc8af31b5096d875abf4693429b",
+            "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+            "phase": "bootstrap",
+            "previous_observed_block_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+            "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+            "status": "fresh",
+            "threshold_seconds": 900
+          },
+          {
+            "age_seconds": 0.563,
+            "block_hash": "f6661f03767fe12a4240570afdba8c65570ebdd833e7a5f35620252ca0afc6c1",
+            "block_index": 7,
+            "chain_relation": "direct_child_or_initial",
+            "diff_basis": "previous_observed_snapshot",
+            "field": "value",
+            "file": "observer.jsonl",
+            "key": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+            "line": 69,
+            "message_sha256": "2ddaa56a7bea0e7ae8f797c3cfc433b5e5fdeba75c37589e5745d65c17e480de",
+            "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+            "phase": "join-2",
+            "previous_observed_block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+            "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+            "status": "fresh",
+            "threshold_seconds": 900
+          }
+        ],
+        "status": "fresh"
+      },
+      {
+        "bucket": "localai-control-7cb6742d52ac_federated",
+        "count": 64,
+        "examples": [
+          {
+            "age_seconds": 0.002,
+            "block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+            "block_index": 4,
+            "chain_relation": "direct_child_or_initial",
+            "diff_basis": "none",
+            "field": "LastSeen",
+            "file": "observer.jsonl",
+            "key": "VjeZXwrLVQ",
+            "line": 34,
+            "message_sha256": "41661b88138f1982fc85fb5aabb59b3d102fa4d92a476d47e1b6f7b6dccd194e",
+            "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+            "phase": "bootstrap",
+            "previous_observed_block_hash": null,
+            "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+            "status": "fresh",
+            "threshold_seconds": 40
+          },
+          {
+            "age_seconds": 2.895,
+            "block_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+            "block_index": 5,
+            "chain_relation": "direct_child_or_initial",
+            "diff_basis": "previous_observed_snapshot",
+            "field": "LastSeen",
+            "file": "observer.jsonl",
+            "key": "VjeZXwrLVQ",
+            "line": 56,
+            "message_sha256": "58ce74e80cda23cdc5bc9a74a9087f618cdbc873141d067fc065900c6c852fca",
+            "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+            "phase": "bootstrap",
+            "previous_observed_block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+            "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+            "status": "fresh",
+            "threshold_seconds": 40
+          },
+          {
+            "age_seconds": 0.002,
+            "block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+            "block_index": 6,
+            "chain_relation": "direct_child_or_initial",
+            "diff_basis": "previous_observed_snapshot",
+            "field": "LastSeen",
+            "file": "observer.jsonl",
+            "key": "VjeZXwrLVQ",
+            "line": 61,
+            "message_sha256": "3fc4b90592856fee1430f24d2e154e20b84c9cc8af31b5096d875abf4693429b",
+            "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+            "phase": "bootstrap",
+            "previous_observed_block_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+            "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+            "status": "fresh",
+            "threshold_seconds": 40
+          },
+          {
+            "age_seconds": 11.248,
+            "block_hash": "f6661f03767fe12a4240570afdba8c65570ebdd833e7a5f35620252ca0afc6c1",
+            "block_index": 7,
+            "chain_relation": "direct_child_or_initial",
+            "diff_basis": "previous_observed_snapshot",
+            "field": "LastSeen",
+            "file": "observer.jsonl",
+            "key": "VjeZXwrLVQ",
+            "line": 69,
+            "message_sha256": "2ddaa56a7bea0e7ae8f797c3cfc433b5e5fdeba75c37589e5745d65c17e480de",
+            "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+            "phase": "join-2",
+            "previous_observed_block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+            "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+            "status": "fresh",
+            "threshold_seconds": 40
+          }
+        ],
+        "status": "fresh"
+      },
+      {
+        "bucket": "localai-control-7cb6742d52ac_federated",
+        "count": 15,
+        "examples": [
+          {
+            "age_seconds": 41.657,
+            "block_hash": "194a32f4aecb62c5f399189a465ebbac8938610d0aa34722ad31852d3980db74",
+            "block_index": 27,
+            "chain_relation": "direct_child_or_initial",
+            "diff_basis": "previous_observed_snapshot",
+            "field": "LastSeen",
+            "file": "observer.jsonl",
+            "key": "cmrwoyredt",
+            "line": 178,
+            "message_sha256": "69e0986b26a7fd455c08f5334c220f1d147aa63d573ba31a6ac9b6e5ab0d7c01",
+            "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+            "phase": "peer-departure",
+            "previous_observed_block_hash": "fde9917d1e1c76f5f3d04ed2f915a5a388494803357473361f403b29f53cce36",
+            "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+            "status": "stale",
+            "threshold_seconds": 40
+          },
+          {
+            "age_seconds": 44.145,
+            "block_hash": "3d8ded38b55598eaae0a03e3b4ac37b8bd0993e92ad8a81130d8503324f856e4",
+            "block_index": 28,
+            "chain_relation": "direct_child_or_initial",
+            "diff_basis": "previous_observed_snapshot",
+            "field": "LastSeen",
+            "file": "observer.jsonl",
+            "key": "cmrwoyredt",
+            "line": 180,
+            "message_sha256": "efe80b79d09a56bfef052c6bd629d01419cc4634ed11cb134258350cfab29574",
+            "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+            "phase": "peer-departure",
+            "previous_observed_block_hash": "194a32f4aecb62c5f399189a465ebbac8938610d0aa34722ad31852d3980db74",
+            "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+            "status": "stale",
+            "threshold_seconds": 40
+          },
+          {
+            "age_seconds": 49.63,
+            "block_hash": "0a20eaaecc580a350d51c471283ca5dc5360fb7a24f42a14261570c80d8de55e",
+            "block_index": 29,
+            "chain_relation": "direct_child_or_initial",
+            "diff_basis": "previous_observed_snapshot",
+            "field": "LastSeen",
+            "file": "observer.jsonl",
+            "key": "cmrwoyredt",
+            "line": 182,
+            "message_sha256": "1049396718ce424265a810a29d262f1ab6bedcd9772f36da923d2366b3d643b3",
+            "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+            "phase": "peer-departure",
+            "previous_observed_block_hash": "3d8ded38b55598eaae0a03e3b4ac37b8bd0993e92ad8a81130d8503324f856e4",
+            "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+            "status": "stale",
+            "threshold_seconds": 40
+          },
+          {
+            "age_seconds": 63.91,
+            "block_hash": "1860d70208fb911118abaf1aba036e0ef7b7625abb3297298962c0a0cde46672",
+            "block_index": 30,
+            "chain_relation": "direct_child_or_initial",
+            "diff_basis": "previous_observed_snapshot",
+            "field": "LastSeen",
+            "file": "observer.jsonl",
+            "key": "cmrwoyredt",
+            "line": 191,
+            "message_sha256": "39d57fd915bca566929147f6bb41ca7bc75e53a17c9a63013b48895ae58e6c52",
+            "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+            "phase": "peer-departure",
+            "previous_observed_block_hash": "0a20eaaecc580a350d51c471283ca5dc5360fb7a24f42a14261570c80d8de55e",
+            "received_from_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+            "status": "stale",
+            "threshold_seconds": 40
+          }
+        ],
+        "status": "stale"
+      }
+    ],
+    "thresholds": {
+      "future_clock_skew_seconds": 5,
+      "healthcheck_max_age_seconds": 900,
+      "node_last_seen_seconds": 40
+    }
+  },
+  "run": {
+    "completion_outcome": null,
+    "directory": "research/localai/results/control-messages-socket-rejoin-pilot-20261007T1340",
+    "ended_at": "2026-10-07T13:40:44.752262+00:00",
+    "label": "control-messages-socket-rejoin-pilot-20261007T1340",
+    "observer_count": 1,
+    "runner_error": null,
+    "source_revision": "a3d555653c0cbfd73ab59ab15beab80903e96484",
+    "started_at": "2026-10-07T13:38:20.331945+00:00",
+    "status": "passed",
+    "summary_status_as_written": "passed"
+  },
+  "schema_version": 1,
+  "service_routing_probe": {
+    "attempt_count": 3,
+    "exit_codes": [
+      7,
+      52,
+      0
+    ],
+    "file": "service-probe.json",
+    "interpretation": "The probe is a model-free gateway /v1/models request; it can verify service access without exercising model inference.",
+    "passed": true,
+    "present": true,
+    "scope": "read-only HTTP service routing, no inference"
+  },
+  "snapshot_and_event_examples": [
+    {
+      "action": "active_at_observer_registration",
+      "detail": {
+        "category": "startup",
+        "multiaddr": "/ip4/127.0.0.1/tcp/37065"
+      },
+      "dns_summary": null,
+      "event": "listen_address",
+      "file": "observer.jsonl",
+      "lifecycle_category": "discovery_and_connections",
+      "line": 3,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": null,
+      "remote_peer_id": null,
+      "timestamp": "2026-10-07T13:38:22.754648+00:00"
+    },
+    {
+      "action": "active_at_observer_registration",
+      "detail": {
+        "category": "startup",
+        "multiaddr": "/ip4/127.0.0.1/udp/35344/quic-v1"
+      },
+      "dns_summary": null,
+      "event": "listen_address",
+      "file": "observer.jsonl",
+      "lifecycle_category": "discovery_and_connections",
+      "line": 4,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": null,
+      "remote_peer_id": null,
+      "timestamp": "2026-10-07T13:38:22.754654+00:00"
+    },
+    {
+      "action": "active_at_observer_registration",
+      "detail": {
+        "category": "startup",
+        "multiaddr": "/ip4/172.18.0.3/tcp/37065"
+      },
+      "dns_summary": null,
+      "event": "listen_address",
+      "file": "observer.jsonl",
+      "lifecycle_category": "discovery_and_connections",
+      "line": 5,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": null,
+      "remote_peer_id": null,
+      "timestamp": "2026-10-07T13:38:22.754657+00:00"
+    },
+    {
+      "action": "active_at_observer_registration",
+      "detail": {
+        "category": "startup",
+        "multiaddr": "/ip4/172.18.0.3/udp/35344/quic-v1"
+      },
+      "dns_summary": null,
+      "event": "listen_address",
+      "file": "observer.jsonl",
+      "lifecycle_category": "discovery_and_connections",
+      "line": 6,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": null,
+      "remote_peer_id": null,
+      "timestamp": "2026-10-07T13:38:22.754660+00:00"
+    },
+    {
+      "action": null,
+      "detail": {
+        "category": "peer_discovery",
+        "dns_payload_sha256": "579ea6430867305879bf2e221081d017336c3f7da616087de7135a95b71984ab",
+        "interface": "eth0"
+      },
+      "dns_summary": {
+        "additional": 0,
+        "answer_examples": [],
+        "answers": 0,
+        "authority": 0,
+        "question_examples": [
+          {
+            "name": "XdcvAtRDVHIw1tzTlyKaGGfLxepduKOJl4JfBoDqirA.local",
+            "type": "PTR"
+          }
+        ],
+        "questions": 1,
+        "response": false
+      },
+      "event": "mdns_packet",
+      "file": "observer.jsonl",
+      "lifecycle_category": "discovery_and_connections",
+      "line": 7,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": null,
+      "remote_peer_id": null,
+      "timestamp": "2026-10-07T13:38:22.756739+00:00"
+    },
+    {
+      "action": null,
+      "detail": {
+        "category": "peer_discovery",
+        "dns_payload_sha256": "45886ee07e0894597378ca1f5c08c0174e3f0420d7798e4b04254db7ebebd357",
+        "interface": "eth0"
+      },
+      "dns_summary": {
+        "additional": 4,
+        "answer_examples": [
+          {
+            "data": "vuvir9g4eoxhgypdydesy9v99obsm2rpk7a8dxsk2nqyesy7n.XdcvAtRDVHIw1tzTlyKaGGfLxepduKOJl4JfBoDqirA.local",
+            "name": "XdcvAtRDVHIw1tzTlyKaGGfLxepduKOJl4JfBoDqirA.local",
+            "type": "PTR"
+          }
+        ],
+        "answers": 1,
+        "authority": 0,
+        "question_examples": [],
+        "questions": 0,
+        "response": true
+      },
+      "event": "mdns_packet",
+      "file": "observer.jsonl",
+      "lifecycle_category": "discovery_and_connections",
+      "line": 8,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": null,
+      "remote_peer_id": null,
+      "timestamp": "2026-10-07T13:38:22.757212+00:00"
+    },
+    {
+      "action": null,
+      "detail": {
+        "category": "peer_discovery",
+        "dns_payload_sha256": "3f0b4a36e0fde3832cf181a2e5cd307183f1761b4d6bca2f541a63466c73a933",
+        "interface": "eth0"
+      },
+      "dns_summary": {
+        "additional": 3,
+        "answer_examples": [
+          {
+            "data": "5dq0i242mb202ddn1dwcnl8m8pruxr4la1w08yrgqcvj0uu157fgi.XdcvAtRDVHIw1tzTlyKaGGfLxepduKOJl4JfBoDqirA.local",
+            "name": "XdcvAtRDVHIw1tzTlyKaGGfLxepduKOJl4JfBoDqirA.local",
+            "type": "PTR"
+          }
+        ],
+        "answers": 1,
+        "authority": 0,
+        "question_examples": [],
+        "questions": 0,
+        "response": true
+      },
+      "event": "mdns_packet",
+      "file": "observer.jsonl",
+      "lifecycle_category": "discovery_and_connections",
+      "line": 9,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": null,
+      "remote_peer_id": null,
+      "timestamp": "2026-10-07T13:38:22.758077+00:00"
+    },
+    {
+      "action": "connected",
+      "detail": {
+        "category": "connectivity",
+        "connection_id": "12D3KooWBp-1",
+        "direction": "Inbound",
+        "local_multiaddr": "/ip4/0.0.0.0/udp/35344/quic-v1",
+        "remote_multiaddr": "/ip4/172.18.0.2/udp/43813/quic-v1"
+      },
+      "dns_summary": null,
+      "event": "peer_connection",
+      "file": "observer.jsonl",
+      "lifecycle_category": "discovery_and_connections",
+      "line": 10,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+      "remote_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+      "timestamp": "2026-10-07T13:38:22.792483+00:00"
+    },
+    {
+      "block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+      "block_index": 4,
+      "bucket_names": [
+        "healthcheck",
+        "localai-control-7cb6742d52ac_federated",
+        "services"
+      ],
+      "chain_relation": "direct_child_or_initial",
+      "diff_basis": "none",
+      "duplicate_snapshot": false,
+      "event": "ledger_snapshot_observed",
+      "lifecycle_category": "ledger_replication",
+      "message_sha256": "41661b88138f1982fc85fb5aabb59b3d102fa4d92a476d47e1b6f7b6dccd194e",
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "phase": "bootstrap",
+      "pointer": {
+        "block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+        "block_index": 4,
+        "chain_relation": "direct_child_or_initial",
+        "diff_basis": "none",
+        "file": "observer.jsonl",
+        "line": 34,
+        "message_sha256": "41661b88138f1982fc85fb5aabb59b3d102fa4d92a476d47e1b6f7b6dccd194e",
+        "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+        "previous_observed_block_hash": null,
+        "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr"
+      },
+      "prev_hash": "bd8365f82d73f5d1861833a5673a5ec41d824aea3a496788f1a590edae5633b3",
+      "previous_observed_block_index": null,
+      "record_count": 3,
+      "timestamp": "2026-10-07T13:38:23.935792+00:00"
+    },
+    {
+      "block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+      "block_index": 4,
+      "bucket_names": [
+        "healthcheck",
+        "localai-control-7cb6742d52ac_federated",
+        "services"
+      ],
+      "chain_relation": "duplicate_snapshot",
+      "diff_basis": "previous_observed_snapshot",
+      "duplicate_snapshot": true,
+      "event": "ledger_snapshot_observed",
+      "lifecycle_category": "ledger_replication",
+      "message_sha256": "41661b88138f1982fc85fb5aabb59b3d102fa4d92a476d47e1b6f7b6dccd194e",
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "phase": "bootstrap",
+      "pointer": {
+        "block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+        "block_index": 4,
+        "file": "observer.jsonl",
+        "line": 50,
+        "message_sha256": "41661b88138f1982fc85fb5aabb59b3d102fa4d92a476d47e1b6f7b6dccd194e",
+        "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+        "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr"
+      },
+      "prev_hash": "bd8365f82d73f5d1861833a5673a5ec41d824aea3a496788f1a590edae5633b3",
+      "previous_observed_block_index": 4,
+      "record_count": 3,
+      "timestamp": "2026-10-07T13:38:25.652477+00:00"
+    },
+    {
+      "block_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+      "block_index": 5,
+      "bucket_names": [
+        "healthcheck",
+        "localai-control-7cb6742d52ac_federated",
+        "services"
+      ],
+      "chain_relation": "direct_child_or_initial",
+      "diff_basis": "previous_observed_snapshot",
+      "duplicate_snapshot": false,
+      "event": "ledger_snapshot_observed",
+      "lifecycle_category": "ledger_replication",
+      "message_sha256": "58ce74e80cda23cdc5bc9a74a9087f618cdbc873141d067fc065900c6c852fca",
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "phase": "bootstrap",
+      "pointer": {
+        "block_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+        "block_index": 5,
+        "chain_relation": "direct_child_or_initial",
+        "diff_basis": "previous_observed_snapshot",
+        "file": "observer.jsonl",
+        "line": 56,
+        "message_sha256": "58ce74e80cda23cdc5bc9a74a9087f618cdbc873141d067fc065900c6c852fca",
+        "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+        "previous_observed_block_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+        "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr"
+      },
+      "prev_hash": "a520abcc28532c257aa55f3c39d70810e1ed22f189fa53de8bcd4aeb2b954247",
+      "previous_observed_block_index": 4,
+      "record_count": 3,
+      "timestamp": "2026-10-07T13:38:26.828401+00:00"
+    },
+    {
+      "block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+      "block_index": 6,
+      "bucket_names": [
+        "healthcheck",
+        "localai-control-7cb6742d52ac_federated",
+        "services"
+      ],
+      "chain_relation": "direct_child_or_initial",
+      "diff_basis": "previous_observed_snapshot",
+      "duplicate_snapshot": false,
+      "event": "ledger_snapshot_observed",
+      "lifecycle_category": "ledger_replication",
+      "message_sha256": "3fc4b90592856fee1430f24d2e154e20b84c9cc8af31b5096d875abf4693429b",
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "phase": "bootstrap",
+      "pointer": {
+        "block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+        "block_index": 6,
+        "chain_relation": "direct_child_or_initial",
+        "diff_basis": "previous_observed_snapshot",
+        "file": "observer.jsonl",
+        "line": 61,
+        "message_sha256": "3fc4b90592856fee1430f24d2e154e20b84c9cc8af31b5096d875abf4693429b",
+        "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+        "previous_observed_block_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+        "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr"
+      },
+      "prev_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+      "previous_observed_block_index": 5,
+      "record_count": 3,
+      "timestamp": "2026-10-07T13:38:30.316850+00:00"
+    },
+    {
+      "block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+      "block_index": 6,
+      "bucket_names": [
+        "healthcheck",
+        "localai-control-7cb6742d52ac_federated",
+        "services"
+      ],
+      "chain_relation": "duplicate_snapshot",
+      "diff_basis": "previous_observed_snapshot",
+      "duplicate_snapshot": true,
+      "event": "ledger_snapshot_observed",
+      "lifecycle_category": "ledger_replication",
+      "message_sha256": "3fc4b90592856fee1430f24d2e154e20b84c9cc8af31b5096d875abf4693429b",
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "phase": "bootstrap",
+      "pointer": {
+        "block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+        "block_index": 6,
+        "file": "observer.jsonl",
+        "line": 62,
+        "message_sha256": "3fc4b90592856fee1430f24d2e154e20b84c9cc8af31b5096d875abf4693429b",
+        "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+        "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr"
+      },
+      "prev_hash": "c0bef79c373ff5567b1f1a214d8b42ee862e3087aa889e9c918ed555e4c69fdb",
+      "previous_observed_block_index": 6,
+      "record_count": 3,
+      "timestamp": "2026-10-07T13:38:32.103799+00:00"
+    },
+    {
+      "block_hash": "f6661f03767fe12a4240570afdba8c65570ebdd833e7a5f35620252ca0afc6c1",
+      "block_index": 7,
+      "bucket_names": [
+        "healthcheck",
+        "localai-control-7cb6742d52ac_federated",
+        "services"
+      ],
+      "chain_relation": "direct_child_or_initial",
+      "diff_basis": "previous_observed_snapshot",
+      "duplicate_snapshot": false,
+      "event": "ledger_snapshot_observed",
+      "lifecycle_category": "ledger_replication",
+      "message_sha256": "2ddaa56a7bea0e7ae8f797c3cfc433b5e5fdeba75c37589e5745d65c17e480de",
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "phase": "join-2",
+      "pointer": {
+        "block_hash": "f6661f03767fe12a4240570afdba8c65570ebdd833e7a5f35620252ca0afc6c1",
+        "block_index": 7,
+        "chain_relation": "direct_child_or_initial",
+        "diff_basis": "previous_observed_snapshot",
+        "file": "observer.jsonl",
+        "line": 69,
+        "message_sha256": "2ddaa56a7bea0e7ae8f797c3cfc433b5e5fdeba75c37589e5745d65c17e480de",
+        "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+        "previous_observed_block_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+        "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr"
+      },
+      "prev_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+      "previous_observed_block_index": 6,
+      "record_count": 3,
+      "timestamp": "2026-10-07T13:38:41.562749+00:00"
+    },
+    {
+      "block_hash": "f6661f03767fe12a4240570afdba8c65570ebdd833e7a5f35620252ca0afc6c1",
+      "block_index": 7,
+      "bucket_names": [
+        "healthcheck",
+        "localai-control-7cb6742d52ac_federated",
+        "services"
+      ],
+      "chain_relation": "duplicate_snapshot",
+      "diff_basis": "previous_observed_snapshot",
+      "duplicate_snapshot": true,
+      "event": "ledger_snapshot_observed",
+      "lifecycle_category": "ledger_replication",
+      "message_sha256": "2ddaa56a7bea0e7ae8f797c3cfc433b5e5fdeba75c37589e5745d65c17e480de",
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "phase": "join-2",
+      "pointer": {
+        "block_hash": "f6661f03767fe12a4240570afdba8c65570ebdd833e7a5f35620252ca0afc6c1",
+        "block_index": 7,
+        "file": "observer.jsonl",
+        "line": 70,
+        "message_sha256": "2ddaa56a7bea0e7ae8f797c3cfc433b5e5fdeba75c37589e5745d65c17e480de",
+        "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+        "received_from_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr"
+      },
+      "prev_hash": "6d373175e54dd2246a0495a1ff3fab2546c04ae8a7b4240f05162ebcb398284a",
+      "previous_observed_block_index": 7,
+      "record_count": 3,
+      "timestamp": "2026-10-07T13:38:42.574875+00:00"
+    },
+    {
+      "block_hash": "e25ca7d5398e37e259f60817961f348d1e02ff95444f9ab48e20fa5b8e7351aa",
+      "block_index": 8,
+      "bucket_names": [
+        "healthcheck",
+        "localai-control-7cb6742d52ac_federated",
+        "services"
+      ],
+      "chain_relation": "direct_child_or_initial",
+      "diff_basis": "previous_observed_snapshot",
+      "duplicate_snapshot": false,
+      "event": "ledger_snapshot_observed",
+      "lifecycle_category": "ledger_replication",
+      "message_sha256": "5784e093cb6b2072e2da6b8586720f7026d12a564362427f22da05ce7fbf0fa0",
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "phase": "join-2",
+      "pointer": {
+        "block_hash": "e25ca7d5398e37e259f60817961f348d1e02ff95444f9ab48e20fa5b8e7351aa",
+        "block_index": 8,
+        "chain_relation": "direct_child_or_initial",
+        "diff_basis": "previous_observed_snapshot",
+        "file": "observer.jsonl",
+        "line": 90,
+        "message_sha256": "5784e093cb6b2072e2da6b8586720f7026d12a564362427f22da05ce7fbf0fa0",
+        "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+        "previous_observed_block_hash": "f6661f03767fe12a4240570afdba8c65570ebdd833e7a5f35620252ca0afc6c1",
+        "received_from_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS"
+      },
+      "prev_hash": "f6661f03767fe12a4240570afdba8c65570ebdd833e7a5f35620252ca0afc6c1",
+      "previous_observed_block_index": 7,
+      "record_count": 4,
+      "timestamp": "2026-10-07T13:38:48.565956+00:00"
+    },
+    {
+      "action": "disconnected",
+      "detail": {
+        "category": "connectivity",
+        "connection_id": "12D3KooWHE-3",
+        "direction": "Outbound",
+        "local_multiaddr": "/ip4/0.0.0.0/udp/35344/quic-v1",
+        "remote_multiaddr": "/ip4/172.18.0.4/udp/57700/quic-v1"
+      },
+      "dns_summary": null,
+      "event": "peer_connection",
+      "file": "observer.jsonl",
+      "lifecycle_category": "churn_and_expiry",
+      "line": 184,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+      "remote_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+      "timestamp": "2026-10-07T13:40:01.303248+00:00"
+    },
+    {
+      "action": "disconnected",
+      "detail": {
+        "category": "connectivity",
+        "connection_id": "12D3KooWHE-4",
+        "direction": "Inbound",
+        "local_multiaddr": "/ip4/0.0.0.0/udp/35344/quic-v1",
+        "remote_multiaddr": "/ip4/172.18.0.4/udp/57700/quic-v1"
+      },
+      "dns_summary": null,
+      "event": "peer_connection",
+      "file": "observer.jsonl",
+      "lifecycle_category": "churn_and_expiry",
+      "line": 189,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+      "remote_peer_id": "12D3KooWHECAGkH5bAAYbz3zVkfhgsYhRhBqh3T6ZfkfuGCh6YBS",
+      "timestamp": "2026-10-07T13:40:08.276178+00:00"
+    },
+    {
+      "action": "disconnected",
+      "detail": {
+        "category": "connectivity",
+        "connection_id": "12D3KooWKU-6",
+        "direction": "Outbound",
+        "local_multiaddr": "/ip4/0.0.0.0/udp/35344/quic-v1",
+        "remote_multiaddr": "/ip4/172.18.0.5/udp/60767/quic-v1"
+      },
+      "dns_summary": null,
+      "event": "peer_connection",
+      "file": "observer.jsonl",
+      "lifecycle_category": "churn_and_expiry",
+      "line": 247,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+      "remote_peer_id": "12D3KooWKUW9KhcSGuiovHacYMTHA3UrqiZCJ1mK1x5nYwFmMkXP",
+      "timestamp": "2026-10-07T13:40:44.206136+00:00"
+    },
+    {
+      "action": "disconnected",
+      "detail": {
+        "category": "connectivity",
+        "connection_id": "12D3KooWBp-2",
+        "direction": "Outbound",
+        "local_multiaddr": "/ip4/0.0.0.0/udp/35344/quic-v1",
+        "remote_multiaddr": "/ip4/172.18.0.2/udp/43813/quic-v1"
+      },
+      "dns_summary": null,
+      "event": "peer_connection",
+      "file": "observer.jsonl",
+      "lifecycle_category": "churn_and_expiry",
+      "line": 248,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+      "remote_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+      "timestamp": "2026-10-07T13:40:44.206316+00:00"
+    },
+    {
+      "action": "disconnected",
+      "detail": {
+        "category": "connectivity",
+        "connection_id": "12D3KooWBp-1",
+        "direction": "Inbound",
+        "local_multiaddr": "/ip4/0.0.0.0/udp/35344/quic-v1",
+        "remote_multiaddr": "/ip4/172.18.0.2/udp/43813/quic-v1"
+      },
+      "dns_summary": null,
+      "event": "peer_connection",
+      "file": "observer.jsonl",
+      "lifecycle_category": "churn_and_expiry",
+      "line": 249,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+      "remote_peer_id": "12D3KooWBpNS4arAhJpsX4M8mDtwSHQUwHzSAhmWxtQCYn8hCYjr",
+      "timestamp": "2026-10-07T13:40:44.206326+00:00"
+    },
+    {
+      "action": "closed",
+      "detail": {
+        "category": "shutdown",
+        "multiaddr": "/ip4/0.0.0.0/tcp/37065"
+      },
+      "dns_summary": null,
+      "event": "listen_address",
+      "file": "observer.jsonl",
+      "lifecycle_category": "churn_and_expiry",
+      "line": 250,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": null,
+      "remote_peer_id": null,
+      "timestamp": "2026-10-07T13:40:44.206385+00:00"
+    },
+    {
+      "action": "disconnected",
+      "detail": {
+        "category": "connectivity",
+        "connection_id": "12D3KooWEa-7",
+        "direction": "Inbound",
+        "local_multiaddr": "/ip4/0.0.0.0/udp/35344/quic-v1",
+        "remote_multiaddr": "/ip4/172.18.0.4/udp/37347/quic-v1"
+      },
+      "dns_summary": null,
+      "event": "peer_connection",
+      "file": "observer.jsonl",
+      "lifecycle_category": "churn_and_expiry",
+      "line": 251,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj",
+      "remote_peer_id": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj",
+      "timestamp": "2026-10-07T13:40:44.206438+00:00"
+    },
+    {
+      "action": "disconnected",
+      "detail": {
+        "category": "connectivity",
+        "connection_id": "12D3KooWEa-8",
+        "direction": "Outbound",
+        "local_multiaddr": "/ip4/0.0.0.0/udp/35344/quic-v1",
+        "remote_multiaddr": "/ip4/172.18.0.4/udp/37347/quic-v1"
+      },
+      "dns_summary": null,
+      "event": "peer_connection",
+      "file": "observer.jsonl",
+      "lifecycle_category": "churn_and_expiry",
+      "line": 252,
+      "observer_id": "12D3KooWLBLuTLkGT84PrtxNmTwrvaoUHjEGvWrDRW1oe5VtNfrs",
+      "peer_id": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj",
+      "remote_peer_id": "12D3KooWEa4uV8uYaocZhxZbUuJHR248skiiy74JcFVnUJfxvLLj",
+      "timestamp": "2026-10-07T13:40:44.206511+00:00"
+    }
+  ],
+  "snapshot_and_event_examples_cap_per_category": 8
+}

@@ -1,0 +1,20 @@
+{
+  "acks": 1,
+  "control": {
+    "arm": "forged",
+    "available_bytes": 136164352,
+    "marker_event_id": "a79291a6-4535-55e0-a69d-550cdfa03af3",
+    "origin": "45de28af-0cab-5890-a1ed-af9fc6e85b81",
+    "origin_idx": 0,
+    "seed": 1901,
+    "session": {
+      "election_clock": 0,
+      "master_node_id": "96fe02efa8aba6023324db7bf2abd318"
+    },
+    "target_node_id": "96fe02efa8aba6023324db7bf2abd318"
+  },
+  "marker_event_id": "a79291a6-4535-55e0-a69d-550cdfa03af3",
+  "publications": 1,
+  "status": "published-and-observed",
+  "type": "done"
+}

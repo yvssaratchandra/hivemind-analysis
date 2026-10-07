@@ -1,0 +1,34 @@
+{
+  "arm": "baseline",
+  "status": "observed",
+  "observations": {
+    "outcome": "no_send_control",
+    "event_id": null,
+    "per_service_marker_matches": {},
+    "indexed_occurrences": [],
+    "reasons": []
+  },
+  "probe_done": {
+    "acks": 0,
+    "control": {
+      "arm": "baseline",
+      "available_bytes": 136164352,
+      "marker_event_id": "c98f92ed-6d3f-5417-b20f-e4332990431b",
+      "origin": "3846fc9e-3eda-5402-8370-9e8d0a37fe54",
+      "origin_idx": 0,
+      "seed": 1901,
+      "session": {
+        "election_clock": 0,
+        "master_node_id": "6b67ea7ae1eb64d50411da8e99907e14"
+      },
+      "target_node_id": "f23cc4d6bc1e9052e776f5894ace9682"
+    },
+    "marker_event_id": "c98f92ed-6d3f-5417-b20f-e4332990431b",
+    "publications": 0,
+    "status": "baseline-no-publication",
+    "type": "done"
+  },
+  "session_unchanged": true,
+  "honest_identities_unchanged": true,
+  "security_vulnerability_validated": false
+}

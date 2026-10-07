@@ -1,0 +1,96 @@
+{
+  "honest-a": {
+    "node_id": "6f2d06a700e57f66cdda43a487626dc0",
+    "state": {
+      "customModelCards": {},
+      "downloads": {},
+      "instanceLinks": {},
+      "instances": {},
+      "lastEventAppliedIdx": 0,
+      "lastSeen": {
+        "79128499e4f7585d0bc8821ea8a80dc2": "2026-10-06T16:20:04.233000Z"
+      },
+      "nodeBackends": {},
+      "nodeDisk": {},
+      "nodeIdentities": {},
+      "nodeMemory": {
+        "79128499e4f7585d0bc8821ea8a80dc2": {
+          "ramAvailable": {
+            "inBytes": 136164352
+          },
+          "ramTotal": {
+            "inBytes": 2147483648
+          },
+          "swapAvailable": {
+            "inBytes": 0
+          },
+          "swapTotal": {
+            "inBytes": 0
+          }
+        }
+      },
+      "nodeNetwork": {},
+      "nodeRdmaCtl": {},
+      "nodeSystem": {},
+      "nodeThunderbolt": {},
+      "nodeThunderboltBridge": {},
+      "prefillServerPorts": {},
+      "runners": {},
+      "tasks": {},
+      "thunderboltBridgeCycles": [],
+      "topology": {
+        "connections": {},
+        "nodes": [
+          "79128499e4f7585d0bc8821ea8a80dc2"
+        ]
+      }
+    }
+  },
+  "honest-b": {
+    "node_id": "4f4a29c019787198aebc4dba434fa588",
+    "state": {
+      "customModelCards": {},
+      "downloads": {},
+      "instanceLinks": {},
+      "instances": {},
+      "lastEventAppliedIdx": 0,
+      "lastSeen": {
+        "79128499e4f7585d0bc8821ea8a80dc2": "2026-10-06T16:20:04.233000Z"
+      },
+      "nodeBackends": {},
+      "nodeDisk": {},
+      "nodeIdentities": {},
+      "nodeMemory": {
+        "79128499e4f7585d0bc8821ea8a80dc2": {
+          "ramAvailable": {
+            "inBytes": 136164352
+          },
+          "ramTotal": {
+            "inBytes": 2147483648
+          },
+          "swapAvailable": {
+            "inBytes": 0
+          },
+          "swapTotal": {
+            "inBytes": 0
+          }
+        }
+      },
+      "nodeNetwork": {},
+      "nodeRdmaCtl": {},
+      "nodeSystem": {},
+      "nodeThunderbolt": {},
+      "nodeThunderboltBridge": {},
+      "prefillServerPorts": {},
+      "runners": {},
+      "tasks": {},
+      "thunderboltBridgeCycles": [],
+      "topology": {
+        "connections": {},
+        "nodes": [
+          "79128499e4f7585d0bc8821ea8a80dc2"
+        ]
+      }
+    }
+  }
+}

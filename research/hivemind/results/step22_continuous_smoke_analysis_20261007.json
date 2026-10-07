@@ -1,0 +1,141 @@
+{
+  "trials": [
+    {
+      "case": "f2_m0p05",
+      "seed": 2210,
+      "policy": {
+        "name": "f2_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 2,
+        "lifetime": 0.585764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 12.0,
+      "x_leads": 14,
+      "all_groups": 14,
+      "honest_verified": 42,
+      "honest_steps": 43,
+      "degraded_steps": 0,
+      "x_ads": 47,
+      "remote_store_requests": 235,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 75,
+        "BEGIN_ALLREDUCE": 42,
+        "GROUP_DISBANDED": 33,
+        "NOT_LOOKING_FOR_GROUP": 1
+      },
+      "source": "research/hivemind/results/step22_continuous_smoke_20261007_b/f2_m0p05_s2210"
+    },
+    {
+      "case": "passive5",
+      "seed": 2210,
+      "policy": {
+        "name": "passive5",
+        "mode": "passive",
+        "minimum": 4
+      },
+      "duration": 12.0,
+      "x_leads": 10,
+      "all_groups": 13,
+      "honest_verified": 42,
+      "honest_steps": 43,
+      "degraded_steps": 0,
+      "x_ads": 14,
+      "remote_store_requests": 70,
+      "rejected_remote_stores": 5,
+      "follower_reply_codes": {
+        "ACCEPTED": 33,
+        "BEGIN_ALLREDUCE": 30,
+        "GROUP_DISBANDED": 3
+      },
+      "source": "research/hivemind/results/step22_continuous_smoke_20261007_b/passive5_s2210"
+    },
+    {
+      "case": "stock",
+      "seed": 2210,
+      "policy": {
+        "name": "stock",
+        "mode": "stock",
+        "minimum": 2
+      },
+      "duration": 12.0,
+      "x_leads": 11,
+      "all_groups": 15,
+      "honest_verified": 45,
+      "honest_steps": 45,
+      "degraded_steps": 0,
+      "x_ads": 19,
+      "remote_store_requests": 95,
+      "rejected_remote_stores": 5,
+      "follower_reply_codes": {
+        "ACCEPTED": 33,
+        "BEGIN_ALLREDUCE": 33,
+        "NOT_LOOKING_FOR_GROUP": 1
+      },
+      "source": "research/hivemind/results/step22_continuous_smoke_20261007_b/stock_s2210"
+    }
+  ],
+  "aggregate": [
+    {
+      "case": "f2_m0p05",
+      "policy": {
+        "name": "f2_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 2,
+        "lifetime": 0.585764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "trials": 1,
+      "duration": 12.0,
+      "x_leads": 14,
+      "all_groups": 14,
+      "honest_verified": 42,
+      "honest_steps": 43,
+      "degraded_steps": 0,
+      "x_ads": 47,
+      "remote_store_requests": 235,
+      "rejected_remote_stores": 0
+    },
+    {
+      "case": "passive5",
+      "policy": {
+        "name": "passive5",
+        "mode": "passive",
+        "minimum": 4
+      },
+      "trials": 1,
+      "duration": 12.0,
+      "x_leads": 10,
+      "all_groups": 13,
+      "honest_verified": 42,
+      "honest_steps": 43,
+      "degraded_steps": 0,
+      "x_ads": 14,
+      "remote_store_requests": 70,
+      "rejected_remote_stores": 5
+    },
+    {
+      "case": "stock",
+      "policy": {
+        "name": "stock",
+        "mode": "stock",
+        "minimum": 2
+      },
+      "trials": 1,
+      "duration": 12.0,
+      "x_leads": 11,
+      "all_groups": 15,
+      "honest_verified": 45,
+      "honest_steps": 45,
+      "degraded_steps": 0,
+      "x_ads": 19,
+      "remote_store_requests": 95,
+      "rejected_remote_stores": 5
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "arm": "forged",
+  "seed": 1901,
+  "session": {
+    "master_node_id": "96fe02efa8aba6023324db7bf2abd318",
+    "election_clock": 0
+  },
+  "node_ids": {
+    "honest-a": "4cfb6cb8839e69ebf1c68c9aab74a1d1",
+    "honest-b": "96fe02efa8aba6023324db7bf2abd318"
+  },
+  "target_node_id": "96fe02efa8aba6023324db7bf2abd318",
+  "available_bytes": 136164352,
+  "origin": "45de28af-0cab-5890-a1ed-af9fc6e85b81",
+  "origin_idx": 0
+}

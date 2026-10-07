@@ -1,0 +1,2205 @@
+{
+  "case": "f2_too_short",
+  "seed": 2220,
+  "duration": 30.0,
+  "sends": [
+    {
+      "offset": 0.001134594000177458,
+      "sent_wall": 1791399892.52166,
+      "expiration": 1791399892.7216601,
+      "latency": 0.05103018799854908,
+      "accepted": true
+    },
+    {
+      "offset": 0.501638202000322,
+      "sent_wall": 1791399893.022161,
+      "expiration": 1791399893.222161,
+      "latency": 0.05318069699933403,
+      "accepted": true
+    },
+    {
+      "offset": 1.0045618769981957,
+      "sent_wall": 1791399893.525084,
+      "expiration": 1791399893.725084,
+      "latency": 0.05676325199965504,
+      "accepted": true
+    },
+    {
+      "offset": 1.5053925849970256,
+      "sent_wall": 1791399894.0259125,
+      "expiration": 1791399894.2259126,
+      "latency": 0.06073239100078354,
+      "accepted": true
+    },
+    {
+      "offset": 2.007743420999759,
+      "sent_wall": 1791399894.5282657,
+      "expiration": 1791399894.7282658,
+      "latency": 0.05758374699871638,
+      "accepted": true
+    },
+    {
+      "offset": 2.508058257997618,
+      "sent_wall": 1791399895.0285788,
+      "expiration": 1791399895.2285788,
+      "latency": 0.059781342002679594,
+      "accepted": true
+    },
+    {
+      "offset": 3.017717240996717,
+      "sent_wall": 1791399895.53824,
+      "expiration": 1791399895.73824,
+      "latency": 0.05478778000178863,
+      "accepted": true
+    },
+    {
+      "offset": 3.524375080000027,
+      "sent_wall": 1791399896.0448985,
+      "expiration": 1791399896.2448986,
+      "latency": 0.06418436599778943,
+      "accepted": true
+    },
+    {
+      "offset": 4.033595177999814,
+      "sent_wall": 1791399896.5541158,
+      "expiration": 1791399896.7541158,
+      "latency": 0.054989963999105385,
+      "accepted": true
+    },
+    {
+      "offset": 4.542845658997976,
+      "sent_wall": 1791399897.0633686,
+      "expiration": 1791399897.2633686,
+      "latency": 0.06732958100110409,
+      "accepted": true
+    },
+    {
+      "offset": 5.051806684998155,
+      "sent_wall": 1791399897.5723295,
+      "expiration": 1791399897.7723296,
+      "latency": 0.05644373700124561,
+      "accepted": true
+    },
+    {
+      "offset": 5.562429189998511,
+      "sent_wall": 1791399898.0829523,
+      "expiration": 1791399898.2829523,
+      "latency": 0.0566724130003422,
+      "accepted": true
+    },
+    {
+      "offset": 6.074590101998183,
+      "sent_wall": 1791399898.595113,
+      "expiration": 1791399898.795113,
+      "latency": 0.05532721200142987,
+      "accepted": true
+    },
+    {
+      "offset": 6.582912874997419,
+      "sent_wall": 1791399899.103436,
+      "expiration": 1791399899.303436,
+      "latency": 0.0547462690010434,
+      "accepted": true
+    },
+    {
+      "offset": 7.095481889999064,
+      "sent_wall": 1791399899.6160023,
+      "expiration": 1791399899.8160024,
+      "latency": 0.056102316000760766,
+      "accepted": true
+    },
+    {
+      "offset": 7.608468233000167,
+      "sent_wall": 1791399900.128991,
+      "expiration": 1791399900.328991,
+      "latency": 0.05390631299815141,
+      "accepted": true
+    },
+    {
+      "offset": 8.119010536000133,
+      "sent_wall": 1791399900.6395316,
+      "expiration": 1791399900.8395317,
+      "latency": 0.05568792199846939,
+      "accepted": true
+    },
+    {
+      "offset": 8.631628858998738,
+      "sent_wall": 1791399901.1521518,
+      "expiration": 1791399901.3521519,
+      "latency": 0.054191560000617756,
+      "accepted": true
+    },
+    {
+      "offset": 9.142388640997524,
+      "sent_wall": 1791399901.6629102,
+      "expiration": 1791399901.8629103,
+      "latency": 0.05730105800103047,
+      "accepted": true
+    },
+    {
+      "offset": 9.652716647997295,
+      "sent_wall": 1791399902.1732392,
+      "expiration": 1791399902.3732393,
+      "latency": 0.055519669000204885,
+      "accepted": true
+    },
+    {
+      "offset": 10.164664243999141,
+      "sent_wall": 1791399902.6851852,
+      "expiration": 1791399902.8851852,
+      "latency": 0.05708715699802269,
+      "accepted": true
+    },
+    {
+      "offset": 10.671207333998609,
+      "sent_wall": 1791399903.1917279,
+      "expiration": 1791399903.391728,
+      "latency": 0.05612263299917686,
+      "accepted": true
+    },
+    {
+      "offset": 11.179932371996983,
+      "sent_wall": 1791399903.7004533,
+      "expiration": 1791399903.9004533,
+      "latency": 0.05533690200172714,
+      "accepted": true
+    },
+    {
+      "offset": 11.687080307998258,
+      "sent_wall": 1791399904.2076032,
+      "expiration": 1791399904.4076033,
+      "latency": 0.055372263999743154,
+      "accepted": true
+    },
+    {
+      "offset": 12.19682095799726,
+      "sent_wall": 1791399904.7173417,
+      "expiration": 1791399904.9173417,
+      "latency": 0.054916133001825074,
+      "accepted": true
+    },
+    {
+      "offset": 12.705455841998628,
+      "sent_wall": 1791399905.2259784,
+      "expiration": 1791399905.4259784,
+      "latency": 0.057531252001354005,
+      "accepted": true
+    },
+    {
+      "offset": 13.215928415997041,
+      "sent_wall": 1791399905.7364495,
+      "expiration": 1791399905.9364495,
+      "latency": 0.056810658003087156,
+      "accepted": true
+    },
+    {
+      "offset": 13.725127595997037,
+      "sent_wall": 1791399906.2456512,
+      "expiration": 1791399906.4456513,
+      "latency": 0.05421698700229172,
+      "accepted": true
+    },
+    {
+      "offset": 14.236617691996798,
+      "sent_wall": 1791399906.7571404,
+      "expiration": 1791399906.9571404,
+      "latency": 0.05551660000128322,
+      "accepted": true
+    },
+    {
+      "offset": 14.744667424998624,
+      "sent_wall": 1791399907.2651896,
+      "expiration": 1791399907.4651897,
+      "latency": 0.054332699000951834,
+      "accepted": true
+    },
+    {
+      "offset": 15.254995247996703,
+      "sent_wall": 1791399907.7755153,
+      "expiration": 1791399907.9755154,
+      "latency": 0.055723070003296016,
+      "accepted": true
+    },
+    {
+      "offset": 15.768485589996999,
+      "sent_wall": 1791399908.2890077,
+      "expiration": 1791399908.4890077,
+      "latency": 0.05542821600101888,
+      "accepted": true
+    },
+    {
+      "offset": 16.270870960997854,
+      "sent_wall": 1791399908.7913926,
+      "expiration": 1791399908.9913926,
+      "latency": 0.05560200100080692,
+      "accepted": true
+    },
+    {
+      "offset": 16.77706236299855,
+      "sent_wall": 1791399909.297583,
+      "expiration": 1791399909.4975832,
+      "latency": 0.05501236399868503,
+      "accepted": true
+    },
+    {
+      "offset": 17.2824669119982,
+      "sent_wall": 1791399909.8029892,
+      "expiration": 1791399910.0029893,
+      "latency": 0.057020371001272,
+      "accepted": true
+    },
+    {
+      "offset": 17.7936623889982,
+      "sent_wall": 1791399910.314183,
+      "expiration": 1791399910.514183,
+      "latency": 0.05622965600196039,
+      "accepted": true
+    },
+    {
+      "offset": 18.302708635997988,
+      "sent_wall": 1791399910.8232315,
+      "expiration": 1791399911.0232315,
+      "latency": 0.05518436900092638,
+      "accepted": true
+    },
+    {
+      "offset": 18.808335585999885,
+      "sent_wall": 1791399911.3288574,
+      "expiration": 1791399911.5288575,
+      "latency": 0.0571849329971883,
+      "accepted": true
+    },
+    {
+      "offset": 19.31866653799807,
+      "sent_wall": 1791399911.8391895,
+      "expiration": 1791399912.0391896,
+      "latency": 0.056828511998901377,
+      "accepted": true
+    },
+    {
+      "offset": 19.82943370799694,
+      "sent_wall": 1791399912.349955,
+      "expiration": 1791399912.5499551,
+      "latency": 0.055743028002325445,
+      "accepted": true
+    },
+    {
+      "offset": 20.34170407899728,
+      "sent_wall": 1791399912.862226,
+      "expiration": 1791399913.062226,
+      "latency": 0.05579926100108423,
+      "accepted": true
+    },
+    {
+      "offset": 20.84767605199886,
+      "sent_wall": 1791399913.3681982,
+      "expiration": 1791399913.5681982,
+      "latency": 0.05683189599949401,
+      "accepted": true
+    },
+    {
+      "offset": 21.35756090799987,
+      "sent_wall": 1791399913.8780816,
+      "expiration": 1791399914.0780816,
+      "latency": 0.05498281600011978,
+      "accepted": true
+    },
+    {
+      "offset": 21.865466901999753,
+      "sent_wall": 1791399914.385989,
+      "expiration": 1791399914.585989,
+      "latency": 0.05496277599741006,
+      "accepted": true
+    },
+    {
+      "offset": 22.37381009999808,
+      "sent_wall": 1791399914.8943307,
+      "expiration": 1791399915.0943308,
+      "latency": 0.05643077399872709,
+      "accepted": true
+    },
+    {
+      "offset": 22.87714003899964,
+      "sent_wall": 1791399915.3976622,
+      "expiration": 1791399915.5976622,
+      "latency": 0.056787898000038695,
+      "accepted": true
+    },
+    {
+      "offset": 23.385345054997742,
+      "sent_wall": 1791399915.9058673,
+      "expiration": 1791399916.1058674,
+      "latency": 0.05511035100062145,
+      "accepted": true
+    },
+    {
+      "offset": 23.89359261699792,
+      "sent_wall": 1791399916.414116,
+      "expiration": 1791399916.614116,
+      "latency": 0.05713963900052477,
+      "accepted": true
+    },
+    {
+      "offset": 24.403493958998297,
+      "sent_wall": 1791399916.9240122,
+      "expiration": 1791399917.1240122,
+      "latency": 0.05939563799984171,
+      "accepted": true
+    },
+    {
+      "offset": 24.913698979999026,
+      "sent_wall": 1791399917.4342215,
+      "expiration": 1791399917.6342216,
+      "latency": 0.055884724999486934,
+      "accepted": true
+    },
+    {
+      "offset": 25.417848179997236,
+      "sent_wall": 1791399917.9383698,
+      "expiration": 1791399918.1383698,
+      "latency": 0.056736922000709455,
+      "accepted": true
+    },
+    {
+      "offset": 25.928298178998375,
+      "sent_wall": 1791399918.4488199,
+      "expiration": 1791399918.64882,
+      "latency": 0.05771313000150258,
+      "accepted": true
+    },
+    {
+      "offset": 26.429665217998263,
+      "sent_wall": 1791399918.9501867,
+      "expiration": 1791399919.1501868,
+      "latency": 0.05743508500017924,
+      "accepted": true
+    },
+    {
+      "offset": 26.939226198999677,
+      "sent_wall": 1791399919.4597466,
+      "expiration": 1791399919.6597466,
+      "latency": 0.05534869999974035,
+      "accepted": true
+    },
+    {
+      "offset": 27.449690793997434,
+      "sent_wall": 1791399919.9702127,
+      "expiration": 1791399920.1702127,
+      "latency": 0.05558754400044563,
+      "accepted": true
+    },
+    {
+      "offset": 27.96335720299976,
+      "sent_wall": 1791399920.4838781,
+      "expiration": 1791399920.6838782,
+      "latency": 0.055461402000219095,
+      "accepted": true
+    },
+    {
+      "offset": 28.47060868599874,
+      "sent_wall": 1791399920.99113,
+      "expiration": 1791399921.1911302,
+      "latency": 0.05484839899872895,
+      "accepted": true
+    },
+    {
+      "offset": 28.974368529998173,
+      "sent_wall": 1791399921.4948888,
+      "expiration": 1791399921.6948888,
+      "latency": 0.05489685900101904,
+      "accepted": true
+    },
+    {
+      "offset": 29.48251864299891,
+      "sent_wall": 1791399922.0030386,
+      "expiration": 1791399922.2030387,
+      "latency": 0.0625211410006159,
+      "accepted": true
+    },
+    {
+      "offset": 29.99161751599968,
+      "sent_wall": 1791399922.512139,
+      "expiration": 1791399922.7121391,
+      "latency": 0.05753719299900695,
+      "accepted": true
+    }
+  ],
+  "probes": [
+    {
+      "offset": 0.05245766199732316,
+      "latency": 0.005974593001155881,
+      "active": true,
+      "expiration": 1791399892.7216601
+    },
+    {
+      "offset": 0.1541501449974021,
+      "latency": 0.006952037001610734,
+      "active": true,
+      "expiration": 1791399892.7216601
+    },
+    {
+      "offset": 0.256045368998457,
+      "latency": 0.009097861999180168,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 0.35728123799708555,
+      "latency": 0.008970643000793643,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 0.45828697399701923,
+      "latency": 0.009336873001302592,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 0.5584738269972149,
+      "latency": 0.011433138999564108,
+      "active": true,
+      "expiration": 1791399893.222161
+    },
+    {
+      "offset": 0.6604351559981296,
+      "latency": 0.01209073399877525,
+      "active": true,
+      "expiration": 1791399893.222161
+    },
+    {
+      "offset": 0.7613361259973317,
+      "latency": 0.011656323000352131,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 0.8631374049982696,
+      "latency": 0.011721882001438644,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 0.9653464329967392,
+      "latency": 0.010895729003095767,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 1.0680086729989853,
+      "latency": 0.011381607000657823,
+      "active": true,
+      "expiration": 1791399893.725084
+    },
+    {
+      "offset": 1.1699630879993492,
+      "latency": 0.01258571799917263,
+      "active": true,
+      "expiration": 1791399893.725084
+    },
+    {
+      "offset": 1.2729830039970693,
+      "latency": 0.011642312001640676,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 1.3753649539976323,
+      "latency": 0.010609082000883063,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 1.4763440629976685,
+      "latency": 0.01011984599972493,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 1.576403761999245,
+      "latency": 0.012552396998216864,
+      "active": true,
+      "expiration": 1791399894.2259126
+    },
+    {
+      "offset": 1.67646805899858,
+      "latency": 0.01259870099966065,
+      "active": true,
+      "expiration": 1791399894.2259126
+    },
+    {
+      "offset": 1.7772956179978792,
+      "latency": 0.01158651900186669,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 1.877635332999489,
+      "latency": 0.011465380997833563,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 1.9781208530002914,
+      "latency": 0.012913355996715836,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 2.079011409998202,
+      "latency": 0.013133291999110952,
+      "active": true,
+      "expiration": 1791399894.7282658
+    },
+    {
+      "offset": 2.1822306319991185,
+      "latency": 0.012565160999656655,
+      "active": true,
+      "expiration": 1791399894.7282658
+    },
+    {
+      "offset": 2.285336377997737,
+      "latency": 0.010725225001806393,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 2.387504137997894,
+      "latency": 0.01248109800144448,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 2.4901696289998654,
+      "latency": 0.011102959997515427,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 2.5910436309968645,
+      "latency": 0.01253237100172555,
+      "active": true,
+      "expiration": 1791399895.2285788
+    },
+    {
+      "offset": 2.6943846159992972,
+      "latency": 0.012612137998075923,
+      "active": true,
+      "expiration": 1791399895.2285788
+    },
+    {
+      "offset": 2.7976500049990136,
+      "latency": 0.012583482999616535,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 2.9009746679985255,
+      "latency": 0.012304954001592705,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 3.002823315997375,
+      "latency": 0.01149216600242653,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 3.106224082999688,
+      "latency": 0.013816459999361541,
+      "active": true,
+      "expiration": 1791399895.73824
+    },
+    {
+      "offset": 3.206471959998453,
+      "latency": 0.011498831998324022,
+      "active": false,
+      "expiration": 1791399895.73824
+    },
+    {
+      "offset": 3.309288349999406,
+      "latency": 0.011234186000365298,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 3.4096877119991404,
+      "latency": 0.01111042399861617,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 3.5109978549990046,
+      "latency": 0.00993084600122529,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 3.612511949999316,
+      "latency": 0.013226443999883486,
+      "active": true,
+      "expiration": 1791399896.2448986
+    },
+    {
+      "offset": 3.715550731998519,
+      "latency": 0.01257985399934114,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 3.8167670679977164,
+      "latency": 0.011089629002526635,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 3.91823147699688,
+      "latency": 0.012740010002744384,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 4.018509906996769,
+      "latency": 0.011508366002090042,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 4.119559839997237,
+      "latency": 0.012248257000464946,
+      "active": true,
+      "expiration": 1791399896.7541158
+    },
+    {
+      "offset": 4.221649699997215,
+      "latency": 0.013553134001995204,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 4.323082183000224,
+      "latency": 0.012679853000008734,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 4.423597842000163,
+      "latency": 0.012256051999429474,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 4.526861772999837,
+      "latency": 0.012529276998975547,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 4.62723609999739,
+      "latency": 0.012173299001005944,
+      "active": true,
+      "expiration": 1791399897.2633686
+    },
+    {
+      "offset": 4.729869001999759,
+      "latency": 0.011423967996961437,
+      "active": true,
+      "expiration": 1791399897.2633686
+    },
+    {
+      "offset": 4.8313291639969975,
+      "latency": 0.012435338001523633,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 4.934426377996715,
+      "latency": 0.013116796002577757,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 5.037548848998995,
+      "latency": 0.010853993000637274,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 5.138781700999971,
+      "latency": 0.011691775998770026,
+      "active": true,
+      "expiration": 1791399897.7723296
+    },
+    {
+      "offset": 5.2413779759990575,
+      "latency": 0.012244692999956897,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 5.343637629997829,
+      "latency": 0.01203888500094763,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 5.445329425998352,
+      "latency": 0.012346012001216877,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 5.547555533998093,
+      "latency": 0.011439329999120673,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 5.649426869997114,
+      "latency": 0.012144069001806201,
+      "active": true,
+      "expiration": 1791399898.2829523
+    },
+    {
+      "offset": 5.7523548350000056,
+      "latency": 0.012610210000275401,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 5.855032801999187,
+      "latency": 0.010999235000781482,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 5.9564612899994245,
+      "latency": 0.012487078998674406,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 6.059008256997913,
+      "latency": 0.012051994999637827,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 6.160679381999216,
+      "latency": 0.012553002998174634,
+      "active": true,
+      "expiration": 1791399898.795113
+    },
+    {
+      "offset": 6.263163128998713,
+      "latency": 0.012002602001302876,
+      "active": false,
+      "expiration": 1791399898.795113
+    },
+    {
+      "offset": 6.36567973199999,
+      "latency": 0.011188549997314112,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 6.466737098999147,
+      "latency": 0.011888950000866316,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 6.568081078999967,
+      "latency": 0.011410846997023327,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 6.671449705998384,
+      "latency": 0.012526243001047987,
+      "active": true,
+      "expiration": 1791399899.303436
+    },
+    {
+      "offset": 6.771735992999311,
+      "latency": 0.01186473699999624,
+      "active": false,
+      "expiration": 1791399899.303436
+    },
+    {
+      "offset": 6.8745540249983605,
+      "latency": 0.012590940001246054,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 6.977500436998525,
+      "latency": 0.012431232000380987,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 7.08070866900016,
+      "latency": 0.01117542299834895,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 7.182397135999054,
+      "latency": 0.01268783799969242,
+      "active": true,
+      "expiration": 1791399899.8160024
+    },
+    {
+      "offset": 7.2855819260003045,
+      "latency": 0.012769362998369616,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 7.388456742999551,
+      "latency": 0.01118834400040214,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 7.489476734997879,
+      "latency": 0.011309962999803247,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 7.592470268999023,
+      "latency": 0.012598605000675889,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 7.6955930439980875,
+      "latency": 0.011754230999940773,
+      "active": true,
+      "expiration": 1791399900.328991
+    },
+    {
+      "offset": 7.797416235000128,
+      "latency": 0.012459794997994322,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 7.900318936997792,
+      "latency": 0.011306295000395039,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 8.001333721000265,
+      "latency": 0.011178011998708826,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 8.103110520998598,
+      "latency": 0.012302776998694753,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 8.205213868997816,
+      "latency": 0.012528175000625197,
+      "active": true,
+      "expiration": 1791399900.8395317
+    },
+    {
+      "offset": 8.308232998999301,
+      "latency": 0.012460818998079048,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 8.411508138997306,
+      "latency": 0.01245301900053164,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 8.513572969997767,
+      "latency": 0.01228452600116725,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 8.61640913500014,
+      "latency": 0.011724111998773878,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 8.719420356999763,
+      "latency": 0.013756590997218154,
+      "active": true,
+      "expiration": 1791399901.3521519
+    },
+    {
+      "offset": 8.819892413997877,
+      "latency": 0.012542434000351932,
+      "active": false,
+      "expiration": 1791399901.3521519
+    },
+    {
+      "offset": 8.922824541998125,
+      "latency": 0.012107163998734904,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 9.024592313999165,
+      "latency": 0.012491601999499835,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 9.127534171999287,
+      "latency": 0.011479516000690637,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 9.230208846998721,
+      "latency": 0.01176947799831396,
+      "active": true,
+      "expiration": 1791399901.8629103
+    },
+    {
+      "offset": 9.332501951997983,
+      "latency": 0.01231291899966891,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 9.43404463999832,
+      "latency": 0.012174273000709945,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 9.53437365499849,
+      "latency": 0.020554437000100734,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 9.637588129997312,
+      "latency": 0.01163095400261227,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 9.738798246999067,
+      "latency": 0.012427239998942241,
+      "active": true,
+      "expiration": 1791399902.3732393
+    },
+    {
+      "offset": 9.841551104000246,
+      "latency": 0.012632239999220474,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 9.944278291997762,
+      "latency": 0.010854169999220176,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 10.04596807499911,
+      "latency": 0.011799887000961462,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 10.148783636999724,
+      "latency": 0.01242324600025313,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 10.248891859999276,
+      "latency": 0.011199346998182591,
+      "active": true,
+      "expiration": 1791399902.8851852
+    },
+    {
+      "offset": 10.349578766999912,
+      "latency": 0.013011104998440715,
+      "active": true,
+      "expiration": 1791399902.8851852
+    },
+    {
+      "offset": 10.452700377998553,
+      "latency": 0.01135886100018979,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 10.554213676998188,
+      "latency": 0.011384515000827378,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 10.65526089999912,
+      "latency": 0.012336151998169953,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 10.757792737997079,
+      "latency": 0.01316353200309095,
+      "active": true,
+      "expiration": 1791399903.391728
+    },
+    {
+      "offset": 10.860828326000046,
+      "latency": 0.012809879997803364,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 10.960987811999075,
+      "latency": 0.012602424998476636,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 11.06249311099964,
+      "latency": 0.011710913000570145,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 11.164281735997065,
+      "latency": 0.012082502002158435,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 11.265997111997422,
+      "latency": 0.011637378000159515,
+      "active": true,
+      "expiration": 1791399903.9004533
+    },
+    {
+      "offset": 11.368141311999352,
+      "latency": 0.012903892999020172,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 11.468361215996993,
+      "latency": 0.01363835700249183,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 11.568387343999348,
+      "latency": 0.020226787997671636,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 11.671164373998181,
+      "latency": 0.012555407000036212,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 11.772513117997732,
+      "latency": 0.012662712000746978,
+      "active": true,
+      "expiration": 1791399904.4076033
+    },
+    {
+      "offset": 11.875411429999076,
+      "latency": 0.012150292997830547,
+      "active": false,
+      "expiration": 1791399904.4076033
+    },
+    {
+      "offset": 11.978276611000183,
+      "latency": 0.01142325899854768,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 12.079817046000244,
+      "latency": 0.011238748997129733,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 12.181572271998448,
+      "latency": 0.011737523000192596,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 12.282520071999897,
+      "latency": 0.012514504996943288,
+      "active": true,
+      "expiration": 1791399904.9173417
+    },
+    {
+      "offset": 12.385299672998372,
+      "latency": 0.011834134998935042,
+      "active": false,
+      "expiration": 1791399904.9173417
+    },
+    {
+      "offset": 12.487417121999897,
+      "latency": 0.011259344999416498,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 12.588863799999672,
+      "latency": 0.012573677999171196,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 12.691115462999733,
+      "latency": 0.010775091999676079,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 12.79337662299804,
+      "latency": 0.01343403099963325,
+      "active": true,
+      "expiration": 1791399905.4259784
+    },
+    {
+      "offset": 12.89527236199865,
+      "latency": 0.01252166400081478,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 12.997312489998876,
+      "latency": 0.01113528199857683,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 13.098626918999798,
+      "latency": 0.010795199999847682,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 13.20023332999699,
+      "latency": 0.012240310999914072,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 13.303144056997553,
+      "latency": 0.013040067002293654,
+      "active": true,
+      "expiration": 1791399905.9364495
+    },
+    {
+      "offset": 13.406217833999108,
+      "latency": 0.013235115999123082,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 13.508353671997611,
+      "latency": 0.051565591002145084,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 13.611368901998503,
+      "latency": 0.008578348999435548,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 13.712556469999981,
+      "latency": 0.009160084999166429,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 13.813390370996785,
+      "latency": 0.011943787001655437,
+      "active": true,
+      "expiration": 1791399906.4456513
+    },
+    {
+      "offset": 13.91429634999804,
+      "latency": 0.014043283001228701,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 14.014856027999485,
+      "latency": 0.012041834997944534,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 14.11758820599789,
+      "latency": 0.01446115699945949,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 14.218821165999543,
+      "latency": 0.014231638997443952,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 14.31952348699997,
+      "latency": 0.013565089997428004,
+      "active": true,
+      "expiration": 1791399906.9571404
+    },
+    {
+      "offset": 14.422708589998365,
+      "latency": 0.013317828001163434,
+      "active": true,
+      "expiration": 1791399906.9571404
+    },
+    {
+      "offset": 14.523991287998797,
+      "latency": 0.01378844699866022,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 14.626021254996886,
+      "latency": 0.011700226001266856,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 14.72842601499724,
+      "latency": 0.012791794000804657,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 14.82946230199741,
+      "latency": 0.011245722002058756,
+      "active": true,
+      "expiration": 1791399907.4651897
+    },
+    {
+      "offset": 14.931980735000252,
+      "latency": 0.016448956997919595,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 15.032831226999406,
+      "latency": 0.010967701000481611,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 15.136219130999962,
+      "latency": 0.011324661998514785,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 15.239405598000303,
+      "latency": 0.012091121996490983,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 15.34166123599789,
+      "latency": 0.01208852499985369,
+      "active": true,
+      "expiration": 1791399907.9755154
+    },
+    {
+      "offset": 15.44473824799934,
+      "latency": 0.01238775700039696,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 15.546547269997973,
+      "latency": 0.023667715999181382,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 15.649585300998297,
+      "latency": 0.011351023000315763,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 15.752410124998278,
+      "latency": 0.012385046000417788,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 15.854461181999795,
+      "latency": 0.012623724000150105,
+      "active": true,
+      "expiration": 1791399908.4890077
+    },
+    {
+      "offset": 15.954627303999587,
+      "latency": 0.013715887998841936,
+      "active": true,
+      "expiration": 1791399908.4890077
+    },
+    {
+      "offset": 16.054644415999064,
+      "latency": 0.020590955999068683,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 16.15551859399784,
+      "latency": 0.012114863999158842,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 16.256861021996883,
+      "latency": 0.010655207002855605,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 16.356882187999872,
+      "latency": 0.012698806000116747,
+      "active": true,
+      "expiration": 1791399908.9913926
+    },
+    {
+      "offset": 16.45717460299784,
+      "latency": 0.01348880500154337,
+      "active": true,
+      "expiration": 1791399908.9913926
+    },
+    {
+      "offset": 16.560132671998872,
+      "latency": 0.018621278999489732,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 16.661474640997767,
+      "latency": 0.011243888999160845,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 16.762290060996747,
+      "latency": 0.011340543002006598,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 16.86266024699944,
+      "latency": 0.011809798998001497,
+      "active": true,
+      "expiration": 1791399909.4975832
+    },
+    {
+      "offset": 16.964031991999946,
+      "latency": 0.011960029998590471,
+      "active": true,
+      "expiration": 1791399909.4975832
+    },
+    {
+      "offset": 17.065427196997916,
+      "latency": 0.011784015001467196,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 17.167754109999805,
+      "latency": 0.010361397999076871,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 17.2685418559995,
+      "latency": 0.01026032699883217,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 17.370138402999146,
+      "latency": 0.01339839799766196,
+      "active": true,
+      "expiration": 1791399910.0029893
+    },
+    {
+      "offset": 17.47063074899779,
+      "latency": 0.013085729002341395,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 17.572573818997625,
+      "latency": 0.012478361000830773,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 17.674688169998262,
+      "latency": 0.012667408998822793,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 17.776591173998895,
+      "latency": 0.013257664999400731,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 17.876921048999066,
+      "latency": 0.013810565000312636,
+      "active": true,
+      "expiration": 1791399910.514183
+    },
+    {
+      "offset": 17.97802922899791,
+      "latency": 0.012228375999256968,
+      "active": true,
+      "expiration": 1791399910.514183
+    },
+    {
+      "offset": 18.08132780699816,
+      "latency": 0.016652338999847416,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 18.182058290996792,
+      "latency": 0.013270377003209433,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 18.28522916399743,
+      "latency": 0.014029297999513801,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 18.385320444998797,
+      "latency": 0.012052471000060905,
+      "active": true,
+      "expiration": 1791399911.0232315
+    },
+    {
+      "offset": 18.48768791299881,
+      "latency": 0.011859845999424579,
+      "active": true,
+      "expiration": 1791399911.0232315
+    },
+    {
+      "offset": 18.589446267000312,
+      "latency": 0.012479506996896816,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 18.691896331998578,
+      "latency": 0.011970262999966508,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 18.792660621998948,
+      "latency": 0.012190428999019787,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 18.895605413999874,
+      "latency": 0.011785298996983329,
+      "active": true,
+      "expiration": 1791399911.5288575
+    },
+    {
+      "offset": 18.997291535997647,
+      "latency": 0.012638557000173023,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 19.100310632999026,
+      "latency": 0.011715147000359138,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 19.201441179997346,
+      "latency": 0.012656408001930686,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 19.30354719299794,
+      "latency": 0.011501067001518095,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 19.405591905997426,
+      "latency": 0.01269654600037029,
+      "active": true,
+      "expiration": 1791399912.0391896
+    },
+    {
+      "offset": 19.507601220997458,
+      "latency": 0.012233863002620637,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 19.608757328998763,
+      "latency": 0.012223595000250498,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 19.710802562000026,
+      "latency": 0.011916816998564173,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 19.81310992899671,
+      "latency": 0.012778289001289522,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 19.9156092719968,
+      "latency": 0.01300323600298725,
+      "active": true,
+      "expiration": 1791399912.5499551
+    },
+    {
+      "offset": 20.018262001998664,
+      "latency": 0.01180853099867818,
+      "active": false,
+      "expiration": 1791399912.5499551
+    },
+    {
+      "offset": 20.121301567000046,
+      "latency": 0.013776788997347467,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 20.223480300999654,
+      "latency": 0.01199588099916582,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 20.325767561997054,
+      "latency": 0.012520913001935696,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 20.428033749998576,
+      "latency": 0.012595811000210233,
+      "active": true,
+      "expiration": 1791399913.062226
+    },
+    {
+      "offset": 20.528559674999997,
+      "latency": 0.013544658999308012,
+      "active": false,
+      "expiration": 1791399913.062226
+    },
+    {
+      "offset": 20.629144835998886,
+      "latency": 0.01138231599907158,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 20.731294296998385,
+      "latency": 0.011459208999440307,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 20.83314806999988,
+      "latency": 0.011095482997916406,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 20.93561957199927,
+      "latency": 0.012954436999280006,
+      "active": true,
+      "expiration": 1791399913.5681982
+    },
+    {
+      "offset": 21.03738208699724,
+      "latency": 0.012777605999872321,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 21.13962250199984,
+      "latency": 0.012276915997063043,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 21.241815033998137,
+      "latency": 0.012763603001076262,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 21.341949935998855,
+      "latency": 0.011946500999329146,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 21.44280231599987,
+      "latency": 0.013538354996853741,
+      "active": true,
+      "expiration": 1791399914.0780816
+    },
+    {
+      "offset": 21.545159274999605,
+      "latency": 0.017375412997353124,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 21.64572742299788,
+      "latency": 0.012377128001389792,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 21.74851592899722,
+      "latency": 0.011255721001361962,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 21.849865999996837,
+      "latency": 0.011971469000854995,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 21.9505474639991,
+      "latency": 0.012747329998092027,
+      "active": true,
+      "expiration": 1791399914.585989
+    },
+    {
+      "offset": 22.052648524997494,
+      "latency": 0.013223123001807835,
+      "active": false,
+      "expiration": 1791399914.585989
+    },
+    {
+      "offset": 22.15510771699701,
+      "latency": 0.0125944410028751,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 22.256129811998107,
+      "latency": 0.011344827002176316,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 22.356944387000112,
+      "latency": 0.013292804997036,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 22.457833239997854,
+      "latency": 0.012079784999514231,
+      "active": true,
+      "expiration": 1791399915.0943308
+    },
+    {
+      "offset": 22.559358681999583,
+      "latency": 0.013461562997690635,
+      "active": true,
+      "expiration": 1791399915.0943308
+    },
+    {
+      "offset": 22.660238196000137,
+      "latency": 0.010309844998118933,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 22.760587613996904,
+      "latency": 0.01246438900125213,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 22.86236246699991,
+      "latency": 0.011224052999750711,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 22.96489905099952,
+      "latency": 0.01197270199918421,
+      "active": true,
+      "expiration": 1791399915.5976622
+    },
+    {
+      "offset": 23.06581966399972,
+      "latency": 0.01143814500028384,
+      "active": false,
+      "expiration": 1791399915.5976622
+    },
+    {
+      "offset": 23.16728089499884,
+      "latency": 0.010954828998364974,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 23.268041886996798,
+      "latency": 0.01261145000171382,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 23.369605074996798,
+      "latency": 0.012206974002765492,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 23.471548810997774,
+      "latency": 0.012863085001299623,
+      "active": true,
+      "expiration": 1791399916.1058674
+    },
+    {
+      "offset": 23.572562769997603,
+      "latency": 0.01796413299962296,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 23.673553974000242,
+      "latency": 0.01230840099742636,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 23.77627557499727,
+      "latency": 0.010887184002058348,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 23.87766541399833,
+      "latency": 0.012479212000471307,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 23.981009848997928,
+      "latency": 0.012445218999346253,
+      "active": true,
+      "expiration": 1791399916.614116
+    },
+    {
+      "offset": 24.08294984299937,
+      "latency": 0.013202751997596351,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 24.183582693000062,
+      "latency": 0.010679659997549606,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 24.284723490000033,
+      "latency": 0.01208631599729415,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 24.38748905099783,
+      "latency": 0.012333864000538597,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 24.490449321998312,
+      "latency": 0.013139343998773256,
+      "active": true,
+      "expiration": 1791399917.1240122
+    },
+    {
+      "offset": 24.592840499997692,
+      "latency": 0.01200145400071051,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 24.694918748999044,
+      "latency": 0.012003408999589738,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 24.796420561997365,
+      "latency": 0.012486411000281805,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 24.898961334998603,
+      "latency": 0.011380140000255778,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 24.99952761199893,
+      "latency": 0.013058502998319454,
+      "active": true,
+      "expiration": 1791399917.6342216
+    },
+    {
+      "offset": 25.100094080997224,
+      "latency": 0.011481613000796642,
+      "active": true,
+      "expiration": 1791399917.6342216
+    },
+    {
+      "offset": 25.201704941999196,
+      "latency": 0.012601849000930088,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 25.30184865299816,
+      "latency": 0.011327096999593778,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 25.40325122399736,
+      "latency": 0.01115402399955201,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 25.505153764999704,
+      "latency": 0.023952428997290554,
+      "active": true,
+      "expiration": 1791399918.1383698
+    },
+    {
+      "offset": 25.606781785998464,
+      "latency": 0.013100760999805061,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 25.707045146999008,
+      "latency": 0.012191694000648567,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 25.809817905999807,
+      "latency": 0.012697958998614922,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 25.91280502099835,
+      "latency": 0.011933344998396933,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 26.012821196000004,
+      "latency": 0.013222875997598749,
+      "active": true,
+      "expiration": 1791399918.64882
+    },
+    {
+      "offset": 26.113247738998325,
+      "latency": 0.013319874000444543,
+      "active": true,
+      "expiration": 1791399918.64882
+    },
+    {
+      "offset": 26.21328102899861,
+      "latency": 0.010951128999295179,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 26.31404947899864,
+      "latency": 0.01145039800030645,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 26.414113625996833,
+      "latency": 0.012195086001156596,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 26.51726633999715,
+      "latency": 0.026464053000381682,
+      "active": true,
+      "expiration": 1791399919.1501868
+    },
+    {
+      "offset": 26.61742427399804,
+      "latency": 0.011556148001545807,
+      "active": true,
+      "expiration": 1791399919.1501868
+    },
+    {
+      "offset": 26.71909743499782,
+      "latency": 0.011797713999840198,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 26.821526104999066,
+      "latency": 0.01213915799962706,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 26.923402953998448,
+      "latency": 0.011728895999112865,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 27.02423594999709,
+      "latency": 0.012981792002392467,
+      "active": true,
+      "expiration": 1791399919.6597466
+    },
+    {
+      "offset": 27.126997391998884,
+      "latency": 0.014030677000846481,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 27.2288667899993,
+      "latency": 0.011599084999033948,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 27.33139138399929,
+      "latency": 0.012104546000045957,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 27.434369829999923,
+      "latency": 0.01187214699893957,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 27.535693427998922,
+      "latency": 0.0265387079998618,
+      "active": true,
+      "expiration": 1791399920.1702127
+    },
+    {
+      "offset": 27.637998635000258,
+      "latency": 0.012082969999028137,
+      "active": false,
+      "expiration": 1791399920.1702127
+    },
+    {
+      "offset": 27.740800961997593,
+      "latency": 0.012269541999557987,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 27.844114101997548,
+      "latency": 0.011880670001119142,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 27.947389666998788,
+      "latency": 0.012173241000709822,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 28.04902419499922,
+      "latency": 0.012098208997485926,
+      "active": true,
+      "expiration": 1791399920.6838782
+    },
+    {
+      "offset": 28.15161830699799,
+      "latency": 0.013702541000384372,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 28.25177700799759,
+      "latency": 0.012224034002429107,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 28.35462455800007,
+      "latency": 0.012729390997265,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 28.454753160996916,
+      "latency": 0.012347541000053752,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 28.555179527997097,
+      "latency": 0.03387313900020672,
+      "active": true,
+      "expiration": 1791399921.1911302
+    },
+    {
+      "offset": 28.655455375999736,
+      "latency": 0.011726777000149013,
+      "active": true,
+      "expiration": 1791399921.1911302
+    },
+    {
+      "offset": 28.756677096000203,
+      "latency": 0.01102641099714674,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 28.8577784889967,
+      "latency": 0.011093032000644598,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 28.958771829999023,
+      "latency": 0.0119467269978486,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 29.059407322998595,
+      "latency": 0.014238750998629257,
+      "active": true,
+      "expiration": 1791399921.6948888
+    },
+    {
+      "offset": 29.16060697699868,
+      "latency": 0.011885776999406517,
+      "active": true,
+      "expiration": 1791399921.6948888
+    },
+    {
+      "offset": 29.263006936998863,
+      "latency": 0.012013903000479331,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 29.36463889699735,
+      "latency": 0.011680826999509009,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 29.466892507996818,
+      "latency": 0.01218750600310159,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 29.568275702997198,
+      "latency": 0.011789339001552435,
+      "active": true,
+      "expiration": 1791399922.2030387
+    },
+    {
+      "offset": 29.6704889069988,
+      "latency": 0.01175587499892572,
+      "active": true,
+      "expiration": 1791399922.2030387
+    },
+    {
+      "offset": 29.771730227999797,
+      "latency": 0.012617086998943705,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 29.874528467997152,
+      "latency": 0.011782206001953455,
+      "active": false,
+      "expiration": null
+    },
+    {
+      "offset": 29.97616781299803,
+      "latency": 0.011886279000464128,
+      "active": false,
+      "expiration": null
+    }
+  ],
+  "writes": 60,
+  "accepted_writes": 60,
+  "active_probes": 80,
+  "probe_count": 295,
+  "active_after_initial_expiry": 78,
+  "probes_after_initial_expiry": 293
+}

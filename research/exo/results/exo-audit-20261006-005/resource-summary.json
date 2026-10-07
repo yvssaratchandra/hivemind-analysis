@@ -1,0 +1,45 @@
+{
+  "source": "Per-container cgroup memory.peak through capture, startup and observers included. Sum of individual peaks is not a measured simultaneous host peak. Build RAM peak not measured.",
+  "rows": [
+    {
+      "arm": "baseline",
+      "peak_bytes": {
+        "honest-a": 149278720,
+        "honest-b": 149475328,
+        "attacker": 99090432
+      }
+    },
+    {
+      "arm": "self",
+      "peak_bytes": {
+        "honest-a": 149508096,
+        "honest-b": 149200896,
+        "attacker": 99340288
+      }
+    },
+    {
+      "arm": "forged",
+      "peak_bytes": {
+        "honest-a": 148475904,
+        "honest-b": 148570112,
+        "attacker": 98897920
+      }
+    },
+    {
+      "arm": "stale-session",
+      "peak_bytes": {
+        "honest-a": 149348352,
+        "honest-b": 148795392,
+        "attacker": 101072896
+      }
+    },
+    {
+      "arm": "replay",
+      "peak_bytes": {
+        "honest-a": 148852736,
+        "honest-b": 150777856,
+        "attacker": 99201024
+      }
+    }
+  ]
+}

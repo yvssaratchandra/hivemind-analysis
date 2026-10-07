@@ -1,0 +1,9 @@
+attacker-1  | 2026-10-06T16:19:51.570966085Z 2026-10-06 16:19:51.570 | DEBUG    | exo.routing.router:run:156 - Starting Router
+attacker-1  | 2026-10-06T16:19:51.572332054Z 2026-10-06 16:19:51.571 | DEBUG    | exo.routing.router:run:49 - Topic Router TypedTopic(topic='local_events', publish_policy=<PublishPolicy.Always: 'Always'>, model_type=<class 'exo.shared.types.events.LocalForwarderEvent'>) ready to send
+attacker-1  | 2026-10-06T16:19:51.572385498Z 2026-10-06 16:19:51.572 | DEBUG    | exo.routing.router:run:49 - Topic Router TypedTopic(topic='global_events', publish_policy=<PublishPolicy.Always: 'Always'>, model_type=<class 'exo.shared.types.events.GlobalForwarderEvent'>) ready to send
+attacker-1  | 2026-10-06T16:19:51.574334429Z 2026-10-06 16:19:51.574 | DEBUG    | exo.routing.router:_networking_recv:190 - <builtins.Connection object at 0x7f9dd97f95c0>
+attacker-1  | 2026-10-06T16:19:51.575418364Z 2026-10-06 16:19:51.575 | INFO     | exo.routing.router:_networking_subscribe:180 - Subscribed to local_events
+attacker-1  | 2026-10-06T16:19:51.576137697Z 2026-10-06 16:19:51.575 | INFO     | exo.routing.router:_networking_subscribe:180 - Subscribed to global_events
+attacker-1  | 2026-10-06T16:19:51.677923969Z 2026-10-06 16:19:51.677 | DEBUG    | exo.routing.router:_networking_recv:190 - <builtins.Connection object at 0x7f9dd97f9770>
+attacker-1  | 2026-10-06T16:19:51.678350790Z 2026-10-06 16:19:51.678 | DEBUG    | exo.routing.router:_networking_recv:190 - <builtins.Connection object at 0x7f9dd97f9cb0>
+attacker-1  | 2026-10-06T16:20:04.236063086Z 2026-10-06 16:20:04.235 | DEBUG    | exo.routing.router:_networking_recv:190 - <builtins.Message object at 0x7f9dd971b5a0>

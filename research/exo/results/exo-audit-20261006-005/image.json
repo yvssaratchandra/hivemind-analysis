@@ -1,0 +1,76 @@
+[
+    {
+        "Id": "sha256:2f0969602b05b68783314c3c517e55d4b600f83fd9e6e0102e2d6098cb0a62b2",
+        "RepoTags": [
+            "exo-audit:21a54c5ea0230a3bec1e1a786d200126c7e34ec6"
+        ],
+        "RepoDigests": [
+            "exo-audit@sha256:2f0969602b05b68783314c3c517e55d4b600f83fd9e6e0102e2d6098cb0a62b2"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-10-06T18:13:51.360061583+02:00",
+        "Config": {
+            "Env": [
+                "PATH=/opt/exo/.venv/bin:/usr/local/cargo/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+                "PYTHON_VERSION=3.13.16",
+                "PYTHON_SHA256=f4b1bfb3c79b5bb11b8d228a12504163b4c0dab4d679828d8f5f26b6cb6ab35d",
+                "CARGO_HOME=/usr/local/cargo",
+                "RUSTUP_HOME=/usr/local/rustup",
+                "CARGO_BUILD_JOBS=2",
+                "RUSTUP_TOOLCHAIN=nightly",
+                "UV_PROJECT_ENVIRONMENT=/opt/exo/.venv",
+                "UV_LINK_MODE=copy",
+                "EXO_HOME=/var/lib/exo",
+                "EXO_RESOURCES_DIR=/opt/exo/resources",
+                "EXO_DASHBOARD_DIR=/opt/exo/dashboard-assets",
+                "PYTHONUNBUFFERED=1"
+            ],
+            "Entrypoint": [
+                "/opt/exo/.venv/bin/exo"
+            ],
+            "WorkingDir": "/opt/exo",
+            "Labels": {
+                "com.docker.compose.project": "exo-audit-build-20261006-004-build",
+                "com.docker.compose.service": "honest-a",
+                "com.docker.compose.version": "5.5.1",
+                "org.opencontainers.image.revision": "21a54c5ea0230a3bec1e1a786d200126c7e34ec6",
+                "org.opencontainers.image.title": "Exo two-peer research image"
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 4933450151,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:e58989146fcec76699871403b9897b5c014af1ccd85f5a9300a215e7975525d7",
+                "sha256:ba0f973ad05d82f20d8dd8dc79a9d1b71e9d90ab48380d8c0912fad39dda5ced",
+                "sha256:8664c9b18215e1141ccc8fa3cbc7483f4cd16fb5230b570fa7c744da58251da3",
+                "sha256:c167899be569aee196241ae0905aeed34708881d5a8784be3de0ed9bf9db7200",
+                "sha256:3f2e1f0b409a08e5035983958e12cb8cbcdbb3030726cc061b3047a4aded1dc3",
+                "sha256:deebed54a85bab07fd74f013248c74723b3f41fc1a41bac8c35425146f38da59",
+                "sha256:3f351b4d3e1878197559f7f4012f3a08f5b95b97e24c3f4a9d2a475c0151a61a",
+                "sha256:ad1c78016e0743c116768f8a31ee694bf418ada11d2c076623246a439ee1caf9",
+                "sha256:6e403fb87ca07b68937dd17f8af0e3e6445ab59c607cdd29adcf6c5d41b3d27d",
+                "sha256:42e520cdeb57ab8d0b360e81113d6c0491f1836a3d96b1afe40f5a68046a7f82"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-10-06T16:15:03.429098183Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.index.v1+json",
+            "digest": "sha256:2f0969602b05b68783314c3c517e55d4b600f83fd9e6e0102e2d6098cb0a62b2",
+            "size": 856
+        },
+        "Identity": {
+            "Build": [
+                {
+                    "Ref": "r1r7d1gmh8z817m7glrkyqemt",
+                    "CreatedAt": "2026-10-06T18:15:20.162260895+02:00"
+                }
+            ]
+        }
+    }
+]

@@ -1,0 +1,35 @@
+{
+  "lab_hashes_match_current_and_snapshot": true,
+  "checks": [
+    {
+      "arm": "baseline",
+      "raw_analysis_matches_saved_result": true,
+      "captured_logs_match_final_consensus": true,
+      "outcome": "no_send_control"
+    },
+    {
+      "arm": "self",
+      "raw_analysis_matches_saved_result": true,
+      "captured_logs_match_final_consensus": true,
+      "outcome": "accepted"
+    },
+    {
+      "arm": "forged",
+      "raw_analysis_matches_saved_result": true,
+      "captured_logs_match_final_consensus": true,
+      "outcome": "accepted"
+    },
+    {
+      "arm": "stale-session",
+      "raw_analysis_matches_saved_result": true,
+      "captured_logs_match_final_consensus": true,
+      "outcome": "not_observed"
+    },
+    {
+      "arm": "replay",
+      "raw_analysis_matches_saved_result": true,
+      "captured_logs_match_final_consensus": true,
+      "outcome": "indexed_once"
+    }
+  ]
+}

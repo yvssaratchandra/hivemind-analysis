@@ -1,0 +1,53 @@
+Chalmers Beamer Template -- Unofficial community theme
+=======================================================
+
+This repository contains an unofficial LaTeX Beamer theme that
+approximates the 2026 Chalmers University of Technology visual identity
+(the group-wide brand launched in spring 2026).
+
+The theme was built as a community contribution; it is not an official
+Chalmers product and has not been reviewed or endorsed by the Chalmers
+Communications Department.  For brand-critical materials -- doctoral
+theses, licentiate theses, official diplomas, ceremonies, external
+publications -- consult the Chalmers Brand Portal and your local
+communications officer.
+
+
+Trademarks and logotypes
+------------------------
+
+The following assets in `logographics/` are trademarks and copyrighted
+material of Chalmers University of Technology, reproduced here for use
+in academic presentations:
+
+  * "Chalmers" wordmark
+  * Chalmers + "University of Technology" combined wordmark
+  * Avancez emblem (the round 1829 seal)
+  * Combined logos (avancez + wordmark in horizontal and vertical
+    orientations, with and without the "UNIVERSITY OF TECHNOLOGY"
+    subtitle)
+
+These marks are NOT licensed under this repository's MIT licence.
+Their use is governed by the Chalmers Brand Portal and the Chalmers
+brand guidelines.  By using this template you agree to abide by those
+guidelines when displaying the marks.
+
+
+Approximations and adjustments
+------------------------------
+
+  * The standalone avancez emblem PNGs (`Chalmers-emblem-*.png`) were
+    cropped from the official vertical combined logo (`Chalmers-Avancez_
+    Comb-vert_*_en.png`) because the Chalmers download portal does not
+    publish a standalone emblem PNG.
+  * The English wordmark-only PNGs (`Chalmers-wordmark-*.png`) are the
+    short Swedish "Chalmers" wordmark file shared between languages.
+  * Arial -- the official Chalmers typeface -- is approximated in LaTeX
+    by Helvetica via the `helvet` package, since Arial is not a free
+    font and Helvetica is the closest Type-1 substitute distributed
+    with TeX Live.
+
+If any of the above conflicts with the Chalmers brand guidelines,
+please open an issue at
+https://github.com/wenlzhang/chalmers-beamer/issues and the asset will
+be removed.

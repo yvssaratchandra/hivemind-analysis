@@ -1,0 +1,9 @@
+{
+  "argv": [
+    "bash",
+    "/home/sarat/Projects/hivemind-analysis/research/localai/upstream/scripts/build/healthcheck_test.sh"
+  ],
+  "exit_code": 0,
+  "stdout": "== frontend defaults to 8080\n== frontend with no subcommand still probes the API port\n== a bare model list is the frontend, not an unknown mode\n== leading flags do not hide the mode\n== frontend honours LOCALAI_ADDRESS\n== frontend honours the legacy ADDRESS alias\n== worker defaults to the file-transfer port (base 50051 - 1)\n== worker derives the port from LOCALAI_SERVE_ADDR\n== worker honours an explicit LOCALAI_HTTP_ADDR\n== an explicit HEALTHCHECK_ENDPOINT overrides derivation\n== a failing probe propagates a non-zero exit\n== a 503 from a still-preloading frontend is unhealthy, not a crash\n== modes with no HTTP surface report healthy rather than false-unhealthy\n== an argv with no local-ai in it falls back to the frontend endpoint\n== detects the mode from /proc when no argv override is given\nOK\n",
+  "stderr": ""
+}

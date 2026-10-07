@@ -1,0 +1,16 @@
+{
+  "arm": "stale-session",
+  "seed": 1901,
+  "session": {
+    "master_node_id": "fbc78b0d4c0e5124935304fccbbeeebd",
+    "election_clock": 0
+  },
+  "node_ids": {
+    "honest-a": "468b068fa027c113c149c1eb98f2dd11",
+    "honest-b": "fbc78b0d4c0e5124935304fccbbeeebd"
+  },
+  "target_node_id": "f807a3d39a3a3ec121b21b93fc2b3efa",
+  "available_bytes": 136164352,
+  "origin": "03d69125-e0c9-51ea-9f59-4d8fd793f60d",
+  "origin_idx": 0
+}

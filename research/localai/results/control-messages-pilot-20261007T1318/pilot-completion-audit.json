@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-10-07T13:20:22.186151+00:00",
+  "process_exit_code": 1,
+  "outcome": "runner_failure_after_bootstrap",
+  "error": "TypeError: ControlCapture.event() got multiple values for phase",
+  "original_summary_status": "running (written before uncaught runner bug)",
+  "capture": {
+    "decrypted_gossip_envelopes": 7,
+    "mdns_packets": 43,
+    "decode_errors": 0
+  },
+  "cleanup": "Original summary contains successful removals; docker ps shows no experiment containers",
+  "fix": "Remove phase from expanded completion-event kwargs and catch unexpected runner exceptions; focused stage completion test added",
+  "note": "Original raw summary/logs unchanged; this is a post-run completion audit."
+}

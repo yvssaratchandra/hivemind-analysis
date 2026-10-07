@@ -1,0 +1,42 @@
+{
+  "attempts": [
+    {
+      "timestamp": "2026-10-07T13:25:05.465047+00:00",
+      "argv": [
+        "docker",
+        "exec",
+        "localai-control-92c93e762d1e-gateway",
+        "curl",
+        "--noproxy",
+        "*",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8080/v1/models"
+      ],
+      "exit_code": 7,
+      "stdout": "",
+      "stderr": "curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect to server\n"
+    },
+    {
+      "timestamp": "2026-10-07T13:25:10.587991+00:00",
+      "argv": [
+        "docker",
+        "exec",
+        "localai-control-92c93e762d1e-gateway",
+        "curl",
+        "--noproxy",
+        "*",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8080/v1/models"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"object\":\"list\",\"data\":[]}\n",
+      "stderr": ""
+    }
+  ],
+  "passed": true,
+  "scope": "read-only HTTP service routing, no inference"
+}

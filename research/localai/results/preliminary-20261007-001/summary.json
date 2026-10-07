@@ -1,0 +1,89 @@
+{
+  "started": "2026-10-07T11:08:47.593779+00:00",
+  "status": "blocked_docker_access",
+  "stages": [],
+  "label": "preliminary-20261007-001",
+  "network": "localai-lab-4ad15aa780b7",
+  "randomness": "LocalAI creates random identities and token; no seed flag",
+  "configuration": {
+    "label": "preliminary-20261007-001",
+    "image": null,
+    "memory_mib": 1024,
+    "seconds": 60,
+    "failure_seconds": 90,
+    "discovery_timeout": 180,
+    "interval": 5
+  },
+  "resources_before": {
+    "time": "2026-10-07T11:08:47.594031+00:00",
+    "memory_bytes": {
+      "MemTotal": 33186516992,
+      "MemAvailable": 15305596928,
+      "SwapTotal": 33186377728,
+      "SwapFree": 29053771776
+    },
+    "visible_cgroup": {
+      "memory.max": "max",
+      "memory.current": "620105728",
+      "memory.swap.max": "max",
+      "cpu.max": "max 100000"
+    },
+    "logical_cpus": 16,
+    "workspace_free_bytes": 989777858560,
+    "tools": {
+      "docker": "/usr/local/bin/docker",
+      "go": null,
+      "local-ai": null
+    }
+  },
+  "source_revision": "a3d555653c0cbfd73ab59ab15beab80903e96484",
+  "source_worktree": {
+    "argv": [
+      "git",
+      "-C",
+      "/home/sarat/Projects/hivemind-analysis/research/localai/upstream",
+      "status",
+      "--porcelain"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "docker_preflight": {
+    "argv": [
+      "docker",
+      "info",
+      "--format",
+      "{{json .ServerVersion}}"
+    ],
+    "exit_code": 1,
+    "stdout": "\"\"\n",
+    "stderr": "permission denied while trying to connect to the docker API at unix:///var/run/docker.sock\n"
+  },
+  "error": "permission denied while trying to connect to the docker API at unix:///var/run/docker.sock",
+  "container_final_states": {},
+  "cleanup": [],
+  "finished": "2026-10-07T11:08:48.163119+00:00",
+  "resources_after": {
+    "time": "2026-10-07T11:08:48.163624+00:00",
+    "memory_bytes": {
+      "MemTotal": 33186516992,
+      "MemAvailable": 15306199040,
+      "SwapTotal": 33186377728,
+      "SwapFree": 29053771776
+    },
+    "visible_cgroup": {
+      "memory.max": "max",
+      "memory.current": "621838336",
+      "memory.swap.max": "max",
+      "cpu.max": "max 100000"
+    },
+    "logical_cpus": 16,
+    "workspace_free_bytes": 989777858560,
+    "tools": {
+      "docker": "/usr/local/bin/docker",
+      "go": null,
+      "local-ai": null
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "name": "stock",
+      "mode": "stock",
+      "minimum": 2
+    },
+    {
+      "name": "passive5",
+      "mode": "passive",
+      "minimum": 4
+    },
+    {
+      "name": "f2_m0p05",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 2,
+      "lifetime": 0.585764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.05
+    }
+  ],
+  "seeds": [
+    2210
+  ],
+  "duration": 12.0,
+  "store_delay": 0
+}

@@ -1,0 +1,9 @@
+{"timestamp": "2026-10-07T13:18:26.181270+00:00", "phase": "bootstrap", "action": "begin"}
+{"timestamp": "2026-10-07T13:18:26.429993+00:00", "phase": "bootstrap", "action": "peer_started", "host": "control-peer-01", "container": "localai-control-2302e21fe525-p01"}
+{"timestamp": "2026-10-07T13:18:28.189626+00:00", "phase": "bootstrap", "action": "log_capture_started", "container": "localai-control-2302e21fe525-p01", "file": "peer-01.log"}
+{"timestamp": "2026-10-07T13:18:29.195529+00:00", "phase": "bootstrap", "action": "log_capture_started", "container": "localai-control-2302e21fe525-observer", "file": "observer.jsonl"}
+{"timestamp": "2026-10-07T13:18:29.196008+00:00", "phase": "bootstrap", "action": "observer_started", "container": "localai-control-2302e21fe525-observer"}
+{"timestamp": "2026-10-07T13:18:29.196130+00:00", "phase": "bootstrap", "action": "begin", "hosts": ["control-peer-01"], "seconds": 8}
+{"timestamp": "2026-10-07T13:18:38.888142+00:00", "phase": "bootstrap", "action": "witness_membership_match", "expected_count": 1, "seconds": 9.691920187000505}
+{"timestamp": "2026-10-07T13:18:55.383871+00:00", "phase": "shutdown", "action": "begin"}
+{"timestamp": "2026-10-07T13:19:00.954630+00:00", "phase": "shutdown", "action": "end"}

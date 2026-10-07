@@ -1,0 +1,173 @@
+honest-a-1  | 2026-10-06T16:15:43.327911928Z [ 2026-10-06 16:15:43.327 | [1mINFO    [0m | exo.main:main_inner:342 ] [1mpid = 7[0m
+honest-a-1  | 2026-10-06T16:15:43.327934568Z [ 2026-10-06 16:15:43.327 | [1mINFO    [0m | exo.main:main_inner:347 ] [1mEXO_ZENOH_NAMESPACE: None[0m
+honest-a-1  | 2026-10-06T16:15:43.327961136Z [ 2026-10-06 16:15:43.327 | [1mINFO    [0m | exo.main:main_inner:350 ] [1mRunning in OFFLINE mode — no internet checks, local models only[0m
+honest-a-1  | 2026-10-06T16:15:43.853311447Z [ 2026-10-06 16:15:43.344 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mUsing selector: EpollSelector[0m
+honest-a-1  | 2026-10-06T16:15:43.853347671Z [ 2026-10-06 16:15:43.345 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mDeclared static plugin Id:storage_manager - Name:storage_manager[0m
+honest-a-1  | 2026-10-06T16:15:43.855160971Z [ 2026-10-06 16:15:43.345 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mZenoh Rust API v1.9.0-aa219b84e55dfbbf55ebd827b492626a470b8ac8[0m
+honest-a-1  | 2026-10-06T16:15:43.856601290Z [ 2026-10-06 16:15:43.346 | [1mINFO    [0m | logging:handle:1686 ] [1mUsing ZID: b88da74f76f33a993fa135e86fb62206[0m
+honest-a-1  | 2026-10-06T16:15:43.856964042Z [ 2026-10-06 16:15:43.346 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mregions=[North, South { id: 0, mode: Client }, South { id: 0, mode: Peer }, Local][0m
+honest-a-1  | 2026-10-06T16:15:43.858786199Z [ 2026-10-06 16:15:43.346 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mAccess control is disabled[0m
+honest-a-1  | 2026-10-06T16:15:43.858873492Z [ 2026-10-06 16:15:43.346 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mrt; zid=b88da74f[0m
+honest-a-1  | 2026-10-06T16:15:43.858904730Z [ 2026-10-06 16:15:43.346 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1m[Routers Network] Add node (self) b88da74f76f33a993fa135e86fb62206[0m
+honest-a-1  | 2026-10-06T16:15:43.858953380Z [ 2026-10-06 16:15:43.346 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1m[Gossip] Add node (self) b88da74f76f33a993fa135e86fb62206[0m
+honest-a-1  | 2026-10-06T16:15:43.859029142Z [ 2026-10-06 16:15:43.346 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1madminspace; zid=b88da74f[0m
+honest-a-1  | 2026-10-06T16:15:43.859074146Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mNew local/b88da74f:0[0m
+honest-a-1  | 2026-10-06T16:15:43.859147052Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mdeclare_queryable; id=2 expr=@/b88da74f76f33a993fa135e86fb62206/router/** complete=false distance=0[0m
+honest-a-1  | 2026-10-06T16:15:43.861192035Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mmake_resource; from= suffix="@/b88da74f76f33a993fa135e86fb62206/router/**"[0m
+honest-a-1  | 2026-10-06T16:15:43.861287211Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mRegister resource @/b88da74f76f33a993fa135e86fb62206/router/**[0m
+honest-a-1  | 2026-10-06T16:15:43.861479420Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=@/b88da74f76f33a993fa135e86fb62206/router/**[0m
+honest-a-1  | 2026-10-06T16:15:43.861534206Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mexpr=WireExpr { scope: 0, suffix: "@/b88da74f76f33a993fa135e86fb62206/router/**", mapping: Sender } expr.mapped=@/b88da74f76f33a993fa135e86fb62206/router/**[0m
+honest-a-1  | 2026-10-06T16:15:43.861712811Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mregister_queryable; self=local res=@/b88da74f76f33a993fa135e86fb62206/router/**[0m
+honest-a-1  | 2026-10-06T16:15:43.861914354Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=()[0m
+honest-a-1  | 2026-10-06T16:15:43.861926508Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mpropagate_queryable; self=north res=@/b88da74f76f33a993fa135e86fb62206/router/** other_info=Some(QueryableInfoType { complete: false, distance: 0 })[0m
+honest-a-1  | 2026-10-06T16:15:43.861990980Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=()[0m
+honest-a-1  | 2026-10-06T16:15:43.862650836Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mpropagate_queryable; self=local res=@/b88da74f76f33a993fa135e86fb62206/router/** other_info=None[0m
+honest-a-1  | 2026-10-06T16:15:43.862686920Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=()[0m
+honest-a-1  | 2026-10-06T16:15:43.864214028Z [ 2026-10-06 16:15:43.347 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mpropagate_queryable; self=south:0:peer res=@/b88da74f76f33a993fa135e86fb62206/router/** other_info=Some(QueryableInfoType { complete: false, distance: 0 })[0m
+honest-a-1  | 2026-10-06T16:15:43.864226961Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=()[0m
+honest-a-1  | 2026-10-06T16:15:43.864289456Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mpropagate_queryable; self=south:0:client res=@/b88da74f76f33a993fa135e86fb62206/router/** other_info=Some(QueryableInfoType { complete: false, distance: 0 })[0m
+honest-a-1  | 2026-10-06T16:15:43.864343412Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=()[0m
+honest-a-1  | 2026-10-06T16:15:43.864400509Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=()[0m
+honest-a-1  | 2026-10-06T16:15:43.864463720Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mdeclare_subscriber; id=3 expr=@/b88da74f76f33a993fa135e86fb62206/router/config/**[0m
+honest-a-1  | 2026-10-06T16:15:43.864697646Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mmake_resource; from= suffix="@/b88da74f76f33a993fa135e86fb62206/router/config/**"[0m
+honest-a-1  | 2026-10-06T16:15:43.864725778Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mRegister resource @/b88da74f76f33a993fa135e86fb62206/router/config/**[0m
+honest-a-1  | 2026-10-06T16:15:43.864789609Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=@/b88da74f76f33a993fa135e86fb62206/router/config/**[0m
+honest-a-1  | 2026-10-06T16:15:43.864827982Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mexpr=WireExpr { scope: 0, suffix: "@/b88da74f76f33a993fa135e86fb62206/router/config/**", mapping: Sender } expr.mapped=@/b88da74f76f33a993fa135e86fb62206/router/config/**[0m
+honest-a-1  | 2026-10-06T16:15:43.864857668Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mregister_subscriber; self=local res=@/b88da74f76f33a993fa135e86fb62206/router/config/**[0m
+honest-a-1  | 2026-10-06T16:15:43.864907582Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=()[0m
+honest-a-1  | 2026-10-06T16:15:43.864973340Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mpropagate_subscriber; self=north res=@/b88da74f76f33a993fa135e86fb62206/router/config/** other_info=Some(SubscriberInfo)[0m
+honest-a-1  | 2026-10-06T16:15:43.865013755Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=()[0m
+honest-a-1  | 2026-10-06T16:15:43.865068043Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mpropagate_subscriber; self=local res=@/b88da74f76f33a993fa135e86fb62206/router/config/** other_info=None[0m
+honest-a-1  | 2026-10-06T16:15:43.865135339Z [ 2026-10-06 16:15:43.348 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=()[0m
+honest-a-1  | 2026-10-06T16:15:43.865299920Z [ 2026-10-06 16:15:43.349 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mpropagate_subscriber; self=south:0:peer res=@/b88da74f76f33a993fa135e86fb62206/router/config/** other_info=Some(SubscriberInfo)[0m
+honest-a-1  | 2026-10-06T16:15:43.865331695Z [ 2026-10-06 16:15:43.349 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=()[0m
+honest-a-1  | 2026-10-06T16:15:43.865412584Z [ 2026-10-06 16:15:43.349 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mpropagate_subscriber; self=south:0:client res=@/b88da74f76f33a993fa135e86fb62206/router/config/** other_info=Some(SubscriberInfo)[0m
+honest-a-1  | 2026-10-06T16:15:43.865456297Z [ 2026-10-06 16:15:43.349 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=()[0m
+honest-a-1  | 2026-10-06T16:15:43.871996506Z [ 2026-10-06 16:15:43.349 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mreturn=()[0m
+honest-a-1  | 2026-10-06T16:15:43.872244821Z [ 2026-10-06 16:15:43.349 | [1mINFO    [0m | logging:handle:1686 ] [1mStarting required plugin "storage_manager"[0m
+honest-a-1  | 2026-10-06T16:15:43.872311421Z [ 2026-10-06 16:15:43.349 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mPlugin `storage_manager` started[0m
+honest-a-1  | 2026-10-06T16:15:43.872346360Z [ 2026-10-06 16:15:43.854 | [1mINFO    [0m | exo.main:create:75 ] [1mStarting node b88da74f76f33a993fa135e86fb62206[0m
+honest-a-1  | 2026-10-06T16:15:44.097335568Z [ 2026-10-06 16:15:44.096 | [34m[1mDEBUG   [0m | logging:handle:1686 ] [34m[1mUsing selector: EpollSelector[0m
+honest-a-1  | 2026-10-06T16:15:44.098213883Z [ 2026-10-06 16:15:44.097 | [34m[1mDEBUG   [0m | exo.routing.router:run:156 ] [34m[1mStarting Router[0m
+honest-a-1  | 2026-10-06T16:15:44.099085293Z [ 2026-10-06 16:15:44.098 | [1mINFO    [0m | exo.shared.election:run:87 ] [1mStarting Election[0m
+honest-a-1  | 2026-10-06T16:15:44.099140765Z [ 2026-10-06 16:15:44.098 | [34m[1mDEBUG   [0m | exo.shared.election:run:96 ] [34m[1mStarting initial campaign[0m
+honest-a-1  | 2026-10-06T16:15:44.099204746Z 
+honest-a-1  | 2026-10-06T16:15:44.099207940Z ╔═══════════════════════════════════════════════════════════════════════╗
+honest-a-1  | 2026-10-06T16:15:44.099210637Z ║                                                                       ║
+honest-a-1  | 2026-10-06T16:15:44.099212493Z ║   ███████╗██╗  ██╗ ██████╗                                            ║
+honest-a-1  | 2026-10-06T16:15:44.099214309Z ║   ██╔════╝╚██╗██╔╝██╔═══██╗                                           ║
+honest-a-1  | 2026-10-06T16:15:44.099215941Z ║   █████╗   ╚███╔╝ ██║   ██║                                           ║
+honest-a-1  | 2026-10-06T16:15:44.099217690Z ║   ██╔══╝   ██╔██╗ ██║   ██║                                           ║
+honest-a-1  | 2026-10-06T16:15:44.099219336Z ║   ███████╗██╔╝ ██╗╚██████╔╝                                           ║
+honest-a-1  | 2026-10-06T16:15:44.099221054Z ║   ╚══════╝╚═╝  ╚═╝ ╚═════╝                                            ║
+honest-a-1  | 2026-10-06T16:15:44.099222787Z ║                                                                       ║
+honest-a-1  | 2026-10-06T16:15:44.099224475Z ║   Distributed AI Inference Cluster                                    ║
+honest-a-1  | 2026-10-06T16:15:44.099226100Z ║                                                                       ║
+honest-a-1  | 2026-10-06T16:15:44.099227747Z ╚═══════════════════════════════════════════════════════════════════════╝
+honest-a-1  | 2026-10-06T16:15:44.099229603Z 
+honest-a-1  | 2026-10-06T16:15:44.099231070Z ╔═══════════════════════════════════════════════════════════════════════╗
+honest-a-1  | 2026-10-06T16:15:44.099232891Z ║                                                                       ║
+honest-a-1  | 2026-10-06T16:15:44.099234474Z ║  Dashboard & API Ready                                                ║
+honest-a-1  | 2026-10-06T16:15:44.099236173Z ║                                                                       ║
+honest-a-1  | 2026-10-06T16:15:44.099237863Z ║  http://localhost:52415                                               ║
+honest-a-1  | 2026-10-06T16:15:44.099239675Z ║                                                                       ║
+honest-a-1  | 2026-10-06T16:15:44.099241275Z ║  Click the URL above to open the dashboard in your browser            ║
+honest-a-1  | 2026-10-06T16:15:44.099246811Z ║                                                                       ║
+honest-a-1  | 2026-10-06T16:15:44.099260863Z ╚═══════════════════════════════════════════════════════════════════════╝
+honest-a-1  | 2026-10-06T16:15:44.099263059Z 
+honest-a-1  | 2026-10-06T16:15:44.099264611Z 
+honest-a-1  | 2026-10-06T16:15:44.099452033Z [ 2026-10-06 16:15:44.098 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:207 ] [34m[1mElection 0 started[0m
+honest-a-1  | 2026-10-06T16:15:44.099481807Z [ 2026-10-06 16:15:44.098 | [1mINFO    [0m | exo.master.main:run:151 ] [1mStarting Master[0m
+honest-a-1  | 2026-10-06T16:15:44.099550058Z [ 2026-10-06 16:15:44.098 | [1mINFO    [0m | exo.api.main:run:1915 ] [1mStarting API[0m
+honest-a-1  | 2026-10-06T16:15:44.099581740Z [ 2026-10-06 16:15:44.099 | [1mINFO    [0m | logging:handle:1686 ] [1mFirst run detected — opening dashboard in browser[0m
+honest-a-1  | 2026-10-06T16:15:44.100050241Z [ 2026-10-06 16:15:44.099 | [34m[1mDEBUG   [0m | exo.routing.router:run:49 ] [34m[1mTopic Router TypedTopic(topic='global_events', publish_policy=<PublishPolicy.Always: 'Always'>, model_type=<class 'exo.shared.types.events.GlobalForwarderEvent'>) ready to send[0m
+honest-a-1  | 2026-10-06T16:15:44.102059286Z [ 2026-10-06 16:15:44.100 | [34m[1mDEBUG   [0m | exo.routing.router:run:49 ] [34m[1mTopic Router TypedTopic(topic='local_events', publish_policy=<PublishPolicy.Always: 'Always'>, model_type=<class 'exo.shared.types.events.LocalForwarderEvent'>) ready to send[0m
+honest-a-1  | 2026-10-06T16:15:44.102597782Z [ 2026-10-06 16:15:44.100 | [34m[1mDEBUG   [0m | exo.routing.router:run:49 ] [34m[1mTopic Router TypedTopic(topic='commands', publish_policy=<PublishPolicy.Always: 'Always'>, model_type=<class 'exo.shared.types.commands.ForwarderCommand'>) ready to send[0m
+honest-a-1  | 2026-10-06T16:15:44.103336080Z [ 2026-10-06 16:15:44.100 | [34m[1mDEBUG   [0m | exo.routing.router:run:49 ] [34m[1mTopic Router TypedTopic(topic='election_messages', publish_policy=<PublishPolicy.Always: 'Always'>, model_type=<class 'exo.shared.election.ElectionMessage'>) ready to send[0m
+honest-a-1  | 2026-10-06T16:15:44.103389259Z [ 2026-10-06 16:15:44.100 | [34m[1mDEBUG   [0m | exo.routing.router:run:49 ] [34m[1mTopic Router TypedTopic(topic='connection_messages', publish_policy=<PublishPolicy.Never: 'Never'>, model_type=<class 'exo.routing.connection_message.ConnectionMessage'>) ready to send[0m
+honest-a-1  | 2026-10-06T16:15:44.103393810Z [ 2026-10-06 16:15:44.100 | [34m[1mDEBUG   [0m | exo.routing.router:run:49 ] [34m[1mTopic Router TypedTopic(topic='download_commands', publish_policy=<PublishPolicy.Always: 'Always'>, model_type=<class 'exo.shared.types.commands.ForwarderDownloadCommand'>) ready to send[0m
+honest-a-1  | 2026-10-06T16:15:44.103407546Z [ 2026-10-06 16:15:44.100 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:213 ] [34m[1mSleeping for 0.0 seconds[0m
+honest-a-1  | 2026-10-06T16:15:44.103432509Z [ 2026-10-06 16:15:44.101 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:217 ] [34m[1mWoke up from sleep[0m
+honest-a-1  | 2026-10-06T16:15:44.103459440Z [ 2026-10-06 16:15:44.102 | [1mINFO    [0m | logging:handle:1686 ] [1mdiscovered: Some("b88da74f76f33a993fa135e86fb62206")[0m
+honest-a-1  | 2026-10-06T16:15:44.103482918Z [ 2026-10-06 16:15:44.102 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:223 ] [34m[1mElection queue [ElectionMessage(clock=0, seniority=0, proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0), commands_seen=0)][0m
+honest-a-1  | 2026-10-06T16:15:44.104238731Z [ 2026-10-06 16:15:44.102 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:224 ] [34m[1mElected: clock=0 seniority=0 proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:44.104943820Z [ 2026-10-06 16:15:44.103 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:229 ] [34m[1mNode is a candidate and seniority is 0[0m
+honest-a-1  | 2026-10-06T16:15:44.105170930Z [ 2026-10-06 16:15:44.103 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:233 ] [34m[1mNew seniority: 1[0m
+honest-a-1  | 2026-10-06T16:15:44.105271554Z [ 2026-10-06 16:15:44.103 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:238 ] [34m[1mElection finished, new SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206' election_clock=0) with queue [ElectionMessage(clock=0, seniority=0, proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0), commands_seen=0)][0m
+honest-a-1  | 2026-10-06T16:15:44.105295761Z [ 2026-10-06 16:15:44.103 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:241 ] [34m[1mSending election result[0m
+honest-a-1  | 2026-10-06T16:15:44.105311248Z [ 2026-10-06 16:15:44.103 | [34m[1mDEBUG   [0m | exo.shared.election:elect:112 ] [34m[1mElecting: clock=0 seniority=0 proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:44.105333018Z [ 2026-10-06 16:15:44.103 | [34m[1mDEBUG   [0m | exo.shared.election:elect:115 ] [34m[1mCurrent session: master_node_id='b88da74f76f33a993fa135e86fb62206' election_clock=0[0m
+honest-a-1  | 2026-10-06T16:15:44.105357674Z [ 2026-10-06 16:15:44.104 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:243 ] [34m[1mElection result sent[0m
+honest-a-1  | 2026-10-06T16:15:44.105370974Z [ 2026-10-06 16:15:44.104 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:247 ] [34m[1mElection 0 finally[0m
+honest-a-1  | 2026-10-06T16:15:44.105392192Z [ 2026-10-06 16:15:44.104 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:250 ] [34m[1mSetting done event[0m
+honest-a-1  | 2026-10-06T16:15:44.105413700Z [ 2026-10-06 16:15:44.104 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:252 ] [34m[1mDone event set[0m
+honest-a-1  | 2026-10-06T16:15:44.105435386Z [ 2026-10-06 16:15:44.104 | [34m[1mDEBUG   [0m | exo.shared.election:run:99 ] [34m[1mInitial campaign finished[0m
+honest-a-1  | 2026-10-06T16:15:44.106320750Z [ 2026-10-06 16:15:44.106 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:130 ] [34m[1mElection message received: clock=0 seniority=0 proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:44.106437821Z [ 2026-10-06 16:15:44.106 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:132 ] [34m[1mDropping message from ourselves[0m
+honest-a-1  | 2026-10-06T16:15:44.107094186Z [ 2026-10-06 16:15:44.106 | [34m[1mDEBUG   [0m | exo.routing.router:_networking_recv:190 ] [34m[1m<builtins.Connection object at 0x7fef6c4846f0>[0m
+honest-a-1  | 2026-10-06T16:15:44.107129177Z [ 2026-10-06 16:15:44.106 | [1mINFO    [0m | exo.main:_elect_loop:212 ] [1mNode elected Master - maintaining self[0m
+honest-a-1  | 2026-10-06T16:15:44.107751445Z [ 2026-10-06 16:15:44.106 | [1mINFO    [0m | exo.api.main:unpause:313 ] [1mUnpausing API[0m
+honest-a-1  | 2026-10-06T16:15:44.107803702Z [ 2026-10-06 16:15:44.107 | [1mINFO    [0m | logging:handle:1686 ] [1mRunning on http://0.0.0.0:52415 (CTRL + C to quit)[0m
+honest-a-1  | 2026-10-06T16:15:44.107839998Z [ 2026-10-06 16:15:44.107 | [1mINFO    [0m | logging:handle:1686 ] [1mRunning on http://0.0.0.0:52415 (CTRL + C to quit)[0m
+honest-a-1  | 2026-10-06T16:15:44.109081056Z [ 2026-10-06 16:15:44.108 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:130 ] [34m[1mElection message received: clock=0 seniority=0 proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:44.109152809Z [ 2026-10-06 16:15:44.108 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:132 ] [34m[1mDropping message from ourselves[0m
+honest-a-1  | 2026-10-06T16:15:44.109689477Z [ 2026-10-06 16:15:44.109 | [1mINFO    [0m | exo.routing.router:_networking_subscribe:180 ] [1mSubscribed to global_events[0m
+honest-a-1  | 2026-10-06T16:15:44.110031999Z [ 2026-10-06 16:15:44.109 | [1mINFO    [0m | exo.routing.router:_networking_subscribe:180 ] [1mSubscribed to local_events[0m
+honest-a-1  | 2026-10-06T16:15:44.110289734Z [ 2026-10-06 16:15:44.110 | [1mINFO    [0m | exo.routing.router:_networking_subscribe:180 ] [1mSubscribed to commands[0m
+honest-a-1  | 2026-10-06T16:15:44.110705300Z [ 2026-10-06 16:15:44.110 | [1mINFO    [0m | exo.routing.router:_networking_subscribe:180 ] [1mSubscribed to election_messages[0m
+honest-a-1  | 2026-10-06T16:15:44.111035850Z [ 2026-10-06 16:15:44.110 | [1mINFO    [0m | exo.routing.router:_networking_subscribe:180 ] [1mSubscribed to connection_messages[0m
+honest-a-1  | 2026-10-06T16:15:44.111282094Z [ 2026-10-06 16:15:44.111 | [1mINFO    [0m | exo.routing.router:_networking_subscribe:180 ] [1mSubscribed to download_commands[0m
+honest-a-1  | 2026-10-06T16:15:44.158791572Z [ 2026-10-06 16:15:44.158 | [1mINFO    [0m | logging:handle:1686 ] [1mdiscovered: Some("69c8b34f72e5b64fc0b501c0d5e8a531")[0m
+honest-a-1  | 2026-10-06T16:15:44.159005202Z [ 2026-10-06 16:15:44.158 | [34m[1mDEBUG   [0m | exo.routing.router:_networking_recv:190 ] [34m[1m<builtins.Connection object at 0x7fef6bebad30>[0m
+honest-a-1  | 2026-10-06T16:15:44.313887675Z [ 2026-10-06 16:15:44.309 | [34m[1mDEBUG   [0m | exo.shared.election:_connection_receiver:166 ] [34m[1mConnection messages received: connected=True followed by [ConnectionMessage(connected=True)][0m
+honest-a-1  | 2026-10-06T16:15:44.313948881Z [ 2026-10-06 16:15:44.310 | [34m[1mDEBUG   [0m | exo.shared.election:_connection_receiver:169 ] [34m[1mCurrent clock: 0[0m
+honest-a-1  | 2026-10-06T16:15:44.314198791Z [ 2026-10-06 16:15:44.310 | [34m[1mDEBUG   [0m | exo.shared.election:_connection_receiver:172 ] [34m[1mNew clock: 1[0m
+honest-a-1  | 2026-10-06T16:15:44.314338495Z [ 2026-10-06 16:15:44.310 | [34m[1mDEBUG   [0m | exo.shared.election:_connection_receiver:175 ] [34m[1mStarting new campaign[0m
+honest-a-1  | 2026-10-06T16:15:44.314355928Z [ 2026-10-06 16:15:44.311 | [34m[1mDEBUG   [0m | exo.shared.election:_connection_receiver:179 ] [34m[1mCampaign started[0m
+honest-a-1  | 2026-10-06T16:15:44.314430252Z [ 2026-10-06 16:15:44.311 | [34m[1mDEBUG   [0m | exo.shared.election:_connection_receiver:180 ] [34m[1mConnection message added[0m
+honest-a-1  | 2026-10-06T16:15:44.314530555Z [ 2026-10-06 16:15:44.311 | [1mINFO    [0m | exo.shared.election:_campaign:197 ] [1mWaiting for other campaign to finish[0m
+honest-a-1  | 2026-10-06T16:15:44.314561456Z [ 2026-10-06 16:15:44.312 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:207 ] [34m[1mElection 1 started[0m
+honest-a-1  | 2026-10-06T16:15:44.314600753Z [ 2026-10-06 16:15:44.312 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:213 ] [34m[1mSleeping for 3.0 seconds[0m
+honest-a-1  | 2026-10-06T16:15:44.316295688Z [ 2026-10-06 16:15:44.315 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:130 ] [34m[1mElection message received: clock=1 seniority=1 proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:44.316555807Z [ 2026-10-06 16:15:44.315 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:132 ] [34m[1mDropping message from ourselves[0m
+honest-a-1  | 2026-10-06T16:15:44.321163478Z [ 2026-10-06 16:15:44.319 | [34m[1mDEBUG   [0m | exo.routing.router:_networking_recv:190 ] [34m[1m<builtins.Message object at 0x7fef6bda76c0>[0m
+honest-a-1  | 2026-10-06T16:15:44.321210528Z [ 2026-10-06 16:15:44.320 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:130 ] [34m[1mElection message received: clock=1 seniority=1 proposed_session=SessionId(master_node_id='69c8b34f72e5b64fc0b501c0d5e8a531', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:44.321337773Z [ 2026-10-06 16:15:44.320 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:155 ] [34m[1mElection added candidate clock=1 seniority=1 proposed_session=SessionId(master_node_id='69c8b34f72e5b64fc0b501c0d5e8a531', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:44.376988419Z [ 2026-10-06 16:15:44.374 | [34m[1mDEBUG   [0m | exo.routing.router:_networking_recv:190 ] [34m[1m<builtins.Message object at 0x7fef6bda7900>[0m
+honest-a-1  | 2026-10-06T16:15:44.377014672Z [ 2026-10-06 16:15:44.376 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:130 ] [34m[1mElection message received: clock=2 seniority=1 proposed_session=SessionId(master_node_id='69c8b34f72e5b64fc0b501c0d5e8a531', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:44.378333965Z [ 2026-10-06 16:15:44.377 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:138 ] [34m[1mNew clock: 2[0m
+honest-a-1  | 2026-10-06T16:15:44.378632142Z [ 2026-10-06 16:15:44.377 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:139 ] [34m[1mStarting new campaign[0m
+honest-a-1  | 2026-10-06T16:15:44.378747449Z [ 2026-10-06 16:15:44.378 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:141 ] [34m[1mCandidates: [ElectionMessage(clock=2, seniority=1, proposed_session=SessionId(master_node_id='69c8b34f72e5b64fc0b501c0d5e8a531', election_clock=0), commands_seen=0)][0m
+honest-a-1  | 2026-10-06T16:15:44.381429266Z [ 2026-10-06 16:15:44.378 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:142 ] [34m[1mCurrent candidates: [ElectionMessage(clock=1, seniority=1, proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0), commands_seen=0), ElectionMessage(clock=1, seniority=1, proposed_session=SessionId(master_node_id='69c8b34f72e5b64fc0b501c0d5e8a531', election_clock=0), commands_seen=0)][0m
+honest-a-1  | 2026-10-06T16:15:44.383471103Z [ 2026-10-06 16:15:44.379 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:144 ] [34m[1mNew candidates: [ElectionMessage(clock=2, seniority=1, proposed_session=SessionId(master_node_id='69c8b34f72e5b64fc0b501c0d5e8a531', election_clock=0), commands_seen=0)][0m
+honest-a-1  | 2026-10-06T16:15:44.385073040Z [ 2026-10-06 16:15:44.379 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:145 ] [34m[1mStarting new campaign[0m
+honest-a-1  | 2026-10-06T16:15:44.385110713Z [ 2026-10-06 16:15:44.379 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:149 ] [34m[1mCampaign started[0m
+honest-a-1  | 2026-10-06T16:15:44.385116920Z [ 2026-10-06 16:15:44.380 | [1mINFO    [0m | exo.shared.election:_campaign:194 ] [1mCancelling other campaign[0m
+honest-a-1  | 2026-10-06T16:15:44.385121290Z [ 2026-10-06 16:15:44.380 | [1mINFO    [0m | exo.shared.election:_campaign:197 ] [1mWaiting for other campaign to finish[0m
+honest-a-1  | 2026-10-06T16:15:44.385125349Z [ 2026-10-06 16:15:44.381 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:247 ] [34m[1mElection 1 finally[0m
+honest-a-1  | 2026-10-06T16:15:44.385129779Z [ 2026-10-06 16:15:44.382 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:250 ] [34m[1mSetting done event[0m
+honest-a-1  | 2026-10-06T16:15:44.385133718Z [ 2026-10-06 16:15:44.382 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:252 ] [34m[1mDone event set[0m
+honest-a-1  | 2026-10-06T16:15:44.385137673Z [ 2026-10-06 16:15:44.383 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:207 ] [34m[1mElection 2 started[0m
+honest-a-1  | 2026-10-06T16:15:44.385847920Z [ 2026-10-06 16:15:44.384 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:213 ] [34m[1mSleeping for 3.0 seconds[0m
+honest-a-1  | 2026-10-06T16:15:44.387487580Z [ 2026-10-06 16:15:44.386 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:130 ] [34m[1mElection message received: clock=2 seniority=1 proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:44.388507533Z [ 2026-10-06 16:15:44.387 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:132 ] [34m[1mDropping message from ourselves[0m
+honest-a-1  | 2026-10-06T16:15:47.381697265Z [ 2026-10-06 16:15:47.380 | [34m[1mDEBUG   [0m | exo.routing.router:_networking_recv:190 ] [34m[1m<builtins.Message object at 0x7fef6bda7b10>[0m
+honest-a-1  | 2026-10-06T16:15:47.383570994Z [ 2026-10-06 16:15:47.382 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:130 ] [34m[1mElection message received: clock=2 seniority=1 proposed_session=SessionId(master_node_id='69c8b34f72e5b64fc0b501c0d5e8a531', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:47.383836562Z [ 2026-10-06 16:15:47.382 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:155 ] [34m[1mElection added candidate clock=2 seniority=1 proposed_session=SessionId(master_node_id='69c8b34f72e5b64fc0b501c0d5e8a531', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:47.386802826Z [ 2026-10-06 16:15:47.385 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:217 ] [34m[1mWoke up from sleep[0m
+honest-a-1  | 2026-10-06T16:15:47.387179765Z [ 2026-10-06 16:15:47.386 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:223 ] [34m[1mElection queue [ElectionMessage(clock=2, seniority=1, proposed_session=SessionId(master_node_id='69c8b34f72e5b64fc0b501c0d5e8a531', election_clock=0), commands_seen=0), ElectionMessage(clock=2, seniority=1, proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0), commands_seen=0), ElectionMessage(clock=2, seniority=1, proposed_session=SessionId(master_node_id='69c8b34f72e5b64fc0b501c0d5e8a531', election_clock=0), commands_seen=0)][0m
+honest-a-1  | 2026-10-06T16:15:47.387810233Z [ 2026-10-06 16:15:47.387 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:224 ] [34m[1mElected: clock=2 seniority=1 proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:47.390438371Z [ 2026-10-06 16:15:47.387 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:229 ] [34m[1mNode is a candidate and seniority is 1[0m
+honest-a-1  | 2026-10-06T16:15:47.391932258Z [ 2026-10-06 16:15:47.388 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:233 ] [34m[1mNew seniority: 3[0m
+honest-a-1  | 2026-10-06T16:15:47.393336120Z [ 2026-10-06 16:15:47.389 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:238 ] [34m[1mElection finished, new SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206' election_clock=0) with queue [ElectionMessage(clock=2, seniority=1, proposed_session=SessionId(master_node_id='69c8b34f72e5b64fc0b501c0d5e8a531', election_clock=0), commands_seen=0), ElectionMessage(clock=2, seniority=1, proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0), commands_seen=0), ElectionMessage(clock=2, seniority=1, proposed_session=SessionId(master_node_id='69c8b34f72e5b64fc0b501c0d5e8a531', election_clock=0), commands_seen=0)][0m
+honest-a-1  | 2026-10-06T16:15:47.395488349Z [ 2026-10-06 16:15:47.389 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:241 ] [34m[1mSending election result[0m
+honest-a-1  | 2026-10-06T16:15:47.395538342Z [ 2026-10-06 16:15:47.389 | [34m[1mDEBUG   [0m | exo.shared.election:elect:112 ] [34m[1mElecting: clock=2 seniority=1 proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:47.395568627Z [ 2026-10-06 16:15:47.390 | [34m[1mDEBUG   [0m | exo.shared.election:elect:115 ] [34m[1mCurrent session: master_node_id='b88da74f76f33a993fa135e86fb62206' election_clock=0[0m
+honest-a-1  | 2026-10-06T16:15:47.395574493Z [ 2026-10-06 16:15:47.391 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:243 ] [34m[1mElection result sent[0m
+honest-a-1  | 2026-10-06T16:15:47.395578798Z [ 2026-10-06 16:15:47.391 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:247 ] [34m[1mElection 2 finally[0m
+honest-a-1  | 2026-10-06T16:15:47.395582968Z [ 2026-10-06 16:15:47.392 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:250 ] [34m[1mSetting done event[0m
+honest-a-1  | 2026-10-06T16:15:47.395586724Z [ 2026-10-06 16:15:47.392 | [34m[1mDEBUG   [0m | exo.shared.election:_campaign:252 ] [34m[1mDone event set[0m
+honest-a-1  | 2026-10-06T16:15:47.396744513Z [ 2026-10-06 16:15:47.394 | [1mINFO    [0m | exo.main:_elect_loop:212 ] [1mNode elected Master - maintaining self[0m
+honest-a-1  | 2026-10-06T16:15:47.396956907Z [ 2026-10-06 16:15:47.394 | [1mINFO    [0m | exo.api.main:unpause:313 ] [1mUnpausing API[0m
+honest-a-1  | 2026-10-06T16:15:47.397111687Z [ 2026-10-06 16:15:47.395 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:130 ] [34m[1mElection message received: clock=2 seniority=1 proposed_session=SessionId(master_node_id='b88da74f76f33a993fa135e86fb62206', election_clock=0) commands_seen=0[0m
+honest-a-1  | 2026-10-06T16:15:47.397278373Z [ 2026-10-06 16:15:47.395 | [34m[1mDEBUG   [0m | exo.shared.election:_election_receiver:132 ] [34m[1mDropping message from ourselves[0m

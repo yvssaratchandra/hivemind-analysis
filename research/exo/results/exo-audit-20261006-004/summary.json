@@ -1,0 +1,13 @@
+{
+  "results": [
+    {
+      "arm": "baseline",
+      "status": "incomplete",
+      "error": "Honest peers did not establish stable consensus: {'converged': False, 'node_ids': {}, 'session': None, 'reasons': ['honest-a: no Starting node identity found', 'honest-a: no committed session after startup', 'honest-b: no Starting node identity found', 'honest-b: no committed session after startup', 'current node IDs are missing or not distinct']}"
+    }
+  ],
+  "positive_control_established": false,
+  "run_complete": false,
+  "security_vulnerability_validated": false,
+  "note": "Metadata acceptance is an observation, not proof of inference impact or a security boundary violation."
+}

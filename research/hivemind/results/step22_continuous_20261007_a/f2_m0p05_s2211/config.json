@@ -1,0 +1,42 @@
+{
+  "case": {
+    "name": "f2_m0p05",
+    "mode": "refresh",
+    "minimum": 4,
+    "frequency": 2,
+    "lifetime": 0.585764,
+    "latency_guard": 0.03576375961303711,
+    "spare": 0.05
+  },
+  "seed": 2211,
+  "duration": 30.0,
+  "timeout": 12,
+  "initial_offsets": {
+    "X": 0.9757047405374424,
+    "H0": 1.5132383783352341,
+    "H1": 1.9786960543621441,
+    "H2": 2.992480345832648,
+    "H3": 2.5662117001543097,
+    "H4": 0.6032679154799377,
+    "H5": 2.0936060918068096,
+    "H6": 1.4047341126068194
+  },
+  "training_delay": "lognormal mean 1.5s CV 0.6, clipped [0.1,4]",
+  "attacker_reentry": 0.05,
+  "honest_min": 2,
+  "target": 4,
+  "honest_ad_lifetime": 5,
+  "store_delay": 0,
+  "tensor_size": 128,
+  "allreduce_timeout": 6,
+  "peer_ids": {
+    "X": "12D3KooWCHjn16aZLdfs9yXbKgT8yfweQb2jR7nMPbv9yYoAnfCF",
+    "H0": "12D3KooWJCt8PEwZkJJpUf2qdNN5nKq4TU3FrpSa9wzzAVNWfaQn",
+    "H1": "12D3KooWDEEfExtZFT2aTjPsTFYtj1ZBeoJJgmENM6aYkUoY3yJj",
+    "H2": "12D3KooWReaVozRMjR3u9NMAf2uDAuucnaebHQXhLzJVowaE3S2f",
+    "H3": "12D3KooWAKmWv1R4Ch7uZJWh4zuMadvJvzXE2owJ7rLNaJD7qS7q",
+    "H4": "12D3KooWMNZQyDKoH7jNZ6sd8cZ1QWxf3nqtMGAVkj7kzdVKEj8B",
+    "H5": "12D3KooWQokWHma4HbjZsnJ4EuX1DgFpxTo9chp88XHRhgpgeHYW",
+    "H6": "12D3KooWMmzQ41dNRUmZE4YgxE3gGX1V3PkJg2RDFznoox4mQPB9"
+  }
+}

@@ -1,0 +1,3 @@
+{"timestamp": "2026-10-07T14:32:33.855635+00:00", "phase": "bootstrap", "host": "control-peer-01", "models": {"object": "list", "data": []}, "system": {"backends": [], "loaded_models": []}}
+{"timestamp": "2026-10-07T14:32:55.736163+00:00", "phase": "join-advertisement", "host": "control-peer-02", "models": {"object": "list", "data": []}, "system": {"backends": [], "loaded_models": []}}
+{"timestamp": "2026-10-07T14:34:44.778870+00:00", "phase": "peer-rejoin", "host": "control-peer-02", "models": {"object": "list", "data": []}, "system": {"backends": [], "loaded_models": []}}

@@ -1,0 +1,226 @@
+{
+  "status": "passed",
+  "source_revision": "a3d555653c0cbfd73ab59ab15beab80903e96484",
+  "image_id": "sha256:258fffca2f459177f1983eb9b31bbdc248b2faac833b094842fc5816a4e762ee",
+  "stages": [
+    {
+      "name": "idle-1-peer",
+      "expected_fresh_hosts": [
+        "localai-peer-1"
+      ],
+      "first_match_seconds": 7.4101175979999425,
+      "elapsed_seconds": 70.10558119400002,
+      "final_membership_match": true,
+      "passed": true,
+      "memory": {
+        "localai-peer-1": {
+          "docker_memory_median_mib": 61.07499933242798,
+          "docker_memory_sampled_max_mib": 65.91999912261963,
+          "sample_count": 12,
+          "docker_cpu_median_percent": 0.095
+        }
+      }
+    },
+    {
+      "name": "idle-2-peer",
+      "expected_fresh_hosts": [
+        "localai-peer-1",
+        "localai-peer-2"
+      ],
+      "first_match_seconds": 19.73510694799984,
+      "elapsed_seconds": 85.97127392599987,
+      "final_membership_match": true,
+      "passed": true,
+      "memory": {
+        "localai-peer-1": {
+          "docker_memory_median_mib": 65.51999950408936,
+          "docker_memory_sampled_max_mib": 66.16999912261963,
+          "sample_count": 11,
+          "docker_cpu_median_percent": 0.07
+        },
+        "localai-peer-2": {
+          "docker_memory_median_mib": 67.23999977111816,
+          "docker_memory_sampled_max_mib": 73.07999992370605,
+          "sample_count": 11,
+          "docker_cpu_median_percent": 0.11
+        }
+      }
+    },
+    {
+      "name": "idle-3-peer",
+      "expected_fresh_hosts": [
+        "localai-peer-1",
+        "localai-peer-2",
+        "localai-peer-3"
+      ],
+      "first_match_seconds": 15.477940622999995,
+      "elapsed_seconds": 77.1615588919999,
+      "final_membership_match": true,
+      "passed": true,
+      "memory": {
+        "localai-peer-1": {
+          "docker_memory_median_mib": 65.24499988555908,
+          "docker_memory_sampled_max_mib": 65.64999961853027,
+          "sample_count": 8,
+          "docker_cpu_median_percent": 0.165
+        },
+        "localai-peer-2": {
+          "docker_memory_median_mib": 73.11999988555908,
+          "docker_memory_sampled_max_mib": 73.3799991607666,
+          "sample_count": 8,
+          "docker_cpu_median_percent": 0.16
+        },
+        "localai-peer-3": {
+          "docker_memory_median_mib": 65.47499942779541,
+          "docker_memory_sampled_max_mib": 69.39999961853027,
+          "sample_count": 8,
+          "docker_cpu_median_percent": 0.185
+        }
+      }
+    },
+    {
+      "name": "peer3-crashed",
+      "expected_fresh_hosts": [
+        "localai-peer-1",
+        "localai-peer-2"
+      ],
+      "first_match_seconds": 36.948942751000004,
+      "elapsed_seconds": 91.56124705000002,
+      "final_membership_match": true,
+      "passed": true,
+      "memory": {
+        "localai-peer-1": {
+          "docker_memory_median_mib": 65.45999908447266,
+          "docker_memory_sampled_max_mib": 67.72999954223633,
+          "sample_count": 11,
+          "docker_cpu_median_percent": 0.09
+        },
+        "localai-peer-2": {
+          "docker_memory_median_mib": 73.20999908447266,
+          "docker_memory_sampled_max_mib": 74.22999954223633,
+          "sample_count": 11,
+          "docker_cpu_median_percent": 0.13
+        }
+      }
+    },
+    {
+      "name": "peer3-rejoined",
+      "expected_fresh_hosts": [
+        "localai-peer-1",
+        "localai-peer-2",
+        "localai-peer-3"
+      ],
+      "first_match_seconds": 25.777851142000145,
+      "elapsed_seconds": 87.47971407,
+      "final_membership_match": true,
+      "passed": true,
+      "memory": {
+        "localai-peer-1": {
+          "docker_memory_median_mib": 67.75999927520752,
+          "docker_memory_sampled_max_mib": 68.00999927520752,
+          "sample_count": 9,
+          "docker_cpu_median_percent": 0.15
+        },
+        "localai-peer-2": {
+          "docker_memory_median_mib": 73.9399995803833,
+          "docker_memory_sampled_max_mib": 74.29999923706055,
+          "sample_count": 9,
+          "docker_cpu_median_percent": 0.11
+        },
+        "localai-peer-3": {
+          "docker_memory_median_mib": 61.25,
+          "docker_memory_sampled_max_mib": 61.72999954223633,
+          "sample_count": 9,
+          "docker_cpu_median_percent": 0.22
+        }
+      }
+    }
+  ],
+  "max_recorded_cgroup_peak_bytes": {
+    "localai-peer-1": 80769024,
+    "localai-peer-2": 87343104,
+    "localai-peer-3": 80580608
+  },
+  "max_recorded_memory_events": {
+    "localai-peer-1": {
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "localai-peer-2": {
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "localai-peer-3": {
+      "oom": 0,
+      "oom_kill": 0
+    }
+  },
+  "first_sampled_peer3_freshness_expiry_seconds_after_kill": 33.65185,
+  "final_views": {
+    "peer3-crashed": {
+      "localai-peer-1": {
+        "fresh_hosts": [
+          "localai-peer-1",
+          "localai-peer-2"
+        ],
+        "listed_ids": [
+          "localai-peer-1-acNyqRKhNr",
+          "localai-peer-2-EXniWcxfHe",
+          "localai-peer-3-BsxyMZSLBw"
+        ]
+      },
+      "localai-peer-2": {
+        "fresh_hosts": [
+          "localai-peer-1",
+          "localai-peer-2"
+        ],
+        "listed_ids": [
+          "localai-peer-1-acNyqRKhNr",
+          "localai-peer-2-EXniWcxfHe",
+          "localai-peer-3-BsxyMZSLBw"
+        ]
+      }
+    },
+    "peer3-rejoined": {
+      "localai-peer-1": {
+        "fresh_hosts": [
+          "localai-peer-1",
+          "localai-peer-2",
+          "localai-peer-3"
+        ],
+        "listed_ids": [
+          "localai-peer-1-acNyqRKhNr",
+          "localai-peer-2-EXniWcxfHe",
+          "localai-peer-3-BsxyMZSLBw",
+          "localai-peer-3-tvXErnpqTU"
+        ]
+      },
+      "localai-peer-2": {
+        "fresh_hosts": [
+          "localai-peer-1",
+          "localai-peer-2",
+          "localai-peer-3"
+        ],
+        "listed_ids": [
+          "localai-peer-1-acNyqRKhNr",
+          "localai-peer-2-EXniWcxfHe",
+          "localai-peer-3-BsxyMZSLBw",
+          "localai-peer-3-tvXErnpqTU"
+        ]
+      },
+      "localai-peer-3": {
+        "fresh_hosts": [
+          "localai-peer-1",
+          "localai-peer-2",
+          "localai-peer-3"
+        ],
+        "listed_ids": [
+          "localai-peer-1-acNyqRKhNr",
+          "localai-peer-2-EXniWcxfHe",
+          "localai-peer-3-tvXErnpqTU"
+        ]
+      }
+    }
+  },
+  "limitations": "Single LAN run, no models. Memory includes probe overhead; Docker memory is not RSS. Timing is sampled and includes command time. cgroup peak is kernel-reported since container start, sampled before cleanup; a restart may reset counters. Cached listed IDs are not verified live peers."
+}

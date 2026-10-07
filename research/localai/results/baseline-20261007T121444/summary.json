@@ -1,0 +1,233 @@
+{
+  "started": "2026-10-07T12:14:44.948558+00:00",
+  "status": "passed",
+  "stages": [
+    {
+      "name": "idle-1-peer",
+      "expected_fresh_hosts": [
+        "localai-peer-1"
+      ],
+      "first_match_seconds": 7.4101175979999425,
+      "elapsed_seconds": 70.10558119400002,
+      "final_membership_match": true,
+      "passed": true
+    },
+    {
+      "name": "idle-2-peer",
+      "expected_fresh_hosts": [
+        "localai-peer-1",
+        "localai-peer-2"
+      ],
+      "first_match_seconds": 19.73510694799984,
+      "elapsed_seconds": 85.97127392599987,
+      "final_membership_match": true,
+      "passed": true
+    },
+    {
+      "name": "idle-3-peer",
+      "expected_fresh_hosts": [
+        "localai-peer-1",
+        "localai-peer-2",
+        "localai-peer-3"
+      ],
+      "first_match_seconds": 15.477940622999995,
+      "elapsed_seconds": 77.1615588919999,
+      "final_membership_match": true,
+      "passed": true
+    },
+    {
+      "name": "peer3-crashed",
+      "expected_fresh_hosts": [
+        "localai-peer-1",
+        "localai-peer-2"
+      ],
+      "first_match_seconds": 36.948942751000004,
+      "elapsed_seconds": 91.56124705000002,
+      "final_membership_match": true,
+      "passed": true
+    },
+    {
+      "name": "peer3-rejoined",
+      "expected_fresh_hosts": [
+        "localai-peer-1",
+        "localai-peer-2",
+        "localai-peer-3"
+      ],
+      "first_match_seconds": 25.777851142000145,
+      "elapsed_seconds": 87.47971407,
+      "final_membership_match": true,
+      "passed": true
+    }
+  ],
+  "label": "baseline-20261007T121444",
+  "network": "localai-lab-95029161b495",
+  "randomness": "LocalAI creates random identities and token; no seed flag",
+  "configuration": {
+    "label": "baseline-20261007T121444",
+    "image": null,
+    "memory_mib": 1024,
+    "seconds": 60,
+    "failure_seconds": 90,
+    "discovery_timeout": 180,
+    "interval": 5
+  },
+  "resources_before": {
+    "time": "2026-10-07T12:14:44.949107+00:00",
+    "memory_bytes": {
+      "MemTotal": 33186525184,
+      "MemAvailable": 26516598784,
+      "SwapTotal": 33186377728,
+      "SwapFree": 33184169984
+    },
+    "visible_cgroup": {
+      "memory.max": "max",
+      "memory.current": "968990720",
+      "memory.swap.max": "max",
+      "cpu.max": "max 100000"
+    },
+    "logical_cpus": 16,
+    "workspace_free_bytes": 989703016448,
+    "tools": {
+      "docker": "/usr/local/bin/docker",
+      "go": null,
+      "local-ai": null
+    }
+  },
+  "source_revision": "a3d555653c0cbfd73ab59ab15beab80903e96484",
+  "source_worktree": {
+    "argv": [
+      "git",
+      "-C",
+      "/home/sarat/Projects/hivemind-analysis/research/localai/upstream",
+      "status",
+      "--porcelain"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "docker_preflight": {
+    "argv": [
+      "docker",
+      "info",
+      "--format",
+      "{{json .ServerVersion}}"
+    ],
+    "exit_code": 0,
+    "stdout": "\"29.8.2\"\n",
+    "stderr": ""
+  },
+  "requested_image": "localai/localai:sha-a3d5556",
+  "image_id": "sha256:258fffca2f459177f1983eb9b31bbdc248b2faac833b094842fc5816a4e762ee",
+  "token_sha256": "f03aefc2dc2ec4774d22e755a6bf98eed2f725b6bead34fa7a092a49abd9314a",
+  "container_final_states": {
+    "localai-peer-1": {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "localai-lab-95029161b495-p1"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":31008,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T12:15:18.581375647Z\",\"FinishedAt\":\"0001-01-01T00:00:00Z\"}\n",
+      "stderr": ""
+    },
+    "localai-peer-2": {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "localai-lab-95029161b495-p2"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":36483,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T12:16:31.539390469Z\",\"FinishedAt\":\"0001-01-01T00:00:00Z\"}\n",
+      "stderr": ""
+    },
+    "localai-peer-3": {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "localai-lab-95029161b495-p3"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":56906,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T12:20:52.074897614Z\",\"FinishedAt\":\"2026-10-07T12:19:20.262287174Z\"}\n",
+      "stderr": ""
+    }
+  },
+  "cleanup": [
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "-v",
+        "localai-lab-95029161b495-p1"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-lab-95029161b495-p1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "-v",
+        "localai-lab-95029161b495-p2"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-lab-95029161b495-p2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "-v",
+        "localai-lab-95029161b495-p3"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-lab-95029161b495-p3\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "localai-lab-95029161b495"
+      ],
+      "exit_code": 0,
+      "stdout": "localai-lab-95029161b495\n",
+      "stderr": ""
+    }
+  ],
+  "finished": "2026-10-07T12:22:20.577974+00:00",
+  "resources_after": {
+    "time": "2026-10-07T12:22:20.578261+00:00",
+    "memory_bytes": {
+      "MemTotal": 33186525184,
+      "MemAvailable": 26176143360,
+      "SwapTotal": 33186377728,
+      "SwapFree": 33184239616
+    },
+    "visible_cgroup": {
+      "memory.max": "max",
+      "memory.current": "914391040",
+      "memory.swap.max": "max",
+      "cpu.max": "max 100000"
+    },
+    "logical_cpus": 16,
+    "workspace_free_bytes": 988918931456,
+    "tools": {
+      "docker": "/usr/local/bin/docker",
+      "go": null,
+      "local-ai": null
+    }
+  }
+}

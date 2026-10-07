@@ -2,9 +2,10 @@
 
 ## Research context
 
-- Keep research changes under `research/`. Do not modify `hivemind/` for an experiment unless the user explicitly changes that constraint.
-- Use `research/HANDOFF.md` for current status and `research/CONTROL_DATA_AUDIT.md` for the experiment queue and relevant worksheet. Read only the sections needed for the task.
+- Keep research changes under `research/<project>/`: Hivemind work belongs in `research/hivemind/` and Exo work in `research/exo/`. Do not modify `hivemind/` for an experiment unless the user explicitly changes that constraint.
+- Use `research/hivemind/HANDOFF.md` for Hivemind status and `research/hivemind/CONTROL_DATA_AUDIT.md` for its experiment queue and relevant worksheet. Read only the sections needed for the task.
 - Check the script and raw result files before making an empirical claim. Distinguish local measurements, WAN-delay emulation, code inference, and untested hypotheses. Do not generalize a small observed count into a deployment success rate.
+- Verify the user's technical claims against source code, documentation, and relevant experiments before relying on them. Correct misunderstandings explicitly and distinguish verified behavior from assumptions.
 - Give each new experiment a distinct output label. Preserve controls, seeds, configuration, and raw traces so a result can be checked and repeated.
 - Before interacting with a public swarm, establish the operator, exact protocol path and key, and agreed scope. Local experiments need no such step.
 

@@ -1,0 +1,7 @@
+/upstream/
+# Incomplete independent checkout from initial setup.
+/upstrea/
+__pycache__/
+
+# Lossless archive is tracked; keep the oversized extracted trace local.
+/results/control-messages-lifecycle32-20261007T1350/observer.jsonl

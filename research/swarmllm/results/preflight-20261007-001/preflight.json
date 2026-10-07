@@ -1,0 +1,32 @@
+{
+  "checked_utc": "2026-10-07T09:57:46.095906+00:00",
+  "architecture": "x86_64",
+  "memory_bytes": {
+    "MemTotal": 33186516992,
+    "MemAvailable": 14557929472,
+    "SwapTotal": 33186377728,
+    "SwapFree": 29016051712
+  },
+  "visible_cgroup": {
+    "memory.max": "max",
+    "memory.current": "344932352",
+    "cpu.max": "max 100000",
+    "memory.swap.max": "max"
+  },
+  "logical_cpu_count": 16,
+  "workspace_disk_free_bytes": 989916065792,
+  "tools": {
+    "docker": "/usr/local/bin/docker",
+    "podman": null,
+    "rustc": null,
+    "cargo": null,
+    "uv": null,
+    "python3": "/usr/bin/python3"
+  },
+  "limitations": "Host-visible memory is not a guarantee of process allowance. No peer started; no per-node memory measured.",
+  "docker_version": {
+    "exit_code": 1,
+    "stdout": "{\"Client\":{\"Version\":\"29.8.2\",\"ApiVersion\":\"1.56\",\"DefaultAPIVersion\":\"1.56\",\"GitCommit\":\"7fc2dff\",\"GoVersion\":\"go1.26.8\",\"Os\":\"linux\",\"Arch\":\"amd64\",\"BuildTime\":\"Wed Sep 30 19:31:45 2026\",\"Context\":\"default\"},\"Server\":null}\n",
+    "stderr": "permission denied while trying to connect to the docker API at unix:///var/run/docker.sock\n"
+  }
+}

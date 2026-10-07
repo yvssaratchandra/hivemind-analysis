@@ -1,0 +1,857 @@
+[
+    {
+        "Id": "de543037dde22a0e82c36bafc397b8e8bf3a051fd21d28d0f3994ee1d6e1ab20",
+        "Created": "2026-10-06T16:19:48.926843765Z",
+        "Path": "/opt/exo/.venv/bin/python",
+        "Args": [
+            "/audit/probe.py",
+            "--namespace",
+            "exo-audit-20261006-005-self",
+            "--arm",
+            "self",
+            "--seed",
+            "1901",
+            "--timeout",
+            "270"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1815834,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-06T16:19:49.388777707Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:2f0969602b05b68783314c3c517e55d4b600f83fd9e6e0102e2d6098cb0a62b2",
+        "ResolvConfPath": "/var/lib/docker/containers/de543037dde22a0e82c36bafc397b8e8bf3a051fd21d28d0f3994ee1d6e1ab20/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/de543037dde22a0e82c36bafc397b8e8bf3a051fd21d28d0f3994ee1d6e1ab20/hostname",
+        "HostsPath": "/var/lib/docker/containers/de543037dde22a0e82c36bafc397b8e8bf3a051fd21d28d0f3994ee1d6e1ab20/hosts",
+        "LogPath": "/var/lib/docker/containers/de543037dde22a0e82c36bafc397b8e8bf3a051fd21d28d0f3994ee1d6e1ab20/de543037dde22a0e82c36bafc397b8e8bf3a051fd21d28d0f3994ee1d6e1ab20-json.log",
+        "Name": "/exo-audit-20261006-005-self-attacker-1",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "exo-audit-20261006-005-self_attacker-state:/var/lib/exo:rw",
+                "/home/sarat/Projects/hivemind-analysis/research/exo/audit:/audit:ro",
+                "/home/sarat/Projects/hivemind-analysis/research/exo/results/exo-audit-20261006-005/self:/evidence:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "exo-audit-20261006-005-self_peers",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Sysctls": {
+                "net.ipv6.conf.all.disable_ipv6": "0",
+                "net.ipv6.conf.default.disable_ipv6": "0"
+            },
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 2147483648,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 2147483648,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ],
+            "Init": true
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/sarat/Projects/hivemind-analysis/research/exo/audit",
+                "Destination": "/audit",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/home/sarat/Projects/hivemind-analysis/research/exo/results/exo-audit-20261006-005/self",
+                "Destination": "/evidence",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "volume",
+                "Name": "exo-audit-20261006-005-self_attacker-state",
+                "Source": "/var/lib/docker/volumes/exo-audit-20261006-005-self_attacker-state/_data",
+                "Destination": "/var/lib/exo",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "exo-attacker",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/opt/exo/.venv/bin:/usr/local/cargo/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+                "PYTHON_VERSION=3.13.16",
+                "PYTHON_SHA256=f4b1bfb3c79b5bb11b8d228a12504163b4c0dab4d679828d8f5f26b6cb6ab35d",
+                "CARGO_HOME=/usr/local/cargo",
+                "RUSTUP_HOME=/usr/local/rustup",
+                "CARGO_BUILD_JOBS=2",
+                "RUSTUP_TOOLCHAIN=nightly",
+                "UV_PROJECT_ENVIRONMENT=/opt/exo/.venv",
+                "UV_LINK_MODE=copy",
+                "EXO_HOME=/var/lib/exo",
+                "EXO_RESOURCES_DIR=/opt/exo/resources",
+                "EXO_DASHBOARD_DIR=/opt/exo/dashboard-assets",
+                "PYTHONUNBUFFERED=1"
+            ],
+            "Cmd": [
+                "--namespace",
+                "exo-audit-20261006-005-self",
+                "--arm",
+                "self",
+                "--seed",
+                "1901",
+                "--timeout",
+                "270"
+            ],
+            "Image": "exo-audit:21a54c5ea0230a3bec1e1a786d200126c7e34ec6",
+            "Volumes": null,
+            "WorkingDir": "/opt/exo",
+            "Entrypoint": [
+                "/opt/exo/.venv/bin/python",
+                "/audit/probe.py"
+            ],
+            "Labels": {
+                "com.docker.compose.config-hash": "8f09c6645a265999de5e2b5475ae6b2b00d818519bf3e9aa279b5107e34b6ccf",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:bf389f1409873365a37bbf19885342778178ad11b1342007ef146fa94c9c3d87",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "exo-audit-20261006-005-self",
+                "com.docker.compose.project.config_files": "/home/sarat/Projects/hivemind-analysis/research/exo/audit/compose.yaml",
+                "com.docker.compose.project.working_dir": "/home/sarat/Projects/hivemind-analysis/research/exo/audit",
+                "com.docker.compose.service": "attacker",
+                "com.docker.compose.version": "5.5.1",
+                "org.opencontainers.image.revision": "21a54c5ea0230a3bec1e1a786d200126c7e34ec6",
+                "org.opencontainers.image.title": "Exo two-peer research image"
+            },
+            "StopTimeout": 10
+        },
+        "NetworkSettings": {
+            "SandboxID": "f3ff16d4d08d32bb30d47f1b2ef56bba64667e37363ec56353b92938f5215933",
+            "SandboxKey": "/var/run/docker/netns/f3ff16d4d08d",
+            "Ports": {},
+            "Networks": {
+                "exo-audit-20261006-005-self_peers": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "exo-audit-20261006-005-self-attacker-1",
+                        "attacker"
+                    ],
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "1ba281ab135d4515d46b4caa95ed7d267ee277679fcd5cb0ddba36844d1f8d3b",
+                    "EndpointID": "78e887034837152d803c19a88161fe80ebf5806f05ed2a9f4b423f6a0ff17d3c",
+                    "Gateway": "",
+                    "IPAddress": "172.18.0.4",
+                    "MacAddress": "16:4b:c8:78:cf:87",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "fd42:6578:6f:1::4",
+                    "GlobalIPv6PrefixLen": 64,
+                    "DNSNames": [
+                        "exo-audit-20261006-005-self-attacker-1",
+                        "attacker",
+                        "de543037dde2",
+                        "exo-attacker"
+                    ]
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:bf389f1409873365a37bbf19885342778178ad11b1342007ef146fa94c9c3d87",
+            "size": 2210,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    },
+    {
+        "Id": "285070c08659787e5f135747d8e5d4e60d21fbbd0cc0f30d4a489281c6af9e89",
+        "Created": "2026-10-06T16:19:33.773028649Z",
+        "Path": "/opt/exo/.venv/bin/exo",
+        "Args": [
+            "--no-worker",
+            "--no-downloads",
+            "--offline",
+            "-v",
+            "--namespace",
+            "exo-audit-20261006-005-self"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1815052,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-06T16:19:33.961101821Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:2f0969602b05b68783314c3c517e55d4b600f83fd9e6e0102e2d6098cb0a62b2",
+        "ResolvConfPath": "/var/lib/docker/containers/285070c08659787e5f135747d8e5d4e60d21fbbd0cc0f30d4a489281c6af9e89/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/285070c08659787e5f135747d8e5d4e60d21fbbd0cc0f30d4a489281c6af9e89/hostname",
+        "HostsPath": "/var/lib/docker/containers/285070c08659787e5f135747d8e5d4e60d21fbbd0cc0f30d4a489281c6af9e89/hosts",
+        "LogPath": "/var/lib/docker/containers/285070c08659787e5f135747d8e5d4e60d21fbbd0cc0f30d4a489281c6af9e89/285070c08659787e5f135747d8e5d4e60d21fbbd0cc0f30d4a489281c6af9e89-json.log",
+        "Name": "/exo-audit-20261006-005-self-honest-a-1",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "exo-audit-20261006-005-self_honest-a-state:/var/lib/exo:rw",
+                "/home/sarat/Projects/hivemind-analysis/research/exo/audit:/audit:ro"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "exo-audit-20261006-005-self_peers",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Sysctls": {
+                "net.ipv6.conf.all.disable_ipv6": "0",
+                "net.ipv6.conf.default.disable_ipv6": "0"
+            },
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 2147483648,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 2147483648,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ],
+            "Init": true
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/sarat/Projects/hivemind-analysis/research/exo/audit",
+                "Destination": "/audit",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "volume",
+                "Name": "exo-audit-20261006-005-self_honest-a-state",
+                "Source": "/var/lib/docker/volumes/exo-audit-20261006-005-self_honest-a-state/_data",
+                "Destination": "/var/lib/exo",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "exo-honest-a",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/opt/exo/.venv/bin:/usr/local/cargo/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+                "PYTHON_VERSION=3.13.16",
+                "PYTHON_SHA256=f4b1bfb3c79b5bb11b8d228a12504163b4c0dab4d679828d8f5f26b6cb6ab35d",
+                "CARGO_HOME=/usr/local/cargo",
+                "RUSTUP_HOME=/usr/local/rustup",
+                "CARGO_BUILD_JOBS=2",
+                "RUSTUP_TOOLCHAIN=nightly",
+                "UV_PROJECT_ENVIRONMENT=/opt/exo/.venv",
+                "UV_LINK_MODE=copy",
+                "EXO_HOME=/var/lib/exo",
+                "EXO_RESOURCES_DIR=/opt/exo/resources",
+                "EXO_DASHBOARD_DIR=/opt/exo/dashboard-assets",
+                "PYTHONUNBUFFERED=1"
+            ],
+            "Cmd": [
+                "--no-worker",
+                "--no-downloads",
+                "--offline",
+                "-v",
+                "--namespace",
+                "exo-audit-20261006-005-self"
+            ],
+            "Image": "exo-audit:21a54c5ea0230a3bec1e1a786d200126c7e34ec6",
+            "Volumes": null,
+            "WorkingDir": "/opt/exo",
+            "Entrypoint": [
+                "/opt/exo/.venv/bin/exo"
+            ],
+            "Labels": {
+                "com.docker.compose.config-hash": "554f575e483278d1c197c66a21a9fc5074bfd7c4d5bee6e3b2e5b004886cede7",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:bf389f1409873365a37bbf19885342778178ad11b1342007ef146fa94c9c3d87",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "exo-audit-20261006-005-self",
+                "com.docker.compose.project.config_files": "/home/sarat/Projects/hivemind-analysis/research/exo/audit/compose.yaml",
+                "com.docker.compose.project.working_dir": "/home/sarat/Projects/hivemind-analysis/research/exo/audit",
+                "com.docker.compose.service": "honest-a",
+                "com.docker.compose.version": "5.5.1",
+                "org.opencontainers.image.revision": "21a54c5ea0230a3bec1e1a786d200126c7e34ec6",
+                "org.opencontainers.image.title": "Exo two-peer research image"
+            },
+            "StopTimeout": 10
+        },
+        "NetworkSettings": {
+            "SandboxID": "8eb81c52492dd5c4f51e2a8e6de27b38ff8e64d392ceb86f1780449cd2ed3020",
+            "SandboxKey": "/var/run/docker/netns/8eb81c52492d",
+            "Ports": {},
+            "Networks": {
+                "exo-audit-20261006-005-self_peers": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "exo-audit-20261006-005-self-honest-a-1",
+                        "honest-a"
+                    ],
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "1ba281ab135d4515d46b4caa95ed7d267ee277679fcd5cb0ddba36844d1f8d3b",
+                    "EndpointID": "bd2cc5f570902b8b211ed1a23a64714641acc03c217b54dda443873aab8da92c",
+                    "Gateway": "",
+                    "IPAddress": "172.18.0.2",
+                    "MacAddress": "be:75:f4:a9:b0:7f",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "fd42:6578:6f:1::2",
+                    "GlobalIPv6PrefixLen": 64,
+                    "DNSNames": [
+                        "exo-audit-20261006-005-self-honest-a-1",
+                        "honest-a",
+                        "285070c08659",
+                        "exo-honest-a"
+                    ]
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:bf389f1409873365a37bbf19885342778178ad11b1342007ef146fa94c9c3d87",
+            "size": 2210,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    },
+    {
+        "Id": "52168bc0a612b2b369cc4ada04de3317a891e23e179f937cae65607056697b1c",
+        "Created": "2026-10-06T16:19:33.771022175Z",
+        "Path": "/opt/exo/.venv/bin/exo",
+        "Args": [
+            "--no-worker",
+            "--no-downloads",
+            "--offline",
+            "-v",
+            "--namespace",
+            "exo-audit-20261006-005-self"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1815137,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-06T16:19:34.200459748Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:2f0969602b05b68783314c3c517e55d4b600f83fd9e6e0102e2d6098cb0a62b2",
+        "ResolvConfPath": "/var/lib/docker/containers/52168bc0a612b2b369cc4ada04de3317a891e23e179f937cae65607056697b1c/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/52168bc0a612b2b369cc4ada04de3317a891e23e179f937cae65607056697b1c/hostname",
+        "HostsPath": "/var/lib/docker/containers/52168bc0a612b2b369cc4ada04de3317a891e23e179f937cae65607056697b1c/hosts",
+        "LogPath": "/var/lib/docker/containers/52168bc0a612b2b369cc4ada04de3317a891e23e179f937cae65607056697b1c/52168bc0a612b2b369cc4ada04de3317a891e23e179f937cae65607056697b1c-json.log",
+        "Name": "/exo-audit-20261006-005-self-honest-b-1",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "exo-audit-20261006-005-self_honest-b-state:/var/lib/exo:rw",
+                "/home/sarat/Projects/hivemind-analysis/research/exo/audit:/audit:ro"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "exo-audit-20261006-005-self_peers",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Sysctls": {
+                "net.ipv6.conf.all.disable_ipv6": "0",
+                "net.ipv6.conf.default.disable_ipv6": "0"
+            },
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 2147483648,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 2147483648,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ],
+            "Init": true
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/sarat/Projects/hivemind-analysis/research/exo/audit",
+                "Destination": "/audit",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "volume",
+                "Name": "exo-audit-20261006-005-self_honest-b-state",
+                "Source": "/var/lib/docker/volumes/exo-audit-20261006-005-self_honest-b-state/_data",
+                "Destination": "/var/lib/exo",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "exo-honest-b",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/opt/exo/.venv/bin:/usr/local/cargo/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+                "PYTHON_VERSION=3.13.16",
+                "PYTHON_SHA256=f4b1bfb3c79b5bb11b8d228a12504163b4c0dab4d679828d8f5f26b6cb6ab35d",
+                "CARGO_HOME=/usr/local/cargo",
+                "RUSTUP_HOME=/usr/local/rustup",
+                "CARGO_BUILD_JOBS=2",
+                "RUSTUP_TOOLCHAIN=nightly",
+                "UV_PROJECT_ENVIRONMENT=/opt/exo/.venv",
+                "UV_LINK_MODE=copy",
+                "EXO_HOME=/var/lib/exo",
+                "EXO_RESOURCES_DIR=/opt/exo/resources",
+                "EXO_DASHBOARD_DIR=/opt/exo/dashboard-assets",
+                "PYTHONUNBUFFERED=1"
+            ],
+            "Cmd": [
+                "--no-worker",
+                "--no-downloads",
+                "--offline",
+                "-v",
+                "--namespace",
+                "exo-audit-20261006-005-self"
+            ],
+            "Image": "exo-audit:21a54c5ea0230a3bec1e1a786d200126c7e34ec6",
+            "Volumes": null,
+            "WorkingDir": "/opt/exo",
+            "Entrypoint": [
+                "/opt/exo/.venv/bin/exo"
+            ],
+            "Labels": {
+                "com.docker.compose.config-hash": "0b0a052b098a40f5acc42f58c4984e995a7a70cf03f8f6d93d593ebde3896308",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:bf389f1409873365a37bbf19885342778178ad11b1342007ef146fa94c9c3d87",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "exo-audit-20261006-005-self",
+                "com.docker.compose.project.config_files": "/home/sarat/Projects/hivemind-analysis/research/exo/audit/compose.yaml",
+                "com.docker.compose.project.working_dir": "/home/sarat/Projects/hivemind-analysis/research/exo/audit",
+                "com.docker.compose.service": "honest-b",
+                "com.docker.compose.version": "5.5.1",
+                "org.opencontainers.image.revision": "21a54c5ea0230a3bec1e1a786d200126c7e34ec6",
+                "org.opencontainers.image.title": "Exo two-peer research image"
+            },
+            "StopTimeout": 10
+        },
+        "NetworkSettings": {
+            "SandboxID": "0b6e4106d466dd2defd663f5a866fa7b78ed789064dbffbe13bd8471eb7e8a29",
+            "SandboxKey": "/var/run/docker/netns/0b6e4106d466",
+            "Ports": {},
+            "Networks": {
+                "exo-audit-20261006-005-self_peers": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "exo-audit-20261006-005-self-honest-b-1",
+                        "honest-b"
+                    ],
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "1ba281ab135d4515d46b4caa95ed7d267ee277679fcd5cb0ddba36844d1f8d3b",
+                    "EndpointID": "6f4368feeb74e9418a19f1b51255e504973a5038905ecc0e1e1f67c9e6d82cc5",
+                    "Gateway": "",
+                    "IPAddress": "172.18.0.3",
+                    "MacAddress": "0a:ff:03:e7:03:0f",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "fd42:6578:6f:1::3",
+                    "GlobalIPv6PrefixLen": 64,
+                    "DNSNames": [
+                        "exo-audit-20261006-005-self-honest-b-1",
+                        "honest-b",
+                        "52168bc0a612",
+                        "exo-honest-b"
+                    ]
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:bf389f1409873365a37bbf19885342778178ad11b1342007ef146fa94c9c3d87",
+            "size": 2210,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]

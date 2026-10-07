@@ -1,0 +1,61 @@
+{
+  "services": {
+    "honest-a": {
+      "build": {
+        "context": "../../..",
+        "dockerfile": "research/exo/two-peer/Dockerfile",
+        "args": {"EXO_REVISION": "${EXO_REVISION:?Run run.py to set the source revision}"}
+      },
+      "image": "${EXO_AUDIT_IMAGE:?Run run.py to set the image}",
+      "pull_policy": "never",
+      "init": true,
+      "hostname": "exo-honest-a",
+      "command": ["--no-worker", "--no-downloads", "--offline", "-v", "--namespace", "${EXO_NAMESPACE:?Run run.py to set the namespace}"],
+      "mem_limit": "${EXO_PEER_MEMORY:-2g}",
+      "memswap_limit": "${EXO_PEER_MEMORY:-2g}",
+      "restart": "no",
+      "stop_grace_period": "10s",
+      "volumes": ["honest-a-state:/var/lib/exo", "./:/audit:ro"],
+      "networks": ["peers"],
+      "sysctls": {"net.ipv6.conf.all.disable_ipv6": "0", "net.ipv6.conf.default.disable_ipv6": "0"}
+    },
+    "honest-b": {
+      "image": "${EXO_AUDIT_IMAGE:?Run run.py to set the image}",
+      "pull_policy": "never",
+      "init": true,
+      "hostname": "exo-honest-b",
+      "command": ["--no-worker", "--no-downloads", "--offline", "-v", "--namespace", "${EXO_NAMESPACE:?Run run.py to set the namespace}"],
+      "mem_limit": "${EXO_PEER_MEMORY:-2g}",
+      "memswap_limit": "${EXO_PEER_MEMORY:-2g}",
+      "restart": "no",
+      "stop_grace_period": "10s",
+      "volumes": ["honest-b-state:/var/lib/exo", "./:/audit:ro"],
+      "networks": ["peers"],
+      "sysctls": {"net.ipv6.conf.all.disable_ipv6": "0", "net.ipv6.conf.default.disable_ipv6": "0"}
+    },
+    "attacker": {
+      "image": "${EXO_AUDIT_IMAGE:?Run run.py to set the image}",
+      "pull_policy": "never",
+      "init": true,
+      "hostname": "exo-attacker",
+      "entrypoint": ["/opt/exo/.venv/bin/python", "/audit/probe.py"],
+      "command": ["--namespace", "${EXO_NAMESPACE}", "--arm", "${EXO_AUDIT_ARM:-baseline}", "--seed", "${EXO_AUDIT_SEED:-1901}", "--timeout", "${EXO_PROBE_TIMEOUT:-180}"],
+      "mem_limit": "${EXO_PEER_MEMORY:-2g}",
+      "memswap_limit": "${EXO_PEER_MEMORY:-2g}",
+      "restart": "no",
+      "stop_grace_period": "10s",
+      "volumes": ["attacker-state:/var/lib/exo", "./:/audit:ro", "${EXO_AUDIT_EVIDENCE:?Run run.py to set the evidence directory}:/evidence"],
+      "networks": ["peers"],
+      "sysctls": {"net.ipv6.conf.all.disable_ipv6": "0", "net.ipv6.conf.default.disable_ipv6": "0"}
+    }
+  },
+  "networks": {
+    "peers": {
+      "driver": "bridge",
+      "internal": true,
+      "enable_ipv6": true,
+      "ipam": {"config": [{"subnet": "${EXO_IPV6_SUBNET:-fd42:6578:6f:1::/64}"}]}
+    }
+  },
+  "volumes": {"honest-a-state": {}, "honest-b-state": {}, "attacker-state": {}}
+}

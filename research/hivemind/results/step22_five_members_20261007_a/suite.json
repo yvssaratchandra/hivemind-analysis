@@ -1,0 +1,17 @@
+{
+  "cases": [
+    {
+      "name": "f1_members5",
+      "mode": "refresh",
+      "minimum": 5,
+      "target": 5,
+      "frequency": 1,
+      "lifetime": 1.085764
+    }
+  ],
+  "seeds": [
+    2211
+  ],
+  "duration": 12.0,
+  "store_delay": 0
+}

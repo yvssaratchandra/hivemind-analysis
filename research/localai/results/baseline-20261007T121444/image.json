@@ -1,0 +1,96 @@
+{
+  "Id": "sha256:258fffca2f459177f1983eb9b31bbdc248b2faac833b094842fc5816a4e762ee",
+  "RepoTags": [
+    "localai/localai:sha-a3d5556"
+  ],
+  "RepoDigests": [
+    "localai/localai@sha256:258fffca2f459177f1983eb9b31bbdc248b2faac833b094842fc5816a4e762ee"
+  ],
+  "Comment": "buildkit.dockerfile.v0",
+  "Created": "2026-10-07T09:30:15.399088549Z",
+  "Config": {
+    "ExposedPorts": {
+      "8080/tcp": {}
+    },
+    "Env": [
+      "PATH=/opt/rocm/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "DEBIAN_FRONTEND=noninteractive",
+      "BUILD_TYPE=",
+      "HEALTHCHECK_ENDPOINT=",
+      "NVIDIA_DRIVER_CAPABILITIES=compute,utility",
+      "NVIDIA_REQUIRE_CUDA=cuda>=.0",
+      "NVIDIA_VISIBLE_DEVICES=all"
+    ],
+    "Entrypoint": [
+      "/entrypoint.sh"
+    ],
+    "Volumes": {
+      "/backends": {},
+      "/configuration": {},
+      "/data": {},
+      "/models": {}
+    },
+    "WorkingDir": "/",
+    "Labels": {
+      "org.opencontainers.image.created": "2026-10-07T09:26:53.548Z",
+      "org.opencontainers.image.description": "LocalAI is the open-source AI engine. Run any model - LLMs, vision, voice, image, video - on any hardware. No GPU required.",
+      "org.opencontainers.image.licenses": "MIT",
+      "org.opencontainers.image.revision": "a3d555653c0cbfd73ab59ab15beab80903e96484",
+      "org.opencontainers.image.source": "https://github.com/mudler/LocalAI",
+      "org.opencontainers.image.title": "LocalAI",
+      "org.opencontainers.image.url": "https://github.com/mudler/LocalAI",
+      "org.opencontainers.image.version": "master"
+    },
+    "Healthcheck": {
+      "Test": [
+        "CMD-SHELL",
+        "/healthcheck.sh"
+      ],
+      "Interval": 60000000000,
+      "Timeout": 10000000000,
+      "StartPeriod": 3600000000000,
+      "Retries": 3
+    }
+  },
+  "Architecture": "amd64",
+  "Os": "linux",
+  "Size": 1198563289,
+  "RootFS": {
+    "Type": "layers",
+    "Layers": [
+      "sha256:d81fb2a7c6ee3be05fdefaa7fd223be219c1ab172083ec1b994c3ecda33ac0a8",
+      "sha256:56c0e36a812c7dee9a6808c0cb0acab50eae25cf258918cb6334732e99bce8c9",
+      "sha256:1ed22c52b01236345bcbc3be876a57d09b8d234877bb6fc1c964fa11041b156f",
+      "sha256:8c5742981066906ca298e0e1da577d07e5ee139af5125a3158777c5e66f2e276",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:c388214728fb61e96792d3a0a2ce146fa90e6431827edd6fdac5b309b6a39308",
+      "sha256:bc68a9f290eccfe7ad1fb411b4e2959c6fb3184b1a97702035d4fe3fe645557c",
+      "sha256:6ac344002fbab9d37b83f939609f6dee16463da9aab72eec16200a81c345f69c",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:d8807d58697627759468fdb80a3a214269947a20de068a01d3d821e1eef8061b"
+    ]
+  },
+  "Metadata": {
+    "LastTagTime": "2026-10-07T12:15:18.303880006Z"
+  },
+  "Descriptor": {
+    "mediaType": "application/vnd.oci.image.index.v1+json",
+    "digest": "sha256:258fffca2f459177f1983eb9b31bbdc248b2faac833b094842fc5816a4e762ee",
+    "size": 647
+  },
+  "Identity": {
+    "Pull": [
+      {
+        "Repository": "docker.io/localai/localai"
+      }
+    ]
+  }
+}

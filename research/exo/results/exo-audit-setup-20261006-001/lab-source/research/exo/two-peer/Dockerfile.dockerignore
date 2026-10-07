@@ -1,0 +1,21 @@
+# The Compose build context is the repository root. Keep the unrelated parent
+# checkout out of the image build context, then allow the Exo source tree.
+*
+!exo
+!exo/**
+
+# Exclude local state and generated files from the Exo checkout.
+exo/.git
+exo/**/.git
+exo/.venv
+exo/**/.venv
+exo/target
+exo/**/target
+exo/build
+exo/**/build
+exo/dist
+exo/**/dist
+exo/**/node_modules
+exo/**/__pycache__
+exo/**/*.pyc
+exo/**/*.pyo

@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "docker",
+    "inspect",
+    "--format",
+    "{{json .State}}",
+    "localai-control-600541ea6e0d-token"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"Status\":\"exited\",\"Running\":false,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":0,\"ExitCode\":1,\"Error\":\"\",\"StartedAt\":\"2026-10-07T14:31:42.507438849Z\",\"FinishedAt\":\"2026-10-07T14:31:42.772835616Z\"}\n",
+  "stderr": ""
+}

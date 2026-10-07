@@ -1,0 +1,54 @@
+{
+  "trials": [
+    {
+      "case": "f1_members5",
+      "seed": 2211,
+      "policy": {
+        "name": "f1_members5",
+        "mode": "refresh",
+        "minimum": 5,
+        "target": 5,
+        "frequency": 1,
+        "lifetime": 1.085764
+      },
+      "duration": 12.0,
+      "x_leads": 9,
+      "all_groups": 9,
+      "honest_verified": 36,
+      "honest_steps": 37,
+      "degraded_steps": 0,
+      "x_ads": 26,
+      "remote_store_requests": 104,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 54,
+        "BEGIN_ALLREDUCE": 36,
+        "GROUP_DISBANDED": 18
+      },
+      "source": "research/hivemind/results/step22_five_members_20261007_a/f1_members5_s2211"
+    }
+  ],
+  "aggregate": [
+    {
+      "case": "f1_members5",
+      "policy": {
+        "name": "f1_members5",
+        "mode": "refresh",
+        "minimum": 5,
+        "target": 5,
+        "frequency": 1,
+        "lifetime": 1.085764
+      },
+      "trials": 1,
+      "duration": 12.0,
+      "x_leads": 9,
+      "all_groups": 9,
+      "honest_verified": 36,
+      "honest_steps": 37,
+      "degraded_steps": 0,
+      "x_ads": 26,
+      "remote_store_requests": 104,
+      "rejected_remote_stores": 0
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "project": "exo-audit-20261006-004-baseline",
+    "containers": [],
+    "networks": [],
+    "volumes": [
+      "exo-audit-20261006-004-baseline_honest-a-state",
+      "exo-audit-20261006-004-baseline_honest-b-state"
+    ]
+  },
+  {
+    "project": "exo-audit-20261006-005-baseline",
+    "containers": [],
+    "networks": [],
+    "volumes": [
+      "exo-audit-20261006-005-baseline_attacker-state",
+      "exo-audit-20261006-005-baseline_honest-a-state",
+      "exo-audit-20261006-005-baseline_honest-b-state"
+    ]
+  },
+  {
+    "project": "exo-audit-20261006-005-self",
+    "containers": [],
+    "networks": [],
+    "volumes": [
+      "exo-audit-20261006-005-self_attacker-state",
+      "exo-audit-20261006-005-self_honest-a-state",
+      "exo-audit-20261006-005-self_honest-b-state"
+    ]
+  },
+  {
+    "project": "exo-audit-20261006-005-forged",
+    "containers": [],
+    "networks": [],
+    "volumes": [
+      "exo-audit-20261006-005-forged_attacker-state",
+      "exo-audit-20261006-005-forged_honest-a-state",
+      "exo-audit-20261006-005-forged_honest-b-state"
+    ]
+  },
+  {
+    "project": "exo-audit-20261006-005-stale-session",
+    "containers": [],
+    "networks": [],
+    "volumes": [
+      "exo-audit-20261006-005-stale-session_attacker-state",
+      "exo-audit-20261006-005-stale-session_honest-a-state",
+      "exo-audit-20261006-005-stale-session_honest-b-state"
+    ]
+  },
+  {
+    "project": "exo-audit-20261006-005-replay",
+    "containers": [],
+    "networks": [],
+    "volumes": [
+      "exo-audit-20261006-005-replay_attacker-state",
+      "exo-audit-20261006-005-replay_honest-a-state",
+      "exo-audit-20261006-005-replay_honest-b-state"
+    ]
+  }
+]

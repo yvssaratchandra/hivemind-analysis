@@ -1,0 +1,115 @@
+{
+  "started": "2026-10-07T14:31:42.232970+00:00",
+  "status": "failed",
+  "label": "dht-token-network-none-diagnostic-20261007T1432",
+  "network": "localai-control-600541ea6e0d",
+  "configuration": {
+    "label": "dht-token-network-none-diagnostic-20261007T1432",
+    "image": "localai/localai:sha-a3d5556",
+    "observer_image": "localai-control-observer:dht-edgevpn034-a3d5556",
+    "memory_mib": 256,
+    "peer_cpus": 0.5,
+    "stage_seconds": 10,
+    "steady_seconds": 50,
+    "departure_seconds": 15,
+    "discovery_timeout": 90,
+    "interval": 3
+  },
+  "resources_before": {
+    "time": "2026-10-07T14:31:42.233363+00:00",
+    "memory_bytes": {
+      "MemTotal": 33186525184,
+      "MemAvailable": 20296552448,
+      "SwapTotal": 33186377728,
+      "SwapFree": 33183789056
+    },
+    "visible_cgroup": {
+      "memory.max": "max",
+      "memory.current": "1777020928",
+      "memory.swap.max": "max",
+      "cpu.max": "max 100000"
+    },
+    "logical_cpus": 16,
+    "workspace_free_bytes": 982404829184,
+    "tools": {
+      "docker": "/usr/local/bin/docker",
+      "go": null,
+      "local-ai": null
+    }
+  },
+  "stages": [],
+  "controller_pids_before": {
+    "pids.max": "512",
+    "pids.current": "49",
+    "pids.events": "max 901"
+  },
+  "randomness": "Fresh token and random peer/service identities; no seed interface",
+  "scope": "Two model-free LocalAI peers, private DHT bootstrap; mDNS also enabled",
+  "observer_effect": "Diagnostic KAD server plus EdgeVPN ledger participant; no LocalAI service/heartbeat",
+  "dht_capture_coverage": "Inbound DHT requests via decoded protobuf hook; no responses or observer outbound requests",
+  "dht_bytes": "Decoded protobuf re-encoding; no exact length-delimited frames or encrypted packets",
+  "dht_discovery_attribution": "mDNS and GossipSub direct bootstrap peers coexist; convergence is not DHT-only proof",
+  "docker_preflight": {
+    "argv": [
+      "docker",
+      "info",
+      "--format",
+      "{{.ServerVersion}}"
+    ],
+    "exit_code": 0,
+    "stdout": "29.8.2\n",
+    "stderr": ""
+  },
+  "source_revision": "a3d555653c0cbfd73ab59ab15beab80903e96484",
+  "image_id": "sha256:258fffca2f459177f1983eb9b31bbdc248b2faac833b094842fc5816a4e762ee",
+  "observer_image_id": "sha256:46013a24a4942bc203a1269008db3d04d2de989bf18bedd6422d8317cc6ec3ba",
+  "instrumentation_sha256": {
+    "run_dht_messages.py": "ec004ef9b1a78fce95bd72c63f72126f3de0acedc85e52926dfe2afadeb2a257",
+    "analyze_dht_messages.py": "a75e1cc4c332068e4ce3e0a2544bdb54a7cea489f7400d88d6d33aa8ae8704aa",
+    "run_control_messages.py": "b6d3ecde2091121ffd7cd2d06be333a9220382715c88f35544e19608990a8d49",
+    "run_baseline.py": "a21f1a9a7cf0b8289c7172a16ddaad9a79f21f14394bc7974dc79a4348202bbd",
+    "control-observer/Dockerfile": "4b6941625c84dd033b81407ee2c65a734a8eecc9def233c605e499229fc03a84",
+    "control-observer/go.mod": "8bcb3913804744146544b07e371c2882e600ef23ab22db255d835bdf69d0eda3",
+    "control-observer/go.sum": "eab1128f30b00f848a40efb4c1c0a712286fafd96177bd60b5b43c9aed9596b1",
+    "control-observer/main.go": "f56055caf32ab1d539385e58ac3cd9a9f6fa2d9924911ef4b1c225c121a60470",
+    "control-observer/mdns_linux.go": "dbde74d17a2af9e040cf525e468e8b33a00fd0a369255623758897b4d61a6feb",
+    "control-observer/main_test.go": "ef1d2673c3c9904efbfe0ce7a52456eef65ab6401b0629ca0f993b6f7f407273",
+    "control-observer/mdns_linux_test.go": "5573c628c2f82cbbef4174d5d11fe789fe20fedebc15799fca7939a6829dae56",
+    "control-observer/dht_capture.go": "4f25841dab769cf3946abf0b103272e54aa04c59b2c66f980637a2f64f9edcb9",
+    "control-observer/dht_capture_test.go": "c77a61903c017f97a57dbcaceceb7819570fdc8b9d907842ee0b0e8ec1e8a423"
+  },
+  "instrumentation_archive": "instrumentation/",
+  "error": "localai-control-600541ea6e0d-token exited or OOM-killed before readiness",
+  "error_type": "RuntimeError",
+  "container_final_states": {},
+  "cleanup": [],
+  "finished": "2026-10-07T14:31:43.825371+00:00",
+  "resources_after": {
+    "time": "2026-10-07T14:31:43.825742+00:00",
+    "memory_bytes": {
+      "MemTotal": 33186525184,
+      "MemAvailable": 20353159168,
+      "SwapTotal": 33186377728,
+      "SwapFree": 33183789056
+    },
+    "visible_cgroup": {
+      "memory.max": "max",
+      "memory.current": "1775955968",
+      "memory.swap.max": "max",
+      "cpu.max": "max 100000"
+    },
+    "logical_cpus": 16,
+    "workspace_free_bytes": 982401421312,
+    "tools": {
+      "docker": "/usr/local/bin/docker",
+      "go": null,
+      "local-ai": null
+    }
+  },
+  "controller_pids_after": {
+    "pids.max": "512",
+    "pids.current": "52",
+    "pids.events": "max 901"
+  },
+  "log_capture_errors": []
+}

@@ -1,0 +1,96 @@
+{
+  "checked_utc": "2026-10-07T12:45:35.031210+00:00",
+  "scope": "Passive public-source adoption assessment. No public swarm joined; no inference requested from third parties.",
+  "assessment": "Independent reports establish some P2P and RPC sharding use. Public evidence does not establish widespread deployment, current large public swarms, or a distributed-user count. The managed NATS/PostgreSQL mode has separate recent deployment evidence.",
+  "overall_repository_metrics": {
+    "stargazers_count": 49419,
+    "forks_count": 4489,
+    "subscribers_count": 298,
+    "pushed_at": "2026-10-07T12:16:00Z",
+    "archived": false
+  },
+  "metrics_collected_utc": "2026-10-07T12:39:59.840781+00:00",
+  "keyword_search_counts": {
+    "p2p_issue_mentions_all": 20,
+    "rpc_command_issue_mentions": 7,
+    "federated_issue_mentions": 11,
+    "managed_issue_mentions": 4
+  },
+  "count_limitations": "Keyword matches overlap, include proposals/security reports and incidental mentions, and miss alternate wording. They are not numbers of users, successful deployments, or active peers. The initial P2P response had only 15 items; p2p_issue_mentions_all contains all 20 returned results.",
+  "evidence": [
+    {
+      "mode": "P2P llama.cpp sharding",
+      "source": "https://github.com/mudler/LocalAI/issues/3410",
+      "date": "2024-08-26",
+      "finding": "A user describes a working heterogeneous ARM/x86 CPU setup with two workers, while reporting a thread-count limit. Historical self-report, not a present-day deployment census.",
+      "raw": "p2p_issue_mentions_all.json"
+    },
+    {
+      "mode": "P2P llama.cpp sharding",
+      "source": "https://github.com/sozercan/k8s-distributed-inference/blob/main/deploy-local-ai.md",
+      "date": "2024-09",
+      "finding": "Independent Kubernetes example uses a shared P2P token and three RPC workers, with GPU memory output after inference. Workers use A100 MIG partitions; this is not evidence of three distinct physical machines or a WAN swarm.",
+      "raw": "k8s_example_repo.json; k8s_example_file_history.json"
+    },
+    {
+      "mode": "P2P llama.cpp sharding",
+      "source": "https://github.com/j4ys0n/local-ai-stack",
+      "date": "2024-10",
+      "finding": "Independent compose stack includes a P2P worker setup and reports prior success. Its author later reports a regression in issue 3968. This is historical implementation/use evidence.",
+      "raw": "stack_example_repo.json; stack_example_readme.json; comments_3968.json"
+    },
+    {
+      "mode": "P2P llama.cpp sharding",
+      "source": "https://github.com/mudler/LocalAI/issues/6174",
+      "date": "2025-09-01",
+      "finding": "GPU user attempts P2P worker installation, reporting a missing backend. Evidence of demand/attempts rather than completed inference.",
+      "raw": "rpc_command_issue_mentions.json"
+    },
+    {
+      "mode": "RPC sharding; P2P discovery not established",
+      "source": "https://github.com/mudler/LocalAI/issues/7355#issuecomment-3648913749",
+      "date": "2025-12-13",
+      "finding": "A user reports distributed inference working in Kubernetes with five Vulkan GPU workers after pinning the backend version. The report does not establish P2P discovery, internet operation, or ongoing production use.",
+      "raw": "comments_7355.json"
+    },
+    {
+      "mode": "Managed NATS/PostgreSQL distribution",
+      "source": "https://github.com/mudler/LocalAI/issues/11814",
+      "date": "2026-09-01",
+      "finding": "Operator reports two registered compute nodes and successful scheduling/inference behind a lightweight frontend. This mode is distinct from P2P sharding.",
+      "raw": "managed_issue_mentions.json; comments_11814.json"
+    },
+    {
+      "mode": "P2P maintenance",
+      "source": "https://github.com/mudler/LocalAI/commit/45b80477369446c77fe9efe61acf647c4c7a0c87",
+      "date": "2026-07-17",
+      "finding": "P2P settings race fix in pinned local history. A maintenance signal, not a deployment count."
+    },
+    {
+      "mode": "Production adopter list",
+      "source": "https://github.com/mudler/LocalAI/blob/a3d555653c0cbfd73ab59ab15beab80903e96484/ADOPTERS.md",
+      "finding": "Two voluntary named production entries; neither description claims P2P sharding. Non-exhaustive list cannot establish zero distributed production users."
+    },
+    {
+      "mode": "Public peer population",
+      "source": "../public-directory-20261007-001/http_checks.json",
+      "date": "2026-10-07T07:06:54Z",
+      "finding": "Official explorer root and /networks returned HTTP 521 in earlier local probes. Public population remains unknown, not zero."
+    }
+  ],
+  "mode_definition_source": "https://localai.io/docs/features/distribute/index.print.html",
+  "official_positioning": "Docs place P2P under ad-hoc/community/experimentation and managed NATS/PostgreSQL under production infrastructure. Positioning is not adoption evidence.",
+  "upstream_commit": "a3d555653c0cbfd73ab59ab15beab80903e96484",
+  "p2p_path_history": {
+    "command": "git -C research/localai/upstream log -6 --format=%H\\ %cI\\ %s -- core/p2p core/cli/worker/worker_p2p.go core/application/p2p.go",
+    "output": "45b80477369446c77fe9efe61acf647c4c7a0c87 2026-07-17T09:02:05+02:00 fix(p2p): serialize access to p2pCtx/p2pCancel (#10839) (#10861)\n5d0b549049d5e060a3fd64a5f5d7f1633823a6c5 2026-05-18T08:02:20+02:00 feat(gallery): verify backend OCI images with keyless cosign (#9823)\n315b634a91001a210e7390210fc2b4b2d7007c93 2026-04-21T11:53:26+02:00 feat: improve CLI error messages with actionable guidance (#8880)\n59108fbe32463d50d4f4dbf485b1d40104e78c55 2026-03-30T00:47:27+02:00 feat: add distributed mode (#9124)\na026277ab98d9f45aa358187a0a8f90141e9ea9c 2026-03-09T17:29:32+01:00 feat(mlx-distributed): add new MLX-distributed backend (#8801)\nc37785b78c21288482ec797e4be0ef6b37190b3c 2025-12-21T19:33:13+01:00 chore(refactor): move logging to common package based on slog (#7668)\n"
+  },
+  "adopters_snapshot": "# Adopters\n\nOrganisations running LocalAI, listed by the people who run it.\n\nIf your organisation uses LocalAI and you are happy to say so publicly, open a\npull request adding a row to the table below. That pull request is how we know\nwe have permission to list you, which is why we do not add anybody ourselves.\n\nYou do not need to be a large company, and you do not need to disclose anything\nsensitive. A sentence on what you use it for is more useful to other readers\nthan a logo.\n\n## How to add yourself\n\n1. Add a row to the table, in alphabetical order.\n2. Use your organisation's usual name and a link to your site.\n3. Say briefly what you use LocalAI for, and whether it is in production.\n4. Open the pull request from an account that makes it plausible you speak for\n   the organisation, or say in the description who you are. We may ask.\n\nTo be removed, open a pull request deleting your row, or email\n[info@localai.io](mailto:info@localai.io). We will not ask why.\n\n## Who is using LocalAI\n\n<!-- Keep alphabetical. Columns: Organisation | What for | Status -->\n\n| Organisation | What they use it for | Status |\n|---|---|---|\n| [solstone](https://solstone.app) | Runs [parakeet.cpp](https://github.com/mudler/parakeet.cpp) on-device as our speech-to-text server. | Production |\n| [walcz.de](https://walcz.de) | Self-hosted appliance for a German B2B consultancy: local-only inference on AMD Strix Halo (gfx1151/ROCm), agents with MCP tools, RAG over an internal knowledge base, and a document/bookkeeping pipeline. | Production |\n| _Your organisation here_ | | |\n\n## What this list is not\n\nThis is not a list of everyone who has ever starred the repository, and it is\nnot a list of the employers of people who have contributed a patch. Both of\nthose are easy to scrape and neither means what a logo wall implies.\n\nThe website shows two separate things, both of which are checkable without\nanybody's permission:\n\n- **Engineers from these companies have contributed code.** Evidence is the\n  commit history plus the employer on that person's public GitHub profile. It\n  is a claim about a person, not about their employer.\n- **These projects integrate LocalAI.** Evidence is a reference to LocalAI in\n  that project's own repository or documentation.\n\nThose two lists live in [`website/data/ecosystem.yaml`](website/data/ecosystem.yaml).\nThis file is the third, stronger thing: organisations that chose to say so.\n",
+  "unresolved": [
+    "Number and fraction of LocalAI users using each distributed mode",
+    "Current active P2P pools and physical host counts",
+    "Present-day successful P2P sharding deployments",
+    "Independent MLX distributed deployment evidence; not established in this check"
+  ],
+  "research_implication": "A bounded local security study is justified by actual feature use and maintained code. Claims of high deployment impact need more operator evidence, or a finding that generalizes to shared components such as llama.cpp RPC or EdgeVPN."
+}

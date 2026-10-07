@@ -1,0 +1,123 @@
+{
+  "cases": [
+    {
+      "name": "stock",
+      "mode": "stock",
+      "minimum": 2
+    },
+    {
+      "name": "passive5",
+      "mode": "passive",
+      "minimum": 4
+    },
+    {
+      "name": "expire125",
+      "mode": "expire",
+      "minimum": 4,
+      "lifetime": 1.25
+    },
+    {
+      "name": "f0p5_m0p05",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 0.5,
+      "lifetime": 2.085764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.05
+    },
+    {
+      "name": "f0p5_m0p5",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 0.5,
+      "lifetime": 2.535764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.5
+    },
+    {
+      "name": "f1_m0p05",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 1,
+      "lifetime": 1.085764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.05
+    },
+    {
+      "name": "f1_m0p5",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 1,
+      "lifetime": 1.535764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.5
+    },
+    {
+      "name": "f2_m0p05",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 2,
+      "lifetime": 0.585764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.05
+    },
+    {
+      "name": "f2_m0p5",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 2,
+      "lifetime": 1.035764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.5
+    },
+    {
+      "name": "f4_m0p05",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 4,
+      "lifetime": 0.335764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.05
+    },
+    {
+      "name": "f4_m0p5",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 4,
+      "lifetime": 0.785764,
+      "latency_guard": 0.03576375961303711,
+      "spare": 0.5
+    },
+    {
+      "name": "f1_d125",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 1,
+      "lifetime": 1.25
+    },
+    {
+      "name": "f2_d125",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 2,
+      "lifetime": 1.25
+    },
+    {
+      "name": "f4_d125",
+      "mode": "refresh",
+      "minimum": 4,
+      "frequency": 4,
+      "lifetime": 1.25
+    }
+  ],
+  "seeds": [
+    2202,
+    2203
+  ],
+  "patterns": [
+    "staggered",
+    "bursty"
+  ],
+  "timeout": 12,
+  "store_delay": 0
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "case": "f0p5_safe",
+    "writes": 15,
+    "accepted_writes": 15,
+    "active_probes": 292,
+    "probe_count": 292,
+    "active_after_initial_expiry": 271,
+    "probes_after_initial_expiry": 271,
+    "remote_receipts": 60,
+    "receipt_median": 0.05347847938537598,
+    "receipt_p95": 0.0550229549407959,
+    "receipt_max": 0.05527091026306152,
+    "interior_holder_gaps": 0,
+    "max_interior_gap": 0.0
+  },
+  {
+    "case": "f2_safe",
+    "writes": 60,
+    "accepted_writes": 60,
+    "active_probes": 295,
+    "probe_count": 295,
+    "active_after_initial_expiry": 289,
+    "probes_after_initial_expiry": 289,
+    "remote_receipts": 240,
+    "receipt_median": 0.05360007286071777,
+    "receipt_p95": 0.05748724937438965,
+    "receipt_max": 0.07123827934265137,
+    "interior_holder_gaps": 0,
+    "max_interior_gap": 0.0
+  },
+  {
+    "case": "f2_too_short",
+    "writes": 60,
+    "accepted_writes": 60,
+    "active_probes": 80,
+    "probe_count": 295,
+    "active_after_initial_expiry": 78,
+    "probes_after_initial_expiry": 293,
+    "remote_receipts": 240,
+    "receipt_median": 0.05279040336608887,
+    "receipt_p95": 0.05523538589477539,
+    "receipt_max": 0.0648050308227539,
+    "interior_holder_gaps": 236,
+    "max_interior_gap": 0.3740577697753906
+  }
+]

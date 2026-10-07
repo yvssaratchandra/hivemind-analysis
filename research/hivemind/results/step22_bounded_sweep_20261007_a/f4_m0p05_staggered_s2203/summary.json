@@ -1,0 +1,191 @@
+{
+  "case": "f4_m0p05",
+  "seed": 2203,
+  "pattern": "staggered",
+  "x_completed_lead": true,
+  "x_groups": {
+    "cb021d535f4ab550d7f07a9854f7aaddfdd5ba2f": [
+      "12D3KooWJR9a9XJEaoFJLMsV3qBxWV5bz3jwwLQjHv31MAczV79C",
+      "12D3KooWAEMzWAFupdmmUj3iQLWmM976tu8yPh1v2TnBEwqVisus",
+      "12D3KooWM29kwLmLJ5fFYrrs8d1wdoczHMjGZLhAkPHuEaDEapBv",
+      "12D3KooWMFPyoLAvGxKyEmo26kAuxd5XQPdfLZ1b7m3Cgzht5hrk"
+    ]
+  },
+  "x_verified_lead": true,
+  "tensor_checks": {
+    "H3": {
+      "expected": 2.0,
+      "actual": [
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "correct": true
+    },
+    "H4": {
+      "expected": 2.0,
+      "actual": [
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "correct": true
+    },
+    "H1": {
+      "expected": 2.0,
+      "actual": [
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "correct": true
+    },
+    "H0": {
+      "expected": 2.0,
+      "actual": [
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "correct": true
+    },
+    "X": {
+      "expected": 5.0,
+      "actual": [
+        5.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "correct": true
+    },
+    "H5": {
+      "expected": 5.0,
+      "actual": [
+        5.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "correct": true
+    },
+    "H6": {
+      "expected": 5.0,
+      "actual": [
+        5.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "correct": true
+    },
+    "H2": {
+      "expected": 5.0,
+      "actual": [
+        5.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "correct": true
+    }
+  },
+  "x_group_sizes": [
+    4
+  ],
+  "x_outcome": {
+    "status": "completed",
+    "roster": [
+      "12D3KooWJR9a9XJEaoFJLMsV3qBxWV5bz3jwwLQjHv31MAczV79C",
+      "12D3KooWAEMzWAFupdmmUj3iQLWmM976tu8yPh1v2TnBEwqVisus",
+      "12D3KooWM29kwLmLJ5fFYrrs8d1wdoczHMjGZLhAkPHuEaDEapBv",
+      "12D3KooWMFPyoLAvGxKyEmo26kAuxd5XQPdfLZ1b7m3Cgzht5hrk"
+    ]
+  },
+  "outcomes": {
+    "H3": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWKQYASmYrJjMm3EqLjcZAtgaKnUrf3V9RawNp7R75oFiz",
+        "12D3KooW9wV1w8hGpmf2QFS44o1Z9yxYJEVFDtPvmEeeSWF3GEK1",
+        "12D3KooWQySTeJ97mmRsz6nFKhZbSnaHV34PdkHQ4zvvE9JrM2MY",
+        "12D3KooWJYe7oaeRzkmzBrWVSKXaZ98nXnp4uXPQ56mJb8gsm8o4"
+      ]
+    },
+    "H4": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWKQYASmYrJjMm3EqLjcZAtgaKnUrf3V9RawNp7R75oFiz",
+        "12D3KooW9wV1w8hGpmf2QFS44o1Z9yxYJEVFDtPvmEeeSWF3GEK1",
+        "12D3KooWQySTeJ97mmRsz6nFKhZbSnaHV34PdkHQ4zvvE9JrM2MY",
+        "12D3KooWJYe7oaeRzkmzBrWVSKXaZ98nXnp4uXPQ56mJb8gsm8o4"
+      ]
+    },
+    "H1": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWKQYASmYrJjMm3EqLjcZAtgaKnUrf3V9RawNp7R75oFiz",
+        "12D3KooW9wV1w8hGpmf2QFS44o1Z9yxYJEVFDtPvmEeeSWF3GEK1",
+        "12D3KooWQySTeJ97mmRsz6nFKhZbSnaHV34PdkHQ4zvvE9JrM2MY",
+        "12D3KooWJYe7oaeRzkmzBrWVSKXaZ98nXnp4uXPQ56mJb8gsm8o4"
+      ]
+    },
+    "H0": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWKQYASmYrJjMm3EqLjcZAtgaKnUrf3V9RawNp7R75oFiz",
+        "12D3KooW9wV1w8hGpmf2QFS44o1Z9yxYJEVFDtPvmEeeSWF3GEK1",
+        "12D3KooWQySTeJ97mmRsz6nFKhZbSnaHV34PdkHQ4zvvE9JrM2MY",
+        "12D3KooWJYe7oaeRzkmzBrWVSKXaZ98nXnp4uXPQ56mJb8gsm8o4"
+      ]
+    },
+    "X": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWJR9a9XJEaoFJLMsV3qBxWV5bz3jwwLQjHv31MAczV79C",
+        "12D3KooWAEMzWAFupdmmUj3iQLWmM976tu8yPh1v2TnBEwqVisus",
+        "12D3KooWM29kwLmLJ5fFYrrs8d1wdoczHMjGZLhAkPHuEaDEapBv",
+        "12D3KooWMFPyoLAvGxKyEmo26kAuxd5XQPdfLZ1b7m3Cgzht5hrk"
+      ]
+    },
+    "H5": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWJR9a9XJEaoFJLMsV3qBxWV5bz3jwwLQjHv31MAczV79C",
+        "12D3KooWAEMzWAFupdmmUj3iQLWmM976tu8yPh1v2TnBEwqVisus",
+        "12D3KooWM29kwLmLJ5fFYrrs8d1wdoczHMjGZLhAkPHuEaDEapBv",
+        "12D3KooWMFPyoLAvGxKyEmo26kAuxd5XQPdfLZ1b7m3Cgzht5hrk"
+      ]
+    },
+    "H6": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWJR9a9XJEaoFJLMsV3qBxWV5bz3jwwLQjHv31MAczV79C",
+        "12D3KooWAEMzWAFupdmmUj3iQLWmM976tu8yPh1v2TnBEwqVisus",
+        "12D3KooWM29kwLmLJ5fFYrrs8d1wdoczHMjGZLhAkPHuEaDEapBv",
+        "12D3KooWMFPyoLAvGxKyEmo26kAuxd5XQPdfLZ1b7m3Cgzht5hrk"
+      ]
+    },
+    "H2": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWJR9a9XJEaoFJLMsV3qBxWV5bz3jwwLQjHv31MAczV79C",
+        "12D3KooWAEMzWAFupdmmUj3iQLWmM976tu8yPh1v2TnBEwqVisus",
+        "12D3KooWM29kwLmLJ5fFYrrs8d1wdoczHMjGZLhAkPHuEaDEapBv",
+        "12D3KooWMFPyoLAvGxKyEmo26kAuxd5XQPdfLZ1b7m3Cgzht5hrk"
+      ]
+    }
+  },
+  "honest_completed": 7,
+  "x_ad_attempts": 6,
+  "elapsed": 3.1881630229981965,
+  "expected_unused_x_cancel": false,
+  "hard_cancelled": [],
+  "stage_leaks": [],
+  "tensor_errors": [],
+  "forbidden": 0
+}

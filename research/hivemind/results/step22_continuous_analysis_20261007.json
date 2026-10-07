@@ -1,0 +1,720 @@
+{
+  "trials": [
+    {
+      "case": "expire125",
+      "seed": 2211,
+      "policy": {
+        "name": "expire125",
+        "mode": "expire",
+        "minimum": 4,
+        "lifetime": 1.25
+      },
+      "duration": 30.0,
+      "x_leads": 34,
+      "all_groups": 34,
+      "honest_verified": 102,
+      "honest_steps": 104,
+      "degraded_steps": 0,
+      "x_ads": 45,
+      "remote_store_requests": 180,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 123,
+        "BEGIN_ALLREDUCE": 102,
+        "NOT_LOOKING_FOR_GROUP": 6,
+        "GROUP_DISBANDED": 21
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/expire125_s2211"
+    },
+    {
+      "case": "expire125",
+      "seed": 2212,
+      "policy": {
+        "name": "expire125",
+        "mode": "expire",
+        "minimum": 4,
+        "lifetime": 1.25
+      },
+      "duration": 30.0,
+      "x_leads": 35,
+      "all_groups": 37,
+      "honest_verified": 113,
+      "honest_steps": 113,
+      "degraded_steps": 0,
+      "x_ads": 47,
+      "remote_store_requests": 188,
+      "rejected_remote_stores": 1,
+      "follower_reply_codes": {
+        "ACCEPTED": 109,
+        "BEGIN_ALLREDUCE": 105,
+        "GROUP_DISBANDED": 4,
+        "NOT_LOOKING_FOR_GROUP": 1
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/expire125_s2212"
+    },
+    {
+      "case": "expire125",
+      "seed": 2213,
+      "policy": {
+        "name": "expire125",
+        "mode": "expire",
+        "minimum": 4,
+        "lifetime": 1.25
+      },
+      "duration": 30.0,
+      "x_leads": 37,
+      "all_groups": 37,
+      "honest_verified": 111,
+      "honest_steps": 112,
+      "degraded_steps": 0,
+      "x_ads": 51,
+      "remote_store_requests": 255,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 128,
+        "BEGIN_ALLREDUCE": 111,
+        "GROUP_DISBANDED": 17,
+        "NOT_LOOKING_FOR_GROUP": 4
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/expire125_s2213"
+    },
+    {
+      "case": "f0p5_m0p05",
+      "seed": 2211,
+      "policy": {
+        "name": "f0p5_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 0.5,
+        "lifetime": 2.085764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 30.0,
+      "x_leads": 34,
+      "all_groups": 35,
+      "honest_verified": 104,
+      "honest_steps": 104,
+      "degraded_steps": 0,
+      "x_ads": 40,
+      "remote_store_requests": 160,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 106,
+        "BEGIN_ALLREDUCE": 102,
+        "NOT_LOOKING_FOR_GROUP": 3,
+        "GROUP_DISBANDED": 4
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/f0p5_m0p05_s2211"
+    },
+    {
+      "case": "f0p5_m0p05",
+      "seed": 2212,
+      "policy": {
+        "name": "f0p5_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 0.5,
+        "lifetime": 2.085764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 30.0,
+      "x_leads": 33,
+      "all_groups": 36,
+      "honest_verified": 113,
+      "honest_steps": 115,
+      "degraded_steps": 1,
+      "x_ads": 40,
+      "remote_store_requests": 160,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 107,
+        "BEGIN_ALLREDUCE": 102,
+        "NOT_LOOKING_FOR_GROUP": 4,
+        "GROUP_DISBANDED": 5
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/f0p5_m0p05_s2212"
+    },
+    {
+      "case": "f0p5_m0p05",
+      "seed": 2213,
+      "policy": {
+        "name": "f0p5_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 0.5,
+        "lifetime": 2.085764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 30.0,
+      "x_leads": 37,
+      "all_groups": 37,
+      "honest_verified": 111,
+      "honest_steps": 111,
+      "degraded_steps": 0,
+      "x_ads": 37,
+      "remote_store_requests": 185,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 111,
+        "BEGIN_ALLREDUCE": 111,
+        "NOT_LOOKING_FOR_GROUP": 1
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/f0p5_m0p05_s2213"
+    },
+    {
+      "case": "f1_m0p05",
+      "seed": 2211,
+      "policy": {
+        "name": "f1_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 1,
+        "lifetime": 1.085764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 30.0,
+      "x_leads": 33,
+      "all_groups": 34,
+      "honest_verified": 104,
+      "honest_steps": 104,
+      "degraded_steps": 1,
+      "x_ads": 54,
+      "remote_store_requests": 216,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 122,
+        "BEGIN_ALLREDUCE": 102,
+        "GROUP_DISBANDED": 20,
+        "NOT_LOOKING_FOR_GROUP": 6
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/f1_m0p05_s2211"
+    },
+    {
+      "case": "f1_m0p05",
+      "seed": 2212,
+      "policy": {
+        "name": "f1_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 1,
+        "lifetime": 1.085764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 30.0,
+      "x_leads": 27,
+      "all_groups": 33,
+      "honest_verified": 105,
+      "honest_steps": 107,
+      "degraded_steps": 1,
+      "x_ads": 42,
+      "remote_store_requests": 168,
+      "rejected_remote_stores": 1,
+      "follower_reply_codes": {
+        "ACCEPTED": 97,
+        "BEGIN_ALLREDUCE": 84,
+        "GROUP_DISBANDED": 13,
+        "NOT_LOOKING_FOR_GROUP": 2
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/f1_m0p05_s2212"
+    },
+    {
+      "case": "f1_m0p05",
+      "seed": 2213,
+      "policy": {
+        "name": "f1_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 1,
+        "lifetime": 1.085764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 30.0,
+      "x_leads": 36,
+      "all_groups": 36,
+      "honest_verified": 111,
+      "honest_steps": 111,
+      "degraded_steps": 1,
+      "x_ads": 42,
+      "remote_store_requests": 210,
+      "rejected_remote_stores": 2,
+      "follower_reply_codes": {
+        "ACCEPTED": 117,
+        "BEGIN_ALLREDUCE": 111,
+        "GROUP_DISBANDED": 6,
+        "NOT_LOOKING_FOR_GROUP": 1
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/f1_m0p05_s2213"
+    },
+    {
+      "case": "f2_m0p05",
+      "seed": 2211,
+      "policy": {
+        "name": "f2_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 2,
+        "lifetime": 0.585764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 30.0,
+      "x_leads": 34,
+      "all_groups": 34,
+      "honest_verified": 102,
+      "honest_steps": 103,
+      "degraded_steps": 0,
+      "x_ads": 90,
+      "remote_store_requests": 360,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 173,
+        "BEGIN_ALLREDUCE": 102,
+        "GROUP_DISBANDED": 71,
+        "NOT_LOOKING_FOR_GROUP": 1
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/f2_m0p05_s2211"
+    },
+    {
+      "case": "f2_m0p05",
+      "seed": 2212,
+      "policy": {
+        "name": "f2_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 2,
+        "lifetime": 0.585764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 30.0,
+      "x_leads": 33,
+      "all_groups": 35,
+      "honest_verified": 107,
+      "honest_steps": 109,
+      "degraded_steps": 0,
+      "x_ads": 85,
+      "remote_store_requests": 340,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 189,
+        "GROUP_DISBANDED": 90,
+        "BEGIN_ALLREDUCE": 99,
+        "NOT_LOOKING_FOR_GROUP": 6
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/f2_m0p05_s2212"
+    },
+    {
+      "case": "f2_m0p05",
+      "seed": 2213,
+      "policy": {
+        "name": "f2_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 2,
+        "lifetime": 0.585764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 30.0,
+      "x_leads": 37,
+      "all_groups": 37,
+      "honest_verified": 113,
+      "honest_steps": 114,
+      "degraded_steps": 1,
+      "x_ads": 67,
+      "remote_store_requests": 335,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 142,
+        "BEGIN_ALLREDUCE": 114,
+        "NOT_LOOKING_FOR_GROUP": 8,
+        "GROUP_DISBANDED": 28
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/f2_m0p05_s2213"
+    },
+    {
+      "case": "f4_m0p05",
+      "seed": 2211,
+      "policy": {
+        "name": "f4_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 4,
+        "lifetime": 0.335764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 30.0,
+      "x_leads": 35,
+      "all_groups": 35,
+      "honest_verified": 105,
+      "honest_steps": 105,
+      "degraded_steps": 0,
+      "x_ads": 120,
+      "remote_store_requests": 480,
+      "rejected_remote_stores": 4,
+      "follower_reply_codes": {
+        "ACCEPTED": 198,
+        "GROUP_DISBANDED": 93,
+        "BEGIN_ALLREDUCE": 105,
+        "NOT_LOOKING_FOR_GROUP": 7
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/f4_m0p05_s2211"
+    },
+    {
+      "case": "f4_m0p05",
+      "seed": 2212,
+      "policy": {
+        "name": "f4_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 4,
+        "lifetime": 0.335764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 30.0,
+      "x_leads": 34,
+      "all_groups": 37,
+      "honest_verified": 112,
+      "honest_steps": 112,
+      "degraded_steps": 0,
+      "x_ads": 159,
+      "remote_store_requests": 636,
+      "rejected_remote_stores": 2,
+      "follower_reply_codes": {
+        "ACCEPTED": 225,
+        "GROUP_DISBANDED": 123,
+        "BEGIN_ALLREDUCE": 102,
+        "NOT_LOOKING_FOR_GROUP": 5
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/f4_m0p05_s2212"
+    },
+    {
+      "case": "f4_m0p05",
+      "seed": 2213,
+      "policy": {
+        "name": "f4_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 4,
+        "lifetime": 0.335764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "duration": 30.0,
+      "x_leads": 38,
+      "all_groups": 38,
+      "honest_verified": 114,
+      "honest_steps": 114,
+      "degraded_steps": 0,
+      "x_ads": 114,
+      "remote_store_requests": 570,
+      "rejected_remote_stores": 2,
+      "follower_reply_codes": {
+        "ACCEPTED": 198,
+        "BEGIN_ALLREDUCE": 114,
+        "GROUP_DISBANDED": 84,
+        "NOT_LOOKING_FOR_GROUP": 3
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/f4_m0p05_s2213"
+    },
+    {
+      "case": "passive5",
+      "seed": 2211,
+      "policy": {
+        "name": "passive5",
+        "mode": "passive",
+        "minimum": 4
+      },
+      "duration": 30.0,
+      "x_leads": 24,
+      "all_groups": 32,
+      "honest_verified": 102,
+      "honest_steps": 102,
+      "degraded_steps": 0,
+      "x_ads": 27,
+      "remote_store_requests": 108,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 74,
+        "BEGIN_ALLREDUCE": 72,
+        "GROUP_DISBANDED": 2
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/passive5_s2211"
+    },
+    {
+      "case": "passive5",
+      "seed": 2212,
+      "policy": {
+        "name": "passive5",
+        "mode": "passive",
+        "minimum": 4
+      },
+      "duration": 30.0,
+      "x_leads": 27,
+      "all_groups": 35,
+      "honest_verified": 113,
+      "honest_steps": 114,
+      "degraded_steps": 0,
+      "x_ads": 31,
+      "remote_store_requests": 124,
+      "rejected_remote_stores": 4,
+      "follower_reply_codes": {
+        "ACCEPTED": 83,
+        "BEGIN_ALLREDUCE": 81,
+        "NOT_LOOKING_FOR_GROUP": 4,
+        "GROUP_DISBANDED": 2
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/passive5_s2212"
+    },
+    {
+      "case": "passive5",
+      "seed": 2213,
+      "policy": {
+        "name": "passive5",
+        "mode": "passive",
+        "minimum": 4
+      },
+      "duration": 30.0,
+      "x_leads": 24,
+      "all_groups": 34,
+      "honest_verified": 112,
+      "honest_steps": 112,
+      "degraded_steps": 0,
+      "x_ads": 28,
+      "remote_store_requests": 140,
+      "rejected_remote_stores": 5,
+      "follower_reply_codes": {
+        "ACCEPTED": 72,
+        "BEGIN_ALLREDUCE": 72,
+        "NOT_LOOKING_FOR_GROUP": 2
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/passive5_s2213"
+    },
+    {
+      "case": "stock4",
+      "seed": 2211,
+      "policy": {
+        "name": "stock4",
+        "mode": "stock",
+        "minimum": 4
+      },
+      "duration": 30.0,
+      "x_leads": 22,
+      "all_groups": 35,
+      "honest_verified": 105,
+      "honest_steps": 105,
+      "degraded_steps": 0,
+      "x_ads": 38,
+      "remote_store_requests": 152,
+      "rejected_remote_stores": 1,
+      "follower_reply_codes": {
+        "ACCEPTED": 66,
+        "BEGIN_ALLREDUCE": 66,
+        "NOT_LOOKING_FOR_GROUP": 2
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/stock4_s2211"
+    },
+    {
+      "case": "stock4",
+      "seed": 2212,
+      "policy": {
+        "name": "stock4",
+        "mode": "stock",
+        "minimum": 4
+      },
+      "duration": 30.0,
+      "x_leads": 21,
+      "all_groups": 39,
+      "honest_verified": 117,
+      "honest_steps": 117,
+      "degraded_steps": 0,
+      "x_ads": 38,
+      "remote_store_requests": 152,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 64,
+        "BEGIN_ALLREDUCE": 63,
+        "NOT_LOOKING_FOR_GROUP": 2,
+        "GROUP_DISBANDED": 1
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/stock4_s2212"
+    },
+    {
+      "case": "stock4",
+      "seed": 2213,
+      "policy": {
+        "name": "stock4",
+        "mode": "stock",
+        "minimum": 4
+      },
+      "duration": 30.0,
+      "x_leads": 24,
+      "all_groups": 39,
+      "honest_verified": 117,
+      "honest_steps": 117,
+      "degraded_steps": 0,
+      "x_ads": 39,
+      "remote_store_requests": 195,
+      "rejected_remote_stores": 0,
+      "follower_reply_codes": {
+        "ACCEPTED": 72,
+        "BEGIN_ALLREDUCE": 72,
+        "NOT_LOOKING_FOR_GROUP": 1
+      },
+      "source": "research/hivemind/results/step22_continuous_20261007_a/stock4_s2213"
+    }
+  ],
+  "aggregate": [
+    {
+      "case": "expire125",
+      "policy": {
+        "name": "expire125",
+        "mode": "expire",
+        "minimum": 4,
+        "lifetime": 1.25
+      },
+      "trials": 3,
+      "duration": 90.0,
+      "x_leads": 106,
+      "all_groups": 108,
+      "honest_verified": 326,
+      "honest_steps": 329,
+      "degraded_steps": 0,
+      "x_ads": 143,
+      "remote_store_requests": 623,
+      "rejected_remote_stores": 1
+    },
+    {
+      "case": "f0p5_m0p05",
+      "policy": {
+        "name": "f0p5_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 0.5,
+        "lifetime": 2.085764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "trials": 3,
+      "duration": 90.0,
+      "x_leads": 104,
+      "all_groups": 108,
+      "honest_verified": 328,
+      "honest_steps": 330,
+      "degraded_steps": 1,
+      "x_ads": 117,
+      "remote_store_requests": 505,
+      "rejected_remote_stores": 0
+    },
+    {
+      "case": "f1_m0p05",
+      "policy": {
+        "name": "f1_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 1,
+        "lifetime": 1.085764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "trials": 3,
+      "duration": 90.0,
+      "x_leads": 96,
+      "all_groups": 103,
+      "honest_verified": 320,
+      "honest_steps": 322,
+      "degraded_steps": 3,
+      "x_ads": 138,
+      "remote_store_requests": 594,
+      "rejected_remote_stores": 3
+    },
+    {
+      "case": "f2_m0p05",
+      "policy": {
+        "name": "f2_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 2,
+        "lifetime": 0.585764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "trials": 3,
+      "duration": 90.0,
+      "x_leads": 104,
+      "all_groups": 106,
+      "honest_verified": 322,
+      "honest_steps": 326,
+      "degraded_steps": 1,
+      "x_ads": 242,
+      "remote_store_requests": 1035,
+      "rejected_remote_stores": 0
+    },
+    {
+      "case": "f4_m0p05",
+      "policy": {
+        "name": "f4_m0p05",
+        "mode": "refresh",
+        "minimum": 4,
+        "frequency": 4,
+        "lifetime": 0.335764,
+        "latency_guard": 0.03576375961303711,
+        "spare": 0.05
+      },
+      "trials": 3,
+      "duration": 90.0,
+      "x_leads": 107,
+      "all_groups": 110,
+      "honest_verified": 331,
+      "honest_steps": 331,
+      "degraded_steps": 0,
+      "x_ads": 393,
+      "remote_store_requests": 1686,
+      "rejected_remote_stores": 8
+    },
+    {
+      "case": "passive5",
+      "policy": {
+        "name": "passive5",
+        "mode": "passive",
+        "minimum": 4
+      },
+      "trials": 3,
+      "duration": 90.0,
+      "x_leads": 75,
+      "all_groups": 101,
+      "honest_verified": 327,
+      "honest_steps": 328,
+      "degraded_steps": 0,
+      "x_ads": 86,
+      "remote_store_requests": 372,
+      "rejected_remote_stores": 9
+    },
+    {
+      "case": "stock4",
+      "policy": {
+        "name": "stock4",
+        "mode": "stock",
+        "minimum": 4
+      },
+      "trials": 3,
+      "duration": 90.0,
+      "x_leads": 67,
+      "all_groups": 113,
+      "honest_verified": 339,
+      "honest_steps": 339,
+      "degraded_steps": 0,
+      "x_ads": 115,
+      "remote_store_requests": 499,
+      "rejected_remote_stores": 1
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "run_status": "passed",
+  "label": "dht-messages-private-20261007T1433",
+  "capture_first": "2026-10-07T14:32:31.578848+00:00",
+  "capture_last": "2026-10-07T14:35:09.881678+00:00",
+  "event_counts": {
+    "packet_capture_started": 1,
+    "observer_started": 1,
+    "listen_address": 4,
+    "mdns_packet": 90,
+    "peer_connection": 6,
+    "dht_message": 108,
+    "gossip_message": 58,
+    "observer_stopping": 1
+  },
+  "dht_message_types": {
+    "FIND_NODE": 50,
+    "ADD_PROVIDER": 29,
+    "GET_PROVIDERS": 29
+  },
+  "dht_directions_and_types": {
+    "inbound_request:FIND_NODE": 50,
+    "inbound_request:ADD_PROVIDER": 29,
+    "inbound_request:GET_PROVIDERS": 29
+  },
+  "dht_capture_fidelity": {
+    "decoded_protobuf_message_reencoded_by_hook": 108
+  },
+  "phase_events": {
+    "bootstrap": {
+      "packet_capture_started": 1,
+      "observer_started": 1,
+      "listen_address": 2,
+      "mdns_packet": 41,
+      "peer_connection": 1,
+      "dht_message": 10,
+      "gossip_message": 6
+    },
+    "join-advertisement": {
+      "mdns_packet": 26,
+      "peer_connection": 1,
+      "dht_message": 29,
+      "gossip_message": 16
+    },
+    "steady-maintenance": {
+      "gossip_message": 22,
+      "dht_message": 33,
+      "mdns_packet": 6
+    },
+    "peer-departure": {
+      "peer_connection": 1,
+      "dht_message": 9,
+      "gossip_message": 3
+    },
+    "peer-rejoin": {
+      "dht_message": 27,
+      "mdns_packet": 17,
+      "peer_connection": 1,
+      "gossip_message": 11
+    },
+    "shutdown": {
+      "peer_connection": 2,
+      "observer_stopping": 1,
+      "listen_address": 2
+    }
+  },
+  "phase_dht": {
+    "bootstrap": {
+      "inbound_request:FIND_NODE": 6,
+      "inbound_request:ADD_PROVIDER": 2,
+      "inbound_request:GET_PROVIDERS": 2
+    },
+    "join-advertisement": {
+      "inbound_request:FIND_NODE": 13,
+      "inbound_request:ADD_PROVIDER": 8,
+      "inbound_request:GET_PROVIDERS": 8
+    },
+    "steady-maintenance": {
+      "inbound_request:FIND_NODE": 11,
+      "inbound_request:ADD_PROVIDER": 11,
+      "inbound_request:GET_PROVIDERS": 11
+    },
+    "peer-departure": {
+      "inbound_request:FIND_NODE": 5,
+      "inbound_request:ADD_PROVIDER": 2,
+      "inbound_request:GET_PROVIDERS": 2
+    },
+    "peer-rejoin": {
+      "inbound_request:FIND_NODE": 15,
+      "inbound_request:ADD_PROVIDER": 6,
+      "inbound_request:GET_PROVIDERS": 6
+    }
+  },
+  "dht_remote_peers": [
+    "12D3KooWDcn2FsxWWFe3MGurNHNWKSmMuPqiBoKzEGbLsiPFbbhF",
+    "12D3KooWLEavAh3D12pmf4UZermmguPgLh5o6xDY1eqKuiL9jW22",
+    "12D3KooWLVudnNy9QvDGb8jX5WuCZK4gAgG3q6pi1inodbrj9QaQ"
+  ],
+  "dht_distinct_keys": [
+    "261e77f40944b2953c73b01174283b5becd181ba3d302da75f73ad408f62e676",
+    "7bca3d66a976feb75eaacc8659337d5134fa36b367458481bbf1e2d8a8a0881b",
+    "7ff450eee5e86b06b4b9421e9dbb5f00a9f5325f3bc9cba971f94b1ca82780d3",
+    "87ba090fe74e8279d81a82692c5388424fb59763fde385fc55167057f6524013",
+    "8f27cca02e28fd3b91694d2a1cf0c81620f4c8739e5334ac9cc4e96de304c04c",
+    "9dc0f13f56a5d36459f7e80b5d6a438db87531f57bf067853660ce1246bac6bd",
+    "a21ad155a8e09eb7af4604e265cc0ef55c43afad04b7e7700006979a0f4c3bbc",
+    "cf22eec1a2f45672a44a4a914e2ef6d50843fdcb97db3266f81fe765a7d5b948",
+    "d23e9fcf2741ef5bcec9ed7221d753cd3ee640c7f4972ed798c8258baa5231ba",
+    "e23c8fac98ac2e53f2a4c3c6827814f18454427112aebb656c33185b617fe40e"
+  ],
+  "dht_examples": {
+    "FIND_NODE": {
+      "observer_line": 23,
+      "phase": "bootstrap",
+      "message": {
+        "capture_fidelity": "decoded_protobuf_message_reencoded_by_hook",
+        "category": "dht_rpc",
+        "closer_peers": [],
+        "direction": "inbound_request",
+        "event": "dht_message",
+        "event_id": "dht-1",
+        "from_peer_id": "12D3KooWLEavAh3D12pmf4UZermmguPgLh5o6xDY1eqKuiL9jW22",
+        "key_base64": "ACQIARIg/djPy82zcr2ecROX4+rF5KiPY4tPbDAuf+iIaW/bYms=",
+        "key_hex": "002408011220fdd8cfcbcdb372bd9e711397e3eac5e4a88f638b4f6c302e7fe888696fdb626b",
+        "key_sha256": "cf22eec1a2f45672a44a4a914e2ef6d50843fdcb97db3266f81fe765a7d5b948",
+        "message_type": "FIND_NODE",
+        "message_type_code": 4,
+        "observer_peer_id": "12D3KooWSuH4mKBT8veyTfwjLSaBCMuSNkL6B5zTkCTQFNVZ2CE6",
+        "protobuf_body_base64": "CAQSJgAkCAESIP3Yz8vNs3K9nnETl+PqxeSoj2OLT2wwLn/oiGlv22JrUAE=",
+        "protobuf_body_sha256": "4282fce1eadb53e8274a41e5c67fa186992740d4ac4090d7743be95177c98684",
+        "protobuf_body_size_bytes": 44,
+        "protocol_id": "/ipfs/kad/1.0.0",
+        "provider_peers": [],
+        "remote_multiaddr": "/ip4/172.18.0.3/tcp/4001",
+        "schema": "localai-control-observer/v1",
+        "timestamp_utc": "2026-10-07T14:32:32.749931402Z",
+        "to_peer_id": "12D3KooWSuH4mKBT8veyTfwjLSaBCMuSNkL6B5zTkCTQFNVZ2CE6"
+      }
+    },
+    "ADD_PROVIDER": {
+      "observer_line": 52,
+      "phase": "bootstrap",
+      "message": {
+        "capture_fidelity": "decoded_protobuf_message_reencoded_by_hook",
+        "category": "dht_rpc",
+        "closer_peers": [],
+        "direction": "inbound_request",
+        "event": "dht_message",
+        "event_id": "dht-6",
+        "from_peer_id": "12D3KooWLEavAh3D12pmf4UZermmguPgLh5o6xDY1eqKuiL9jW22",
+        "key_base64": "EiBkfXfdKLzpOfGSo0sVQ2AJvCcMz7YP3/Ol3k/P70nYPw==",
+        "key_hex": "1220647d77dd28bce939f192a34b15436009bc270ccfb60fdff3a5de4fcfef49d83f",
+        "key_sha256": "87ba090fe74e8279d81a82692c5388424fb59763fde385fc55167057f6524013",
+        "message_type": "ADD_PROVIDER",
+        "message_type_code": 2,
+        "observer_peer_id": "12D3KooWSuH4mKBT8veyTfwjLSaBCMuSNkL6B5zTkCTQFNVZ2CE6",
+        "protobuf_body_base64": "CAISIhIgZH133Si86TnxkqNLFUNgCbwnDM+2D9/zpd5Pz+9J2D9KPAomACQIARIgmsk5QcR/3069Gj2LUqUSOVqvMC7A0nWjuluXWeu9Q38SCAR/AAABBg+hEggErBIAAwYPoVAB",
+        "protobuf_body_sha256": "6f51347d99b3147e85f8831a7320dbba9d11d23d33b5e91eb3daf741eff889bf",
+        "protobuf_body_size_bytes": 102,
+        "protocol_id": "/ipfs/kad/1.0.0",
+        "provider_peers": [
+          {
+            "addrs": [
+              "/ip4/127.0.0.1/tcp/4001",
+              "/ip4/172.18.0.3/tcp/4001"
+            ],
+            "connection_type": "NOT_CONNECTED",
+            "peer_id": "12D3KooWLEavAh3D12pmf4UZermmguPgLh5o6xDY1eqKuiL9jW22"
+          }
+        ],
+        "remote_multiaddr": "/ip4/172.18.0.3/tcp/4001",
+        "schema": "localai-control-observer/v1",
+        "timestamp_utc": "2026-10-07T14:32:38.839462344Z",
+        "to_peer_id": "12D3KooWSuH4mKBT8veyTfwjLSaBCMuSNkL6B5zTkCTQFNVZ2CE6"
+      }
+    },
+    "GET_PROVIDERS": {
+      "observer_line": 53,
+      "phase": "bootstrap",
+      "message": {
+        "capture_fidelity": "decoded_protobuf_message_reencoded_by_hook",
+        "category": "dht_rpc",
+        "closer_peers": [],
+        "direction": "inbound_request",
+        "event": "dht_message",
+        "event_id": "dht-7",
+        "from_peer_id": "12D3KooWLEavAh3D12pmf4UZermmguPgLh5o6xDY1eqKuiL9jW22",
+        "key_base64": "EiBkfXfdKLzpOfGSo0sVQ2AJvCcMz7YP3/Ol3k/P70nYPw==",
+        "key_hex": "1220647d77dd28bce939f192a34b15436009bc270ccfb60fdff3a5de4fcfef49d83f",
+        "key_sha256": "87ba090fe74e8279d81a82692c5388424fb59763fde385fc55167057f6524013",
+        "message_type": "GET_PROVIDERS",
+        "message_type_code": 3,
+        "observer_peer_id": "12D3KooWSuH4mKBT8veyTfwjLSaBCMuSNkL6B5zTkCTQFNVZ2CE6",
+        "protobuf_body_base64": "CAMSIhIgZH133Si86TnxkqNLFUNgCbwnDM+2D9/zpd5Pz+9J2D9QAQ==",
+        "protobuf_body_sha256": "1f32bce07f34b9986adb51dc6c9eabec1f3ffc46595ff482e0f011a18853b53c",
+        "protobuf_body_size_bytes": 40,
+        "protocol_id": "/ipfs/kad/1.0.0",
+        "provider_peers": [],
+        "remote_multiaddr": "/ip4/172.18.0.3/tcp/4001",
+        "schema": "localai-control-observer/v1",
+        "timestamp_utc": "2026-10-07T14:32:38.839634747Z",
+        "to_peer_id": "12D3KooWSuH4mKBT8veyTfwjLSaBCMuSNkL6B5zTkCTQFNVZ2CE6"
+      }
+    }
+  },
+  "ledger_bucket_snapshot_observations": {
+    "healthcheck": 58,
+    "localai-control-e26330e950f1_federated": 58,
+    "services": 58,
+    "shared_state": 36
+  },
+  "integrity_errors": [],
+  "dht_rpc_errors": [],
+  "all_expected_discovery_requests_observed": true,
+  "maximum_sampled_docker_memory_bytes": {
+    "localai-control-e26330e950f1-p01": 77814824,
+    "localai-control-e26330e950f1-observer": 30953963,
+    "localai-control-e26330e950f1-p02": 71544340
+  },
+  "lowest_host_mem_available_bytes": 19891589120,
+  "limitations": [
+    "Counts cover the diagnostic endpoint only; requests/replies are distinct records, not packet counts.",
+    "Inbound requests are captured before handler validation; receipt alone does not prove provider storage or reply acceptance.",
+    "Inbound-hook requests are decoded and re-encoded; replies and exact encrypted/length-delimited frames are not captured.",
+    "LocalAI mDNS and GossipSub bootstrap direct peers remain enabled; convergence is not DHT-only evidence.",
+    "The forced-server diagnostic bootstrap is a lab role; LocalAI peers use the unmodified automatic DHT mode.",
+    "No model, inference, public swarm, WAN delay or provider-expiry interval is tested."
+  ]
+}

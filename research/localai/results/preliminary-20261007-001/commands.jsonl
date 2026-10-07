@@ -1,0 +1,1 @@
+{"time": "2026-10-07T11:08:48.162972+00:00", "argv": ["docker", "info", "--format", "{{json .ServerVersion}}"], "exit_code": 1, "stdout": "\"\"\n", "stderr": "permission denied while trying to connect to the docker API at unix:///var/run/docker.sock\n"}

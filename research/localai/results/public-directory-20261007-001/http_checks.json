@@ -1,0 +1,97 @@
+[
+  {
+    "url": "https://localai.io/",
+    "started_utc": "2026-10-07T07:06:54.731711+00:00",
+    "status": 200,
+    "final_url": "https://localai.io/",
+    "headers": {
+      "Connection": "close",
+      "Content-Length": "38176",
+      "Server": "GitHub.com",
+      "Content-Type": "text/html; charset=utf-8",
+      "Last-Modified": "Wed, 07 Oct 2026 06:29:50 GMT",
+      "Access-Control-Allow-Origin": "*",
+      "ETag": "\"6ac5e6de-9520\"",
+      "expires": "Wed, 07 Oct 2026 07:16:53 GMT",
+      "Cache-Control": "max-age=600",
+      "x-proxy-cache": "MISS",
+      "X-GitHub-Request-Id": "BEB0:2BCA81:2E8B43:2F2323:6AC5EF8D",
+      "x-github-edge-region": "fra",
+      "Accept-Ranges": "bytes",
+      "Age": "0",
+      "Date": "Wed, 07 Oct 2026 07:06:53 GMT",
+      "Via": "1.1 varnish",
+      "X-Served-By": "cache-cph2320041-CPH",
+      "X-Cache": "MISS",
+      "X-Cache-Hits": "0",
+      "X-Timer": "S1791356814.599026,VS0,VE154",
+      "Vary": "Accept-Encoding",
+      "X-Fastly-Request-ID": "df2a7a1adbbc8b078cc264c9115a8251a7211b69"
+    },
+    "body_truncated": false,
+    "body_excerpt": "<!doctype html><html lang=en><head><meta name=generator content=\"Hugo 0.166.0\"><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><title>LocalAI \u00b7 Make AI run on every machine</title><meta name=description content=\"LocalAI is the open source AI engine. Run any model, LLMs, vision, voice, image and video, on any hardware. No GPU required.\"><meta name=author content=\"Ettore Di Giacinto\"><link rel=canonical href=https://localai.io/><meta property=\"og:type\" content=\"website\"><meta property=\"og:site_name\" content=\"LocalAI\"><meta property=\"og:title\" content=\"Make AI run on every machine\"><meta property=\"og:description\" content=\"LocalAI is the open source AI engine. Run any model, LLMs, vision, voice, image and video, on any hardware. No GPU required.\"><meta property=\"og:url\" content=\"https://localai.io/\"><meta property=\"og:image\" content=\"https://localai.io/img/logo-full.png\"><meta name=twitter:card content=\"summary_large_image\"><meta name=twitter:site content=\"@LocalAI_API\"><link rel=icon href=/img/logo-mark.png><link rel=preload as=font type=font/woff2 href=/fonts/sora-700.woff2 crossorigin><link rel=preload as=font type=font/woff2 href=/fonts/geist-mono.woff2 crossorigin><link rel=stylesheet href=/css/site.css></head><body><div class=prog><i id=pbar></i></div><canvas id=field aria-hidden=true></canvas><header class=top><a class=brand href=/><img src=/img/logo-mark.png alt> <span>LocalAI</span></a><nav><a href=/#localai>LocalAI</a>\n<a href=/#senses>Senses</a>\n<a href=/#made>Made with it</a>\n<a href=/engines/>Engines</a>\n<a href=/#apex>APEX</a>\n<a href=/blog/>Blog</a>\n<a href=/docs/>Docs</a></nav><div class=topright><a class=pill href=https://github.com/mudler/LocalAI>&#9733; 49,392</a>\n<a class=go-btn href=/#start>Install</a></div></header><main id=top><section class=\"hero navy\"><div class=shell><div class=hero__grid><div><p class=\"kicker fd\" style=margin-top:0>Open source \u00b7 MIT \u00b7 v4.8.0</p><h1><u><b>Make AI run on</b></u><u><b><s>ev"
+  },
+  {
+    "url": "https://explorer.localai.io/",
+    "started_utc": "2026-10-07T07:06:54.734945+00:00",
+    "status": 521,
+    "final_url": "https://explorer.localai.io/",
+    "headers": {
+      "Date": "Wed, 07 Oct 2026 07:06:53 GMT",
+      "Content-Type": "text/plain; charset=UTF-8",
+      "Content-Length": "16",
+      "Connection": "close",
+      "Cache-Control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Expires": "Thu, 01 Jan 1970 00:00:01 GMT",
+      "Referrer-Policy": "same-origin",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Server": "cloudflare",
+      "CF-RAY": "a46b10d508d2bd8a-CPH",
+      "alt-svc": "h3=\":443\"; ma=86400"
+    },
+    "body_truncated": false,
+    "body_excerpt": "error code: 521\n"
+  },
+  {
+    "url": "https://explorer.localai.io/networks",
+    "started_utc": "2026-10-07T07:06:54.735588+00:00",
+    "status": 521,
+    "final_url": "https://explorer.localai.io/networks",
+    "headers": {
+      "Date": "Wed, 07 Oct 2026 07:06:53 GMT",
+      "Content-Type": "text/plain; charset=UTF-8",
+      "Content-Length": "16",
+      "Connection": "close",
+      "Cache-Control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Expires": "Thu, 01 Jan 1970 00:00:01 GMT",
+      "Referrer-Policy": "same-origin",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Server": "cloudflare",
+      "CF-RAY": "a46b10d4fb73afc8-CPH",
+      "alt-svc": "h3=\":443\"; ma=86400"
+    },
+    "body_truncated": false,
+    "body_excerpt": "error code: 521\n"
+  },
+  {
+    "url": "https://demo.localai.io/",
+    "started_utc": "2026-10-07T07:06:54.736038+00:00",
+    "status": 530,
+    "final_url": "https://demo.localai.io/",
+    "headers": {
+      "Date": "Wed, 07 Oct 2026 07:06:53 GMT",
+      "Content-Type": "text/plain; charset=UTF-8",
+      "Content-Length": "17",
+      "Connection": "close",
+      "Cache-Control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Expires": "Thu, 01 Jan 1970 00:00:01 GMT",
+      "Referrer-Policy": "same-origin",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Server": "cloudflare",
+      "CF-RAY": "a46b10d508f325cf-CPH",
+      "alt-svc": "h3=\":443\"; ma=86400"
+    },
+    "body_truncated": false,
+    "body_excerpt": "error code: 1033\n"
+  }
+]

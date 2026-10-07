@@ -1,0 +1,43 @@
+[
+  {
+    "Name": "localai-control-600b987d09c8",
+    "Id": "5157fe8ac1460eb93f5738c1b0f6c8f567037ea27ff33ed84cfb0656ba8dd7cf",
+    "Created": "2026-10-07T15:34:37.201876155+02:00",
+    "Scope": "local",
+    "Driver": "bridge",
+    "EnableIPv4": true,
+    "EnableIPv6": false,
+    "IPAM": {
+      "Driver": "default",
+      "Options": {},
+      "Config": [
+        {
+          "Subnet": "172.18.0.0/16",
+          "Gateway": "172.18.0.1"
+        }
+      ]
+    },
+    "Internal": true,
+    "Attachable": false,
+    "Ingress": false,
+    "ConfigFrom": {
+      "Network": ""
+    },
+    "ConfigOnly": false,
+    "Options": {},
+    "Labels": {
+      "localai-research": "localai-control-600b987d09c8"
+    },
+    "Containers": {},
+    "Status": {
+      "IPAM": {
+        "Subnets": {
+          "172.18.0.0/16": {
+            "IPsInUse": 3,
+            "DynamicIPsAvailable": 65533
+          }
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "acks": 1,
+  "control": {
+    "arm": "self",
+    "available_bytes": 136164352,
+    "marker_event_id": "9c991977-7899-5433-b850-a61e729b64a8",
+    "origin": "1819a27e-42df-51e2-acbd-9ee7d1062fc5",
+    "origin_idx": 0,
+    "seed": 1901,
+    "session": {
+      "election_clock": 0,
+      "master_node_id": "6f2d06a700e57f66cdda43a487626dc0"
+    },
+    "target_node_id": "79128499e4f7585d0bc8821ea8a80dc2"
+  },
+  "marker_event_id": "9c991977-7899-5433-b850-a61e729b64a8",
+  "publications": 1,
+  "status": "published-and-observed",
+  "type": "done"
+}

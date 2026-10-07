@@ -1,0 +1,37 @@
+{"timestamp": "2026-10-07T13:34:37.260986+00:00", "phase": "bootstrap", "action": "begin"}
+{"timestamp": "2026-10-07T13:34:37.507834+00:00", "phase": "bootstrap", "action": "peer_started", "host": "control-peer-01", "container": "localai-control-600b987d09c8-p01"}
+{"timestamp": "2026-10-07T13:34:39.259403+00:00", "phase": "bootstrap", "action": "log_capture_started", "container": "localai-control-600b987d09c8-p01", "file": "peer-01.log", "transport": "Docker Unix socket HTTP logs; no extra CLI process"}
+{"timestamp": "2026-10-07T13:34:40.243988+00:00", "phase": "bootstrap", "action": "log_capture_started", "container": "localai-control-600b987d09c8-observer", "file": "observer.jsonl", "transport": "Docker Unix socket HTTP logs; no extra CLI process"}
+{"timestamp": "2026-10-07T13:34:40.244155+00:00", "phase": "bootstrap", "action": "observer_started", "container": "localai-control-600b987d09c8-observer"}
+{"timestamp": "2026-10-07T13:34:40.244262+00:00", "phase": "bootstrap", "action": "begin", "hosts": ["control-peer-01"], "seconds": 8}
+{"timestamp": "2026-10-07T13:34:49.942528+00:00", "phase": "bootstrap", "action": "witness_membership_match", "expected_count": 1, "seconds": 9.698201887000323}
+{"timestamp": "2026-10-07T13:35:06.461973+00:00", "phase": "bootstrap", "action": "end", "service_peer_count": 1, "first_witness_match_seconds": 9.698201887000323, "elapsed_seconds": 24.20933743400019, "final_witness_match": true, "witnesses_are_not_all_peers": true, "all_peer_membership_match": true}
+{"timestamp": "2026-10-07T13:35:06.462470+00:00", "phase": "join-2", "action": "begin", "new_peer_count": 1}
+{"timestamp": "2026-10-07T13:35:07.031898+00:00", "phase": "join-2", "action": "peer_started", "host": "control-peer-02", "container": "localai-control-600b987d09c8-p02"}
+{"timestamp": "2026-10-07T13:35:09.032492+00:00", "phase": "join-2", "action": "log_capture_started", "container": "localai-control-600b987d09c8-p02", "file": "peer-02.log", "transport": "Docker Unix socket HTTP logs; no extra CLI process"}
+{"timestamp": "2026-10-07T13:35:09.545320+00:00", "phase": "join-2", "action": "begin", "hosts": ["control-peer-01", "control-peer-02"], "seconds": 8}
+{"timestamp": "2026-10-07T13:35:18.948420+00:00", "phase": "join-2", "action": "witness_membership_match", "expected_count": 2, "seconds": 9.402911670999856}
+{"timestamp": "2026-10-07T13:35:35.558434+00:00", "phase": "join-2", "action": "end", "service_peer_count": 2, "first_witness_match_seconds": 9.402911670999856, "elapsed_seconds": 24.081911519999267, "final_witness_match": true, "witnesses_are_not_all_peers": true, "all_peer_membership_match": true}
+{"timestamp": "2026-10-07T13:35:35.559097+00:00", "phase": "join-4", "action": "begin", "new_peer_count": 2}
+{"timestamp": "2026-10-07T13:35:36.315882+00:00", "phase": "join-4", "action": "peer_started", "host": "control-peer-03", "container": "localai-control-600b987d09c8-p03"}
+{"timestamp": "2026-10-07T13:35:36.335178+00:00", "phase": "join-4", "action": "peer_started", "host": "control-peer-04", "container": "localai-control-600b987d09c8-p04"}
+{"timestamp": "2026-10-07T13:35:37.909294+00:00", "phase": "join-4", "action": "log_capture_started", "container": "localai-control-600b987d09c8-p03", "file": "peer-03.log", "transport": "Docker Unix socket HTTP logs; no extra CLI process"}
+{"timestamp": "2026-10-07T13:35:37.923776+00:00", "phase": "join-4", "action": "log_capture_started", "container": "localai-control-600b987d09c8-p04", "file": "peer-04.log", "transport": "Docker Unix socket HTTP logs; no extra CLI process"}
+{"timestamp": "2026-10-07T13:35:38.405691+00:00", "phase": "join-4", "action": "begin", "hosts": ["control-peer-01", "control-peer-02", "control-peer-03", "control-peer-04"], "seconds": 8}
+{"timestamp": "2026-10-07T13:35:47.963936+00:00", "phase": "join-4", "action": "witness_membership_match", "expected_count": 4, "seconds": 9.557926530000259}
+{"timestamp": "2026-10-07T13:36:04.548953+00:00", "phase": "join-4", "action": "end", "service_peer_count": 4, "first_witness_match_seconds": 9.557926530000259, "elapsed_seconds": 24.14039004999995, "final_witness_match": true, "witnesses_are_not_all_peers": true, "all_peer_membership_match": true}
+{"timestamp": "2026-10-07T13:36:04.549530+00:00", "phase": "steady-maintenance", "action": "begin", "hosts": ["control-peer-01", "control-peer-02", "control-peer-03", "control-peer-04"], "seconds": 15}
+{"timestamp": "2026-10-07T13:36:06.613448+00:00", "phase": "steady-maintenance", "action": "witness_membership_match", "expected_count": 4, "seconds": 2.063799879999351}
+{"timestamp": "2026-10-07T13:36:30.511320+00:00", "phase": "steady-maintenance", "action": "end", "service_peer_count": 4, "first_witness_match_seconds": 2.063799879999351, "elapsed_seconds": 24.053499593000197, "final_witness_match": true, "witnesses_are_not_all_peers": true, "all_peer_membership_match": true}
+{"timestamp": "2026-10-07T13:36:30.512189+00:00", "phase": "service-routing", "action": "begin"}
+{"timestamp": "2026-10-07T13:36:30.933502+00:00", "phase": "service-routing", "action": "log_capture_started", "container": "localai-control-600b987d09c8-gateway", "file": "gateway.log", "transport": "Docker Unix socket HTTP logs; no extra CLI process"}
+{"timestamp": "2026-10-07T13:36:41.261903+00:00", "phase": "service-routing", "action": "end", "passed": true}
+{"timestamp": "2026-10-07T13:36:41.262000+00:00", "phase": "peer-departure", "action": "begin", "host": "control-peer-04"}
+{"timestamp": "2026-10-07T13:36:41.262065+00:00", "phase": "peer-departure", "action": "peer_kill", "host": "control-peer-04", "signal": "SIGKILL"}
+{"timestamp": "2026-10-07T13:36:41.538708+00:00", "phase": "peer-departure", "action": "begin", "hosts": ["control-peer-01", "control-peer-02", "control-peer-03"], "seconds": 55}
+{"timestamp": "2026-10-07T13:36:58.464455+00:00", "phase": "peer-departure", "action": "witness_membership_match", "expected_count": 3, "seconds": 16.92558538600042}
+{"timestamp": "2026-10-07T13:37:40.120314+00:00", "phase": "peer-departure", "action": "end", "service_peer_count": 3, "first_witness_match_seconds": 16.92558538600042, "elapsed_seconds": 58.58140311600073, "final_witness_match": true, "witnesses_are_not_all_peers": true}
+{"timestamp": "2026-10-07T13:37:40.121442+00:00", "phase": "peer-rejoin", "action": "begin", "host": "control-peer-04"}
+{"timestamp": "2026-10-07T13:37:40.121550+00:00", "phase": "peer-rejoin", "action": "peer_restart", "host": "control-peer-04"}
+{"timestamp": "2026-10-07T13:37:42.554926+00:00", "phase": "shutdown", "action": "begin"}
+{"timestamp": "2026-10-07T13:37:48.707552+00:00", "phase": "shutdown", "action": "end"}

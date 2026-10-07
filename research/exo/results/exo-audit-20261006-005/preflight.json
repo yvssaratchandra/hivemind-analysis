@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-10-06T16:18:37.797595+00:00",
+  "source_revision": "21a54c5ea0230a3bec1e1a786d200126c7e34ec6",
+  "docker": "/usr/local/bin/docker",
+  "compose_version": "5.5.1",
+  "engine_version": "\"29.8.2\"",
+  "available_host_memory_bytes": 20183543808,
+  "initial_available_memory_budget_bytes": 8589934592,
+  "memory_budget_is_unmeasured": true,
+  "memory_note": "Budget build and peer runtime separately. Caps are not reservations. /proc/meminfo may describe the host rather than a session's cgroup.",
+  "free_disk_bytes": 993294999552,
+  "host_cpu_count": 16,
+  "blockers": [],
+  "session_cgroup_memory": {
+    "memory.max": "max",
+    "memory.current": "759492608"
+  },
+  "live_runtime_available": true
+}

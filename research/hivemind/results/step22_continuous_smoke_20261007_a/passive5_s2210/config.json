@@ -1,0 +1,38 @@
+{
+  "case": {
+    "name": "passive5",
+    "mode": "passive",
+    "minimum": 4
+  },
+  "seed": 2210,
+  "duration": 12.0,
+  "timeout": 12,
+  "initial_offsets": {
+    "X": 1.3965530249492772,
+    "H0": 2.1802231773100846,
+    "H1": 0.3070691305190837,
+    "H2": 1.1659458942643417,
+    "H3": 1.1057925023002801,
+    "H4": 2.165096812567731,
+    "H5": 2.683469728425375,
+    "H6": 2.6746556052894332
+  },
+  "training_delay": "lognormal mean 1.5s CV 0.6, clipped [0.1,4]",
+  "attacker_reentry": 0.05,
+  "honest_min": 2,
+  "target": 4,
+  "honest_ad_lifetime": 5,
+  "store_delay": 0,
+  "tensor_size": 128,
+  "allreduce_timeout": 6,
+  "peer_ids": {
+    "X": "12D3KooWNmbKkpUFE4GFzYfgz6ij89bSkB8ScVidaJk2mt2X3jEi",
+    "H0": "12D3KooWN66hLnWjm9hJ1eqsfyPE6qZZaCvWv9fNXVuwJGqpYS2t",
+    "H1": "12D3KooWN83ECTV47WWXReCxXYL5HcCji8Mf6qwiejr4ohSVFeKW",
+    "H2": "12D3KooWP4bo7NcC43vbLtaPyzWKRSiJJofhb81EvFMUjS4krcVr",
+    "H3": "12D3KooWCaP13epe2DCv1HXbBEvk7cWbhpk3fnvVoX2JrCh1ZVi5",
+    "H4": "12D3KooWJQvTakjvk6mszBFt9Cf9yHmpLg6fgUV67PJEMDUXh1Rg",
+    "H5": "12D3KooWEACr9eM9yU8RYtzr7HAKBa86swxMT5S2FubZSnfLuQDv",
+    "H6": "12D3KooWNFdrDZ33NhLLQafpmwka4fKKJS5UrepbLtbQFDqekpEX"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "akash": {
+    "registry_records": 1855,
+    "reported_online": 60,
+    "reported_online_with_gpu_models": 32
+  },
+  "chutes": {
+    "registered_entries": 256,
+    "synced_at_min": "2025-03-18T23:18:53.019564",
+    "synced_at_max": "2026-10-02T18:06:14.322898"
+  },
+  "limitations": "Registry responses, not direct peer liveness or inference tests. Golem registry DNS failed; Gensyn JavaScript asset fetch returned HTTP 403."
+}

@@ -1,0 +1,58 @@
+{
+  "arm": "forged",
+  "status": "observed",
+  "observations": {
+    "outcome": "accepted",
+    "marker_is_synthetic": true,
+    "event_id": "a79291a6-4535-55e0-a69d-550cdfa03af3",
+    "target_node_id": "96fe02efa8aba6023324db7bf2abd318",
+    "publisher_node_id": "cf043c2aa6646a510dc10fdfa631f9b5",
+    "expected_available_bytes": 136164352,
+    "per_service_marker_matches": {
+      "honest-a": [],
+      "honest-b": [],
+      "attacker": [
+        0
+      ]
+    },
+    "indexed_occurrences": [
+      0
+    ],
+    "state_observations": {
+      "honest-a": {
+        "before_bytes": null,
+        "after_bytes": 136164352,
+        "matches_after": true
+      },
+      "honest-b": {
+        "before_bytes": null,
+        "after_bytes": 136164352,
+        "matches_after": true
+      }
+    },
+    "reasons": []
+  },
+  "probe_done": {
+    "acks": 1,
+    "control": {
+      "arm": "forged",
+      "available_bytes": 136164352,
+      "marker_event_id": "a79291a6-4535-55e0-a69d-550cdfa03af3",
+      "origin": "45de28af-0cab-5890-a1ed-af9fc6e85b81",
+      "origin_idx": 0,
+      "seed": 1901,
+      "session": {
+        "election_clock": 0,
+        "master_node_id": "96fe02efa8aba6023324db7bf2abd318"
+      },
+      "target_node_id": "96fe02efa8aba6023324db7bf2abd318"
+    },
+    "marker_event_id": "a79291a6-4535-55e0-a69d-550cdfa03af3",
+    "publications": 1,
+    "status": "published-and-observed",
+    "type": "done"
+  },
+  "session_unchanged": true,
+  "honest_identities_unchanged": true,
+  "security_vulnerability_validated": false
+}

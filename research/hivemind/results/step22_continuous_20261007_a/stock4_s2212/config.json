@@ -1,0 +1,38 @@
+{
+  "case": {
+    "name": "stock4",
+    "mode": "stock",
+    "minimum": 4
+  },
+  "seed": 2212,
+  "duration": 30.0,
+  "timeout": 12,
+  "initial_offsets": {
+    "X": 2.63377545645623,
+    "H0": 1.541162854805663,
+    "H1": 0.5970858985993633,
+    "H2": 0.6051432883123133,
+    "H3": 1.0697434987584713,
+    "H4": 2.2065524624406425,
+    "H5": 1.8825313395561438,
+    "H6": 1.8867450338011322
+  },
+  "training_delay": "lognormal mean 1.5s CV 0.6, clipped [0.1,4]",
+  "attacker_reentry": 0.05,
+  "honest_min": 2,
+  "target": 4,
+  "honest_ad_lifetime": 5,
+  "store_delay": 0,
+  "tensor_size": 128,
+  "allreduce_timeout": 6,
+  "peer_ids": {
+    "X": "12D3KooWHYh7649LveBDs6JQMg6NSCxzQfs7JUX64pEKzuaCGZ9Y",
+    "H0": "12D3KooWJ8DxfY9HBicjyWtuzxWtbnx98iQfdYJVjYyfHy1PX8ri",
+    "H1": "12D3KooWB4uPfBJxgLrC2oM5nxV1whoFoG5MWhhfV95ZvJGjUXxp",
+    "H2": "12D3KooWBHinndFHAeHvXy7PTCtEu3dRqh2KkmGQ1NwqnqvXKYGr",
+    "H3": "12D3KooW9vExS55HkzkPEJMUo7ySzhoeyy85ocENdMhBxEL3Lk5e",
+    "H4": "12D3KooWQvWa2ab3k8wZwT3wbZkaYjDmV5kmhxsz7kj9pk5qiyFe",
+    "H5": "12D3KooWSUcnJcgBVcZnkPh3GNQ4Di6qPzB5pQtLYPX5VsgiWe6R",
+    "H6": "12D3KooWRQJ5ds8cBjg2ra4pRrYHCLUG2yUhSqXziN5d4wt52Qw3"
+  }
+}

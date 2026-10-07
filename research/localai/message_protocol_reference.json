@@ -1,0 +1,290 @@
+{
+  "title": "LocalAI P2P federation control-record reference",
+  "purpose": "Source-derived checklist for interpreting the model-free, multi-node federation capture. These entries are expected protocol records and control actions, not messages observed in the runtime experiment.",
+  "source_pin": {
+    "localai_repository": "mudler/LocalAI",
+    "localai_commit": "a3d555653c0cbfd73ab59ab15beab80903e96484",
+    "edgevpn_module": "github.com/mudler/edgevpn v0.34.0",
+    "scope": "Federated discovery and service-advertisement lifecycle. DHT is disabled in the planned local capture, so DHT traffic is not expected. Model sharding RPC and actual inference are outside this catalogue."
+  },
+  "evidence_status": {
+    "kind": "source_inference",
+    "runtime_status": "pending_capture_review",
+    "notes": [
+      "Schedules below are configured intervals or expiry thresholds from source. EdgeVPN implements Announce and ledger synchronization with an exponential backoff ticker (5 second initial interval, randomized, configured maximum), so intervals are not exact packet timings.",
+      "The current harness profile disables DHT and leaves mDNS enabled; this states configuration intent, not proof that mDNS or any listed record was seen on the wire.",
+      "A record update creates a full new ledger block. Individual application records do not each map to distinct network packets."
+    ]
+  },
+  "transport_and_envelopes": {
+    "peer_discovery": {
+      "expected": "libp2p mDNS discovery followed by peer connection and GossipSub topic participation",
+      "configuration": "LocalAI sets MDNS=true, Discovery.Interval=10s; DHT is enabled unless LOCALAI_P2P_DISABLE_DHT=true. The current model-free capture disables DHT.",
+      "dht_status": "disabled_by_test_configuration; no DHT rendezvous Advertise/FindPeers is expected",
+      "dedicated_localai_stream_id": null,
+      "source": [
+        "LocalAI core/p2p/p2p.go:newNodeOpts (lines 390-446)",
+        "EdgeVPN pkg/config/config.go:ToOpts (v0.34.0)",
+        "EdgeVPN pkg/discovery/dht.go (v0.34.0)"
+      ]
+    },
+    "ledger_gossip_envelope": {
+      "transport": "EdgeVPN GossipSub room/topic; the topic is derived from the token and rotates with its configured OTP interval",
+      "app_stream_protocol_id": null,
+      "wire_layers": [
+        "Application record(s) are stored in a complete ledger Storage map.",
+        "The complete Block JSON has fields Index, Timestamp, Storage, Hash, PrevHash; EdgeVPN gzip-compresses it.",
+        "The compressed bytes are sealed by EdgeVPN's configured sealer before being written to the hub.",
+        "EdgeVPN publishes a JSON hub.Message with fields Message, SenderID, Annotations. SenderID is set from GossipSub's ReceivedFrom on receipt; Annotations is optional."
+      ],
+      "publish_triggers": "Ledger Add/Delete writes a new block and immediately writes it to the hub queue; the periodic synchronizer also republishes the latest full block at its configured interval (10s maximum in LocalAI options).",
+      "interpretation": "A packet capture may show GossipSub control/data frames and encrypted hub payloads. Do not count each bucket record as its own protocol message.",
+      "source": [
+        "EdgeVPN pkg/blockchain/ledger.go:Syncronizer, Announce, Update, Add, DeleteBucket, writeData (v0.34.0)",
+        "EdgeVPN pkg/hub/message.go:Message (v0.34.0)",
+        "EdgeVPN pkg/hub/room.go:publishMessage/readLoop (v0.34.0)",
+        "EdgeVPN pkg/node/node.go:Start/startNetwork (v0.34.0)",
+        "EdgeVPN pkg/node/connection.go:handleEvents (v0.34.0)"
+      ]
+    }
+  },
+  "lifecycle_categories": [
+    {
+      "category": "1. Discovery and network join",
+      "records_or_messages": [
+        {
+          "name": "mDNS peer discovery and libp2p connection setup",
+          "kind": "transport control; no LocalAI ledger record",
+          "fields": "mDNS/libp2p implementation-defined; no LocalAI payload schema",
+          "nominal_schedule": "Discovery interval configured to 10s; actual mDNS query/response cadence is implementation-managed",
+          "stream_protocol_id": null,
+          "source": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/config/config.go:ToOpts (v0.34.0)"
+        },
+        {
+          "name": "GossipSub room join, subscription and mesh maintenance",
+          "kind": "transport control; carries the ledger envelope after topic join",
+          "fields": "GossipSub implementation-defined; LocalAI does not define an app-level join record",
+          "nominal_schedule": "On network start and as libp2p GossipSub maintains the topic mesh; topic key refresh checked once per second, with room rejoin when OTP-derived key changes",
+          "stream_protocol_id": "No LocalAI application stream ID; GossipSub uses its library protocols",
+          "source": "EdgeVPN pkg/node/node.go:startNetwork and pkg/hub/hub.go:Start/joinRoom (v0.34.0)"
+        },
+        {
+          "name": "Explicit membership/join ledger record",
+          "kind": "absent",
+          "fields": null,
+          "nominal_schedule": null,
+          "stream_protocol_id": null,
+          "notes": "The source paths inspected do not write a distinct peer-joined record. Peers join by discovering/connecting and participating in the token-derived pubsub room; later records advertise liveness/services."
+        }
+      ]
+    },
+    {
+      "category": "2. Initial service advertisement and authorization",
+      "records_or_messages": [
+        {
+          "name": "EdgeVPN service route",
+          "bucket": "services",
+          "key": "Random 10-character service ID generated by LocalAI ExposeService",
+          "value_fields": [
+            "PeerID",
+            "Name"
+          ],
+          "kind": "application ledger record inside full-block envelope",
+          "nominal_schedule": "Announce cap 60s; record is added if missing or if the PeerID has changed, using EdgeVPN's backoff ticker",
+          "stream_protocol_id": null,
+          "notes": "This EdgeVPN record resolves the service ID to its libp2p peer. It is distinct from LocalAI's NodeData advertisement; destination address is not a field in types.Service.",
+          "source": "LocalAI core/p2p/p2p.go:ExposeService; EdgeVPN pkg/services/services.go:ExposeNetworkService; pkg/types/service.go (v0.34.0)"
+        },
+        {
+          "name": "LocalAI federated/worker service advertisement",
+          "bucket": "<P2PNetworkID>_federated, <P2PNetworkID>_worker, or <P2PNetworkID>_mlx_worker; if P2PNetworkID is empty: federated, worker, or mlx_worker",
+          "key": "NodeData.Name (random 10-character string)",
+          "value_fields": [
+            "Name",
+            "ID",
+            "TunnelAddress",
+            "ServiceID",
+            "LastSeen"
+          ],
+          "value_fields_written_by_ExposeService": [
+            "Name",
+            "ID",
+            "LastSeen"
+          ],
+          "kind": "application ledger record inside full-block envelope",
+          "nominal_schedule": "Every 20s maximum through Announce/backoff; every advertisement writes current LastSeen and immediately creates a ledger block",
+          "stream_protocol_id": null,
+          "notes": "The exact service ID is selected by the caller: FederatedID=\"federated\", LlamaCPPWorkerID=\"worker\", MLXWorkerID=\"mlx_worker\". NetworkID(prefix, serviceID) returns prefix + \"_\" + serviceID when prefix is nonempty, otherwise serviceID unchanged. In the current capture, the LocalAI app runs the federated mode, so its advertised NodeData bucket is <P2PNetworkID>_federated. This custom bucket is distinct from EdgeVPN’s base \"services\" bucket. ID is hostname plus the random service name. TunnelAddress and ServiceID are empty in the initial ExposeService record and may be filled in local discovery state later.",
+          "source": "LocalAI core/p2p/p2p.go:ExposeService; core/p2p/federated.go:NetworkID; core/p2p/node.go:service ID constants; core/schema/localai.go:NodeData; core/application/p2p.go:StartP2P"
+        },
+        {
+          "name": "Peer authorization/user record",
+          "bucket": "users",
+          "key": "libp2p PeerID",
+          "value_fields": [
+            "PeerID",
+            "Timestamp"
+          ],
+          "kind": "application ledger record inside full-block envelope; conditionally emitted by LocalAI gateway/tunnel listener",
+          "nominal_schedule": "Every 10s maximum through Announce/backoff when nodeAnnounce is running",
+          "stream_protocol_id": null,
+          "notes": "FederatedServer.proxy and allocated local tunnel listeners call nodeAnnounce. EdgeVPN's ServiceProtocol handler checks the connecting peer's ID exists in users before forwarding the TCP stream. A worker process running only ExposeService does not itself call LocalAI nodeAnnounce in this code path.",
+          "source": "LocalAI core/p2p/p2p.go:nodeAnnounce/allocateLocalService; core/p2p/federated_server.go:proxy; EdgeVPN pkg/services/services.go:RegisterService"
+        }
+      ]
+    },
+    {
+      "category": "3. Steady-state liveness, service discovery and ledger sync",
+      "records_or_messages": [
+        {
+          "name": "EdgeVPN peer heartbeat",
+          "bucket": "healthcheck",
+          "key": "libp2p PeerID",
+          "value": "UTC timestamp formatted RFC3339",
+          "kind": "application ledger record inside full-block envelope",
+          "nominal_schedule": "Announce interval 30s maximum; considered live for 15 minutes",
+          "stream_protocol_id": null,
+          "source": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/services/alive.go (v0.34.0)"
+        },
+        {
+          "name": "LocalAI service heartbeat/LastSeen refresh",
+          "bucket": "<P2PNetworkID>_<service ID>; current federation bucket is <P2PNetworkID>_federated; other defined service IDs are <P2PNetworkID>_worker and <P2PNetworkID>_mlx_worker",
+          "key": "NodeData.Name",
+          "value_field_updated": "LastSeen",
+          "kind": "application ledger record inside full-block envelope",
+          "nominal_schedule": "Every 20s maximum; ServiceDiscoverer polls the last local ledger block every 5s and marks NodeData offline when LastSeen is older than 40s",
+          "stream_protocol_id": null,
+          "notes": "40s is a LocalAI application liveness test, separate from EdgeVPN's 15-minute healthcheck threshold.",
+          "source": "LocalAI core/p2p/p2p.go:ExposeService/discoveryTunnels/ensureService; core/p2p/node.go:service ID constants; core/p2p/federated.go:NetworkID; core/schema/localai.go:NodeData.IsOnline"
+        },
+        {
+          "name": "Full-ledger synchronization",
+          "bucket": null,
+          "key": null,
+          "value_fields": [
+            "Index",
+            "Timestamp",
+            "Storage",
+            "Hash",
+            "PrevHash"
+          ],
+          "kind": "encrypted/compressed full-block GossipSub payload; not an individual application record",
+          "nominal_schedule": "10s maximum from LocalAI Ledger.SyncInterval; EdgeVPN publishes the current last block periodically even if no record changed",
+          "stream_protocol_id": null,
+          "source": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/node/node.go:Start; pkg/blockchain/ledger.go:Syncronizer"
+        }
+      ]
+    },
+    {
+      "category": "4. Federated selection and service access",
+      "records_or_messages": [
+        {
+          "name": "Worker selection",
+          "kind": "local coordinator decision; no inter-peer control record",
+          "fields": "Reads discovered NodeData from local in-memory registry; chooses random or least-used worker according to FederatedServer configuration",
+          "nominal_schedule": "Per incoming federated TCP/API connection",
+          "stream_protocol_id": null,
+          "source": "LocalAI core/p2p/federated_server.go:proxy; core/p2p/federated.go:RandomServer/SelectLeastUsedServer"
+        },
+        {
+          "name": "Service stream open and authorization check",
+          "kind": "libp2p stream setup; stream then carries proxied service bytes (including inference request/response)",
+          "fields": "Caller opens a stream to the PeerID stored under the EdgeVPN services key; provider checks the caller PeerID against users",
+          "nominal_schedule": "Per proxied connection; no periodic control message",
+          "stream_protocol_id": "/edgevpn/service/0.1",
+          "notes": "There is no additional LocalAI application-level hello record in the inspected path. Model-free test runs exercise no actual inference payload unless explicitly sent.",
+          "source": "LocalAI core/p2p/p2p.go:proxyP2PConnection; EdgeVPN pkg/protocol/protocol.go; pkg/services/services.go:RegisterService"
+        }
+      ]
+    },
+    {
+      "category": "5. Optional model-state synchronization (federated application mode only)",
+      "records_or_messages": [
+        {
+          "name": "Shared model-name list",
+          "bucket": "shared_state",
+          "key": "models",
+          "value": "JSON array of model names (empty array for model-free nodes)",
+          "kind": "application ledger record inside full-block envelope",
+          "nominal_schedule": "Federated LocalAI app checks state every 60s; AnnounceUpdate is also configured with 60s maximum and writes only when the value differs or is absent",
+          "stream_protocol_id": null,
+          "notes": "This record lists model names, not weights or model files. If a peer sees a name it lacks, LocalAI submits a gallery installation operation. p2pSync is started by StartP2P only when the federated mode branch runs; a standalone worker-only P2P node does not run this model-state sync.",
+          "source": "LocalAI core/application/p2p.go:StartP2P/syncState/p2pSync; EdgeVPN pkg/blockchain/ledger.go:AnnounceUpdate"
+        }
+      ]
+    },
+    {
+      "category": "6. Graceful stop, crash expiry and rejoin",
+      "records_or_messages": [
+        {
+          "name": "Explicit leave/de-registration",
+          "kind": "not found in inspected LocalAI federation lifecycle",
+          "fields": null,
+          "nominal_schedule": null,
+          "stream_protocol_id": null,
+          "notes": "Cancellation stops LocalAI announce loops and closes listeners. The inspected stop path does not emit a dedicated leave message or delete a peer's services/users record. A full-block deletion is only sent by code paths that explicitly call ledger.Delete/DeleteBucket."
+        },
+        {
+          "name": "LocalAI service expiry",
+          "kind": "local interpretation of stale NodeData; no wire deletion record",
+          "fields": "NodeData.LastSeen older than 40s => offline; existing local tunnel allocation may be canceled and removed from the process-local service map",
+          "nominal_schedule": "ServiceDiscoverer checks ledger every 5s; 40s age threshold",
+          "stream_protocol_id": null,
+          "notes": "This does not remove the NodeData key from the replicated ledger. The EdgeVPN services and users buckets have no per-entry TTL in the inspected code, so stale keys may remain until overwritten or a bucket/key deletion is otherwise written.",
+          "source": "LocalAI core/p2p/p2p.go:discoveryTunnels/ensureService; core/application/p2p.go:StopP2P"
+        },
+        {
+          "name": "EdgeVPN heartbeat expiry and scrub",
+          "kind": "liveness filtering plus elected bucket maintenance",
+          "fields": "healthcheck PeerID timestamps older than 15m are excluded by AvailableNodes; selected leader deletes the entire healthcheck bucket after its 900s scrub timer",
+          "nominal_schedule": "Leader recomputed during heartbeat callback; scrub threshold 900s; heartbeat interval 30s maximum; expiry threshold 15m",
+          "stream_protocol_id": null,
+          "notes": "Leader is the currently active PeerID with the highest FNV-1a 32-bit hash. This is deterministic selection, not a persistent leader lease or consensus election. Bucket deletion is a full ledger update, not a distinct leave packet; peers subsequently repopulate their healthcheck entries.",
+          "source": "LocalAI core/p2p/p2p.go:newNodeOpts; EdgeVPN pkg/services/alive.go; pkg/utils/leader.go; pkg/blockchain/ledger.go:DeleteBucket"
+        },
+        {
+          "name": "Rejoin after restart",
+          "kind": "fresh network participation and repeated advertisements",
+          "fields": "peer discovery/topic join, heartbeat and service advertisements resume using the restarted node's current PeerID and LocalAI service name",
+          "nominal_schedule": "Startup plus each record's Announce schedule",
+          "stream_protocol_id": null,
+          "notes": "No explicit rejoin record is defined. ExposeService creates a new random 10-character service name each process start; stale old service records are not explicitly removed by the inspected stop path."
+        }
+      ]
+    },
+    {
+      "category": "7. Periodic heartbeat-bucket maintenance leader",
+      "records_or_messages": [
+        {
+          "name": "Deterministic leader calculation",
+          "kind": "local computation over shared healthcheck state; no leader-election message",
+          "inputs": "PeerIDs with RFC3339 heartbeat timestamp within 15 minutes",
+          "selection": "PeerID with greatest FNV-1a 32-bit hash",
+          "nominal_schedule": "Recomputed on heartbeat callback (30s maximum cadence)",
+          "leader_action": "At the 900s scrub threshold, selected leader writes a new ledger block with the entire healthcheck bucket removed; other peers do not delete it.",
+          "notes": "Each peer starts its own 900s timer when the AliveNetworkService starts; there is no explicit term/lease or leader announcement. The threshold and action are source-derived; runtime occurrence requires a long run beyond 15 minutes and was not established by the short capture.",
+          "source": "EdgeVPN pkg/services/alive.go and pkg/utils/leader.go (v0.34.0); LocalAI core/p2p/p2p.go:newNodeOpts"
+        }
+      ]
+    }
+  ],
+  "out_of_scope_for_model_free_run": [
+    "llama.cpp RPC worker protocol and tensor/model shard traffic",
+    "MLX distributed worker traffic",
+    "Actual inference payloads through /edgevpn/service/0.1",
+    "DHT routing/rendezvous advertisements when LOCALAI_P2P_DISABLE_DHT=true"
+  ],
+  "source_links": {
+    "localai_p2p_pinned": "https://github.com/mudler/LocalAI/blob/a3d555653c0cbfd73ab59ab15beab80903e96484/core/p2p/p2p.go",
+    "localai_app_p2p_pinned": "https://github.com/mudler/LocalAI/blob/a3d555653c0cbfd73ab59ab15beab80903e96484/core/application/p2p.go",
+    "localai_schema_pinned": "https://github.com/mudler/LocalAI/blob/a3d555653c0cbfd73ab59ab15beab80903e96484/core/schema/localai.go",
+    "edgevpn_alive_v034": "https://github.com/mudler/edgevpn/blob/v0.34.0/pkg/services/alive.go",
+    "edgevpn_service_v034": "https://github.com/mudler/edgevpn/blob/v0.34.0/pkg/services/services.go",
+    "edgevpn_protocol_v034": "https://github.com/mudler/edgevpn/blob/v0.34.0/pkg/protocol/protocol.go",
+    "edgevpn_ledger_v034": "https://github.com/mudler/edgevpn/blob/v0.34.0/pkg/blockchain/ledger.go",
+    "edgevpn_leader_v034": "https://github.com/mudler/edgevpn/blob/v0.34.0/pkg/utils/leader.go",
+    "edgevpn_hub_v034": "https://github.com/mudler/edgevpn/blob/v0.34.0/pkg/hub/message.go",
+    "localai_p2p_node_constants_pinned": "https://github.com/mudler/LocalAI/blob/a3d555653c0cbfd73ab59ab15beab80903e96484/core/p2p/node.go#L11-L15",
+    "localai_federated_bucket_naming_pinned": "https://github.com/mudler/LocalAI/blob/a3d555653c0cbfd73ab59ab15beab80903e96484/core/p2p/federated.go#L11-L18"
+  }
+}

@@ -1,0 +1,6 @@
+# Preserve raw audit/build logs alongside their configuration and results.
+!results/**/*.log
+
+# Generated deck outputs and Overleaf archives; editable slide sources remain.
+presentations/rendered/
+presentations/*.zip

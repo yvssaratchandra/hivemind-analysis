@@ -1,0 +1,58 @@
+{
+  "honest-a": {
+    "node_id": "6f2d06a700e57f66cdda43a487626dc0",
+    "state": {
+      "customModelCards": {},
+      "downloads": {},
+      "instanceLinks": {},
+      "instances": {},
+      "lastEventAppliedIdx": -1,
+      "lastSeen": {},
+      "nodeBackends": {},
+      "nodeDisk": {},
+      "nodeIdentities": {},
+      "nodeMemory": {},
+      "nodeNetwork": {},
+      "nodeRdmaCtl": {},
+      "nodeSystem": {},
+      "nodeThunderbolt": {},
+      "nodeThunderboltBridge": {},
+      "prefillServerPorts": {},
+      "runners": {},
+      "tasks": {},
+      "thunderboltBridgeCycles": [],
+      "topology": {
+        "connections": {},
+        "nodes": []
+      }
+    }
+  },
+  "honest-b": {
+    "node_id": "4f4a29c019787198aebc4dba434fa588",
+    "state": {
+      "customModelCards": {},
+      "downloads": {},
+      "instanceLinks": {},
+      "instances": {},
+      "lastEventAppliedIdx": -1,
+      "lastSeen": {},
+      "nodeBackends": {},
+      "nodeDisk": {},
+      "nodeIdentities": {},
+      "nodeMemory": {},
+      "nodeNetwork": {},
+      "nodeRdmaCtl": {},
+      "nodeSystem": {},
+      "nodeThunderbolt": {},
+      "nodeThunderboltBridge": {},
+      "prefillServerPorts": {},
+      "runners": {},
+      "tasks": {},
+      "thunderboltBridgeCycles": [],
+      "topology": {
+        "connections": {},
+        "nodes": []
+      }
+    }
+  }
+}

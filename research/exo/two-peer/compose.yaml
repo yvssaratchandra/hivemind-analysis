@@ -1,0 +1,59 @@
+{
+  "name": "exo-two-peer",
+  "services": {
+    "peer-a": {
+      "build": {
+        "context": "../../..",
+        "dockerfile": "research/exo/two-peer/Dockerfile",
+        "args": {"EXO_REVISION": "${EXO_REVISION:-unknown}"}
+      },
+      "image": "exo-control-plane:local",
+      "pull_policy": "never",
+      "init": true,
+      "hostname": "exo-peer-a",
+      "command": [
+        "--no-worker", "--no-downloads", "--no-api", "--offline", "-v",
+        "--namespace", "${EXO_NAMESPACE:-exo-two-peer-smoke}"
+      ],
+      "mem_limit": "${EXO_PEER_MEMORY:-2g}",
+      "stop_grace_period": "15s",
+      "restart": "no",
+      "volumes": ["peer-a-state:/var/lib/exo"],
+      "networks": ["peers"],
+      "sysctls": {
+        "net.ipv6.conf.all.disable_ipv6": "0",
+        "net.ipv6.conf.default.disable_ipv6": "0"
+      }
+    },
+    "peer-b": {
+      "image": "exo-control-plane:local",
+      "pull_policy": "never",
+      "init": true,
+      "hostname": "exo-peer-b",
+      "command": [
+        "--no-worker", "--no-downloads", "--no-api", "--offline", "-v",
+        "--namespace", "${EXO_NAMESPACE:-exo-two-peer-smoke}"
+      ],
+      "mem_limit": "${EXO_PEER_MEMORY:-2g}",
+      "stop_grace_period": "15s",
+      "restart": "no",
+      "volumes": ["peer-b-state:/var/lib/exo"],
+      "networks": ["peers"],
+      "sysctls": {
+        "net.ipv6.conf.all.disable_ipv6": "0",
+        "net.ipv6.conf.default.disable_ipv6": "0"
+      }
+    }
+  },
+  "networks": {
+    "peers": {
+      "driver": "bridge",
+      "internal": true,
+      "enable_ipv6": true,
+      "ipam": {
+        "config": [{"subnet": "${EXO_IPV6_SUBNET:-fd42:6578:6f::/64}"}]
+      }
+    }
+  },
+  "volumes": {"peer-a-state": {}, "peer-b-state": {}}
+}

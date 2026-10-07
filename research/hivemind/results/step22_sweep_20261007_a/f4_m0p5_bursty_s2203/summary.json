@@ -1,0 +1,80 @@
+{
+  "case": "f4_m0p5",
+  "seed": 2203,
+  "pattern": "bursty",
+  "x_completed_lead": false,
+  "x_groups": {},
+  "x_group_sizes": [],
+  "x_outcome": {
+    "status": "failed",
+    "error": "AllreduceException"
+  },
+  "outcomes": {
+    "H5": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWG4zE5z3gNS2dsUAajLZHijqHEsVAsSrHZniuJfG489dP",
+        "12D3KooWSyE8HYGt7R849st4MEeRfS1T8pytMiWBRLhfQtZJNww8",
+        "12D3KooWDZHDyVnjZVZ4P9aCG6oAmCYxxYskxQjo7yCaEXLYijq5",
+        "12D3KooWEkrZCYq7kqYuEZFpFw4v7PSDu3SZHtrdrPkE7kCDM6Ea"
+      ]
+    },
+    "H4": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWG4zE5z3gNS2dsUAajLZHijqHEsVAsSrHZniuJfG489dP",
+        "12D3KooWSyE8HYGt7R849st4MEeRfS1T8pytMiWBRLhfQtZJNww8",
+        "12D3KooWDZHDyVnjZVZ4P9aCG6oAmCYxxYskxQjo7yCaEXLYijq5",
+        "12D3KooWEkrZCYq7kqYuEZFpFw4v7PSDu3SZHtrdrPkE7kCDM6Ea"
+      ]
+    },
+    "H0": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWG4zE5z3gNS2dsUAajLZHijqHEsVAsSrHZniuJfG489dP",
+        "12D3KooWSyE8HYGt7R849st4MEeRfS1T8pytMiWBRLhfQtZJNww8",
+        "12D3KooWDZHDyVnjZVZ4P9aCG6oAmCYxxYskxQjo7yCaEXLYijq5",
+        "12D3KooWEkrZCYq7kqYuEZFpFw4v7PSDu3SZHtrdrPkE7kCDM6Ea"
+      ]
+    },
+    "H2": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWG4zE5z3gNS2dsUAajLZHijqHEsVAsSrHZniuJfG489dP",
+        "12D3KooWSyE8HYGt7R849st4MEeRfS1T8pytMiWBRLhfQtZJNww8",
+        "12D3KooWDZHDyVnjZVZ4P9aCG6oAmCYxxYskxQjo7yCaEXLYijq5",
+        "12D3KooWEkrZCYq7kqYuEZFpFw4v7PSDu3SZHtrdrPkE7kCDM6Ea"
+      ]
+    },
+    "X": {
+      "status": "failed",
+      "error": "AllreduceException"
+    },
+    "H1": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWNC41nANmgfxfUPbNwyD2KofyXPfwKJymUwGH5JkAC53w",
+        "12D3KooW9z1n1Cw1BNYYsJd1hv6NgFn7w5dA32ZE9YQX6o8ArVZT"
+      ]
+    },
+    "H3": {
+      "status": "completed",
+      "roster": [
+        "12D3KooWNC41nANmgfxfUPbNwyD2KofyXPfwKJymUwGH5JkAC53w",
+        "12D3KooW9z1n1Cw1BNYYsJd1hv6NgFn7w5dA32ZE9YQX6o8ArVZT"
+      ]
+    },
+    "H6": {
+      "status": "failed",
+      "error": "AllreduceException"
+    }
+  },
+  "honest_completed": 6,
+  "x_ad_attempts": 46,
+  "elapsed": 14.82979309899929,
+  "expected_unused_x_cancel": false,
+  "hard_cancelled": [],
+  "stage_leaks": [],
+  "tensor_errors": [],
+  "forbidden": 0
+}

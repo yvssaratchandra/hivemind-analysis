@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-10-06T16:18:37.798688+00:00",
+  "source_revision": "21a54c5ea0230a3bec1e1a786d200126c7e34ec6",
+  "settings": {
+    "command": "run",
+    "label": "exo-audit-20261006-005",
+    "arms": "baseline,self,forged,stale-session,replay",
+    "seed": 1901,
+    "startup_timeout": 90
+  },
+  "lab_file_sha256": {
+    "research/exo/audit/compose.yaml": "78c2c8865115f7900af855391d78ae6cc9cf76f8231bfe49ce36d746bb0560b0",
+    "research/exo/audit/run.py": "daa4570518ff476f74ffe7c0db383653696ba5b6ecbf240c7f2237722efedd2a",
+    "research/exo/audit/observe.py": "57e2dc20b0b719e282850efbba4bcb4f87aa480200682e6ef81468ccc4fa6894",
+    "research/exo/audit/probe.py": "eda33ca68ee533770e12e853c1188af1cf768ab5cf95494cbe889ab01d63a505",
+    "research/exo/two-peer/Dockerfile": "f1e4ca29f903b9bafc63309b4d1a59c81fee3a980f0f0e1ad697d32604084fb8",
+    "research/exo/two-peer/Dockerfile.dockerignore": "067da2aa48a660be9dd20440a1817c4a0b873868d9d8ac791c27cac6cce4bd6a"
+  },
+  "scope": "Private Docker bridge, two honest coordinator nodes, one bounded Router publisher.",
+  "models_loaded": false,
+  "synthetic_metadata_only": true,
+  "security_vulnerability_validated": false
+}

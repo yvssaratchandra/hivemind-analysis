@@ -1,0 +1,123 @@
+"""Loopback-only DHT node-ID collision experiment. No Hivemind code changes."""
+
+import argparse
+import asyncio
+import json
+import platform
+import random
+import time
+from pathlib import Path
+
+from hivemind.dht.node import DHTNode
+from hivemind.dht.routing import DHTID
+
+
+LOCALHOST = ["/ip4/127.0.0.1/tcp/0"]
+TARGET = DHTID.generate(source="node-id-collision-target-v1")
+
+
+def emit(out, event, **fields):
+    row = {"time_ns": time.time_ns(), "monotonic_ns": time.monotonic_ns(), "event": event, **fields}
+    out.write(json.dumps(row, sort_keys=True) + "\n")
+    out.flush()
+    return row
+
+
+def view(node):
+    rt = node.protocol.routing_table
+    nearest = rt.get_nearest_neighbors(TARGET, 8)
+    return {
+        "target_mapping": str(rt.get(node_id=TARGET)),
+        "table_entries": len(rt.uid_to_peer_id),
+        "target_entries": sum(node_id == TARGET for node_id in rt.uid_to_peer_id),
+        "reverse": {str(pid): str(int(uid)) for pid, uid in rt.peer_id_to_uid.items()},
+        "forward": {str(int(uid)): str(pid) for uid, pid in rt.uid_to_peer_id.items()},
+        "nearest": [{"node_id": str(int(uid)), "peer_id": str(pid)} for uid, pid in nearest],
+    }
+
+
+async def main(args):
+    random.seed(args.seed)
+    out_dir = Path(args.output)
+    out_dir.mkdir(parents=True, exist_ok=False)
+    config = {
+        "mode": args.mode,
+        "population": 4 if args.mode == "short" else 8,
+        "seed": args.seed,
+        "network": "loopback-only",
+        "target_node_id": str(int(TARGET)),
+        "claimant_a_node_id": str(int(TARGET)),
+        "claimant_b_node_id": str(int(TARGET if args.arm == "collision" else DHTID(int(TARGET) ^ 1))),
+        "arm": args.arm,
+        "python": platform.python_version(),
+    }
+    (out_dir / "config.json").write_text(json.dumps(config, indent=2) + "\n")
+    nodes = {}
+    try:
+        with (out_dir / "events.jsonl").open("w") as out:
+            names = ["bootstrap", "observer"] if args.mode == "short" else [
+                "bootstrap", "observer1", "observer2", "observer3", "observer4", "observer5"
+            ]
+            names += ["claimant_a", "claimant_b"]
+            bootstrap_addrs = None
+            for name in names:
+                if name == "claimant_a":
+                    node_id = TARGET
+                elif name == "claimant_b":
+                    node_id = TARGET if args.arm == "collision" else DHTID(int(TARGET) ^ 1)
+                else:
+                    node_id = DHTID.generate(source=f"node-id-collision-{name}-v1")
+                node = await DHTNode.create(
+                    initial_peers=bootstrap_addrs,
+                    host_maddrs=LOCALHOST,
+                    node_id=node_id,
+                    wait_timeout=5,
+                    ensure_bootstrap_success=True,
+                )
+                nodes[name] = node
+                if bootstrap_addrs is None:
+                    bootstrap_addrs = [str(addr) for addr in await node.get_visible_maddrs()]
+                emit(out, "start", name=name, node_id=str(int(node.node_id)), peer_id=str(node.peer_id),
+                     addresses=[str(addr) for addr in await node.get_visible_maddrs()])
+
+            observers = [name for name in names if name not in ("claimant_a", "claimant_b")]
+            for observer_name in observers:
+                observer = nodes[observer_name]
+                for other_name in names:
+                    if other_name != observer_name and other_name not in ("claimant_a", "claimant_b"):
+                        result = await observer.protocol.call_ping(nodes[other_name].peer_id, validate=True)
+                        emit(out, "honest_ping", observer=observer_name, target=other_name,
+                             returned_node_id=None if result is None else str(int(result)))
+
+            for stage in ("claimant_a", "claimant_b", "claimant_a"):
+                for observer_name in observers:
+                    result = await nodes[observer_name].protocol.call_ping(nodes[stage].peer_id, validate=True)
+                    emit(out, "claimant_ping", stage=stage, observer=observer_name,
+                         returned_node_id=None if result is None else str(int(result)))
+                await asyncio.sleep(0.3)  # allow asynchronous routing-table updates to finish
+                for observer_name in observers:
+                    emit(out, "view", stage=stage, observer=observer_name, **view(nodes[observer_name]))
+
+            for observer_name in observers:
+                observer = nodes[observer_name]
+                found = await observer.find_nearest_nodes([TARGET], k_nearest=5)
+                emit(out, "lookup", observer=observer_name,
+                     nearest=[{"node_id": str(int(uid)), "peer_id": str(pid)}
+                              for uid, pid in found[TARGET].items()],
+                     post_lookup_view=view(observer))
+            for claimant_name in ("claimant_a", "claimant_b"):
+                result = await nodes["bootstrap"].protocol.call_ping(nodes[claimant_name].peer_id, validate=True)
+                emit(out, "final_reachability", claimant=claimant_name,
+                     returned_node_id=None if result is None else str(int(result)))
+    finally:
+        for name, node in reversed(list(nodes.items())):
+            await node.shutdown()
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", choices=("short", "full"), required=True)
+    parser.add_argument("--arm", choices=("collision", "distinct"), required=True)
+    parser.add_argument("--seed", type=int, default=2601007)
+    parser.add_argument("--output", required=True)
+    asyncio.run(main(parser.parse_args()))

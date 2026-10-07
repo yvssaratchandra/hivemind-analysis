@@ -1,0 +1,5 @@
+{"timestamp": "2026-10-07T13:23:02.257136+00:00", "phase": "bootstrap", "host": "control-peer-01", "models": {"object": "list", "data": []}, "system": {"backends": [], "loaded_models": []}}
+{"timestamp": "2026-10-07T13:23:30.369964+00:00", "phase": "join-2", "host": "control-peer-02", "models": {"object": "list", "data": []}, "system": {"backends": [], "loaded_models": []}}
+{"timestamp": "2026-10-07T13:24:06.093473+00:00", "phase": "join-4", "host": "control-peer-04", "models": {"object": "list", "data": []}, "system": {"backends": [], "loaded_models": []}}
+{"timestamp": "2026-10-07T13:24:06.210432+00:00", "phase": "join-4", "host": "control-peer-03", "models": {"object": "list", "data": []}, "system": {"backends": [], "loaded_models": []}}
+{"timestamp": "2026-10-07T13:26:11.698121+00:00", "phase": "peer-rejoin", "host": "control-peer-04", "models": {"object": "list", "data": []}, "system": {"backends": [], "loaded_models": []}}

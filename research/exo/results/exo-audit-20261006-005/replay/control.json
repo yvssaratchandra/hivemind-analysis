@@ -1,0 +1,16 @@
+{
+  "arm": "replay",
+  "seed": 1901,
+  "session": {
+    "master_node_id": "6ac80577f2effaae71ebbd822b18ed0d",
+    "election_clock": 0
+  },
+  "node_ids": {
+    "honest-a": "6ac80577f2effaae71ebbd822b18ed0d",
+    "honest-b": "2420784dd19ccc93677f2908de216de4"
+  },
+  "target_node_id": "8ea41c22cedb58d6c9b7fb383be23208",
+  "available_bytes": 136164352,
+  "origin": "88ae5192-f556-5c54-9a9f-66fd19a88f33",
+  "origin_idx": 0
+}

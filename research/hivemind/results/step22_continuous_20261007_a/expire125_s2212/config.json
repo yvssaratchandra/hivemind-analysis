@@ -1,0 +1,39 @@
+{
+  "case": {
+    "name": "expire125",
+    "mode": "expire",
+    "minimum": 4,
+    "lifetime": 1.25
+  },
+  "seed": 2212,
+  "duration": 30.0,
+  "timeout": 12,
+  "initial_offsets": {
+    "X": 2.63377545645623,
+    "H0": 1.541162854805663,
+    "H1": 0.5970858985993633,
+    "H2": 0.6051432883123133,
+    "H3": 1.0697434987584713,
+    "H4": 2.2065524624406425,
+    "H5": 1.8825313395561438,
+    "H6": 1.8867450338011322
+  },
+  "training_delay": "lognormal mean 1.5s CV 0.6, clipped [0.1,4]",
+  "attacker_reentry": 0.05,
+  "honest_min": 2,
+  "target": 4,
+  "honest_ad_lifetime": 5,
+  "store_delay": 0,
+  "tensor_size": 128,
+  "allreduce_timeout": 6,
+  "peer_ids": {
+    "X": "12D3KooWJB4gzFR3Yd3BksTtUwcHXYwcZATezDA3JBagHuoNaKdC",
+    "H0": "12D3KooWN2KSEztLPuumu7uWqrjnw8S2GTcNe8nzbEt4t6v44bDx",
+    "H1": "12D3KooWBrSitUsjStce8FdyyyQ5CqHmmsPdFGNCVt3zARraNb5z",
+    "H2": "12D3KooWGKQQxfXMwGAJunbNGjd3BAJBrSviUtNCmfm2CRVvEjxV",
+    "H3": "12D3KooWSv4j6mYMH8J3ghrPifLUrLE1BF3w2PmxnP79MYoyh82m",
+    "H4": "12D3KooWEdN2VAEpxW3BirxU2tMPgg9qfGpgLogsoV6GN2qsQXqn",
+    "H5": "12D3KooWEMiLnCPHthYagT7aVZ8QfkJyCSDt2secn5qwRSoKq16J",
+    "H6": "12D3KooWNBdtm6poT7BhJGMrn8cwt7Kv7DUrdhqEvC47HSgCh4pe"
+  }
+}
