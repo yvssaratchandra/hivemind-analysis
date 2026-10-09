@@ -3,7 +3,7 @@
 Everything a new session needs: what the project is, where it stands, what is known, and what to do
 next. Written to be read without any prior conversation.
 
-Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-10-07
+Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-10-09
 
 **Layout note (updated 2026-10-07):** Hivemind research is under `research/hivemind/`; its source
 remains unchanged at the repository-root `hivemind/`. Exo research is under `research/exo/`, with
@@ -40,7 +40,184 @@ pre-commit hook passed `bash -n`. Go/container integration checks were not rerun
 
 ---
 
-## Current thread: own-ad renewal without competitor reads (2026-10-07)
+## Current thread: Step 25 choice and read measurements (2026-10-09)
+
+User approved implementation of the asynchronous Step 25 plan. Measure leadership
+per submitted X attempt (internal retry searches reported separately), time to first
+X-led assembly, honest peers' exact native queue choices, and logical advertisement
+read timing during enabled search spans. Retain Step 24's eight arms, eight loopback
+peers, training-delay distribution and native timers. Grouping remains primary;
+tensor correctness is diagnostic. No WAN delay is injected and core source is unchanged.
+
+| Implementation status | State |
+|---|---|
+| Native observation hooks: seventeen hook checks plus eight native timer checks | Complete |
+| Independent analyzer, synthetic checks, submission/drain summaries | Complete; 80 combined focused checks pass |
+| Minimal/detailed calibration | Complete; timing limitation retained below |
+| Eight-arm smoke gate and complete CSV export | Complete; 8/8 pass, independent raw verification agrees |
+| Eight arms × ten held-out seeds, sixty-second confirmation windows | Running |
+
+Harness: `step25_choice_measurement.py`. Fresh minimal calibration label (4/4 complete,
+native control-plane checks pass):
+`step25_pilot_minimal_20261009_a` (two policies, seeds 2498/2499, fifteen seconds).
+Smoke uses seed 2500; confirmation uses seeds 2501–2510, order seed 250025.
+Calibration diagnostics are preserved with distinct labels: minimal `_a`/`_b`,
+detailed `_a` (single event transport), `_b` (batched), and `_c` (batched without
+duplicate legacy read views, halted after one trial by an analyzer integration
+signature error). The complete native trace is preserved; `_c` is not a complete
+calibration. Comparing detailed `_b` against
+the first minimal baseline gives 48–110% higher median logical-read latency; a
+fresh minimal baseline reduces the paired differences to −1.3%, +1.8%, +4.5%,
+and +41.0%. Host/scheduling drift contributes; these four pairs do not identify
+or bound observer overhead. Detailed `_c` records native-await latency separately
+from wrapper latency. All calibration groups remain diagnostic, not confirmation.
+Final frozen-code calibration `step25_pilot_detailed_20261009_d` completed 4/4
+with native and observation checks passing. Against fresh minimal `_b`, both
+X-led counts (5/6/6/10) and total groups (13/13/14/14) match by policy/seed;
+native-await median differences are +1.4%, −0.8%, −5.8%, +34.7%. These separated
+runs do not isolate tracing overhead. Cadence conclusions must describe the
+instrumented local workload. Source copies and raw/configuration hashes remain
+inspectable in each suite and `step25_tracing_comparison_final_20261009_d`.
+Smoke `_a` is diagnostic: a subsequent export-only fix removes a duplicate
+`case` keyword when writing per-seed CSV rows. Complete pilot export now passes
+under `step25_analysis_pilot_final_20261009_e`; its metadata records the extraction
+analyzer hash separately from the raw pilot snapshot. The corrected code requires
+a fresh smoke gate `_b` before confirmation. The noninteractive launch ignores
+SIGINT; `_a` completed 8/8 with passing control and observation checks, closing
+peers normally. `_b` uses the final source snapshot. No experimental
+logic changed after calibration; the last analyzer change only fixes CSV export.
+Final smoke `_b` completed 8/8: 81 assembled groups, 28 X-led, control and
+observation checks pass. `step25_analysis_smoke_20261009_b` exports the full bundle;
+`step25_smoke_raw_verification_20261009_b.json` independently reproduces attempts,
+unique groups, early leadership counts, and enabled honest read starts/seconds.
+Confirmation `step25_confirm_20261009_a` started at 14:43 UTC with `_b` as its gate;
+80 jobs run sequentially (eight policies × ten held-out seeds).
+**Mid-run push snapshot, 2026-10-09 14:49 UTC:** 4/80 confirmation trials have
+completed with passing control and observation checks; `passive_stock_s2510` is
+currently submitting. The observed cadence is about 1.2 minutes per completed
+trial, giving roughly 90 minutes remaining at this snapshot. This is an estimate,
+not a completion guarantee. Check the local log
+`results/step25_confirm_20261009_a.log` for live progress. Confirmation is still
+running; no final policy comparison has been established. The experiment source
+remains frozen and the mid-run commit does not restart or alter the network.
+The push includes research code/tests, completed Step 23/24 report summaries,
+and status documentation. Generated raw suites, current confirmation traces and
+presentation work remain local. A pre-push focused check across Steps 23–25
+passes 97 tests (`results/step25_midrun_push_checks_20261009.txt`).
+Verifier: `verify_step25_counts.py`, standard-library raw counting without either
+analyzer. It also reproduced final calibration (54 groups, 27 X-led).
+All previous Step 24 outputs remain preserved. The 106/110 passive-stock count was
+rechecked directly from raw Step 24 events: 110 paired searches, 106 distinct X-led
+assemblies, four searches without assembly, no X outbound client replies.
+All four non-assembly searches started within the final second of the sixty-second
+submission window. Step 25 retains the primary all-attempt denominator and adds an
+interior-attempt sensitivity table (submitted at least twelve seconds before cutoff)
+to distinguish submission-boundary scarcity. This does not establish failure causes.
+
+## Previous thread: lifetime-range comparison (2026-10-08)
+
+**Completed control-plane rerun:** grouping and leadership are the primary
+outcomes. All eight smoke trials and all forty held-out confirmation trials
+completed under `--outcome grouping`. Eight local peers; five sixty-second windows
+per policy, plus bounded drain. Independent raw reconstruction and the per-group
+export agree on **2,485 distinct native leader assemblies, 1,053 led by X**. Zero
+control integrity errors or pending steps. Tensor mismatches remain diagnostic.
+Thirty-six focused checks pass; core source remains unchanged.
+
+X-led / all assembled: stock following **36/317**; passive stock **106/297**;
+(0,1] **152/311**; (0.25,1.25] **156/315**; (1,2] **151/307**;
+(2,3] **150/311**; (3,4] **147/312**; expiry-only 2s **155/315**.
+All X-led groups have four members. The refresh ranges are close in this local
+sample; the shortest range did not give the highest observed count. No reliable
+best-range or deployment success-rate claim follows.
+
+[Final methods, formulas, tables, and limits](results/step24_grouping_report_20261008.md).
+[Per-group leader PeerID, leader/X expiration, signed gap, roster, and follower views](results/step24_elections_grouping_20261008_a/confirm/elections.csv).
+[Per-seed counts](results/step24_elections_grouping_20261008_a/confirm/counts.csv).
+Current expiry is reconstructed from traced publisher state at assembly. Inactive
+X has a null current expiry and a separately retained historical expiry. Of 1,432
+other-led assemblies, X's local ad declaration was inactive at 1,209 assembly times; for the other
+223 the leader was earlier in 210 and X earlier in 13. Those are timestamp-state
+comparisons, not causal loss diagnoses. The latest logged follower views before
+handshake are preserved separately. A group led by another node may run alongside
+X's own group; it is not automatically a failed X election.
+
+**Offline state reconstruction is complete.** All 1,184 search episodes are
+paired: 1,053 led, 122 followed and nine without a group. One step retried and has
+two separately identified searches. Across the five refresh arms, 98.7-100% of X's
+recorded searches produced an X-led assembly; this is a local assembly fraction,
+not a deployment rate. Existing 2,485/1,053 group counts and raw hashes reconcile.
+Forty trials account for their full sixty-second state windows; drain is separate.
+Fifteen state tests and twenty-eight dependency tests pass.
+
+Of 1,432 other-led groups including drain: 1,178 occurred Between rounds, 129 while
+Searching, 94 while Following, three while Leading, 24 during initial launch and
+four in transition. The three Leading cases had withdrawn advertisements. All 28
+stock-control groups assembled during observed Searching already included X before
+its acceptance was logged; membership is explicit rather than labeled an X loss.
+The other 101 Searching observations retain both expirations and follower views
+without a causal loss claim.
+[State report and time tables](results/step24_x_states_confirm_grouping_20261008_a/report.md).
+[Per-search outcomes](results/step24_x_states_confirm_grouping_20261008_a/searches.csv).
+[Other groups during X's Searching state, with deadlines](results/step24_x_states_confirm_grouping_20261008_a/other_groups_while_searching.csv).
+
+The strict-averaging runs below are preserved as earlier history; their stopping
+rule is superseded for the current control-plane experiment.
+
+Step 24 implements the approved eight-arm sweep of nominal own-ad remaining lifetimes
+at a fixed one-second refresh interval. Unlike Step 22, X receives the same seeded
+simulated training-delay distribution as the seven honest peers. Delays occur after
+an averaging attempt finishes and before the next `step()` call; no network latency
+is injected. Native leader waiting arguments and tensor inputs/outputs are traced.
+Core `hivemind/` remains unchanged.
+
+Harness: `step24_lifetime_sweep.py`; independent analyzer: `analyze_step24_lifetime.py`.
+[Design, formulas, implementation status, and results](results/step24_lifetime_report_20261008.md).
+The all-arm ten-second smoke gates five held-out seeds with sixty-second submission
+windows per policy. Counts distinguish distinct assembled groups from correctly
+completed groups and report X-led counts separately. Integrity failures halt the
+suite and retain raw diagnostics. Six harness and ten analyzer tests pass.
+
+The first smoke halted at trial 2/8. The completed (0,1] arm formed ten verified
+groups, five led by X. The (2,3] arm assembled four groups, only three verified,
+with no verified X-led group before it stopped: H0 returned 10.0 instead of 12.5.
+X's roster named H2, which entered a different group's collective using that same
+step; X and H1 timed out while H0's native call returned unchanged without error.
+Locked input traces match logged contributions. The source of the missing follower
+and successful incorrect completion is unresolved. A fresh ten-second diagnostic
+replay of (2,3] passed with ten verified groups, five X-led; this does not explain
+the failure. A second replay with per-peer reducer tracing halted after H6's stream
+from X delivered zero expected parts: native fallback registered 128 failed elements
+and returned 26.0 instead of 28.5, while the other three members returned 28.5.
+All four entered that group. This establishes failed-stream/zero-update completion
+in the second replay, not the cause of the original missing-H2 event or a causal
+renewal effect. The second replay assembled four groups, three verified, two X-led.
+Confirmation is not run, and the (1,2] arm was never reached. Do not rank ranges from
+these partial counts. [Final raw reanalysis, failure timeline, and count CSV](results/step24_reanalysis_20261008_b/).
+
+## Previous thread: renewal-induced retries (2026-10-08)
+
+Implemented `step23_renewal_retry.py`, `analyze_step23.py`, and seventeen focused
+evidence-validation checks. [Methods and evidence](results/step23_renewal_retry_report_20261008.md).
+Core `hivemind/` remains unchanged; every swarm is private and local.
+
+The mechanism gate demonstrates that an honest peer retries the same X within one
+matchmaking search when X advances its advertisement expiration: five paired
+trials show one additional attempt each before the original expiration, versus
+none when the expiration is unchanged. This measures retry eligibility, not harm.
+
+The sixteen-trial smoke compares reliable/unreliable X with expiry-only/1 Hz
+publication at the same two-second lifetime. Unreliable X accepts, waits 0.5 seconds,
+and disbands, retaining native admission. All trace and tensor checks pass. The
+Held-out confirmation stopped after 15 trials when a correct-tensor check failed
+in the reliable, expiry-only control. The trace shows assembled rosters overlapping
+at H1, then at H2 and H4; H0 returned a zero tensor instead of the expected 1.75.
+The cause is unresolved, so no harm analysis is valid. The raw failing trial and
+stop record are in [the confirmation suite](results/step23_confirm_20261008_a/).
+Diagnose this group overlap before resuming; do not run the PeerID retry-filter
+diagnostic until a clean confirmation passes its integrity checks.
+
+## Previous thread: own-ad renewal without competitor reads (2026-10-07)
 
 Completed `step22_refresh_leadership.py`, `step22_continuous.py`, and `step22_endurance.py`.
 Full methods, source checks, costs, and raw-trace links are in
@@ -69,6 +246,11 @@ The 4/s policy sent 300 `GROUP_DISBANDED` replies versus nine for 0.5/s in the c
 Faster advertising is not a reliable cure. Standalone averager schedules and empty group bits
 are explicit test assumptions, not evidence about Optimizer scheduling or a public swarm.
 All final runs have configs, seeds, provenance, raw JSONL traces, and matching harness snapshots.
+
+**Presentation (2026-10-07):** [four-slide Step 22 deck](presentations/261007_hivemind_renewal/README.md)
+uses the existing Chalmers layout. Slides cover mechanism, controls/workload, leadership versus
+write cost, and the captured follower timeout. Speaker notes include the exact experiment tables.
+Its renderer rechecks all 81 final trials and the eight runtime source digests before rendering.
 
 **Open questions:** full Optimizer-driven scheduling, routed/WAN-delay contention, the cause of the
 five incorrect-tensor steps, and longer-run behavior remain untested or unresolved. Short

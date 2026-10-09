@@ -353,6 +353,83 @@ touch, so a reader arriving from the grid or from Part 3 finds them either way.
 |---|---|---|---|
 | **E01** | 11 availability, 12 leader choice, 13 admission | Can one peer repeatedly deny averaging to others without contributing any training work, and what does each unit of attacker resource buy in victim disruption? | **done.** Abstention is free and invisible but harms nobody; all the harm is the stall. Carries the `reject` control for C13.D. |
 | **E02** | 8 record renewal, 11 availability, 12 leader choice, 13 admission | Can one peer keep short own-ad deadlines renewed, refuse to follow, and repeatedly lead groups of four or five without reading competitors' ads? | **Tested locally, step22.** Sliding expirations persist beyond the initial lifetime. Leadership and write cost measured on eight peers. No indefinite or public-WAN guarantee. |
+| **E03** | 8 record renewal, 12 repeated leader selection, 13 admission/retry | Does advancing an unreliable leader's own-ad expiration cause within-search retries and additional honest averaging delay or failure? | **In progress, step23.** Five paired local mechanism trials demonstrate retries; sixteen smoke trials pass. Confirmation halted after 15/160 trials when a reliable control returned an incorrect tensor alongside overlapping assembled group rosters. Cause unresolved; no harm result. |
+| **E04** | 8 record renewal, 11 availability, 12 leader choice, 13 admission | Which own-ad remaining-lifetime range yields more assembled groups and X-led assemblies at fixed 1 Hz refresh with equal simulated training delays? | **Completed locally, step24 control plane.** 8/8 smoke and 40/40 confirmation trials; 2,485 distinct assemblies, 1,053 X-led. Five 1 Hz ranges produce 147-156 X-led each; no clear shortest-range advantage. Winner/X deadlines and follower views exported; tensor outcomes diagnostic. 36 checks pass. |
+| **E05** | 8 record renewal, 11 availability, 12 leader choice, 13 admission | Does renewal improve X's per-attempt leadership, recruitment speed, and honest peers' actual selections; how often do searching peers read advertisements? | **In progress, step25.** Native queue/read-span hooks and independent analyzer implemented under research only; 80 focused checks pass. Final calibration 4/4 and fresh eight-arm smoke 8/8 pass; independent raw verification agrees. Eight policies × ten held-out seeds are running as `step25_confirm_20261009_a`. Instrumented local cadence only; calibration does not isolate observer overhead. |
+
+### E04: lifetime ranges with equal training delays
+
+The completed user-approved rerun measures **grouping and leadership**: unique
+native leader assembly IDs and X-led IDs regardless of tensor correctness. All
+eight smoke trials and forty confirmation trials pass the control-plane checks.
+The confirmation has eight peers, five seeds and sixty-second windows per policy,
+plus bounded drain: 2,485 assemblies, 1,053 X-led. X-led / total: stock 36/317,
+passive stock 106/297, (0,1] 152/311, (0.25,1.25] 156/315, (1,2] 151/307,
+(2,3] 150/311, (3,4] 147/312, expiry-only 155/315. All X-led groups have four
+members. These small local counts do not establish a best range or deployment
+success rate. The ranges are close, and expiry-only is close to 1 Hz refresh.
+
+Leader and X expirations at assembly, their signed gap, active state, roster and
+latest logged follower views before handshake are exported with source-event
+references. X's ad declaration was inactive at 1,209 of the 1,432 other-led assemblies;
+at the remaining 223, the leader was earlier in 210 and X earlier in 13. Deadline
+ordering at assembly does not alone identify why a follower chose its leader.
+Leader/roster identity, delay schedules, provenance, completeness and bounded drain
+remain checked. Thirty-six focused checks pass; raw evidence and hash manifests
+are preserved. [Final control-plane report and artifacts](results/step24_grouping_report_20261008.md).
+Offline state reconstruction now pairs all 1,184 X searches: 1,053 led, 122
+followed and nine without a group. The five refresh arms led 98.7-100% of their own
+recorded searches; these local assembly fractions use a different denominator from
+network-wide leader share. Of the 1,432 other-led assemblies, 1,178 were Between
+rounds, 129 Searching, 94 Following, three Leading, 24 initial launch and four
+transition. Withdrawal alone does not end Leading. All 28 stock Searching-phase
+groups already included X before its client acceptance was logged. Complete state
+windows, original raw hashes and group totals reconcile; 43 focused checks pass.
+[State interpretation, per-search records and deadline comparisons](results/step24_x_states_confirm_grouping_20261008_a/report.md).
+
+The strict-averaging evidence below is retained as historical context.
+
+Step 24 compares nominal (0,1], (0.25,1.25], (1,2], (2,3], and (3,4] second
+remaining lifetimes at one-second refresh intervals, plus two-second expiration-only,
+passive stock-publisher, and stock-following controls. Eight loopback peers use
+identical clipped lognormal training-delay distributions, independently seeded per
+peer and paired across policies. Delay is after observed completion and before the
+next averaging attempt; it is not RPC latency injection. Separate assembled and
+verified group counts prevent matchmaking alone from counting as correct averaging.
+Native leader timeout and locked tensor traces support failure diagnosis.
+[Formulas and status](results/step24_lifetime_report_20261008.md). First smoke:
+(0,1] formed ten verified groups, five X-led. The next (2,3] trial aborted after
+H0 returned 10.0 instead of 12.5; H2 was named in X's assembled roster but entered
+another collective. A fresh diagnostic replay formed ten verified groups, five
+X-led, without resolving the original error. A second replay records all four
+members entering X's group, then H6 receiving zero expected reducer parts, native
+fallback registering 128 failed elements, and a successful future returning 26.0
+instead of 28.5. The latter assembled four groups, three verified, two X-led.
+This does not establish renewal as the cause of the stream failure.
+Confirmation is gated off and (1,2]
+was not reached. Counts have unequal exposure and must not be used to rank ranges.
+
+### E03: renewal-induced retries
+
+Step 23 tests native exclusion of attempted `(PeerID, expiration)` pairs. Attempt
+memory resets between searches, so instrumentation distinguishes averaging steps,
+individual searches, and join attempts. The selected leader expiration is recorded
+separately from the follower's request expiration. Five paired local trials confirm
+that advancing X's expiration permits one additional attempt within the same search
+before the original ad expires; identical-expiration controls produce none.
+
+The harm comparison uses fresh eight-peer loopback swarms, reliable/unreliable X,
+expiry-only/1 Hz publication, and the same two-second own-ad lifetime. Unreliable
+X explicitly accepts, waits 0.5 seconds, and disbands while retaining native admission.
+That behavior is additional to renewal. Honest code remains native apart from tracing.
+The sixteen-trial smoke passes. Held-out confirmation halted after fifteen trials:
+in `reliable_expire_native_bursty_s2322`, H0 returned 0 where its roster required
+1.75. The raw trace shows three assembled groups with different overlapping rosters
+(H1 overlaps two; H2 and H4 share two), but the cause is unresolved. This invalidates
+harm interpretation and blocks the retry-filter diagnostic until this case is
+understood and a clean confirmation is possible. No Optimizer workload or WAN-delay
+model is included. Full controls, failure rules,
+seed sets and raw evidence: [Step 23 report](results/step23_renewal_retry_report_20261008.md).
 
 ### E02: short own-ad lifetimes and periodic renewal
 
