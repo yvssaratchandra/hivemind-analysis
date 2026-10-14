@@ -1,0 +1,16 @@
+{
+  "runtime": "/tmp/hm-step23-env/bin/python",
+  "runtime_source": "/tmp/hm-step23-runtime",
+  "checked_by": "step27_review",
+  "sockets_opened": false,
+  "averager_registration": "PASS",
+  "dht_registration": "PASS",
+  "join_request": "JoinRequest",
+  "join_response": "MessageFromLeader",
+  "join_stream_output": true,
+  "find_request": "FindRequest",
+  "find_response": "FindResponse",
+  "store_request": "StoreRequest",
+  "store_response": "StoreResponse",
+  "note": "Reflection probe after explicit resolved annotations assigned to final registered wrapper; no peers started."
+}

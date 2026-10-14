@@ -1,0 +1,78 @@
+{
+  "errors": [],
+  "experiment": "step27",
+  "exports_sha256": {
+    "attempts.csv": "5bfd31a23557343e55a299987552e55ad43166d232c3819edaa1e0508b488123",
+    "choices.csv": "8fc41c0628eb98463d58e3059e887eeddf96c5fb192267315fa3b9bfbdd528e8",
+    "groups.csv": "f2221fd179d0f9840483ccbfb42638a8ce22e31187d57c90980771562591400a",
+    "holds.csv": "1be1edf39992a45ffd309a932c914413b2b84cef869c2219d6d6d1eedd685a32",
+    "leadership_summary.csv": "48de6d7c2c5ba74b75b2d08c64dcbaadcaf2e46dc78c07e65e284707a29b7fb4",
+    "per_peer.csv": "9cabbbf5054f0671020d26b973bdd3c16e5b12b6e8b4ab79306349c31ff11562",
+    "per_seed_contrasts.csv": "dc518d5eca1ea6a0a6d96fbb084eae09fbef4a0109b77fb9969cf911f738c6b6",
+    "retries.csv": "a1ccbfb44b1c4b38cefe8f270d4fc7a0aff39ffb4f91c6df2242fce8f0cabbc2",
+    "rpc_admissions.csv": "29cd5c2c555338be4de3c95beae92afed729af9c08ddff93ceb816292583f1cb"
+  },
+  "pass": true,
+  "scope": "Independent raw assembly/member-attempt linkage, failure-inclusive capped metrics, exact renewed-pair witnesses, exported row checks, completion/provenance hashes. No tensor-success filtering.",
+  "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step27_smoke_20261012_a",
+  "totals": {
+    "total_groups": 9,
+    "x_led_attempts": 2,
+    "x_led_by_2s_count": 2,
+    "x_led_groups": 2,
+    "x_submitted_attempts": 3
+  },
+  "trials": [
+    {
+      "errors": [],
+      "inputs_sha256": {
+        "config.json": "70288adc22936119501afbb07ddd7df63d3574bf74ef038e50a5c03c134edfc8",
+        "events.jsonl": "5bb6ffe876c0eb4f83314f9ce50fed28b99cc5962c4e9c7a9747da508d3baa0f",
+        "summary.json": "0b1d088cea84e93f579deafb43c4372fc8f9745b05c2d08f57190e8d9bb11245"
+      },
+      "metrics": {
+        "honest_group_memberships_in_submission_window": 10,
+        "honest_group_memberships_per_honest_peer_minute": 8.571428571428571,
+        "honest_mean_capped_latency_seconds": 4.418942799468156,
+        "honest_no_group_attempts": 1,
+        "honest_no_group_fraction": 0.06666666666666667,
+        "honest_peer_minutes": 1.1666666666666667,
+        "honest_submitted_attempts": 15,
+        "same_search_x_retry_count": 17,
+        "total_groups": 4,
+        "x_led_attempts": 0,
+        "x_led_by_2s_count": 0,
+        "x_led_groups": 0,
+        "x_submitted_attempts": 1
+      },
+      "pass_": true,
+      "trial_dir": "unreliable_renewed_s2700"
+    },
+    {
+      "errors": [],
+      "inputs_sha256": {
+        "config.json": "573d353e32b3385e2b3019828a3ac9e0a715ffaff6696bd91a2824948d113cef",
+        "events.jsonl": "6e4f8190c60b85f2ab2836f7fa94a8848f49cfa9c2a2d5d9740384b84107653b",
+        "summary.json": "95b70e177c201f200b1c7404f747e4521075cebbf27fc4b00cc1f40cd8ee6bed"
+      },
+      "metrics": {
+        "honest_group_memberships_in_submission_window": 14,
+        "honest_group_memberships_per_honest_peer_minute": 12.0,
+        "honest_mean_capped_latency_seconds": 2.0657873722493605,
+        "honest_no_group_attempts": 0,
+        "honest_no_group_fraction": 0.0,
+        "honest_peer_minutes": 1.1666666666666667,
+        "honest_submitted_attempts": 16,
+        "same_search_x_retry_count": 0,
+        "total_groups": 5,
+        "x_led_attempts": 2,
+        "x_led_by_2s_count": 2,
+        "x_led_groups": 2,
+        "x_submitted_attempts": 2
+      },
+      "pass_": true,
+      "trial_dir": "reliable_renewed_s2700"
+    }
+  ],
+  "verifier_sha256": "a5a13b59d5aafb7215a0f55cd0095ba6800b68542b758faea1db8946b351b8e5"
+}

@@ -1,0 +1,1496 @@
+{
+  "source_sha256": "d0641f70422aa49bff1e3d7f5895ddab522c555af7b3f8c88b0bcfa07f3f80e2",
+  "scope": "Auxiliary receipt correction only; primary exports unchanged",
+  "disbands": 182,
+  "matched_client_receipts": 179,
+  "trials": [
+    {
+      "trial": "unreliable_renewed_s2701",
+      "events_sha256": "dd54ffb14a0c1b4f344f0c53d6eef3ea8cae623dabe019fb3e3fdfacd5af6e0f",
+      "disbands": 69,
+      "matched_client_receipts": 67,
+      "rows": [
+        {
+          "visit_id": "2023904:visit1",
+          "request_expiration": 1791793570.7875502,
+          "disband_event_ref": "2023904:2295",
+          "client_accepted_event_ref": "2023919:2279",
+          "client_disband_event_ref": "2023919:2291",
+          "client_join_id": "2023919:join1"
+        },
+        {
+          "visit_id": "2023904:visit2",
+          "request_expiration": 1791793572.9591696,
+          "disband_event_ref": "2023904:2309",
+          "client_accepted_event_ref": "2023909:2256",
+          "client_disband_event_ref": "2023909:2260",
+          "client_join_id": "2023909:join1"
+        },
+        {
+          "visit_id": "2023904:visit3",
+          "request_expiration": 1791793572.9698222,
+          "disband_event_ref": "2023904:2321",
+          "client_accepted_event_ref": null,
+          "client_disband_event_ref": null,
+          "client_join_id": null
+        },
+        {
+          "visit_id": "2023904:visit6",
+          "request_expiration": 1791793571.4794898,
+          "disband_event_ref": "2023904:2352",
+          "client_accepted_event_ref": "2023924:2265",
+          "client_disband_event_ref": "2023924:2277",
+          "client_join_id": "2023924:join2"
+        },
+        {
+          "visit_id": "2023904:visit8",
+          "request_expiration": 1791793573.075639,
+          "disband_event_ref": "2023904:2365",
+          "client_accepted_event_ref": "2023940:2263",
+          "client_disband_event_ref": "2023940:2266",
+          "client_join_id": "2023940:join2"
+        },
+        {
+          "visit_id": "2023904:visit9",
+          "request_expiration": 1791793572.9591696,
+          "disband_event_ref": "2023904:2370",
+          "client_accepted_event_ref": "2023909:2267",
+          "client_disband_event_ref": "2023909:2270",
+          "client_join_id": "2023909:join2"
+        },
+        {
+          "visit_id": "2023904:visit12",
+          "request_expiration": 1791793572.1088572,
+          "disband_event_ref": "2023904:2384",
+          "client_accepted_event_ref": "2023930:2281",
+          "client_disband_event_ref": "2023930:2285",
+          "client_join_id": "2023930:join4"
+        },
+        {
+          "visit_id": "2023904:visit14",
+          "request_expiration": 1791793577.1101413,
+          "disband_event_ref": "2023904:2409",
+          "client_accepted_event_ref": "2023930:2308",
+          "client_disband_event_ref": "2023930:2313",
+          "client_join_id": "2023930:join7"
+        },
+        {
+          "visit_id": "2023904:visit15",
+          "request_expiration": 1791793577.1101413,
+          "disband_event_ref": "2023904:2433",
+          "client_accepted_event_ref": "2023930:2320",
+          "client_disband_event_ref": "2023930:2323",
+          "client_join_id": "2023930:join8"
+        },
+        {
+          "visit_id": "2023904:visit16",
+          "request_expiration": 1791793577.8537812,
+          "disband_event_ref": "2023904:2443",
+          "client_accepted_event_ref": "2023935:2300",
+          "client_disband_event_ref": "2023935:2304",
+          "client_join_id": "2023935:join4"
+        },
+        {
+          "visit_id": "2023904:visit17",
+          "request_expiration": 1791793578.4440606,
+          "disband_event_ref": "2023904:2468",
+          "client_accepted_event_ref": "2023924:2323",
+          "client_disband_event_ref": "2023924:2327",
+          "client_join_id": "2023924:join3"
+        },
+        {
+          "visit_id": "2023904:visit18",
+          "request_expiration": 1791793578.6390681,
+          "disband_event_ref": "2023904:2479",
+          "client_accepted_event_ref": "2023909:2320",
+          "client_disband_event_ref": "2023909:2325",
+          "client_join_id": "2023909:join5"
+        },
+        {
+          "visit_id": "2023904:visit19",
+          "request_expiration": 1791793578.7648,
+          "disband_event_ref": "2023904:2492",
+          "client_accepted_event_ref": "2023940:2300",
+          "client_disband_event_ref": "2023940:2304",
+          "client_join_id": "2023940:join4"
+        },
+        {
+          "visit_id": "2023904:visit20",
+          "request_expiration": 1791793579.2807148,
+          "disband_event_ref": "2023904:2523",
+          "client_accepted_event_ref": "2023919:2372",
+          "client_disband_event_ref": "2023919:2376",
+          "client_join_id": "2023919:join3"
+        },
+        {
+          "visit_id": "2023904:visit22",
+          "request_expiration": 1791793579.4506667,
+          "disband_event_ref": "2023904:2539",
+          "client_accepted_event_ref": "2023914:2292",
+          "client_disband_event_ref": "2023914:2296",
+          "client_join_id": "2023914:join3"
+        },
+        {
+          "visit_id": "2023904:visit23",
+          "request_expiration": 1791793578.6390681,
+          "disband_event_ref": "2023904:2544",
+          "client_accepted_event_ref": "2023909:2332",
+          "client_disband_event_ref": "2023909:2335",
+          "client_join_id": "2023909:join6"
+        },
+        {
+          "visit_id": "2023904:visit26",
+          "request_expiration": 1791793579.2807148,
+          "disband_event_ref": "2023904:2558",
+          "client_accepted_event_ref": "2023919:2383",
+          "client_disband_event_ref": "2023919:2386",
+          "client_join_id": "2023919:join4"
+        },
+        {
+          "visit_id": "2023904:visit30",
+          "request_expiration": 1791793585.554948,
+          "disband_event_ref": "2023904:2626",
+          "client_accepted_event_ref": "2023909:2480",
+          "client_disband_event_ref": "2023909:2492",
+          "client_join_id": "2023909:join16"
+        },
+        {
+          "visit_id": "2023904:visit31",
+          "request_expiration": 1791793586.2118433,
+          "disband_event_ref": "2023904:2634",
+          "client_accepted_event_ref": "2023919:2495",
+          "client_disband_event_ref": "2023919:2498",
+          "client_join_id": "2023919:join14"
+        },
+        {
+          "visit_id": "2023904:visit32",
+          "request_expiration": 1791793585.8496814,
+          "disband_event_ref": "2023904:2635",
+          "client_accepted_event_ref": "2023924:2473",
+          "client_disband_event_ref": "2023924:2477",
+          "client_join_id": "2023924:join11"
+        },
+        {
+          "visit_id": "2023904:visit35",
+          "request_expiration": 1791793590.3638196,
+          "disband_event_ref": "2023904:2682",
+          "client_accepted_event_ref": "2023930:2509",
+          "client_disband_event_ref": "2023930:2512",
+          "client_join_id": "2023930:join15"
+        },
+        {
+          "visit_id": "2023904:visit36",
+          "request_expiration": 1791793589.928122,
+          "disband_event_ref": "2023904:2687",
+          "client_accepted_event_ref": "2023940:2421",
+          "client_disband_event_ref": "2023940:2425",
+          "client_join_id": "2023940:join11"
+        },
+        {
+          "visit_id": "2023904:visit37",
+          "request_expiration": 1791793590.3638196,
+          "disband_event_ref": "2023904:2715",
+          "client_accepted_event_ref": "2023930:2519",
+          "client_disband_event_ref": "2023930:2522",
+          "client_join_id": "2023930:join16"
+        },
+        {
+          "visit_id": "2023904:visit38",
+          "request_expiration": 1791793589.928122,
+          "disband_event_ref": "2023904:2719",
+          "client_accepted_event_ref": "2023940:2432",
+          "client_disband_event_ref": "2023940:2436",
+          "client_join_id": "2023940:join12"
+        },
+        {
+          "visit_id": "2023904:visit39",
+          "request_expiration": 1791793592.198,
+          "disband_event_ref": "2023904:2730",
+          "client_accepted_event_ref": "2023924:2527",
+          "client_disband_event_ref": "2023924:2532",
+          "client_join_id": "2023924:join13"
+        },
+        {
+          "visit_id": "2023904:visit40",
+          "request_expiration": 1791793592.198,
+          "disband_event_ref": "2023904:2761",
+          "client_accepted_event_ref": "2023924:2539",
+          "client_disband_event_ref": "2023924:2542",
+          "client_join_id": "2023924:join14"
+        },
+        {
+          "visit_id": "2023904:visit42",
+          "request_expiration": 1791793593.4721901,
+          "disband_event_ref": "2023904:2766",
+          "client_accepted_event_ref": "2023919:2552",
+          "client_disband_event_ref": "2023919:2556",
+          "client_join_id": "2023919:join16"
+        },
+        {
+          "visit_id": "2023904:visit43",
+          "request_expiration": 1791793594.31564,
+          "disband_event_ref": "2023904:2805",
+          "client_accepted_event_ref": "2023914:2450",
+          "client_disband_event_ref": "2023914:2454",
+          "client_join_id": "2023914:join11"
+        },
+        {
+          "visit_id": "2023904:visit44",
+          "request_expiration": 1791793593.4721901,
+          "disband_event_ref": "2023904:2813",
+          "client_accepted_event_ref": "2023919:2569",
+          "client_disband_event_ref": "2023919:2572",
+          "client_join_id": "2023919:join18"
+        },
+        {
+          "visit_id": "2023904:visit45",
+          "request_expiration": 1791793594.2573092,
+          "disband_event_ref": "2023904:2823",
+          "client_accepted_event_ref": "2023935:2533",
+          "client_disband_event_ref": "2023935:2536",
+          "client_join_id": "2023935:join13"
+        },
+        {
+          "visit_id": "2023904:visit47",
+          "request_expiration": 1791793594.31564,
+          "disband_event_ref": "2023904:2838",
+          "client_accepted_event_ref": "2023914:2461",
+          "client_disband_event_ref": "2023914:2464",
+          "client_join_id": "2023914:join12"
+        },
+        {
+          "visit_id": "2023904:visit48",
+          "request_expiration": 1791793594.9843044,
+          "disband_event_ref": "2023904:2842",
+          "client_accepted_event_ref": null,
+          "client_disband_event_ref": null,
+          "client_join_id": null
+        },
+        {
+          "visit_id": "2023904:visit52",
+          "request_expiration": 1791793600.1936893,
+          "disband_event_ref": "2023904:2925",
+          "client_accepted_event_ref": "2023935:2595",
+          "client_disband_event_ref": "2023935:2600",
+          "client_join_id": "2023935:join16"
+        },
+        {
+          "visit_id": "2023904:visit53",
+          "request_expiration": 1791793598.1239183,
+          "disband_event_ref": "2023904:2932",
+          "client_accepted_event_ref": "2023940:2549",
+          "client_disband_event_ref": "2023940:2567",
+          "client_join_id": "2023940:join17"
+        },
+        {
+          "visit_id": "2023904:visit54",
+          "request_expiration": 1791793600.529563,
+          "disband_event_ref": "2023904:2946",
+          "client_accepted_event_ref": "2023909:2635",
+          "client_disband_event_ref": "2023909:2639",
+          "client_join_id": "2023909:join22"
+        },
+        {
+          "visit_id": "2023904:visit58",
+          "request_expiration": 1791793601.3180547,
+          "disband_event_ref": "2023904:2976",
+          "client_accepted_event_ref": "2023914:2514",
+          "client_disband_event_ref": "2023914:2519",
+          "client_join_id": "2023914:join15"
+        },
+        {
+          "visit_id": "2023904:visit59",
+          "request_expiration": 1791793600.529563,
+          "disband_event_ref": "2023904:2984",
+          "client_accepted_event_ref": "2023909:2646",
+          "client_disband_event_ref": "2023909:2649",
+          "client_join_id": "2023909:join23"
+        },
+        {
+          "visit_id": "2023904:visit62",
+          "request_expiration": 1791793604.9370215,
+          "disband_event_ref": "2023904:3024",
+          "client_accepted_event_ref": "2023924:2666",
+          "client_disband_event_ref": "2023924:2670",
+          "client_join_id": "2023924:join19"
+        },
+        {
+          "visit_id": "2023904:visit63",
+          "request_expiration": 1791793605.398812,
+          "disband_event_ref": "2023904:3034",
+          "client_accepted_event_ref": "2023940:2639",
+          "client_disband_event_ref": "2023940:2644",
+          "client_join_id": "2023940:join19"
+        },
+        {
+          "visit_id": "2023904:visit64",
+          "request_expiration": 1791793605.495747,
+          "disband_event_ref": "2023904:3039",
+          "client_accepted_event_ref": "2023935:2643",
+          "client_disband_event_ref": "2023935:2647",
+          "client_join_id": "2023935:join18"
+        },
+        {
+          "visit_id": "2023904:visit65",
+          "request_expiration": 1791793605.398812,
+          "disband_event_ref": "2023904:3071",
+          "client_accepted_event_ref": "2023940:2651",
+          "client_disband_event_ref": "2023940:2654",
+          "client_join_id": "2023940:join20"
+        },
+        {
+          "visit_id": "2023904:visit66",
+          "request_expiration": 1791793605.495747,
+          "disband_event_ref": "2023904:3080",
+          "client_accepted_event_ref": "2023935:2654",
+          "client_disband_event_ref": "2023935:2657",
+          "client_join_id": "2023935:join19"
+        },
+        {
+          "visit_id": "2023904:visit67",
+          "request_expiration": 1791793604.9370215,
+          "disband_event_ref": "2023904:3085",
+          "client_accepted_event_ref": "2023924:2686",
+          "client_disband_event_ref": "2023924:2697",
+          "client_join_id": "2023924:join21"
+        },
+        {
+          "visit_id": "2023904:visit69",
+          "request_expiration": 1791793607.382722,
+          "disband_event_ref": "2023904:3119",
+          "client_accepted_event_ref": "2023930:2672",
+          "client_disband_event_ref": "2023930:2676",
+          "client_join_id": "2023930:join23"
+        },
+        {
+          "visit_id": "2023904:visit70",
+          "request_expiration": 1791793607.52024,
+          "disband_event_ref": "2023904:3125",
+          "client_accepted_event_ref": "2023914:2599",
+          "client_disband_event_ref": "2023914:2603",
+          "client_join_id": "2023914:join18"
+        },
+        {
+          "visit_id": "2023904:visit72",
+          "request_expiration": 1791793607.382722,
+          "disband_event_ref": "2023904:3155",
+          "client_accepted_event_ref": "2023930:2683",
+          "client_disband_event_ref": "2023930:2686",
+          "client_join_id": "2023930:join24"
+        },
+        {
+          "visit_id": "2023904:visit73",
+          "request_expiration": 1791793608.4570475,
+          "disband_event_ref": "2023904:3156",
+          "client_accepted_event_ref": "2023909:2718",
+          "client_disband_event_ref": "2023909:2722",
+          "client_join_id": "2023909:join28"
+        },
+        {
+          "visit_id": "2023904:visit74",
+          "request_expiration": 1791793607.0779042,
+          "disband_event_ref": "2023904:3165",
+          "client_accepted_event_ref": "2023919:2722",
+          "client_disband_event_ref": "2023919:2725",
+          "client_join_id": "2023919:join28"
+        },
+        {
+          "visit_id": "2023904:visit75",
+          "request_expiration": 1791793608.4570475,
+          "disband_event_ref": "2023904:3180",
+          "client_accepted_event_ref": "2023909:2729",
+          "client_disband_event_ref": "2023909:2732",
+          "client_join_id": "2023909:join29"
+        },
+        {
+          "visit_id": "2023904:visit78",
+          "request_expiration": 1791793613.9700644,
+          "disband_event_ref": "2023904:3229",
+          "client_accepted_event_ref": "2023924:2783",
+          "client_disband_event_ref": "2023924:2787",
+          "client_join_id": "2023924:join23"
+        },
+        {
+          "visit_id": "2023904:visit79",
+          "request_expiration": 1791793614.4827476,
+          "disband_event_ref": "2023904:3246",
+          "client_accepted_event_ref": "2023909:2776",
+          "client_disband_event_ref": "2023909:2781",
+          "client_join_id": "2023909:join31"
+        },
+        {
+          "visit_id": "2023904:visit80",
+          "request_expiration": 1791793614.7162557,
+          "disband_event_ref": "2023904:3252",
+          "client_accepted_event_ref": "2023930:2743",
+          "client_disband_event_ref": "2023930:2747",
+          "client_join_id": "2023930:join28"
+        },
+        {
+          "visit_id": "2023904:visit81",
+          "request_expiration": 1791793614.4827476,
+          "disband_event_ref": "2023904:3275",
+          "client_accepted_event_ref": "2023909:2788",
+          "client_disband_event_ref": "2023909:2791",
+          "client_join_id": "2023909:join32"
+        },
+        {
+          "visit_id": "2023904:visit82",
+          "request_expiration": 1791793614.7162557,
+          "disband_event_ref": "2023904:3287",
+          "client_accepted_event_ref": "2023930:2754",
+          "client_disband_event_ref": "2023930:2757",
+          "client_join_id": "2023930:join29"
+        },
+        {
+          "visit_id": "2023904:visit83",
+          "request_expiration": 1791793613.9700644,
+          "disband_event_ref": "2023904:3300",
+          "client_accepted_event_ref": "2023924:2822",
+          "client_disband_event_ref": "2023924:2843",
+          "client_join_id": "2023924:join28"
+        },
+        {
+          "visit_id": "2023904:visit84",
+          "request_expiration": 1791793616.70109,
+          "disband_event_ref": "2023904:3324",
+          "client_accepted_event_ref": "2023914:2673",
+          "client_disband_event_ref": "2023914:2678",
+          "client_join_id": "2023914:join21"
+        },
+        {
+          "visit_id": "2023904:visit85",
+          "request_expiration": 1791793616.7983332,
+          "disband_event_ref": "2023904:3333",
+          "client_accepted_event_ref": "2023919:2832",
+          "client_disband_event_ref": "2023919:2836",
+          "client_join_id": "2023919:join32"
+        },
+        {
+          "visit_id": "2023904:visit86",
+          "request_expiration": 1791793614.4827476,
+          "disband_event_ref": "2023904:3343",
+          "client_accepted_event_ref": "2023909:2812",
+          "client_disband_event_ref": "2023909:2820",
+          "client_join_id": "2023909:join34"
+        },
+        {
+          "visit_id": "2023904:visit88",
+          "request_expiration": 1791793617.8086057,
+          "disband_event_ref": "2023904:3366",
+          "client_accepted_event_ref": "2023940:2815",
+          "client_disband_event_ref": "2023940:2818",
+          "client_join_id": "2023940:join27"
+        },
+        {
+          "visit_id": "2023904:visit90",
+          "request_expiration": 1791793617.8086057,
+          "disband_event_ref": "2023904:3383",
+          "client_accepted_event_ref": "2023940:2846",
+          "client_disband_event_ref": "2023940:2850",
+          "client_join_id": "2023940:join31"
+        },
+        {
+          "visit_id": "2023904:visit92",
+          "request_expiration": 1791793622.787531,
+          "disband_event_ref": "2023904:3426",
+          "client_accepted_event_ref": "2023930:2830",
+          "client_disband_event_ref": "2023930:2834",
+          "client_join_id": "2023930:join34"
+        },
+        {
+          "visit_id": "2023904:visit93",
+          "request_expiration": 1791793622.8653576,
+          "disband_event_ref": "2023904:3431",
+          "client_accepted_event_ref": "2023924:2921",
+          "client_disband_event_ref": "2023924:2925",
+          "client_join_id": "2023924:join29"
+        },
+        {
+          "visit_id": "2023904:visit94",
+          "request_expiration": 1791793623.1018414,
+          "disband_event_ref": "2023904:3436",
+          "client_accepted_event_ref": "2023919:2879",
+          "client_disband_event_ref": "2023919:2883",
+          "client_join_id": "2023919:join34"
+        },
+        {
+          "visit_id": "2023904:visit95",
+          "request_expiration": 1791793623.9947174,
+          "disband_event_ref": "2023904:3460",
+          "client_accepted_event_ref": "2023935:2775",
+          "client_disband_event_ref": "2023935:2780",
+          "client_join_id": "2023935:join23"
+        },
+        {
+          "visit_id": "2023904:visit100",
+          "request_expiration": 1791793628.3958127,
+          "disband_event_ref": "2023904:3528",
+          "client_accepted_event_ref": "2023924:2987",
+          "client_disband_event_ref": "2023924:2992",
+          "client_join_id": "2023924:join31"
+        },
+        {
+          "visit_id": "2023904:visit101",
+          "request_expiration": 1791793628.2141478,
+          "disband_event_ref": "2023904:3529",
+          "client_accepted_event_ref": "2023919:2959",
+          "client_disband_event_ref": "2023919:2962",
+          "client_join_id": "2023919:join38"
+        },
+        {
+          "visit_id": "2023904:visit102",
+          "request_expiration": 1791793628.619502,
+          "disband_event_ref": "2023904:3538",
+          "client_accepted_event_ref": "2023909:2920",
+          "client_disband_event_ref": "2023909:2924",
+          "client_join_id": "2023909:join39"
+        },
+        {
+          "visit_id": "2023904:visit103",
+          "request_expiration": 1791793628.3958127,
+          "disband_event_ref": "2023904:3561",
+          "client_accepted_event_ref": "2023924:3005",
+          "client_disband_event_ref": "2023924:3008",
+          "client_join_id": "2023924:join33"
+        },
+        {
+          "visit_id": "2023904:visit104",
+          "request_expiration": 1791793628.619502,
+          "disband_event_ref": "2023904:3567",
+          "client_accepted_event_ref": "2023909:2937",
+          "client_disband_event_ref": "2023909:2940",
+          "client_join_id": "2023909:join41"
+        }
+      ]
+    },
+    {
+      "trial": "unreliable_renewed_s2702",
+      "events_sha256": "64902d3588df2874df5993bbcf3619192fcb3c89d28cec4b1143afa4c88c076f",
+      "disbands": 85,
+      "matched_client_receipts": 84,
+      "rows": [
+        {
+          "visit_id": "2008857:visit1",
+          "request_expiration": 1791793321.7477512,
+          "disband_event_ref": "2008857:1471",
+          "client_accepted_event_ref": "2008862:1447",
+          "client_disband_event_ref": "2008862:1450",
+          "client_join_id": "2008862:join1"
+        },
+        {
+          "visit_id": "2008857:visit2",
+          "request_expiration": 1791793322.6005354,
+          "disband_event_ref": "2008857:1481",
+          "client_accepted_event_ref": "2008867:1445",
+          "client_disband_event_ref": "2008867:1450",
+          "client_join_id": "2008867:join1"
+        },
+        {
+          "visit_id": "2008857:visit3",
+          "request_expiration": 1791793322.7146785,
+          "disband_event_ref": "2008857:1486",
+          "client_accepted_event_ref": "2008872:1446",
+          "client_disband_event_ref": "2008872:1450",
+          "client_join_id": "2008872:join1"
+        },
+        {
+          "visit_id": "2008857:visit5",
+          "request_expiration": 1791793322.6005354,
+          "disband_event_ref": "2008857:1532",
+          "client_accepted_event_ref": "2008867:1457",
+          "client_disband_event_ref": "2008867:1460",
+          "client_join_id": "2008867:join2"
+        },
+        {
+          "visit_id": "2008857:visit6",
+          "request_expiration": 1791793322.7146785,
+          "disband_event_ref": "2008857:1547",
+          "client_accepted_event_ref": "2008872:1457",
+          "client_disband_event_ref": "2008872:1460",
+          "client_join_id": "2008872:join2"
+        },
+        {
+          "visit_id": "2008857:visit7",
+          "request_expiration": 1791793321.4769325,
+          "disband_event_ref": "2008857:1553",
+          "client_accepted_event_ref": "2008888:1475",
+          "client_disband_event_ref": "2008888:1511",
+          "client_join_id": "2008888:join2"
+        },
+        {
+          "visit_id": "2008857:visit12",
+          "request_expiration": 1791793323.950194,
+          "disband_event_ref": "2008857:1574",
+          "client_accepted_event_ref": "2008893:1459",
+          "client_disband_event_ref": "2008893:1462",
+          "client_join_id": "2008893:join3"
+        },
+        {
+          "visit_id": "2008857:visit14",
+          "request_expiration": 1791793327.74372,
+          "disband_event_ref": "2008857:1604",
+          "client_accepted_event_ref": "2008883:1532",
+          "client_disband_event_ref": "2008883:1537",
+          "client_join_id": "2008883:join3"
+        },
+        {
+          "visit_id": "2008857:visit15",
+          "request_expiration": 1791793328.4350111,
+          "disband_event_ref": "2008857:1640",
+          "client_accepted_event_ref": "2008872:1505",
+          "client_disband_event_ref": "2008872:1509",
+          "client_join_id": "2008872:join4"
+        },
+        {
+          "visit_id": "2008857:visit16",
+          "request_expiration": 1791793328.5285487,
+          "disband_event_ref": "2008857:1645",
+          "client_accepted_event_ref": "2008867:1513",
+          "client_disband_event_ref": "2008867:1517",
+          "client_join_id": "2008867:join5"
+        },
+        {
+          "visit_id": "2008857:visit17",
+          "request_expiration": 1791793328.5525835,
+          "disband_event_ref": "2008857:1651",
+          "client_accepted_event_ref": "2008888:1556",
+          "client_disband_event_ref": "2008888:1560",
+          "client_join_id": "2008888:join3"
+        },
+        {
+          "visit_id": "2008857:visit19",
+          "request_expiration": 1791793328.4350111,
+          "disband_event_ref": "2008857:1694",
+          "client_accepted_event_ref": "2008872:1516",
+          "client_disband_event_ref": "2008872:1519",
+          "client_join_id": "2008872:join5"
+        },
+        {
+          "visit_id": "2008857:visit20",
+          "request_expiration": 1791793328.5285487,
+          "disband_event_ref": "2008857:1702",
+          "client_accepted_event_ref": "2008867:1524",
+          "client_disband_event_ref": "2008867:1527",
+          "client_join_id": "2008867:join6"
+        },
+        {
+          "visit_id": "2008857:visit21",
+          "request_expiration": 1791793328.5525835,
+          "disband_event_ref": "2008857:1707",
+          "client_accepted_event_ref": "2008888:1567",
+          "client_disband_event_ref": "2008888:1570",
+          "client_join_id": "2008888:join4"
+        },
+        {
+          "visit_id": "2008857:visit24",
+          "request_expiration": 1791793330.920376,
+          "disband_event_ref": "2008857:1732",
+          "client_accepted_event_ref": "2008862:1538",
+          "client_disband_event_ref": "2008862:1551",
+          "client_join_id": "2008862:join6"
+        },
+        {
+          "visit_id": "2008857:visit25",
+          "request_expiration": 1791793328.5525835,
+          "disband_event_ref": "2008857:1737",
+          "client_accepted_event_ref": "2008888:1592",
+          "client_disband_event_ref": "2008888:1596",
+          "client_join_id": "2008888:join7"
+        },
+        {
+          "visit_id": "2008857:visit27",
+          "request_expiration": 1791793335.6190052,
+          "disband_event_ref": "2008857:1783",
+          "client_accepted_event_ref": "2008888:1654",
+          "client_disband_event_ref": "2008888:1658",
+          "client_join_id": "2008888:join9"
+        },
+        {
+          "visit_id": "2008857:visit28",
+          "request_expiration": 1791793334.8145807,
+          "disband_event_ref": "2008857:1788",
+          "client_accepted_event_ref": "2008883:1659",
+          "client_disband_event_ref": "2008883:1662",
+          "client_join_id": "2008883:join9"
+        },
+        {
+          "visit_id": "2008857:visit29",
+          "request_expiration": 1791793336.3512504,
+          "disband_event_ref": "2008857:1819",
+          "client_accepted_event_ref": "2008893:1580",
+          "client_disband_event_ref": "2008893:1585",
+          "client_join_id": "2008893:join12"
+        },
+        {
+          "visit_id": "2008857:visit30",
+          "request_expiration": 1791793335.6190052,
+          "disband_event_ref": "2008857:1831",
+          "client_accepted_event_ref": "2008888:1665",
+          "client_disband_event_ref": "2008888:1674",
+          "client_join_id": "2008888:join10"
+        },
+        {
+          "visit_id": "2008857:visit31",
+          "request_expiration": 1791793334.8145807,
+          "disband_event_ref": "2008857:1836",
+          "client_accepted_event_ref": "2008883:1670",
+          "client_disband_event_ref": "2008883:1697",
+          "client_join_id": "2008883:join10"
+        },
+        {
+          "visit_id": "2008857:visit33",
+          "request_expiration": 1791793337.731329,
+          "disband_event_ref": "2008857:1868",
+          "client_accepted_event_ref": "2008872:1609",
+          "client_disband_event_ref": "2008872:1614",
+          "client_join_id": "2008872:join8"
+        },
+        {
+          "visit_id": "2008857:visit34",
+          "request_expiration": 1791793337.0549107,
+          "disband_event_ref": "2008857:1875",
+          "client_accepted_event_ref": "2008877:1571",
+          "client_disband_event_ref": "2008877:1575",
+          "client_join_id": "2008877:join9"
+        },
+        {
+          "visit_id": "2008857:visit35",
+          "request_expiration": 1791793336.3512504,
+          "disband_event_ref": "2008857:1895",
+          "client_accepted_event_ref": "2008893:1617",
+          "client_disband_event_ref": "2008893:1625",
+          "client_join_id": "2008893:join15"
+        },
+        {
+          "visit_id": "2008857:visit37",
+          "request_expiration": 1791793337.018343,
+          "disband_event_ref": "2008857:1907",
+          "client_accepted_event_ref": "2008867:1641",
+          "client_disband_event_ref": "2008867:1644",
+          "client_join_id": "2008867:join12"
+        },
+        {
+          "visit_id": "2008857:visit38",
+          "request_expiration": 1791793336.3512504,
+          "disband_event_ref": "2008857:1920",
+          "client_accepted_event_ref": "2008893:1636",
+          "client_disband_event_ref": "2008893:1643",
+          "client_join_id": "2008893:join16"
+        },
+        {
+          "visit_id": "2008857:visit39",
+          "request_expiration": 1791793339.5145218,
+          "disband_event_ref": "2008857:1930",
+          "client_accepted_event_ref": "2008862:1667",
+          "client_disband_event_ref": "2008862:1671",
+          "client_join_id": "2008862:join13"
+        },
+        {
+          "visit_id": "2008857:visit40",
+          "request_expiration": 1791793341.8382168,
+          "disband_event_ref": "2008857:1955",
+          "client_accepted_event_ref": "2008888:1739",
+          "client_disband_event_ref": "2008888:1744",
+          "client_join_id": "2008888:join12"
+        },
+        {
+          "visit_id": "2008857:visit41",
+          "request_expiration": 1791793342.1126,
+          "disband_event_ref": "2008857:1961",
+          "client_accepted_event_ref": "2008883:1763",
+          "client_disband_event_ref": "2008883:1767",
+          "client_join_id": "2008883:join12"
+        },
+        {
+          "visit_id": "2008857:visit42",
+          "request_expiration": 1791793341.8382168,
+          "disband_event_ref": "2008857:1983",
+          "client_accepted_event_ref": "2008888:1751",
+          "client_disband_event_ref": "2008888:1760",
+          "client_join_id": "2008888:join13"
+        },
+        {
+          "visit_id": "2008857:visit43",
+          "request_expiration": 1791793342.1126,
+          "disband_event_ref": "2008857:1989",
+          "client_accepted_event_ref": "2008883:1774",
+          "client_disband_event_ref": "2008883:1783",
+          "client_join_id": "2008883:join13"
+        },
+        {
+          "visit_id": "2008857:visit44",
+          "request_expiration": 1791793343.7833269,
+          "disband_event_ref": "2008857:2026",
+          "client_accepted_event_ref": "2008893:1682",
+          "client_disband_event_ref": "2008893:1687",
+          "client_join_id": "2008893:join18"
+        },
+        {
+          "visit_id": "2008857:visit45",
+          "request_expiration": 1791793344.016299,
+          "disband_event_ref": "2008857:2042",
+          "client_accepted_event_ref": "2008867:1714",
+          "client_disband_event_ref": "2008867:1718",
+          "client_join_id": "2008867:join13"
+        },
+        {
+          "visit_id": "2008857:visit46",
+          "request_expiration": 1791793343.4560714,
+          "disband_event_ref": "2008857:2054",
+          "client_accepted_event_ref": "2008877:1639",
+          "client_disband_event_ref": "2008877:1643",
+          "client_join_id": "2008877:join15"
+        },
+        {
+          "visit_id": "2008857:visit49",
+          "request_expiration": 1791793344.4710965,
+          "disband_event_ref": "2008857:2076",
+          "client_accepted_event_ref": "2008862:1705",
+          "client_disband_event_ref": "2008862:1709",
+          "client_join_id": "2008862:join15"
+        },
+        {
+          "visit_id": "2008857:visit50",
+          "request_expiration": 1791793343.7833269,
+          "disband_event_ref": "2008857:2077",
+          "client_accepted_event_ref": "2008893:1694",
+          "client_disband_event_ref": "2008893:1697",
+          "client_join_id": "2008893:join19"
+        },
+        {
+          "visit_id": "2008857:visit54",
+          "request_expiration": 1791793349.3381367,
+          "disband_event_ref": "2008857:2139",
+          "client_accepted_event_ref": "2008888:1863",
+          "client_disband_event_ref": "2008888:1868",
+          "client_join_id": "2008888:join16"
+        },
+        {
+          "visit_id": "2008857:visit55",
+          "request_expiration": 1791793349.4484565,
+          "disband_event_ref": "2008857:2154",
+          "client_accepted_event_ref": "2008883:1840",
+          "client_disband_event_ref": "2008883:1844",
+          "client_join_id": "2008883:join15"
+        },
+        {
+          "visit_id": "2008857:visit56",
+          "request_expiration": 1791793348.9979959,
+          "disband_event_ref": "2008857:2159",
+          "client_accepted_event_ref": "2008867:1753",
+          "client_disband_event_ref": "2008867:1768",
+          "client_join_id": "2008867:join15"
+        },
+        {
+          "visit_id": "2008857:visit58",
+          "request_expiration": 1791793350.1453347,
+          "disband_event_ref": "2008857:2172",
+          "client_accepted_event_ref": "2008877:1709",
+          "client_disband_event_ref": "2008877:1713",
+          "client_join_id": "2008877:join17"
+        },
+        {
+          "visit_id": "2008857:visit59",
+          "request_expiration": 1791793349.3381367,
+          "disband_event_ref": "2008857:2202",
+          "client_accepted_event_ref": "2008888:1884",
+          "client_disband_event_ref": "2008888:1888",
+          "client_join_id": "2008888:join18"
+        },
+        {
+          "visit_id": "2008857:visit60",
+          "request_expiration": 1791793351.1975634,
+          "disband_event_ref": "2008857:2221",
+          "client_accepted_event_ref": "2008862:1762",
+          "client_disband_event_ref": "2008862:1767",
+          "client_join_id": "2008862:join20"
+        },
+        {
+          "visit_id": "2008857:visit61",
+          "request_expiration": 1791793348.9979959,
+          "disband_event_ref": "2008857:2231",
+          "client_accepted_event_ref": "2008867:1797",
+          "client_disband_event_ref": "2008867:1813",
+          "client_join_id": "2008867:join16"
+        },
+        {
+          "visit_id": "2008857:visit62",
+          "request_expiration": 1791793350.0203936,
+          "disband_event_ref": "2008857:2251",
+          "client_accepted_event_ref": "2008872:1699",
+          "client_disband_event_ref": "2008872:1702",
+          "client_join_id": "2008872:join14"
+        },
+        {
+          "visit_id": "2008857:visit66",
+          "request_expiration": 1791793352.7175152,
+          "disband_event_ref": "2008857:2266",
+          "client_accepted_event_ref": "2008893:1744",
+          "client_disband_event_ref": "2008893:1749",
+          "client_join_id": "2008893:join23"
+        },
+        {
+          "visit_id": "2008857:visit67",
+          "request_expiration": 1791793352.7175152,
+          "disband_event_ref": "2008857:2281",
+          "client_accepted_event_ref": "2008893:1762",
+          "client_disband_event_ref": "2008893:1765",
+          "client_join_id": "2008893:join25"
+        },
+        {
+          "visit_id": "2008857:visit68",
+          "request_expiration": 1791793352.7175152,
+          "disband_event_ref": "2008857:2306",
+          "client_accepted_event_ref": "2008893:1781",
+          "client_disband_event_ref": "2008893:1785",
+          "client_join_id": "2008893:join27"
+        },
+        {
+          "visit_id": "2008857:visit69",
+          "request_expiration": 1791793355.641716,
+          "disband_event_ref": "2008857:2313",
+          "client_accepted_event_ref": "2008867:1855",
+          "client_disband_event_ref": "2008867:1859",
+          "client_join_id": "2008867:join17"
+        },
+        {
+          "visit_id": "2008857:visit70",
+          "request_expiration": 1791793356.43647,
+          "disband_event_ref": "2008857:2342",
+          "client_accepted_event_ref": "2008883:1897",
+          "client_disband_event_ref": "2008883:1901",
+          "client_join_id": "2008883:join19"
+        },
+        {
+          "visit_id": "2008857:visit71",
+          "request_expiration": 1791793356.4769344,
+          "disband_event_ref": "2008857:2344",
+          "client_accepted_event_ref": "2008872:1739",
+          "client_disband_event_ref": "2008872:1743",
+          "client_join_id": "2008872:join16"
+        },
+        {
+          "visit_id": "2008857:visit73",
+          "request_expiration": 1791793356.736715,
+          "disband_event_ref": "2008857:2387",
+          "client_accepted_event_ref": "2008888:1977",
+          "client_disband_event_ref": "2008888:1980",
+          "client_join_id": "2008888:join21"
+        },
+        {
+          "visit_id": "2008857:visit74",
+          "request_expiration": 1791793356.43647,
+          "disband_event_ref": "2008857:2392",
+          "client_accepted_event_ref": "2008883:1908",
+          "client_disband_event_ref": "2008883:1912",
+          "client_join_id": "2008883:join20"
+        },
+        {
+          "visit_id": "2008857:visit75",
+          "request_expiration": 1791793357.4525583,
+          "disband_event_ref": "2008857:2404",
+          "client_accepted_event_ref": "2008877:1761",
+          "client_disband_event_ref": "2008877:1765",
+          "client_join_id": "2008877:join21"
+        },
+        {
+          "visit_id": "2008857:visit78",
+          "request_expiration": 1791793357.4525583,
+          "disband_event_ref": "2008857:2419",
+          "client_accepted_event_ref": "2008877:1772",
+          "client_disband_event_ref": "2008877:1775",
+          "client_join_id": "2008877:join22"
+        },
+        {
+          "visit_id": "2008857:visit79",
+          "request_expiration": 1791793364.801002,
+          "disband_event_ref": "2008857:2456",
+          "client_accepted_event_ref": "2008877:1893",
+          "client_disband_event_ref": "2008877:1897",
+          "client_join_id": "2008877:join29"
+        },
+        {
+          "visit_id": "2008857:visit80",
+          "request_expiration": 1791793364.452068,
+          "disband_event_ref": "2008857:2464",
+          "client_accepted_event_ref": "2008867:2006",
+          "client_disband_event_ref": "2008867:2010",
+          "client_join_id": "2008867:join23"
+        },
+        {
+          "visit_id": "2008857:visit81",
+          "request_expiration": 1791793366.343139,
+          "disband_event_ref": "2008857:2505",
+          "client_accepted_event_ref": "2008883:2090",
+          "client_disband_event_ref": "2008883:2095",
+          "client_join_id": "2008883:join26"
+        },
+        {
+          "visit_id": "2008857:visit82",
+          "request_expiration": 1791793366.3502254,
+          "disband_event_ref": "2008857:2510",
+          "client_accepted_event_ref": "2008893:1889",
+          "client_disband_event_ref": "2008893:1893",
+          "client_join_id": "2008893:join30"
+        },
+        {
+          "visit_id": "2008857:visit83",
+          "request_expiration": 1791793364.801002,
+          "disband_event_ref": "2008857:2519",
+          "client_accepted_event_ref": "2008877:1904",
+          "client_disband_event_ref": "2008877:1907",
+          "client_join_id": "2008877:join30"
+        },
+        {
+          "visit_id": "2008857:visit86",
+          "request_expiration": 1791793367.1806886,
+          "disband_event_ref": "2008857:2539",
+          "client_accepted_event_ref": "2008862:1880",
+          "client_disband_event_ref": "2008862:1884",
+          "client_join_id": "2008862:join26"
+        },
+        {
+          "visit_id": "2008857:visit87",
+          "request_expiration": 1791793366.3502254,
+          "disband_event_ref": "2008857:2547",
+          "client_accepted_event_ref": "2008893:1900",
+          "client_disband_event_ref": "2008893:1903",
+          "client_join_id": "2008893:join31"
+        },
+        {
+          "visit_id": "2008857:visit89",
+          "request_expiration": 1791793370.5247517,
+          "disband_event_ref": "2008857:2597",
+          "client_accepted_event_ref": "2008888:2106",
+          "client_disband_event_ref": "2008888:2117",
+          "client_join_id": "2008888:join26"
+        },
+        {
+          "visit_id": "2008857:visit90",
+          "request_expiration": 1791793370.6892307,
+          "disband_event_ref": "2008857:2602",
+          "client_accepted_event_ref": "2008867:2109",
+          "client_disband_event_ref": "2008867:2115",
+          "client_join_id": "2008867:join25"
+        },
+        {
+          "visit_id": "2008857:visit91",
+          "request_expiration": 1791793370.805767,
+          "disband_event_ref": "2008857:2609",
+          "client_accepted_event_ref": "2008872:1906",
+          "client_disband_event_ref": "2008872:1910",
+          "client_join_id": "2008872:join26"
+        },
+        {
+          "visit_id": "2008857:visit93",
+          "request_expiration": 1791793371.5654747,
+          "disband_event_ref": "2008857:2647",
+          "client_accepted_event_ref": "2008893:1944",
+          "client_disband_event_ref": "2008893:1949",
+          "client_join_id": "2008893:join34"
+        },
+        {
+          "visit_id": "2008857:visit94",
+          "request_expiration": 1791793370.5247517,
+          "disband_event_ref": "2008857:2653",
+          "client_accepted_event_ref": "2008888:2132",
+          "client_disband_event_ref": "2008888:2148",
+          "client_join_id": "2008888:join27"
+        },
+        {
+          "visit_id": "2008857:visit95",
+          "request_expiration": 1791793370.805767,
+          "disband_event_ref": "2008857:2666",
+          "client_accepted_event_ref": "2008872:1917",
+          "client_disband_event_ref": "2008872:1920",
+          "client_join_id": "2008872:join27"
+        },
+        {
+          "visit_id": "2008857:visit98",
+          "request_expiration": 1791793372.3724673,
+          "disband_event_ref": "2008857:2695",
+          "client_accepted_event_ref": "2008862:1924",
+          "client_disband_event_ref": "2008862:1928",
+          "client_join_id": "2008862:join29"
+        },
+        {
+          "visit_id": "2008857:visit99",
+          "request_expiration": 1791793371.5654747,
+          "disband_event_ref": "2008857:2703",
+          "client_accepted_event_ref": "2008893:1956",
+          "client_disband_event_ref": "2008893:1959",
+          "client_join_id": "2008893:join35"
+        },
+        {
+          "visit_id": "2008857:visit100",
+          "request_expiration": 1791793370.6892307,
+          "disband_event_ref": "2008857:2728",
+          "client_accepted_event_ref": "2008867:2156",
+          "client_disband_event_ref": "2008867:2168",
+          "client_join_id": "2008867:join28"
+        },
+        {
+          "visit_id": "2008857:visit101",
+          "request_expiration": 1791793370.5247517,
+          "disband_event_ref": "2008857:2753",
+          "client_accepted_event_ref": "2008888:2168",
+          "client_disband_event_ref": "2008888:2184",
+          "client_join_id": "2008888:join28"
+        },
+        {
+          "visit_id": "2008857:visit102",
+          "request_expiration": 1791793370.8453631,
+          "disband_event_ref": "2008857:2758",
+          "client_accepted_event_ref": "2008883:2154",
+          "client_disband_event_ref": "2008883:2157",
+          "client_join_id": "2008883:join31"
+        },
+        {
+          "visit_id": "2008857:visit104",
+          "request_expiration": 1791793372.3724673,
+          "disband_event_ref": "2008857:2777",
+          "client_accepted_event_ref": "2008862:1935",
+          "client_disband_event_ref": "2008862:1938",
+          "client_join_id": "2008862:join30"
+        },
+        {
+          "visit_id": "2008857:visit108",
+          "request_expiration": 1791793375.8463457,
+          "disband_event_ref": "2008857:2795",
+          "client_accepted_event_ref": "2008883:2175",
+          "client_disband_event_ref": "2008883:2180",
+          "client_join_id": "2008883:join33"
+        },
+        {
+          "visit_id": "2008857:visit109",
+          "request_expiration": 1791793375.8463457,
+          "disband_event_ref": "2008857:2851",
+          "client_accepted_event_ref": null,
+          "client_disband_event_ref": null,
+          "client_join_id": null
+        },
+        {
+          "visit_id": "2008857:visit110",
+          "request_expiration": 1791793378.140743,
+          "disband_event_ref": "2008857:2857",
+          "client_accepted_event_ref": "2008862:1981",
+          "client_disband_event_ref": "2008862:1985",
+          "client_join_id": "2008862:join32"
+        },
+        {
+          "visit_id": "2008857:visit111",
+          "request_expiration": 1791793377.3247364,
+          "disband_event_ref": "2008857:2881",
+          "client_accepted_event_ref": "2008888:2240",
+          "client_disband_event_ref": "2008888:2252",
+          "client_join_id": "2008888:join31"
+        },
+        {
+          "visit_id": "2008857:visit114",
+          "request_expiration": 1791793378.7387805,
+          "disband_event_ref": "2008857:2900",
+          "client_accepted_event_ref": "2008877:2058",
+          "client_disband_event_ref": "2008877:2062",
+          "client_join_id": "2008877:join39"
+        },
+        {
+          "visit_id": "2008857:visit115",
+          "request_expiration": 1791793378.9373636,
+          "disband_event_ref": "2008857:2908",
+          "client_accepted_event_ref": "2008867:2241",
+          "client_disband_event_ref": "2008867:2245",
+          "client_join_id": "2008867:join30"
+        },
+        {
+          "visit_id": "2008857:visit117",
+          "request_expiration": 1791793377.7682924,
+          "disband_event_ref": "2008857:2922",
+          "client_accepted_event_ref": "2008872:2020",
+          "client_disband_event_ref": "2008872:2024",
+          "client_join_id": "2008872:join34"
+        },
+        {
+          "visit_id": "2008857:visit118",
+          "request_expiration": 1791793377.3247364,
+          "disband_event_ref": "2008857:2944",
+          "client_accepted_event_ref": "2008888:2263",
+          "client_disband_event_ref": "2008888:2267",
+          "client_join_id": "2008888:join32"
+        },
+        {
+          "visit_id": "2008857:visit119",
+          "request_expiration": 1791793378.9373636,
+          "disband_event_ref": "2008857:2949",
+          "client_accepted_event_ref": "2008867:2258",
+          "client_disband_event_ref": "2008867:2261",
+          "client_join_id": "2008867:join32"
+        },
+        {
+          "visit_id": "2008857:visit121",
+          "request_expiration": 1791793382.769119,
+          "disband_event_ref": "2008857:2966",
+          "client_accepted_event_ref": "2008872:2042",
+          "client_disband_event_ref": "2008872:2046",
+          "client_join_id": "2008872:join36"
+        },
+        {
+          "visit_id": "2008857:visit122",
+          "request_expiration": 1791793382.769119,
+          "disband_event_ref": "2008857:2983",
+          "client_accepted_event_ref": "2008872:2061",
+          "client_disband_event_ref": "2008872:2064",
+          "client_join_id": "2008872:join38"
+        },
+        {
+          "visit_id": "2008857:visit124",
+          "request_expiration": 1791793384.7619634,
+          "disband_event_ref": "2008857:3010",
+          "client_accepted_event_ref": "2008872:2082",
+          "client_disband_event_ref": "2008872:2086",
+          "client_join_id": "2008872:join40"
+        }
+      ]
+    },
+    {
+      "trial": "unreliable_single_s2701",
+      "events_sha256": "60413141dcfceceacdcec63120255bd88a6c64e077e353624b2fa9a1118e0b8d",
+      "disbands": 13,
+      "matched_client_receipts": 13,
+      "rows": [
+        {
+          "visit_id": "1985457:visit1",
+          "request_expiration": 1791792939.975661,
+          "disband_event_ref": "1985457:50",
+          "client_accepted_event_ref": "1985473:36",
+          "client_disband_event_ref": "1985473:48",
+          "client_join_id": "1985473:join1"
+        },
+        {
+          "visit_id": "1985457:visit2",
+          "request_expiration": 1791792942.1443903,
+          "disband_event_ref": "1985457:63",
+          "client_accepted_event_ref": "1985488:12",
+          "client_disband_event_ref": "1985488:17",
+          "client_join_id": "1985488:join1"
+        },
+        {
+          "visit_id": "1985457:visit3",
+          "request_expiration": 1791792942.1754196,
+          "disband_event_ref": "1985457:68",
+          "client_accepted_event_ref": "1985463:13",
+          "client_disband_event_ref": "1985463:17",
+          "client_join_id": "1985463:join1"
+        },
+        {
+          "visit_id": "1985457:visit6",
+          "request_expiration": 1791792941.2931418,
+          "disband_event_ref": "1985457:80",
+          "client_accepted_event_ref": "1985483:22",
+          "client_disband_event_ref": "1985483:25",
+          "client_join_id": "1985483:join2"
+        },
+        {
+          "visit_id": "1985457:visit8",
+          "request_expiration": 1791792957.4425008,
+          "disband_event_ref": "1985457:123",
+          "client_accepted_event_ref": "1985493:148",
+          "client_disband_event_ref": "1985493:152",
+          "client_join_id": "1985493:join5"
+        },
+        {
+          "visit_id": "1985457:visit9",
+          "request_expiration": 1791792956.8001125,
+          "disband_event_ref": "1985457:135",
+          "client_accepted_event_ref": "1985468:224",
+          "client_disband_event_ref": "1985468:228",
+          "client_join_id": "1985468:join11"
+        },
+        {
+          "visit_id": "1985457:visit10",
+          "request_expiration": 1791792956.5572464,
+          "disband_event_ref": "1985457:140",
+          "client_accepted_event_ref": "1985473:266",
+          "client_disband_event_ref": "1985473:286",
+          "client_join_id": "1985473:join10"
+        },
+        {
+          "visit_id": "1985457:visit12",
+          "request_expiration": 1791792971.601107,
+          "disband_event_ref": "1985457:174",
+          "client_accepted_event_ref": "1985493:332",
+          "client_disband_event_ref": "1985493:337",
+          "client_join_id": "1985493:join12"
+        },
+        {
+          "visit_id": "1985457:visit13",
+          "request_expiration": 1791792972.051809,
+          "disband_event_ref": "1985457:179",
+          "client_accepted_event_ref": "1985483:283",
+          "client_disband_event_ref": "1985483:288",
+          "client_join_id": "1985483:join16"
+        },
+        {
+          "visit_id": "1985457:visit14",
+          "request_expiration": 1791792986.1916711,
+          "disband_event_ref": "1985457:228",
+          "client_accepted_event_ref": "1985483:416",
+          "client_disband_event_ref": "1985483:421",
+          "client_join_id": "1985483:join22"
+        },
+        {
+          "visit_id": "1985457:visit15",
+          "request_expiration": 1791792984.5692348,
+          "disband_event_ref": "1985457:243",
+          "client_accepted_event_ref": "1985493:544",
+          "client_disband_event_ref": "1985493:566",
+          "client_join_id": "1985493:join17"
+        },
+        {
+          "visit_id": "1985457:visit16",
+          "request_expiration": 1791792986.5634403,
+          "disband_event_ref": "1985457:248",
+          "client_accepted_event_ref": "1985478:452",
+          "client_disband_event_ref": "1985478:456",
+          "client_join_id": "1985478:join22"
+        },
+        {
+          "visit_id": "1985457:visit19",
+          "request_expiration": 1791792985.543897,
+          "disband_event_ref": "1985457:260",
+          "client_accepted_event_ref": "1985473:545",
+          "client_disband_event_ref": "1985473:548",
+          "client_join_id": "1985473:join18"
+        }
+      ]
+    },
+    {
+      "trial": "unreliable_single_s2702",
+      "events_sha256": "37e01929780110b4b5a6ef5a2310ca0ae51eb3a9181ad47e42b06c3838f58e2f",
+      "disbands": 15,
+      "matched_client_receipts": 15,
+      "rows": [
+        {
+          "visit_id": "1989953:visit1",
+          "request_expiration": 1791793014.3605318,
+          "disband_event_ref": "1989953:285",
+          "client_accepted_event_ref": "1989958:261",
+          "client_disband_event_ref": "1989958:264",
+          "client_join_id": "1989958:join1"
+        },
+        {
+          "visit_id": "1989953:visit2",
+          "request_expiration": 1791793015.215608,
+          "disband_event_ref": "1989953:293",
+          "client_accepted_event_ref": "1990008:259",
+          "client_disband_event_ref": "1990008:264",
+          "client_join_id": "1990008:join1"
+        },
+        {
+          "visit_id": "1989953:visit3",
+          "request_expiration": 1791793015.3253136,
+          "disband_event_ref": "1989953:294",
+          "client_accepted_event_ref": "1990025:260",
+          "client_disband_event_ref": "1990025:264",
+          "client_join_id": "1990025:join1"
+        },
+        {
+          "visit_id": "1989953:visit5",
+          "request_expiration": 1791793028.5588112,
+          "disband_event_ref": "1989953:332",
+          "client_accepted_event_ref": "1990054:459",
+          "client_disband_event_ref": "1990054:464",
+          "client_join_id": "1990054:join10"
+        },
+        {
+          "visit_id": "1989953:visit6",
+          "request_expiration": 1791793028.7756026,
+          "disband_event_ref": "1989953:337",
+          "client_accepted_event_ref": "1990039:402",
+          "client_disband_event_ref": "1990039:406",
+          "client_join_id": "1990039:join8"
+        },
+        {
+          "visit_id": "1989953:visit7",
+          "request_expiration": 1791793043.8139358,
+          "disband_event_ref": "1989953:388",
+          "client_accepted_event_ref": "1990008:572",
+          "client_disband_event_ref": "1990008:577",
+          "client_join_id": "1990008:join18"
+        },
+        {
+          "visit_id": "1989953:visit8",
+          "request_expiration": 1791793042.6085289,
+          "disband_event_ref": "1989953:394",
+          "client_accepted_event_ref": "1990049:748",
+          "client_disband_event_ref": "1990049:760",
+          "client_join_id": "1990049:join15"
+        },
+        {
+          "visit_id": "1989953:visit9",
+          "request_expiration": 1791793043.8656678,
+          "disband_event_ref": "1989953:410",
+          "client_accepted_event_ref": "1990044:651",
+          "client_disband_event_ref": "1990044:655",
+          "client_join_id": "1990044:join12"
+        },
+        {
+          "visit_id": "1989953:visit12",
+          "request_expiration": 1791793043.3289282,
+          "disband_event_ref": "1989953:418",
+          "client_accepted_event_ref": "1990039:579",
+          "client_disband_event_ref": "1990039:590",
+          "client_join_id": "1990039:join15"
+        },
+        {
+          "visit_id": "1989953:visit13",
+          "request_expiration": 1791793061.0532913,
+          "disband_event_ref": "1989953:457",
+          "client_accepted_event_ref": "1989958:837",
+          "client_disband_event_ref": "1989958:842",
+          "client_join_id": "1989958:join26"
+        },
+        {
+          "visit_id": "1989953:visit14",
+          "request_expiration": 1791793061.4555964,
+          "disband_event_ref": "1989953:465",
+          "client_accepted_event_ref": "1990039:798",
+          "client_disband_event_ref": "1990039:803",
+          "client_join_id": "1990039:join21"
+        },
+        {
+          "visit_id": "1989953:visit15",
+          "request_expiration": 1791793061.650199,
+          "disband_event_ref": "1989953:470",
+          "client_accepted_event_ref": "1990008:766",
+          "client_disband_event_ref": "1990008:771",
+          "client_join_id": "1990008:join28"
+        },
+        {
+          "visit_id": "1989953:visit16",
+          "request_expiration": 1791793072.4099271,
+          "disband_event_ref": "1989953:509",
+          "client_accepted_event_ref": "1990008:973",
+          "client_disband_event_ref": "1990008:984",
+          "client_join_id": "1990008:join37"
+        },
+        {
+          "visit_id": "1989953:visit17",
+          "request_expiration": 1791793073.8005471,
+          "disband_event_ref": "1989953:517",
+          "client_accepted_event_ref": "1990049:1150",
+          "client_disband_event_ref": "1990049:1153",
+          "client_join_id": "1990049:join31"
+        },
+        {
+          "visit_id": "1989953:visit18",
+          "request_expiration": 1791793072.8275182,
+          "disband_event_ref": "1989953:522",
+          "client_accepted_event_ref": "1989958:1060",
+          "client_disband_event_ref": "1989958:1065",
+          "client_join_id": "1989958:join39"
+        }
+      ]
+    }
+  ]
+}

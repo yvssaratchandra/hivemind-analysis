@@ -1,0 +1,288 @@
+{
+  "experiment": "step27",
+  "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step27_pilot_20261012_a",
+  "suite_sha256": "5c9b0ee2850782b299f46a41680ac394aa96893bda02610e2a1d2aacc5cfdaa6",
+  "provenance_sha256": "3392acba799f71a21c09eb0525b280f5528c0db4b2e2f46e099cfcb4b325f36b",
+  "phase": "pilot",
+  "jobs": [
+    {
+      "job": {
+        "case": {
+          "hold_seconds": 0.5,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "once",
+          "name": "unreliable_single",
+          "one_way_delay_seconds": 0.15,
+          "response": "unreliable",
+          "target": 4
+        },
+        "duration": 60,
+        "seed": 2701
+      },
+      "trial_dir": "unreliable_single_s2701",
+      "status": "completed",
+      "file_sha256": {
+        "config.json": "02e620a4a9c478cbc910586f87fbf4e5801b670beeea87e2d10d76693f20e3a6",
+        "events.jsonl": "60413141dcfceceacdcec63120255bd88a6c64e077e353624b2fa9a1118e0b8d",
+        "summary.json": "7bff196cc44aee2b4eb82918385b150097deaca4129c12558b2e3c4ea95293eb",
+        "analysis.json": "c61e12e9a36b2cc5a1e7285c0537af51f5505a9dafbc6b9858bd53c14952640e",
+        "control_analysis.json": "79685b765d6ad8e674de43648538cc7ecb00eb4a6a0db49d3effacc27dcfed70",
+        "completion.json": "cde71257b5073d4400ff981a734d4b4ecfec49245e93ae730d224333172af57a"
+      }
+    },
+    {
+      "job": {
+        "case": {
+          "hold_seconds": 0.5,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "once",
+          "name": "unreliable_single",
+          "one_way_delay_seconds": 0.15,
+          "response": "unreliable",
+          "target": 4
+        },
+        "duration": 60,
+        "seed": 2702
+      },
+      "trial_dir": "unreliable_single_s2702",
+      "status": "completed",
+      "file_sha256": {
+        "config.json": "a6cf7fa3f294fdcf2e881d06aebabbe6fcc9014b7a5de2cf309453872e89b191",
+        "events.jsonl": "37e01929780110b4b5a6ef5a2310ca0ae51eb3a9181ad47e42b06c3838f58e2f",
+        "summary.json": "32af32883be2dbd95b24dbd5946dc686c1c009903d5ca436f99ce116253e521c",
+        "analysis.json": "3bb0efb805ff7ea1abca6ca2c7754775a1422ab1f15b366407301de544f4c2ad",
+        "control_analysis.json": "2de78436c0f976d8844c1639ac6de1bdbf5fb3c8e0f3138ade64337c238a601e",
+        "completion.json": "ae925e4e23b8750b6e17d9bec3ad2fd57e90524edf2c339bd3a0cc2393316675"
+      }
+    },
+    {
+      "job": {
+        "case": {
+          "frequency": 2.0,
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "reliable_renewed",
+          "nominal_lower": 1.5,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 60,
+        "seed": 2701
+      },
+      "trial_dir": "reliable_renewed_s2701",
+      "status": "completed",
+      "file_sha256": {
+        "config.json": "ccf9564847ad73a22cf94f8ef52526fd6ce3e2a0fb44ac3b036f370363b62a03",
+        "events.jsonl": "54f9da862afea57fa9379c19e7d6a0f3e2ab076ea8be9f8dd8fa06a8c498dc4d",
+        "summary.json": "67fd694e03edac399571c6217914774f739b3ba065a7bbe09c370226287301c9",
+        "analysis.json": "fab7a22c80a759cc3d286ccc4b4371c70d19b0b309da12acda978905284cbaef",
+        "control_analysis.json": "b4d8c1bf42c194bb91e82506316c1f3dfc36c0392c45d795c7001d672ed480e0",
+        "completion.json": "067bebbc06679045eed557b6286a544efa00ab21082c3d8988e55d64224ed0dd"
+      }
+    },
+    {
+      "job": {
+        "case": {
+          "frequency": 2.0,
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "reliable_renewed",
+          "nominal_lower": 1.5,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 60,
+        "seed": 2702
+      },
+      "trial_dir": "reliable_renewed_s2702",
+      "status": "completed",
+      "file_sha256": {
+        "config.json": "364a00b89752c0f9f08fc13eb9bc2a03af29eb958265d4ddab2c53b44045f9cf",
+        "events.jsonl": "70c91f60bf11d77d82435af496964d011a6fc969d7e5a71f203eb1203b6cde1f",
+        "summary.json": "f40e2715d2286b6e9459cc8ac4a7f03a959c567eb0421ae93838428ca8574a36",
+        "analysis.json": "6b8dbb28fca739d1fc71584132adb3bccfcfc3befb5825d5c899e257d99d2e89",
+        "control_analysis.json": "16ad1dff3116fbcbfa912afe73099b165571bf69ba844f32dff9bb92b2d4e564",
+        "completion.json": "cb08832afff8acfd75ece97fb72befa76b695f31786c543b85b7c792c0e48326"
+      }
+    },
+    {
+      "job": {
+        "case": {
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "once",
+          "name": "reliable_single",
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 60,
+        "seed": 2702
+      },
+      "trial_dir": "reliable_single_s2702",
+      "status": "completed",
+      "file_sha256": {
+        "config.json": "d90b6b80ec8156e0c400ef310529d016874547452df3ec1b3db69a5458796cc7",
+        "events.jsonl": "1bd4f97e3c876e0b0ac5bd1a4d14fb6b83952fec67d992be2effe916ed37056e",
+        "summary.json": "eee9f20436910d216d3654c329aa20361f89eba2de405bed3f7c5b2b90ba7fbb",
+        "analysis.json": "1b6e36a4b7de43889bd72c1d3fa9304b1cd872424ac1d3b1af5af64401201a78",
+        "control_analysis.json": "848001a16a0a1391845ce34c55923d178bd41171a54441832a3c10d0938bdd14",
+        "completion.json": "2b2aab978ea29f21203950586c073808ee24397b880d4e9fb62de0f22cd3d9a7"
+      }
+    },
+    {
+      "job": {
+        "case": {
+          "frequency": 2.0,
+          "hold_seconds": 0.5,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "unreliable_renewed",
+          "nominal_lower": 1.5,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.15,
+          "response": "unreliable",
+          "target": 4
+        },
+        "duration": 60,
+        "seed": 2702
+      },
+      "trial_dir": "unreliable_renewed_s2702",
+      "status": "completed",
+      "file_sha256": {
+        "config.json": "d946a23c5850eb8926e758c618f0219c85c6c5e3ee44dea250b545ba2eed5cff",
+        "events.jsonl": "64902d3588df2874df5993bbcf3619192fcb3c89d28cec4b1143afa4c88c076f",
+        "summary.json": "186ba65aad6deb387adafd3ca8ebf5ee05d6f180ee190db9e3fe9085f67354b1",
+        "analysis.json": "a712c98e5f694aac61a8f5a73bbca9f4f0613fccec0df47309e6cd631213310f",
+        "control_analysis.json": "ff0d1804bd98578bbcf15e5b3b060881ba4d86c85b3c92c029e7264b2d8e4f38",
+        "completion.json": "7db78301299a57349903f056bd11ad74655fa3b5622168ec2d937371ab048ca6"
+      }
+    },
+    {
+      "job": {
+        "case": {
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "once",
+          "name": "reliable_single",
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 60,
+        "seed": 2701
+      },
+      "trial_dir": "reliable_single_s2701",
+      "status": "completed",
+      "file_sha256": {
+        "config.json": "92dbc51d9ac471d024f8e09bfc91c6f887f516c16bb590203b6f71ad940ece58",
+        "events.jsonl": "7e1db8b79e63760680865832b55e81fa369d0e98953577710c288918edf96966",
+        "summary.json": "26ad4180e0b5fa2b7d0b57095f7a9242f26bbf8d8ec2a475a7d1950c7ec25801",
+        "analysis.json": "a9ef509a9cfd8d977e4c297897eeee39563d4e20a7a0f90bed60e3b622b4d6ea",
+        "control_analysis.json": "c86fa3e2835a38c21748d11c2f76993f4306fbf9843b4cfba08590edd6947d9e",
+        "completion.json": "110a2835ff0c4f9641d95a67b7a5bfb244a0e8ffed3b68f3294c508b75b82967"
+      }
+    },
+    {
+      "job": {
+        "case": {
+          "hold_seconds": 0.0,
+          "lifetime": 5.0,
+          "minimum": 4,
+          "mode": "passive",
+          "name": "native_baseline",
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 60,
+        "seed": 2702
+      },
+      "trial_dir": "native_baseline_s2702",
+      "status": "completed",
+      "file_sha256": {
+        "config.json": "bd9c4d90b3c4e5ef27f7afedb5f65cbc022e40c275764fe92a37f948a386e69f",
+        "events.jsonl": "76a205340ed94bb6191950854c193f2dd1d1bfaaea6d387cfc24e576d7bb2e4a",
+        "summary.json": "22402cd2d7c84066194ad5e242ee8f026669595638d7afc2e6629b1568356542",
+        "analysis.json": "42cb0ac0f9a6340a58ed9af0a02a7e08bdd3132ba70b52048527f3e34fc9b58e",
+        "control_analysis.json": "1af44f5a4812e65673367c6ab8ffad1951ea142529fdf422fb09ff46e491ca05",
+        "completion.json": "128e80e389114a162ea821be29d2888b4c61d18574df2cda12b63c5caf1bc60d"
+      }
+    },
+    {
+      "job": {
+        "case": {
+          "frequency": 2.0,
+          "hold_seconds": 0.5,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "unreliable_renewed",
+          "nominal_lower": 1.5,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.15,
+          "response": "unreliable",
+          "target": 4
+        },
+        "duration": 60,
+        "seed": 2701
+      },
+      "trial_dir": "unreliable_renewed_s2701",
+      "status": "completed",
+      "file_sha256": {
+        "config.json": "02195fa121fd16a356b5febe953aa9878bc542820c9f87b8c4dc1246e77be783",
+        "events.jsonl": "dd54ffb14a0c1b4f344f0c53d6eef3ea8cae623dabe019fb3e3fdfacd5af6e0f",
+        "summary.json": "f939bf274b27893fecb2adaa1e7177625e35d34a5018c3b6ac598aa47f2d1810",
+        "analysis.json": "fd746b4833fb00604745f5e375c400acbd8dff96bcac65263801745adffcb122",
+        "control_analysis.json": "dae6ccd82fdcfa5f93e3ab24d7e77696f58e3632ecb6f3b266b5013097887e66",
+        "completion.json": "b4c07fd162066dbc65495d4e2d8ad227ecffad02945fe6d4009d6f97460361cb"
+      }
+    },
+    {
+      "job": {
+        "case": {
+          "hold_seconds": 0.0,
+          "lifetime": 5.0,
+          "minimum": 4,
+          "mode": "passive",
+          "name": "native_baseline",
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 60,
+        "seed": 2701
+      },
+      "trial_dir": "native_baseline_s2701",
+      "status": "completed",
+      "file_sha256": {
+        "config.json": "2a978c248111ba31e62c7264687623f6b28ee1799696d567bb3f40c0f871b158",
+        "events.jsonl": "971d5c09ed646c087b887fe5f58bdce158c2559c3533a2a81d1d11f993657aae",
+        "summary.json": "1ca1116b741c9347363c2851666eee239a90e6f95ca7c83e84636d0d0e5304df",
+        "analysis.json": "a5b14f41c1a514702e057039b35fa8ae9876e883908a6d9ae81ddcf2beed2aee",
+        "control_analysis.json": "d42dd85fe568ac3cc50f2c88d4f2a2eddf38ab325b9627044e1843450e8ff6d5",
+        "completion.json": "66b872778cc04d5807060abcf295c8f0061ba450037bf5f14b88ad0c73276b1e"
+      }
+    }
+  ],
+  "counts": {
+    "completed": 10,
+    "pending": 0,
+    "interrupted": 0,
+    "blocked": 0
+  },
+  "valid": true
+}

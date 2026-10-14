@@ -1,0 +1,169 @@
+{
+  "experiment": "step27",
+  "gate": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step27_smoke_20261012_a",
+  "instrumentation": "detailed",
+  "jobs": [
+    {
+      "case": {
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 4,
+        "mode": "once",
+        "name": "unreliable_single",
+        "one_way_delay_seconds": 0.15,
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 60,
+      "seed": 2701
+    },
+    {
+      "case": {
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 4,
+        "mode": "once",
+        "name": "unreliable_single",
+        "one_way_delay_seconds": 0.15,
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 60,
+      "seed": 2702
+    },
+    {
+      "case": {
+        "frequency": 2.0,
+        "hold_seconds": 0.0,
+        "lifetime": 2.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "reliable_renewed",
+        "nominal_lower": 1.5,
+        "nominal_upper": 2.0,
+        "one_way_delay_seconds": 0.15,
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 60,
+      "seed": 2701
+    },
+    {
+      "case": {
+        "frequency": 2.0,
+        "hold_seconds": 0.0,
+        "lifetime": 2.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "reliable_renewed",
+        "nominal_lower": 1.5,
+        "nominal_upper": 2.0,
+        "one_way_delay_seconds": 0.15,
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 60,
+      "seed": 2702
+    },
+    {
+      "case": {
+        "hold_seconds": 0.0,
+        "lifetime": 2.0,
+        "minimum": 4,
+        "mode": "once",
+        "name": "reliable_single",
+        "one_way_delay_seconds": 0.15,
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 60,
+      "seed": 2702
+    },
+    {
+      "case": {
+        "frequency": 2.0,
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "unreliable_renewed",
+        "nominal_lower": 1.5,
+        "nominal_upper": 2.0,
+        "one_way_delay_seconds": 0.15,
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 60,
+      "seed": 2702
+    },
+    {
+      "case": {
+        "hold_seconds": 0.0,
+        "lifetime": 2.0,
+        "minimum": 4,
+        "mode": "once",
+        "name": "reliable_single",
+        "one_way_delay_seconds": 0.15,
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 60,
+      "seed": 2701
+    },
+    {
+      "case": {
+        "hold_seconds": 0.0,
+        "lifetime": 5.0,
+        "minimum": 4,
+        "mode": "passive",
+        "name": "native_baseline",
+        "one_way_delay_seconds": 0.15,
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 60,
+      "seed": 2702
+    },
+    {
+      "case": {
+        "frequency": 2.0,
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "unreliable_renewed",
+        "nominal_lower": 1.5,
+        "nominal_upper": 2.0,
+        "one_way_delay_seconds": 0.15,
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 60,
+      "seed": 2701
+    },
+    {
+      "case": {
+        "hold_seconds": 0.0,
+        "lifetime": 5.0,
+        "minimum": 4,
+        "mode": "passive",
+        "name": "native_baseline",
+        "one_way_delay_seconds": 0.15,
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 60,
+      "seed": 2701
+    }
+  ],
+  "order_seed": 270027,
+  "outcome": "grouping",
+  "phase": "pilot",
+  "preliminary": true,
+  "training_delay": {
+    "lower": 0.1,
+    "mu": 0.2517227582341841,
+    "sigma": 0.5545130293761911,
+    "upper": 4.0
+  }
+}

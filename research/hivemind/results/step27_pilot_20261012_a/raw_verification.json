@@ -1,0 +1,283 @@
+{
+  "errors": [],
+  "experiment": "step27",
+  "exports_sha256": {
+    "attempts.csv": "80f900b6fdb44dab930054a81d3c88423fb3a462b575b83f2ed61d291ffd2516",
+    "choices.csv": "efe6be5a2f17171902ab0b672a42689342422a158aa08cc18c2c810589f7a7d4",
+    "groups.csv": "ddf558ed080c1a5a3408c1690750c8e8d107e7de2886d35d1f6cbcf4fd50a879",
+    "holds.csv": "bf3f066ab7f722ff6cc51808ccdc018716bdac0f02b817cebfef9dbb71c1f730",
+    "leadership_summary.csv": "36c3fe31bec3c75ced12a09849d4eb91268d5647b08b1343defd8dd022f1bb6a",
+    "per_peer.csv": "7621007a4de8417950b07512d72da63cf5a3341b3f269eebb31f20d092566a10",
+    "per_seed_contrasts.csv": "e613d0a44041bd0a61bc8fa335cacc020aed42f78e1d05252888600470659bd2",
+    "retries.csv": "79a3c942410b26fce3e3791af91e1640a6f5927dcc05ec43a856ab95f92fb26d",
+    "rpc_admissions.csv": "443a2b9a26bc58279b068d9a7260e3720b96b7c132402a2a456cdd422af860a6"
+  },
+  "pass": true,
+  "preservation": {
+    "changed": [],
+    "count": 1595,
+    "pass_": true
+  },
+  "scope": "Independent raw assembly/member-attempt linkage, failure-inclusive capped metrics, exact renewed-pair witnesses, exported row checks, completion/provenance hashes. No tensor-success filtering.",
+  "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step27_pilot_20261012_a",
+  "totals": {
+    "total_groups": 235,
+    "x_led_attempts": 55,
+    "x_led_by_2s_count": 22,
+    "x_led_groups": 55,
+    "x_submitted_attempts": 80
+  },
+  "trials": [
+    {
+      "errors": [],
+      "inputs_sha256": {
+        "config.json": "02e620a4a9c478cbc910586f87fbf4e5801b670beeea87e2d10d76693f20e3a6",
+        "events.jsonl": "60413141dcfceceacdcec63120255bd88a6c64e077e353624b2fa9a1118e0b8d",
+        "summary.json": "7bff196cc44aee2b4eb82918385b150097deaca4129c12558b2e3c4ea95293eb"
+      },
+      "metrics": {
+        "honest_group_memberships_in_submission_window": 75,
+        "honest_group_memberships_per_honest_peer_minute": 10.714285714285714,
+        "honest_mean_capped_latency_seconds": 2.717093080552448,
+        "honest_no_group_attempts": 0,
+        "honest_no_group_fraction": 0.0,
+        "honest_peer_minutes": 7.0,
+        "honest_submitted_attempts": 78,
+        "same_search_x_retry_count": 0,
+        "total_groups": 21,
+        "x_led_attempts": 0,
+        "x_led_by_2s_count": 0,
+        "x_led_groups": 0,
+        "x_submitted_attempts": 4
+      },
+      "pass_": true,
+      "trial_dir": "unreliable_single_s2701"
+    },
+    {
+      "errors": [],
+      "inputs_sha256": {
+        "config.json": "a6cf7fa3f294fdcf2e881d06aebabbe6fcc9014b7a5de2cf309453872e89b191",
+        "events.jsonl": "37e01929780110b4b5a6ef5a2310ca0ae51eb3a9181ad47e42b06c3838f58e2f",
+        "summary.json": "32af32883be2dbd95b24dbd5946dc686c1c009903d5ca436f99ce116253e521c"
+      },
+      "metrics": {
+        "honest_group_memberships_in_submission_window": 82,
+        "honest_group_memberships_per_honest_peer_minute": 11.714285714285714,
+        "honest_mean_capped_latency_seconds": 2.5287147805526997,
+        "honest_no_group_attempts": 0,
+        "honest_no_group_fraction": 0.0,
+        "honest_peer_minutes": 7.0,
+        "honest_submitted_attempts": 85,
+        "same_search_x_retry_count": 0,
+        "total_groups": 22,
+        "x_led_attempts": 0,
+        "x_led_by_2s_count": 0,
+        "x_led_groups": 0,
+        "x_submitted_attempts": 5
+      },
+      "pass_": true,
+      "trial_dir": "unreliable_single_s2702"
+    },
+    {
+      "errors": [],
+      "inputs_sha256": {
+        "config.json": "ccf9564847ad73a22cf94f8ef52526fd6ce3e2a0fb44ac3b036f370363b62a03",
+        "events.jsonl": "54f9da862afea57fa9379c19e7d6a0f3e2ab076ea8be9f8dd8fa06a8c498dc4d",
+        "summary.json": "67fd694e03edac399571c6217914774f739b3ba065a7bbe09c370226287301c9"
+      },
+      "metrics": {
+        "honest_group_memberships_in_submission_window": 84,
+        "honest_group_memberships_per_honest_peer_minute": 12.0,
+        "honest_mean_capped_latency_seconds": 2.106280774286555,
+        "honest_no_group_attempts": 0,
+        "honest_no_group_fraction": 0.0,
+        "honest_peer_minutes": 7.0,
+        "honest_submitted_attempts": 87,
+        "same_search_x_retry_count": 9,
+        "total_groups": 25,
+        "x_led_attempts": 12,
+        "x_led_by_2s_count": 5,
+        "x_led_groups": 12,
+        "x_submitted_attempts": 12
+      },
+      "pass_": true,
+      "trial_dir": "reliable_renewed_s2701"
+    },
+    {
+      "errors": [],
+      "inputs_sha256": {
+        "config.json": "364a00b89752c0f9f08fc13eb9bc2a03af29eb958265d4ddab2c53b44045f9cf",
+        "events.jsonl": "70c91f60bf11d77d82435af496964d011a6fc969d7e5a71f203eb1203b6cde1f",
+        "summary.json": "f40e2715d2286b6e9459cc8ac4a7f03a959c567eb0421ae93838428ca8574a36"
+      },
+      "metrics": {
+        "honest_group_memberships_in_submission_window": 90,
+        "honest_group_memberships_per_honest_peer_minute": 12.857142857142858,
+        "honest_mean_capped_latency_seconds": 2.113329965922215,
+        "honest_no_group_attempts": 0,
+        "honest_no_group_fraction": 0.0,
+        "honest_peer_minutes": 7.0,
+        "honest_submitted_attempts": 90,
+        "same_search_x_retry_count": 7,
+        "total_groups": 26,
+        "x_led_attempts": 13,
+        "x_led_by_2s_count": 8,
+        "x_led_groups": 13,
+        "x_submitted_attempts": 13
+      },
+      "pass_": true,
+      "trial_dir": "reliable_renewed_s2702"
+    },
+    {
+      "errors": [],
+      "inputs_sha256": {
+        "config.json": "d90b6b80ec8156e0c400ef310529d016874547452df3ec1b3db69a5458796cc7",
+        "events.jsonl": "1bd4f97e3c876e0b0ac5bd1a4d14fb6b83952fec67d992be2effe916ed37056e",
+        "summary.json": "eee9f20436910d216d3654c329aa20361f89eba2de405bed3f7c5b2b90ba7fbb"
+      },
+      "metrics": {
+        "honest_group_memberships_in_submission_window": 86,
+        "honest_group_memberships_per_honest_peer_minute": 12.285714285714286,
+        "honest_mean_capped_latency_seconds": 2.1823179090534213,
+        "honest_no_group_attempts": 0,
+        "honest_no_group_fraction": 0.0,
+        "honest_peer_minutes": 7.0,
+        "honest_submitted_attempts": 91,
+        "same_search_x_retry_count": 0,
+        "total_groups": 26,
+        "x_led_attempts": 10,
+        "x_led_by_2s_count": 7,
+        "x_led_groups": 10,
+        "x_submitted_attempts": 11
+      },
+      "pass_": true,
+      "trial_dir": "reliable_single_s2702"
+    },
+    {
+      "errors": [],
+      "inputs_sha256": {
+        "config.json": "d946a23c5850eb8926e758c618f0219c85c6c5e3ee44dea250b545ba2eed5cff",
+        "events.jsonl": "64902d3588df2874df5993bbcf3619192fcb3c89d28cec4b1143afa4c88c076f",
+        "summary.json": "186ba65aad6deb387adafd3ca8ebf5ee05d6f180ee190db9e3fe9085f67354b1"
+      },
+      "metrics": {
+        "honest_group_memberships_in_submission_window": 68,
+        "honest_group_memberships_per_honest_peer_minute": 9.714285714285714,
+        "honest_mean_capped_latency_seconds": 3.587426923097949,
+        "honest_no_group_attempts": 1,
+        "honest_no_group_fraction": 0.014084507042253521,
+        "honest_peer_minutes": 7.0,
+        "honest_submitted_attempts": 71,
+        "same_search_x_retry_count": 58,
+        "total_groups": 22,
+        "x_led_attempts": 0,
+        "x_led_by_2s_count": 0,
+        "x_led_groups": 0,
+        "x_submitted_attempts": 5
+      },
+      "pass_": true,
+      "trial_dir": "unreliable_renewed_s2702"
+    },
+    {
+      "errors": [],
+      "inputs_sha256": {
+        "config.json": "92dbc51d9ac471d024f8e09bfc91c6f887f516c16bb590203b6f71ad940ece58",
+        "events.jsonl": "7e1db8b79e63760680865832b55e81fa369d0e98953577710c288918edf96966",
+        "summary.json": "26ad4180e0b5fa2b7d0b57095f7a9242f26bbf8d8ec2a475a7d1950c7ec25801"
+      },
+      "metrics": {
+        "honest_group_memberships_in_submission_window": 85,
+        "honest_group_memberships_per_honest_peer_minute": 12.142857142857142,
+        "honest_mean_capped_latency_seconds": 2.1828046888154837,
+        "honest_no_group_attempts": 0,
+        "honest_no_group_fraction": 0.0,
+        "honest_peer_minutes": 7.0,
+        "honest_submitted_attempts": 87,
+        "same_search_x_retry_count": 0,
+        "total_groups": 23,
+        "x_led_attempts": 3,
+        "x_led_by_2s_count": 2,
+        "x_led_groups": 3,
+        "x_submitted_attempts": 7
+      },
+      "pass_": true,
+      "trial_dir": "reliable_single_s2701"
+    },
+    {
+      "errors": [],
+      "inputs_sha256": {
+        "config.json": "bd9c4d90b3c4e5ef27f7afedb5f65cbc022e40c275764fe92a37f948a386e69f",
+        "events.jsonl": "76a205340ed94bb6191950854c193f2dd1d1bfaaea6d387cfc24e576d7bb2e4a",
+        "summary.json": "22402cd2d7c84066194ad5e242ee8f026669595638d7afc2e6629b1568356542"
+      },
+      "metrics": {
+        "honest_group_memberships_in_submission_window": 87,
+        "honest_group_memberships_per_honest_peer_minute": 12.428571428571429,
+        "honest_mean_capped_latency_seconds": 2.050082074477056,
+        "honest_no_group_attempts": 1,
+        "honest_no_group_fraction": 0.011111111111111112,
+        "honest_peer_minutes": 7.0,
+        "honest_submitted_attempts": 90,
+        "same_search_x_retry_count": 0,
+        "total_groups": 25,
+        "x_led_attempts": 9,
+        "x_led_by_2s_count": 0,
+        "x_led_groups": 9,
+        "x_submitted_attempts": 9
+      },
+      "pass_": true,
+      "trial_dir": "native_baseline_s2702"
+    },
+    {
+      "errors": [],
+      "inputs_sha256": {
+        "config.json": "02195fa121fd16a356b5febe953aa9878bc542820c9f87b8c4dc1246e77be783",
+        "events.jsonl": "dd54ffb14a0c1b4f344f0c53d6eef3ea8cae623dabe019fb3e3fdfacd5af6e0f",
+        "summary.json": "f939bf274b27893fecb2adaa1e7177625e35d34a5018c3b6ac598aa47f2d1810"
+      },
+      "metrics": {
+        "honest_group_memberships_in_submission_window": 66,
+        "honest_group_memberships_per_honest_peer_minute": 9.428571428571429,
+        "honest_mean_capped_latency_seconds": 3.4467046227397025,
+        "honest_no_group_attempts": 0,
+        "honest_no_group_fraction": 0.0,
+        "honest_peer_minutes": 7.0,
+        "honest_submitted_attempts": 69,
+        "same_search_x_retry_count": 49,
+        "total_groups": 21,
+        "x_led_attempts": 0,
+        "x_led_by_2s_count": 0,
+        "x_led_groups": 0,
+        "x_submitted_attempts": 5
+      },
+      "pass_": true,
+      "trial_dir": "unreliable_renewed_s2701"
+    },
+    {
+      "errors": [],
+      "inputs_sha256": {
+        "config.json": "2a978c248111ba31e62c7264687623f6b28ee1799696d567bb3f40c0f871b158",
+        "events.jsonl": "971d5c09ed646c087b887fe5f58bdce158c2559c3533a2a81d1d11f993657aae",
+        "summary.json": "1ca1116b741c9347363c2851666eee239a90e6f95ca7c83e84636d0d0e5304df"
+      },
+      "metrics": {
+        "honest_group_memberships_in_submission_window": 84,
+        "honest_group_memberships_per_honest_peer_minute": 12.0,
+        "honest_mean_capped_latency_seconds": 1.9952401164432145,
+        "honest_no_group_attempts": 0,
+        "honest_no_group_fraction": 0.0,
+        "honest_peer_minutes": 7.0,
+        "honest_submitted_attempts": 88,
+        "same_search_x_retry_count": 0,
+        "total_groups": 24,
+        "x_led_attempts": 8,
+        "x_led_by_2s_count": 0,
+        "x_led_groups": 8,
+        "x_submitted_attempts": 9
+      },
+      "pass_": true,
+      "trial_dir": "native_baseline_s2701"
+    }
+  ],
+  "verifier_sha256": "a5a13b59d5aafb7215a0f55cd0095ba6800b68542b758faea1db8946b351b8e5"
+}
