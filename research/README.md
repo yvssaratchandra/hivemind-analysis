@@ -5,6 +5,7 @@
 | Hivemind | [Status](hivemind/HANDOFF.md), [experiment queue](hivemind/CONTROL_DATA_AUDIT.md) | [`../hivemind/`](../hivemind/) |
 | Exo | [Workspace](exo/README.md) | [`../exo/`](../exo/) (independent checkout) |
 | LocalAI | [Baseline](localai/INITIAL_TESTS.md), [control messages](localai/CONTROL_MESSAGES.md), [DHT messages](localai/DHT_MESSAGES.md) | `localai/upstream/` (independent checkout, excluded from Git) |
+| Agora | [Workspace and provenance](agora/README.md) | `agora/upstream/` (independent PluralisResearch/agora checkout, excluded from Git) |
 | SwarmLLM | [Initial feasibility](swarmllm/INITIAL_FEASIBILITY.md) | No running testbed yet |
 | Public networks | [Dated availability survey](public-networks/SURVEY.md) | Passive registry and documentation checks |
 

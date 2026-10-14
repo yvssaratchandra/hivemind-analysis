@@ -1,0 +1,44 @@
+{
+  "phase": "smoke",
+  "jobs": [
+    {
+      "seed": 8100,
+      "status": "completed",
+      "attempts": [
+        "seed8100_attempt01"
+      ],
+      "attempt": "seed8100_attempt01",
+      "pass": false,
+      "result_sha256": {
+        "analysis.json": "d478827095b91219841917f50ce3298879db00ab2a37c055e63f58857fcdea1c",
+        "config.json": "26b4e2372cdbafae3773b6f252ddb97aa1c0d3b81b8d4214e4b3ceb1c365ce58",
+        "controller.jsonl": "51c81fb9f292b6feb53c0918d1dd8c2809ab92bdce2a3c8752d15cdd02733a34",
+        "dht_C0.jsonl": "631bb4a0c4ad10010bb55f7827bdc8bdecf7cb4767f4a3dc5eae451c1be74928",
+        "dht_C1.jsonl": "5c613da1313ea8b1e1666471a0a735db4d9ac1417dc0900987bcb36b8e1a6e7c",
+        "dht_C2.jsonl": "530445874060e48941f472ac4f864c3053ee1a7b9d586dbdb2d0f232149dc1a9",
+        "dht_C3.jsonl": "b0f07ad539cf1407aa079d1af6fa96c400c334ddb535d77acb6ffd579bf04ca9",
+        "dht_R0.jsonl": "756377dbc7134a38939bfa314aa0955d138822fe078e2c29012919e05f801f49",
+        "dht_R1.jsonl": "1440dcf9e8f1ec3d8427aa978d0945b16e09e03ed55514d0243a8669d3b68e5e",
+        "dht_R2.jsonl": "92d8d7040bd74d9f32b361275b0a28d54497b79f656bf1a799198952ce8d50fb",
+        "dht_R3.jsonl": "aae8239249e0a7848ae27b118e625e7db1c62bc995974dfb40feda986e249d18",
+        "events_C0.jsonl": "8f3673422279b0ff22eb1f7015558005a70fcd1338478794cc73ba1917329476",
+        "events_C1.jsonl": "5ffb7d06782b216f06deb03ef182e3c66f09f689010be1fc4bab5dd9349e63bd",
+        "events_C2.jsonl": "4d32615c1e2ef0b9c0f393e9668ad2445a09eca65840707dbb8fd9a111ef8cc2",
+        "events_C3.jsonl": "e89329f4ed7d8cfcbd0a11e407b701b55f5dda101b795a86c516220193799f10",
+        "events_R0.jsonl": "2f1a2ea6b0172cd1c081c6637c1b8fc89d56c6b7ddd586462707cc6cfea078de",
+        "events_R1.jsonl": "72317629a46fcadf08d07e7e7c0928905179c5682602108aa31e4aba72f6ae0a",
+        "events_R2.jsonl": "f047905b4c57f4035781fbc5c30e6966dd17a2588cb34b2d2138f47a4bb86cef",
+        "events_R3.jsonl": "420b1873e61589806c17858051c1ec96cf933fcd8599f7a177910064076f903c",
+        "shutdown.json": "a8e821431985a01633cfcbe75aa098ee3ac73d1c4a310348b1a5b09601fe54af",
+        "worker_C0.log": "a4e0d02f30a56d61f579eddff5c121f6d5c0011d131b44de3cf13be8b7080449",
+        "worker_C1.log": "6195c359924fff16b47050515b3d3e7d762a40ac855f7778163d59eb68e7259e",
+        "worker_C2.log": "8fd1f1d505597f8c6b31fb60efe40ca03165e4d489a8dbc3dcabfa25489b1079",
+        "worker_C3.log": "d88dd3a35ec065b97132c41f7c7de86fdbcafd58a903d2a7bc943f81a436f3db",
+        "worker_R0.log": "7fac2d07b58b1ae8284aa08e22ee67568de93a2430500c035d6bc3aeca5190ce",
+        "worker_R1.log": "af9ca1ab29740481f750adaf9a4f07851f3d6991137c25af610939fc09b5ca8c",
+        "worker_R2.log": "7be318649ae500f2f5010ed4bcab16fe8d81f6a8d28b17a8c80240dee204d439",
+        "worker_R3.log": "681d91524ff3aaafaee1c49daded922c16563b068e85f2acf126c646a6bad819"
+      }
+    }
+  ]
+}

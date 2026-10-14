@@ -1,0 +1,44 @@
+{
+  "phase": "smoke",
+  "jobs": [
+    {
+      "seed": 8100,
+      "status": "completed",
+      "attempts": [
+        "seed8100_attempt01"
+      ],
+      "attempt": "seed8100_attempt01",
+      "pass": true,
+      "result_sha256": {
+        "analysis.json": "3d7490fb1d0bdea4e0e50a6cd8eb90ad532b00cd8857c98131c883890d78dff9",
+        "config.json": "0f4a21c66f848e20df801e9d243bbb44f46ae4d2d7891baa92aa7895c0681049",
+        "controller.jsonl": "659340053b1fecbddb193bab7418be1d461c0065a52d1d9e4f053397dc126803",
+        "dht_C0.jsonl": "ad878993a87b33c909e6b1fb31565bbb55687a6bf200a2ced7b295657b2a4fb4",
+        "dht_C1.jsonl": "19ebb78f7290bcf92bf66cc11d63728a9495525a46b8d1f601820a155489ff46",
+        "dht_C2.jsonl": "af57182e88587bbc6cb87ea0a29b35c13e07bfc76ad41adddac27caeebd3a54b",
+        "dht_C3.jsonl": "a46b62dbf09dc2f46588e480a1dba60354395010f2a8adda9568a2d35a867151",
+        "dht_R0.jsonl": "b94fc3c606d40ffe4d2a2c1658862bc31dac74dde0abbbfe037c400f515afe0f",
+        "dht_R1.jsonl": "90cfe2e7685bb8d8bf037705a0b4fb860c84194b5aa202ae1990c620a1d152e1",
+        "dht_R2.jsonl": "24a575cdd7bc7c61da2d5299ac3603623bdd8a4e9e2b4cc34711c3c5c030d8e6",
+        "dht_R3.jsonl": "57102493af7c3a9a8fe2445dd4cc268d748bbe97ade7bdcf05f02d3e160db2bb",
+        "events_C0.jsonl": "298af7d049e7039cad5b1125110e2d8e77c2cda1c7848cb1a73418ad7d2328bf",
+        "events_C1.jsonl": "b844e10567f08ce14ee4cd933dbedabae0d090d883c076b934b804c1d6576cd2",
+        "events_C2.jsonl": "a7d89d720e2bd5aeab91354671940c9fb258c1ba49b1a563782ba61f9c282e7b",
+        "events_C3.jsonl": "d5211f641a70e4d0e4b9d811417e33cca6f68d678025d79aa435c9ba0135ad26",
+        "events_R0.jsonl": "9dc6d22cad02653b20cbadbccbd0650f9e23d5443d7cd410c47acd295b57a364",
+        "events_R1.jsonl": "4fd8d69ddd532773b5068d23859c054e64a15e9417482b72589c2a1884f34659",
+        "events_R2.jsonl": "29abbee6e8b6cabbfebe60a7c289cf1e73f3a70d8039b492a6f8150b43845bc8",
+        "events_R3.jsonl": "9d15104d51fcdb5e078ff0c0085fee6291e776dc7b919755bc4b924569fe10fb",
+        "shutdown.json": "47f8751669215d8f70eede14d07982fadbe05b39e85b4308627b7fe78f9b251b",
+        "worker_C0.log": "9bb86948779c0bd458ef759e616ab3271fc7314a41a9f1cf930c8ed8e974a167",
+        "worker_C1.log": "10a43275f754f2e1375c1e09db8c5a4fdd4024994adb10fe9be162db360a1653",
+        "worker_C2.log": "8b9a29453b952e39e5fac1a55673e6e82a2471b61b15508f5d19f950a7a932b8",
+        "worker_C3.log": "84c81c7b6b2cee07c50e85a6b628928e4180c932ca8bc879af6be89a78f9e2e8",
+        "worker_R0.log": "957a46a9ad8c65272e79d71750c49f0114c1a816b00ed3a6f290b03f64ecb015",
+        "worker_R1.log": "1d226b27d66bf57231ad79cb321f10a6785c31bf6aeecc07253a2ae6847f7efc",
+        "worker_R2.log": "cddbe3ddde7f4a717ce5eb21c0bbb0420ae7f78f65e07e8678c5333055f8a2b5",
+        "worker_R3.log": "f597d7b42d22916ab171623b81041aa2d8e4a9e5907a58fcefaaa4a16d2c52bf"
+      }
+    }
+  ]
+}

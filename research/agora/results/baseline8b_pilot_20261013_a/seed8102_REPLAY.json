@@ -1,0 +1,96 @@
+{
+  "errors": [],
+  "expected_peers": 8,
+  "expected_rounds": 5,
+  "metrics": {
+    "agreed_rounds": 5,
+    "mean_final_loss": 0.0014942531561246142,
+    "mean_initial_loss": 1.1723583936691284,
+    "native_roster_s": {
+      "count": 40,
+      "max": 1.285,
+      "mean": 0.8401749999999998,
+      "min": 0.083
+    },
+    "peer_round_results": 40,
+    "ready_to_roster_s": {
+      "count": 40,
+      "max": 1.4276497760001803,
+      "mean": 0.9519926497996494,
+      "min": 0.15381343799526803
+    }
+  },
+  "pass": true,
+  "phase": "pilot",
+  "rounds": [
+    {
+      "agreed": true,
+      "epochs_agree": true,
+      "group_size": 8,
+      "indices_agree": true,
+      "max_abs_error": 3.026798367500305e-09,
+      "numerical_pass": true,
+      "roster_agreement": true,
+      "round": 1
+    },
+    {
+      "agreed": true,
+      "epochs_agree": true,
+      "group_size": 8,
+      "indices_agree": true,
+      "max_abs_error": 2.0489096641540527e-08,
+      "numerical_pass": true,
+      "roster_agreement": true,
+      "round": 2
+    },
+    {
+      "agreed": true,
+      "epochs_agree": true,
+      "group_size": 8,
+      "indices_agree": true,
+      "max_abs_error": 5.587935447692871e-09,
+      "numerical_pass": true,
+      "roster_agreement": true,
+      "round": 3
+    },
+    {
+      "agreed": true,
+      "epochs_agree": true,
+      "group_size": 8,
+      "indices_agree": true,
+      "max_abs_error": 7.450580596923828e-09,
+      "numerical_pass": true,
+      "roster_agreement": true,
+      "round": 4
+    },
+    {
+      "agreed": true,
+      "epochs_agree": true,
+      "group_size": 8,
+      "indices_agree": true,
+      "max_abs_error": 9.313225746154785e-09,
+      "numerical_pass": true,
+      "roster_agreement": true,
+      "round": 5
+    }
+  ],
+  "seed": 8102,
+  "shutdown": {
+    "elapsed_seconds": 214.18021343598957,
+    "error": null,
+    "present": true,
+    "safe": true,
+    "survivors": [],
+    "worker_exitcodes": {
+      "C0": 0,
+      "C1": 0,
+      "C2": 0,
+      "C3": 0,
+      "R0": 0,
+      "R1": 0,
+      "R2": 0,
+      "R3": 0
+    }
+  },
+  "valid": true
+}

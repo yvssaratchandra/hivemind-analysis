@@ -1,0 +1,16 @@
+{
+  "safe": true,
+  "survivors": [],
+  "worker_exitcodes": {
+    "R0": 0,
+    "R1": 0,
+    "R2": 0,
+    "R3": 0,
+    "C0": 0,
+    "C1": 0,
+    "C2": 0,
+    "C3": 0
+  },
+  "error": "RuntimeError('Suspend or clock discontinuity; trial must be rerun')",
+  "elapsed_seconds": 75.42919207800878
+}

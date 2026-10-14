@@ -1,0 +1,84 @@
+{
+  "phase": "pilot",
+  "jobs": [
+    {
+      "seed": 8101,
+      "status": "completed",
+      "attempts": [
+        "seed8101_attempt01",
+        "seed8101_attempt02"
+      ],
+      "attempt": "seed8101_attempt02",
+      "pass": true,
+      "result_sha256": {
+        "analysis.json": "a764afb811b99128cceb75025f2c0b89a62d509c098f5c200ad4be965806c390",
+        "config.json": "7d1aec55db9ab2a65891227af20cc1d915ed9d9dbe8a188229e1c78040d96750",
+        "controller.jsonl": "8e9f73ed6e8e4c72be9700c3d03d67b10b30312ccc24a27641fcdba5dfa7c392",
+        "dht_C0.jsonl": "3d0cbf3eb0eb668927349d35906611c131fe9db492ad5370976afbd830846c3b",
+        "dht_C1.jsonl": "e74dc6df60194d6a684add89b92572841f826d4151c1c436622a8009603f17e7",
+        "dht_C2.jsonl": "0e9786fa3432f9804f70b40e309513844f0c4add255650b693322c47c8e736b3",
+        "dht_C3.jsonl": "74f2072d17930f1edec005e48d34e0a201f1200d9d28211f5d4823f5826477a7",
+        "dht_R0.jsonl": "139ffcaf1999482ce6cee0119e53c085b410b8d564a4ee3ed1a1c9b626fe6a41",
+        "dht_R1.jsonl": "c53aed3277dd16186d45f8aaf045d1fc762fcb75497056d5859e8f616d320b39",
+        "dht_R2.jsonl": "6b55248fd5b156afaf451a44ee7581e3057bc37ceda53ce8193290a697c5f584",
+        "dht_R3.jsonl": "e5393b08bb8b242d292cb132360f4649bf9c347c04eda680b506f8984f08200e",
+        "events_C0.jsonl": "31d7bb82fceddf567e053f733929c7603a2ee391c378ad9622a94c94a86cb8cb",
+        "events_C1.jsonl": "e97ba0debb2dda7db253357e24ad8a4790cf65eb6127750ad7223acfed37891e",
+        "events_C2.jsonl": "995f5a3e292ed2000c8e34e24eed5c20f3b187c275943c7c549ed915a1f1a31c",
+        "events_C3.jsonl": "27196e0bf1e6799f1d60cfa029ab2411e57dc2a147112d6f736a20aae824bb5b",
+        "events_R0.jsonl": "2c82e2309ce3e94bb09a2a2a1f54ed5259c749a8166cc5381f269f9e98ad3cab",
+        "events_R1.jsonl": "b36d34c52e8e5bba4613b2c6dbbaa0fc5354d27597301396d107325f2bc0c3a5",
+        "events_R2.jsonl": "a00b1980380def67003b73ee1f35302c16cb50dbe068999f820fb30886df3b8e",
+        "events_R3.jsonl": "655e9cd8f49297c47330c3e7a0e6dbcd2929025f69cfbe51bcffe93a69022fbe",
+        "shutdown.json": "fb4196dcb2fbf1315c59984d16b724cd3273c3d227d9f7f7646fc03f0bd1d6ca",
+        "worker_C0.log": "f454d5de62cfa27e9111ac1f3a2b325232aa8893327bbaac6430139421fd9f4d",
+        "worker_C1.log": "e499d790d84883b0decb6c9683788d7cc5e8609ebe66d35c9717f1012fcb1e85",
+        "worker_C2.log": "bd046c7e27e55000789cfeb79a5fb8074bd55f6b49a82519bb72ffc57d862dc2",
+        "worker_C3.log": "2a19814298ed9ed270293f1ed69cf158623592a8e498188187c89c14c6854836",
+        "worker_R0.log": "200b78aa5b04dec2d7deb91d697c112c39065c45bbb1ecb81e8c51594ad02908",
+        "worker_R1.log": "a146c9c669173fae6ea92017b38337b178b8131c001b80cc1799f8d3612d237e",
+        "worker_R2.log": "4a8bfa5e175de9978b67955e7741dbc0e72806ec377518607611a7f76fe51193",
+        "worker_R3.log": "18221fe78ad2f15c50ae8d334e2eae89cab374ad4557a618a4d996c015fb05f2"
+      }
+    },
+    {
+      "seed": 8102,
+      "status": "completed",
+      "attempts": [
+        "seed8102_attempt01"
+      ],
+      "attempt": "seed8102_attempt01",
+      "pass": true,
+      "result_sha256": {
+        "analysis.json": "ef0aabffe54a2addc39b2eeec62a307be22384046d8d62ed0cd18f2851cc54ed",
+        "config.json": "4bc93713945317e61c71acb39fe80e62f8b80a3c804e2dfc795b4a01329ae3f3",
+        "controller.jsonl": "56a331348a1e972345a047d39de68e1b63a1a64d5cba15981d78f457eaef890a",
+        "dht_C0.jsonl": "d20aacc18bcc33a34807bc96a976406fd347c8eb0059d33b55d6c81942bd7d78",
+        "dht_C1.jsonl": "afcb5e3702a16c8c78a12606e6e38c977425ed5fd28eef63b8afaa16dcc016cb",
+        "dht_C2.jsonl": "4519f1521af24363e29c0f19018b07b8a925890d46480b46567d8d10f1682d87",
+        "dht_C3.jsonl": "1d68503e6bba08b1b6284b3b797c2812867469922b4a5995b083d66b0ee14407",
+        "dht_R0.jsonl": "12d8135dbcd2f87401e101322d7cc7320d25e07470a50a554fe1a9345ccaf24a",
+        "dht_R1.jsonl": "d96f53dc5dc63b5a1bf0ae7766aa0bab302a6f2234a49aef57b37a84bc4d8695",
+        "dht_R2.jsonl": "78c281b1c90cf536552572e26ea1bba2952bd0868e0acbfc2698c13843a1fd94",
+        "dht_R3.jsonl": "50ab4d5a0011f57d6a6727abd0667cdc1ad78d3a7716072de27d4f33b0b2c274",
+        "events_C0.jsonl": "7eb1db6539d16ac902df1e113e272d32ec5141bd51c8bc53e8cc8ab15083fd0b",
+        "events_C1.jsonl": "3aa001bd89b57a170661e33ff7db6ff5c7324dd0529045614c1da60cd2ccd68c",
+        "events_C2.jsonl": "ac824d568361d2073fe22849c8da1531520f3593aa0affb30b9b8c9d67ce5dd3",
+        "events_C3.jsonl": "7a2706bd2dcc2fc43c067fc3e9a65b259b892fcd01dacacb8c7c2b3355782b35",
+        "events_R0.jsonl": "58c6613a3789cd238de71d68830a77f4f898b618a27838d5546df5f2b6e2f47b",
+        "events_R1.jsonl": "d31e6e85a367db3251117a59a8a4c7a1632c905d84aa1925cdf697ec9119c5b1",
+        "events_R2.jsonl": "99f205415eeca14dbe1bcb437f44e9fdcf7b76d08a82c6b6337db3bfd02df749",
+        "events_R3.jsonl": "cfa86881362f2865fb208c089228b2f98219ba77a6c28cdd9372be63b6096286",
+        "shutdown.json": "ece0a15f4e254d7b98a85deeb819c776a11f2ee81cc115dd79b3a8b8d9ca6f6e",
+        "worker_C0.log": "922d602c3ade5bf47e521b5732beeedc3c3058575d9a68bbc6a1550932fedde6",
+        "worker_C1.log": "54b07b18e4be3f78f4a53448a191315c3503240db189240db0907179906f2263",
+        "worker_C2.log": "d3e98a62d248ed2f60f692ec008db89071289adbad1879455697757e6952e767",
+        "worker_C3.log": "cd1a94ad81e00b6205d917c60d724fc90df370528a266c32f081842f81f5ca6d",
+        "worker_R0.log": "bef7ab400a445276cf24d697e0f86f4c35caca34ca94fb7c209ec0a46ec8ef6a",
+        "worker_R1.log": "c4f5c45ed474fbe2bb5b72b54489244a3cecb1d8b6ee6e8ec4808b65618b5851",
+        "worker_R2.log": "9ce14973e04966443517706c673199ab45352d733d57fb11a1c6152bcb43fefd",
+        "worker_R3.log": "9e83dd519e67b8cd087286f63e7accfe0722aa70f4f94f5398784f835d0cf394"
+      }
+    }
+  ]
+}

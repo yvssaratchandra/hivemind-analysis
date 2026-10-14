@@ -1,0 +1,44 @@
+{
+  "phase": "smoke",
+  "jobs": [
+    {
+      "seed": 8100,
+      "status": "completed",
+      "attempts": [
+        "seed8100_attempt01"
+      ],
+      "attempt": "seed8100_attempt01",
+      "pass": true,
+      "result_sha256": {
+        "analysis.json": "2f05f50909aafc0c0e5dbb4b0a96aa84d7818ad5426898203f92b1490958a60a",
+        "config.json": "085fdf14b55c83ab53172d53323bf00da93a26f26d8a3e6b9e8f410e86b8f7aa",
+        "controller.jsonl": "1be762a62d9fb76772d5dedcca52aae986dbed7b1081ffc52f7e5e96031d3c24",
+        "dht_C0.jsonl": "49e185660f767972dbee7f6e4661c154fe1ccf2ff7657f00429e254da007a492",
+        "dht_C1.jsonl": "ce54e05a9ac10b1106fdf4ddf98ceec270dc5967b6d921d8f45b5ef9b981dd17",
+        "dht_C2.jsonl": "7eff2eb10619a820a081894a75ac8ce2640017f52d3ea64458591c90a0e464ec",
+        "dht_C3.jsonl": "aec878977baa040b6608af23fd7024ee3bc13696f6bb6cd692b15c650e7bdce6",
+        "dht_R0.jsonl": "c7c38b2b0a10318be3cbda85a61d89003c400d05f7ae9a468a2f64765339776c",
+        "dht_R1.jsonl": "e563f55c5586a82b091b45566c174cf2a20d31810499024708c4ba526aa17a4b",
+        "dht_R2.jsonl": "e7160eba5bb1614649c6a301425764525188db1ede81a75ef85336e18b82651d",
+        "dht_R3.jsonl": "93c5bb5fa72ed8c862a441ec1a67fa84b02803258a2bc1b07438b638b3a19166",
+        "events_C0.jsonl": "bf04b4cdd39913cd4f39ae68959461d0b225fb1e3837266a3f8197f461e67344",
+        "events_C1.jsonl": "7a5ebaf6d6413e9cd53e7abcde1935e20e85e750c465cbe312688b7c77a61156",
+        "events_C2.jsonl": "6198a80e9f62a52d0d1f9fcdd9e96e3e0298b9314fb12c30f455e8143e4e5aec",
+        "events_C3.jsonl": "82b97e3bd410fe749d7b19fc47d4340e0d5dec3f0a1af119b9e0e404a257b08f",
+        "events_R0.jsonl": "0f98a72cdcfd818f48ad0b4c28bf150e5689e3949a22635f584a5e2094e7cb05",
+        "events_R1.jsonl": "d21d98716bc2ecc51ce059f3888430a213520c40ef12753a61785b9086a04ac2",
+        "events_R2.jsonl": "7943f00c24a1cd8503fe293c29d02d1a86e437cf5099226f475f1478318ff97c",
+        "events_R3.jsonl": "475c9828a37d4e07a59120ee427e1abd2d938032020d6ecae14363727552409d",
+        "shutdown.json": "4adacfb320f60d517add2c47043b41deaa925a39dfd51340b9d54aeb5d3fb739",
+        "worker_C0.log": "c7416a0ed7366e58a47773d76cc884899064650696151b0e72a9e3d2f24f691a",
+        "worker_C1.log": "99619101c7b4fd0e70af86aceb82a43539a5cf248fc9c63648666722538a0e25",
+        "worker_C2.log": "3216e509eff66002441ebd0135516c16a8f269df0e2ce836258ed0f3b9dd67d5",
+        "worker_C3.log": "1ffe4abb04ae92b433b327edad885f21568676dfdd57a76a32a35bfada18ce20",
+        "worker_R0.log": "130d5391d999ea0cb4c919813bfcc69b382ed8f68b20b4ee33dd715571b08a21",
+        "worker_R1.log": "acd577aaf60d44bce596c872957e207526a0d3291595bd5ead32e7933f897065",
+        "worker_R2.log": "446cb1cc980094af2c65cc642f688b8fc9a6985984aaa29f51ff809ce9bce45f",
+        "worker_R3.log": "a0848695bb135a4f3017fbc8fe0b198ffb7823324a6a557ca2d18e2e3a157097"
+      }
+    }
+  ]
+}

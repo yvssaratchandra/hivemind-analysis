@@ -1,0 +1,86 @@
+{
+  "verified_utc": "2026-10-13T13:56:01.342392+00:00",
+  "pilot_seeds": [
+    {
+      "seed": 8101,
+      "attempt": "seed8101_attempt02",
+      "passed": true,
+      "agreed_rounds": 5,
+      "peer_round_results": 40,
+      "group_size": 8,
+      "mean_ready_to_roster_s": 1.0873258753748813,
+      "mean_native_roster_s": 0.97725,
+      "mean_initial_loss": 0.7952603101730347,
+      "mean_final_loss": 0.0018764196429401636,
+      "max_delta_error_independent": 2.60770320892334e-08,
+      "max_application_error_independent": 1.862645149230957e-09,
+      "four_reducer_assignments_verified": true,
+      "dht_operations": {
+        "get_many": {
+          "count": 112,
+          "mean_ms": 59.56295127595825,
+          "max_ms": 110.73549000138883,
+          "scope": "Native calls in measurement interval; not public dashboard interval means"
+        },
+        "store_many": {
+          "count": 88,
+          "mean_ms": 266.6872085225226,
+          "max_ms": 680.7947380002588,
+          "scope": "Native calls in measurement interval; not public dashboard interval means"
+        }
+      },
+      "elapsed_seconds": 214.10702067900274
+    },
+    {
+      "seed": 8102,
+      "attempt": "seed8102_attempt01",
+      "passed": true,
+      "agreed_rounds": 5,
+      "peer_round_results": 40,
+      "group_size": 8,
+      "mean_ready_to_roster_s": 0.9519926497996494,
+      "mean_native_roster_s": 0.8401749999999998,
+      "mean_initial_loss": 1.1723583936691284,
+      "mean_final_loss": 0.0014942531561246142,
+      "max_delta_error_independent": 2.0489096641540527e-08,
+      "max_application_error_independent": 1.862645149230957e-09,
+      "four_reducer_assignments_verified": true,
+      "dht_operations": {
+        "get_many": {
+          "count": 107,
+          "mean_ms": 57.69683767347292,
+          "max_ms": 101.27245000330731,
+          "scope": "Native calls in measurement interval; not public dashboard interval means"
+        },
+        "store_many": {
+          "count": 88,
+          "mean_ms": 277.17957559021175,
+          "max_ms": 638.2882010075264,
+          "scope": "Native calls in measurement interval; not public dashboard interval means"
+        }
+      },
+      "elapsed_seconds": 214.18021343598957
+    }
+  ],
+  "unique_logical_rounds": 10,
+  "replay_python": "Pinned Python 3.11",
+  "replay_matches_saved_analysis": true,
+  "closed_frozen_file_sets_unchanged": {
+    "native": true,
+    "harness": true
+  },
+  "focused_checks_passed": 26,
+  "completed_jobs": 2,
+  "pending_jobs": 0,
+  "suspended_attempt_excluded": "seed8101_attempt01",
+  "suspend_preservation": "SUSPEND_PRESERVATION.json",
+  "shutdown_audit": "INDEPENDENT_SHUTDOWN.json",
+  "group_id_warning": "Native group ID is constant; use trial and epoch to identify logical rounds.",
+  "limitations": [
+    "Local eight-node delay emulation, not a public-run replay.",
+    "RTT pairing is assumed; dashboard measurement times unknown.",
+    "All eight are full DHT nodes; NODE/CLIENT roles determine reduction duty only.",
+    "Synthetic data and two-second steps; no bandwidth, full pipeline, churn or attacker.",
+    "First zero-delay smoke a lost one tensor part despite agreed rosters; cause unresolved. Smokes b and c passed."
+  ]
+}
