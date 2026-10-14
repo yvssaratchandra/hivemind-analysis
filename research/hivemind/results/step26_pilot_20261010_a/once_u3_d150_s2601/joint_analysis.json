@@ -1,0 +1,154 @@
+{
+  "case": {
+    "lifetime": 3.0,
+    "minimum": 4,
+    "mode": "once",
+    "name": "once_u3_d150",
+    "one_way_delay_seconds": 0.15,
+    "target": 4
+  },
+  "delay_integrity": {
+    "errors": [],
+    "pass_": true,
+    "summary": {
+      "configured_one_way_seconds": 0.15,
+      "coverage": {
+        "find": {
+          "correlated": 1441,
+          "correlated_delayed": 1441,
+          "total": 2405
+        },
+        "join": {
+          "correlated": 143,
+          "correlated_delayed": 143,
+          "total": 143
+        },
+        "store": {
+          "correlated": 249,
+          "correlated_delayed": 249,
+          "total": 515
+        }
+      },
+      "delayed_completed_legs": 6167,
+      "join_admission_state_count": 143,
+      "logical_read_count": 134,
+      "logical_reads_with_remote_find": 134,
+      "rpc_counts": {
+        "find": 2405,
+        "join": 143,
+        "store": 515
+      },
+      "unlinked_find_rpc_count": 964
+    }
+  },
+  "duration": 30,
+  "experiment": "step26",
+  "integrity_errors": [],
+  "integrity_pass": true,
+  "native_control_plane_pass": true,
+  "policy_integrity": {
+    "errors": [],
+    "pass_": true
+  },
+  "seed": 2601,
+  "summary_metrics": {
+    "accepted_active_declaration_calls": 6,
+    "accepted_active_holder_stores": 30,
+    "accepted_holder_gap_count": 25,
+    "accepted_holder_gap_max_seconds": 4.146317720413208,
+    "accepted_holder_gap_total_seconds": 71.39234495162964,
+    "accepted_holder_intervals": 30,
+    "achieved_active_publication_frequency_per_second": null,
+    "active_holder_store_records": 30,
+    "active_publication_attempts": 6,
+    "active_publications_per_search_max": 1,
+    "active_publications_per_search_min": 1,
+    "all_logical_read_starts": 153,
+    "available": true,
+    "cancelled_declaration_calls": 0,
+    "delay_activity_coverage": {
+      "find": {
+        "correlated": 1441,
+        "correlated_delayed": 1441,
+        "total": 2405
+      },
+      "join": {
+        "correlated": 143,
+        "correlated_delayed": 143,
+        "total": 143
+      },
+      "store": {
+        "correlated": 249,
+        "correlated_delayed": 249,
+        "total": 515
+      }
+    },
+    "delayed_completed_rpc_legs": 6167,
+    "first_eligible_choice_count": 29,
+    "first_eligible_choice_rate": 1.0,
+    "first_eligible_chose_x": 29,
+    "honest_enabled_seconds": 133.0524228040158,
+    "honest_logical_read_interval_median_seconds": 0.6232113430014579,
+    "honest_logical_read_interval_p90_seconds": 0.6508135559997754,
+    "honest_logical_read_starts": 153,
+    "honest_logical_reads_per_enabled_second": 1.1499226904373374,
+    "honest_submission_enabled_seconds": 123.94160026801546,
+    "honest_submission_read_rate": 1.1860424561416205,
+    "honest_submission_read_starts": 147,
+    "interpretation": "logged receipt intervals and their internal gaps are diagnostics, not DHT visibility or contention measurements",
+    "local_deadline_gap_count": 0,
+    "local_deadline_gap_max_seconds": 0.0,
+    "logical_read_count_for_delay": 134,
+    "logical_reads_with_remote_find": 134,
+    "mode": "once",
+    "once_publications": 6,
+    "publication_interval_median_seconds": null,
+    "publication_interval_p90_seconds": null,
+    "reads_in_flight_across_pause": 38,
+    "requested_refresh_frequency_per_second": null,
+    "rpc_counts": {
+      "find": 2405,
+      "join": 143,
+      "store": 515
+    },
+    "selections_total": 142,
+    "successful_logical_read_completions": 134,
+    "total_groups": 14,
+    "unlinked_find_rpc_count": 964,
+    "withdrawal_calls": 6,
+    "x_failed_attempts": 0,
+    "x_followed_attempts": 0,
+    "x_interior_attempts": 4,
+    "x_interior_led_attempts": 4,
+    "x_interior_led_by_2s_count": 2,
+    "x_interior_led_by_2s_rate": 0.5,
+    "x_interior_led_rate": 1.0,
+    "x_led_attempts": 6,
+    "x_led_by_1s_count": 0,
+    "x_led_by_1s_rate": 0.0,
+    "x_led_by_2s_count": 2,
+    "x_led_by_2s_rate": 0.3333333333333333,
+    "x_led_by_5s_count": 6,
+    "x_led_by_5s_rate": 1.0,
+    "x_led_group_mean_roster_size": 4,
+    "x_led_group_share": 0.42857142857142855,
+    "x_led_groups": 6,
+    "x_led_latency_median_seconds": 2.229988097995374,
+    "x_led_latency_p90_seconds": 2.71865661099946,
+    "x_led_latency_successes": 6,
+    "x_led_rate": 1.0,
+    "x_no_group_attempts": 0,
+    "x_searches": 6,
+    "x_submitted_attempts": 6,
+    "x_time_state": {
+      "between_round_training_seconds": 9.713891567910181,
+      "mean_training_delay_seconds": 1.6189819279850304,
+      "read_enabled_seconds": 18.986815275988192,
+      "search_spans": 6,
+      "searching_seconds": 18.987257841996325,
+      "training_intervals": 6
+    }
+  },
+  "trace_integrity_pass": true,
+  "trial_dir": "once_u3_d150_s2601"
+}

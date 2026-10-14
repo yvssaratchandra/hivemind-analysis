@@ -1,0 +1,45 @@
+kind,metric,treatment_case,control_case,treatment_cell,estimate,treatment_denominator,control_denominator,minimum_denominator,status,flag,threshold,treatment_successes,control_successes,minimum_successes,estimate_unit,contrast,component_cells,component_coefficients
+refresh_vs_once,x_led_rate,refresh_u1_f2_d0,,"[1.0,2.0,0.0]",,2,0,,missing_control_or_metric,False,0.15,,,,,,,
+refresh_vs_once,x_led_by_2s_rate,refresh_u1_f2_d0,,"[1.0,2.0,0.0]",,2,0,,missing_control_or_metric,False,0.15,,,,,,,
+refresh_vs_once,first_eligible_choice_rate,refresh_u1_f2_d0,,"[1.0,2.0,0.0]",,6,0,,missing_control_or_metric,False,0.15,,,,,,,
+refresh_vs_once,x_led_latency_relative,refresh_u1_f2_d0,,"[1.0,2.0,0.0]",,,,,missing_control_or_metric,False,0.3,2,0,,relative_latency_change,,,
+refresh_vs_passive,x_led_rate,refresh_u1_f2_d0,,"[1.0,2.0,0.0]",,2,0,,missing_control_or_metric,False,0.15,,,,,,,
+refresh_vs_passive,x_led_by_2s_rate,refresh_u1_f2_d0,,"[1.0,2.0,0.0]",,2,0,,missing_control_or_metric,False,0.15,,,,,,,
+refresh_vs_passive,first_eligible_choice_rate,refresh_u1_f2_d0,,"[1.0,2.0,0.0]",,6,0,,missing_control_or_metric,False,0.15,,,,,,,
+refresh_vs_passive,x_led_latency_relative,refresh_u1_f2_d0,,"[1.0,2.0,0.0]",,,,,missing_control_or_metric,False,0.3,2,0,,relative_latency_change,,,
+refresh_vs_once,x_led_rate,refresh_u1_f2_d150,,"[1.0,2.0,0.15]",,1,0,,missing_control_or_metric,False,0.15,,,,,,,
+refresh_vs_once,x_led_by_2s_rate,refresh_u1_f2_d150,,"[1.0,2.0,0.15]",,1,0,,missing_control_or_metric,False,0.15,,,,,,,
+refresh_vs_once,first_eligible_choice_rate,refresh_u1_f2_d150,,"[1.0,2.0,0.15]",,0,0,,missing_control_or_metric,False,0.15,,,,,,,
+refresh_vs_once,x_led_latency_relative,refresh_u1_f2_d150,,"[1.0,2.0,0.15]",,,,,missing_control_or_metric,False,0.3,0,0,,relative_latency_change,,,
+refresh_vs_passive,x_led_rate,refresh_u1_f2_d150,,"[1.0,2.0,0.15]",,1,0,,missing_control_or_metric,False,0.15,,,,,,,
+refresh_vs_passive,x_led_by_2s_rate,refresh_u1_f2_d150,,"[1.0,2.0,0.15]",,1,0,,missing_control_or_metric,False,0.15,,,,,,,
+refresh_vs_passive,first_eligible_choice_rate,refresh_u1_f2_d150,,"[1.0,2.0,0.15]",,0,0,,missing_control_or_metric,False,0.15,,,,,,,
+refresh_vs_passive,x_led_latency_relative,refresh_u1_f2_d150,,"[1.0,2.0,0.15]",,,,,missing_control_or_metric,False,0.3,0,0,,relative_latency_change,,,
+u_x_f_at_delay,x_led_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×f at d=0s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0]]","[-1,1,1,-1]"
+u_x_f_at_delay,x_led_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×f at d=0.15s,"[[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,x_led_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×d at f=0.5/s,"[[1.0,0.5,0.0],[1.0,0.5,0.15],[3.0,0.5,0.0],[3.0,0.5,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,x_led_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×d at f=2/s,"[[1.0,2.0,0.0],[1.0,2.0,0.15],[3.0,2.0,0.0],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,x_led_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,f×d at U=1s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,x_led_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,f×d at U=3s,"[[3.0,0.5,0.0],[3.0,2.0,0.0],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_f_x_delay,x_led_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×f×d,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[1,-1,-1,1,-1,1,1,-1]"
+u_x_f_at_delay,x_led_by_2s_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×f at d=0s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0]]","[-1,1,1,-1]"
+u_x_f_at_delay,x_led_by_2s_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×f at d=0.15s,"[[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,x_led_by_2s_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×d at f=0.5/s,"[[1.0,0.5,0.0],[1.0,0.5,0.15],[3.0,0.5,0.0],[3.0,0.5,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,x_led_by_2s_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×d at f=2/s,"[[1.0,2.0,0.0],[1.0,2.0,0.15],[3.0,2.0,0.0],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,x_led_by_2s_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,f×d at U=1s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,x_led_by_2s_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,f×d at U=3s,"[[3.0,0.5,0.0],[3.0,2.0,0.0],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_f_x_delay,x_led_by_2s_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×f×d,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[1,-1,-1,1,-1,1,1,-1]"
+u_x_f_at_delay,first_eligible_choice_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×f at d=0s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0]]","[-1,1,1,-1]"
+u_x_f_at_delay,first_eligible_choice_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×f at d=0.15s,"[[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,first_eligible_choice_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×d at f=0.5/s,"[[1.0,0.5,0.0],[1.0,0.5,0.15],[3.0,0.5,0.0],[3.0,0.5,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,first_eligible_choice_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×d at f=2/s,"[[1.0,2.0,0.0],[1.0,2.0,0.15],[3.0,2.0,0.0],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,first_eligible_choice_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,f×d at U=1s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,first_eligible_choice_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,f×d at U=3s,"[[3.0,0.5,0.0],[3.0,2.0,0.0],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_f_x_delay,first_eligible_choice_rate,,,,,,,0,missing_cells,False,0.15,,,,rate_difference,U×f×d,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[1,-1,-1,1,-1,1,1,-1]"
+u_x_f_at_delay,x_led_latency,,,,,,,,missing_cells,False,0.3,,,0,relative_latency_change,U×f at d=0s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0]]","[-1,1,1,-1]"
+u_x_f_at_delay,x_led_latency,,,,,,,,missing_cells,False,0.3,,,0,relative_latency_change,U×f at d=0.15s,"[[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,x_led_latency,,,,,,,,missing_cells,False,0.3,,,0,relative_latency_change,U×d at f=0.5/s,"[[1.0,0.5,0.0],[1.0,0.5,0.15],[3.0,0.5,0.0],[3.0,0.5,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,x_led_latency,,,,,,,,missing_cells,False,0.3,,,0,relative_latency_change,U×d at f=2/s,"[[1.0,2.0,0.0],[1.0,2.0,0.15],[3.0,2.0,0.0],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,x_led_latency,,,,,,,,missing_cells,False,0.3,,,0,relative_latency_change,f×d at U=1s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,x_led_latency,,,,,,,,missing_cells,False,0.3,,,0,relative_latency_change,f×d at U=3s,"[[3.0,0.5,0.0],[3.0,2.0,0.0],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_f_x_delay,x_led_latency,,,,,,,,missing_cells,False,0.3,,,0,relative_latency_change,U×f×d,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[1,-1,-1,1,-1,1,1,-1]"

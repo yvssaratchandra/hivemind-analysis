@@ -1,0 +1,6 @@
+{
+  "all_peers_shutdown": true,
+  "error": "ValueError: trial integrity failed: ['delay: RPC 1676360:rpc408 must have exactly one end record', 'delay: RPC 1676428:rpc426 must have exactly one end record', 'delay: RPC 1676428:rpc427 must have exactly one end record', 'delay: RPC 1676428:rpc428 must have exactly one end record', 'delay: RPC 1676496:rpc399 must have exactly one end record', 'delay: unary RPC 1676360:rpc408 must have one response', 'delay: unary RPC 1676428:rpc426 must have one response', 'delay: unary RPC 1676428:rpc427 must have one response', 'delay: unary RPC 1676428:rpc428 must have one response', 'delay: unary RPC 1676496:rpc399 must have one response']",
+  "interrupted": false,
+  "trial": "passive_stock_d150_s2601"
+}

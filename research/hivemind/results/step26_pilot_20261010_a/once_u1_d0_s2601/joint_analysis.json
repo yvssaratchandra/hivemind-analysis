@@ -1,0 +1,198 @@
+{
+  "case": {
+    "lifetime": 1.0,
+    "minimum": 4,
+    "mode": "once",
+    "name": "once_u1_d0",
+    "one_way_delay_seconds": 0.0,
+    "target": 4
+  },
+  "delay_integrity": {
+    "errors": [],
+    "pass_": true,
+    "summary": {
+      "configured_one_way_seconds": 0.0,
+      "coverage": {
+        "find": {
+          "correlated": 20834,
+          "correlated_delayed": 0,
+          "total": 23221
+        },
+        "join": {
+          "correlated": 110,
+          "correlated_delayed": 0,
+          "total": 110
+        },
+        "store": {
+          "correlated": 541,
+          "correlated_delayed": 0,
+          "total": 1168
+        }
+      },
+      "delayed_completed_legs": 0,
+      "join_admission_state_count": 110,
+      "logical_read_count": 1945,
+      "logical_reads_with_remote_find": 1945,
+      "rpc_counts": {
+        "find": 23221,
+        "join": 110,
+        "store": 1168
+      },
+      "teardown_v2_activity_spans_complete": true,
+      "teardown_v2_control_activity_cutoff_event": {
+        "event_ref": "1705079:710",
+        "kind": "search_span_end",
+        "monotonic": 44145.624424497
+      },
+      "teardown_v2_control_activity_cutoff_events": [
+        {
+          "event_ref": "1705079:710",
+          "kind": "search_span_end",
+          "monotonic": 44145.624424497
+        },
+        {
+          "event_ref": "1705079:705",
+          "kind": "ad_read_end",
+          "monotonic": 44145.567328498
+        },
+        {
+          "event_ref": "1705079:704",
+          "kind": "join_attempt_end",
+          "monotonic": 44145.566448001
+        },
+        {
+          "event_ref": "1705074:601",
+          "kind": "assembled",
+          "monotonic": 44145.562574607
+        },
+        {
+          "event_ref": "1705079:708",
+          "kind": "ad_finished",
+          "monotonic": 44145.624036239
+        }
+      ],
+      "teardown_v2_control_activity_cutoff_monotonic": 44145.624424497,
+      "teardown_v2_eligibility_gates": [],
+      "teardown_v2_excluded_stream_count": 0,
+      "teardown_v2_excluded_streams": [],
+      "teardown_v2_native_checks_pass": true,
+      "teardown_v2_trace_closed": {
+        "event_ref": "1703910:376",
+        "monotonic": 44146.059206858
+      },
+      "teardown_v2_unexcluded_incomplete_stream_count": 0,
+      "teardown_v2_unexcluded_incomplete_streams": [],
+      "unlinked_find_rpc_count": 2387
+    }
+  },
+  "duration": 30,
+  "experiment": "step26",
+  "integrity_errors": [],
+  "integrity_pass": true,
+  "native_control_plane_pass": true,
+  "policy_integrity": {
+    "errors": [],
+    "pass_": true
+  },
+  "seed": 2601,
+  "summary_metrics": {
+    "accepted_active_declaration_calls": 11,
+    "accepted_active_holder_stores": 55,
+    "accepted_holder_gap_count": 50,
+    "accepted_holder_gap_max_seconds": 12.545300006866455,
+    "accepted_holder_gap_total_seconds": 124.60107922554016,
+    "accepted_holder_intervals": 55,
+    "achieved_active_publication_frequency_per_second": null,
+    "active_holder_store_records": 55,
+    "active_publication_attempts": 11,
+    "active_publications_per_search_max": 1,
+    "active_publications_per_search_min": 1,
+    "all_logical_read_starts": 1995,
+    "available": true,
+    "cancelled_declaration_calls": 0,
+    "delay_activity_coverage": {
+      "find": {
+        "correlated": 20834,
+        "correlated_delayed": 0,
+        "total": 23221
+      },
+      "join": {
+        "correlated": 110,
+        "correlated_delayed": 0,
+        "total": 110
+      },
+      "store": {
+        "correlated": 541,
+        "correlated_delayed": 0,
+        "total": 1168
+      }
+    },
+    "delayed_completed_rpc_legs": 0,
+    "first_eligible_choice_count": 25,
+    "first_eligible_choice_rate": 1.0,
+    "first_eligible_chose_x": 25,
+    "honest_enabled_seconds": 27.037098284054082,
+    "honest_logical_read_interval_median_seconds": 0.011069921005400829,
+    "honest_logical_read_interval_p90_seconds": 0.017752185399876906,
+    "honest_logical_read_starts": 1995,
+    "honest_logical_reads_per_enabled_second": 73.7875040819972,
+    "honest_submission_enabled_seconds": 27.037098284054082,
+    "honest_submission_read_rate": 73.7875040819972,
+    "honest_submission_read_starts": 1995,
+    "interpretation": "logged receipt intervals and their internal gaps are diagnostics, not DHT visibility or contention measurements",
+    "local_deadline_gap_count": 0,
+    "local_deadline_gap_max_seconds": 0.0,
+    "logical_read_count_for_delay": 1945,
+    "logical_reads_with_remote_find": 1945,
+    "mode": "once",
+    "once_publications": 11,
+    "publication_interval_median_seconds": null,
+    "publication_interval_p90_seconds": null,
+    "reads_in_flight_across_pause": 86,
+    "requested_refresh_frequency_per_second": null,
+    "rpc_counts": {
+      "find": 23221,
+      "join": 110,
+      "store": 1168
+    },
+    "selections_total": 101,
+    "successful_logical_read_completions": 1945,
+    "total_groups": 31,
+    "unlinked_find_rpc_count": 2387,
+    "withdrawal_calls": 11,
+    "x_failed_attempts": 1,
+    "x_followed_attempts": 0,
+    "x_interior_attempts": 3,
+    "x_interior_led_attempts": 2,
+    "x_interior_led_by_2s_count": 2,
+    "x_interior_led_by_2s_rate": 0.6666666666666666,
+    "x_interior_led_rate": 0.6666666666666666,
+    "x_led_attempts": 10,
+    "x_led_by_1s_count": 10,
+    "x_led_by_1s_rate": 0.9090909090909091,
+    "x_led_by_2s_count": 10,
+    "x_led_by_2s_rate": 0.9090909090909091,
+    "x_led_by_5s_count": 10,
+    "x_led_by_5s_rate": 0.9090909090909091,
+    "x_led_group_mean_roster_size": 4,
+    "x_led_group_share": 0.3225806451612903,
+    "x_led_groups": 10,
+    "x_led_latency_median_seconds": 0.32283350150100887,
+    "x_led_latency_p90_seconds": 0.8453321617016627,
+    "x_led_latency_successes": 10,
+    "x_led_rate": 0.9090909090909091,
+    "x_no_group_attempts": 0,
+    "x_searches": 11,
+    "x_submitted_attempts": 11,
+    "x_time_state": {
+      "between_round_training_seconds": 15.52702330628942,
+      "mean_training_delay_seconds": 1.4115475732990383,
+      "read_enabled_seconds": 15.738440963003086,
+      "search_spans": 11,
+      "searching_seconds": 15.739085957007774,
+      "training_intervals": 11
+    }
+  },
+  "trace_integrity_pass": true,
+  "trial_dir": "once_u1_d0_s2601"
+}

@@ -1,0 +1,47 @@
+{
+  "experiment": "step26",
+  "gate": null,
+  "instrumentation": "detailed",
+  "jobs": [
+    {
+      "case": {
+        "frequency": 2.0,
+        "lifetime": 1.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "refresh_u1_f2_d150",
+        "nominal_lower": 0.5,
+        "nominal_upper": 1.0,
+        "one_way_delay_seconds": 0.15,
+        "target": 4
+      },
+      "duration": 5,
+      "seed": 2600
+    },
+    {
+      "case": {
+        "frequency": 2.0,
+        "lifetime": 1.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "refresh_u1_f2_d0",
+        "nominal_lower": 0.5,
+        "nominal_upper": 1.0,
+        "one_way_delay_seconds": 0.0,
+        "target": 4
+      },
+      "duration": 5,
+      "seed": 2600
+    }
+  ],
+  "order_seed": 260026,
+  "outcome": "grouping",
+  "phase": "smoke",
+  "preliminary": true,
+  "training_delay": {
+    "lower": 0.1,
+    "mu": 0.2517227582341841,
+    "sigma": 0.5545130293761911,
+    "upper": 4.0
+  }
+}

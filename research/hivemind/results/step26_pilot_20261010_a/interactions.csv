@@ -1,0 +1,93 @@
+kind,metric,treatment_case,control_case,treatment_cell,estimate,treatment_denominator,control_denominator,minimum_denominator,status,flag,threshold,treatment_successes,control_successes,minimum_successes,estimate_unit,contrast,component_cells,component_coefficients
+refresh_vs_once,x_led_rate,refresh_u1_f0p5_d0,once_u1_d0,"[1.0,0.5,0.0]",0.09090909090909094,15,11,11,ok,False,0.15,,,,,,,
+refresh_vs_once,x_led_by_2s_rate,refresh_u1_f0p5_d0,once_u1_d0,"[1.0,0.5,0.0]",0.024242424242424288,15,11,11,ok,False,0.15,,,,,,,
+refresh_vs_once,first_eligible_choice_rate,refresh_u1_f0p5_d0,once_u1_d0,"[1.0,0.5,0.0]",0.0,39,25,25,ok,False,0.15,,,,,,,
+refresh_vs_once,x_led_latency_relative,refresh_u1_f0p5_d0,once_u1_d0,"[1.0,0.5,0.0]",-0.21990253853677322,,,,ok,False,0.3,15,10,10,relative_latency_change,,,
+refresh_vs_passive,x_led_rate,refresh_u1_f0p5_d0,passive_stock_d0,"[1.0,0.5,0.0]",0.0,15,12,12,ok,False,0.15,,,,,,,
+refresh_vs_passive,x_led_by_2s_rate,refresh_u1_f0p5_d0,passive_stock_d0,"[1.0,0.5,0.0]",0.01666666666666672,15,12,12,ok,False,0.15,,,,,,,
+refresh_vs_passive,first_eligible_choice_rate,refresh_u1_f0p5_d0,passive_stock_d0,"[1.0,0.5,0.0]",0.33333333333333337,39,57,39,ok,True,0.15,,,,,,,
+refresh_vs_passive,x_led_latency_relative,refresh_u1_f0p5_d0,passive_stock_d0,"[1.0,0.5,0.0]",-0.7185795995596058,,,,ok,True,0.3,15,12,12,relative_latency_change,,,
+refresh_vs_once,x_led_rate,refresh_u1_f0p5_d150,once_u1_d150,"[1.0,0.5,0.15]",0.0,3,3,3,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_once,x_led_by_2s_rate,refresh_u1_f0p5_d150,once_u1_d150,"[1.0,0.5,0.15]",0.0,3,3,3,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_once,first_eligible_choice_rate,refresh_u1_f0p5_d150,once_u1_d150,"[1.0,0.5,0.15]",0.0,5,1,1,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_once,x_led_latency_relative,refresh_u1_f0p5_d150,once_u1_d150,"[1.0,0.5,0.15]",,,,,missing_control_or_metric,False,0.3,0,0,0,relative_latency_change,,,
+refresh_vs_passive,x_led_rate,refresh_u1_f0p5_d150,passive_stock_d150,"[1.0,0.5,0.15]",-1.0,3,5,3,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_passive,x_led_by_2s_rate,refresh_u1_f0p5_d150,passive_stock_d150,"[1.0,0.5,0.15]",0.0,3,5,3,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_passive,first_eligible_choice_rate,refresh_u1_f0p5_d150,passive_stock_d150,"[1.0,0.5,0.15]",0.8,5,25,5,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_passive,x_led_latency_relative,refresh_u1_f0p5_d150,passive_stock_d150,"[1.0,0.5,0.15]",,,,,missing_control_or_metric,False,0.3,0,5,0,relative_latency_change,,,
+refresh_vs_once,x_led_rate,refresh_u1_f2_d0,once_u1_d0,"[1.0,2.0,0.0]",0.09090909090909094,15,11,11,ok,False,0.15,,,,,,,
+refresh_vs_once,x_led_by_2s_rate,refresh_u1_f2_d0,once_u1_d0,"[1.0,2.0,0.0]",0.09090909090909094,15,11,11,ok,False,0.15,,,,,,,
+refresh_vs_once,first_eligible_choice_rate,refresh_u1_f2_d0,once_u1_d0,"[1.0,2.0,0.0]",0.0,36,25,25,ok,False,0.15,,,,,,,
+refresh_vs_once,x_led_latency_relative,refresh_u1_f2_d0,once_u1_d0,"[1.0,2.0,0.0]",-0.22590684101331826,,,,ok,False,0.3,15,10,10,relative_latency_change,,,
+refresh_vs_passive,x_led_rate,refresh_u1_f2_d0,passive_stock_d0,"[1.0,2.0,0.0]",0.0,15,12,12,ok,False,0.15,,,,,,,
+refresh_vs_passive,x_led_by_2s_rate,refresh_u1_f2_d0,passive_stock_d0,"[1.0,2.0,0.0]",0.08333333333333337,15,12,12,ok,False,0.15,,,,,,,
+refresh_vs_passive,first_eligible_choice_rate,refresh_u1_f2_d0,passive_stock_d0,"[1.0,2.0,0.0]",0.33333333333333337,36,57,36,ok,True,0.15,,,,,,,
+refresh_vs_passive,x_led_latency_relative,refresh_u1_f2_d0,passive_stock_d0,"[1.0,2.0,0.0]",-0.7207456535346375,,,,ok,True,0.3,15,12,12,relative_latency_change,,,
+refresh_vs_once,x_led_rate,refresh_u1_f2_d150,once_u1_d150,"[1.0,2.0,0.15]",0.3333333333333333,3,3,3,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_once,x_led_by_2s_rate,refresh_u1_f2_d150,once_u1_d150,"[1.0,2.0,0.15]",0.0,3,3,3,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_once,first_eligible_choice_rate,refresh_u1_f2_d150,once_u1_d150,"[1.0,2.0,0.15]",0.0,8,1,1,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_once,x_led_latency_relative,refresh_u1_f2_d150,once_u1_d150,"[1.0,2.0,0.15]",,,,,missing_control_or_metric,False,0.3,1,0,0,relative_latency_change,,,
+refresh_vs_passive,x_led_rate,refresh_u1_f2_d150,passive_stock_d150,"[1.0,2.0,0.15]",-0.6666666666666667,3,5,3,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_passive,x_led_by_2s_rate,refresh_u1_f2_d150,passive_stock_d150,"[1.0,2.0,0.15]",0.0,3,5,3,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_passive,first_eligible_choice_rate,refresh_u1_f2_d150,passive_stock_d150,"[1.0,2.0,0.15]",0.8,8,25,8,ok,True,0.15,,,,,,,
+refresh_vs_passive,x_led_latency_relative,refresh_u1_f2_d150,passive_stock_d150,"[1.0,2.0,0.15]",0.7873703692717384,,,,insufficient_observations,False,0.3,1,5,1,relative_latency_change,,,
+refresh_vs_once,x_led_rate,refresh_u3_f0p5_d0,once_u3_d0,"[3.0,0.5,0.0]",0.0,15,15,15,ok,False,0.15,,,,,,,
+refresh_vs_once,x_led_by_2s_rate,refresh_u3_f0p5_d0,once_u3_d0,"[3.0,0.5,0.0]",0.0,15,15,15,ok,False,0.15,,,,,,,
+refresh_vs_once,first_eligible_choice_rate,refresh_u3_f0p5_d0,once_u3_d0,"[3.0,0.5,0.0]",0.0,36,38,36,ok,False,0.15,,,,,,,
+refresh_vs_once,x_led_latency_relative,refresh_u3_f0p5_d0,once_u3_d0,"[3.0,0.5,0.0]",0.04204756885150185,,,,ok,False,0.3,15,15,15,relative_latency_change,,,
+refresh_vs_passive,x_led_rate,refresh_u3_f0p5_d0,passive_stock_d0,"[3.0,0.5,0.0]",0.0,15,12,12,ok,False,0.15,,,,,,,
+refresh_vs_passive,x_led_by_2s_rate,refresh_u3_f0p5_d0,passive_stock_d0,"[3.0,0.5,0.0]",0.08333333333333337,15,12,12,ok,False,0.15,,,,,,,
+refresh_vs_passive,first_eligible_choice_rate,refresh_u3_f0p5_d0,passive_stock_d0,"[3.0,0.5,0.0]",0.33333333333333337,36,57,36,ok,True,0.15,,,,,,,
+refresh_vs_passive,x_led_latency_relative,refresh_u3_f0p5_d0,passive_stock_d0,"[3.0,0.5,0.0]",-0.6997235285531088,,,,ok,True,0.3,15,12,12,relative_latency_change,,,
+refresh_vs_once,x_led_rate,refresh_u3_f0p5_d150,once_u3_d150,"[3.0,0.5,0.15]",0.0,6,6,6,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_once,x_led_by_2s_rate,refresh_u3_f0p5_d150,once_u3_d150,"[3.0,0.5,0.15]",0.0,6,6,6,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_once,first_eligible_choice_rate,refresh_u3_f0p5_d150,once_u3_d150,"[3.0,0.5,0.15]",-0.09090909090909094,33,29,29,ok,False,0.15,,,,,,,
+refresh_vs_once,x_led_latency_relative,refresh_u3_f0p5_d150,once_u3_d150,"[3.0,0.5,0.15]",0.0015038551143975454,,,,ok,False,0.3,6,6,6,relative_latency_change,,,
+refresh_vs_passive,x_led_rate,refresh_u3_f0p5_d150,passive_stock_d150,"[3.0,0.5,0.15]",0.0,6,5,5,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_passive,x_led_by_2s_rate,refresh_u3_f0p5_d150,passive_stock_d150,"[3.0,0.5,0.15]",0.3333333333333333,6,5,5,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_passive,first_eligible_choice_rate,refresh_u3_f0p5_d150,passive_stock_d150,"[3.0,0.5,0.15]",0.709090909090909,33,25,25,ok,True,0.15,,,,,,,
+refresh_vs_passive,x_led_latency_relative,refresh_u3_f0p5_d150,passive_stock_d150,"[3.0,0.5,0.15]",-0.37159603875587355,,,,ok,True,0.3,6,5,5,relative_latency_change,,,
+refresh_vs_once,x_led_rate,refresh_u3_f2_d0,once_u3_d0,"[3.0,2.0,0.0]",0.0,14,15,14,ok,False,0.15,,,,,,,
+refresh_vs_once,x_led_by_2s_rate,refresh_u3_f2_d0,once_u3_d0,"[3.0,2.0,0.0]",0.0,14,15,14,ok,False,0.15,,,,,,,
+refresh_vs_once,first_eligible_choice_rate,refresh_u3_f2_d0,once_u3_d0,"[3.0,2.0,0.0]",0.0,38,38,38,ok,False,0.15,,,,,,,
+refresh_vs_once,x_led_latency_relative,refresh_u3_f2_d0,once_u3_d0,"[3.0,2.0,0.0]",0.5045405708215893,,,,ok,True,0.3,14,15,14,relative_latency_change,,,
+refresh_vs_passive,x_led_rate,refresh_u3_f2_d0,passive_stock_d0,"[3.0,2.0,0.0]",0.0,14,12,12,ok,False,0.15,,,,,,,
+refresh_vs_passive,x_led_by_2s_rate,refresh_u3_f2_d0,passive_stock_d0,"[3.0,2.0,0.0]",0.08333333333333337,14,12,12,ok,False,0.15,,,,,,,
+refresh_vs_passive,first_eligible_choice_rate,refresh_u3_f2_d0,passive_stock_d0,"[3.0,2.0,0.0]",0.33333333333333337,38,57,38,ok,True,0.15,,,,,,,
+refresh_vs_passive,x_led_latency_relative,refresh_u3_f2_d0,passive_stock_d0,"[3.0,2.0,0.0]",-0.5664515255738969,,,,ok,True,0.3,14,12,12,relative_latency_change,,,
+refresh_vs_once,x_led_rate,refresh_u3_f2_d150,once_u3_d150,"[3.0,2.0,0.15]",0.0,6,6,6,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_once,x_led_by_2s_rate,refresh_u3_f2_d150,once_u3_d150,"[3.0,2.0,0.15]",-0.16666666666666666,6,6,6,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_once,first_eligible_choice_rate,refresh_u3_f2_d150,once_u3_d150,"[3.0,2.0,0.15]",-0.30000000000000004,30,29,29,ok,True,0.15,,,,,,,
+refresh_vs_once,x_led_latency_relative,refresh_u3_f2_d150,once_u3_d150,"[3.0,2.0,0.15]",0.06450027273043024,,,,ok,False,0.3,6,6,6,relative_latency_change,,,
+refresh_vs_passive,x_led_rate,refresh_u3_f2_d150,passive_stock_d150,"[3.0,2.0,0.15]",0.0,6,5,5,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_passive,x_led_by_2s_rate,refresh_u3_f2_d150,passive_stock_d150,"[3.0,2.0,0.15]",0.16666666666666666,6,5,5,insufficient_observations,False,0.15,,,,,,,
+refresh_vs_passive,first_eligible_choice_rate,refresh_u3_f2_d150,passive_stock_d150,"[3.0,2.0,0.15]",0.49999999999999994,30,25,25,ok,True,0.15,,,,,,,
+refresh_vs_passive,x_led_latency_relative,refresh_u3_f2_d150,passive_stock_d150,"[3.0,2.0,0.15]",-0.33206828439732206,,,,ok,True,0.3,6,5,5,relative_latency_change,,,
+u_x_f_at_delay,x_led_rate,,,,0.0,,,14,ok,False,0.15,,,,rate_difference,U×f at d=0s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0]]","[-1,1,1,-1]"
+u_x_f_at_delay,x_led_rate,,,,0.3333333333333333,,,3,insufficient_observations,False,0.15,,,,rate_difference,U×f at d=0.15s,"[[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,x_led_rate,,,,-1.0,,,3,insufficient_observations,False,0.15,,,,rate_difference,U×d at f=0.5/s,"[[1.0,0.5,0.0],[1.0,0.5,0.15],[3.0,0.5,0.0],[3.0,0.5,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,x_led_rate,,,,-0.6666666666666667,,,3,insufficient_observations,False,0.15,,,,rate_difference,U×d at f=2/s,"[[1.0,2.0,0.0],[1.0,2.0,0.15],[3.0,2.0,0.0],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,x_led_rate,,,,-0.3333333333333333,,,3,insufficient_observations,False,0.15,,,,rate_difference,f×d at U=1s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,x_led_rate,,,,0.0,,,6,insufficient_observations,False,0.15,,,,rate_difference,f×d at U=3s,"[[3.0,0.5,0.0],[3.0,2.0,0.0],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_f_x_delay,x_led_rate,,,,0.3333333333333333,,,3,insufficient_observations,False,0.15,,,,rate_difference,U×f×d,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[1,-1,-1,1,-1,1,1,-1]"
+u_x_f_at_delay,x_led_by_2s_rate,,,,0.06666666666666665,,,14,ok,False,0.15,,,,rate_difference,U×f at d=0s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0]]","[-1,1,1,-1]"
+u_x_f_at_delay,x_led_by_2s_rate,,,,0.16666666666666666,,,3,insufficient_observations,False,0.15,,,,rate_difference,U×f at d=0.15s,"[[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,x_led_by_2s_rate,,,,-0.26666666666666666,,,3,insufficient_observations,False,0.15,,,,rate_difference,U×d at f=0.5/s,"[[1.0,0.5,0.0],[1.0,0.5,0.15],[3.0,0.5,0.0],[3.0,0.5,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,x_led_by_2s_rate,,,,-0.16666666666666666,,,3,insufficient_observations,False,0.15,,,,rate_difference,U×d at f=2/s,"[[1.0,2.0,0.0],[1.0,2.0,0.15],[3.0,2.0,0.0],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,x_led_by_2s_rate,,,,0.06666666666666665,,,3,insufficient_observations,False,0.15,,,,rate_difference,f×d at U=1s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,x_led_by_2s_rate,,,,0.16666666666666666,,,6,insufficient_observations,False,0.15,,,,rate_difference,f×d at U=3s,"[[3.0,0.5,0.0],[3.0,2.0,0.0],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_f_x_delay,x_led_by_2s_rate,,,,0.1,,,3,insufficient_observations,False,0.15,,,,rate_difference,U×f×d,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[1,-1,-1,1,-1,1,1,-1]"
+u_x_f_at_delay,first_eligible_choice_rate,,,,0.0,,,36,ok,False,0.15,,,,rate_difference,U×f at d=0s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0]]","[-1,1,1,-1]"
+u_x_f_at_delay,first_eligible_choice_rate,,,,0.2090909090909091,,,5,insufficient_observations,False,0.15,,,,rate_difference,U×f at d=0.15s,"[[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,first_eligible_choice_rate,,,,0.09090909090909094,,,5,insufficient_observations,False,0.15,,,,rate_difference,U×d at f=0.5/s,"[[1.0,0.5,0.0],[1.0,0.5,0.15],[3.0,0.5,0.0],[3.0,0.5,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,first_eligible_choice_rate,,,,0.30000000000000004,,,8,ok,True,0.15,,,,rate_difference,U×d at f=2/s,"[[1.0,2.0,0.0],[1.0,2.0,0.15],[3.0,2.0,0.0],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,first_eligible_choice_rate,,,,0.0,,,5,insufficient_observations,False,0.15,,,,rate_difference,f×d at U=1s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,first_eligible_choice_rate,,,,0.2090909090909091,,,30,ok,True,0.15,,,,rate_difference,f×d at U=3s,"[[3.0,0.5,0.0],[3.0,2.0,0.0],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_f_x_delay,first_eligible_choice_rate,,,,0.2090909090909091,,,5,insufficient_observations,False,0.15,,,,rate_difference,U×f×d,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[1,-1,-1,1,-1,1,1,-1]"
+u_x_f_at_delay,x_led_latency,,,,-0.48126595208555234,,,,ok,True,0.3,,,14,relative_latency_change,U×f at d=0s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0]]","[-1,1,1,-1]"
+u_x_f_at_delay,x_led_latency,,,,,,,,missing_cells,False,0.3,,,0,relative_latency_change,U×f at d=0.15s,"[[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,x_led_latency,,,,,,,,missing_cells,False,0.3,,,0,relative_latency_change,U×d at f=0.5/s,"[[1.0,0.5,0.0],[1.0,0.5,0.15],[3.0,0.5,0.0],[3.0,0.5,0.15]]","[-1,1,1,-1]"
+u_x_d_at_frequency,x_led_latency,,,,16.4725829163941,,,,insufficient_observations,False,0.3,,,1,relative_latency_change,U×d at f=2/s,"[[1.0,2.0,0.0],[1.0,2.0,0.15],[3.0,2.0,0.0],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,x_led_latency,,,,,,,,missing_cells,False,0.3,,,0,relative_latency_change,f×d at U=1s,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15]]","[-1,1,1,-1]"
+f_x_d_at_lifetime,x_led_latency,,,,-0.07895653032817614,,,,ok,False,0.3,,,6,relative_latency_change,f×d at U=3s,"[[3.0,0.5,0.0],[3.0,2.0,0.0],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[-1,1,1,-1]"
+u_x_f_x_delay,x_led_latency,,,,,,,,missing_cells,False,0.3,,,0,relative_latency_change,U×f×d,"[[1.0,0.5,0.0],[1.0,2.0,0.0],[3.0,0.5,0.0],[3.0,2.0,0.0],[1.0,0.5,0.15],[1.0,2.0,0.15],[3.0,0.5,0.15],[3.0,2.0,0.15]]","[1,-1,-1,1,-1,1,1,-1]"

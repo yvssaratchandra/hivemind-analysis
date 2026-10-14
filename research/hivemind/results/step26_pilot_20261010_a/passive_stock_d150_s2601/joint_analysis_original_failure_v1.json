@@ -1,0 +1,233 @@
+{
+  "case": {
+    "lifetime": 5.0,
+    "minimum": 4,
+    "mode": "passive",
+    "name": "passive_stock_d150",
+    "one_way_delay_seconds": 0.15,
+    "target": 4
+  },
+  "delay_integrity": {
+    "errors": [
+      "RPC 1676360:rpc408 must have exactly one end record",
+      "RPC 1676428:rpc426 must have exactly one end record",
+      "RPC 1676428:rpc427 must have exactly one end record",
+      "RPC 1676428:rpc428 must have exactly one end record",
+      "RPC 1676496:rpc399 must have exactly one end record",
+      "unary RPC 1676360:rpc408 must have one response",
+      "unary RPC 1676428:rpc426 must have one response",
+      "unary RPC 1676428:rpc427 must have one response",
+      "unary RPC 1676428:rpc428 must have one response",
+      "unary RPC 1676496:rpc399 must have one response"
+    ],
+    "pass_": false,
+    "summary": {
+      "configured_one_way_seconds": 0.15,
+      "coverage": {
+        "find": {
+          "correlated": 1472,
+          "correlated_delayed": 1472,
+          "total": 2402
+        },
+        "join": {
+          "correlated": 116,
+          "correlated_delayed": 116,
+          "total": 116
+        },
+        "store": {
+          "correlated": 246,
+          "correlated_delayed": 246,
+          "total": 535
+        }
+      },
+      "delayed_completed_legs": 6141,
+      "join_admission_state_count": 116,
+      "logical_read_count": 130,
+      "logical_reads_with_remote_find": 130,
+      "rpc_counts": {
+        "find": 2402,
+        "join": 116,
+        "store": 535
+      },
+      "teardown_tail_activity_cutoff_event": {
+        "event_ref": "1675396:167",
+        "kind": "step_result",
+        "monotonic": 43681.839546216
+      },
+      "teardown_tail_activity_cutoff_events": [
+        {
+          "event_ref": "1675396:167",
+          "kind": "step_result",
+          "monotonic": 43681.839546216
+        },
+        {
+          "event_ref": "1676779:431",
+          "kind": "search_span_end",
+          "monotonic": 43681.823182628
+        },
+        {
+          "event_ref": "1676784:490",
+          "kind": "ad_read_end",
+          "monotonic": 43680.879449008
+        },
+        {
+          "event_ref": "1676784:489",
+          "kind": "join_attempt_end",
+          "monotonic": 43680.87930133
+        },
+        {
+          "event_ref": "1676779:429",
+          "kind": "ad_finished",
+          "monotonic": 43681.823039086
+        }
+      ],
+      "teardown_tail_activity_cutoff_monotonic": 43681.839546216,
+      "teardown_tail_activity_spans_complete": true,
+      "teardown_tail_eligibility_gates": [],
+      "teardown_tail_excluded_stream_count": 1,
+      "teardown_tail_excluded_streams": [
+        {
+          "activity_cutoff_event_ref": "1675396:167",
+          "activity_cutoff_monotonic": 43681.839546216,
+          "pid": 1676278,
+          "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+          "rpc_id": "1676278:rpc279",
+          "rpc_type": "find",
+          "start_event_ref": "1676278:1669",
+          "start_monotonic": 43682.091875251,
+          "trace_closed_event_ref": "1675396:169",
+          "trace_closed_monotonic": 43682.206893321
+        }
+      ],
+      "teardown_tail_native_checks_pass": true,
+      "teardown_tail_trace_closed": {
+        "event_ref": "1675396:169",
+        "monotonic": 43682.206893321
+      },
+      "teardown_tail_unexcluded_start_only": [],
+      "teardown_tail_unexcluded_start_only_count": 0,
+      "unlinked_find_rpc_count": 930
+    }
+  },
+  "duration": 30,
+  "experiment": "step26",
+  "integrity_errors": [
+    "delay: RPC 1676360:rpc408 must have exactly one end record",
+    "delay: RPC 1676428:rpc426 must have exactly one end record",
+    "delay: RPC 1676428:rpc427 must have exactly one end record",
+    "delay: RPC 1676428:rpc428 must have exactly one end record",
+    "delay: RPC 1676496:rpc399 must have exactly one end record",
+    "delay: unary RPC 1676360:rpc408 must have one response",
+    "delay: unary RPC 1676428:rpc426 must have one response",
+    "delay: unary RPC 1676428:rpc427 must have one response",
+    "delay: unary RPC 1676428:rpc428 must have one response",
+    "delay: unary RPC 1676496:rpc399 must have one response"
+  ],
+  "integrity_pass": false,
+  "native_control_plane_pass": true,
+  "policy_integrity": {
+    "errors": [],
+    "pass_": true
+  },
+  "seed": 2601,
+  "summary_metrics": {
+    "accepted_active_declaration_calls": 5,
+    "accepted_active_holder_stores": 25,
+    "accepted_holder_gap_count": 20,
+    "accepted_holder_gap_max_seconds": 4.155453681945801,
+    "accepted_holder_gap_total_seconds": 55.64980101585388,
+    "accepted_holder_intervals": 25,
+    "achieved_active_publication_frequency_per_second": null,
+    "active_holder_store_records": 25,
+    "active_publication_attempts": 5,
+    "active_publications_per_search_max": 1,
+    "active_publications_per_search_min": 1,
+    "all_logical_read_starts": 150,
+    "available": true,
+    "cancelled_declaration_calls": 0,
+    "delay_activity_coverage": {
+      "find": {
+        "correlated": 1472,
+        "correlated_delayed": 1472,
+        "total": 2402
+      },
+      "join": {
+        "correlated": 116,
+        "correlated_delayed": 116,
+        "total": 116
+      },
+      "store": {
+        "correlated": 246,
+        "correlated_delayed": 246,
+        "total": 535
+      }
+    },
+    "delayed_completed_rpc_legs": 6141,
+    "first_eligible_choice_count": 25,
+    "first_eligible_choice_rate": 0.2,
+    "first_eligible_chose_x": 5,
+    "honest_enabled_seconds": 130.61519180202595,
+    "honest_logical_read_interval_median_seconds": 0.622522112003935,
+    "honest_logical_read_interval_p90_seconds": 0.6310616164031672,
+    "honest_logical_read_starts": 150,
+    "honest_logical_reads_per_enabled_second": 1.1484115892686948,
+    "honest_submission_enabled_seconds": 124.41618398603896,
+    "honest_submission_read_rate": 1.1734807749479201,
+    "honest_submission_read_starts": 146,
+    "interpretation": "logged receipt intervals and their internal gaps are diagnostics, not DHT visibility or contention measurements",
+    "local_deadline_gap_count": 0,
+    "local_deadline_gap_max_seconds": 0.0,
+    "logical_read_count_for_delay": 130,
+    "logical_reads_with_remote_find": 130,
+    "mode": "passive",
+    "once_publications": 0,
+    "publication_interval_median_seconds": null,
+    "publication_interval_p90_seconds": null,
+    "reads_in_flight_across_pause": 38,
+    "requested_refresh_frequency_per_second": null,
+    "rpc_counts": {
+      "find": 2402,
+      "join": 116,
+      "store": 535
+    },
+    "selections_total": 116,
+    "successful_logical_read_completions": 130,
+    "total_groups": 14,
+    "unlinked_find_rpc_count": 930,
+    "withdrawal_calls": 5,
+    "x_failed_attempts": 0,
+    "x_followed_attempts": 0,
+    "x_interior_attempts": 3,
+    "x_interior_led_attempts": 3,
+    "x_interior_led_by_2s_count": 0,
+    "x_interior_led_by_2s_rate": 0.0,
+    "x_interior_led_rate": 1.0,
+    "x_led_attempts": 5,
+    "x_led_by_1s_count": 0,
+    "x_led_by_1s_rate": 0.0,
+    "x_led_by_2s_count": 0,
+    "x_led_by_2s_rate": 0.0,
+    "x_led_by_5s_count": 5,
+    "x_led_by_5s_rate": 1.0,
+    "x_led_group_mean_roster_size": 4,
+    "x_led_group_share": 0.35714285714285715,
+    "x_led_groups": 5,
+    "x_led_latency_median_seconds": 3.5539904499964905,
+    "x_led_latency_p90_seconds": 4.115703959400708,
+    "x_led_latency_successes": 5,
+    "x_led_rate": 1.0,
+    "x_no_group_attempts": 0,
+    "x_searches": 5,
+    "x_submitted_attempts": 5,
+    "x_time_state": {
+      "between_round_training_seconds": 8.023357596435353,
+      "mean_training_delay_seconds": 1.6046715192870704,
+      "read_enabled_seconds": 21.829067926009884,
+      "search_spans": 5,
+      "searching_seconds": 21.829482450993964,
+      "training_intervals": 5
+    }
+  },
+  "trace_integrity_pass": true,
+  "trial_dir": "passive_stock_d150_s2601"
+}

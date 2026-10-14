@@ -1,0 +1,286 @@
+{
+  "case": {
+    "frequency": 2.0,
+    "lifetime": 3.0,
+    "minimum": 4,
+    "mode": "refresh",
+    "name": "refresh_u3_f2_d150",
+    "nominal_lower": 2.5,
+    "nominal_upper": 3.0,
+    "one_way_delay_seconds": 0.15,
+    "target": 4
+  },
+  "delay_integrity": {
+    "errors": [],
+    "pass_": true,
+    "summary": {
+      "configured_one_way_seconds": 0.15,
+      "coverage": {
+        "find": {
+          "correlated": 1352,
+          "correlated_delayed": 1352,
+          "total": 2408
+        },
+        "join": {
+          "correlated": 119,
+          "correlated_delayed": 119,
+          "total": 119
+        },
+        "store": {
+          "correlated": 314,
+          "correlated_delayed": 314,
+          "total": 602
+        }
+      },
+      "delayed_completed_legs": 6300,
+      "join_admission_state_count": 119,
+      "logical_read_count": 123,
+      "logical_reads_with_remote_find": 123,
+      "rpc_counts": {
+        "find": 2408,
+        "join": 119,
+        "store": 602
+      },
+      "teardown_tail_activity_cutoff_event": {
+        "event_ref": "1612953:3008",
+        "kind": "step_result",
+        "monotonic": 43165.795164567
+      },
+      "teardown_tail_activity_cutoff_events": [
+        {
+          "event_ref": "1612953:3008",
+          "kind": "step_result",
+          "monotonic": 43165.795164567
+        },
+        {
+          "event_ref": "1645678:3148",
+          "kind": "search_span_end",
+          "monotonic": 43165.774245966
+        },
+        {
+          "event_ref": "1645716:3291",
+          "kind": "ad_read_end",
+          "monotonic": 43164.839336323
+        },
+        {
+          "event_ref": "1645716:3290",
+          "kind": "join_attempt_end",
+          "monotonic": 43164.839209589
+        },
+        {
+          "event_ref": "1645678:3146",
+          "kind": "ad_finished",
+          "monotonic": 43165.774087643
+        }
+      ],
+      "teardown_tail_activity_cutoff_monotonic": 43165.795164567,
+      "teardown_tail_activity_spans_complete": true,
+      "teardown_tail_eligibility_gates": [],
+      "teardown_tail_excluded_stream_count": 7,
+      "teardown_tail_excluded_streams": [
+        {
+          "activity_cutoff_event_ref": "1612953:3008",
+          "activity_cutoff_monotonic": 43165.795164567,
+          "pid": 1645597,
+          "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+          "rpc_id": "1645597:rpc312",
+          "rpc_type": "find",
+          "start_event_ref": "1645597:4708",
+          "start_monotonic": 43166.077324578,
+          "trace_closed_event_ref": "1612953:3010",
+          "trace_closed_monotonic": 43166.306670535
+        },
+        {
+          "activity_cutoff_event_ref": "1612953:3008",
+          "activity_cutoff_monotonic": 43165.795164567,
+          "pid": 1645460,
+          "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+          "rpc_id": "1645460:rpc417",
+          "rpc_type": "find",
+          "start_event_ref": "1645460:5446",
+          "start_monotonic": 43166.077411092,
+          "trace_closed_event_ref": "1612953:3010",
+          "trace_closed_monotonic": 43166.306670535
+        },
+        {
+          "activity_cutoff_event_ref": "1612953:3008",
+          "activity_cutoff_monotonic": 43165.795164567,
+          "pid": 1645529,
+          "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+          "rpc_id": "1645529:rpc295",
+          "rpc_type": "find",
+          "start_event_ref": "1645529:4606",
+          "start_monotonic": 43166.077898282,
+          "trace_closed_event_ref": "1612953:3010",
+          "trace_closed_monotonic": 43166.306670535
+        },
+        {
+          "activity_cutoff_event_ref": "1612953:3008",
+          "activity_cutoff_monotonic": 43165.795164567,
+          "pid": 1645597,
+          "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+          "rpc_id": "1645597:rpc313",
+          "rpc_type": "find",
+          "start_event_ref": "1645597:4709",
+          "start_monotonic": 43166.079757183,
+          "trace_closed_event_ref": "1612953:3010",
+          "trace_closed_monotonic": 43166.306670535
+        },
+        {
+          "activity_cutoff_event_ref": "1612953:3008",
+          "activity_cutoff_monotonic": 43165.795164567,
+          "pid": 1645253,
+          "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+          "rpc_id": "1645253:rpc281",
+          "rpc_type": "find",
+          "start_event_ref": "1645253:4522",
+          "start_monotonic": 43166.080161216,
+          "trace_closed_event_ref": "1612953:3010",
+          "trace_closed_monotonic": 43166.306670535
+        },
+        {
+          "activity_cutoff_event_ref": "1612953:3008",
+          "activity_cutoff_monotonic": 43165.795164567,
+          "pid": 1645529,
+          "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+          "rpc_id": "1645529:rpc296",
+          "rpc_type": "find",
+          "start_event_ref": "1645529:4607",
+          "start_monotonic": 43166.080389932,
+          "trace_closed_event_ref": "1612953:3010",
+          "trace_closed_monotonic": 43166.306670535
+        },
+        {
+          "activity_cutoff_event_ref": "1612953:3008",
+          "activity_cutoff_monotonic": 43165.795164567,
+          "pid": 1645391,
+          "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+          "rpc_id": "1645391:rpc447",
+          "rpc_type": "store",
+          "start_event_ref": "1645391:5629",
+          "start_monotonic": 43166.159941664,
+          "trace_closed_event_ref": "1612953:3010",
+          "trace_closed_monotonic": 43166.306670535
+        }
+      ],
+      "teardown_tail_native_checks_pass": true,
+      "teardown_tail_trace_closed": {
+        "event_ref": "1612953:3010",
+        "monotonic": 43166.306670535
+      },
+      "teardown_tail_unexcluded_start_only": [],
+      "teardown_tail_unexcluded_start_only_count": 0,
+      "unlinked_find_rpc_count": 1056
+    }
+  },
+  "duration": 30,
+  "experiment": "step26",
+  "integrity_errors": [],
+  "integrity_pass": true,
+  "native_control_plane_pass": true,
+  "policy_integrity": {
+    "errors": [],
+    "pass_": true
+  },
+  "seed": 2601,
+  "summary_metrics": {
+    "accepted_active_declaration_calls": 13,
+    "accepted_active_holder_stores": 95,
+    "accepted_holder_gap_count": 25,
+    "accepted_holder_gap_max_seconds": 4.14721155166626,
+    "accepted_holder_gap_total_seconds": 67.89818549156189,
+    "accepted_holder_intervals": 30,
+    "achieved_active_publication_frequency_per_second": 1.0812293801662116,
+    "active_holder_store_records": 95,
+    "active_publication_attempts": 19,
+    "active_publications_per_search_max": 5,
+    "active_publications_per_search_min": 2,
+    "all_logical_read_starts": 146,
+    "available": true,
+    "cancelled_declaration_calls": 6,
+    "delay_activity_coverage": {
+      "find": {
+        "correlated": 1352,
+        "correlated_delayed": 1352,
+        "total": 2408
+      },
+      "join": {
+        "correlated": 119,
+        "correlated_delayed": 119,
+        "total": 119
+      },
+      "store": {
+        "correlated": 314,
+        "correlated_delayed": 314,
+        "total": 602
+      }
+    },
+    "delayed_completed_rpc_legs": 6300,
+    "first_eligible_choice_count": 30,
+    "first_eligible_choice_rate": 0.7,
+    "first_eligible_chose_x": 21,
+    "honest_enabled_seconds": 126.72709073099395,
+    "honest_logical_read_interval_median_seconds": 0.6227645200015104,
+    "honest_logical_read_interval_p90_seconds": 0.6280957130002207,
+    "honest_logical_read_starts": 146,
+    "honest_logical_reads_per_enabled_second": 1.1520819988672906,
+    "honest_submission_enabled_seconds": 119.02110484401783,
+    "honest_submission_read_rate": 1.1846638475149969,
+    "honest_submission_read_starts": 141,
+    "interpretation": "logged receipt intervals and their internal gaps are diagnostics, not DHT visibility or contention measurements",
+    "local_deadline_gap_count": 0,
+    "local_deadline_gap_max_seconds": 0.0,
+    "logical_read_count_for_delay": 123,
+    "logical_reads_with_remote_find": 123,
+    "mode": "refresh",
+    "once_publications": 0,
+    "publication_interval_median_seconds": 0.9248731289990246,
+    "publication_interval_p90_seconds": 0.9330782069999259,
+    "reads_in_flight_across_pause": 40,
+    "requested_refresh_frequency_per_second": 2.0,
+    "rpc_counts": {
+      "find": 2408,
+      "join": 119,
+      "store": 602
+    },
+    "selections_total": 119,
+    "successful_logical_read_completions": 123,
+    "total_groups": 14,
+    "unlinked_find_rpc_count": 1056,
+    "withdrawal_calls": 6,
+    "x_failed_attempts": 0,
+    "x_followed_attempts": 0,
+    "x_interior_attempts": 4,
+    "x_interior_led_attempts": 4,
+    "x_interior_led_by_2s_count": 1,
+    "x_interior_led_by_2s_rate": 0.25,
+    "x_interior_led_rate": 1.0,
+    "x_led_attempts": 6,
+    "x_led_by_1s_count": 0,
+    "x_led_by_1s_rate": 0.0,
+    "x_led_by_2s_count": 1,
+    "x_led_by_2s_rate": 0.16666666666666666,
+    "x_led_by_5s_count": 6,
+    "x_led_by_5s_rate": 1.0,
+    "x_led_group_mean_roster_size": 4,
+    "x_led_group_share": 0.42857142857142855,
+    "x_led_groups": 6,
+    "x_led_latency_median_seconds": 2.3738229385016894,
+    "x_led_latency_p90_seconds": 3.26092227549816,
+    "x_led_latency_successes": 6,
+    "x_led_rate": 1.0,
+    "x_no_group_attempts": 0,
+    "x_searches": 6,
+    "x_submitted_attempts": 6,
+    "x_time_state": {
+      "between_round_training_seconds": 9.713891567910181,
+      "mean_training_delay_seconds": 1.6189819279850304,
+      "read_enabled_seconds": 20.65779790999659,
+      "search_spans": 6,
+      "searching_seconds": 20.65823346999241,
+      "training_intervals": 6
+    }
+  },
+  "trace_integrity_pass": true,
+  "trial_dir": "refresh_u3_f2_d150_s2601"
+}

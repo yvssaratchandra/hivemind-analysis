@@ -1,0 +1,14 @@
+{
+  "all_peers_shutdown": true,
+  "audit_provenance_sha256": "a3ab534e40a2e2211d2186275bd0d1f2ed89e8fc2dd0a74c8febd086feb0d68b",
+  "file_sha256": {
+    "analysis.json": "f63b605d93b21b8f8965f119d8ec7bc27b60bfad60515dd220b89d1588efc60a",
+    "config.json": "90f100a5b1c44c5efbb84b7ea6ee83c8c95d2392f4d591d929ea1353df3a4587",
+    "events.jsonl": "5bc0bd1bdacf15a21eb1f86940f937e5b418a344441b4ce35e660c1038a5af89",
+    "joint_analysis.json": "041806f2a5c1a7b874b1c70a9b15308e3f3bcf987a450580806d8e78c6f17338",
+    "summary.json": "b1de6295a15c4f64050cfb0447e71dc54ee7d35509b83228e3bdace9f68aaf86"
+  },
+  "finished_utc": "2026-10-10T15:18:07.416380+00:00",
+  "original_failure_sha256": "c8899797a360111002cbed192ffb1d1992ae2e9588659795b6b1b1ed92a6a782",
+  "recovery": "offline measurement-scope audit; trial was not rerun"
+}

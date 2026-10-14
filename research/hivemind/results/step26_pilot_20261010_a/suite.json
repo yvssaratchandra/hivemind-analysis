@@ -1,0 +1,209 @@
+{
+  "experiment": "step26",
+  "gate": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step26_smoke_20261010_a",
+  "instrumentation": "detailed",
+  "jobs": [
+    {
+      "case": {
+        "lifetime": 1.0,
+        "minimum": 4,
+        "mode": "once",
+        "name": "once_u1_d150",
+        "one_way_delay_seconds": 0.15,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "lifetime": 3.0,
+        "minimum": 4,
+        "mode": "once",
+        "name": "once_u3_d0",
+        "one_way_delay_seconds": 0.0,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "frequency": 2.0,
+        "lifetime": 1.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "refresh_u1_f2_d0",
+        "nominal_lower": 0.5,
+        "nominal_upper": 1.0,
+        "one_way_delay_seconds": 0.0,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "lifetime": 3.0,
+        "minimum": 4,
+        "mode": "once",
+        "name": "once_u3_d150",
+        "one_way_delay_seconds": 0.15,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "frequency": 0.5,
+        "lifetime": 1.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "refresh_u1_f0p5_d0",
+        "nominal_lower": -1.0,
+        "nominal_upper": 1.0,
+        "one_way_delay_seconds": 0.0,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "frequency": 2.0,
+        "lifetime": 3.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "refresh_u3_f2_d0",
+        "nominal_lower": 2.5,
+        "nominal_upper": 3.0,
+        "one_way_delay_seconds": 0.0,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "frequency": 0.5,
+        "lifetime": 3.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "refresh_u3_f0p5_d0",
+        "nominal_lower": 1.0,
+        "nominal_upper": 3.0,
+        "one_way_delay_seconds": 0.0,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "frequency": 0.5,
+        "lifetime": 1.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "refresh_u1_f0p5_d150",
+        "nominal_lower": -1.0,
+        "nominal_upper": 1.0,
+        "one_way_delay_seconds": 0.15,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "lifetime": 5.0,
+        "minimum": 4,
+        "mode": "passive",
+        "name": "passive_stock_d0",
+        "one_way_delay_seconds": 0.0,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "frequency": 2.0,
+        "lifetime": 3.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "refresh_u3_f2_d150",
+        "nominal_lower": 2.5,
+        "nominal_upper": 3.0,
+        "one_way_delay_seconds": 0.15,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "lifetime": 5.0,
+        "minimum": 4,
+        "mode": "passive",
+        "name": "passive_stock_d150",
+        "one_way_delay_seconds": 0.15,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "lifetime": 1.0,
+        "minimum": 4,
+        "mode": "once",
+        "name": "once_u1_d0",
+        "one_way_delay_seconds": 0.0,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "frequency": 0.5,
+        "lifetime": 3.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "refresh_u3_f0p5_d150",
+        "nominal_lower": 1.0,
+        "nominal_upper": 3.0,
+        "one_way_delay_seconds": 0.15,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    },
+    {
+      "case": {
+        "frequency": 2.0,
+        "lifetime": 1.0,
+        "minimum": 4,
+        "mode": "refresh",
+        "name": "refresh_u1_f2_d150",
+        "nominal_lower": 0.5,
+        "nominal_upper": 1.0,
+        "one_way_delay_seconds": 0.15,
+        "target": 4
+      },
+      "duration": 30,
+      "seed": 2601
+    }
+  ],
+  "order_seed": 260026,
+  "outcome": "grouping",
+  "phase": "pilot",
+  "preliminary": true,
+  "training_delay": {
+    "lower": 0.1,
+    "mu": 0.2517227582341841,
+    "sigma": 0.5545130293761911,
+    "upper": 4.0
+  }
+}

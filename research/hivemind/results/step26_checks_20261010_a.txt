@@ -1,0 +1,13 @@
+/tmp/hm-step23-env/lib/python3.14/site-packages/torch/jit/_script.py:1485: FutureWarning: `torch.jit.script` is not supported in Python 3.14+ and may break. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Oct 10 16:59:27.490 [WARN] [hivemind.averaging.partition.finalize:174] Averaging: received 0.0% results
+SKIP 1/2 refresh_u1_f2_d150_s2600: verified completed
+SKIP 2/2 refresh_u1_f2_d0_s2600: verified completed
+Saved /tmp/step26_joint_test_p5hxd96w/suite: {'completed': 2, 'pending': 0, 'interrupted': 0, 'blocked': 0}; safe to suspend; report True
+STOP_AFTER_CURRENT is present; no peers started. Safe to suspend.
+START 1/1 refresh_u1_f2_d150_s2600 {"frequency": 2.0, "lifetime": 1.0, "minimum": 4, "mode": "refresh", "name": "refresh_u1_f2_d150", "nominal_lower": 0.5, "nominal_upper": 1.0, "one_way_delay_seconds": 0.15, "target": 4}
+START 1/1 refresh_u1_f2_d150_s2600 {"frequency": 2.0, "lifetime": 1.0, "minimum": 4, "mode": "refresh", "name": "refresh_u1_f2_d150", "nominal_lower": 0.5, "nominal_upper": 1.0, "one_way_delay_seconds": 0.15, "target": 4}
+----------------------------------------------------------------------
+Ran 108 tests in 0.120s
+
+OK

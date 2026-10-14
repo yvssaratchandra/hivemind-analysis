@@ -1,0 +1,135 @@
+{
+  "activity_cutoff_events": [
+    {
+      "event_ref": "1612953:3008",
+      "kind": "step_result",
+      "monotonic": 43165.795164567
+    },
+    {
+      "event_ref": "1645678:3148",
+      "kind": "search_span_end",
+      "monotonic": 43165.774245966
+    },
+    {
+      "event_ref": "1645716:3291",
+      "kind": "ad_read_end",
+      "monotonic": 43164.839336323
+    },
+    {
+      "event_ref": "1645716:3290",
+      "kind": "join_attempt_end",
+      "monotonic": 43164.839209589
+    },
+    {
+      "event_ref": "1645678:3146",
+      "kind": "ad_finished",
+      "monotonic": 43165.774087643
+    }
+  ],
+  "closed_activity_counts": {
+    "ad_reads": 146,
+    "join_attempts": 119,
+    "search_spans": 56,
+    "steps": 56
+  },
+  "excluded_shutdown_tail_starts": [
+    {
+      "activity_cutoff_event_ref": "1612953:3008",
+      "activity_cutoff_monotonic": 43165.795164567,
+      "pid": 1645597,
+      "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+      "rpc_id": "1645597:rpc312",
+      "rpc_type": "find",
+      "start_event_ref": "1645597:4708",
+      "start_monotonic": 43166.077324578,
+      "trace_closed_event_ref": "1612953:3010",
+      "trace_closed_monotonic": 43166.306670535
+    },
+    {
+      "activity_cutoff_event_ref": "1612953:3008",
+      "activity_cutoff_monotonic": 43165.795164567,
+      "pid": 1645460,
+      "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+      "rpc_id": "1645460:rpc417",
+      "rpc_type": "find",
+      "start_event_ref": "1645460:5446",
+      "start_monotonic": 43166.077411092,
+      "trace_closed_event_ref": "1612953:3010",
+      "trace_closed_monotonic": 43166.306670535
+    },
+    {
+      "activity_cutoff_event_ref": "1612953:3008",
+      "activity_cutoff_monotonic": 43165.795164567,
+      "pid": 1645529,
+      "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+      "rpc_id": "1645529:rpc295",
+      "rpc_type": "find",
+      "start_event_ref": "1645529:4606",
+      "start_monotonic": 43166.077898282,
+      "trace_closed_event_ref": "1612953:3010",
+      "trace_closed_monotonic": 43166.306670535
+    },
+    {
+      "activity_cutoff_event_ref": "1612953:3008",
+      "activity_cutoff_monotonic": 43165.795164567,
+      "pid": 1645597,
+      "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+      "rpc_id": "1645597:rpc313",
+      "rpc_type": "find",
+      "start_event_ref": "1645597:4709",
+      "start_monotonic": 43166.079757183,
+      "trace_closed_event_ref": "1612953:3010",
+      "trace_closed_monotonic": 43166.306670535
+    },
+    {
+      "activity_cutoff_event_ref": "1612953:3008",
+      "activity_cutoff_monotonic": 43165.795164567,
+      "pid": 1645253,
+      "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+      "rpc_id": "1645253:rpc281",
+      "rpc_type": "find",
+      "start_event_ref": "1645253:4522",
+      "start_monotonic": 43166.080161216,
+      "trace_closed_event_ref": "1612953:3010",
+      "trace_closed_monotonic": 43166.306670535
+    },
+    {
+      "activity_cutoff_event_ref": "1612953:3008",
+      "activity_cutoff_monotonic": 43165.795164567,
+      "pid": 1645529,
+      "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+      "rpc_id": "1645529:rpc296",
+      "rpc_type": "find",
+      "start_event_ref": "1645529:4607",
+      "start_monotonic": 43166.080389932,
+      "trace_closed_event_ref": "1612953:3010",
+      "trace_closed_monotonic": 43166.306670535
+    },
+    {
+      "activity_cutoff_event_ref": "1612953:3008",
+      "activity_cutoff_monotonic": 43165.795164567,
+      "pid": 1645391,
+      "reason": "Start-only find/store RPC begins strictly after measured activity and before a valid trace close. Excluded from the RPC instrumentation audit only; no completion or outcome is observed or inferred.",
+      "rpc_id": "1645391:rpc447",
+      "rpc_type": "store",
+      "start_event_ref": "1645391:5629",
+      "start_monotonic": 43166.159941664,
+      "trace_closed_event_ref": "1612953:3010",
+      "trace_closed_monotonic": 43166.306670535
+    }
+  ],
+  "individual_rpc_cancellation_observed": false,
+  "individual_rpc_completion_observed": false,
+  "interpretation": "All measured activity had closed before the unmatched starts; timing and shutdown paths are consistent with teardown. Completion or individual cancellation is unobserved.",
+  "native_control_plane_pass": true,
+  "original_failure_sha256": "c8899797a360111002cbed192ffb1d1992ae2e9588659795b6b1b1ed92a6a782",
+  "raw_events_sha256": "5bc0bd1bdacf15a21eb1f86940f937e5b418a344441b4ce35e660c1038a5af89",
+  "review_blockers": [],
+  "scope": "Independent read-only review of trial10 raw timeline and audit recovery; no peer process started by this review.",
+  "source_context": [
+    "hivemind/averaging/averager.py shutdown",
+    "hivemind/dht/dht.py shutdown",
+    "hivemind/p2p/p2p_daemon.py _terminate"
+  ],
+  "trace_integrity_pass": true
+}

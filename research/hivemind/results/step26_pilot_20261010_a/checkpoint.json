@@ -1,0 +1,378 @@
+{
+  "active_trial": null,
+  "controller_pid": 1703910,
+  "counts": {
+    "blocked": 0,
+    "completed": 14,
+    "interrupted": 0,
+    "pending": 0
+  },
+  "experiment": "step26",
+  "jobs": [
+    {
+      "file_sha256": {
+        "analysis.json": "ca5684d1c4068c94a39808e854c63438ed32663e5b56371ca5c6351908941df2",
+        "completion.json": "ddedd5bc1cf07b1bab44774dd88a4bb874a2b4f6253a46216f25764d35eb4666",
+        "config.json": "79cec933cc2d3d0fe9eeaa43352f03412f5c150da088f274753e20c6f8c48e24",
+        "events.jsonl": "5bffe75dced3271d9b26827a2c1dc105eef117c61314d945b0613d4e0afe50e0",
+        "joint_analysis.json": "30ff03d1f5086d66ebc35589e94b9e43caada94465777d2fccac7129bf2a8314",
+        "summary.json": "00b76e14b614a2d507546c953f1763129b08d9b9bb974abd5b5cb386d420fd7f"
+      },
+      "job": {
+        "case": {
+          "lifetime": 1.0,
+          "minimum": 4,
+          "mode": "once",
+          "name": "once_u1_d150",
+          "one_way_delay_seconds": 0.15,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "once_u1_d150_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "99ac1e332d7f7b1f4900fc1ef3b99c9fcba3dd6f7aded7d93bdec6bac03e4730",
+        "completion.json": "02e352897c874a50f443931e8bfd9caec4c5c5d158334a11d92065ed3e4faa5d",
+        "config.json": "3e4e38cdce51e3d3590deffe4eee40d870707b64d5a4035bfb3ab9b28d78a6a3",
+        "events.jsonl": "b0b6cba36e191f24b6f2ad270f0609142b2c4599426ed42133064c69d2da8228",
+        "joint_analysis.json": "fdc0701427a2a5a0eefa41b10d0f26f696988e9860268a9706192d4f9d20780d",
+        "summary.json": "ec2ec7c780b837c7b27ea553fa2f76f1136327564a61359296fd55448d159845"
+      },
+      "job": {
+        "case": {
+          "lifetime": 3.0,
+          "minimum": 4,
+          "mode": "once",
+          "name": "once_u3_d0",
+          "one_way_delay_seconds": 0.0,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "once_u3_d0_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "e912163b772cc6e9c102774ab8f0bf7e57202667b10928a29ac28e6207478741",
+        "completion.json": "b598a592ac43d10c2a46b9d59b9503a34fa7a31f4211a0ff26dc646638ba51c1",
+        "config.json": "0a6f4a6e194b08717e258b57e8bd18a3fd98e241965ec3af192aa5545eb798e8",
+        "events.jsonl": "6f5ba7d0fb433f5579a00856920f3c46672a621d9cd83dbc917480f21e87523b",
+        "joint_analysis.json": "862cfec3f66a108e20be307492b98f38b797f90c2b571055b5f2c21f6b0d3ee1",
+        "summary.json": "8259d649e06e588b71239de19dc39eacc192d9802c0ffd9a8611187de240829c"
+      },
+      "job": {
+        "case": {
+          "frequency": 2.0,
+          "lifetime": 1.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "refresh_u1_f2_d0",
+          "nominal_lower": 0.5,
+          "nominal_upper": 1.0,
+          "one_way_delay_seconds": 0.0,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "refresh_u1_f2_d0_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "8f9056587d8ec66b70e8ebbea10708156df760335e0bc170107a6ba4d7504742",
+        "completion.json": "cb3c9348a24009172df09a499ea2b394361d6cad508f1904332f4f3f30552f90",
+        "config.json": "a88e23b521e30694f65df770be3f1ce390fc784690b4ced0e5dee8704b4448d4",
+        "events.jsonl": "1673ae260ce070b955071d04925db69a8616d0ce2d4ac9f6ac8085bdc35fdd8c",
+        "joint_analysis.json": "d5fd1c7eb9945c4d8f7e15d0fd2350d0a600458e614575b7d8c3de5f692abcc3",
+        "summary.json": "36b228a66a885e3a41283cba223ac8b5017de7cfabac8ac88a7b4b9947ca4632"
+      },
+      "job": {
+        "case": {
+          "lifetime": 3.0,
+          "minimum": 4,
+          "mode": "once",
+          "name": "once_u3_d150",
+          "one_way_delay_seconds": 0.15,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "once_u3_d150_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "0b2c2033abbb8e525242d8ff15255dca698b82259b920e39085dd837493d7353",
+        "completion.json": "45ca0da5608daa6800e931958f762daa46277d90a79f05e68e541bc3b51b819c",
+        "config.json": "470822f5aee734ecc64a02d2627b39c75d14d34359bd7c1f0dbef6b8eff3212d",
+        "events.jsonl": "05b5338ce216e3de3b93132584cc3efeb727b6aed2480f40eb59d6998f54795c",
+        "joint_analysis.json": "0a8fab265e7580fd08b362917232cdad95f54f8f44a6714af47ce9fc86f56bc4",
+        "summary.json": "b2083665699901dbe7e3692d8b440798254e4bb479c8ef354f39deed010536ac"
+      },
+      "job": {
+        "case": {
+          "frequency": 0.5,
+          "lifetime": 1.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "refresh_u1_f0p5_d0",
+          "nominal_lower": -1.0,
+          "nominal_upper": 1.0,
+          "one_way_delay_seconds": 0.0,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "refresh_u1_f0p5_d0_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "78cc2f786a78af8cc492fa9a5b5b5038e4e4b625996ffd1d209dd226586ae56a",
+        "completion.json": "806af3092dbd92d9e1e580c0b0efabd6913a62e8b13e016fec409c6500fb7264",
+        "config.json": "3653771a641a98d4a4c9c77d02040dc00d185ee4e8d819c56cedd425778027f8",
+        "events.jsonl": "6ed4d6b073182fc072aa07579f98fbf11628db512b49ba771abaddf82407fc74",
+        "joint_analysis.json": "d0a875a7475288073862f0ef4503a3063d6847bdf8e63702e376b31134a8dd5f",
+        "summary.json": "9a5216d267c34f45999be1478e2b13f60df967fe9337ea3687c86bc9a677914b"
+      },
+      "job": {
+        "case": {
+          "frequency": 2.0,
+          "lifetime": 3.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "refresh_u3_f2_d0",
+          "nominal_lower": 2.5,
+          "nominal_upper": 3.0,
+          "one_way_delay_seconds": 0.0,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "refresh_u3_f2_d0_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "2772f61fd214d3a1889eefa4f159540538e35e14e61617f3d95c47f6c788bcb7",
+        "completion.json": "2bc5f195a54ae7fc7b33980d78943294751e560dba94ef8998eed1dcd9acc50b",
+        "config.json": "8a47f010344f71cb919bc65e0d2ec76c0a325013d15128fadb0b08a3248cbd86",
+        "events.jsonl": "6bdf3a02e0c28bb06a1d2bf04f16b6d5f43c93853c98c8238b98ec1d130c605d",
+        "joint_analysis.json": "b06ddc1c51c4c625f96ec85e5a7b7f0bf905ef0a0632fe63644753f49c9eec4c",
+        "summary.json": "7cbdb76ac2cda6978a3941952b1c0b5e78be3a2ce8e9ee7da48cc2b4dd5d498c"
+      },
+      "job": {
+        "case": {
+          "frequency": 0.5,
+          "lifetime": 3.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "refresh_u3_f0p5_d0",
+          "nominal_lower": 1.0,
+          "nominal_upper": 3.0,
+          "one_way_delay_seconds": 0.0,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "refresh_u3_f0p5_d0_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "2a413ec73a7dd51e94210e29e0971e834694f5523f11333683e4d34c948a6270",
+        "completion.json": "1467def583a8ac525b88481d5dc783929b27d6a17d1bac6235ce4d8bd479c7d9",
+        "config.json": "27bd47e69a3193d0efb1f12af75168e1c7d55144b3e9d7f5163e37c8f2f8c600",
+        "events.jsonl": "fe1f642c74ef7dda8f4d2c072678b970c19a46e07e3c461a701272721f99a212",
+        "joint_analysis.json": "02b00eac5a67a455508ccb7fced09e64821d175aa2d8d8d822cac44ce0563024",
+        "summary.json": "66e2ee8ed90341713fc04f1e6abe6667a3ea749c4007115ed7d6c6d90d4546a9"
+      },
+      "job": {
+        "case": {
+          "frequency": 0.5,
+          "lifetime": 1.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "refresh_u1_f0p5_d150",
+          "nominal_lower": -1.0,
+          "nominal_upper": 1.0,
+          "one_way_delay_seconds": 0.15,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "refresh_u1_f0p5_d150_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "4d1a325101c574427841a6d56c6fd71026370313a06275a72bcda8f3debd5f9d",
+        "completion.json": "0ba2d7407984636425dd02031c6aced16eb352985719bd0cec68a6a1bf14b73a",
+        "config.json": "a6e14eb13e6904607d102362e9c854ba576a0f1f86601cca5354602fa2819277",
+        "events.jsonl": "f23bdd9b42a01747239a392403fc4dbf0e05da47b6d7c4de132158e8c246c857",
+        "joint_analysis.json": "453e841828cbce2db9276a714d76d31b5d9247a98c356efcfeeef337797b5edd",
+        "summary.json": "31d6a1c5d820ad7b134cc928df07bdf4b75d8f1c7276964c5fb3160a6951caa9"
+      },
+      "job": {
+        "case": {
+          "lifetime": 5.0,
+          "minimum": 4,
+          "mode": "passive",
+          "name": "passive_stock_d0",
+          "one_way_delay_seconds": 0.0,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "passive_stock_d0_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "f63b605d93b21b8f8965f119d8ec7bc27b60bfad60515dd220b89d1588efc60a",
+        "completion.json": "37e51a326df0a3641b68c058ab6c8fd2a81b76ec6104d222cbc42c9f7517a0bf",
+        "config.json": "90f100a5b1c44c5efbb84b7ea6ee83c8c95d2392f4d591d929ea1353df3a4587",
+        "events.jsonl": "5bc0bd1bdacf15a21eb1f86940f937e5b418a344441b4ce35e660c1038a5af89",
+        "joint_analysis.json": "041806f2a5c1a7b874b1c70a9b15308e3f3bcf987a450580806d8e78c6f17338",
+        "summary.json": "b1de6295a15c4f64050cfb0447e71dc54ee7d35509b83228e3bdace9f68aaf86"
+      },
+      "job": {
+        "case": {
+          "frequency": 2.0,
+          "lifetime": 3.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "refresh_u3_f2_d150",
+          "nominal_lower": 2.5,
+          "nominal_upper": 3.0,
+          "one_way_delay_seconds": 0.15,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "refresh_u3_f2_d150_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "e6b9cdd3dba885d7f6ef1bb929d332e72e48a01ff83bd915941373572c6b74f6",
+        "completion.json": "05ab975843e2c80feab76e36eb9c97faccf243593ea0f756df1c637e79d06875",
+        "config.json": "675d31f63fb81e0ab9e0f14dda317918b8ae9f9967399b18dede6ef7b43356bf",
+        "events.jsonl": "2b05d9b39ac890ccaffbf18cc2db7dcbeca2122ddf5a6f9590fa5280ac6aa298",
+        "joint_analysis.json": "ff07d8ede315934d14d83c06425eadc492ad28e6eb1070891b69265218c89bcf",
+        "summary.json": "0d9af61240d54b5c5839ea6c2784ed2f1784e736a111d18473d812169564412c"
+      },
+      "job": {
+        "case": {
+          "lifetime": 5.0,
+          "minimum": 4,
+          "mode": "passive",
+          "name": "passive_stock_d150",
+          "one_way_delay_seconds": 0.15,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "passive_stock_d150_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "5142ae49f9ec130fe3ec192a1f1d230b069495c2dced67ba84ad3dc729af52de",
+        "completion.json": "c30f8771f876ba4edd05d61a39ded7aaa2aee6f60c99766ce7be858f2ba4fe5a",
+        "config.json": "eafeb45aa708fb60eb250813e1e36072170b56dd7e40b0af88c9c8b63eb13980",
+        "events.jsonl": "242a4605b17b95811e67df62d0e0a44812de5a96a915ab3f4cdbe339901474e0",
+        "joint_analysis.json": "ada2cf988cddec0a616bdc72aa79af8f5e57bb4226e8ab95ef89d8e224538bad",
+        "summary.json": "62c2e8c660de367db1a24b2affa8cdb4225ba0ec8a66c4d412dd0a9cca11dfd2"
+      },
+      "job": {
+        "case": {
+          "lifetime": 1.0,
+          "minimum": 4,
+          "mode": "once",
+          "name": "once_u1_d0",
+          "one_way_delay_seconds": 0.0,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "once_u1_d0_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "a2a8946355945bb38410ceaabc991d2eb5560ee9b6f5eb4928f1ebbc668527fe",
+        "completion.json": "5e1cf5f620ffd69703b5d2cf4d07c6880017a5e2ee04da7539908de8ba47c7c0",
+        "config.json": "13947b84e4a1e2fa327d5406450e35a7af9f2431b87e43d90281b239324f3809",
+        "events.jsonl": "5d64ef83b72750307186f662495798f64ab33420631d6cfa2589fa03b18bec3b",
+        "joint_analysis.json": "a56c5053e65c6972e3333a01fcc1a318b4fff539b653adb16a958153ee89037a",
+        "summary.json": "6d995c781eb29792850a4003a86dea1c008a720157d72c078adcca25c4bc4dca"
+      },
+      "job": {
+        "case": {
+          "frequency": 0.5,
+          "lifetime": 3.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "refresh_u3_f0p5_d150",
+          "nominal_lower": 1.0,
+          "nominal_upper": 3.0,
+          "one_way_delay_seconds": 0.15,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "refresh_u3_f0p5_d150_s2601"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "809b4fadc28ce2af72871e2626a30286928047e567735bec50a8e7775c0ac8f4",
+        "completion.json": "ed18b3a7221934376d860d4b885b63f795d890095e9ceff2f33080cb0d108cb4",
+        "config.json": "a7966185ba14f91f23596f10176787f76b67a7cddd7961ea3b1d23d8a62607cb",
+        "events.jsonl": "80ddc95a54d763628625ebf3d63180d50b7cb40a7f33872e765467e5bed333ea",
+        "joint_analysis.json": "98d51e5d6f16eb585e3d9780982b1f8bb80997be70d5ad10b28054aeaa6c46a5",
+        "summary.json": "455ab70ea4cd9215157227dedd2f215cae96f9d4adae4f4e18f509572ecf0418"
+      },
+      "job": {
+        "case": {
+          "frequency": 2.0,
+          "lifetime": 1.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "refresh_u1_f2_d150",
+          "nominal_lower": 0.5,
+          "nominal_upper": 1.0,
+          "one_way_delay_seconds": 0.15,
+          "target": 4
+        },
+        "duration": 30,
+        "seed": 2601
+      },
+      "status": "completed",
+      "trial_dir": "refresh_u1_f2_d150_s2601"
+    }
+  ],
+  "phase": "pilot",
+  "provenance_sha256": "2bbe56a9c1da1f2dd4d2b413b5f9a745aa57e1cfcfde6722ecefccdec3f1d5a8",
+  "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step26_pilot_20261010_a",
+  "suite_sha256": "de4a86ddbd163cb745c084789c7ba82167b52479dc0686430e9a86b478c02133",
+  "valid": true
+}

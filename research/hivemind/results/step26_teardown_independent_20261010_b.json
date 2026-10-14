@@ -1,0 +1,598 @@
+{
+  "activity": {
+    "ad_start_finish_pairs": {
+      "chronologically_ordered_identity_pairs": 112,
+      "exact_identity_counts_balance": true,
+      "finishes": 112,
+      "starts": 112
+    },
+    "control_publication_search_cutoff_monotonic": 43681.823182628,
+    "event_count": 21445,
+    "kind_counts": {
+      "ad_finished": 112,
+      "ad_read_end": 150,
+      "ad_read_start": 150,
+      "ad_started": 112,
+      "assembled": 14,
+      "join_attempt_end": 116,
+      "join_attempt_start": 116,
+      "search_span_end": 56,
+      "search_span_start": 56,
+      "step_result": 56,
+      "step_start": 56
+    },
+    "last_ad_finished": {
+      "detail": {
+        "accepted": true,
+        "active": false,
+        "expiration": 1791645538.696763,
+        "latency": 0.9434355400007917,
+        "remaining": 2.82673716545105,
+        "step_id": "H1:7"
+      },
+      "event_ref": "1676779:429",
+      "monotonic": 43681.823039086,
+      "peer": "12D3KooWKdMDk3MgFNT4gmcWFf14Yg5EipGUtCJ8kueRrGKEMUwD",
+      "step_id": "H1:7"
+    },
+    "last_assembly": {
+      "detail": {
+        "group_id": "75fa843ca6037aa07bb95ffcea847a23b06e5063",
+        "members": {
+          "12D3KooWFDWbiyMGu87yYqSU1DCcCeCXQCbfkHufAcdVfU6Jmf4L": {
+            "name": "H5",
+            "sequence": 8,
+            "step_id": "H5:8",
+            "value": 85.0
+          },
+          "12D3KooWGSck9KWU3DvBTGzSyFC8Rc8Kh51ceXxpEAniAWKTYfZ7": {
+            "name": "H0",
+            "sequence": 8,
+            "step_id": "H0:8",
+            "value": 80.0
+          },
+          "12D3KooWKDaGs7z68wst1xjUHCWdK9kDGMMUvPN8QT2HEvbpwgxy": {
+            "name": "H2",
+            "sequence": 8,
+            "step_id": "H2:8",
+            "value": 82.0
+          },
+          "12D3KooWKdMDk3MgFNT4gmcWFf14Yg5EipGUtCJ8kueRrGKEMUwD": {
+            "name": "H1",
+            "sequence": 7,
+            "step_id": "H1:7",
+            "value": 71.0
+          }
+        },
+        "roster": [
+          "12D3KooWKdMDk3MgFNT4gmcWFf14Yg5EipGUtCJ8kueRrGKEMUwD",
+          "12D3KooWKDaGs7z68wst1xjUHCWdK9kDGMMUvPN8QT2HEvbpwgxy",
+          "12D3KooWGSck9KWU3DvBTGzSyFC8Rc8Kh51ceXxpEAniAWKTYfZ7",
+          "12D3KooWFDWbiyMGu87yYqSU1DCcCeCXQCbfkHufAcdVfU6Jmf4L"
+        ],
+        "step_id": "H0:8",
+        "user": {
+          "name": "H0",
+          "sequence": 8,
+          "step_id": "H0:8",
+          "value": 80.0
+        }
+      },
+      "event_ref": "1676774:428",
+      "monotonic": 43680.726317465,
+      "peer": "12D3KooWGSck9KWU3DvBTGzSyFC8Rc8Kh51ceXxpEAniAWKTYfZ7",
+      "step_id": "H0:8"
+    },
+    "last_search_span_end": {
+      "detail": {
+        "group_key": "s24_2601.0b",
+        "search_id": "12D3KooWKdMDk3MgFNT4gmcWFf14Yg5EipGUtCJ8kueRrGKEMUwD:H1:7:search7",
+        "step_id": "H1:7"
+      },
+      "event_ref": "1676779:431",
+      "monotonic": 43681.823182628,
+      "peer": "12D3KooWKdMDk3MgFNT4gmcWFf14Yg5EipGUtCJ8kueRrGKEMUwD",
+      "step_id": "H1:7"
+    },
+    "last_step_result": {
+      "detail": {
+        "actual": [
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5,
+          79.5
+        ],
+        "correct": true,
+        "expected": 79.5,
+        "finished": 43681.838057966,
+        "members": {
+          "12D3KooWFDWbiyMGu87yYqSU1DCcCeCXQCbfkHufAcdVfU6Jmf4L": {
+            "name": "H5",
+            "sequence": 8,
+            "step_id": "H5:8",
+            "value": 85.0
+          },
+          "12D3KooWGSck9KWU3DvBTGzSyFC8Rc8Kh51ceXxpEAniAWKTYfZ7": {
+            "name": "H0",
+            "sequence": 8,
+            "step_id": "H0:8",
+            "value": 80.0
+          },
+          "12D3KooWKDaGs7z68wst1xjUHCWdK9kDGMMUvPN8QT2HEvbpwgxy": {
+            "name": "H2",
+            "sequence": 8,
+            "step_id": "H2:8",
+            "value": 82.0
+          },
+          "12D3KooWKdMDk3MgFNT4gmcWFf14Yg5EipGUtCJ8kueRrGKEMUwD": {
+            "name": "H1",
+            "sequence": 7,
+            "step_id": "H1:7",
+            "value": 71.0
+          }
+        },
+        "name": "H1",
+        "sequence": 7,
+        "status": "completed",
+        "step_id": "H1:7"
+      },
+      "event_ref": "1675396:167",
+      "monotonic": 43681.839546216,
+      "peer": "12D3KooWKdMDk3MgFNT4gmcWFf14Yg5EipGUtCJ8kueRrGKEMUwD",
+      "step_id": "H1:7"
+    },
+    "spans": {
+      "ad_read": {
+        "duplicate_end_keys": 0,
+        "duplicate_start_keys": 0,
+        "end_kind": "ad_read_end",
+        "ends": 150,
+        "matched_unique_keys": 150,
+        "start_end_keys_equal": true,
+        "start_kind": "ad_read_start",
+        "starts": 150
+      },
+      "join_attempt": {
+        "duplicate_end_keys": 0,
+        "duplicate_start_keys": 0,
+        "end_kind": "join_attempt_end",
+        "ends": 116,
+        "matched_unique_keys": 116,
+        "start_end_keys_equal": true,
+        "start_kind": "join_attempt_start",
+        "starts": 116
+      },
+      "search": {
+        "duplicate_end_keys": 0,
+        "duplicate_start_keys": 0,
+        "end_kind": "search_span_end",
+        "ends": 56,
+        "matched_unique_keys": 56,
+        "start_end_keys_equal": true,
+        "start_kind": "search_span_start",
+        "starts": 56
+      },
+      "step": {
+        "duplicate_end_keys": 0,
+        "duplicate_start_keys": 0,
+        "end_kind": "step_result",
+        "ends": 56,
+        "matched_unique_keys": 56,
+        "start_end_keys_equal": true,
+        "start_kind": "step_start",
+        "starts": 56
+      }
+    },
+    "step_result_status_counts": {
+      "completed": 56
+    }
+  },
+  "config": {
+    "case": {
+      "lifetime": 5.0,
+      "minimum": 4,
+      "mode": "passive",
+      "name": "passive_stock_d150",
+      "one_way_delay_seconds": 0.15,
+      "target": 4
+    },
+    "duration": 30,
+    "network": "eight-peer loopback",
+    "seed": 2601
+  },
+  "experiment": "step26",
+  "independent_review": "raw event timeline only; no Hivemind imports and no experiment rerun",
+  "input_sha256": {
+    "config.json": "675d31f63fb81e0ab9e0f14dda317918b8ae9f9967399b18dede6ef7b43356bf",
+    "events.jsonl": "2b05d9b39ac890ccaffbf18cc2db7dcbeca2122ddf5a6f9590fa5280ac6aa298",
+    "joint_analysis.json": "dbdc7e164a909b1b6445d88a8096cf6956369a44883af9159192083386416a77",
+    "summary.json": "0d9af61240d54b5c5839ea6c2784ed2f1784e736a111d18473d812169564412c"
+  },
+  "interpretation": {
+    "all_six_after_final_step_result": false,
+    "all_six_before_trace_closed": true,
+    "all_six_start_after_control_publication_search_cutoff": true,
+    "prefix_shapes_observed": "five streams have start + uncancelled 150ms request-delay record + handler-enter; one is start-only; all six lack response and end",
+    "scope_caveat": "Two starts occurred after final search/ad closure but before the final step_result by about 14ms. They qualify only under the declared control-plane measurement boundary at final search/ad closure, with an independent guard that all 56 steps later completed successfully. No RPC completion, response, end, or per-call cancellation is observed."
+  },
+  "joint_analysis": {
+    "integrity_errors": [
+      "delay: RPC 1676360:rpc408 must have exactly one end record",
+      "delay: RPC 1676428:rpc426 must have exactly one end record",
+      "delay: RPC 1676428:rpc427 must have exactly one end record",
+      "delay: RPC 1676428:rpc428 must have exactly one end record",
+      "delay: RPC 1676496:rpc399 must have exactly one end record",
+      "delay: unary RPC 1676360:rpc408 must have one response",
+      "delay: unary RPC 1676428:rpc426 must have one response",
+      "delay: unary RPC 1676428:rpc427 must have one response",
+      "delay: unary RPC 1676428:rpc428 must have one response",
+      "delay: unary RPC 1676496:rpc399 must have one response"
+    ],
+    "integrity_pass": false
+  },
+  "native_closure": {
+    "summary_error": null,
+    "summary_pending": [],
+    "trace_closed_count": 1,
+    "trace_closed_detail": {
+      "error": null,
+      "participants": [
+        "X",
+        "H0",
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5",
+        "H6"
+      ],
+      "pending": [],
+      "step_id": null
+    },
+    "trace_closed_event_ref": "1675396:169",
+    "trace_closed_monotonic": 43682.206893321
+  },
+  "trial_dir": "passive_stock_d150_s2601",
+  "unmatched_rpc_streams": [
+    {
+      "after_control_publication_search_cutoff": true,
+      "after_final_step_result": false,
+      "after_last_ad_finish": true,
+      "after_search_span_close": true,
+      "before_trace_closed": true,
+      "configured_delay_seconds": 0.15,
+      "end_count": 0,
+      "event_shape": [
+        "control_rpc_start",
+        "control_rpc_delay",
+        "control_rpc_handler_enter"
+      ],
+      "handler_enter_event_refs": [
+        "1676496:2487"
+      ],
+      "key_hashes": [
+        "75b7a3d0c788e21ecfb2266102e73b9d019ec936"
+      ],
+      "other": "12D3KooWKdMDk3MgFNT4gmcWFf14Yg5EipGUtCJ8kueRrGKEMUwD",
+      "peer": "12D3KooWFDWbiyMGu87yYqSU1DCcCeCXQCbfkHufAcdVfU6Jmf4L",
+      "pid": 1676496,
+      "request_delay_events": [
+        {
+          "actual_delay": 0.15239587100222707,
+          "cancelled": false,
+          "event_ref": "1676496:2486",
+          "monotonic": 43681.97753193,
+          "requested_delay": 0.15
+        }
+      ],
+      "response_count": 0,
+      "rpc_id": "1676496:rpc399",
+      "rpc_type": "find",
+      "start_event_ref": "1676496:2482",
+      "start_monotonic": 43681.825055605,
+      "step_id": null
+    },
+    {
+      "after_control_publication_search_cutoff": true,
+      "after_final_step_result": false,
+      "after_last_ad_finish": true,
+      "after_search_span_close": true,
+      "before_trace_closed": true,
+      "configured_delay_seconds": 0.15,
+      "end_count": 0,
+      "event_shape": [
+        "control_rpc_start",
+        "control_rpc_delay",
+        "control_rpc_handler_enter"
+      ],
+      "handler_enter_event_refs": [
+        "1676428:2653"
+      ],
+      "key_hashes": [
+        "75b7a3d0c788e21ecfb2266102e73b9d019ec936"
+      ],
+      "other": "12D3KooWKdMDk3MgFNT4gmcWFf14Yg5EipGUtCJ8kueRrGKEMUwD",
+      "peer": "12D3KooWNQzeYAisjUanXNZBKQAGmgziRtmcJDWrfM45tELmps2P",
+      "pid": 1676428,
+      "request_delay_events": [
+        {
+          "actual_delay": 0.15125849500327604,
+          "cancelled": false,
+          "event_ref": "1676428:2652",
+          "monotonic": 43681.97691228,
+          "requested_delay": 0.15
+        }
+      ],
+      "response_count": 0,
+      "rpc_id": "1676428:rpc426",
+      "rpc_type": "find",
+      "start_event_ref": "1676428:2649",
+      "start_monotonic": 43681.825351584,
+      "step_id": null
+    },
+    {
+      "after_control_publication_search_cutoff": true,
+      "after_final_step_result": true,
+      "after_last_ad_finish": true,
+      "after_search_span_close": true,
+      "before_trace_closed": true,
+      "configured_delay_seconds": 0.15,
+      "end_count": 0,
+      "event_shape": [
+        "control_rpc_start",
+        "control_rpc_delay",
+        "control_rpc_handler_enter"
+      ],
+      "handler_enter_event_refs": [
+        "1676428:2655"
+      ],
+      "key_hashes": [
+        "75b7a3d0c788e21ecfb2266102e73b9d019ec936"
+      ],
+      "other": "12D3KooWKDaGs7z68wst1xjUHCWdK9kDGMMUvPN8QT2HEvbpwgxy",
+      "peer": "12D3KooWNQzeYAisjUanXNZBKQAGmgziRtmcJDWrfM45tELmps2P",
+      "pid": 1676428,
+      "request_delay_events": [
+        {
+          "actual_delay": 0.15082729999994626,
+          "cancelled": false,
+          "event_ref": "1676428:2654",
+          "monotonic": 43682.086899436,
+          "requested_delay": 0.15
+        }
+      ],
+      "response_count": 0,
+      "rpc_id": "1676428:rpc427",
+      "rpc_type": "store",
+      "start_event_ref": "1676428:2650",
+      "start_monotonic": 43681.93596299,
+      "step_id": null
+    },
+    {
+      "after_control_publication_search_cutoff": true,
+      "after_final_step_result": true,
+      "after_last_ad_finish": true,
+      "after_search_span_close": true,
+      "before_trace_closed": true,
+      "configured_delay_seconds": 0.15,
+      "end_count": 0,
+      "event_shape": [
+        "control_rpc_start",
+        "control_rpc_delay",
+        "control_rpc_handler_enter"
+      ],
+      "handler_enter_event_refs": [
+        "1676428:2657"
+      ],
+      "key_hashes": [
+        "75b7a3d0c788e21ecfb2266102e73b9d019ec936"
+      ],
+      "other": "12D3KooWKDaGs7z68wst1xjUHCWdK9kDGMMUvPN8QT2HEvbpwgxy",
+      "peer": "12D3KooWNQzeYAisjUanXNZBKQAGmgziRtmcJDWrfM45tELmps2P",
+      "pid": 1676428,
+      "request_delay_events": [
+        {
+          "actual_delay": 0.15015570200193906,
+          "cancelled": false,
+          "event_ref": "1676428:2656",
+          "monotonic": 43682.087498618,
+          "requested_delay": 0.15
+        }
+      ],
+      "response_count": 0,
+      "rpc_id": "1676428:rpc428",
+      "rpc_type": "find",
+      "start_event_ref": "1676428:2651",
+      "start_monotonic": 43681.937270347,
+      "step_id": null
+    },
+    {
+      "after_control_publication_search_cutoff": true,
+      "after_final_step_result": true,
+      "after_last_ad_finish": true,
+      "after_search_span_close": true,
+      "before_trace_closed": true,
+      "configured_delay_seconds": 0.15,
+      "end_count": 0,
+      "event_shape": [
+        "control_rpc_start",
+        "control_rpc_delay",
+        "control_rpc_handler_enter"
+      ],
+      "handler_enter_event_refs": [
+        "1676360:2540"
+      ],
+      "key_hashes": [
+        "75b7a3d0c788e21ecfb2266102e73b9d019ec936"
+      ],
+      "other": "12D3KooWKDaGs7z68wst1xjUHCWdK9kDGMMUvPN8QT2HEvbpwgxy",
+      "peer": "12D3KooWH1ui9i9pWsiw6UZCdUBbSsn3Bh5Rehjsc9gYX5gcPFFQ",
+      "pid": 1676360,
+      "request_delay_events": [
+        {
+          "actual_delay": 0.1503153529993142,
+          "cancelled": false,
+          "event_ref": "1676360:2539",
+          "monotonic": 43682.088750538,
+          "requested_delay": 0.15
+        }
+      ],
+      "response_count": 0,
+      "rpc_id": "1676360:rpc408",
+      "rpc_type": "find",
+      "start_event_ref": "1676360:2536",
+      "start_monotonic": 43681.938354787,
+      "step_id": null
+    },
+    {
+      "after_control_publication_search_cutoff": true,
+      "after_final_step_result": true,
+      "after_last_ad_finish": true,
+      "after_search_span_close": true,
+      "before_trace_closed": true,
+      "configured_delay_seconds": 0.15,
+      "end_count": 0,
+      "event_shape": [
+        "control_rpc_start"
+      ],
+      "handler_enter_event_refs": [],
+      "key_hashes": [
+        "75b7a3d0c788e21ecfb2266102e73b9d019ec936"
+      ],
+      "other": "12D3KooWKdMDk3MgFNT4gmcWFf14Yg5EipGUtCJ8kueRrGKEMUwD",
+      "peer": "12D3KooWKDaGs7z68wst1xjUHCWdK9kDGMMUvPN8QT2HEvbpwgxy",
+      "pid": 1676278,
+      "request_delay_events": [],
+      "response_count": 0,
+      "rpc_id": "1676278:rpc279",
+      "rpc_type": "find",
+      "start_event_ref": "1676278:1669",
+      "start_monotonic": 43682.091875251,
+      "step_id": null
+    }
+  ]
+}
