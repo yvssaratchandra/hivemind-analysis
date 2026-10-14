@@ -1,0 +1,6 @@
+{
+  "all_peers_shutdown": true,
+  "error": "ValueError: trial integrity failed: ['rpc: RPC 2386782:rpc1700 must have exactly one end record', 'rpc: RPC 2386874:rpc1692 must have exactly one end record', 'rpc: RPC 2387015:rpc1659 must have exactly one end record', 'rpc: RPC 2387015:rpc1660 has no request delay record', 'rpc: RPC 2387015:rpc1660 lacks one handler-enter record', 'rpc: RPC 2387015:rpc1660 must have exactly one end record', 'rpc: RPC 2387015:rpc1660 must have exactly one request delay record', 'rpc: RPC 2387085:rpc1669 must have exactly one end record', 'rpc: RPC 2387085:rpc1670 has no request delay record', 'rpc: RPC 2387085:rpc1670 lacks one handler-enter record', 'rpc: RPC 2387085:rpc1670 must have exactly one end record', 'rpc: RPC 2387085:rpc1670 must have exactly one request delay record', 'rpc: unary RPC 2386782:rpc1700 must have one response', 'rpc: unary RPC 2386874:rpc1692 must have one response', 'rpc: unary RPC 2387015:rpc1659 must have one response', 'rpc: unary RPC 2387015:rpc1660 must have one response', 'rpc: unary RPC 2387085:rpc1669 must have one response', 'rpc: unary RPC 2387085:rpc1670 must have one response']",
+  "interrupted": false,
+  "trial": "reliable_renewed_s2803"
+}

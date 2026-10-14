@@ -1,0 +1,12 @@
+{
+  "source_frozen": true,
+  "harness_sha256": {
+    "step28_confirmation.py": "880405f8e58c83eddcae423e2c838f8cf690b6889d17e20fa381342a96e2f980",
+    "step28_workload.py": "c8fad6fc99b5fca80e67cc54ad805739f40954c6eaa18fbb2133c6d40ffe1955",
+    "analyze_step28_confirmation.py": "743e874b2123e73a9af51c9fbeab490ad1360575200c9528c2fbab813fe52a53",
+    "verify_step28_confirmation.py": "30ee4437af92cca1937ab0e7150c75fcb61a28a7567689bf50b1c1fe796d479d",
+    "test_step28_confirmation.py": "299dba32fe277c188c66fd266c17bd3c949db0bb6817e67191bfea163906bc06"
+  },
+  "focused_tests_passed": 13,
+  "replay_preflight": "step28_replay_preflight_20261012_a.json"
+}

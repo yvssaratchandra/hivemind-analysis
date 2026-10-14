@@ -1,0 +1,6 @@
+{
+  "all_peers_shutdown": true,
+  "error": "ValueError: trial integrity failed: ['rpc: RPC 2361788:rpc1587 must have exactly one end record', 'rpc: RPC 2361788:rpc1588 must have exactly one end record', 'rpc: unary RPC 2361788:rpc1587 must have one response', 'rpc: unary RPC 2361788:rpc1588 must have one response']",
+  "interrupted": false,
+  "trial": "reliable_single_s2803"
+}

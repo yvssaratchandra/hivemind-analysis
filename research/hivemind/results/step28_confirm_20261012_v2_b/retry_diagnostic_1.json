@@ -1,0 +1,21 @@
+{
+  "archive": {
+    "file_sha256": {
+      "analysis.json": "89244589315a89d10ad6d151f2e5b0e3d61088dfd9785f871a1891de96d67c79",
+      "config.json": "6c8f26c4184cc6eb066bc040a99f04c6a22c37bad4b36d101fc7ccf7ef6f01f9",
+      "control_analysis.json": "5f9c32f5721627437c9f5ad9f9ee3c49722eb42c5b837cd9dfc408849007ba93",
+      "events.jsonl": "04bb9b85cb64809cab6bcc015b9d953b1f68c98fd6e9a13ab8c378fa4c0f72f7",
+      "summary.json": "0896dff3a7874d8e12e5b999e79b2a34f9831ef9b52c809f09ebddc1e5d85ff1"
+    },
+    "path": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step28_confirm_20261012_v2_b_interrupted/reliable_single_s2803_7cf2aa50bfcd4270b2dda088266a2819",
+    "reason": "invalid trace: two incomplete unary RPCs began before final search closure; original integrity failure retained"
+  },
+  "reason": "invalid trace: two incomplete unary RPCs began before final search closure; original integrity failure retained",
+  "runtime_source_changed": false,
+  "validated_counts": {
+    "blocked": 0,
+    "completed": 4,
+    "interrupted": 0,
+    "pending": 2
+  }
+}

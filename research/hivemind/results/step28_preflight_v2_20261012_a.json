@@ -1,0 +1,10 @@
+{
+  "original_frozen_source_unchanged": true,
+  "extra_harness_sha256": {
+    "run_step28_confirmation_v2.py": "59ca53ce4b193365dd3dc6d85b4e1c32a92ac0cdb6131209a397c0b8353bf049",
+    "verify_step28_exports_v2.py": "9003fc3d2b743de81d94026ec6a3b60582d8f593ef81652450be21d1b6e5d3c8",
+    "test_step28_exports_v2.py": "fee2b467d5cb81d165fe728b87aafb83d42c72237d5a306c5ceed1f10051be8a"
+  },
+  "tests_passed": 15,
+  "corrected_smoke_verification": "step28_smoke_20261012_a/raw_verification_v2.json"
+}

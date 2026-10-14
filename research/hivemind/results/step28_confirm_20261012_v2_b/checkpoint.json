@@ -1,0 +1,209 @@
+{
+  "active_trial": null,
+  "controller_pid": 2403161,
+  "counts": {
+    "blocked": 0,
+    "completed": 6,
+    "interrupted": 0,
+    "pending": 0
+  },
+  "experiment": "step28",
+  "jobs": [
+    {
+      "file_sha256": {
+        "analysis.json": "e195071f0919dc7ef5993dd5879df836f78bf7c67c7b261d63f0fb800f53126c",
+        "completion.json": "31b73ad0d3b4bda5c872457b4e2a6ab3fd8533b7bbe37e84ab5e49301a7295ca",
+        "config.json": "416c24be2ca167428e64e083a0c1bca66a0cf92f240196d3a3fa1c1c7a5675fe",
+        "control_analysis.json": "36faff389200a065e545c9d0784f7d91b45ed0b6103084e7b5091d34455b9e1b",
+        "events.jsonl": "dded9257988ed37235dcedf6e59ce65a30de14cee93d2d48222dc4dafe759bf8",
+        "summary.json": "dac541af301fc07f8456ec93d03c5546897c8fd68dc3234c7cfe2864f6a75759"
+      },
+      "job": {
+        "case": {
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "once",
+          "name": "reliable_single",
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 120,
+        "seed": 2801
+      },
+      "status": "completed",
+      "trial_dir": "reliable_single_s2801"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "9a3ee1016bd314e5652cf3a7f3f9dc3e0ea4941b53655bc0661c33bb212aff51",
+        "completion.json": "a2022ab7e176f1c9f51c257b5aed971704438f2d6b77cd0370d9a5eb744bc485",
+        "config.json": "0beddb6a10cfd29c053aed502dfcbec3e8e068649b6941a6c21698ccdd92f030",
+        "control_analysis.json": "1a4c1b42bcc73e871037db697763a138879d6ee1e9de1d6a2f9c32f5134e1af4",
+        "events.jsonl": "9c441af12e42ee52bdff9803e1e914f5806365c3b4e65cbda1f5573fca660ce1",
+        "summary.json": "b72e8a4d5258a91b2d335cd895f2ec0e9dcc1213dd1705af3ece6233ba9349dc"
+      },
+      "job": {
+        "case": {
+          "frequency": 2.0,
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "reliable_renewed",
+          "nominal_lower": 1.5,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 120,
+        "seed": 2801
+      },
+      "status": "completed",
+      "trial_dir": "reliable_renewed_s2801"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "77a2bbfad3f6bb18e66691028e2b1a6ffee495c5317e8bbca1ebcc6dccb194af",
+        "completion.json": "e537a74ca2b369c375952bb978e87ee88c11a8bcd492cf66624114626c8bfe1b",
+        "config.json": "eaffccb1e21961e5fdbbd4b712d5e78787350059231848b62c2ae8c78c3bc633",
+        "control_analysis.json": "3b753f0682cceef685492517138da492298c0ba10374dd01b1516ebdaafecef3",
+        "events.jsonl": "19dec33cf129cb65efe5ec332a3f4bab4328787dc14010729f35a66471c8f5a6",
+        "summary.json": "02a9f72d234134c5716941c09bfe9c5a0b307bec3c1b54c18e7837868161914f"
+      },
+      "job": {
+        "case": {
+          "frequency": 2.0,
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "reliable_renewed",
+          "nominal_lower": 1.5,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 120,
+        "seed": 2802
+      },
+      "status": "completed",
+      "trial_dir": "reliable_renewed_s2802"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "ed7d473aa63db3c3a53e80318ccfe876617ffbe5bf42aeab845c55924e9426e1",
+        "completion.json": "c410c7798884365e728cf6936fc534303f3ca0e31c546699a1caa00fbb6f0682",
+        "config.json": "49152ccb78a771982f3f47b4c7570f030bc08eaf8f9fd7a8347dbba717746714",
+        "control_analysis.json": "179f43f8462550d9b4e697efdf2ba1fea03da22b7b80264aabf1435dd0e500e0",
+        "events.jsonl": "af402dce189a11efe45ff86b7af6fbede57d98643147f4d0ccbbc504f51d6830",
+        "summary.json": "24d095e4681d8d35280be5fb751231bd7792cbc9ed82e5848349aa420cbeaa02"
+      },
+      "job": {
+        "case": {
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "once",
+          "name": "reliable_single",
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 120,
+        "seed": 2802
+      },
+      "status": "completed",
+      "trial_dir": "reliable_single_s2802"
+    },
+    {
+      "archives": [
+        {
+          "file_sha256": {
+            "analysis.json": "89244589315a89d10ad6d151f2e5b0e3d61088dfd9785f871a1891de96d67c79",
+            "config.json": "6c8f26c4184cc6eb066bc040a99f04c6a22c37bad4b36d101fc7ccf7ef6f01f9",
+            "control_analysis.json": "5f9c32f5721627437c9f5ad9f9ee3c49722eb42c5b837cd9dfc408849007ba93",
+            "events.jsonl": "04bb9b85cb64809cab6bcc015b9d953b1f68c98fd6e9a13ab8c378fa4c0f72f7",
+            "summary.json": "0896dff3a7874d8e12e5b999e79b2a34f9831ef9b52c809f09ebddc1e5d85ff1"
+          },
+          "path": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step28_confirm_20261012_v2_b_interrupted/reliable_single_s2803_7cf2aa50bfcd4270b2dda088266a2819",
+          "reason": "invalid trace: two incomplete unary RPCs began before final search closure; original integrity failure retained"
+        }
+      ],
+      "file_sha256": {
+        "analysis.json": "cc5348445450fb002304fab07da10282e181f5616db1ba3054e5c600b47c1dd0",
+        "completion.json": "c00d7bf2c6272b617b1cc75cfb2cb073ae19abb6448be438ebc0325cb5eb2110",
+        "config.json": "2315d45253f594eaa6b6937cb6c7aad82941f2b4f4a9b8a908fbf37e03ef1e2e",
+        "control_analysis.json": "fdd10cc2e7912bd4d7904f29449a83af3b80532d25f6ee160b5e132eb35fd60b",
+        "events.jsonl": "6d6b8b0119968f8e053955dfb8fced9dc59377f721d7868afb106878280061a3",
+        "summary.json": "8c7114a39e38c4a9c85ffd36e6cc553b1cc112edd958c018359f8fc8c1cbf8de"
+      },
+      "job": {
+        "case": {
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "once",
+          "name": "reliable_single",
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 120,
+        "seed": 2803
+      },
+      "status": "completed",
+      "trial_dir": "reliable_single_s2803"
+    },
+    {
+      "archives": [
+        {
+          "file_sha256": {
+            "analysis.json": "74d74fffbeeef5f5157e4fcf2f4daa913f4c1582bc75a5c8c56234b3914ca30d",
+            "config.json": "78a5fede4d53a5e4ae2708a2d8ab76f784ad9187d2c617c234cccbe33d379eac",
+            "control_analysis.json": "421873fe9b9f07a5d8464b88a2246174b07d9781746faef29c2c3d8765f5d139",
+            "events.jsonl": "ad32b6d8428139e3df34f93de41caf6b0e955617a8b84da24f3f8ed2de8cab5c",
+            "summary.json": "2cfb5b108e090b5f3069ba6e31d9d2c77f297ea92a8c989caa36850a062e02d4"
+          },
+          "path": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step28_confirm_20261012_v2_b_interrupted/reliable_renewed_s2803_e2eafe4065ab4e15850546d178dd724b",
+          "reason": "invalid trace: incomplete unary RPC records at trial end; source unchanged, original failure retained"
+        }
+      ],
+      "file_sha256": {
+        "analysis.json": "6679996f590cde01236aab23455847eb8f1ebe5c722c0a24db903bb36f05ece8",
+        "completion.json": "c753b7300f3edd9145dbc7a411ae1e8b216d5b1665a3a27f541e819c199fdaac",
+        "config.json": "ab47b5bda583cdeac05cde18595802f69c11e79aa0222f3e0101ad8c9278d3f8",
+        "control_analysis.json": "36d56bd5474beba8d32f5c0c11c1ae552e44799c2e3ab4fe346e61ff41497b6b",
+        "events.jsonl": "9f3a92e12e5c6c01c233a13beb5047be5dad272475f5d1e70b645019f0c11110",
+        "summary.json": "adec7fbe9becd0fc8be8805052b6368667d6365d91b34a31701b059151280c28"
+      },
+      "job": {
+        "case": {
+          "frequency": 2.0,
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "reliable_renewed",
+          "nominal_lower": 1.5,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 120,
+        "seed": 2803
+      },
+      "status": "completed",
+      "trial_dir": "reliable_renewed_s2803"
+    }
+  ],
+  "phase": "confirm",
+  "provenance_sha256": "5e5a56a3d9800ae4be18ba8889b21238ddeb115a21f5934ce920cc8a950681ca",
+  "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step28_confirm_20261012_v2_b",
+  "suite_sha256": "1277fc6f4d0bd612a0e3843aa36eabea6c9fadb18da24c28cff035f0f80bb28f",
+  "valid": true
+}

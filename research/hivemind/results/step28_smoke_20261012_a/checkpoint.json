@@ -1,0 +1,73 @@
+{
+  "active_trial": null,
+  "controller_pid": 2305185,
+  "counts": {
+    "blocked": 0,
+    "completed": 2,
+    "interrupted": 0,
+    "pending": 0
+  },
+  "experiment": "step28",
+  "jobs": [
+    {
+      "file_sha256": {
+        "analysis.json": "97e2b881428043c3a283c5a937681b7be4e7bcc2fbd9034f41fb8911f3ea0985",
+        "completion.json": "d8d1c1de58833e6b610f7d955ecb9c5475e487118d664a8a5b0d21310ae61b65",
+        "config.json": "7feaa772b7b82b7d9050b4380fe35e8967cdcf65c1b9076785b879b1788fffd7",
+        "control_analysis.json": "12dab907a77cba6a78f18844dbf3ec8a0914aa4d3a610e9bc3c999e47fb40abd",
+        "events.jsonl": "b531046685faafa32fee886ecf88df9b12c532c21007b0ff08d662482bf47ab9",
+        "summary.json": "45e2f90323262e66acd49a2a5558f1675bd0f3eac2f8528b98631e7f02cdcaee"
+      },
+      "job": {
+        "case": {
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "once",
+          "name": "reliable_single",
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 20,
+        "seed": 2800
+      },
+      "status": "completed",
+      "trial_dir": "reliable_single_s2800"
+    },
+    {
+      "file_sha256": {
+        "analysis.json": "f0f07e424968ef212da384d51ce413ebe16d3b17a7511b259d46ca0527d700a9",
+        "completion.json": "f00233cdd0f1df1c1b06887c713c36b8254a93252a05e1a98f2adff887de732e",
+        "config.json": "f1078651a53c09c989e6bd04aa766a38dd553802dc01f42bb9dfab32313a7c3f",
+        "control_analysis.json": "1a55d497f4b368ee3047ce162d711c8848f6fc3078a7bc3baca21457f2add792",
+        "events.jsonl": "e7c4cef4a1d04913c817a783ebaaf9cb1d34e92988dfc2229d7ed6d70f297edc",
+        "summary.json": "c55c5bd94a37f9947df37e2d30608ac8fffc82424efd319c98f6587e743bcb61"
+      },
+      "job": {
+        "case": {
+          "frequency": 2.0,
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 4,
+          "mode": "refresh",
+          "name": "reliable_renewed",
+          "nominal_lower": 1.5,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.15,
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 20,
+        "seed": 2800
+      },
+      "status": "completed",
+      "trial_dir": "reliable_renewed_s2800"
+    }
+  ],
+  "phase": "smoke",
+  "provenance_sha256": "72653fed760f8633ff6977165fc04a2f63b13f2bf27a2001013cbb776bb88972",
+  "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step28_smoke_20261012_a",
+  "suite_sha256": "1be5f70661654548a838e90805fa8d7615a4134196cf8533082136a9740e03b7",
+  "valid": true
+}

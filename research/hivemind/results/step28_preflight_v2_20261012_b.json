@@ -1,0 +1,11 @@
+{
+  "original_frozen_source_unchanged": true,
+  "extra_harness_sha256": {
+    "run_step28_confirmation_v2.py": "59ca53ce4b193365dd3dc6d85b4e1c32a92ac0cdb6131209a397c0b8353bf049",
+    "verify_step28_exports_v2.py": "289f99f8292c1a0883092cbfb0ab813da31aba61c9db6c47c902af47b74e1dd3",
+    "test_step28_exports_v2.py": "fee2b467d5cb81d165fe728b87aafb83d42c72237d5a306c5ceed1f10051be8a"
+  },
+  "tests_passed": 15,
+  "startup_gate_before_runtime_preflight_pass": true,
+  "native_runtime": "/tmp/hm-step23-runtime/hivemind"
+}

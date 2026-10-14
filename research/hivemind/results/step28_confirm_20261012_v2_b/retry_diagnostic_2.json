@@ -1,0 +1,20 @@
+{
+  "archive": {
+    "file_sha256": {
+      "analysis.json": "74d74fffbeeef5f5157e4fcf2f4daa913f4c1582bc75a5c8c56234b3914ca30d",
+      "config.json": "78a5fede4d53a5e4ae2708a2d8ab76f784ad9187d2c617c234cccbe33d379eac",
+      "control_analysis.json": "421873fe9b9f07a5d8464b88a2246174b07d9781746faef29c2c3d8765f5d139",
+      "events.jsonl": "ad32b6d8428139e3df34f93de41caf6b0e955617a8b84da24f3f8ed2de8cab5c",
+      "summary.json": "2cfb5b108e090b5f3069ba6e31d9d2c77f297ea92a8c989caa36850a062e02d4"
+    },
+    "path": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step28_confirm_20261012_v2_b_interrupted/reliable_renewed_s2803_e2eafe4065ab4e15850546d178dd724b",
+    "reason": "invalid trace: incomplete unary RPC records at trial end; source unchanged, original failure retained"
+  },
+  "runtime_source_changed": false,
+  "validated_counts": {
+    "blocked": 0,
+    "completed": 5,
+    "interrupted": 0,
+    "pending": 1
+  }
+}

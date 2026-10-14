@@ -1,0 +1,5 @@
+{
+  "original_failure_reproduced_from_frozen_checker": true,
+  "reason": "V2 CLI output path initially retained original default; original failed report restored by deterministic original checker replay. Raw inputs, exports, source, completion hashes unchanged.",
+  "corrected_report": "raw_verification_v2.json"
+}
