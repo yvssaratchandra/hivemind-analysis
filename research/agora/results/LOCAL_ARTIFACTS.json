@@ -1,0 +1,4085 @@
+{
+  "description": "Raw traces, bulky analysis outputs, frozen harness/dependency copies and bundled executables retained locally and omitted from Git. Paths are relative to this results directory. Reports and compact evidence are tracked; full raw replay/resume requires these original local artifacts. No artifacts were deleted or modified.",
+  "files": [
+    {
+      "path": "baseline8b_pilot_20261013_a/data.json",
+      "bytes": 1536268,
+      "sha256": "aaf3b8945f09fa1d0a3272111d78e5c4d9d7efe577c0980c24d9a7e4c89deae3"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/harness/analyze_8b_baseline.py",
+      "bytes": 33534,
+      "sha256": "b7c329263e30ae7b78fdcbc267bd4dbdd2d27e20d367890c4e0f7c90f52c45ca"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/harness/baseline_8b.py",
+      "bytes": 22389,
+      "sha256": "8372db2dd19faa06a940ac0d7d0c474e87fd14e616e30a97bd8537cb8667208a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/harness/prepare_8b_runtime.py",
+      "bytes": 3635,
+      "sha256": "5bd5502ba6625eec355ae52dcaa2ff22ef2198fdbd4637d3c7e7ae459d9957ed"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/harness/run_8b_baseline.py",
+      "bytes": 20440,
+      "sha256": "1a0873d0ada2013583c7af4368eefadc5bc6c7eb414aa48cbd6d15947d5a558a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/harness/test_8b_analysis.py",
+      "bytes": 17003,
+      "sha256": "b49f5892c5d3195c6cff7fd784c370cf6c8ddf691acce1b16cb8dd23793b5bdd"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/harness/test_8b_baseline.py",
+      "bytes": 7535,
+      "sha256": "d16c7019c37c1d790263772f1c64eb95467be92bfafeefb0d63100d714fc447c"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/all_reduce/ar_runner.py",
+      "bytes": 27268,
+      "sha256": "89cda6d645397a1371fb7d4ea7a622ced3356246f4d872e58e0909f99031dc48"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/all_reduce/matchmaking.py",
+      "bytes": 11038,
+      "sha256": "62240180f8a72c853745e72cce622cf36a4666c9c2585e3e585a88cfb37db9a2"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/all_reduce/partition.py",
+      "bytes": 18267,
+      "sha256": "3a93ce4b4bd34449c66c187d7c2748dbb65154ffcd17df9e7a5c28a245d4c4e2"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/averaging/averager.py",
+      "bytes": 47804,
+      "sha256": "0da2521529cbf80172dab773ea79e46f50289ad6b9f01109071aeee7a0588180"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/averaging/compression.py",
+      "bytes": 6841,
+      "sha256": "1cec535f824ab56c3d9c8a64a0646b3125b2353d2fbb32ad16ea92b86901156b"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/averaging/gradient_averager.py",
+      "bytes": 14037,
+      "sha256": "5634bb668c2e180f6d810d14ed74dbb7a7c9c278aa946b7d997c1e2082f02ea8"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/averaging/gradient_averager_powersgd.py",
+      "bytes": 16471,
+      "sha256": "a9ae99ffd5dbb35c82e1412e5f4de248609df914c80a64900f9695c03ac14f59"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/averaging/gradient_averager_random_proj.py",
+      "bytes": 12318,
+      "sha256": "418f8901a2059c4c44c9dd3350d6a49fc634fb9bedbfe3907de7d7a445c87172"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/averaging/state_averager.py",
+      "bytes": 47976,
+      "sha256": "0b258e2a05f2c7e4f26c87a3b78029113b56d5518b8d3b384a978a93085ccffb"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/averaging/state_averager_sparta.py",
+      "bytes": 13049,
+      "sha256": "15e1c1f21e7ba5d937fbfa170d203132f0dd5c67fae89b2141ad782de5d3149d"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/optimization/optimizer_async.py",
+      "bytes": 4123,
+      "sha256": "aee82ebfd5acacc9698cf0782940962a1cb67d59cdf8a95d05e68fc283770e5f"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/optimization/optimizer_sparta_async_nstep.py",
+      "bytes": 21177,
+      "sha256": "638d29b889093988495d259bdb34c53596b37fe9bb9a510d96687edd8d442846"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/optimization/optimizer_sparta_sync.py",
+      "bytes": 11492,
+      "sha256": "59db7f5358712c6c5b28c788cbd465c9505695eaad454136747ecc5d1e38cc12"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/optimization/optimizer_sync.py",
+      "bytes": 57736,
+      "sha256": "c7a2d226c8a1a604eff03e0b89618794b77d1671eed9cf7f848fb5a8132fb6a6"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/optimization/progress_tracker.py",
+      "bytes": 20180,
+      "sha256": "487eac2e71751de9224d05f3821ce047ecd9e8aa45ee4803bf74782ec43a3bd6"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/server/bounded_task_pool.py",
+      "bytes": 5916,
+      "sha256": "53ff3d6071a046adae2c32af3f15df9ce67f934fc121af203f63ec4d3fbff764"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/server/dht_handler.py",
+      "bytes": 9699,
+      "sha256": "5c13cefe3f1c39d45eac8d85b1c318f3ca074f72ebd25b32ed2b9b57255fc31a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/server/module_collab.py",
+      "bytes": 9893,
+      "sha256": "76dadc72395712704a64aeda41db8651b96c652d5ada55561722aeb089df9133"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/server/runtime.py",
+      "bytes": 14741,
+      "sha256": "1dd5572d4d689b4b16196bec71919cf840308a892cf7cd85f0d65442606cc518"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/core/server/server.py",
+      "bytes": 34214,
+      "sha256": "54e303f280d040aa8d42ac8273f98fe0f3490b9b744834f2002869635377e571"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/logging/file_logger.py",
+      "bytes": 2910,
+      "sha256": "c3a6982c4d1f74ac25d0614616ab01bad8c92b310a42e7b1ee0e532b5722fcdf"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/logging/formatters.py",
+      "bytes": 2723,
+      "sha256": "2787e44b0f328fc57acf6a5129c9c816edaecd34c68fd02ca36a4c0734a4062a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/logging/log_monitor.py",
+      "bytes": 10234,
+      "sha256": "172e56e1cc46a89fd9568850bf7e619a623e4e1375d0a7393018215b946006aa"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/logging/logger.py",
+      "bytes": 4954,
+      "sha256": "c40d2d9e1b7de7041f7ec4cfbd5e82b70ff71d669860e7056046ced53a52fbae"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/models/arguments_registry.py",
+      "bytes": 5926,
+      "sha256": "10ff853a089eb180fcc6ec8e9f5fec0d9e739a1a7af144c1117d1b95ca7f009e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/models/base_arguments.py",
+      "bytes": 2910,
+      "sha256": "77f190436c602deb9b04e63e4629e6d2562ce499aeb6c08b28519a962792d8a4"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/models/expert_registry.py",
+      "bytes": 6646,
+      "sha256": "67e84846a0d9a9f358b7bea3f78a7b5474211f7a978d671a2a3c508816b2f770"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/models/llama/arguments.py",
+      "bytes": 10354,
+      "sha256": "c2033a67648f0035bdbf8a1913a6a98ffeea5c5ffe0e6d462148e35d9bb8c186"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/models/llama/components.py",
+      "bytes": 16622,
+      "sha256": "2bfbe44c57f4dea5ed1cb210991d783966f21963e5a8e78f2cb00b3fb14ff81a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/models/llama/experts.py",
+      "bytes": 11653,
+      "sha256": "db806c840ac543fb9056bca094abe6c28a16b63bd9a4dd003abaae2e61142b09"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/models/lr_schedule.py",
+      "bytes": 3576,
+      "sha256": "646e976e952cb556373d6c183fe5eab1906a597d9fd974253560de1301a6b26b"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/models/reparam_llama/arguments.py",
+      "bytes": 6746,
+      "sha256": "2183d55d2be6e4b6a05d3a7507724e9a2069f95010c8474297c53e8e7a192d3b"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/models/reparam_llama/components.py",
+      "bytes": 21031,
+      "sha256": "b54a2742d522fdd71acc82bda845e5b42ea6f840147a6bc4de04c932873858f8"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/models/reparam_llama/experts.py",
+      "bytes": 11235,
+      "sha256": "fb33a04d1676b2d1daa529bc6972910cd9b7be4e102deeb997bf009fcce583b1"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/models/simple_fc/arguments.py",
+      "bytes": 1878,
+      "sha256": "183330862b8e347bcbed1bf84b45a72c0457cf7f6e03b4062ad8a77a8c01dea6"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/models/simple_fc/experts.py",
+      "bytes": 4252,
+      "sha256": "26d1add819a6ce547fd72f0921d137397c149bf2c53edaf03728be8ead79f16c"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/monitor/dht_monitor.py",
+      "bytes": 6432,
+      "sha256": "b1391bce6930a11e5daf886d21d56ed53e23b3b4d86fe1d075c9db629b743ca6"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/monitor/gpu_util_monitor.py",
+      "bytes": 2159,
+      "sha256": "29a66faac7fe89619f4769126e16a68a2b482460b700a6f66b2b657fcf0481b8"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/monitor/mem_monitor.py",
+      "bytes": 3746,
+      "sha256": "2cfd4216f792162ad2362613ea8b4c5df472ee2d236f998022c9fb471ae07d6c"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/monitor/network_throughput.py",
+      "bytes": 4666,
+      "sha256": "98f914716f97d3decaa2fb126c4a36b59ac7b34faa2a0ef49da3310a8a73e91f"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/monitor/peer_visibility.py",
+      "bytes": 1613,
+      "sha256": "8d1ad5a44d2439c29e6a5fe92f9d3a27a3d2b03248ddff45597fae82738ed70a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/prometheus/monitor.py",
+      "bytes": 36180,
+      "sha256": "24e825785f8e536a66239b4789bb8aa6e4e8cfb8b8fc0bbb762cb550685f1ac6"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/prometheus/roles.py",
+      "bytes": 8167,
+      "sha256": "ac532fbb8cd9d9246060957f1b126bb86fcb20b2fe87a375d76d53149ebdaa15"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/security/auth.py",
+      "bytes": 4027,
+      "sha256": "fc0a7b8921765b7d6392818ffbf9390ea9edaead43a05c9d019b2b1d423032c5"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/security/authorizer.py",
+      "bytes": 8709,
+      "sha256": "6c9e48942f613a71551c3e093fefcbaee3c414c2cb4064b2cebf0d00c45b294d"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/security/validator_builder.py",
+      "bytes": 1887,
+      "sha256": "a42ae337792cf7a02d1539e743a8d2a99e60b73a55fc81f10aae242ea7aef342"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/security/validator_schema.py",
+      "bytes": 1157,
+      "sha256": "c0f807d6ac672d71bf8da64df6d4f1100c26b9cd12618657fccc8390475d4651"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/types.py",
+      "bytes": 2006,
+      "sha256": "412d5d3ccb0e086c6a2f74a97d51088421a8dc5cc261e31c17018e8f27c2c0fa"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/utils/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/utils/cloud_detect.py",
+      "bytes": 7890,
+      "sha256": "ebbd74255653ba150e9fae4defb3392f37fcacaaa3ff14704c5144a80e093695"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/utils/common.py",
+      "bytes": 1820,
+      "sha256": "52d189a686b7c179bb16b185f4f861168b5f1a15f45fa9195f17b215c1d21049"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/utils/configs.py",
+      "bytes": 4535,
+      "sha256": "6966439a64bc43a92d29c377e4e479e18f702b05bf4842c3381887cf956942c0"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/utils/dht_partition.py",
+      "bytes": 3161,
+      "sha256": "69035cea5ebfb6f6f15449718add78d6d9188db96d8c385967d3b58ff10f712d"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/utils/flops.py",
+      "bytes": 8193,
+      "sha256": "ac6a05dd47f3b958fdccd287db8e2ae74ea5e31067989e3b53717e925bcebda3"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/utils/node_info.py",
+      "bytes": 8097,
+      "sha256": "39406c1196f6561f6344c114be939615b6550763776f2512dee2d688bd3f6412"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/agora_server/utils/subspace.py",
+      "bytes": 2624,
+      "sha256": "0b2156bb16b02c7052039b469bc969c1a325e19e9214aadec697dbc9797d936e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/__init__.py",
+      "bytes": 484,
+      "sha256": "a57b741840c7d9f32dca86ca970e18d20d613d267be6a94763a108a47e67083e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/averaging/__init__.py",
+      "bytes": 62,
+      "sha256": "b3d71cd0c30fbb3d7d6916cdabf5eab6c55852ef2a9c4a48e78a6b37d0add3f8"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/averaging/allreduce.py",
+      "bytes": 18412,
+      "sha256": "2a67006fc98b9683e357e4b8a805832c9bec1e81afbf1ffcc41862bb56caab05"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/averaging/averager.py",
+      "bytes": 39816,
+      "sha256": "932a59ddb7e0933de2dc674be8480ebcdc9eb9fd713f5040a33dd0e4cca59929"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/averaging/control.py",
+      "bytes": 6511,
+      "sha256": "894d5d5cb517485c3b3a69cdfe17b70c29a3d28949f679cbbab4ea9c2bdb2af1"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/averaging/group_info.py",
+      "bytes": 671,
+      "sha256": "e2b8a97737fc6888f8f6e27b3d264fce1e10ef81fa2d8d930f7ca2c9620310f1"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/averaging/key_manager.py",
+      "bytes": 5386,
+      "sha256": "99a24f165590493016d7731fe111be7d1497e3ce695de123a806ca9722cecdc9"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/averaging/load_balancing.py",
+      "bytes": 5450,
+      "sha256": "e615b5b303add017001608f19c223288a276f87c8526c16aaba6be7c19a141fd"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/averaging/matchmaking.py",
+      "bytes": 28141,
+      "sha256": "b0b11578fb74f321c35afedc5b34c58cdf60ae318eb86970a93516c626613b9c"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/averaging/partition.py",
+      "bytes": 14947,
+      "sha256": "8905c51826c26d18281121e760758f3a3bfc77feca351886eade13cfbe571e23"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/compression/__init__.py",
+      "bytes": 658,
+      "sha256": "0fc1840f0328c2c7240305aba5f555be3a1daa1dd0dfe8c74056478398bd0ebd"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/compression/adaptive.py",
+      "bytes": 2816,
+      "sha256": "fde9bc534e167a0e54c9b0c8a3567d6ba663a5b8ca091e2f136c7d7184cb1093"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/compression/base.py",
+      "bytes": 5254,
+      "sha256": "9ebe625a254144f71d64536cd3e163deb3916992b8d32e5dbc7b28618f591999"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/compression/floating.py",
+      "bytes": 4717,
+      "sha256": "abb788bf095293463992fbc7d478aebedcf2744662c6035d2a2eba7d010de0a2"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/compression/quantization.py",
+      "bytes": 9299,
+      "sha256": "02c8dda6e476e7358c52703460ab29ea8ccfae9fbfb4e9dce67f7a2d3f44ea44"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/compression/serialization.py",
+      "bytes": 2846,
+      "sha256": "0c94266be46552b3c25664bb900e7e71a42518ec758e6786d28fd92fed38bcd2"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/dht/__init__.py",
+      "bytes": 1057,
+      "sha256": "5d85f48447fcafe873697bfdbd6ef58a232320a12bf2c6ff9d22514eeb844efd"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/dht/crypto.py",
+      "bytes": 3595,
+      "sha256": "3b836042a52099ed12f6bece1016ab6b518fdb6fd86c47c0181ecc06ae5a9b2b"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/dht/dht.py",
+      "bytes": 14997,
+      "sha256": "b41230a61e3d04e44e3ced567eb7beba738aad49cc7f2ceaf113dc4a4de2a8a5"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/dht/node.py",
+      "bytes": 52072,
+      "sha256": "0957c32e123e13b0e2bd8f4a740032fd794a2fcd9b01e49cede6b013b58efadb"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/dht/protocol.py",
+      "bytes": 22566,
+      "sha256": "2fc86983799b090aa1637beee487115f1323d6d82f6a386a343d1ac8f1d69a6f"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/dht/routing.py",
+      "bytes": 15499,
+      "sha256": "87764ac02dad37acf7a21caa2d4327b307435848898abb0c3e68db8d98053d5a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/dht/schema.py",
+      "bytes": 7290,
+      "sha256": "001a6b84fc4161e94f3e3f4985fb3df1be0d744b31d2c72d499e510f786bf4eb"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/dht/storage.py",
+      "bytes": 3757,
+      "sha256": "716d2792852c15de51a7171812175fc177637d97c46552c50c34cc1b8d1ca394"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/dht/traverse.py",
+      "bytes": 15344,
+      "sha256": "f3851f026b0e039bc3d4ecba53793013f4984c3e7a6614ab7b62e3913fb4b29c"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/dht/validation.py",
+      "bytes": 4555,
+      "sha256": "cb90f1cb7303af43fbcee1ae3355f6f687fe95969daca9a33d2524c392171fed"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/hivemind_cli/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/hivemind_cli/config.yml",
+      "bytes": 181,
+      "sha256": "394a4764b63c6f9a1275bcc5fedb10bbe08f0de5514eee9bf28ad73e6295dd0a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/hivemind_cli/p2pd",
+      "bytes": 9522896,
+      "sha256": "42f8f48e62583b97cdba3c31439c08029fb2b9fc506b5bdd82c46b7cc1d279d8"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/hivemind_cli/run_dht.py",
+      "bytes": 3753,
+      "sha256": "a706607135863ef622523c950e4271c77899e67ca42c0a60af827a80c9c522db"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/hivemind_cli/run_server.py",
+      "bytes": 6664,
+      "sha256": "51f6771afdc1002568dd0488cbf8c3fe702653fd2210725da9dd5e63b3bbda09"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/__init__.py",
+      "bytes": 254,
+      "sha256": "78dd2e1a41eb6f682fe575cb20fccb2802e39f019d5cff9582d31596fe511994"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/client/__init__.py",
+      "bytes": 183,
+      "sha256": "5bc5d2d70c4e14f81928031064f4e55263000f9ed6b16fc8d5c1ffea5fdce695"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/client/beam_search.py",
+      "bytes": 20910,
+      "sha256": "b32e462352db43c7d34df0eb356b325b71026f8dab59be769c45dd16a63fab3f"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/client/expert.py",
+      "bytes": 9781,
+      "sha256": "d28fed3fceb273038db7fea5d4b54b36159dda796680c54204823f9802f93f84"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/client/moe.py",
+      "bytes": 21158,
+      "sha256": "c19d844600bcfc79846a09aa48c1b8badca27287bf5e1927f642df32ebcc5d5c"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/client/remote_expert_worker.py",
+      "bytes": 1110,
+      "sha256": "5d22cd0f48842e7e6eec89ebcd90a7549fcef0b8dc01b01e7182dee296063d26"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/client/switch_moe.py",
+      "bytes": 10480,
+      "sha256": "eafb2563ab3c44e186d1e4abbd8e0270dc8cda8e6e6e85ec9886689f25080134"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/expert_uid.py",
+      "bytes": 1636,
+      "sha256": "732dee38973fe15b932bd62b0ebdd9aae60870f86cf5624ece5676250eeb6a71"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/__init__.py",
+      "bytes": 260,
+      "sha256": "249f47910df739ac125ff802a69912e5fedc4c5b3aa42218a2ebd2a222341bd5"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/checkpoints.py",
+      "bytes": 2731,
+      "sha256": "8f50c31d5df6302b7a12f89a1c8fdde58d4063a417e5ebb6a59d1282cb120619"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/connection_handler.py",
+      "bytes": 7335,
+      "sha256": "1807480c5f4b48588603d82dc6296b6dbd3719086ede6d2579cc25d57df1954e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/dht_handler.py",
+      "bytes": 4945,
+      "sha256": "e14b13800e5c9569538bb5fa1dfde71da23ea13defa3076308a425d5b3c04b4e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/layers/__init__.py",
+      "bytes": 398,
+      "sha256": "77d9effb7bb8fc664106aa49fe398c2fe963d8432cd74edb6c4c9cac109da789"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/layers/common.py",
+      "bytes": 3283,
+      "sha256": "8148804d7c008b6f9346a1527f90932589319f4895947e89500ab8b16f73bb15"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/layers/custom_experts.py",
+      "bytes": 1182,
+      "sha256": "eb392da7a35d53de5156b81be90e016bb76fa185926b66b3fbea6c498146a7de"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/layers/dropout.py",
+      "bytes": 1732,
+      "sha256": "c273183b4fdcafbb6332ffcf132cf32a4f6f2231de0455b219f6d342248c70b0"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/layers/lr_schedule.py",
+      "bytes": 1209,
+      "sha256": "8cf74481508794390101884c0fc98c7a7ad90ffab3fa6be553a9c4f718c36ee9"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/layers/optim.py",
+      "bytes": 1691,
+      "sha256": "644f0fac08200c79374db755c5c12ee87e1893499b26a39c3511d4bbfd0e36ef"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/module_backend.py",
+      "bytes": 9742,
+      "sha256": "ef78ac99ff8ad8d592329fc791a4b80b78702ac4ce323188125144138a4c8e3b"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/runtime.py",
+      "bytes": 9266,
+      "sha256": "24dcf6f6aec6202a9baee9cec8e70a942ae108ea0ceb8b726a57e0c39b2a7be1"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/server.py",
+      "bytes": 17790,
+      "sha256": "09c829116c2d7d2943279d017305676f03f2b382ecc719e3a748a35e95b0d67f"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/moe/server/task_pool.py",
+      "bytes": 10941,
+      "sha256": "1e062b41da9c4a5ab65094fd86cf379bf0e139554eebf260798c43525b3c7a58"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/optim/__init__.py",
+      "bytes": 159,
+      "sha256": "b3e69082c98c46009b4d345d69f8c75757c90d1758595f934d89340c175b7f80"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/optim/grad_averager.py",
+      "bytes": 12669,
+      "sha256": "7b17f7d430640d50b6b07fae42fac4b7b1f862290ae8f170c819aa0efc84381f"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/optim/grad_scaler.py",
+      "bytes": 6338,
+      "sha256": "d8ab8ee16b40df50c019c58a2f6001312d69b97d56ef92ea491b1abde627e74b"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/optim/optimizer.py",
+      "bytes": 45409,
+      "sha256": "c6d1ca5bc4058950e3c6d9ddbd080c3e1c55f1f56186d5ff4ea9675ac3f37c2d"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/optim/power_sgd_averager.py",
+      "bytes": 10944,
+      "sha256": "22ed03d24ee887fcd58f5dd2f34a7ac4e79e9df95ecf6e94e22d345e2ff5ddba"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/optim/progress_tracker.py",
+      "bytes": 17453,
+      "sha256": "adfcd7467c78d6662cc9bb5efaef583ce4811b6cc63709619ba47770f85604ec"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/optim/state_averager.py",
+      "bytes": 40622,
+      "sha256": "55c2b6ad4d40a4029108ba10e35fb59ca1232e3831f9d201bef05327d95fa5ab"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/optim/training_averager.py",
+      "bytes": 12902,
+      "sha256": "c6f406329010182e3524b3628085578062300784eb350a77da00d607ede51e6f"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/p2p/__init__.py",
+      "bytes": 204,
+      "sha256": "c771603bbc195e587302228aecbc7b78b4efb95149e495bf7cbd82db0cddf059"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/p2p/p2p_daemon.py",
+      "bytes": 30555,
+      "sha256": "8304dd5481d0cfdeed0bb82c332d9bc862ef6b5095dc0c5d49c8923fd22204f1"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/p2p/p2p_daemon_bindings/__init__.py",
+      "bytes": 160,
+      "sha256": "265c3f38300927f7fe8d987fca2d0491e29eeabb9c201f289a6f00a2e5210e1d"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/p2p/p2p_daemon_bindings/control.py",
+      "bytes": 16878,
+      "sha256": "526366fef4a6a2c00ba5bceab3c3be7bbd1930e72a5bc53454cb9c12c4837255"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/p2p/p2p_daemon_bindings/datastructures.py",
+      "bytes": 4293,
+      "sha256": "20040a1ad5a7d564cd61e1a74d5458d2b4b10f710f10f0118a6eee7744ac5e30"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/p2p/p2p_daemon_bindings/p2pclient.py",
+      "bytes": 4428,
+      "sha256": "8070bb3ae6f68a2c5fc217a6dd637b86e6d2e4bad2e4dd46371d75ad893a7251"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/p2p/p2p_daemon_bindings/utils.py",
+      "bytes": 2325,
+      "sha256": "7849c0d632de455312d0e2e2f99791733778fffc05cfd90a20306c227f5c5ccc"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/p2p/servicer.py",
+      "bytes": 6393,
+      "sha256": "c03aec53776ff1347eefcbda3d320f4a9001567d52d90326e17102ffcf4cfe06"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/auth.proto",
+      "bytes": 441,
+      "sha256": "264db4796dff5dd5420edef9a1216c3f6da9ae5871f835a7626e4c1e7ef39ac1"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/auth_pb2.py",
+      "bytes": 2021,
+      "sha256": "18b5fee9dbc8dd5fc958749ca1b7665fc14a86443f0a60162f6713e6e143942d"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/averaging.proto",
+      "bytes": 3672,
+      "sha256": "96cd1a5d20786ba2e4f79447e14357a2f963b61392c9702547432f5e63c60da4"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/averaging_pb2.py",
+      "bytes": 3412,
+      "sha256": "f66cbb36528b77ac1f2c9ffbd9b255d8a7bac83c4634c33864a061c8a0a9cb91"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/crypto.proto",
+      "bytes": 407,
+      "sha256": "caa095904f7185c4cb81f4017e206ae8574a2698f99962cea92b13edbac2cb1b"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/crypto_pb2.py",
+      "bytes": 1768,
+      "sha256": "43db3932910623c7e19ba43028d3d61d681576bc4bbd511c16d645af2db8d764"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/dht.proto",
+      "bytes": 3364,
+      "sha256": "e4c9bec0d7567b105ee7f45df9ac7a0d48d134fac6363fe01f5165030797dcfa"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/dht_pb2.py",
+      "bytes": 3715,
+      "sha256": "11e93e7c79cbb45518ba5410e1dc11239da28a06c794bcb23dc11bfbc967e3b3"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/p2pd.proto",
+      "bytes": 4607,
+      "sha256": "eea870ff58e0f125b644e4ce51828863ecb13be0ba65fe9325b73a8bad206f4f"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/p2pd_pb2.py",
+      "bytes": 10776,
+      "sha256": "2cbd461404fce517ab8dc588521eb8cd8e18e3909ee21cddba1f841e345f940d"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/runtime.proto",
+      "bytes": 599,
+      "sha256": "87e663fd1c2ae7eddaa85e09ed03b3573e9d13627648b2457208f0e3d344c145"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/runtime_pb2.py",
+      "bytes": 2564,
+      "sha256": "8183ebedeac438e8221465a91281ab38ffb3ae34210de1bdc0a7f584b02751f5"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/test.proto",
+      "bytes": 114,
+      "sha256": "e96122ad920cabe1e43fe5b605692c7d36e255a691333bf27bf3c07edb4a4122"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/proto/test_pb2.py",
+      "bytes": 1402,
+      "sha256": "bc30922c9878b444376ddec1b10f8fcfb78518ab161331cf527baf05086efaa5"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/__init__.py",
+      "bytes": 628,
+      "sha256": "ce648fe9b735f5cb718f6c5d974d56d8309a3539c19dd7bb1c3df65823ca0fa6"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/asyncio.py",
+      "bytes": 7411,
+      "sha256": "cc391248ba0736d56f2ea7d51d90f0cc9cc55fd60f6b651778f98e31ca48610a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/auth.py",
+      "bytes": 7739,
+      "sha256": "2f3ff1bcb09e764e44c08f402ae937530e04c2030b0be6f74a93684f05c3599f"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/crypto.py",
+      "bytes": 3253,
+      "sha256": "e84b422d692c0747f91d2d3e88cd8344123812fe270f686649cee7dbf39c8206"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/limits.py",
+      "bytes": 740,
+      "sha256": "a8b0d25b844dfcc855d3b8ebac6b536188bd6f7a69b6bf0f40af39492bcd56a5"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/logging.py",
+      "bytes": 6748,
+      "sha256": "9b6b4e424eca470412b89dea8165024828952759f5a69fab6a200d10acf1810d"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/math.py",
+      "bytes": 849,
+      "sha256": "3ea79d4906e7e19f5e23d3db09e05cf0a250f6bc4e6ec8747c4d981d0b30bd6f"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/mpfuture.py",
+      "bytes": 14751,
+      "sha256": "d3bb82f0ff3070e66e519ec023dbaed64f745268bddc7884c2f21d03d18f392f"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/__init__.py",
+      "bytes": 1376,
+      "sha256": "e80b73f80c4a3f5f8892aecd5e56ab6d229b7086da977d35370e0e903777b803"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/codecs/__init__.py",
+      "bytes": 1687,
+      "sha256": "b9f1220991ba54adef4fffbf2d87b2b8e3f69da0bf61b459a5a5ebb62c1a6a5c"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/codecs/cid.py",
+      "bytes": 5258,
+      "sha256": "6afe099371717d878b480fc35609f51663329ab04482fab088fcd03451a164c5"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/codecs/domain.py",
+      "bytes": 1581,
+      "sha256": "66362fc301c2dcb9d6289abcc0584d0be63f3b2f9303679307c007e137b7f1aa"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/codecs/fspath.py",
+      "bytes": 1466,
+      "sha256": "7dc7b8e1f734c93784a823e63eedb67c39e655ce6d318a4f0b431796db9ee860"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/codecs/ip4.py",
+      "bytes": 1489,
+      "sha256": "bd7a957ab35413f43bebc612ae1d17eb321e9af9a3f980e84ef1fa5ed6f9bee1"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/codecs/ip6.py",
+      "bytes": 1490,
+      "sha256": "d6911d59f0067fb0529a4e6fdc40e8a7a60298418a7e7bc96f3c2ac501d01e98"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/codecs/onion.py",
+      "bytes": 2369,
+      "sha256": "2bd22ddaba8e7de8df0d5986aee86f1f1fb0105fd5c34822842f638838eeee09"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/codecs/onion3.py",
+      "bytes": 2375,
+      "sha256": "cb298fa0797acc9bd3bd3bfa2e64c68289a9f379dd006f4837ed93253ebc0636"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/codecs/uint16be.py",
+      "bytes": 1740,
+      "sha256": "cbfab61542205a1537b6744dc82e2e95945d640db9019333ffde2cb34370e4f1"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/codecs/utf8.py",
+      "bytes": 1683,
+      "sha256": "2c2b143204fc58b70d932dc0e9a0ca929c3281f804fcb27db65e83e2716ff42e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/exceptions.py",
+      "bytes": 3611,
+      "sha256": "ceb312edc36cb9653235d66f78e3dd87a1a78336359b30689522b40378fddd23"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/multiaddr.py",
+      "bytes": 8941,
+      "sha256": "dde19ccb1db2603e72f61a147b2c64237e4241086d3e61f655c00e6cb5a4c39d"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/protocols.py",
+      "bytes": 10666,
+      "sha256": "1df51dde0ef7d0cfbbc1da6d61065d773350770b93485f5b5b9d9f534c15ec7a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/multiaddr/transforms.py",
+      "bytes": 4265,
+      "sha256": "10e04bd3a0b3ff32759080f84d328c391159606836ba502ec3d397243acf8708"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/nested.py",
+      "bytes": 2618,
+      "sha256": "275bebdd9c88c85feb66beae2ec0080456f15792e96bff61376bd5d7b1066ef9"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/networking.py",
+      "bytes": 2726,
+      "sha256": "54013dcc7d56742fe65159320b2ada36e17d729595b9a6431ee49282951ebb7d"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/performance_ema.py",
+      "bytes": 3225,
+      "sha256": "f4997b6c8c424b3c29a68b0a797e339b60a3c80e66ee6c80409cc8acb3e03ad9"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/serializer.py",
+      "bytes": 2635,
+      "sha256": "7b22cfb275a5a9f23051e88d9c55b3a5948cc558609ade14555f649c30b3fe7e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/streaming.py",
+      "bytes": 1611,
+      "sha256": "3699620481edf2aae619c3266f329b45a1374f5b488a402fcb4f56eee303b45f"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/tensor_descr.py",
+      "bytes": 4657,
+      "sha256": "b957a131a5beefcfb79920a647bc53d0fd0fd3cace62f0ba991ef8b6369f690c"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/native/hivemind/utils/timed_storage.py",
+      "bytes": 5532,
+      "sha256": "846e6e6abfe6cdf23970a196e66163a1d6781923467860a947e4efbc9b28a733"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/analysis.json",
+      "bytes": 9224,
+      "sha256": "0da6ca524400f331bf96918a46dd176fda690a0fd88e4d23c48e873f92d1aeb5"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/controller.jsonl",
+      "bytes": 5265,
+      "sha256": "f4f1e54a5e386fda17f03a4b83781ce759ca611206a0a42ea989ad3c9c9815ce"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/dht_C0.jsonl",
+      "bytes": 185793,
+      "sha256": "2ac5162cb293d4cb523fcceee35e1deee757a7b3e7da2a482dd38929d06f357c"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/dht_C1.jsonl",
+      "bytes": 163671,
+      "sha256": "3368692cdd43b4291635a8abca8aa1fa6c68b420eea961a6912904217669c9bd"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/dht_C2.jsonl",
+      "bytes": 180009,
+      "sha256": "4f4b1896b6d9c52398684064d2ce764fd89b31f2a26b13399ed1cbf612b1ebd8"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/dht_C3.jsonl",
+      "bytes": 172643,
+      "sha256": "612cddd29fd468238f9236d8d9f349bbac52dc07e4e34ef56e4b5722e91d6d8e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/dht_R0.jsonl",
+      "bytes": 145535,
+      "sha256": "74296c1bc83a23ca8276f9f43ac516982f0ab905892da0331b96689f20f026b1"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/dht_R1.jsonl",
+      "bytes": 144242,
+      "sha256": "213e254c4cf172a4120700cdb4eca5e9f3ef352c4a1fb98a782ca64ed98082b3"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/dht_R2.jsonl",
+      "bytes": 158665,
+      "sha256": "f6e686da81c917bbd59c651472264521237f21efe5ee5e6de1193ec2d164e44e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/dht_R3.jsonl",
+      "bytes": 163993,
+      "sha256": "e472671e3e1c3638209d8f2652aab52ee43d6ba1e051bc60ddab0265f380e3b4"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/events_C0.jsonl",
+      "bytes": 16075,
+      "sha256": "5ec4ca46820a69f96c08c6f418372dec7c42370b3f70446080b211a2e5f8a00c"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/events_C1.jsonl",
+      "bytes": 15332,
+      "sha256": "219db4789b2d627b513e64da9706389257dff3f5e16e9d96cf53a3a06c19db7a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/events_C2.jsonl",
+      "bytes": 15985,
+      "sha256": "2362e58c2515e4b63eb26d7e2adfea7b676bd2480496a7820bf39a4f9e951333"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/events_C3.jsonl",
+      "bytes": 16087,
+      "sha256": "fcea316c6aebc15ed0d10afe0d9563d911e5a119080ab9746e5a202b165afa7e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/events_R0.jsonl",
+      "bytes": 22590,
+      "sha256": "a55bde11eacd4507e671ab8e822cd3bd491a642a4b1731c37d39b1b683ffbcc9"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/events_R1.jsonl",
+      "bytes": 22004,
+      "sha256": "ff95547fab3434be2af814c624368682c9319c4afe4b97e9b01230e9e0bc6fed"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/events_R2.jsonl",
+      "bytes": 22932,
+      "sha256": "4abf605b23f810a4db972e9ab609ca3e824b7ca6233bf959a9332a33f2edefcf"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt01/events_R3.jsonl",
+      "bytes": 27068,
+      "sha256": "9772ca0a60666709d00d1ddb65b6a405a0617e21033a1ea8694501927e2e9275"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/analysis.json",
+      "bytes": 2079,
+      "sha256": "a764afb811b99128cceb75025f2c0b89a62d509c098f5c200ad4be965806c390"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/controller.jsonl",
+      "bytes": 7210,
+      "sha256": "8e9f73ed6e8e4c72be9700c3d03d67b10b30312ccc24a27641fcdba5dfa7c392"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/dht_C0.jsonl",
+      "bytes": 481834,
+      "sha256": "3d0cbf3eb0eb668927349d35906611c131fe9db492ad5370976afbd830846c3b"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/dht_C1.jsonl",
+      "bytes": 767839,
+      "sha256": "e74dc6df60194d6a684add89b92572841f826d4151c1c436622a8009603f17e7"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/dht_C2.jsonl",
+      "bytes": 633764,
+      "sha256": "0e9786fa3432f9804f70b40e309513844f0c4add255650b693322c47c8e736b3"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/dht_C3.jsonl",
+      "bytes": 665789,
+      "sha256": "74f2072d17930f1edec005e48d34e0a201f1200d9d28211f5d4823f5826477a7"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/dht_R0.jsonl",
+      "bytes": 452833,
+      "sha256": "139ffcaf1999482ce6cee0119e53c085b410b8d564a4ee3ed1a1c9b626fe6a41"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/dht_R1.jsonl",
+      "bytes": 481816,
+      "sha256": "c53aed3277dd16186d45f8aaf045d1fc762fcb75497056d5859e8f616d320b39"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/dht_R2.jsonl",
+      "bytes": 649564,
+      "sha256": "6b55248fd5b156afaf451a44ee7581e3057bc37ceda53ce8193290a697c5f584"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/dht_R3.jsonl",
+      "bytes": 628875,
+      "sha256": "e5393b08bb8b242d292cb132360f4649bf9c347c04eda680b506f8984f08200e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/events_C0.jsonl",
+      "bytes": 62844,
+      "sha256": "31d7bb82fceddf567e053f733929c7603a2ee391c378ad9622a94c94a86cb8cb"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/events_C1.jsonl",
+      "bytes": 59170,
+      "sha256": "e97ba0debb2dda7db253357e24ad8a4790cf65eb6127750ad7223acfed37891e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/events_C2.jsonl",
+      "bytes": 62415,
+      "sha256": "995f5a3e292ed2000c8e34e24eed5c20f3b187c275943c7c549ed915a1f1a31c"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/events_C3.jsonl",
+      "bytes": 62844,
+      "sha256": "27196e0bf1e6799f1d60cfa029ab2411e57dc2a147112d6f736a20aae824bb5b"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/events_R0.jsonl",
+      "bytes": 117992,
+      "sha256": "2c82e2309ce3e94bb09a2a2a1f54ed5259c749a8166cc5381f269f9e98ad3cab"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/events_R1.jsonl",
+      "bytes": 94383,
+      "sha256": "b36d34c52e8e5bba4613b2c6dbbaa0fc5354d27597301396d107325f2bc0c3a5"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/events_R2.jsonl",
+      "bytes": 97136,
+      "sha256": "a00b1980380def67003b73ee1f35302c16cb50dbe068999f820fb30886df3b8e"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8101_attempt02/events_R3.jsonl",
+      "bytes": 94749,
+      "sha256": "655e9cd8f49297c47330c3e7a0e6dbcd2929025f69cfbe51bcffe93a69022fbe"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/analysis.json",
+      "bytes": 2089,
+      "sha256": "ef0aabffe54a2addc39b2eeec62a307be22384046d8d62ed0cd18f2851cc54ed"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/controller.jsonl",
+      "bytes": 7207,
+      "sha256": "56a331348a1e972345a047d39de68e1b63a1a64d5cba15981d78f457eaef890a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/dht_C0.jsonl",
+      "bytes": 638581,
+      "sha256": "d20aacc18bcc33a34807bc96a976406fd347c8eb0059d33b55d6c81942bd7d78"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/dht_C1.jsonl",
+      "bytes": 666154,
+      "sha256": "afcb5e3702a16c8c78a12606e6e38c977425ed5fd28eef63b8afaa16dcc016cb"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/dht_C2.jsonl",
+      "bytes": 491552,
+      "sha256": "4519f1521af24363e29c0f19018b07b8a925890d46480b46567d8d10f1682d87"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/dht_C3.jsonl",
+      "bytes": 597967,
+      "sha256": "1d68503e6bba08b1b6284b3b797c2812867469922b4a5995b083d66b0ee14407"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/dht_R0.jsonl",
+      "bytes": 533067,
+      "sha256": "12d8135dbcd2f87401e101322d7cc7320d25e07470a50a554fe1a9345ccaf24a"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/dht_R1.jsonl",
+      "bytes": 573342,
+      "sha256": "d96f53dc5dc63b5a1bf0ae7766aa0bab302a6f2234a49aef57b37a84bc4d8695"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/dht_R2.jsonl",
+      "bytes": 523874,
+      "sha256": "78c281b1c90cf536552572e26ea1bba2952bd0868e0acbfc2698c13843a1fd94"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/dht_R3.jsonl",
+      "bytes": 600133,
+      "sha256": "50ab4d5a0011f57d6a6727abd0667cdc1ad78d3a7716072de27d4f33b0b2c274"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/events_C0.jsonl",
+      "bytes": 59162,
+      "sha256": "7eb1db6539d16ac902df1e113e272d32ec5141bd51c8bc53e8cc8ab15083fd0b"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/events_C1.jsonl",
+      "bytes": 61838,
+      "sha256": "3aa001bd89b57a170661e33ff7db6ff5c7324dd0529045614c1da60cd2ccd68c"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/events_C2.jsonl",
+      "bytes": 59187,
+      "sha256": "ac824d568361d2073fe22849c8da1531520f3593aa0affb30b9b8c9d67ce5dd3"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/events_C3.jsonl",
+      "bytes": 62302,
+      "sha256": "7a2706bd2dcc2fc43c067fc3e9a65b259b892fcd01dacacb8c7c2b3355782b35"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/events_R0.jsonl",
+      "bytes": 94127,
+      "sha256": "58c6613a3789cd238de71d68830a77f4f898b618a27838d5546df5f2b6e2f47b"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/events_R1.jsonl",
+      "bytes": 96998,
+      "sha256": "d31e6e85a367db3251117a59a8a4c7a1632c905d84aa1925cdf697ec9119c5b1"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/events_R2.jsonl",
+      "bytes": 117718,
+      "sha256": "99f205415eeca14dbe1bcb437f44e9fdcf7b76d08a82c6b6337db3bfd02df749"
+    },
+    {
+      "path": "baseline8b_pilot_20261013_a/seed8102_attempt01/events_R3.jsonl",
+      "bytes": 94816,
+      "sha256": "cfa86881362f2865fb208c089228b2f98219ba77a6c28cdd9372be63b6096286"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/data.json",
+      "bytes": 1536268,
+      "sha256": "aaf3b8945f09fa1d0a3272111d78e5c4d9d7efe577c0980c24d9a7e4c89deae3"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/harness/analyze_8b_baseline.py",
+      "bytes": 33534,
+      "sha256": "b7c329263e30ae7b78fdcbc267bd4dbdd2d27e20d367890c4e0f7c90f52c45ca"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/harness/baseline_8b.py",
+      "bytes": 21867,
+      "sha256": "257b28aed1699eeceda29a692fa08c7f234e5b2a0e8426f79eee2d373e641010"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/harness/prepare_8b_runtime.py",
+      "bytes": 3635,
+      "sha256": "5bd5502ba6625eec355ae52dcaa2ff22ef2198fdbd4637d3c7e7ae459d9957ed"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/harness/run_8b_baseline.py",
+      "bytes": 20440,
+      "sha256": "1a0873d0ada2013583c7af4368eefadc5bc6c7eb414aa48cbd6d15947d5a558a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/harness/test_8b_analysis.py",
+      "bytes": 16945,
+      "sha256": "fb66bfd864f163779da6f7eee9f21a4b121b06d4ff513ac032aec2d4e8519fd1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/harness/test_8b_baseline.py",
+      "bytes": 7535,
+      "sha256": "d16c7019c37c1d790263772f1c64eb95467be92bfafeefb0d63100d714fc447c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/all_reduce/ar_runner.py",
+      "bytes": 27268,
+      "sha256": "89cda6d645397a1371fb7d4ea7a622ced3356246f4d872e58e0909f99031dc48"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/all_reduce/matchmaking.py",
+      "bytes": 11038,
+      "sha256": "62240180f8a72c853745e72cce622cf36a4666c9c2585e3e585a88cfb37db9a2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/all_reduce/partition.py",
+      "bytes": 18267,
+      "sha256": "3a93ce4b4bd34449c66c187d7c2748dbb65154ffcd17df9e7a5c28a245d4c4e2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/averaging/averager.py",
+      "bytes": 47804,
+      "sha256": "0da2521529cbf80172dab773ea79e46f50289ad6b9f01109071aeee7a0588180"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/averaging/compression.py",
+      "bytes": 6841,
+      "sha256": "1cec535f824ab56c3d9c8a64a0646b3125b2353d2fbb32ad16ea92b86901156b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/averaging/gradient_averager.py",
+      "bytes": 14037,
+      "sha256": "5634bb668c2e180f6d810d14ed74dbb7a7c9c278aa946b7d997c1e2082f02ea8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/averaging/gradient_averager_powersgd.py",
+      "bytes": 16471,
+      "sha256": "a9ae99ffd5dbb35c82e1412e5f4de248609df914c80a64900f9695c03ac14f59"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/averaging/gradient_averager_random_proj.py",
+      "bytes": 12318,
+      "sha256": "418f8901a2059c4c44c9dd3350d6a49fc634fb9bedbfe3907de7d7a445c87172"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/averaging/state_averager.py",
+      "bytes": 47976,
+      "sha256": "0b258e2a05f2c7e4f26c87a3b78029113b56d5518b8d3b384a978a93085ccffb"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/averaging/state_averager_sparta.py",
+      "bytes": 13049,
+      "sha256": "15e1c1f21e7ba5d937fbfa170d203132f0dd5c67fae89b2141ad782de5d3149d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/optimization/optimizer_async.py",
+      "bytes": 4123,
+      "sha256": "aee82ebfd5acacc9698cf0782940962a1cb67d59cdf8a95d05e68fc283770e5f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/optimization/optimizer_sparta_async_nstep.py",
+      "bytes": 21177,
+      "sha256": "638d29b889093988495d259bdb34c53596b37fe9bb9a510d96687edd8d442846"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/optimization/optimizer_sparta_sync.py",
+      "bytes": 11492,
+      "sha256": "59db7f5358712c6c5b28c788cbd465c9505695eaad454136747ecc5d1e38cc12"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/optimization/optimizer_sync.py",
+      "bytes": 57736,
+      "sha256": "c7a2d226c8a1a604eff03e0b89618794b77d1671eed9cf7f848fb5a8132fb6a6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/optimization/progress_tracker.py",
+      "bytes": 20180,
+      "sha256": "487eac2e71751de9224d05f3821ce047ecd9e8aa45ee4803bf74782ec43a3bd6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/server/bounded_task_pool.py",
+      "bytes": 5916,
+      "sha256": "53ff3d6071a046adae2c32af3f15df9ce67f934fc121af203f63ec4d3fbff764"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/server/dht_handler.py",
+      "bytes": 9699,
+      "sha256": "5c13cefe3f1c39d45eac8d85b1c318f3ca074f72ebd25b32ed2b9b57255fc31a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/server/module_collab.py",
+      "bytes": 9893,
+      "sha256": "76dadc72395712704a64aeda41db8651b96c652d5ada55561722aeb089df9133"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/server/runtime.py",
+      "bytes": 14741,
+      "sha256": "1dd5572d4d689b4b16196bec71919cf840308a892cf7cd85f0d65442606cc518"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/core/server/server.py",
+      "bytes": 34214,
+      "sha256": "54e303f280d040aa8d42ac8273f98fe0f3490b9b744834f2002869635377e571"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/logging/file_logger.py",
+      "bytes": 2910,
+      "sha256": "c3a6982c4d1f74ac25d0614616ab01bad8c92b310a42e7b1ee0e532b5722fcdf"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/logging/formatters.py",
+      "bytes": 2723,
+      "sha256": "2787e44b0f328fc57acf6a5129c9c816edaecd34c68fd02ca36a4c0734a4062a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/logging/log_monitor.py",
+      "bytes": 10234,
+      "sha256": "172e56e1cc46a89fd9568850bf7e619a623e4e1375d0a7393018215b946006aa"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/logging/logger.py",
+      "bytes": 4954,
+      "sha256": "c40d2d9e1b7de7041f7ec4cfbd5e82b70ff71d669860e7056046ced53a52fbae"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/models/arguments_registry.py",
+      "bytes": 5926,
+      "sha256": "10ff853a089eb180fcc6ec8e9f5fec0d9e739a1a7af144c1117d1b95ca7f009e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/models/base_arguments.py",
+      "bytes": 2910,
+      "sha256": "77f190436c602deb9b04e63e4629e6d2562ce499aeb6c08b28519a962792d8a4"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/models/expert_registry.py",
+      "bytes": 6646,
+      "sha256": "67e84846a0d9a9f358b7bea3f78a7b5474211f7a978d671a2a3c508816b2f770"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/models/llama/arguments.py",
+      "bytes": 10354,
+      "sha256": "c2033a67648f0035bdbf8a1913a6a98ffeea5c5ffe0e6d462148e35d9bb8c186"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/models/llama/components.py",
+      "bytes": 16622,
+      "sha256": "2bfbe44c57f4dea5ed1cb210991d783966f21963e5a8e78f2cb00b3fb14ff81a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/models/llama/experts.py",
+      "bytes": 11653,
+      "sha256": "db806c840ac543fb9056bca094abe6c28a16b63bd9a4dd003abaae2e61142b09"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/models/lr_schedule.py",
+      "bytes": 3576,
+      "sha256": "646e976e952cb556373d6c183fe5eab1906a597d9fd974253560de1301a6b26b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/models/reparam_llama/arguments.py",
+      "bytes": 6746,
+      "sha256": "2183d55d2be6e4b6a05d3a7507724e9a2069f95010c8474297c53e8e7a192d3b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/models/reparam_llama/components.py",
+      "bytes": 21031,
+      "sha256": "b54a2742d522fdd71acc82bda845e5b42ea6f840147a6bc4de04c932873858f8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/models/reparam_llama/experts.py",
+      "bytes": 11235,
+      "sha256": "fb33a04d1676b2d1daa529bc6972910cd9b7be4e102deeb997bf009fcce583b1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/models/simple_fc/arguments.py",
+      "bytes": 1878,
+      "sha256": "183330862b8e347bcbed1bf84b45a72c0457cf7f6e03b4062ad8a77a8c01dea6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/models/simple_fc/experts.py",
+      "bytes": 4252,
+      "sha256": "26d1add819a6ce547fd72f0921d137397c149bf2c53edaf03728be8ead79f16c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/monitor/dht_monitor.py",
+      "bytes": 6432,
+      "sha256": "b1391bce6930a11e5daf886d21d56ed53e23b3b4d86fe1d075c9db629b743ca6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/monitor/gpu_util_monitor.py",
+      "bytes": 2159,
+      "sha256": "29a66faac7fe89619f4769126e16a68a2b482460b700a6f66b2b657fcf0481b8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/monitor/mem_monitor.py",
+      "bytes": 3746,
+      "sha256": "2cfd4216f792162ad2362613ea8b4c5df472ee2d236f998022c9fb471ae07d6c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/monitor/network_throughput.py",
+      "bytes": 4666,
+      "sha256": "98f914716f97d3decaa2fb126c4a36b59ac7b34faa2a0ef49da3310a8a73e91f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/monitor/peer_visibility.py",
+      "bytes": 1613,
+      "sha256": "8d1ad5a44d2439c29e6a5fe92f9d3a27a3d2b03248ddff45597fae82738ed70a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/prometheus/monitor.py",
+      "bytes": 36180,
+      "sha256": "24e825785f8e536a66239b4789bb8aa6e4e8cfb8b8fc0bbb762cb550685f1ac6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/prometheus/roles.py",
+      "bytes": 8167,
+      "sha256": "ac532fbb8cd9d9246060957f1b126bb86fcb20b2fe87a375d76d53149ebdaa15"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/security/auth.py",
+      "bytes": 4027,
+      "sha256": "fc0a7b8921765b7d6392818ffbf9390ea9edaead43a05c9d019b2b1d423032c5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/security/authorizer.py",
+      "bytes": 8709,
+      "sha256": "6c9e48942f613a71551c3e093fefcbaee3c414c2cb4064b2cebf0d00c45b294d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/security/validator_builder.py",
+      "bytes": 1887,
+      "sha256": "a42ae337792cf7a02d1539e743a8d2a99e60b73a55fc81f10aae242ea7aef342"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/security/validator_schema.py",
+      "bytes": 1157,
+      "sha256": "c0f807d6ac672d71bf8da64df6d4f1100c26b9cd12618657fccc8390475d4651"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/types.py",
+      "bytes": 2006,
+      "sha256": "412d5d3ccb0e086c6a2f74a97d51088421a8dc5cc261e31c17018e8f27c2c0fa"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/utils/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/utils/cloud_detect.py",
+      "bytes": 7890,
+      "sha256": "ebbd74255653ba150e9fae4defb3392f37fcacaaa3ff14704c5144a80e093695"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/utils/common.py",
+      "bytes": 1820,
+      "sha256": "52d189a686b7c179bb16b185f4f861168b5f1a15f45fa9195f17b215c1d21049"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/utils/configs.py",
+      "bytes": 4535,
+      "sha256": "6966439a64bc43a92d29c377e4e479e18f702b05bf4842c3381887cf956942c0"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/utils/dht_partition.py",
+      "bytes": 3161,
+      "sha256": "69035cea5ebfb6f6f15449718add78d6d9188db96d8c385967d3b58ff10f712d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/utils/flops.py",
+      "bytes": 8193,
+      "sha256": "ac6a05dd47f3b958fdccd287db8e2ae74ea5e31067989e3b53717e925bcebda3"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/utils/node_info.py",
+      "bytes": 8097,
+      "sha256": "39406c1196f6561f6344c114be939615b6550763776f2512dee2d688bd3f6412"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/agora_server/utils/subspace.py",
+      "bytes": 2624,
+      "sha256": "0b2156bb16b02c7052039b469bc969c1a325e19e9214aadec697dbc9797d936e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/__init__.py",
+      "bytes": 484,
+      "sha256": "a57b741840c7d9f32dca86ca970e18d20d613d267be6a94763a108a47e67083e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/averaging/__init__.py",
+      "bytes": 62,
+      "sha256": "b3d71cd0c30fbb3d7d6916cdabf5eab6c55852ef2a9c4a48e78a6b37d0add3f8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/averaging/allreduce.py",
+      "bytes": 18412,
+      "sha256": "2a67006fc98b9683e357e4b8a805832c9bec1e81afbf1ffcc41862bb56caab05"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/averaging/averager.py",
+      "bytes": 39816,
+      "sha256": "932a59ddb7e0933de2dc674be8480ebcdc9eb9fd713f5040a33dd0e4cca59929"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/averaging/control.py",
+      "bytes": 6511,
+      "sha256": "894d5d5cb517485c3b3a69cdfe17b70c29a3d28949f679cbbab4ea9c2bdb2af1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/averaging/group_info.py",
+      "bytes": 671,
+      "sha256": "e2b8a97737fc6888f8f6e27b3d264fce1e10ef81fa2d8d930f7ca2c9620310f1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/averaging/key_manager.py",
+      "bytes": 5386,
+      "sha256": "99a24f165590493016d7731fe111be7d1497e3ce695de123a806ca9722cecdc9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/averaging/load_balancing.py",
+      "bytes": 5450,
+      "sha256": "e615b5b303add017001608f19c223288a276f87c8526c16aaba6be7c19a141fd"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/averaging/matchmaking.py",
+      "bytes": 28141,
+      "sha256": "b0b11578fb74f321c35afedc5b34c58cdf60ae318eb86970a93516c626613b9c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/averaging/partition.py",
+      "bytes": 14947,
+      "sha256": "8905c51826c26d18281121e760758f3a3bfc77feca351886eade13cfbe571e23"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/compression/__init__.py",
+      "bytes": 658,
+      "sha256": "0fc1840f0328c2c7240305aba5f555be3a1daa1dd0dfe8c74056478398bd0ebd"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/compression/adaptive.py",
+      "bytes": 2816,
+      "sha256": "fde9bc534e167a0e54c9b0c8a3567d6ba663a5b8ca091e2f136c7d7184cb1093"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/compression/base.py",
+      "bytes": 5254,
+      "sha256": "9ebe625a254144f71d64536cd3e163deb3916992b8d32e5dbc7b28618f591999"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/compression/floating.py",
+      "bytes": 4717,
+      "sha256": "abb788bf095293463992fbc7d478aebedcf2744662c6035d2a2eba7d010de0a2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/compression/quantization.py",
+      "bytes": 9299,
+      "sha256": "02c8dda6e476e7358c52703460ab29ea8ccfae9fbfb4e9dce67f7a2d3f44ea44"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/compression/serialization.py",
+      "bytes": 2846,
+      "sha256": "0c94266be46552b3c25664bb900e7e71a42518ec758e6786d28fd92fed38bcd2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/dht/__init__.py",
+      "bytes": 1057,
+      "sha256": "5d85f48447fcafe873697bfdbd6ef58a232320a12bf2c6ff9d22514eeb844efd"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/dht/crypto.py",
+      "bytes": 3595,
+      "sha256": "3b836042a52099ed12f6bece1016ab6b518fdb6fd86c47c0181ecc06ae5a9b2b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/dht/dht.py",
+      "bytes": 14997,
+      "sha256": "b41230a61e3d04e44e3ced567eb7beba738aad49cc7f2ceaf113dc4a4de2a8a5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/dht/node.py",
+      "bytes": 52072,
+      "sha256": "0957c32e123e13b0e2bd8f4a740032fd794a2fcd9b01e49cede6b013b58efadb"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/dht/protocol.py",
+      "bytes": 22566,
+      "sha256": "2fc86983799b090aa1637beee487115f1323d6d82f6a386a343d1ac8f1d69a6f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/dht/routing.py",
+      "bytes": 15499,
+      "sha256": "87764ac02dad37acf7a21caa2d4327b307435848898abb0c3e68db8d98053d5a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/dht/schema.py",
+      "bytes": 7290,
+      "sha256": "001a6b84fc4161e94f3e3f4985fb3df1be0d744b31d2c72d499e510f786bf4eb"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/dht/storage.py",
+      "bytes": 3757,
+      "sha256": "716d2792852c15de51a7171812175fc177637d97c46552c50c34cc1b8d1ca394"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/dht/traverse.py",
+      "bytes": 15344,
+      "sha256": "f3851f026b0e039bc3d4ecba53793013f4984c3e7a6614ab7b62e3913fb4b29c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/dht/validation.py",
+      "bytes": 4555,
+      "sha256": "cb90f1cb7303af43fbcee1ae3355f6f687fe95969daca9a33d2524c392171fed"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/hivemind_cli/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/hivemind_cli/config.yml",
+      "bytes": 181,
+      "sha256": "394a4764b63c6f9a1275bcc5fedb10bbe08f0de5514eee9bf28ad73e6295dd0a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/hivemind_cli/p2pd",
+      "bytes": 9522896,
+      "sha256": "42f8f48e62583b97cdba3c31439c08029fb2b9fc506b5bdd82c46b7cc1d279d8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/hivemind_cli/run_dht.py",
+      "bytes": 3753,
+      "sha256": "a706607135863ef622523c950e4271c77899e67ca42c0a60af827a80c9c522db"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/hivemind_cli/run_server.py",
+      "bytes": 6664,
+      "sha256": "51f6771afdc1002568dd0488cbf8c3fe702653fd2210725da9dd5e63b3bbda09"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/__init__.py",
+      "bytes": 254,
+      "sha256": "78dd2e1a41eb6f682fe575cb20fccb2802e39f019d5cff9582d31596fe511994"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/client/__init__.py",
+      "bytes": 183,
+      "sha256": "5bc5d2d70c4e14f81928031064f4e55263000f9ed6b16fc8d5c1ffea5fdce695"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/client/beam_search.py",
+      "bytes": 20910,
+      "sha256": "b32e462352db43c7d34df0eb356b325b71026f8dab59be769c45dd16a63fab3f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/client/expert.py",
+      "bytes": 9781,
+      "sha256": "d28fed3fceb273038db7fea5d4b54b36159dda796680c54204823f9802f93f84"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/client/moe.py",
+      "bytes": 21158,
+      "sha256": "c19d844600bcfc79846a09aa48c1b8badca27287bf5e1927f642df32ebcc5d5c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/client/remote_expert_worker.py",
+      "bytes": 1110,
+      "sha256": "5d22cd0f48842e7e6eec89ebcd90a7549fcef0b8dc01b01e7182dee296063d26"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/client/switch_moe.py",
+      "bytes": 10480,
+      "sha256": "eafb2563ab3c44e186d1e4abbd8e0270dc8cda8e6e6e85ec9886689f25080134"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/expert_uid.py",
+      "bytes": 1636,
+      "sha256": "732dee38973fe15b932bd62b0ebdd9aae60870f86cf5624ece5676250eeb6a71"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/__init__.py",
+      "bytes": 260,
+      "sha256": "249f47910df739ac125ff802a69912e5fedc4c5b3aa42218a2ebd2a222341bd5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/checkpoints.py",
+      "bytes": 2731,
+      "sha256": "8f50c31d5df6302b7a12f89a1c8fdde58d4063a417e5ebb6a59d1282cb120619"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/connection_handler.py",
+      "bytes": 7335,
+      "sha256": "1807480c5f4b48588603d82dc6296b6dbd3719086ede6d2579cc25d57df1954e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/dht_handler.py",
+      "bytes": 4945,
+      "sha256": "e14b13800e5c9569538bb5fa1dfde71da23ea13defa3076308a425d5b3c04b4e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/layers/__init__.py",
+      "bytes": 398,
+      "sha256": "77d9effb7bb8fc664106aa49fe398c2fe963d8432cd74edb6c4c9cac109da789"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/layers/common.py",
+      "bytes": 3283,
+      "sha256": "8148804d7c008b6f9346a1527f90932589319f4895947e89500ab8b16f73bb15"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/layers/custom_experts.py",
+      "bytes": 1182,
+      "sha256": "eb392da7a35d53de5156b81be90e016bb76fa185926b66b3fbea6c498146a7de"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/layers/dropout.py",
+      "bytes": 1732,
+      "sha256": "c273183b4fdcafbb6332ffcf132cf32a4f6f2231de0455b219f6d342248c70b0"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/layers/lr_schedule.py",
+      "bytes": 1209,
+      "sha256": "8cf74481508794390101884c0fc98c7a7ad90ffab3fa6be553a9c4f718c36ee9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/layers/optim.py",
+      "bytes": 1691,
+      "sha256": "644f0fac08200c79374db755c5c12ee87e1893499b26a39c3511d4bbfd0e36ef"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/module_backend.py",
+      "bytes": 9742,
+      "sha256": "ef78ac99ff8ad8d592329fc791a4b80b78702ac4ce323188125144138a4c8e3b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/runtime.py",
+      "bytes": 9266,
+      "sha256": "24dcf6f6aec6202a9baee9cec8e70a942ae108ea0ceb8b726a57e0c39b2a7be1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/server.py",
+      "bytes": 17790,
+      "sha256": "09c829116c2d7d2943279d017305676f03f2b382ecc719e3a748a35e95b0d67f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/moe/server/task_pool.py",
+      "bytes": 10941,
+      "sha256": "1e062b41da9c4a5ab65094fd86cf379bf0e139554eebf260798c43525b3c7a58"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/optim/__init__.py",
+      "bytes": 159,
+      "sha256": "b3e69082c98c46009b4d345d69f8c75757c90d1758595f934d89340c175b7f80"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/optim/grad_averager.py",
+      "bytes": 12669,
+      "sha256": "7b17f7d430640d50b6b07fae42fac4b7b1f862290ae8f170c819aa0efc84381f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/optim/grad_scaler.py",
+      "bytes": 6338,
+      "sha256": "d8ab8ee16b40df50c019c58a2f6001312d69b97d56ef92ea491b1abde627e74b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/optim/optimizer.py",
+      "bytes": 45409,
+      "sha256": "c6d1ca5bc4058950e3c6d9ddbd080c3e1c55f1f56186d5ff4ea9675ac3f37c2d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/optim/power_sgd_averager.py",
+      "bytes": 10944,
+      "sha256": "22ed03d24ee887fcd58f5dd2f34a7ac4e79e9df95ecf6e94e22d345e2ff5ddba"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/optim/progress_tracker.py",
+      "bytes": 17453,
+      "sha256": "adfcd7467c78d6662cc9bb5efaef583ce4811b6cc63709619ba47770f85604ec"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/optim/state_averager.py",
+      "bytes": 40622,
+      "sha256": "55c2b6ad4d40a4029108ba10e35fb59ca1232e3831f9d201bef05327d95fa5ab"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/optim/training_averager.py",
+      "bytes": 12902,
+      "sha256": "c6f406329010182e3524b3628085578062300784eb350a77da00d607ede51e6f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/p2p/__init__.py",
+      "bytes": 204,
+      "sha256": "c771603bbc195e587302228aecbc7b78b4efb95149e495bf7cbd82db0cddf059"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/p2p/p2p_daemon.py",
+      "bytes": 30555,
+      "sha256": "8304dd5481d0cfdeed0bb82c332d9bc862ef6b5095dc0c5d49c8923fd22204f1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/p2p/p2p_daemon_bindings/__init__.py",
+      "bytes": 160,
+      "sha256": "265c3f38300927f7fe8d987fca2d0491e29eeabb9c201f289a6f00a2e5210e1d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/p2p/p2p_daemon_bindings/control.py",
+      "bytes": 16878,
+      "sha256": "526366fef4a6a2c00ba5bceab3c3be7bbd1930e72a5bc53454cb9c12c4837255"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/p2p/p2p_daemon_bindings/datastructures.py",
+      "bytes": 4293,
+      "sha256": "20040a1ad5a7d564cd61e1a74d5458d2b4b10f710f10f0118a6eee7744ac5e30"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/p2p/p2p_daemon_bindings/p2pclient.py",
+      "bytes": 4428,
+      "sha256": "8070bb3ae6f68a2c5fc217a6dd637b86e6d2e4bad2e4dd46371d75ad893a7251"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/p2p/p2p_daemon_bindings/utils.py",
+      "bytes": 2325,
+      "sha256": "7849c0d632de455312d0e2e2f99791733778fffc05cfd90a20306c227f5c5ccc"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/p2p/servicer.py",
+      "bytes": 6393,
+      "sha256": "c03aec53776ff1347eefcbda3d320f4a9001567d52d90326e17102ffcf4cfe06"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/auth.proto",
+      "bytes": 441,
+      "sha256": "264db4796dff5dd5420edef9a1216c3f6da9ae5871f835a7626e4c1e7ef39ac1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/auth_pb2.py",
+      "bytes": 2021,
+      "sha256": "18b5fee9dbc8dd5fc958749ca1b7665fc14a86443f0a60162f6713e6e143942d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/averaging.proto",
+      "bytes": 3672,
+      "sha256": "96cd1a5d20786ba2e4f79447e14357a2f963b61392c9702547432f5e63c60da4"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/averaging_pb2.py",
+      "bytes": 3412,
+      "sha256": "f66cbb36528b77ac1f2c9ffbd9b255d8a7bac83c4634c33864a061c8a0a9cb91"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/crypto.proto",
+      "bytes": 407,
+      "sha256": "caa095904f7185c4cb81f4017e206ae8574a2698f99962cea92b13edbac2cb1b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/crypto_pb2.py",
+      "bytes": 1768,
+      "sha256": "43db3932910623c7e19ba43028d3d61d681576bc4bbd511c16d645af2db8d764"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/dht.proto",
+      "bytes": 3364,
+      "sha256": "e4c9bec0d7567b105ee7f45df9ac7a0d48d134fac6363fe01f5165030797dcfa"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/dht_pb2.py",
+      "bytes": 3715,
+      "sha256": "11e93e7c79cbb45518ba5410e1dc11239da28a06c794bcb23dc11bfbc967e3b3"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/p2pd.proto",
+      "bytes": 4607,
+      "sha256": "eea870ff58e0f125b644e4ce51828863ecb13be0ba65fe9325b73a8bad206f4f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/p2pd_pb2.py",
+      "bytes": 10776,
+      "sha256": "2cbd461404fce517ab8dc588521eb8cd8e18e3909ee21cddba1f841e345f940d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/runtime.proto",
+      "bytes": 599,
+      "sha256": "87e663fd1c2ae7eddaa85e09ed03b3573e9d13627648b2457208f0e3d344c145"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/runtime_pb2.py",
+      "bytes": 2564,
+      "sha256": "8183ebedeac438e8221465a91281ab38ffb3ae34210de1bdc0a7f584b02751f5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/test.proto",
+      "bytes": 114,
+      "sha256": "e96122ad920cabe1e43fe5b605692c7d36e255a691333bf27bf3c07edb4a4122"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/proto/test_pb2.py",
+      "bytes": 1402,
+      "sha256": "bc30922c9878b444376ddec1b10f8fcfb78518ab161331cf527baf05086efaa5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/__init__.py",
+      "bytes": 628,
+      "sha256": "ce648fe9b735f5cb718f6c5d974d56d8309a3539c19dd7bb1c3df65823ca0fa6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/asyncio.py",
+      "bytes": 7411,
+      "sha256": "cc391248ba0736d56f2ea7d51d90f0cc9cc55fd60f6b651778f98e31ca48610a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/auth.py",
+      "bytes": 7739,
+      "sha256": "2f3ff1bcb09e764e44c08f402ae937530e04c2030b0be6f74a93684f05c3599f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/crypto.py",
+      "bytes": 3253,
+      "sha256": "e84b422d692c0747f91d2d3e88cd8344123812fe270f686649cee7dbf39c8206"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/limits.py",
+      "bytes": 740,
+      "sha256": "a8b0d25b844dfcc855d3b8ebac6b536188bd6f7a69b6bf0f40af39492bcd56a5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/logging.py",
+      "bytes": 6748,
+      "sha256": "9b6b4e424eca470412b89dea8165024828952759f5a69fab6a200d10acf1810d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/math.py",
+      "bytes": 849,
+      "sha256": "3ea79d4906e7e19f5e23d3db09e05cf0a250f6bc4e6ec8747c4d981d0b30bd6f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/mpfuture.py",
+      "bytes": 14751,
+      "sha256": "d3bb82f0ff3070e66e519ec023dbaed64f745268bddc7884c2f21d03d18f392f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/__init__.py",
+      "bytes": 1376,
+      "sha256": "e80b73f80c4a3f5f8892aecd5e56ab6d229b7086da977d35370e0e903777b803"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/codecs/__init__.py",
+      "bytes": 1687,
+      "sha256": "b9f1220991ba54adef4fffbf2d87b2b8e3f69da0bf61b459a5a5ebb62c1a6a5c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/codecs/cid.py",
+      "bytes": 5258,
+      "sha256": "6afe099371717d878b480fc35609f51663329ab04482fab088fcd03451a164c5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/codecs/domain.py",
+      "bytes": 1581,
+      "sha256": "66362fc301c2dcb9d6289abcc0584d0be63f3b2f9303679307c007e137b7f1aa"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/codecs/fspath.py",
+      "bytes": 1466,
+      "sha256": "7dc7b8e1f734c93784a823e63eedb67c39e655ce6d318a4f0b431796db9ee860"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/codecs/ip4.py",
+      "bytes": 1489,
+      "sha256": "bd7a957ab35413f43bebc612ae1d17eb321e9af9a3f980e84ef1fa5ed6f9bee1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/codecs/ip6.py",
+      "bytes": 1490,
+      "sha256": "d6911d59f0067fb0529a4e6fdc40e8a7a60298418a7e7bc96f3c2ac501d01e98"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/codecs/onion.py",
+      "bytes": 2369,
+      "sha256": "2bd22ddaba8e7de8df0d5986aee86f1f1fb0105fd5c34822842f638838eeee09"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/codecs/onion3.py",
+      "bytes": 2375,
+      "sha256": "cb298fa0797acc9bd3bd3bfa2e64c68289a9f379dd006f4837ed93253ebc0636"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/codecs/uint16be.py",
+      "bytes": 1740,
+      "sha256": "cbfab61542205a1537b6744dc82e2e95945d640db9019333ffde2cb34370e4f1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/codecs/utf8.py",
+      "bytes": 1683,
+      "sha256": "2c2b143204fc58b70d932dc0e9a0ca929c3281f804fcb27db65e83e2716ff42e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/exceptions.py",
+      "bytes": 3611,
+      "sha256": "ceb312edc36cb9653235d66f78e3dd87a1a78336359b30689522b40378fddd23"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/multiaddr.py",
+      "bytes": 8941,
+      "sha256": "dde19ccb1db2603e72f61a147b2c64237e4241086d3e61f655c00e6cb5a4c39d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/protocols.py",
+      "bytes": 10666,
+      "sha256": "1df51dde0ef7d0cfbbc1da6d61065d773350770b93485f5b5b9d9f534c15ec7a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/multiaddr/transforms.py",
+      "bytes": 4265,
+      "sha256": "10e04bd3a0b3ff32759080f84d328c391159606836ba502ec3d397243acf8708"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/nested.py",
+      "bytes": 2618,
+      "sha256": "275bebdd9c88c85feb66beae2ec0080456f15792e96bff61376bd5d7b1066ef9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/networking.py",
+      "bytes": 2726,
+      "sha256": "54013dcc7d56742fe65159320b2ada36e17d729595b9a6431ee49282951ebb7d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/performance_ema.py",
+      "bytes": 3225,
+      "sha256": "f4997b6c8c424b3c29a68b0a797e339b60a3c80e66ee6c80409cc8acb3e03ad9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/serializer.py",
+      "bytes": 2635,
+      "sha256": "7b22cfb275a5a9f23051e88d9c55b3a5948cc558609ade14555f649c30b3fe7e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/streaming.py",
+      "bytes": 1611,
+      "sha256": "3699620481edf2aae619c3266f329b45a1374f5b488a402fcb4f56eee303b45f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/tensor_descr.py",
+      "bytes": 4657,
+      "sha256": "b957a131a5beefcfb79920a647bc53d0fd0fd3cace62f0ba991ef8b6369f690c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/native/hivemind/utils/timed_storage.py",
+      "bytes": 5532,
+      "sha256": "846e6e6abfe6cdf23970a196e66163a1d6781923467860a947e4efbc9b28a733"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/analysis.json",
+      "bytes": 1359,
+      "sha256": "d478827095b91219841917f50ce3298879db00ab2a37c055e63f58857fcdea1c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/controller.jsonl",
+      "bytes": 4953,
+      "sha256": "51c81fb9f292b6feb53c0918d1dd8c2809ab92bdce2a3c8752d15cdd02733a34"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/dht_C0.jsonl",
+      "bytes": 115240,
+      "sha256": "631bb4a0c4ad10010bb55f7827bdc8bdecf7cb4767f4a3dc5eae451c1be74928"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/dht_C1.jsonl",
+      "bytes": 92290,
+      "sha256": "5c613da1313ea8b1e1666471a0a735db4d9ac1417dc0900987bcb36b8e1a6e7c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/dht_C2.jsonl",
+      "bytes": 93288,
+      "sha256": "530445874060e48941f472ac4f864c3053ee1a7b9d586dbdb2d0f232149dc1a9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/dht_C3.jsonl",
+      "bytes": 112209,
+      "sha256": "b0f07ad539cf1407aa079d1af6fa96c400c334ddb535d77acb6ffd579bf04ca9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/dht_R0.jsonl",
+      "bytes": 110866,
+      "sha256": "756377dbc7134a38939bfa314aa0955d138822fe078e2c29012919e05f801f49"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/dht_R1.jsonl",
+      "bytes": 76363,
+      "sha256": "1440dcf9e8f1ec3d8427aa978d0945b16e09e03ed55514d0243a8669d3b68e5e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/dht_R2.jsonl",
+      "bytes": 93513,
+      "sha256": "92d8d7040bd74d9f32b361275b0a28d54497b79f656bf1a799198952ce8d50fb"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/dht_R3.jsonl",
+      "bytes": 91074,
+      "sha256": "aae8239249e0a7848ae27b118e625e7db1c62bc995974dfb40feda986e249d18"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/events_C0.jsonl",
+      "bytes": 5178,
+      "sha256": "8f3673422279b0ff22eb1f7015558005a70fcd1338478794cc73ba1917329476"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/events_C1.jsonl",
+      "bytes": 5173,
+      "sha256": "5ffb7d06782b216f06deb03ef182e3c66f09f689010be1fc4bab5dd9349e63bd"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/events_C2.jsonl",
+      "bytes": 5176,
+      "sha256": "4d32615c1e2ef0b9c0f393e9668ad2445a09eca65840707dbb8fd9a111ef8cc2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/events_C3.jsonl",
+      "bytes": 5183,
+      "sha256": "e89329f4ed7d8cfcbd0a11e407b701b55f5dda101b795a86c516220193799f10"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/events_R0.jsonl",
+      "bytes": 8948,
+      "sha256": "2f1a2ea6b0172cd1c081c6637c1b8fc89d56c6b7ddd586462707cc6cfea078de"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/events_R1.jsonl",
+      "bytes": 9065,
+      "sha256": "72317629a46fcadf08d07e7e7c0928905179c5682602108aa31e4aba72f6ae0a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/events_R2.jsonl",
+      "bytes": 12438,
+      "sha256": "f047905b4c57f4035781fbc5c30e6966dd17a2588cb34b2d2138f47a4bb86cef"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_a/seed8100_attempt01/events_R3.jsonl",
+      "bytes": 8946,
+      "sha256": "420b1873e61589806c17858051c1ec96cf933fcd8599f7a177910064076f903c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/data.json",
+      "bytes": 1536268,
+      "sha256": "aaf3b8945f09fa1d0a3272111d78e5c4d9d7efe577c0980c24d9a7e4c89deae3"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/harness/analyze_8b_baseline.py",
+      "bytes": 33534,
+      "sha256": "b7c329263e30ae7b78fdcbc267bd4dbdd2d27e20d367890c4e0f7c90f52c45ca"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/harness/baseline_8b.py",
+      "bytes": 22389,
+      "sha256": "8372db2dd19faa06a940ac0d7d0c474e87fd14e616e30a97bd8537cb8667208a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/harness/prepare_8b_runtime.py",
+      "bytes": 3635,
+      "sha256": "5bd5502ba6625eec355ae52dcaa2ff22ef2198fdbd4637d3c7e7ae459d9957ed"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/harness/run_8b_baseline.py",
+      "bytes": 20440,
+      "sha256": "1a0873d0ada2013583c7af4368eefadc5bc6c7eb414aa48cbd6d15947d5a558a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/harness/test_8b_analysis.py",
+      "bytes": 17003,
+      "sha256": "b49f5892c5d3195c6cff7fd784c370cf6c8ddf691acce1b16cb8dd23793b5bdd"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/harness/test_8b_baseline.py",
+      "bytes": 7535,
+      "sha256": "d16c7019c37c1d790263772f1c64eb95467be92bfafeefb0d63100d714fc447c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/all_reduce/ar_runner.py",
+      "bytes": 27268,
+      "sha256": "89cda6d645397a1371fb7d4ea7a622ced3356246f4d872e58e0909f99031dc48"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/all_reduce/matchmaking.py",
+      "bytes": 11038,
+      "sha256": "62240180f8a72c853745e72cce622cf36a4666c9c2585e3e585a88cfb37db9a2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/all_reduce/partition.py",
+      "bytes": 18267,
+      "sha256": "3a93ce4b4bd34449c66c187d7c2748dbb65154ffcd17df9e7a5c28a245d4c4e2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/averaging/averager.py",
+      "bytes": 47804,
+      "sha256": "0da2521529cbf80172dab773ea79e46f50289ad6b9f01109071aeee7a0588180"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/averaging/compression.py",
+      "bytes": 6841,
+      "sha256": "1cec535f824ab56c3d9c8a64a0646b3125b2353d2fbb32ad16ea92b86901156b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/averaging/gradient_averager.py",
+      "bytes": 14037,
+      "sha256": "5634bb668c2e180f6d810d14ed74dbb7a7c9c278aa946b7d997c1e2082f02ea8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/averaging/gradient_averager_powersgd.py",
+      "bytes": 16471,
+      "sha256": "a9ae99ffd5dbb35c82e1412e5f4de248609df914c80a64900f9695c03ac14f59"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/averaging/gradient_averager_random_proj.py",
+      "bytes": 12318,
+      "sha256": "418f8901a2059c4c44c9dd3350d6a49fc634fb9bedbfe3907de7d7a445c87172"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/averaging/state_averager.py",
+      "bytes": 47976,
+      "sha256": "0b258e2a05f2c7e4f26c87a3b78029113b56d5518b8d3b384a978a93085ccffb"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/averaging/state_averager_sparta.py",
+      "bytes": 13049,
+      "sha256": "15e1c1f21e7ba5d937fbfa170d203132f0dd5c67fae89b2141ad782de5d3149d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/optimization/optimizer_async.py",
+      "bytes": 4123,
+      "sha256": "aee82ebfd5acacc9698cf0782940962a1cb67d59cdf8a95d05e68fc283770e5f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/optimization/optimizer_sparta_async_nstep.py",
+      "bytes": 21177,
+      "sha256": "638d29b889093988495d259bdb34c53596b37fe9bb9a510d96687edd8d442846"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/optimization/optimizer_sparta_sync.py",
+      "bytes": 11492,
+      "sha256": "59db7f5358712c6c5b28c788cbd465c9505695eaad454136747ecc5d1e38cc12"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/optimization/optimizer_sync.py",
+      "bytes": 57736,
+      "sha256": "c7a2d226c8a1a604eff03e0b89618794b77d1671eed9cf7f848fb5a8132fb6a6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/optimization/progress_tracker.py",
+      "bytes": 20180,
+      "sha256": "487eac2e71751de9224d05f3821ce047ecd9e8aa45ee4803bf74782ec43a3bd6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/server/bounded_task_pool.py",
+      "bytes": 5916,
+      "sha256": "53ff3d6071a046adae2c32af3f15df9ce67f934fc121af203f63ec4d3fbff764"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/server/dht_handler.py",
+      "bytes": 9699,
+      "sha256": "5c13cefe3f1c39d45eac8d85b1c318f3ca074f72ebd25b32ed2b9b57255fc31a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/server/module_collab.py",
+      "bytes": 9893,
+      "sha256": "76dadc72395712704a64aeda41db8651b96c652d5ada55561722aeb089df9133"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/server/runtime.py",
+      "bytes": 14741,
+      "sha256": "1dd5572d4d689b4b16196bec71919cf840308a892cf7cd85f0d65442606cc518"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/core/server/server.py",
+      "bytes": 34214,
+      "sha256": "54e303f280d040aa8d42ac8273f98fe0f3490b9b744834f2002869635377e571"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/logging/file_logger.py",
+      "bytes": 2910,
+      "sha256": "c3a6982c4d1f74ac25d0614616ab01bad8c92b310a42e7b1ee0e532b5722fcdf"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/logging/formatters.py",
+      "bytes": 2723,
+      "sha256": "2787e44b0f328fc57acf6a5129c9c816edaecd34c68fd02ca36a4c0734a4062a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/logging/log_monitor.py",
+      "bytes": 10234,
+      "sha256": "172e56e1cc46a89fd9568850bf7e619a623e4e1375d0a7393018215b946006aa"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/logging/logger.py",
+      "bytes": 4954,
+      "sha256": "c40d2d9e1b7de7041f7ec4cfbd5e82b70ff71d669860e7056046ced53a52fbae"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/models/arguments_registry.py",
+      "bytes": 5926,
+      "sha256": "10ff853a089eb180fcc6ec8e9f5fec0d9e739a1a7af144c1117d1b95ca7f009e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/models/base_arguments.py",
+      "bytes": 2910,
+      "sha256": "77f190436c602deb9b04e63e4629e6d2562ce499aeb6c08b28519a962792d8a4"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/models/expert_registry.py",
+      "bytes": 6646,
+      "sha256": "67e84846a0d9a9f358b7bea3f78a7b5474211f7a978d671a2a3c508816b2f770"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/models/llama/arguments.py",
+      "bytes": 10354,
+      "sha256": "c2033a67648f0035bdbf8a1913a6a98ffeea5c5ffe0e6d462148e35d9bb8c186"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/models/llama/components.py",
+      "bytes": 16622,
+      "sha256": "2bfbe44c57f4dea5ed1cb210991d783966f21963e5a8e78f2cb00b3fb14ff81a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/models/llama/experts.py",
+      "bytes": 11653,
+      "sha256": "db806c840ac543fb9056bca094abe6c28a16b63bd9a4dd003abaae2e61142b09"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/models/lr_schedule.py",
+      "bytes": 3576,
+      "sha256": "646e976e952cb556373d6c183fe5eab1906a597d9fd974253560de1301a6b26b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/models/reparam_llama/arguments.py",
+      "bytes": 6746,
+      "sha256": "2183d55d2be6e4b6a05d3a7507724e9a2069f95010c8474297c53e8e7a192d3b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/models/reparam_llama/components.py",
+      "bytes": 21031,
+      "sha256": "b54a2742d522fdd71acc82bda845e5b42ea6f840147a6bc4de04c932873858f8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/models/reparam_llama/experts.py",
+      "bytes": 11235,
+      "sha256": "fb33a04d1676b2d1daa529bc6972910cd9b7be4e102deeb997bf009fcce583b1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/models/simple_fc/arguments.py",
+      "bytes": 1878,
+      "sha256": "183330862b8e347bcbed1bf84b45a72c0457cf7f6e03b4062ad8a77a8c01dea6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/models/simple_fc/experts.py",
+      "bytes": 4252,
+      "sha256": "26d1add819a6ce547fd72f0921d137397c149bf2c53edaf03728be8ead79f16c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/monitor/dht_monitor.py",
+      "bytes": 6432,
+      "sha256": "b1391bce6930a11e5daf886d21d56ed53e23b3b4d86fe1d075c9db629b743ca6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/monitor/gpu_util_monitor.py",
+      "bytes": 2159,
+      "sha256": "29a66faac7fe89619f4769126e16a68a2b482460b700a6f66b2b657fcf0481b8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/monitor/mem_monitor.py",
+      "bytes": 3746,
+      "sha256": "2cfd4216f792162ad2362613ea8b4c5df472ee2d236f998022c9fb471ae07d6c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/monitor/network_throughput.py",
+      "bytes": 4666,
+      "sha256": "98f914716f97d3decaa2fb126c4a36b59ac7b34faa2a0ef49da3310a8a73e91f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/monitor/peer_visibility.py",
+      "bytes": 1613,
+      "sha256": "8d1ad5a44d2439c29e6a5fe92f9d3a27a3d2b03248ddff45597fae82738ed70a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/prometheus/monitor.py",
+      "bytes": 36180,
+      "sha256": "24e825785f8e536a66239b4789bb8aa6e4e8cfb8b8fc0bbb762cb550685f1ac6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/prometheus/roles.py",
+      "bytes": 8167,
+      "sha256": "ac532fbb8cd9d9246060957f1b126bb86fcb20b2fe87a375d76d53149ebdaa15"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/security/auth.py",
+      "bytes": 4027,
+      "sha256": "fc0a7b8921765b7d6392818ffbf9390ea9edaead43a05c9d019b2b1d423032c5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/security/authorizer.py",
+      "bytes": 8709,
+      "sha256": "6c9e48942f613a71551c3e093fefcbaee3c414c2cb4064b2cebf0d00c45b294d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/security/validator_builder.py",
+      "bytes": 1887,
+      "sha256": "a42ae337792cf7a02d1539e743a8d2a99e60b73a55fc81f10aae242ea7aef342"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/security/validator_schema.py",
+      "bytes": 1157,
+      "sha256": "c0f807d6ac672d71bf8da64df6d4f1100c26b9cd12618657fccc8390475d4651"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/types.py",
+      "bytes": 2006,
+      "sha256": "412d5d3ccb0e086c6a2f74a97d51088421a8dc5cc261e31c17018e8f27c2c0fa"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/utils/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/utils/cloud_detect.py",
+      "bytes": 7890,
+      "sha256": "ebbd74255653ba150e9fae4defb3392f37fcacaaa3ff14704c5144a80e093695"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/utils/common.py",
+      "bytes": 1820,
+      "sha256": "52d189a686b7c179bb16b185f4f861168b5f1a15f45fa9195f17b215c1d21049"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/utils/configs.py",
+      "bytes": 4535,
+      "sha256": "6966439a64bc43a92d29c377e4e479e18f702b05bf4842c3381887cf956942c0"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/utils/dht_partition.py",
+      "bytes": 3161,
+      "sha256": "69035cea5ebfb6f6f15449718add78d6d9188db96d8c385967d3b58ff10f712d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/utils/flops.py",
+      "bytes": 8193,
+      "sha256": "ac6a05dd47f3b958fdccd287db8e2ae74ea5e31067989e3b53717e925bcebda3"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/utils/node_info.py",
+      "bytes": 8097,
+      "sha256": "39406c1196f6561f6344c114be939615b6550763776f2512dee2d688bd3f6412"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/agora_server/utils/subspace.py",
+      "bytes": 2624,
+      "sha256": "0b2156bb16b02c7052039b469bc969c1a325e19e9214aadec697dbc9797d936e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/__init__.py",
+      "bytes": 484,
+      "sha256": "a57b741840c7d9f32dca86ca970e18d20d613d267be6a94763a108a47e67083e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/averaging/__init__.py",
+      "bytes": 62,
+      "sha256": "b3d71cd0c30fbb3d7d6916cdabf5eab6c55852ef2a9c4a48e78a6b37d0add3f8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/averaging/allreduce.py",
+      "bytes": 18412,
+      "sha256": "2a67006fc98b9683e357e4b8a805832c9bec1e81afbf1ffcc41862bb56caab05"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/averaging/averager.py",
+      "bytes": 39816,
+      "sha256": "932a59ddb7e0933de2dc674be8480ebcdc9eb9fd713f5040a33dd0e4cca59929"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/averaging/control.py",
+      "bytes": 6511,
+      "sha256": "894d5d5cb517485c3b3a69cdfe17b70c29a3d28949f679cbbab4ea9c2bdb2af1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/averaging/group_info.py",
+      "bytes": 671,
+      "sha256": "e2b8a97737fc6888f8f6e27b3d264fce1e10ef81fa2d8d930f7ca2c9620310f1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/averaging/key_manager.py",
+      "bytes": 5386,
+      "sha256": "99a24f165590493016d7731fe111be7d1497e3ce695de123a806ca9722cecdc9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/averaging/load_balancing.py",
+      "bytes": 5450,
+      "sha256": "e615b5b303add017001608f19c223288a276f87c8526c16aaba6be7c19a141fd"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/averaging/matchmaking.py",
+      "bytes": 28141,
+      "sha256": "b0b11578fb74f321c35afedc5b34c58cdf60ae318eb86970a93516c626613b9c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/averaging/partition.py",
+      "bytes": 14947,
+      "sha256": "8905c51826c26d18281121e760758f3a3bfc77feca351886eade13cfbe571e23"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/compression/__init__.py",
+      "bytes": 658,
+      "sha256": "0fc1840f0328c2c7240305aba5f555be3a1daa1dd0dfe8c74056478398bd0ebd"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/compression/adaptive.py",
+      "bytes": 2816,
+      "sha256": "fde9bc534e167a0e54c9b0c8a3567d6ba663a5b8ca091e2f136c7d7184cb1093"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/compression/base.py",
+      "bytes": 5254,
+      "sha256": "9ebe625a254144f71d64536cd3e163deb3916992b8d32e5dbc7b28618f591999"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/compression/floating.py",
+      "bytes": 4717,
+      "sha256": "abb788bf095293463992fbc7d478aebedcf2744662c6035d2a2eba7d010de0a2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/compression/quantization.py",
+      "bytes": 9299,
+      "sha256": "02c8dda6e476e7358c52703460ab29ea8ccfae9fbfb4e9dce67f7a2d3f44ea44"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/compression/serialization.py",
+      "bytes": 2846,
+      "sha256": "0c94266be46552b3c25664bb900e7e71a42518ec758e6786d28fd92fed38bcd2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/dht/__init__.py",
+      "bytes": 1057,
+      "sha256": "5d85f48447fcafe873697bfdbd6ef58a232320a12bf2c6ff9d22514eeb844efd"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/dht/crypto.py",
+      "bytes": 3595,
+      "sha256": "3b836042a52099ed12f6bece1016ab6b518fdb6fd86c47c0181ecc06ae5a9b2b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/dht/dht.py",
+      "bytes": 14997,
+      "sha256": "b41230a61e3d04e44e3ced567eb7beba738aad49cc7f2ceaf113dc4a4de2a8a5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/dht/node.py",
+      "bytes": 52072,
+      "sha256": "0957c32e123e13b0e2bd8f4a740032fd794a2fcd9b01e49cede6b013b58efadb"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/dht/protocol.py",
+      "bytes": 22566,
+      "sha256": "2fc86983799b090aa1637beee487115f1323d6d82f6a386a343d1ac8f1d69a6f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/dht/routing.py",
+      "bytes": 15499,
+      "sha256": "87764ac02dad37acf7a21caa2d4327b307435848898abb0c3e68db8d98053d5a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/dht/schema.py",
+      "bytes": 7290,
+      "sha256": "001a6b84fc4161e94f3e3f4985fb3df1be0d744b31d2c72d499e510f786bf4eb"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/dht/storage.py",
+      "bytes": 3757,
+      "sha256": "716d2792852c15de51a7171812175fc177637d97c46552c50c34cc1b8d1ca394"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/dht/traverse.py",
+      "bytes": 15344,
+      "sha256": "f3851f026b0e039bc3d4ecba53793013f4984c3e7a6614ab7b62e3913fb4b29c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/dht/validation.py",
+      "bytes": 4555,
+      "sha256": "cb90f1cb7303af43fbcee1ae3355f6f687fe95969daca9a33d2524c392171fed"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/hivemind_cli/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/hivemind_cli/config.yml",
+      "bytes": 181,
+      "sha256": "394a4764b63c6f9a1275bcc5fedb10bbe08f0de5514eee9bf28ad73e6295dd0a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/hivemind_cli/p2pd",
+      "bytes": 9522896,
+      "sha256": "42f8f48e62583b97cdba3c31439c08029fb2b9fc506b5bdd82c46b7cc1d279d8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/hivemind_cli/run_dht.py",
+      "bytes": 3753,
+      "sha256": "a706607135863ef622523c950e4271c77899e67ca42c0a60af827a80c9c522db"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/hivemind_cli/run_server.py",
+      "bytes": 6664,
+      "sha256": "51f6771afdc1002568dd0488cbf8c3fe702653fd2210725da9dd5e63b3bbda09"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/__init__.py",
+      "bytes": 254,
+      "sha256": "78dd2e1a41eb6f682fe575cb20fccb2802e39f019d5cff9582d31596fe511994"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/client/__init__.py",
+      "bytes": 183,
+      "sha256": "5bc5d2d70c4e14f81928031064f4e55263000f9ed6b16fc8d5c1ffea5fdce695"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/client/beam_search.py",
+      "bytes": 20910,
+      "sha256": "b32e462352db43c7d34df0eb356b325b71026f8dab59be769c45dd16a63fab3f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/client/expert.py",
+      "bytes": 9781,
+      "sha256": "d28fed3fceb273038db7fea5d4b54b36159dda796680c54204823f9802f93f84"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/client/moe.py",
+      "bytes": 21158,
+      "sha256": "c19d844600bcfc79846a09aa48c1b8badca27287bf5e1927f642df32ebcc5d5c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/client/remote_expert_worker.py",
+      "bytes": 1110,
+      "sha256": "5d22cd0f48842e7e6eec89ebcd90a7549fcef0b8dc01b01e7182dee296063d26"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/client/switch_moe.py",
+      "bytes": 10480,
+      "sha256": "eafb2563ab3c44e186d1e4abbd8e0270dc8cda8e6e6e85ec9886689f25080134"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/expert_uid.py",
+      "bytes": 1636,
+      "sha256": "732dee38973fe15b932bd62b0ebdd9aae60870f86cf5624ece5676250eeb6a71"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/__init__.py",
+      "bytes": 260,
+      "sha256": "249f47910df739ac125ff802a69912e5fedc4c5b3aa42218a2ebd2a222341bd5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/checkpoints.py",
+      "bytes": 2731,
+      "sha256": "8f50c31d5df6302b7a12f89a1c8fdde58d4063a417e5ebb6a59d1282cb120619"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/connection_handler.py",
+      "bytes": 7335,
+      "sha256": "1807480c5f4b48588603d82dc6296b6dbd3719086ede6d2579cc25d57df1954e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/dht_handler.py",
+      "bytes": 4945,
+      "sha256": "e14b13800e5c9569538bb5fa1dfde71da23ea13defa3076308a425d5b3c04b4e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/layers/__init__.py",
+      "bytes": 398,
+      "sha256": "77d9effb7bb8fc664106aa49fe398c2fe963d8432cd74edb6c4c9cac109da789"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/layers/common.py",
+      "bytes": 3283,
+      "sha256": "8148804d7c008b6f9346a1527f90932589319f4895947e89500ab8b16f73bb15"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/layers/custom_experts.py",
+      "bytes": 1182,
+      "sha256": "eb392da7a35d53de5156b81be90e016bb76fa185926b66b3fbea6c498146a7de"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/layers/dropout.py",
+      "bytes": 1732,
+      "sha256": "c273183b4fdcafbb6332ffcf132cf32a4f6f2231de0455b219f6d342248c70b0"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/layers/lr_schedule.py",
+      "bytes": 1209,
+      "sha256": "8cf74481508794390101884c0fc98c7a7ad90ffab3fa6be553a9c4f718c36ee9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/layers/optim.py",
+      "bytes": 1691,
+      "sha256": "644f0fac08200c79374db755c5c12ee87e1893499b26a39c3511d4bbfd0e36ef"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/module_backend.py",
+      "bytes": 9742,
+      "sha256": "ef78ac99ff8ad8d592329fc791a4b80b78702ac4ce323188125144138a4c8e3b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/runtime.py",
+      "bytes": 9266,
+      "sha256": "24dcf6f6aec6202a9baee9cec8e70a942ae108ea0ceb8b726a57e0c39b2a7be1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/server.py",
+      "bytes": 17790,
+      "sha256": "09c829116c2d7d2943279d017305676f03f2b382ecc719e3a748a35e95b0d67f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/moe/server/task_pool.py",
+      "bytes": 10941,
+      "sha256": "1e062b41da9c4a5ab65094fd86cf379bf0e139554eebf260798c43525b3c7a58"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/optim/__init__.py",
+      "bytes": 159,
+      "sha256": "b3e69082c98c46009b4d345d69f8c75757c90d1758595f934d89340c175b7f80"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/optim/grad_averager.py",
+      "bytes": 12669,
+      "sha256": "7b17f7d430640d50b6b07fae42fac4b7b1f862290ae8f170c819aa0efc84381f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/optim/grad_scaler.py",
+      "bytes": 6338,
+      "sha256": "d8ab8ee16b40df50c019c58a2f6001312d69b97d56ef92ea491b1abde627e74b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/optim/optimizer.py",
+      "bytes": 45409,
+      "sha256": "c6d1ca5bc4058950e3c6d9ddbd080c3e1c55f1f56186d5ff4ea9675ac3f37c2d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/optim/power_sgd_averager.py",
+      "bytes": 10944,
+      "sha256": "22ed03d24ee887fcd58f5dd2f34a7ac4e79e9df95ecf6e94e22d345e2ff5ddba"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/optim/progress_tracker.py",
+      "bytes": 17453,
+      "sha256": "adfcd7467c78d6662cc9bb5efaef583ce4811b6cc63709619ba47770f85604ec"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/optim/state_averager.py",
+      "bytes": 40622,
+      "sha256": "55c2b6ad4d40a4029108ba10e35fb59ca1232e3831f9d201bef05327d95fa5ab"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/optim/training_averager.py",
+      "bytes": 12902,
+      "sha256": "c6f406329010182e3524b3628085578062300784eb350a77da00d607ede51e6f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/p2p/__init__.py",
+      "bytes": 204,
+      "sha256": "c771603bbc195e587302228aecbc7b78b4efb95149e495bf7cbd82db0cddf059"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/p2p/p2p_daemon.py",
+      "bytes": 30555,
+      "sha256": "8304dd5481d0cfdeed0bb82c332d9bc862ef6b5095dc0c5d49c8923fd22204f1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/p2p/p2p_daemon_bindings/__init__.py",
+      "bytes": 160,
+      "sha256": "265c3f38300927f7fe8d987fca2d0491e29eeabb9c201f289a6f00a2e5210e1d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/p2p/p2p_daemon_bindings/control.py",
+      "bytes": 16878,
+      "sha256": "526366fef4a6a2c00ba5bceab3c3be7bbd1930e72a5bc53454cb9c12c4837255"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/p2p/p2p_daemon_bindings/datastructures.py",
+      "bytes": 4293,
+      "sha256": "20040a1ad5a7d564cd61e1a74d5458d2b4b10f710f10f0118a6eee7744ac5e30"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/p2p/p2p_daemon_bindings/p2pclient.py",
+      "bytes": 4428,
+      "sha256": "8070bb3ae6f68a2c5fc217a6dd637b86e6d2e4bad2e4dd46371d75ad893a7251"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/p2p/p2p_daemon_bindings/utils.py",
+      "bytes": 2325,
+      "sha256": "7849c0d632de455312d0e2e2f99791733778fffc05cfd90a20306c227f5c5ccc"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/p2p/servicer.py",
+      "bytes": 6393,
+      "sha256": "c03aec53776ff1347eefcbda3d320f4a9001567d52d90326e17102ffcf4cfe06"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/auth.proto",
+      "bytes": 441,
+      "sha256": "264db4796dff5dd5420edef9a1216c3f6da9ae5871f835a7626e4c1e7ef39ac1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/auth_pb2.py",
+      "bytes": 2021,
+      "sha256": "18b5fee9dbc8dd5fc958749ca1b7665fc14a86443f0a60162f6713e6e143942d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/averaging.proto",
+      "bytes": 3672,
+      "sha256": "96cd1a5d20786ba2e4f79447e14357a2f963b61392c9702547432f5e63c60da4"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/averaging_pb2.py",
+      "bytes": 3412,
+      "sha256": "f66cbb36528b77ac1f2c9ffbd9b255d8a7bac83c4634c33864a061c8a0a9cb91"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/crypto.proto",
+      "bytes": 407,
+      "sha256": "caa095904f7185c4cb81f4017e206ae8574a2698f99962cea92b13edbac2cb1b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/crypto_pb2.py",
+      "bytes": 1768,
+      "sha256": "43db3932910623c7e19ba43028d3d61d681576bc4bbd511c16d645af2db8d764"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/dht.proto",
+      "bytes": 3364,
+      "sha256": "e4c9bec0d7567b105ee7f45df9ac7a0d48d134fac6363fe01f5165030797dcfa"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/dht_pb2.py",
+      "bytes": 3715,
+      "sha256": "11e93e7c79cbb45518ba5410e1dc11239da28a06c794bcb23dc11bfbc967e3b3"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/p2pd.proto",
+      "bytes": 4607,
+      "sha256": "eea870ff58e0f125b644e4ce51828863ecb13be0ba65fe9325b73a8bad206f4f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/p2pd_pb2.py",
+      "bytes": 10776,
+      "sha256": "2cbd461404fce517ab8dc588521eb8cd8e18e3909ee21cddba1f841e345f940d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/runtime.proto",
+      "bytes": 599,
+      "sha256": "87e663fd1c2ae7eddaa85e09ed03b3573e9d13627648b2457208f0e3d344c145"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/runtime_pb2.py",
+      "bytes": 2564,
+      "sha256": "8183ebedeac438e8221465a91281ab38ffb3ae34210de1bdc0a7f584b02751f5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/test.proto",
+      "bytes": 114,
+      "sha256": "e96122ad920cabe1e43fe5b605692c7d36e255a691333bf27bf3c07edb4a4122"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/proto/test_pb2.py",
+      "bytes": 1402,
+      "sha256": "bc30922c9878b444376ddec1b10f8fcfb78518ab161331cf527baf05086efaa5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/__init__.py",
+      "bytes": 628,
+      "sha256": "ce648fe9b735f5cb718f6c5d974d56d8309a3539c19dd7bb1c3df65823ca0fa6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/asyncio.py",
+      "bytes": 7411,
+      "sha256": "cc391248ba0736d56f2ea7d51d90f0cc9cc55fd60f6b651778f98e31ca48610a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/auth.py",
+      "bytes": 7739,
+      "sha256": "2f3ff1bcb09e764e44c08f402ae937530e04c2030b0be6f74a93684f05c3599f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/crypto.py",
+      "bytes": 3253,
+      "sha256": "e84b422d692c0747f91d2d3e88cd8344123812fe270f686649cee7dbf39c8206"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/limits.py",
+      "bytes": 740,
+      "sha256": "a8b0d25b844dfcc855d3b8ebac6b536188bd6f7a69b6bf0f40af39492bcd56a5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/logging.py",
+      "bytes": 6748,
+      "sha256": "9b6b4e424eca470412b89dea8165024828952759f5a69fab6a200d10acf1810d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/math.py",
+      "bytes": 849,
+      "sha256": "3ea79d4906e7e19f5e23d3db09e05cf0a250f6bc4e6ec8747c4d981d0b30bd6f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/mpfuture.py",
+      "bytes": 14751,
+      "sha256": "d3bb82f0ff3070e66e519ec023dbaed64f745268bddc7884c2f21d03d18f392f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/__init__.py",
+      "bytes": 1376,
+      "sha256": "e80b73f80c4a3f5f8892aecd5e56ab6d229b7086da977d35370e0e903777b803"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/codecs/__init__.py",
+      "bytes": 1687,
+      "sha256": "b9f1220991ba54adef4fffbf2d87b2b8e3f69da0bf61b459a5a5ebb62c1a6a5c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/codecs/cid.py",
+      "bytes": 5258,
+      "sha256": "6afe099371717d878b480fc35609f51663329ab04482fab088fcd03451a164c5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/codecs/domain.py",
+      "bytes": 1581,
+      "sha256": "66362fc301c2dcb9d6289abcc0584d0be63f3b2f9303679307c007e137b7f1aa"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/codecs/fspath.py",
+      "bytes": 1466,
+      "sha256": "7dc7b8e1f734c93784a823e63eedb67c39e655ce6d318a4f0b431796db9ee860"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/codecs/ip4.py",
+      "bytes": 1489,
+      "sha256": "bd7a957ab35413f43bebc612ae1d17eb321e9af9a3f980e84ef1fa5ed6f9bee1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/codecs/ip6.py",
+      "bytes": 1490,
+      "sha256": "d6911d59f0067fb0529a4e6fdc40e8a7a60298418a7e7bc96f3c2ac501d01e98"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/codecs/onion.py",
+      "bytes": 2369,
+      "sha256": "2bd22ddaba8e7de8df0d5986aee86f1f1fb0105fd5c34822842f638838eeee09"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/codecs/onion3.py",
+      "bytes": 2375,
+      "sha256": "cb298fa0797acc9bd3bd3bfa2e64c68289a9f379dd006f4837ed93253ebc0636"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/codecs/uint16be.py",
+      "bytes": 1740,
+      "sha256": "cbfab61542205a1537b6744dc82e2e95945d640db9019333ffde2cb34370e4f1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/codecs/utf8.py",
+      "bytes": 1683,
+      "sha256": "2c2b143204fc58b70d932dc0e9a0ca929c3281f804fcb27db65e83e2716ff42e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/exceptions.py",
+      "bytes": 3611,
+      "sha256": "ceb312edc36cb9653235d66f78e3dd87a1a78336359b30689522b40378fddd23"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/multiaddr.py",
+      "bytes": 8941,
+      "sha256": "dde19ccb1db2603e72f61a147b2c64237e4241086d3e61f655c00e6cb5a4c39d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/protocols.py",
+      "bytes": 10666,
+      "sha256": "1df51dde0ef7d0cfbbc1da6d61065d773350770b93485f5b5b9d9f534c15ec7a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/multiaddr/transforms.py",
+      "bytes": 4265,
+      "sha256": "10e04bd3a0b3ff32759080f84d328c391159606836ba502ec3d397243acf8708"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/nested.py",
+      "bytes": 2618,
+      "sha256": "275bebdd9c88c85feb66beae2ec0080456f15792e96bff61376bd5d7b1066ef9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/networking.py",
+      "bytes": 2726,
+      "sha256": "54013dcc7d56742fe65159320b2ada36e17d729595b9a6431ee49282951ebb7d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/performance_ema.py",
+      "bytes": 3225,
+      "sha256": "f4997b6c8c424b3c29a68b0a797e339b60a3c80e66ee6c80409cc8acb3e03ad9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/serializer.py",
+      "bytes": 2635,
+      "sha256": "7b22cfb275a5a9f23051e88d9c55b3a5948cc558609ade14555f649c30b3fe7e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/streaming.py",
+      "bytes": 1611,
+      "sha256": "3699620481edf2aae619c3266f329b45a1374f5b488a402fcb4f56eee303b45f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/tensor_descr.py",
+      "bytes": 4657,
+      "sha256": "b957a131a5beefcfb79920a647bc53d0fd0fd3cace62f0ba991ef8b6369f690c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/native/hivemind/utils/timed_storage.py",
+      "bytes": 5532,
+      "sha256": "846e6e6abfe6cdf23970a196e66163a1d6781923467860a947e4efbc9b28a733"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/analysis.json",
+      "bytes": 1104,
+      "sha256": "2f05f50909aafc0c0e5dbb4b0a96aa84d7818ad5426898203f92b1490958a60a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/controller.jsonl",
+      "bytes": 4956,
+      "sha256": "1be762a62d9fb76772d5dedcca52aae986dbed7b1081ffc52f7e5e96031d3c24"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/dht_C0.jsonl",
+      "bytes": 96470,
+      "sha256": "49e185660f767972dbee7f6e4661c154fe1ccf2ff7657f00429e254da007a492"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/dht_C1.jsonl",
+      "bytes": 99885,
+      "sha256": "ce54e05a9ac10b1106fdf4ddf98ceec270dc5967b6d921d8f45b5ef9b981dd17"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/dht_C2.jsonl",
+      "bytes": 113824,
+      "sha256": "7eff2eb10619a820a081894a75ac8ce2640017f52d3ea64458591c90a0e464ec"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/dht_C3.jsonl",
+      "bytes": 102613,
+      "sha256": "aec878977baa040b6608af23fd7024ee3bc13696f6bb6cd692b15c650e7bdce6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/dht_R0.jsonl",
+      "bytes": 109482,
+      "sha256": "c7c38b2b0a10318be3cbda85a61d89003c400d05f7ae9a468a2f64765339776c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/dht_R1.jsonl",
+      "bytes": 112725,
+      "sha256": "e563f55c5586a82b091b45566c174cf2a20d31810499024708c4ba526aa17a4b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/dht_R2.jsonl",
+      "bytes": 120973,
+      "sha256": "e7160eba5bb1614649c6a301425764525188db1ede81a75ef85336e18b82651d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/dht_R3.jsonl",
+      "bytes": 100766,
+      "sha256": "93c5bb5fa72ed8c862a441ec1a67fa84b02803258a2bc1b07438b638b3a19166"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/events_C0.jsonl",
+      "bytes": 5365,
+      "sha256": "bf04b4cdd39913cd4f39ae68959461d0b225fb1e3837266a3f8197f461e67344"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/events_C1.jsonl",
+      "bytes": 6086,
+      "sha256": "7a5ebaf6d6413e9cd53e7abcde1935e20e85e750c465cbe312688b7c77a61156"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/events_C2.jsonl",
+      "bytes": 5360,
+      "sha256": "6198a80e9f62a52d0d1f9fcdd9e96e3e0298b9314fb12c30f455e8143e4e5aec"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/events_C3.jsonl",
+      "bytes": 6095,
+      "sha256": "82b97e3bd410fe749d7b19fc47d4340e0d5dec3f0a1af119b9e0e404a257b08f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/events_R0.jsonl",
+      "bytes": 12780,
+      "sha256": "0f98a72cdcfd818f48ad0b4c28bf150e5689e3949a22635f584a5e2094e7cb05"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/events_R1.jsonl",
+      "bytes": 12578,
+      "sha256": "d21d98716bc2ecc51ce059f3888430a213520c40ef12753a61785b9086a04ac2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/events_R2.jsonl",
+      "bytes": 16242,
+      "sha256": "7943f00c24a1cd8503fe293c29d02d1a86e437cf5099226f475f1478318ff97c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_b/seed8100_attempt01/events_R3.jsonl",
+      "bytes": 11844,
+      "sha256": "475c9828a37d4e07a59120ee427e1abd2d938032020d6ecae14363727552409d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/data.json",
+      "bytes": 1536268,
+      "sha256": "aaf3b8945f09fa1d0a3272111d78e5c4d9d7efe577c0980c24d9a7e4c89deae3"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/harness/analyze_8b_baseline.py",
+      "bytes": 33534,
+      "sha256": "b7c329263e30ae7b78fdcbc267bd4dbdd2d27e20d367890c4e0f7c90f52c45ca"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/harness/baseline_8b.py",
+      "bytes": 22389,
+      "sha256": "8372db2dd19faa06a940ac0d7d0c474e87fd14e616e30a97bd8537cb8667208a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/harness/prepare_8b_runtime.py",
+      "bytes": 3635,
+      "sha256": "5bd5502ba6625eec355ae52dcaa2ff22ef2198fdbd4637d3c7e7ae459d9957ed"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/harness/run_8b_baseline.py",
+      "bytes": 20440,
+      "sha256": "1a0873d0ada2013583c7af4368eefadc5bc6c7eb414aa48cbd6d15947d5a558a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/harness/test_8b_analysis.py",
+      "bytes": 17003,
+      "sha256": "b49f5892c5d3195c6cff7fd784c370cf6c8ddf691acce1b16cb8dd23793b5bdd"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/harness/test_8b_baseline.py",
+      "bytes": 7535,
+      "sha256": "d16c7019c37c1d790263772f1c64eb95467be92bfafeefb0d63100d714fc447c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/all_reduce/ar_runner.py",
+      "bytes": 27268,
+      "sha256": "89cda6d645397a1371fb7d4ea7a622ced3356246f4d872e58e0909f99031dc48"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/all_reduce/matchmaking.py",
+      "bytes": 11038,
+      "sha256": "62240180f8a72c853745e72cce622cf36a4666c9c2585e3e585a88cfb37db9a2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/all_reduce/partition.py",
+      "bytes": 18267,
+      "sha256": "3a93ce4b4bd34449c66c187d7c2748dbb65154ffcd17df9e7a5c28a245d4c4e2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/averaging/averager.py",
+      "bytes": 47804,
+      "sha256": "0da2521529cbf80172dab773ea79e46f50289ad6b9f01109071aeee7a0588180"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/averaging/compression.py",
+      "bytes": 6841,
+      "sha256": "1cec535f824ab56c3d9c8a64a0646b3125b2353d2fbb32ad16ea92b86901156b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/averaging/gradient_averager.py",
+      "bytes": 14037,
+      "sha256": "5634bb668c2e180f6d810d14ed74dbb7a7c9c278aa946b7d997c1e2082f02ea8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/averaging/gradient_averager_powersgd.py",
+      "bytes": 16471,
+      "sha256": "a9ae99ffd5dbb35c82e1412e5f4de248609df914c80a64900f9695c03ac14f59"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/averaging/gradient_averager_random_proj.py",
+      "bytes": 12318,
+      "sha256": "418f8901a2059c4c44c9dd3350d6a49fc634fb9bedbfe3907de7d7a445c87172"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/averaging/state_averager.py",
+      "bytes": 47976,
+      "sha256": "0b258e2a05f2c7e4f26c87a3b78029113b56d5518b8d3b384a978a93085ccffb"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/averaging/state_averager_sparta.py",
+      "bytes": 13049,
+      "sha256": "15e1c1f21e7ba5d937fbfa170d203132f0dd5c67fae89b2141ad782de5d3149d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/optimization/optimizer_async.py",
+      "bytes": 4123,
+      "sha256": "aee82ebfd5acacc9698cf0782940962a1cb67d59cdf8a95d05e68fc283770e5f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/optimization/optimizer_sparta_async_nstep.py",
+      "bytes": 21177,
+      "sha256": "638d29b889093988495d259bdb34c53596b37fe9bb9a510d96687edd8d442846"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/optimization/optimizer_sparta_sync.py",
+      "bytes": 11492,
+      "sha256": "59db7f5358712c6c5b28c788cbd465c9505695eaad454136747ecc5d1e38cc12"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/optimization/optimizer_sync.py",
+      "bytes": 57736,
+      "sha256": "c7a2d226c8a1a604eff03e0b89618794b77d1671eed9cf7f848fb5a8132fb6a6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/optimization/progress_tracker.py",
+      "bytes": 20180,
+      "sha256": "487eac2e71751de9224d05f3821ce047ecd9e8aa45ee4803bf74782ec43a3bd6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/server/bounded_task_pool.py",
+      "bytes": 5916,
+      "sha256": "53ff3d6071a046adae2c32af3f15df9ce67f934fc121af203f63ec4d3fbff764"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/server/dht_handler.py",
+      "bytes": 9699,
+      "sha256": "5c13cefe3f1c39d45eac8d85b1c318f3ca074f72ebd25b32ed2b9b57255fc31a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/server/module_collab.py",
+      "bytes": 9893,
+      "sha256": "76dadc72395712704a64aeda41db8651b96c652d5ada55561722aeb089df9133"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/server/runtime.py",
+      "bytes": 14741,
+      "sha256": "1dd5572d4d689b4b16196bec71919cf840308a892cf7cd85f0d65442606cc518"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/core/server/server.py",
+      "bytes": 34214,
+      "sha256": "54e303f280d040aa8d42ac8273f98fe0f3490b9b744834f2002869635377e571"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/logging/file_logger.py",
+      "bytes": 2910,
+      "sha256": "c3a6982c4d1f74ac25d0614616ab01bad8c92b310a42e7b1ee0e532b5722fcdf"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/logging/formatters.py",
+      "bytes": 2723,
+      "sha256": "2787e44b0f328fc57acf6a5129c9c816edaecd34c68fd02ca36a4c0734a4062a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/logging/log_monitor.py",
+      "bytes": 10234,
+      "sha256": "172e56e1cc46a89fd9568850bf7e619a623e4e1375d0a7393018215b946006aa"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/logging/logger.py",
+      "bytes": 4954,
+      "sha256": "c40d2d9e1b7de7041f7ec4cfbd5e82b70ff71d669860e7056046ced53a52fbae"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/models/arguments_registry.py",
+      "bytes": 5926,
+      "sha256": "10ff853a089eb180fcc6ec8e9f5fec0d9e739a1a7af144c1117d1b95ca7f009e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/models/base_arguments.py",
+      "bytes": 2910,
+      "sha256": "77f190436c602deb9b04e63e4629e6d2562ce499aeb6c08b28519a962792d8a4"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/models/expert_registry.py",
+      "bytes": 6646,
+      "sha256": "67e84846a0d9a9f358b7bea3f78a7b5474211f7a978d671a2a3c508816b2f770"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/models/llama/arguments.py",
+      "bytes": 10354,
+      "sha256": "c2033a67648f0035bdbf8a1913a6a98ffeea5c5ffe0e6d462148e35d9bb8c186"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/models/llama/components.py",
+      "bytes": 16622,
+      "sha256": "2bfbe44c57f4dea5ed1cb210991d783966f21963e5a8e78f2cb00b3fb14ff81a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/models/llama/experts.py",
+      "bytes": 11653,
+      "sha256": "db806c840ac543fb9056bca094abe6c28a16b63bd9a4dd003abaae2e61142b09"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/models/lr_schedule.py",
+      "bytes": 3576,
+      "sha256": "646e976e952cb556373d6c183fe5eab1906a597d9fd974253560de1301a6b26b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/models/reparam_llama/arguments.py",
+      "bytes": 6746,
+      "sha256": "2183d55d2be6e4b6a05d3a7507724e9a2069f95010c8474297c53e8e7a192d3b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/models/reparam_llama/components.py",
+      "bytes": 21031,
+      "sha256": "b54a2742d522fdd71acc82bda845e5b42ea6f840147a6bc4de04c932873858f8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/models/reparam_llama/experts.py",
+      "bytes": 11235,
+      "sha256": "fb33a04d1676b2d1daa529bc6972910cd9b7be4e102deeb997bf009fcce583b1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/models/simple_fc/arguments.py",
+      "bytes": 1878,
+      "sha256": "183330862b8e347bcbed1bf84b45a72c0457cf7f6e03b4062ad8a77a8c01dea6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/models/simple_fc/experts.py",
+      "bytes": 4252,
+      "sha256": "26d1add819a6ce547fd72f0921d137397c149bf2c53edaf03728be8ead79f16c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/monitor/dht_monitor.py",
+      "bytes": 6432,
+      "sha256": "b1391bce6930a11e5daf886d21d56ed53e23b3b4d86fe1d075c9db629b743ca6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/monitor/gpu_util_monitor.py",
+      "bytes": 2159,
+      "sha256": "29a66faac7fe89619f4769126e16a68a2b482460b700a6f66b2b657fcf0481b8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/monitor/mem_monitor.py",
+      "bytes": 3746,
+      "sha256": "2cfd4216f792162ad2362613ea8b4c5df472ee2d236f998022c9fb471ae07d6c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/monitor/network_throughput.py",
+      "bytes": 4666,
+      "sha256": "98f914716f97d3decaa2fb126c4a36b59ac7b34faa2a0ef49da3310a8a73e91f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/monitor/peer_visibility.py",
+      "bytes": 1613,
+      "sha256": "8d1ad5a44d2439c29e6a5fe92f9d3a27a3d2b03248ddff45597fae82738ed70a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/prometheus/monitor.py",
+      "bytes": 36180,
+      "sha256": "24e825785f8e536a66239b4789bb8aa6e4e8cfb8b8fc0bbb762cb550685f1ac6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/prometheus/roles.py",
+      "bytes": 8167,
+      "sha256": "ac532fbb8cd9d9246060957f1b126bb86fcb20b2fe87a375d76d53149ebdaa15"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/security/auth.py",
+      "bytes": 4027,
+      "sha256": "fc0a7b8921765b7d6392818ffbf9390ea9edaead43a05c9d019b2b1d423032c5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/security/authorizer.py",
+      "bytes": 8709,
+      "sha256": "6c9e48942f613a71551c3e093fefcbaee3c414c2cb4064b2cebf0d00c45b294d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/security/validator_builder.py",
+      "bytes": 1887,
+      "sha256": "a42ae337792cf7a02d1539e743a8d2a99e60b73a55fc81f10aae242ea7aef342"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/security/validator_schema.py",
+      "bytes": 1157,
+      "sha256": "c0f807d6ac672d71bf8da64df6d4f1100c26b9cd12618657fccc8390475d4651"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/types.py",
+      "bytes": 2006,
+      "sha256": "412d5d3ccb0e086c6a2f74a97d51088421a8dc5cc261e31c17018e8f27c2c0fa"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/utils/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/utils/cloud_detect.py",
+      "bytes": 7890,
+      "sha256": "ebbd74255653ba150e9fae4defb3392f37fcacaaa3ff14704c5144a80e093695"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/utils/common.py",
+      "bytes": 1820,
+      "sha256": "52d189a686b7c179bb16b185f4f861168b5f1a15f45fa9195f17b215c1d21049"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/utils/configs.py",
+      "bytes": 4535,
+      "sha256": "6966439a64bc43a92d29c377e4e479e18f702b05bf4842c3381887cf956942c0"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/utils/dht_partition.py",
+      "bytes": 3161,
+      "sha256": "69035cea5ebfb6f6f15449718add78d6d9188db96d8c385967d3b58ff10f712d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/utils/flops.py",
+      "bytes": 8193,
+      "sha256": "ac6a05dd47f3b958fdccd287db8e2ae74ea5e31067989e3b53717e925bcebda3"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/utils/node_info.py",
+      "bytes": 8097,
+      "sha256": "39406c1196f6561f6344c114be939615b6550763776f2512dee2d688bd3f6412"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/agora_server/utils/subspace.py",
+      "bytes": 2624,
+      "sha256": "0b2156bb16b02c7052039b469bc969c1a325e19e9214aadec697dbc9797d936e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/__init__.py",
+      "bytes": 484,
+      "sha256": "a57b741840c7d9f32dca86ca970e18d20d613d267be6a94763a108a47e67083e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/averaging/__init__.py",
+      "bytes": 62,
+      "sha256": "b3d71cd0c30fbb3d7d6916cdabf5eab6c55852ef2a9c4a48e78a6b37d0add3f8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/averaging/allreduce.py",
+      "bytes": 18412,
+      "sha256": "2a67006fc98b9683e357e4b8a805832c9bec1e81afbf1ffcc41862bb56caab05"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/averaging/averager.py",
+      "bytes": 39816,
+      "sha256": "932a59ddb7e0933de2dc674be8480ebcdc9eb9fd713f5040a33dd0e4cca59929"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/averaging/control.py",
+      "bytes": 6511,
+      "sha256": "894d5d5cb517485c3b3a69cdfe17b70c29a3d28949f679cbbab4ea9c2bdb2af1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/averaging/group_info.py",
+      "bytes": 671,
+      "sha256": "e2b8a97737fc6888f8f6e27b3d264fce1e10ef81fa2d8d930f7ca2c9620310f1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/averaging/key_manager.py",
+      "bytes": 5386,
+      "sha256": "99a24f165590493016d7731fe111be7d1497e3ce695de123a806ca9722cecdc9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/averaging/load_balancing.py",
+      "bytes": 5450,
+      "sha256": "e615b5b303add017001608f19c223288a276f87c8526c16aaba6be7c19a141fd"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/averaging/matchmaking.py",
+      "bytes": 28141,
+      "sha256": "b0b11578fb74f321c35afedc5b34c58cdf60ae318eb86970a93516c626613b9c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/averaging/partition.py",
+      "bytes": 14947,
+      "sha256": "8905c51826c26d18281121e760758f3a3bfc77feca351886eade13cfbe571e23"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/compression/__init__.py",
+      "bytes": 658,
+      "sha256": "0fc1840f0328c2c7240305aba5f555be3a1daa1dd0dfe8c74056478398bd0ebd"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/compression/adaptive.py",
+      "bytes": 2816,
+      "sha256": "fde9bc534e167a0e54c9b0c8a3567d6ba663a5b8ca091e2f136c7d7184cb1093"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/compression/base.py",
+      "bytes": 5254,
+      "sha256": "9ebe625a254144f71d64536cd3e163deb3916992b8d32e5dbc7b28618f591999"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/compression/floating.py",
+      "bytes": 4717,
+      "sha256": "abb788bf095293463992fbc7d478aebedcf2744662c6035d2a2eba7d010de0a2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/compression/quantization.py",
+      "bytes": 9299,
+      "sha256": "02c8dda6e476e7358c52703460ab29ea8ccfae9fbfb4e9dce67f7a2d3f44ea44"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/compression/serialization.py",
+      "bytes": 2846,
+      "sha256": "0c94266be46552b3c25664bb900e7e71a42518ec758e6786d28fd92fed38bcd2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/dht/__init__.py",
+      "bytes": 1057,
+      "sha256": "5d85f48447fcafe873697bfdbd6ef58a232320a12bf2c6ff9d22514eeb844efd"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/dht/crypto.py",
+      "bytes": 3595,
+      "sha256": "3b836042a52099ed12f6bece1016ab6b518fdb6fd86c47c0181ecc06ae5a9b2b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/dht/dht.py",
+      "bytes": 14997,
+      "sha256": "b41230a61e3d04e44e3ced567eb7beba738aad49cc7f2ceaf113dc4a4de2a8a5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/dht/node.py",
+      "bytes": 52072,
+      "sha256": "0957c32e123e13b0e2bd8f4a740032fd794a2fcd9b01e49cede6b013b58efadb"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/dht/protocol.py",
+      "bytes": 22566,
+      "sha256": "2fc86983799b090aa1637beee487115f1323d6d82f6a386a343d1ac8f1d69a6f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/dht/routing.py",
+      "bytes": 15499,
+      "sha256": "87764ac02dad37acf7a21caa2d4327b307435848898abb0c3e68db8d98053d5a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/dht/schema.py",
+      "bytes": 7290,
+      "sha256": "001a6b84fc4161e94f3e3f4985fb3df1be0d744b31d2c72d499e510f786bf4eb"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/dht/storage.py",
+      "bytes": 3757,
+      "sha256": "716d2792852c15de51a7171812175fc177637d97c46552c50c34cc1b8d1ca394"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/dht/traverse.py",
+      "bytes": 15344,
+      "sha256": "f3851f026b0e039bc3d4ecba53793013f4984c3e7a6614ab7b62e3913fb4b29c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/dht/validation.py",
+      "bytes": 4555,
+      "sha256": "cb90f1cb7303af43fbcee1ae3355f6f687fe95969daca9a33d2524c392171fed"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/hivemind_cli/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/hivemind_cli/config.yml",
+      "bytes": 181,
+      "sha256": "394a4764b63c6f9a1275bcc5fedb10bbe08f0de5514eee9bf28ad73e6295dd0a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/hivemind_cli/p2pd",
+      "bytes": 9522896,
+      "sha256": "42f8f48e62583b97cdba3c31439c08029fb2b9fc506b5bdd82c46b7cc1d279d8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/hivemind_cli/run_dht.py",
+      "bytes": 3753,
+      "sha256": "a706607135863ef622523c950e4271c77899e67ca42c0a60af827a80c9c522db"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/hivemind_cli/run_server.py",
+      "bytes": 6664,
+      "sha256": "51f6771afdc1002568dd0488cbf8c3fe702653fd2210725da9dd5e63b3bbda09"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/__init__.py",
+      "bytes": 254,
+      "sha256": "78dd2e1a41eb6f682fe575cb20fccb2802e39f019d5cff9582d31596fe511994"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/client/__init__.py",
+      "bytes": 183,
+      "sha256": "5bc5d2d70c4e14f81928031064f4e55263000f9ed6b16fc8d5c1ffea5fdce695"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/client/beam_search.py",
+      "bytes": 20910,
+      "sha256": "b32e462352db43c7d34df0eb356b325b71026f8dab59be769c45dd16a63fab3f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/client/expert.py",
+      "bytes": 9781,
+      "sha256": "d28fed3fceb273038db7fea5d4b54b36159dda796680c54204823f9802f93f84"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/client/moe.py",
+      "bytes": 21158,
+      "sha256": "c19d844600bcfc79846a09aa48c1b8badca27287bf5e1927f642df32ebcc5d5c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/client/remote_expert_worker.py",
+      "bytes": 1110,
+      "sha256": "5d22cd0f48842e7e6eec89ebcd90a7549fcef0b8dc01b01e7182dee296063d26"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/client/switch_moe.py",
+      "bytes": 10480,
+      "sha256": "eafb2563ab3c44e186d1e4abbd8e0270dc8cda8e6e6e85ec9886689f25080134"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/expert_uid.py",
+      "bytes": 1636,
+      "sha256": "732dee38973fe15b932bd62b0ebdd9aae60870f86cf5624ece5676250eeb6a71"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/__init__.py",
+      "bytes": 260,
+      "sha256": "249f47910df739ac125ff802a69912e5fedc4c5b3aa42218a2ebd2a222341bd5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/checkpoints.py",
+      "bytes": 2731,
+      "sha256": "8f50c31d5df6302b7a12f89a1c8fdde58d4063a417e5ebb6a59d1282cb120619"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/connection_handler.py",
+      "bytes": 7335,
+      "sha256": "1807480c5f4b48588603d82dc6296b6dbd3719086ede6d2579cc25d57df1954e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/dht_handler.py",
+      "bytes": 4945,
+      "sha256": "e14b13800e5c9569538bb5fa1dfde71da23ea13defa3076308a425d5b3c04b4e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/layers/__init__.py",
+      "bytes": 398,
+      "sha256": "77d9effb7bb8fc664106aa49fe398c2fe963d8432cd74edb6c4c9cac109da789"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/layers/common.py",
+      "bytes": 3283,
+      "sha256": "8148804d7c008b6f9346a1527f90932589319f4895947e89500ab8b16f73bb15"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/layers/custom_experts.py",
+      "bytes": 1182,
+      "sha256": "eb392da7a35d53de5156b81be90e016bb76fa185926b66b3fbea6c498146a7de"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/layers/dropout.py",
+      "bytes": 1732,
+      "sha256": "c273183b4fdcafbb6332ffcf132cf32a4f6f2231de0455b219f6d342248c70b0"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/layers/lr_schedule.py",
+      "bytes": 1209,
+      "sha256": "8cf74481508794390101884c0fc98c7a7ad90ffab3fa6be553a9c4f718c36ee9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/layers/optim.py",
+      "bytes": 1691,
+      "sha256": "644f0fac08200c79374db755c5c12ee87e1893499b26a39c3511d4bbfd0e36ef"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/module_backend.py",
+      "bytes": 9742,
+      "sha256": "ef78ac99ff8ad8d592329fc791a4b80b78702ac4ce323188125144138a4c8e3b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/runtime.py",
+      "bytes": 9266,
+      "sha256": "24dcf6f6aec6202a9baee9cec8e70a942ae108ea0ceb8b726a57e0c39b2a7be1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/server.py",
+      "bytes": 17790,
+      "sha256": "09c829116c2d7d2943279d017305676f03f2b382ecc719e3a748a35e95b0d67f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/moe/server/task_pool.py",
+      "bytes": 10941,
+      "sha256": "1e062b41da9c4a5ab65094fd86cf379bf0e139554eebf260798c43525b3c7a58"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/optim/__init__.py",
+      "bytes": 159,
+      "sha256": "b3e69082c98c46009b4d345d69f8c75757c90d1758595f934d89340c175b7f80"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/optim/grad_averager.py",
+      "bytes": 12669,
+      "sha256": "7b17f7d430640d50b6b07fae42fac4b7b1f862290ae8f170c819aa0efc84381f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/optim/grad_scaler.py",
+      "bytes": 6338,
+      "sha256": "d8ab8ee16b40df50c019c58a2f6001312d69b97d56ef92ea491b1abde627e74b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/optim/optimizer.py",
+      "bytes": 45409,
+      "sha256": "c6d1ca5bc4058950e3c6d9ddbd080c3e1c55f1f56186d5ff4ea9675ac3f37c2d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/optim/power_sgd_averager.py",
+      "bytes": 10944,
+      "sha256": "22ed03d24ee887fcd58f5dd2f34a7ac4e79e9df95ecf6e94e22d345e2ff5ddba"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/optim/progress_tracker.py",
+      "bytes": 17453,
+      "sha256": "adfcd7467c78d6662cc9bb5efaef583ce4811b6cc63709619ba47770f85604ec"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/optim/state_averager.py",
+      "bytes": 40622,
+      "sha256": "55c2b6ad4d40a4029108ba10e35fb59ca1232e3831f9d201bef05327d95fa5ab"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/optim/training_averager.py",
+      "bytes": 12902,
+      "sha256": "c6f406329010182e3524b3628085578062300784eb350a77da00d607ede51e6f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/p2p/__init__.py",
+      "bytes": 204,
+      "sha256": "c771603bbc195e587302228aecbc7b78b4efb95149e495bf7cbd82db0cddf059"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/p2p/p2p_daemon.py",
+      "bytes": 30555,
+      "sha256": "8304dd5481d0cfdeed0bb82c332d9bc862ef6b5095dc0c5d49c8923fd22204f1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/p2p/p2p_daemon_bindings/__init__.py",
+      "bytes": 160,
+      "sha256": "265c3f38300927f7fe8d987fca2d0491e29eeabb9c201f289a6f00a2e5210e1d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/p2p/p2p_daemon_bindings/control.py",
+      "bytes": 16878,
+      "sha256": "526366fef4a6a2c00ba5bceab3c3be7bbd1930e72a5bc53454cb9c12c4837255"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/p2p/p2p_daemon_bindings/datastructures.py",
+      "bytes": 4293,
+      "sha256": "20040a1ad5a7d564cd61e1a74d5458d2b4b10f710f10f0118a6eee7744ac5e30"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/p2p/p2p_daemon_bindings/p2pclient.py",
+      "bytes": 4428,
+      "sha256": "8070bb3ae6f68a2c5fc217a6dd637b86e6d2e4bad2e4dd46371d75ad893a7251"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/p2p/p2p_daemon_bindings/utils.py",
+      "bytes": 2325,
+      "sha256": "7849c0d632de455312d0e2e2f99791733778fffc05cfd90a20306c227f5c5ccc"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/p2p/servicer.py",
+      "bytes": 6393,
+      "sha256": "c03aec53776ff1347eefcbda3d320f4a9001567d52d90326e17102ffcf4cfe06"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/auth.proto",
+      "bytes": 441,
+      "sha256": "264db4796dff5dd5420edef9a1216c3f6da9ae5871f835a7626e4c1e7ef39ac1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/auth_pb2.py",
+      "bytes": 2021,
+      "sha256": "18b5fee9dbc8dd5fc958749ca1b7665fc14a86443f0a60162f6713e6e143942d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/averaging.proto",
+      "bytes": 3672,
+      "sha256": "96cd1a5d20786ba2e4f79447e14357a2f963b61392c9702547432f5e63c60da4"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/averaging_pb2.py",
+      "bytes": 3412,
+      "sha256": "f66cbb36528b77ac1f2c9ffbd9b255d8a7bac83c4634c33864a061c8a0a9cb91"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/crypto.proto",
+      "bytes": 407,
+      "sha256": "caa095904f7185c4cb81f4017e206ae8574a2698f99962cea92b13edbac2cb1b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/crypto_pb2.py",
+      "bytes": 1768,
+      "sha256": "43db3932910623c7e19ba43028d3d61d681576bc4bbd511c16d645af2db8d764"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/dht.proto",
+      "bytes": 3364,
+      "sha256": "e4c9bec0d7567b105ee7f45df9ac7a0d48d134fac6363fe01f5165030797dcfa"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/dht_pb2.py",
+      "bytes": 3715,
+      "sha256": "11e93e7c79cbb45518ba5410e1dc11239da28a06c794bcb23dc11bfbc967e3b3"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/p2pd.proto",
+      "bytes": 4607,
+      "sha256": "eea870ff58e0f125b644e4ce51828863ecb13be0ba65fe9325b73a8bad206f4f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/p2pd_pb2.py",
+      "bytes": 10776,
+      "sha256": "2cbd461404fce517ab8dc588521eb8cd8e18e3909ee21cddba1f841e345f940d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/runtime.proto",
+      "bytes": 599,
+      "sha256": "87e663fd1c2ae7eddaa85e09ed03b3573e9d13627648b2457208f0e3d344c145"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/runtime_pb2.py",
+      "bytes": 2564,
+      "sha256": "8183ebedeac438e8221465a91281ab38ffb3ae34210de1bdc0a7f584b02751f5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/test.proto",
+      "bytes": 114,
+      "sha256": "e96122ad920cabe1e43fe5b605692c7d36e255a691333bf27bf3c07edb4a4122"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/proto/test_pb2.py",
+      "bytes": 1402,
+      "sha256": "bc30922c9878b444376ddec1b10f8fcfb78518ab161331cf527baf05086efaa5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/__init__.py",
+      "bytes": 628,
+      "sha256": "ce648fe9b735f5cb718f6c5d974d56d8309a3539c19dd7bb1c3df65823ca0fa6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/asyncio.py",
+      "bytes": 7411,
+      "sha256": "cc391248ba0736d56f2ea7d51d90f0cc9cc55fd60f6b651778f98e31ca48610a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/auth.py",
+      "bytes": 7739,
+      "sha256": "2f3ff1bcb09e764e44c08f402ae937530e04c2030b0be6f74a93684f05c3599f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/crypto.py",
+      "bytes": 3253,
+      "sha256": "e84b422d692c0747f91d2d3e88cd8344123812fe270f686649cee7dbf39c8206"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/limits.py",
+      "bytes": 740,
+      "sha256": "a8b0d25b844dfcc855d3b8ebac6b536188bd6f7a69b6bf0f40af39492bcd56a5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/logging.py",
+      "bytes": 6748,
+      "sha256": "9b6b4e424eca470412b89dea8165024828952759f5a69fab6a200d10acf1810d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/math.py",
+      "bytes": 849,
+      "sha256": "3ea79d4906e7e19f5e23d3db09e05cf0a250f6bc4e6ec8747c4d981d0b30bd6f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/mpfuture.py",
+      "bytes": 14751,
+      "sha256": "d3bb82f0ff3070e66e519ec023dbaed64f745268bddc7884c2f21d03d18f392f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/__init__.py",
+      "bytes": 1376,
+      "sha256": "e80b73f80c4a3f5f8892aecd5e56ab6d229b7086da977d35370e0e903777b803"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/codecs/__init__.py",
+      "bytes": 1687,
+      "sha256": "b9f1220991ba54adef4fffbf2d87b2b8e3f69da0bf61b459a5a5ebb62c1a6a5c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/codecs/cid.py",
+      "bytes": 5258,
+      "sha256": "6afe099371717d878b480fc35609f51663329ab04482fab088fcd03451a164c5"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/codecs/domain.py",
+      "bytes": 1581,
+      "sha256": "66362fc301c2dcb9d6289abcc0584d0be63f3b2f9303679307c007e137b7f1aa"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/codecs/fspath.py",
+      "bytes": 1466,
+      "sha256": "7dc7b8e1f734c93784a823e63eedb67c39e655ce6d318a4f0b431796db9ee860"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/codecs/ip4.py",
+      "bytes": 1489,
+      "sha256": "bd7a957ab35413f43bebc612ae1d17eb321e9af9a3f980e84ef1fa5ed6f9bee1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/codecs/ip6.py",
+      "bytes": 1490,
+      "sha256": "d6911d59f0067fb0529a4e6fdc40e8a7a60298418a7e7bc96f3c2ac501d01e98"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/codecs/onion.py",
+      "bytes": 2369,
+      "sha256": "2bd22ddaba8e7de8df0d5986aee86f1f1fb0105fd5c34822842f638838eeee09"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/codecs/onion3.py",
+      "bytes": 2375,
+      "sha256": "cb298fa0797acc9bd3bd3bfa2e64c68289a9f379dd006f4837ed93253ebc0636"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/codecs/uint16be.py",
+      "bytes": 1740,
+      "sha256": "cbfab61542205a1537b6744dc82e2e95945d640db9019333ffde2cb34370e4f1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/codecs/utf8.py",
+      "bytes": 1683,
+      "sha256": "2c2b143204fc58b70d932dc0e9a0ca929c3281f804fcb27db65e83e2716ff42e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/exceptions.py",
+      "bytes": 3611,
+      "sha256": "ceb312edc36cb9653235d66f78e3dd87a1a78336359b30689522b40378fddd23"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/multiaddr.py",
+      "bytes": 8941,
+      "sha256": "dde19ccb1db2603e72f61a147b2c64237e4241086d3e61f655c00e6cb5a4c39d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/protocols.py",
+      "bytes": 10666,
+      "sha256": "1df51dde0ef7d0cfbbc1da6d61065d773350770b93485f5b5b9d9f534c15ec7a"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/multiaddr/transforms.py",
+      "bytes": 4265,
+      "sha256": "10e04bd3a0b3ff32759080f84d328c391159606836ba502ec3d397243acf8708"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/nested.py",
+      "bytes": 2618,
+      "sha256": "275bebdd9c88c85feb66beae2ec0080456f15792e96bff61376bd5d7b1066ef9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/networking.py",
+      "bytes": 2726,
+      "sha256": "54013dcc7d56742fe65159320b2ada36e17d729595b9a6431ee49282951ebb7d"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/performance_ema.py",
+      "bytes": 3225,
+      "sha256": "f4997b6c8c424b3c29a68b0a797e339b60a3c80e66ee6c80409cc8acb3e03ad9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/serializer.py",
+      "bytes": 2635,
+      "sha256": "7b22cfb275a5a9f23051e88d9c55b3a5948cc558609ade14555f649c30b3fe7e"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/streaming.py",
+      "bytes": 1611,
+      "sha256": "3699620481edf2aae619c3266f329b45a1374f5b488a402fcb4f56eee303b45f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/tensor_descr.py",
+      "bytes": 4657,
+      "sha256": "b957a131a5beefcfb79920a647bc53d0fd0fd3cace62f0ba991ef8b6369f690c"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/native/hivemind/utils/timed_storage.py",
+      "bytes": 5532,
+      "sha256": "846e6e6abfe6cdf23970a196e66163a1d6781923467860a947e4efbc9b28a733"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/analysis.json",
+      "bytes": 1104,
+      "sha256": "3d7490fb1d0bdea4e0e50a6cd8eb90ad532b00cd8857c98131c883890d78dff9"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/controller.jsonl",
+      "bytes": 4955,
+      "sha256": "659340053b1fecbddb193bab7418be1d461c0065a52d1d9e4f053397dc126803"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/dht_C0.jsonl",
+      "bytes": 95951,
+      "sha256": "ad878993a87b33c909e6b1fb31565bbb55687a6bf200a2ced7b295657b2a4fb4"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/dht_C1.jsonl",
+      "bytes": 105667,
+      "sha256": "19ebb78f7290bcf92bf66cc11d63728a9495525a46b8d1f601820a155489ff46"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/dht_C2.jsonl",
+      "bytes": 90600,
+      "sha256": "af57182e88587bbc6cb87ea0a29b35c13e07bfc76ad41adddac27caeebd3a54b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/dht_C3.jsonl",
+      "bytes": 92519,
+      "sha256": "a46b62dbf09dc2f46588e480a1dba60354395010f2a8adda9568a2d35a867151"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/dht_R0.jsonl",
+      "bytes": 97129,
+      "sha256": "b94fc3c606d40ffe4d2a2c1658862bc31dac74dde0abbbfe037c400f515afe0f"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/dht_R1.jsonl",
+      "bytes": 116480,
+      "sha256": "90cfe2e7685bb8d8bf037705a0b4fb860c84194b5aa202ae1990c620a1d152e1"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/dht_R2.jsonl",
+      "bytes": 108627,
+      "sha256": "24a575cdd7bc7c61da2d5299ac3603623bdd8a4e9e2b4cc34711c3c5c030d8e6"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/dht_R3.jsonl",
+      "bytes": 93139,
+      "sha256": "57102493af7c3a9a8fe2445dd4cc268d748bbe97ade7bdcf05f02d3e160db2bb"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/events_C0.jsonl",
+      "bytes": 5356,
+      "sha256": "298af7d049e7039cad5b1125110e2d8e77c2cda1c7848cb1a73418ad7d2328bf"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/events_C1.jsonl",
+      "bytes": 5352,
+      "sha256": "b844e10567f08ce14ee4cd933dbedabae0d090d883c076b934b804c1d6576cd2"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/events_C2.jsonl",
+      "bytes": 5358,
+      "sha256": "a7d89d720e2bd5aeab91354671940c9fb258c1ba49b1a563782ba61f9c282e7b"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/events_C3.jsonl",
+      "bytes": 5359,
+      "sha256": "d5211f641a70e4d0e4b9d811417e33cca6f68d678025d79aa435c9ba0135ad26"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/events_R0.jsonl",
+      "bytes": 11847,
+      "sha256": "9dc6d22cad02653b20cbadbccbd0650f9e23d5443d7cd410c47acd295b57a364"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/events_R1.jsonl",
+      "bytes": 12583,
+      "sha256": "4fd8d69ddd532773b5068d23859c054e64a15e9417482b72589c2a1884f34659"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/events_R2.jsonl",
+      "bytes": 17063,
+      "sha256": "29abbee6e8b6cabbfebe60a7c289cf1e73f3a70d8039b492a6f8150b43845bc8"
+    },
+    {
+      "path": "baseline8b_smoke_20261013_c/seed8100_attempt01/events_R3.jsonl",
+      "bytes": 12673,
+      "sha256": "9d15104d51fcdb5e078ff0c0085fee6291e776dc7b919755bc4b924569fe10fb"
+    }
+  ]
+}

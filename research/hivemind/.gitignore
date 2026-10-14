@@ -5,3 +5,9 @@ hivemind_dht_timings.html
 # Zipped copies of presentation folders: the sources are tracked, so these
 # are build artefacts that go stale as soon as the deck is re-rendered.
 presentations/*.zip
+
+# Generated presentation previews and unrelated reference material stay local.
+presentations/rendered/*-previews/
+presentations/rendered/*-pdfinfo.txt
+presentations/rendered/*-text-bounds.html
+thesis_ad_history/Cyber_physical_report.pdf
