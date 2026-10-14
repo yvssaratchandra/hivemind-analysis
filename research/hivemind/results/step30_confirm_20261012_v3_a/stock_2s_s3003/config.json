@@ -1,0 +1,159 @@
+{
+  "allow_state_sharing": false,
+  "allreduce_timeout": 6,
+  "attempt_unit": "step_start",
+  "cached_reads_delayed": false,
+  "case": {
+    "behavior": "recruit_only",
+    "hold_seconds": 0.5,
+    "lifetime": 2.0,
+    "minimum": 2,
+    "mode": "passive",
+    "name": "stock_2s",
+    "one_way_delay_seconds": 0.15,
+    "publication_policy": "native",
+    "response": "unreliable",
+    "target": 4
+  },
+  "clock_jump_limit_seconds": 0.25,
+  "clock_monitor": true,
+  "control_delay_model": "remote find/store request+response; join request+each response",
+  "control_only": true,
+  "delay_location": "after observed FINISHED, before next step()",
+  "delay_profile": {
+    "distribution": "uniform",
+    "lower": 0.1,
+    "upper": 0.2
+  },
+  "duplicate_read_views": false,
+  "duration": 300.0,
+  "event_transport": "batched",
+  "experiment": "step30",
+  "group_bits": "",
+  "harm_timeout_cap": 12,
+  "honest_ad_lifetime": 5,
+  "honest_min": 2,
+  "initial_offsets": {
+    "H0": 1.6676389008692094,
+    "H1": 2.18649224746373,
+    "H2": 2.0123928770615214,
+    "H3": 1.7084111510134463,
+    "H4": 2.671581292575665,
+    "H5": 2.7206129223293836,
+    "H6": 0.16322145647376973,
+    "X": 2.7979474147119214
+  },
+  "instrumentation": "detailed",
+  "leadership_latency_origin": "step_start",
+  "network": "eight-peer loopback",
+  "network_delay_injected": true,
+  "network_seed": 3003,
+  "one_way_delay_seconds": 0.15,
+  "outcome": "grouping",
+  "peer_ids": {
+    "H0": "12D3KooWRqfcAHwp824nEdiD7zCki2SChzZhhNx1znuYhbjoh1gP",
+    "H1": "12D3KooWJaS6C4nJVLFNi5n6ynsXS1a6oTXYQP9LvGZAiAU1STix",
+    "H2": "12D3KooWPb3uSaP5qBixcuGFSMstgXCvu91RUo8DkgCjwnS9nVWX",
+    "H3": "12D3KooWCEq86sKHHw79kKwzPuuXxDhntKoLXM3kUu9BdUgeWbcd",
+    "H4": "12D3KooWNWC3conKe58nuadTgUY1TMRc8kus6guUgtLjcNbtB9Va",
+    "H5": "12D3KooWQfLnE96puUq2RE2ELVnWm4FKt4xG69KvroJtCWv1cP5o",
+    "H6": "12D3KooWP7W7SJDDj8rAfYruWjAS8LYH48WTvFoufF1g4v1jraR1",
+    "X": "12D3KooWCL9nccA4NBpK4CvPzcaHCqmu2sHzaZzfnw6N1tHrZmyG"
+  },
+  "request_timeout": 3,
+  "response_policy": "unreliable",
+  "runtime_matchmaking_config": {
+    "12D3KooWCEq86sKHHw79kKwzPuuXxDhntKoLXM3kUu9BdUgeWbcd": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "response_policy": "native",
+      "target_group_size": 4
+    },
+    "12D3KooWCL9nccA4NBpK4CvPzcaHCqmu2sHzaZzfnw6N1tHrZmyG": {
+      "behavior": "recruit_only",
+      "min_group_size": 2,
+      "min_matchmaking_time": 2.0,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "response_policy": "unreliable",
+      "target_group_size": 4
+    },
+    "12D3KooWJaS6C4nJVLFNi5n6ynsXS1a6oTXYQP9LvGZAiAU1STix": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "response_policy": "native",
+      "target_group_size": 4
+    },
+    "12D3KooWNWC3conKe58nuadTgUY1TMRc8kus6guUgtLjcNbtB9Va": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "response_policy": "native",
+      "target_group_size": 4
+    },
+    "12D3KooWP7W7SJDDj8rAfYruWjAS8LYH48WTvFoufF1g4v1jraR1": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "response_policy": "native",
+      "target_group_size": 4
+    },
+    "12D3KooWPb3uSaP5qBixcuGFSMstgXCvu91RUo8DkgCjwnS9nVWX": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "response_policy": "native",
+      "target_group_size": 4
+    },
+    "12D3KooWQfLnE96puUq2RE2ELVnWm4FKt4xG69KvroJtCWv1cP5o": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "response_policy": "native",
+      "target_group_size": 4
+    },
+    "12D3KooWRqfcAHwp824nEdiD7zCki2SChzZhhNx1znuYhbjoh1gP": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "response_policy": "native",
+      "target_group_size": 4
+    }
+  },
+  "scheduled_time": "native default",
+  "seed": 3003,
+  "started_monotonic": 77477.154686742,
+  "started_wall": 1791877968.5596964,
+  "store_delay": 0,
+  "submission_cutoff_checked_per_peer": true,
+  "target": 4,
+  "tensor_size": 128,
+  "tensor_transfer_delayed": false,
+  "tensor_transfer_enabled": false,
+  "timeout": 12,
+  "trace_batch_size": 32,
+  "training_delay": {
+    "lower": 0.1,
+    "mu": 0.2517227582341841,
+    "sigma": 0.5545130293761911,
+    "upper": 4.0
+  },
+  "x_min_group_size": 2,
+  "x_min_matchmaking_time": 2.0
+}

@@ -1,0 +1,5 @@
+{
+  "all_peers_shutdown": true,
+  "error": "ValueError: trial failed: native=None; analysis=['join RPC 2782842:rpc5 has no client response record', 'join RPC 2782852:rpc1 has no client response record', 'publication: 2782832:441: expiration did not advance before terminal deadline clamp', 'publication: 2782832:668: expiration did not advance before terminal deadline clamp']; raw=['analyzer integrity_pass is not true']",
+  "trial": "renew_1_2_s3000"
+}

@@ -1,0 +1,17 @@
+{
+  "safe_to_suspend": false,
+  "remaining_processes": [
+    {
+      "pid": 3016836,
+      "ppid": 3016829,
+      "comm": "python"
+    }
+  ],
+  "checkpoint_counts": {
+    "completed": 6,
+    "interrupted": 0,
+    "pending": 0
+  },
+  "export_verification_pass": true,
+  "all_trial_peer_shutdown_markers": true
+}

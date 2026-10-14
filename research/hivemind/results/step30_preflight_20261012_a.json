@@ -1,0 +1,147 @@
+{
+  "averager_rpc_handlers": [
+    "rpc_aggregate_part",
+    "rpc_download_state",
+    "rpc_join_group"
+  ],
+  "decision_rule": {
+    "failure_increase_fraction": 0.05,
+    "group_rate_decrease_fraction": 0.15,
+    "honest_starts_per_trial": 100,
+    "maximum_renewal_to_stock_median_interval": 0.75,
+    "minimum_late_windows": 3,
+    "minimum_persistent_seeds": 2,
+    "minimum_threshold_seeds": 2,
+    "require_third_same_direction": true,
+    "wait_increase_seconds": 0.5,
+    "x_client_acceptances_per_trial": 20,
+    "x_multi_publication_searches": 10
+  },
+  "dht_rpc_handlers": [
+    "rpc_find",
+    "rpc_ping",
+    "rpc_store"
+  ],
+  "harness_source_count": 25,
+  "jobs": [
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "stock_2s",
+        "one_way_delay_seconds": 0.15,
+        "publication_policy": "native",
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 300.0,
+      "seed": 3001
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "frequency": 1.0,
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "renew_1_2",
+        "nominal_lower": 1.0,
+        "nominal_upper": 2.0,
+        "one_way_delay_seconds": 0.15,
+        "publication_policy": "renew",
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 300.0,
+      "seed": 3001
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "frequency": 1.0,
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "renew_1_2",
+        "nominal_lower": 1.0,
+        "nominal_upper": 2.0,
+        "one_way_delay_seconds": 0.15,
+        "publication_policy": "renew",
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 300.0,
+      "seed": 3002
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "stock_2s",
+        "one_way_delay_seconds": 0.15,
+        "publication_policy": "native",
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 300.0,
+      "seed": 3002
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "stock_2s",
+        "one_way_delay_seconds": 0.15,
+        "publication_policy": "native",
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 300.0,
+      "seed": 3003
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "frequency": 1.0,
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "renew_1_2",
+        "nominal_lower": 1.0,
+        "nominal_upper": 2.0,
+        "one_way_delay_seconds": 0.15,
+        "publication_policy": "renew",
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 300.0,
+      "seed": 3003
+    }
+  ],
+  "native_publisher": "/tmp/hm-step23-runtime/hivemind/averaging/matchmaking.py",
+  "native_publisher_sha256": "6a775570b7183d7ea231d8a3a1030a5b63a4ddaa7fa5ceaabc178e3e74ae8814",
+  "native_source_count": 111,
+  "no_peers_started": true,
+  "pass": true,
+  "pass_": true,
+  "source_sha256": {
+    "analyze_step29_policies.py": "5ef8d765782d8c65c8e71f6aab5ab7a2746cf52073fdf589e5321ebf9270a9e0",
+    "analyze_step30_harm.py": "beafa4efd8c2d977ad8785b1083c90237ec584ca3512d80b22dbbe4d1a967e9d",
+    "step30_harm.py": "088af6c3c1797c4987d2d68e1b908d48b3c2ef990ab47bc47ef3b0c69aef1264",
+    "step30_workload.py": "5794d4dfb49848c0f8442b8745d3a581675934dcd60326c055285f0961094886",
+    "test_step30_harm.py": "8cc8c19d8a83e86eb93475ad42a269af438e108331444effa2e692804db96ce9",
+    "verify_step30_harm.py": "5529b7eb42c1a112e20d8bccc3e6afbed5a4b43f496e51f3a33ac96cc0885268"
+  }
+}

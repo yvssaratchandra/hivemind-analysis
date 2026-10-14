@@ -1,0 +1,201 @@
+{
+  "complete": true,
+  "decision": {
+    "conclusion": "no material renewal advantage observed under the tested configuration",
+    "confirm_pair_count": 6,
+    "coverage_sufficient": true,
+    "expected_confirm_pair_count": 6,
+    "honest_group_failure_fraction": {
+      "equally_weighted_mean_effect": -0.0026978907440686106,
+      "equally_weighted_mean_meets_threshold": false,
+      "material_signal": false,
+      "paired_seed_effects": [
+        0.0001530209558172125,
+        -0.002691137632467489,
+        -0.005555555555555556
+      ],
+      "seeds_meeting_threshold": 0,
+      "seeds_same_harm_direction": 1,
+      "threshold": 0.05
+    },
+    "honest_group_rate_reduction_fraction": {
+      "equally_weighted_mean_effect": 0.0075289575289574735,
+      "equally_weighted_mean_meets_threshold": false,
+      "material_signal": false,
+      "paired_seed_effects": [
+        0.06306306306306297,
+        0.00952380952380949,
+        -0.050000000000000044
+      ],
+      "seeds_meeting_threshold": 0,
+      "seeds_same_harm_direction": 2,
+      "threshold": 0.15
+    },
+    "honest_mean_capped_wait_seconds": {
+      "equally_weighted_mean_effect": 0.2927514909307331,
+      "equally_weighted_mean_meets_threshold": false,
+      "material_signal": false,
+      "paired_seed_effects": [
+        0.2740968517388813,
+        0.2899432464772502,
+        0.3142143745760677
+      ],
+      "seeds_meeting_threshold": 0,
+      "seeds_same_harm_direction": 3,
+      "threshold": 0.5
+    },
+    "persistence": {
+      "honest_group_failure_fraction": {
+        "persistent": false,
+        "seed_later_window_same_direction_counts": {
+          "3001": 1,
+          "3002": 1,
+          "3003": 0
+        },
+        "seeds_persistent": 0
+      },
+      "honest_group_rate_per_minute": {
+        "persistent": false,
+        "seed_later_window_same_direction_counts": {
+          "3001": 3,
+          "3002": 2,
+          "3003": 1
+        },
+        "seeds_persistent": 1
+      },
+      "honest_mean_capped_wait_seconds": {
+        "persistent": true,
+        "seed_later_window_same_direction_counts": {
+          "3001": 4,
+          "3002": 3,
+          "3003": 4
+        },
+        "seeds_persistent": 3
+      }
+    },
+    "publication_cadence_coverage": {
+      "by_seed": [
+        {
+          "renewal_median_interval_seconds": 1.0008546300086891,
+          "renewal_to_stock_ratio": 0.5003738653192954,
+          "seed": 3001,
+          "stock_median_interval_seconds": 2.000213638995774,
+          "within_75_percent": true
+        },
+        {
+          "renewal_median_interval_seconds": 1.0008663875050843,
+          "renewal_to_stock_ratio": 0.5003599368048051,
+          "seed": 3002,
+          "stock_median_interval_seconds": 2.0002928169997176,
+          "within_75_percent": true
+        },
+        {
+          "renewal_median_interval_seconds": 1.0033882459974848,
+          "renewal_to_stock_ratio": 0.5016235089554684,
+          "seed": 3003,
+          "stock_median_interval_seconds": 2.0002815420011757,
+          "within_75_percent": true
+        }
+      ],
+      "covered": true,
+      "rule": "renewal median interval <= 0.75 * stock median interval in every paired seed"
+    }
+  },
+  "experiment": "step30",
+  "export_verification_sha256": "a56bfa7f221c7fe4a8bb7d13adb7d3f267d319971c5a87161d3d768bac37d098",
+  "paired": [
+    {
+      "renew_attempts": 343,
+      "renew_failures": 1,
+      "renew_first_x": 0.6034985422740525,
+      "renew_groups": 104,
+      "renew_retries": 263,
+      "renew_wait": 3.598925005329848,
+      "seed": 3001,
+      "stock_attempts": 362,
+      "stock_failures": 1,
+      "stock_first_x": 0.4281767955801105,
+      "stock_groups": 111,
+      "stock_retries": 90,
+      "stock_wait": 3.3248281535909667,
+      "wait_delta": 0.2740968517388813
+    },
+    {
+      "renew_attempts": 338,
+      "renew_failures": 1,
+      "renew_first_x": 0.5414201183431953,
+      "renew_groups": 104,
+      "renew_retries": 263,
+      "renew_wait": 3.8326735442515307,
+      "seed": 3002,
+      "stock_attempts": 354,
+      "stock_failures": 2,
+      "stock_first_x": 0.3757062146892655,
+      "stock_groups": 105,
+      "stock_retries": 92,
+      "stock_wait": 3.5427302977742805,
+      "wait_delta": 0.2899432464772502
+    },
+    {
+      "renew_attempts": 341,
+      "renew_failures": 0,
+      "renew_first_x": 0.5483870967741935,
+      "renew_groups": 105,
+      "renew_retries": 219,
+      "renew_wait": 3.699953607762124,
+      "seed": 3003,
+      "stock_attempts": 360,
+      "stock_failures": 2,
+      "stock_first_x": 0.3972222222222222,
+      "stock_groups": 100,
+      "stock_retries": 86,
+      "stock_wait": 3.3857392331860563,
+      "wait_delta": 0.3142143745760677
+    }
+  ],
+  "pooled": {
+    "renew_1_2": {
+      "capped_wait": 3.709940425667358,
+      "drain_groups": 1,
+      "ever_x": 756,
+      "ever_x_fraction": 0.7397260273972602,
+      "failure_fraction": 0.0019569471624266144,
+      "failures": 2,
+      "first_local_assemblies_per_minute": 67.8,
+      "first_x": 577,
+      "first_x_fraction": 0.5645792563600783,
+      "groups_per_minute": 20.866666666666667,
+      "honest_attempts": 1022,
+      "mean_group_size": 3.2555910543130993,
+      "observation_groups": 313,
+      "renewed_pair_retries": 745,
+      "success_wait": 3.6936854068941565,
+      "total_groups": 314,
+      "x_accepts": 1140
+    },
+    "stock_2s": {
+      "capped_wait": 3.4168963205938714,
+      "drain_groups": 4,
+      "ever_x": 721,
+      "ever_x_fraction": 0.6700743494423792,
+      "failure_fraction": 0.004646840148698885,
+      "failures": 5,
+      "first_local_assemblies_per_minute": 70.6,
+      "first_x": 431,
+      "first_x_fraction": 0.40055762081784385,
+      "groups_per_minute": 21.066666666666666,
+      "honest_attempts": 1076,
+      "mean_group_size": 3.3544303797468356,
+      "observation_groups": 316,
+      "renewed_pair_retries": 268,
+      "success_wait": 3.3768258085518257,
+      "total_groups": 320,
+      "x_accepts": 885
+    }
+  },
+  "preservation_evidence": "step30_preservation_verification_20261013_a.json",
+  "provenance_sha256": "8340ad897d34cd2263eb9d298e39cf3876c126e07ea6164c133e01b36fededca",
+  "shutdown_evidence": "step30_final_shutdown_20261013_b.json",
+  "summary_sha256": "c18b24eb7d3d1cae10dd2a21fb22a6064d135982c8946cce88d0bfcc1ef20550",
+  "weighting": "Pooled waits/choices/failures use all honest attempts; decision uses unweighted paired seed effects; rates use fixed15 observation minutes per policy."
+}

@@ -1,0 +1,141 @@
+{
+  "experiment": "step30",
+  "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step30_confirm_20261012_v3_a",
+  "jobs": [
+    {
+      "job": {
+        "case": {
+          "behavior": "recruit_only",
+          "hold_seconds": 0.5,
+          "lifetime": 2.0,
+          "minimum": 2,
+          "mode": "passive",
+          "name": "stock_2s",
+          "one_way_delay_seconds": 0.15,
+          "publication_policy": "native",
+          "response": "unreliable",
+          "target": 4
+        },
+        "duration": 300.0,
+        "seed": 3001
+      },
+      "trial_dir": "stock_2s_s3001",
+      "status": "completed"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "recruit_only",
+          "frequency": 1.0,
+          "hold_seconds": 0.5,
+          "lifetime": 2.0,
+          "minimum": 2,
+          "mode": "passive",
+          "name": "renew_1_2",
+          "nominal_lower": 1.0,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.15,
+          "publication_policy": "renew",
+          "response": "unreliable",
+          "target": 4
+        },
+        "duration": 300.0,
+        "seed": 3001
+      },
+      "trial_dir": "renew_1_2_s3001",
+      "status": "completed"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "recruit_only",
+          "frequency": 1.0,
+          "hold_seconds": 0.5,
+          "lifetime": 2.0,
+          "minimum": 2,
+          "mode": "passive",
+          "name": "renew_1_2",
+          "nominal_lower": 1.0,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.15,
+          "publication_policy": "renew",
+          "response": "unreliable",
+          "target": 4
+        },
+        "duration": 300.0,
+        "seed": 3002
+      },
+      "trial_dir": "renew_1_2_s3002",
+      "status": "completed"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "recruit_only",
+          "hold_seconds": 0.5,
+          "lifetime": 2.0,
+          "minimum": 2,
+          "mode": "passive",
+          "name": "stock_2s",
+          "one_way_delay_seconds": 0.15,
+          "publication_policy": "native",
+          "response": "unreliable",
+          "target": 4
+        },
+        "duration": 300.0,
+        "seed": 3002
+      },
+      "trial_dir": "stock_2s_s3002",
+      "status": "pending"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "recruit_only",
+          "hold_seconds": 0.5,
+          "lifetime": 2.0,
+          "minimum": 2,
+          "mode": "passive",
+          "name": "stock_2s",
+          "one_way_delay_seconds": 0.15,
+          "publication_policy": "native",
+          "response": "unreliable",
+          "target": 4
+        },
+        "duration": 300.0,
+        "seed": 3003
+      },
+      "trial_dir": "stock_2s_s3003",
+      "status": "pending"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "recruit_only",
+          "frequency": 1.0,
+          "hold_seconds": 0.5,
+          "lifetime": 2.0,
+          "minimum": 2,
+          "mode": "passive",
+          "name": "renew_1_2",
+          "nominal_lower": 1.0,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.15,
+          "publication_policy": "renew",
+          "response": "unreliable",
+          "target": 4
+        },
+        "duration": 300.0,
+        "seed": 3003
+      },
+      "trial_dir": "renew_1_2_s3003",
+      "status": "pending"
+    }
+  ],
+  "counts": {
+    "completed": 3,
+    "pending": 3,
+    "interrupted": 0
+  },
+  "valid": true
+}

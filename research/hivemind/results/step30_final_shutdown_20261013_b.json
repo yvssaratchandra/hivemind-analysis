@@ -1,0 +1,13 @@
+{
+  "safe_to_suspend": true,
+  "remaining_processes": [],
+  "checkpoint_counts": {
+    "completed": 6,
+    "interrupted": 0,
+    "pending": 0
+  },
+  "export_verification_pass": true,
+  "offline_source_evidence_validation_pass": true,
+  "all_trial_peer_shutdown_markers": true,
+  "note": "Final sequential audit after offline validator exited. Earlier audit a counted that temporary dry-run validator, not a live measurement peer."
+}

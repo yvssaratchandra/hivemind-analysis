@@ -1,0 +1,12 @@
+{
+  "all_peers_shutdown": true,
+  "file_sha256": {
+    "analysis.json": "8ac68b216cc2d9cdf94f335477cad6940daebbf230a5d0b1114811d11ff7e112",
+    "config.json": "0dca0992a50a482e3748fe2f2623c42e3ef46a72401e70ef4d0d68481471cd4c",
+    "control_analysis.json": "e9d00a2c81f80f2b4ccf1f36ad9f97e87b6c785db4678e281ac6f39b29a895a7",
+    "events.jsonl": "74fc3d0909eb9fdd14f5c3c3fa413456cd39a81a59c75326a424ee6a4c344bb4",
+    "raw_verification.json": "408a65ef359fe0378b97f820bc628ddda8fe1f1566176aac7c6645999a2d3169",
+    "summary.json": "c9d19ca1e82a800aa2b65db2593fa78a0ec5b0c758997bf4b8c4bd7e0658a947"
+  },
+  "finished_utc": "2026-10-13T07:52:43.734161+00:00"
+}

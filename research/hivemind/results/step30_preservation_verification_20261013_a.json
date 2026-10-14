@@ -1,0 +1,25 @@
+{
+  "pass": true,
+  "records": [
+    {
+      "baseline": "step30_preservation_20261012_a.json",
+      "checked_files": 2831,
+      "pass": true,
+      "errors": []
+    },
+    {
+      "baseline": "step30_original_smoke_preservation_20261012_a.json",
+      "checked_files": 147,
+      "pass": true,
+      "errors": []
+    },
+    {
+      "baseline": "step30_v2_smoke_preservation_20261012_a.json",
+      "checked_files": 171,
+      "pass": true,
+      "errors": []
+    }
+  ],
+  "elapsed_seconds": 3.4057629509916296,
+  "scope": "Prior core/research/results and both preserved smoke revisions; frozen active suite verified by controller separately"
+}

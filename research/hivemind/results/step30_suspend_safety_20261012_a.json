@@ -1,0 +1,39 @@
+{
+  "measurement_peers": [],
+  "controller": [
+    {
+      "pid": 2813216,
+      "ppid": 2813209,
+      "comm": "python"
+    }
+  ],
+  "trace_closed": [
+    {
+      "kind": "trace_closed",
+      "peer": "",
+      "other": "",
+      "pid": 2813216,
+      "event_number": 4246,
+      "monotonic": 76330.671064345,
+      "wall_time": 1791820980.0146782,
+      "detail": {
+        "participants": [
+          "X",
+          "H0",
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "H5",
+          "H6"
+        ],
+        "pending": [],
+        "error": null,
+        "step_id": null
+      }
+    }
+  ],
+  "stop_after_current": true,
+  "safe_to_suspend": true,
+  "note": "Trial3 measurement and trace closed; CPU-only raw verification remains. STOP prevents later trials even after wake."
+}

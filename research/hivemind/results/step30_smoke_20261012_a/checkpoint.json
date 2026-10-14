@@ -1,0 +1,57 @@
+{
+  "active_trial": "stock_2s_s3000",
+  "controller_pid": 2752924,
+  "counts": {
+    "completed": 0,
+    "interrupted": 0,
+    "pending": 2
+  },
+  "experiment": "step30",
+  "jobs": [
+    {
+      "job": {
+        "case": {
+          "behavior": "recruit_only",
+          "hold_seconds": 0.5,
+          "lifetime": 2.0,
+          "minimum": 2,
+          "mode": "passive",
+          "name": "stock_2s",
+          "one_way_delay_seconds": 0.15,
+          "publication_policy": "native",
+          "response": "unreliable",
+          "target": 4
+        },
+        "duration": 20.0,
+        "seed": 3000
+      },
+      "status": "pending",
+      "trial_dir": "stock_2s_s3000"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "recruit_only",
+          "frequency": 1.0,
+          "hold_seconds": 0.5,
+          "lifetime": 2.0,
+          "minimum": 2,
+          "mode": "passive",
+          "name": "renew_1_2",
+          "nominal_lower": 1.0,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.15,
+          "publication_policy": "renew",
+          "response": "unreliable",
+          "target": 4
+        },
+        "duration": 20.0,
+        "seed": 3000
+      },
+      "status": "pending",
+      "trial_dir": "renew_1_2_s3000"
+    }
+  ],
+  "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step30_smoke_20261012_a",
+  "valid": true
+}

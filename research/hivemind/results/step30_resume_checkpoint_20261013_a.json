@@ -1,0 +1,20 @@
+{
+  "resumed_utc": "2026-10-13T07:42:42.271401+00:00",
+  "validated_counts": {
+    "completed": 3,
+    "pending": 3,
+    "interrupted": 0
+  },
+  "completed_jobs": [
+    "stock_2s_s3001",
+    "renew_1_2_s3001",
+    "renew_1_2_s3002"
+  ],
+  "unfinished_jobs": [
+    "stock_2s_s3002",
+    "stock_2s_s3003",
+    "renew_1_2_s3003"
+  ],
+  "user_instruction": "resume",
+  "frozen_sources_unchanged": true
+}

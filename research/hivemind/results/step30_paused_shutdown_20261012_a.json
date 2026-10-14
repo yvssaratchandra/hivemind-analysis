@@ -1,0 +1,12 @@
+{
+  "safe_to_suspend": true,
+  "remaining_processes": [],
+  "checkpoint_counts": {
+    "completed": 3,
+    "interrupted": 0,
+    "pending": 3
+  },
+  "export_verification_pass": true,
+  "stop_after_current": true,
+  "resume_requires_user_instruction": true
+}

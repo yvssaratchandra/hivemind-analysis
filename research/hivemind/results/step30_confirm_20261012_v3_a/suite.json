@@ -1,0 +1,138 @@
+{
+  "control_only": true,
+  "decision_rule": {
+    "failure_increase_fraction": 0.05,
+    "group_rate_decrease_fraction": 0.15,
+    "honest_starts_per_trial": 100,
+    "maximum_renewal_to_stock_median_interval": 0.75,
+    "minimum_late_windows": 3,
+    "minimum_persistent_seeds": 2,
+    "minimum_threshold_seeds": 2,
+    "require_third_same_direction": true,
+    "wait_increase_seconds": 0.5,
+    "x_client_acceptances_per_trial": 20,
+    "x_multi_publication_searches": 10
+  },
+  "delay_profile": {
+    "distribution": "uniform",
+    "lower": 0.1,
+    "upper": 0.2
+  },
+  "experiment": "step30",
+  "gate": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step30_smoke_20261012_v3_a",
+  "jobs": [
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "stock_2s",
+        "one_way_delay_seconds": 0.15,
+        "publication_policy": "native",
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 300.0,
+      "seed": 3001
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "frequency": 1.0,
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "renew_1_2",
+        "nominal_lower": 1.0,
+        "nominal_upper": 2.0,
+        "one_way_delay_seconds": 0.15,
+        "publication_policy": "renew",
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 300.0,
+      "seed": 3001
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "frequency": 1.0,
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "renew_1_2",
+        "nominal_lower": 1.0,
+        "nominal_upper": 2.0,
+        "one_way_delay_seconds": 0.15,
+        "publication_policy": "renew",
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 300.0,
+      "seed": 3002
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "stock_2s",
+        "one_way_delay_seconds": 0.15,
+        "publication_policy": "native",
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 300.0,
+      "seed": 3002
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "stock_2s",
+        "one_way_delay_seconds": 0.15,
+        "publication_policy": "native",
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 300.0,
+      "seed": 3003
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "frequency": 1.0,
+        "hold_seconds": 0.5,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "renew_1_2",
+        "nominal_lower": 1.0,
+        "nominal_upper": 2.0,
+        "one_way_delay_seconds": 0.15,
+        "publication_policy": "renew",
+        "response": "unreliable",
+        "target": 4
+      },
+      "duration": 300.0,
+      "seed": 3003
+    }
+  ],
+  "outcome": "grouping",
+  "phase": "confirm",
+  "training_delay": {
+    "lower": 0.1,
+    "mu": 0.2517227582341841,
+    "sigma": 0.5545130293761911,
+    "upper": 4.0
+  }
+}

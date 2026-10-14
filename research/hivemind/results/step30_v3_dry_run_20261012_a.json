@@ -1,0 +1,111 @@
+{
+  "experiment": "step30",
+  "phase": "confirm",
+  "jobs": [
+    {
+      "case": {
+        "name": "stock_2s",
+        "mode": "passive",
+        "behavior": "recruit_only",
+        "publication_policy": "native",
+        "lifetime": 2.0,
+        "minimum": 2,
+        "target": 4,
+        "response": "unreliable",
+        "hold_seconds": 0.5,
+        "one_way_delay_seconds": 0.15
+      },
+      "seed": 3001,
+      "duration": 300.0
+    },
+    {
+      "case": {
+        "name": "renew_1_2",
+        "mode": "passive",
+        "behavior": "recruit_only",
+        "publication_policy": "renew",
+        "lifetime": 2.0,
+        "minimum": 2,
+        "target": 4,
+        "response": "unreliable",
+        "hold_seconds": 0.5,
+        "one_way_delay_seconds": 0.15,
+        "frequency": 1.0,
+        "nominal_lower": 1.0,
+        "nominal_upper": 2.0
+      },
+      "seed": 3001,
+      "duration": 300.0
+    },
+    {
+      "case": {
+        "name": "renew_1_2",
+        "mode": "passive",
+        "behavior": "recruit_only",
+        "publication_policy": "renew",
+        "lifetime": 2.0,
+        "minimum": 2,
+        "target": 4,
+        "response": "unreliable",
+        "hold_seconds": 0.5,
+        "one_way_delay_seconds": 0.15,
+        "frequency": 1.0,
+        "nominal_lower": 1.0,
+        "nominal_upper": 2.0
+      },
+      "seed": 3002,
+      "duration": 300.0
+    },
+    {
+      "case": {
+        "name": "stock_2s",
+        "mode": "passive",
+        "behavior": "recruit_only",
+        "publication_policy": "native",
+        "lifetime": 2.0,
+        "minimum": 2,
+        "target": 4,
+        "response": "unreliable",
+        "hold_seconds": 0.5,
+        "one_way_delay_seconds": 0.15
+      },
+      "seed": 3002,
+      "duration": 300.0
+    },
+    {
+      "case": {
+        "name": "stock_2s",
+        "mode": "passive",
+        "behavior": "recruit_only",
+        "publication_policy": "native",
+        "lifetime": 2.0,
+        "minimum": 2,
+        "target": 4,
+        "response": "unreliable",
+        "hold_seconds": 0.5,
+        "one_way_delay_seconds": 0.15
+      },
+      "seed": 3003,
+      "duration": 300.0
+    },
+    {
+      "case": {
+        "name": "renew_1_2",
+        "mode": "passive",
+        "behavior": "recruit_only",
+        "publication_policy": "renew",
+        "lifetime": 2.0,
+        "minimum": 2,
+        "target": 4,
+        "response": "unreliable",
+        "hold_seconds": 0.5,
+        "one_way_delay_seconds": 0.15,
+        "frequency": 1.0,
+        "nominal_lower": 1.0,
+        "nominal_upper": 2.0
+      },
+      "seed": 3003,
+      "duration": 300.0
+    }
+  ]
+}
