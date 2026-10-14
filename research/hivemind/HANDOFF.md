@@ -3,7 +3,7 @@
 Everything a new session needs: what the project is, where it stands, what is known, and what to do
 next. Written to be read without any prior conversation.
 
-Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-10-09
+Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-10-13
 
 **Layout note (updated 2026-10-07):** Hivemind research is under `research/hivemind/`; its source
 remains unchanged at the repository-root `hivemind/`. Exo research is under `research/exo/`, with
@@ -40,7 +40,507 @@ pre-commit hook passed `bash -n`. Go/container integration checks were not rerun
 
 ---
 
-## Current thread: Step 25 choice and read measurements (2026-10-09)
+## Current thread: Step 30 final comparison complete (2026-10-13)
+
+**Completed and stopped: 6/6 confirmation trials, zero pending/interrupted jobs;
+all peers/controllers shut down and safe to suspend.** User paused after three
+completed measurements on October12 and said “resume” on October13. Source and
+completed-result validation passed; the controller skipped the first three jobs
+and ran only the three remaining jobs.
+
+**Recommendation: close this experiment line for now and stop further renewal
+parameter sweeps.** The measured mechanism is real: first choices of X increased
+from 40.1% to 56.5%, and same-search retries increased about 2.8-fold. Its added
+grouping delay averaged only 0.293s across the three paired seeds. Group rates
+were nearly unchanged (21.07 versus 20.87 per minute), and failures did not worsen.
+All exposure gates passed, so insufficient X contact does not explain the modest
+result. None of the predeclared material-harm thresholds was met.
+
+Preserve this as a verified attraction/retry finding with a small persistent
+delay. This study did not establish substantial grouping denial or measure
+reliable leadership success; it does not rule out effects in other deployments.
+Research effort should move to another control-plane mechanism with a clearer
+path to meaningful harm. Reopening renewal work needs a concrete new hypothesis
+that predicts a materially stronger effect, plus explicit user direction.
+No additional trials are queued.
+
+Only **stock native 2s republication versus `(1,2]` pre-expiry renewal** was tested,
+with the same unreliable recruit-only X in both. Three paired seeds 3001–3003,
+300s each policy, order stock/renew, renew/stock, stock/renew. Eight fresh private
+loopback peers per trial; honest minimum matchmaking time 5s, X 2s; all minimum 2,
+target 4, request timeout 3, attempt timeout 12. X uses native admission, forwards
+ACCEPTED, holds 0.5s, then disbands. X never assembles a group. Native grouping and
+cleanup finish with membership metadata, with no tensor averaging or training.
+Independent seeded 100–200ms delays apply to remote find/store request+response
+and join request+each response. This is local WAN-delay emulation.
+
+| Implementation status | State |
+|---|---|
+| Driver, native-control workload and frozen source | Complete; 31 harness files / 111 native snapshots; core unchanged |
+| Analyzer/verifier and focused checks | Complete; 34 focused/replay checks passed before final smoke |
+| Smoke and confirmation | Complete: 2/2 final smoke; 6/6 five-minute jobs; all raw/CSV checks pass |
+| Checkpoint/resume and preservation | Complete; final offline validation 6 complete / 0 pending / 0 interrupted; prior 2,831 files and both preserved smoke revisions unchanged |
+| Report and shutdown | Complete; final host audit zero processes; safe to suspend |
+
+**Measured finding:** renewal increases X attraction/retries and produces a small
+recurring delay. All three paired wait differences were positive, but none met
+the predeclared +0.5s material-harm threshold. Failure and group-rate thresholds
+also were not met. Reliable leadership success and model-training harm were not
+measured by this deliberately disbanding-X study. No further experiments started.
+
+Combined results below pool honest attempts across three seeds; rates use fixed
+15 observation minutes per policy. Failed attempts score 12s. Group success needs
+each peer's own local assembly evidence, rather than a claimed roster position.
+
+| Measure | Stock 2s | Renewal (1,2] |
+|---|---:|---:|
+| Honest attempts | 1076 | 1022 |
+| Capped mean grouping wait | 3.416896s | 3.709940s |
+| Group failures | 5/1076 (0.465%) | 2/1022 (0.196%) |
+| Fixed-window groups | 316 | 313 |
+| Groups during drain / total | 4 / 320 | 1 / 314 |
+| Groups/minute | 21.066667 | 20.866667 |
+| Mean observed roster size | 3.354430 | 3.255591 |
+| Honest first local assemblies/minute | 70.600 | 67.800 |
+| Honest attempts first trying X | 431/1076 (40.06%) | 577/1022 (56.46%) |
+| Client ACCEPTED-from-X receipts | 885 | 1140 |
+| Same-search renewed-pair retries | 268 | 745 |
+
+| Paired seed | Stock wait | Renewal wait | Added wait | Stock / renewal fixed-window groups |
+|---|---:|---:|---:|---:|
+| 3001 | 3.324828s | 3.598925s | +0.274097s | 111 / 104 |
+| 3002 | 3.542730s | 3.832674s | +0.289943s | 105 / 104 |
+| 3003 | 3.385739s | 3.699954s | +0.314214s | 100 / 105 |
+
+The unweighted paired mean added wait is **0.292751s**. The positive wait
+contrast appears in 4/4, 3/4, 4/4 later minute windows. It is persistent but small;
+failure and group-rate effects are not persistently harmful. Every exposure gate
+passed (>=100 honest starts, >=20 ACCEPTED-from-X, >=10 multi-publication X
+searches per trial). Native publication medians were about 2s and renewal about 1s.
+No seed crossed +5pp failures or 15% group-rate reduction. Group sizes differ, so
+group count alone is not peer throughput. No significance or deployment-rate claim.
+
+Inspectable evidence:
+
+- [Final interpretation and tables](results/step30_confirm_20261012_v3_a/FINAL_REPORT.md),
+  [generated report](results/step30_confirm_20261012_v3_a/REPORT.md),
+  [trial table](results/step30_confirm_20261012_v3_a/trial_summary.csv),
+  [paired contrasts](results/step30_confirm_20261012_v3_a/paired_contrasts.csv).
+- [Pooled metrics and decision](results/step30_final_metrics_20261013_a.json),
+  [source provenance](results/step30_confirm_20261012_v3_a/provenance.json),
+  [independent export verification](results/step30_confirm_20261012_v3_a/raw_verification_exports.json).
+- [Offline final validation](results/step30_final_resume_validation_20261013_a.json),
+  [final shutdown audit](results/step30_final_shutdown_20261013_b.json),
+  [preservation audit](results/step30_preservation_verification_20261013_a.json).
+
+Original rejected smoke revisions remain preserved. Separately versioned checker
+corrections covered raw event schema, zero-response native cancelled streams, and
+repeated search-deadline-clamped expirations. The native workload stayed frozen.
+All six completed-file hashes, configs, seeds and original raw traces remain
+validated. Suspension happened after trial 3's closed trace; seed 3002 policies ran
+on different days, with fresh peers and unchanged configuration. OS scheduling is
+nondeterministic. This is a descriptive local three-seed result.
+
+Optional read-only inspection (starts no peers; all six jobs are complete):
+
+```sh
+cd /tmp
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/run_step30_harm_v3.py --resume /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step30_confirm_20261012_v3_a --dry-run
+```
+
+## Previous thread: Step 29 exact native publication comparison (2026-10-12)
+
+User requested native publication with X matchmaking times 5/1/2 seconds versus
+two-second expiration refreshed every second, crossed with both normal matchmaking
+and recruit-only X behavior. Honest peers retain 5 seconds in all cases. All peers
+use native minimum group size 2 and target 4; the previous Step25/28 X minimum was 4.
+Recruit-only retains the previous passive control: X does not read competitor ads
+or issue outbound joins, and waits for followers to assemble its group. The behavior
+contrast therefore includes that passive search loop, not only one refused join.
+The native arms call the original publication function, including its scheduled-time
+formula and expiry wait. Renewal changes only the send cadence in a local copy;
+existing follower wait timers remain unchanged. All predecessors and core code stay
+frozen. No public swarm is involved.
+
+| Implementation status | State |
+|---|---|
+| Previous policy audit and denominator correction | Complete; raw counts/hashes rechecked across 50 Step25 trials |
+| Exact Step29 driver, workload, analyzer, focused checks | Complete; 11 focused checks pass; source frozen |
+| Two 10-second smoke gates, seed 2900 | Complete; both raw audits pass, all peers shut down |
+| Eight 45-second pilot combinations, paired seed 2901 | Complete: 8/8; zero pending/interrupted; no larger confirmation started |
+
+**Completed and stopped:** all eight pilot cases passed raw/CSV checks: 373 groups,
+170 X-led, 188 X attempts, 1,290 honest attempts. Fully native normal 5s led 6/24
+(18 followed); normal native 1/2s and normal renewal each led 25/25. Recruit-only
+5/1/2s and renewal led 15/15, 25/25, 24/24, 25/25. Native normal 2s versus renewal
+put exactly 73/161 honest attempts in first X-led rosters in each case; successful
+mean own-led times were 0.362s versus 0.290s. Only one search in each renewal arm
+attempted a second publication, so these data do not establish reliable renewal
+benefit. Normal renewal X:14 assembled a two-member group immediately after its
+local re-declaration signal and before the old expiration or renewed holder
+acceptance; native pop_next_leader invalidation can trigger minimum-size assembly.
+This local signal path contributes to timing interpretation, not DHT availability.
+[Report and inspectable comparison](results/step29_pilot_20261012_a/REPORT.md),
+[final raw/CSV checks](results/step29_pilot_20261012_a/raw_verification_exports.json),
+[offline resume validation](results/step29_final_resume_validation_20261012_a.json),
+[shutdown proof](results/step29_shutdown_20261012_a.json). Host check finds no
+remaining controller/daemon. **Safe to suspend.** No further experiment is running
+or starts automatically. The resume command below verifies and skips all eight.
+
+The old passive stock result 214/220 is eventual own-attempt leadership for X
+that never follows, not fully stock matchmaking or network-wide capture. Fully
+stock X led 77/312 attempts in the corresponding Step25 arm. Unconditional first
+native queue choices and step-start timing have been audited separately in
+[the read-only policy audit](results/step25_policy_audit_20261012_a/summary.json).
+The historical conditional first-eligible choice fraction must not be presented
+as the fraction of all honest attempts first choosing X.
+
+Step29 will export all raw step-start denominators; X-led/followed/no-group
+outcomes; successful time to an X-led group from step_start; a separate 12-second
+leadership score for attempts without a lead; honest first outgoing join X/other/none;
+first native assembled roster X/other/no-group with exact peer/step identity; client
+acceptance/participation separately; group sizes, leader/X deadlines, raw references.
+Runtime configuration is recorded from actual actors and checked against config.
+Clock checks reject suspend/time discontinuities; STOP_AFTER_CURRENT stops only
+after a trial shuts down its peers; completed hashes are checked on resume and
+interrupted trials are archived and rerun.
+
+The first smoke completed (6/6 X-led, 9 groups), then the summary exporter failed
+on duplicated `behavior` metadata. Its completed raw/provenance/source files were
+retained; partial exports and the halt diagnostic are preserved under
+`step29_smoke_20261012_a/export_revision_v1_preserved`. The separate v2 entrypoint
+fixes only summary metadata merging. A real completed-smoke export regression
+passes, and resume skipped the completed first trial. The second smoke likewise
+led 6/6 attempts and formed 9 groups. Neither short smoke needed a second active
+publication in an X search; the pilot records how many searches actually renew.
+
+The native 1/2-second settings retain the default 3-second request timeout, which
+is above the source recommendation; the native warning is preserved. This is a
+local zero-added-delay comparison, not WAN confirmation.
+
+Exact commands (both suites are complete; resume verifies and skips finished jobs):
+
+```sh
+cd /tmp
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/run_step29_policies_v2.py --phase smoke --behaviors both --label 20261012_a
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/run_step29_policies_v2.py --phase pilot --behaviors both --label 20261012_a --gate /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step29_smoke_20261012_a
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/run_step29_policies_v2.py --resume /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step29_pilot_20261012_a --dry-run
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/run_step29_policies_v2.py --resume /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step29_pilot_20261012_a
+```
+
+## Previous thread: Step 28 single versus renewed confirmation (2026-10-12)
+
+Authorized scope: two 20-second reliable-arm smoke trials at seed 2800, then
+single/renewed arms at seeds 2801, 2802, 2803 with 120-second submission windows
+and 20-second bounded drain. Stop after six comparisons; no further stages
+start automatically. Primary outcome is X-led attempts/all submitted X attempts;
+formation time and honest choices/actual group memberships are separate outcomes.
+Retain eight-peer private loopback, 150ms one-way control delay, initial 2-second
+X ads, requested 2/sec refresh, X refusing outbound joins, native honest behavior.
+
+| Implementation status | State |
+|---|---|
+| Separate controller, cutoff/clock checks, analyzer and verifier | Complete; source frozen |
+| Focused checks and old-trace replay | Complete; 15 tests, independent metric agreement, 235 old groups/55 X-led and corrected receipt replay pass |
+| Two smoke trials | Complete; 2/2, corrected independent verifier passes, original failure evidence retained |
+| Six paired comparisons and report | Complete; 6/6 validated, zero pending/interrupted/blocked |
+| Preservation, resume and host shutdown | Complete; 2,479 prior hashes unchanged, dry-run skips all six, no controller or runtime daemons remain |
+
+Preservation baseline: `results/step28_preservation_20261012_a.json` (2,479
+existing source/result files). Step 27 remains frozen. New source is frozen
+before smoke; each suite preserves seeds, configuration, runtime and raw traces.
+Controller: `step28_confirmation.py`; `--resume SUITE --dry-run` validates
+without starting peers. `STOP_AFTER_CURRENT` stops after the current trial and
+verified shutdown. Clock discontinuities preserve and interrupt the affected
+trial, which is archived and rerun on resume. Completed trials must match hashes.
+
+Completed smoke: `results/step28_smoke_20261012_a`; saved foreground log:
+`results/step28_smoke_20261012_a.log`. Preflight source hashes and test proof:
+`results/step28_preflight_20261012_a.json`,
+`results/step28_checks_20261012_a.txt`,
+`results/step28_replay_preflight_20261012_a.json`.
+
+The original checker failed after both smoke trials completed: its clock
+dictionary omitted `valid_samples`, and its join export compared tuple keys to
+scalar IDs. Keep all original Step 28 modules frozen. Versioned checker
+`verify_step28_exports_v2.py` corrects these comparisons; existing smoke traces
+pass without rerunning them. Original failed report and corrected
+`raw_verification_v2.json` are both retained, with the derived-report restoration
+recorded in `verification_revision.json`. `run_step28_confirmation_v2.py`
+selects that checker and captures the extra source/entrypoint in provenance.
+Regression checks prove join-expiration corruption is now detected.
+
+Confirmation label `20261012_v2_a` stopped during import, before creating peers:
+the checker prepended the repository root and shadowed the built runtime.
+Its empty suite and failure log are preserved. The checker now uses its own
+research directory, and gate verification followed by runtime import/install
+passes without starting peers. V2 preflight/checks are saved under
+`results/step28_preflight_v2_20261012_b.json` and
+`results/step28_checks_v2_20261012_b.txt`. All five original frozen experiment
+modules still match their preflight hashes; the native workload is unchanged.
+
+Completed comparison: `results/step28_confirm_20261012_v2_b`, log
+`results/step28_confirm_20261012_v2_b.log`. Offline validation and exact resume:
+
+Four jobs completed before seed 2803 single halted on incomplete unary RPC
+records. Native grouping/attempt traces closed, but two find RPCs started 5–8ms
+before the final search closed and lacked response/end events, so the existing
+teardown exemption does not apply. Preserve that invalid trace in the checkpoint's
+hashed archive; `halt_invalid_trace_1.json` and `retry_diagnostic_1.json` record
+the reason. Resume skips the four validated jobs and reruns only that unvalidated
+job, then the pending renewal job. Source and measurement rules stay unchanged.
+The first seed 2803 renewal trace likewise failed RPC completion auditing after
+its grouping work (diagnostic 26/26 X-led attempts); it is separately archived
+and excluded. `halt_invalid_trace_2.json` and `retry_diagnostic_2.json` retain
+that failure. Both replacement trials passed with unchanged native source;
+the six-job comparison is complete. The two excluded diagnostic runs remain
+hashed and archived and are not included in the primary totals.
+
+Final results across seeds 2801–2803 (eight peers, 120-second windows, 150ms
+one-way control delay):
+
+| Outcome | Single 2s ad | Renewed 2s ad |
+|---|---:|---:|
+| X-led attempts / all X attempts | 41/54 (75.9%) | 74/75 (98.7%) |
+| X mean capped wait, failures = 12s | 4.290s | 2.329s |
+| X successful-only mean time to group | 1.845s | 2.198s |
+| Honest first outgoing choice X / all honest attempts | 119/536 (22.2%) | 250/547 (45.7%) |
+| Honest first group led by X / all honest attempts | 123/536 (22.9%) | 222/547 (40.6%) |
+| Total distinct groups, including drain | 146 | 157 |
+
+Renewal improves observed leadership in all three seeds (single: 16/20,
+13/17, 12/17; renewed: 24/24, 25/25, 25/26). The predefined descriptive
+signal passes: mean paired leadership improvement 23.0 percentage points,
+with at least ten X attempts in each trial. This is local measured advantage,
+not a significance test or deployment guarantee. Successful single searches
+are faster, but renewal avoids many failed searches and lowers overall capped
+waiting. The sole validated renewal failure starts 119.442s into the 120s
+window; record the boundary context without excluding it or claiming its cause.
+
+Independent raw verification confirms 303 groups and 115 X-led groups. It
+checks native membership against exact peer/step IDs, all-attempt timing,
+choices/joins, expirations, source and completion hashes, and preservation.
+All 2,479 prior source/result hashes remain unchanged. Proofs:
+`results/step28_confirm_20261012_v2_b/raw_verification_v2.json`,
+`results/step28_final_resume_validation_20261012_b.json`,
+`results/step28_shutdown_20261012_b.json`.
+[Full report](results/step28_confirm_20261012_v2_b/REPORT.md).
+All peers shut down; it is safe to suspend. No additional experiments are running
+or scheduled. The resume command below validates/skips the completed six jobs.
+
+```sh
+cd /tmp
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/run_step28_confirmation_v2.py --resume /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step28_confirm_20261012_v2_b --dry-run
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/run_step28_confirmation_v2.py --resume /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step28_confirm_20261012_v2_b
+```
+
+## Previous thread: Step 27 leadership and control-plane harm screen (2026-10-12)
+
+Authorized scope: two 10-second smoke trials, then five arms x seeds 2701/2702
+with 60-second submission windows and bounded 20-second drains. Stop after the
+10 preliminary trials; no longer confirmation is authorized automatically.
+X refuses outbound joins in every arm. Compare native advertising, reliable
+single/renewed ads, and unreliable single/renewed ads. Non-native ads have a
+2-second lifetime; renewal requests 2 writes/sec. Unreliable X accepts, holds
+0.5 seconds after forwarding ACCEPTED, then disbands. All remote control RPCs
+use Step 26's 150ms request/response delay model. Honest behavior stays native.
+
+| Implementation status | State |
+|---|---|
+| Separate harness and response policy | Complete; source frozen |
+| Failure-inclusive analysis and independent raw verification | Complete; read-only replay matches Step 26 |
+| Focused checks and smoke gate | Complete; 29 tests, 2/2 smoke jobs and independent raw checks pass |
+| 10 preliminary trials and final report | Complete; 10/10 validated, zero pending/interrupted/blocked |
+| Preservation, offline resume, and shutdown | Complete; 1,595 hashes unchanged, dry-run skips all jobs, no controller or peer daemons remain |
+
+Primary lead timing starts at submitted `step_start`; all submitted attempts
+remain in its denominator. Honest delay is capped at the 12-second timeout,
+including failed attempts. Report per-seed contrasts for renewal benefit,
+renewal-only delay, and the unreliable/reliable x renewed/single delay
+interaction. These are exploratory screens, not population success rates.
+Existing research/core evidence preservation baseline has 1,595 file hashes:
+`results/step27_preservation_20261012_a.json`.
+
+Completed smoke suite: `results/step27_smoke_20261012_a` (2/2 validated jobs).
+Completed pilot suite: `results/step27_pilot_20261012_a`; its checkpoint records
+10 completed and zero pending jobs. Source and runtime provenance are captured
+in the suite. Saved foreground log: `results/step27_pilot_20261012_a.log`.
+Results: [Step 27 report](results/step27_pilot_20261012_a/REPORT.md).
+
+Independent raw verification confirms 235 distinct assembled groups, including
+55 X-led groups. Across the two seeds: native ads 17/18 X-led attempts,
+reliable single ads 13/18, reliable renewed ads 25/25. Unreliable single and
+renewed X deliberately never assemble: 0/9 and 0/10. These are observed local
+counts, not estimated deployment success rates. The native-ad baseline also
+refuses outbound joins and is not fully stock participation.
+
+Reliable renewal versus single ads did not establish the predefined leadership
+screen: early-lead differences were +13.1 and -2.1 percentage points, and one
+single-ad trial had only seven X attempts (minimum eight). The overall renewed
+short-ad policy versus native ads did flag faster assembly: +41.7 and +61.5
+points for leadership within two seconds; this does not isolate renewal.
+Renewal alone changed honest capped delay by -0.077 and -0.069 seconds.
+Unreliable renewal produced 107 exact renewed-pair retry witnesses and adjusted
+honest delay increases of 0.806 and 1.128 seconds. The predefined harm screen
+required at least one second in both seeds and did not flag. Sustained harm
+and reliable renewal-specific advantage remain unestablished; longer stages
+are deferred, with no new jobs authorized automatically.
+
+`raw_verification.json` includes preservation verification. Offline completion
+validation is saved in `results/step27_final_resume_validation_20261012_a.json`;
+host process/shutdown proof is `results/step27_shutdown_20261012_a.json`.
+All peers have shut down; it is safe to suspend.
+
+Post-run auxiliary diagnostic issue: the frozen analyzer wrongly equates leader
+selection expiration with follower request expiration when linking client
+DISBANDED receipts. Original receipt flags undercount and are not authoritative.
+Separate read-only `audit_step27_receipts.py` uses actual request expiration plus
+native join ID; pilot `receipt_audit.json` confirms 179/182 emitted disbands,
+including 151/154 in renewed arms. Three remain unconfirmed. Primary counts,
+retry witnesses, and delay metrics do not depend on this linkage. Preserve the
+frozen source/exports; fix this auxiliary linkage in a future analyzer version.
+Requested 2 writes/sec achieved approximately 1.08/sec under the injected delay.
+
+Offline validation and exact resume (this completed suite skips all ten jobs):
+
+```sh
+cd /tmp
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/step27_control_plane.py --resume /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step27_pilot_20261012_a --dry-run
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/step27_control_plane.py --resume /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step27_pilot_20261012_a
+```
+
+A `STOP_AFTER_CURRENT` file inside a running suite stops at the next verified
+peer-shutdown boundary. Interrupted trials are archived and rerun; completed
+trials must retain matching hashes and valid control evidence.
+
+## Previous thread: Step 26 preliminary joint sweep (2026-10-10)
+
+User approved a small combined lifetime × refresh-frequency × control-message-delay
+screen. Goal: X-led groups per submitted X attempt, recruitment speed, and native
+honest choices; establish whether renewal adds anything beyond a short initial ad.
+The older expiration-only arm republishes after expiry; it is not a single-ad control.
+Step 26 adds a genuine one-active-ad-per-native-search control. Tensor outcomes
+remain diagnostic. Step 25 source and results stay frozen.
+
+| Implementation status | State |
+|---|---|
+| Separate Step 26 harness, delay wrappers, checkpoint/resume | Complete; original experiment source remained frozen |
+| Compact analyzer, matched contrasts and interactions | Complete; admission-time expirations and raw references exported |
+| Focused synthetic checks and two short smoke gates | 108 original plus 16 correction checks pass; both smoke gates pass |
+| 14 one-seed, 30-second preliminary trials | Complete: 14/14, zero pending/interrupted/blocked |
+| Independent raw verification and final report | Pass: 319 groups, 120 X-led; all 410 Step 25 baseline hashes unchanged |
+
+**Completed and stopped:** all trial peers and controllers have exited; the host
+process check finds no remaining Step 26 controller or runtime daemon. It is safe
+to suspend. No larger confirmation was started. Full evidence and formulas:
+[Step 26 report](results/step26_pilot_20261010_a/REPORT.md),
+[scalar table](results/step26_pilot_20261010_a/leadership_summary.csv),
+[corrected raw verification](results/step26_pilot_20261010_a/raw_verification_corrected.json),
+[mechanism witnesses](results/step26_pilot_20261010_a/mechanism_evidence.json),
+[offline resume validation](results/step26_final_resume_validation_20261010_a.json),
+[shutdown proof](results/step26_shutdown_20261010_a.json).
+
+| Arm | X-led / attempts, no added delay | X-led / attempts, 150ms one-way delay |
+|---|---:|---:|
+| Passive stock | 12/12 | 5/5 |
+| Single ad, U=1s | 10/11 | 0/3 |
+| Single ad, U=3s | 15/15 | 6/6 |
+| U=1s, f=0.5/s | 15/15 | 0/3 |
+| U=1s, f=2/s | 15/15 | 1/3 |
+| U=3s, f=0.5/s | 15/15 | 6/6 |
+| U=3s, f=2/s | 14/14 | 6/6 |
+
+The lifetime–delay interaction is the clearest preliminary pattern. Under delay,
+U=3s single-ad/0.5/s/2/s successful medians are 2.230/2.233/2.374s, versus
+3.554s passive stock. Renewing U=3s at 2/s reduces X's eligible first-choice count
+from 29/29 (single-ad) to 21/30; the nine alternative leaders expire a median
+0.174s earlier than X. Requested 2/s achieves about 1.08/s with serialized delayed
+writes. Leadership-rate interactions have too few attempts for the predefined
+screening gate; native-choice and some latency contrasts are exploratory flags.
+One paired seed does not establish a deployment rate or an optimal policy.
+
+Raw traces demonstrate bounded retries: six honest searches contain seven extra
+X selections after its expiration advances, with older pairs still in
+`past_attempts`. Four re-selections occur after X has already assembled its group
+but before its native search span closes; three occur before assembly. Three
+joins reject with `BAD_EXPIRATION_TIME` because the current X deadline exceeds
+the request by 0.174/0.896/0.913s. These observations support the renewal/retry and
+freshness mechanisms; sustained harm and a renewal-specific leadership advantage
+remain unestablished. Honest logical read medians are 8.84–11.07ms locally versus
+622.52–623.69ms with delay; these are function-call intervals, not packet rates.
+
+Design: U=1/3s × f=0.5/2 writes/sec × one-way delay=0/150ms (8 cells),
+plus passive stock at both delays and single-ad U=1/3s at both delays (6 controls).
+Eight peers, paired seed 2601, deterministic order seed 260026, native timers and
+equal seeded training delays. Delay affects remote DHT find/store and join messages,
+not cached local reads or tensor transfer. This is application-level emulation.
+No larger confirmation starts automatically after the screen.
+
+Source: `step26_joint_sweep.py`, `analyze_step26_joint.py`, `test_step26_joint.py`,
+and `verify_step26_raw.py`; snapshots also pin the reused Step 24/25 dependencies,
+native runtime source, Python/p2pd binaries, package versions and package manifests.
+Smoke label: `results/step26_smoke_20261010_a`; foreground log is the adjacent `.log`.
+Smoke d150: X led 0/1 submitted attempts, 3 groups; d0: X led 2/2, 6 groups.
+These tiny gate observations are not policy rankings. Delayed traffic verified:
+347 correlated find, 104 accepted ad-store and 23 join RPCs, each with delay records.
+Pilot label: `results/step26_pilot_20261010_a` (14 jobs; its manifest/checkpoint
+are authoritative for completed/pending jobs). Trial completion requires passing reconstruction,
+closed raw traces, and reaped peer processes. A closed integrity failure blocks resume;
+an interrupted trial is archived outside the canonical suite and rerun with its seed.
+Completed per-trial raw and analysis files are hash-pinned and never overwritten.
+
+**Audit correction during trial 10:** all seven incomplete DHT RPC streams started
+after the final step result and search ended. Native grouping and trace checks
+passed, and all peers shut down. The original audit required completion even for
+these teardown starts. A separate `step26_teardown_audit.py` and
+`resume_step26_audit.py` correction passed nine focused checks and offline
+validation; frozen experiment source and raw traces remain unchanged. The correction
+preserves the original failed analysis and halt,
+pins its own source, and only exempts start-only find/store streams after all
+measurement spans close. Their completion is unobserved. No unfinished measured
+RPC or join stream is exempted.
+
+Trial 11 (`passive_stock_d150_s2601`) also completed native grouping and closed
+all measured spans, but had five request-delay/handler-only DHT RPC streams and
+one start-only stream after the final search ended. Two started before the final
+tensor-result record. A separate v2 correction uses the latest **control-plane**
+span closure as the cutoff, still requiring all step results and trace closure.
+It only permits explicitly recorded post-control unary prefixes; RPCs starting
+during control-plane measurement and incomplete joins remain audit failures.
+The v1 source stays frozen. v2 passed four focused tests and offline recovery;
+trial 11 was retained without rerunning it. Both correction sources and all
+pre-correction evidence are hash-pinned, including the original failed analyses
+and halt records. The prior checkpoint is archived before v2 recovery.
+
+The frozen independent verifier initially rejected each final `trace_closed`
+marker's empty peer ID. `verify_step26_closure.py` separately validates exactly
+one final non-participant marker and corrects only that identity error. Its three
+focused tests and all 14 corrected raw checks pass. The original failure report
+remains at `raw_verification.json`; no raw data or frozen verifier was changed.
+
+Pilot launch after the matching smoke gate passes:
+
+```sh
+cd /tmp
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/step26_joint_sweep.py --phase pilot --label 20261010_a --gate /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step26_smoke_20261010_a
+```
+
+Exact offline validation/resume commands for the completed pilot (no unfinished jobs):
+
+```sh
+cd /tmp
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/resume_step26_audit_v2.py --resume /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step26_pilot_20261010_a --dry-run
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/resume_step26_audit_v2.py --resume /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step26_pilot_20261010_a
+```
+
+For a safe boundary stop, create `STOP_AFTER_CURRENT` inside the suite and wait
+for the controller's shutdown message/exit. Remove that marker before an authorized
+resume. Restricted Codex execution requires local-socket access outside the sandbox;
+ordinary terminal execution uses the same commands. No public network is contacted.
+Step 25 preservation baseline: `results/step26_step25_preservation_20261010_a.json`
+(410 existing source/result files). Raw verifier rechecks it after the pilot.
+
+## Completed thread: Step 25 choice and read measurements (2026-10-09)
 
 User approved implementation of the asynchronous Step 25 plan. Measure leadership
 per submitted X attempt (internal retry searches reported separately), time to first
@@ -55,7 +555,157 @@ tensor correctness is diagnostic. No WAN delay is injected and core source is un
 | Independent analyzer, synthetic checks, submission/drain summaries | Complete; 80 combined focused checks pass |
 | Minimal/detailed calibration | Complete; timing limitation retained below |
 | Eight-arm smoke gate and complete CSV export | Complete; 8/8 pass, independent raw verification agrees |
-| Eight arms × ten held-out seeds, sixty-second confirmation windows | Running |
+| Eight arms × ten held-out seeds, sixty-second confirmation windows | Complete: 80/80; full-suite and independent raw checks pass; original 12 preserved |
+| Separate checkpoint/resume manager, offline recovery and checks | Implemented; offline validation passes; experiment source remains frozen |
+
+**Completed confirmation, 2026-10-09:** all 80 jobs finished with passing native
+control-plane and observation checks; the controller exited successfully and
+`checkpoint.json` records `suite_complete`, 80 completed and zero pending,
+interrupted or blocked jobs. All trial peers shut down; a process check found no remaining Step 25 controller
+or peer processes. Independent raw counting
+reproduces **4,995 distinct assemblies, 2,124 X-led**. Every X-led group has four
+peers; each trial has eight peers. No averaging-result filter was applied.
+All 58 original pre-suspension result files, seven frozen harness files and
+thirteen relevant native source files retain their recorded hashes. All completed
+trial files match their checkpoint digests; final analysis matches its saved hash.
+The first 12 jobs were preserved, including offline recovery of the 12th job's
+missing analysis caches; only the remaining 68 ran after authorization to resume.
+
+| Arm | All groups | X-led / X attempts | Led within 1s / X attempts | X selected / eligible first decisions | Median successful X assembly |
+|---|---:|---:|---:|---:|---:|
+| Stock following | 631 | 77/312 (24.7%) | 65/312 (20.8%) | 234/494 (47.4%) | 0.677s |
+| Passive stock | 597 | 214/220 (97.3%) | 75/220 (34.1%) | 649/1004 (64.6%) | 1.158s |
+| Expiration-only 2s | 630 | 304/306 (99.3%) | 282/306 (92.2%) | 719/719 (100.0%) | 0.301s |
+| `(0,1]` | 628 | 306/309 (99.0%) | 280/309 (90.6%) | 717/717 (100.0%) | 0.289s |
+| `(0.25,1.25]` | 628 | 309/310 (99.7%) | 280/310 (90.3%) | 694/694 (100.0%) | 0.276s |
+| `(1,2]` | 628 | 305/306 (99.7%) | 280/306 (91.5%) | 711/711 (100.0%) | 0.277s |
+| `(2,3]` | 627 | 307/309 (99.4%) | 284/309 (91.9%) | 694/694 (100.0%) | 0.285s |
+| `(3,4]` | 626 | 302/305 (99.0%) | 275/305 (90.2%) | 714/741 (96.4%) | 0.327s |
+
+Each arm now has ten paired seeds, sixty-second submission windows plus bounded
+drain. Attempts mean submitted X `step_start` events; internal search retries are
+separate. Early success and assembly latency start at the first SEARCH entry.
+Honest choice uses the first native decision in each honest search where X is live,
+unattempted and no later in native priority than the peer's own deadline. This is
+a conditional decision fraction, not the fraction of all groups captured.
+
+Interpretation: eventual leadership nearly saturates for every non-stock arm;
+all **1,665 interior non-stock attempts** (submitted at least twelve seconds before
+cutoff) led. Shorter ads show stronger conditional native selection and faster
+successful recruitment than passive stock: 90.2–92.2% lead within one second,
+versus 34.1% passive stock, with successful median latency 0.276–0.327s versus
+1.158s. Expiration-only 2s is similarly strong (304 X-led groups versus 302–309 for
+renewed ranges); renewal-specific benefit and a best range are not established.
+This does not demonstrate sustained renewal-induced retry or harm.
+
+Honest logical ad-read interval medians while search is enabled are 9.06–12.27ms
+across arms; pooled read-start rates are 69.2–82.0 per enabled peer-second.
+These are instrumented local function calls, not packet/RPC rates or WAN cadence.
+The calibration does not isolate observer overhead. The suspension split and
+fresh-network resume are preserved in provenance; there is no deployment-rate claim.
+
+Inspect [scalar leadership/early-success/selection table](results/step25_leadership_summary_20261009_a.csv),
+[honest read-cadence table](results/step25_read_cadence_summary_20261009_a.csv),
+[full analysis and CSV bundle](results/step25_analysis_confirm_20261009_a/),
+[independent raw verification](results/step25_confirm_raw_verification_20261009_a.json),
+[preservation proof](results/step25_final_preservation_20261009_a.json),
+[CSV count/identity verification](results/step25_csv_verification_20261009_a.json),
+and [resume log](results/step25_confirm_resume_20261009_a.log).
+There are no pending Step 25 jobs. The commands below remain available for
+read-only validation/recovery; no additional experiment has been started.
+
+**Resume checkpoint, 2026-10-09 16:36 UTC (historical):** the user requested suspension, then
+explicitly authorized resuming. The current trial `expire_2_s2501` finished before
+the parent stopped at its post-shutdown boundary. All trial peers, the parent,
+and its resource helpers have exited; `suspension_boundary.json` records the stop.
+Twelve trials have complete raw traces and summaries. The final trial's missing
+native/choice analysis was reconstructed offline without rerunning it. Sixty-eight
+jobs remain in the original manifest order. Offline validation passes with zero
+blocked jobs; its read-only mode changes no files and imports no Hivemind runtime.
+All seven frozen harness files, thirteen native source files and 58 pre-suspension
+result files retain their recorded hashes. The original runtime also matches.
+Original experiment source/snapshots are unchanged.
+
+At the suspension boundary (live counts are in `checkpoint.json`):
+
+| Arm | Finished raw trials | Pending |
+|---|---:|---:|
+| Stock following | 0 | 10 |
+| Passive stock | 1 | 9 |
+| Expiration-only 2s | 2 | 8 |
+| `(0,1]` | 3 | 7 |
+| `(0.25,1.25]` | 2 | 8 |
+| `(1,2]` | 0 | 10 |
+| `(2,3]` | 3 | 7 |
+| `(3,4]` | 1 | 9 |
+
+The separate manager is `resume_step25.py`. Its validation-only command is
+`python research/hivemind/resume_step25.py --suite /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step25_confirm_20261009_a --dry-run`.
+The exact execution command, after offline validation, is:
+
+```sh
+cd /tmp
+PYTHONPATH=/tmp/hm-step23-runtime /tmp/hm-step23-env/bin/python /home/sarat/Projects/hivemind-analysis/research/hivemind/resume_step25.py --suite /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step25_confirm_20261009_a --resume
+```
+
+The manager validates finished jobs, retains their raw/configuration/source hashes,
+runs only unfinished jobs, and archives interrupted traces before rerunning their
+original job. Offline verification passes: eight self-contained checkpoint/resume tests and
+the 80 original focused checks pass (88 total).
+The first resumed job is `range_3_4_s2501`. The live log is
+`results/step25_confirm_resume_20261009_a.log`; original pre-suspension log stays
+preserved. Canonical `checkpoint.json` lists all completed
+and pending jobs; each completed trial is hash-pinned. Resume provenance and the
+manager source are saved per invocation under `resume_history/`. Interrupted
+traces are archived outside the canonical suite, preserving their bytes.
+To request a safe boundary stop while running:
+
+```sh
+touch /home/sarat/Projects/hivemind-analysis/research/hivemind/results/step25_confirm_20261009_a/STOP_AFTER_CURRENT
+```
+
+Wait for the controller to exit after the current trial's peers shut down before
+suspending. The suspension split is recorded; all resumed jobs use fresh networks.
+
+**Second interim read, 2026-10-09 17:25 UTC:**
+`results/step25_interim_20261009_b.json` independently checks 52 completed raw
+trials: 3,246 groups, 1,405 X-led. Stock: 42/191 X attempts led; passive stock:
+129/133. Expiration-only 2s: 218/220; ranges `(0,1]`, `(0.25,1.25]`, `(1,2]`,
+`(2,3]`, `(3,4]`: 248/250, 221/222, 88/89, 248/250, 211/213 respectively.
+All 1,106 interior non-stock attempts led. First eligible honest decisions choose
+X in 66.2% for passive stock, 100% for expiration-only and ranges up to `(2,3]`,
+and 97.7% for `(3,4]`. Successful X assembly medians are 1.224s passive stock
+and 0.254–0.321s for shorter-ad policies. Unequal 3–8 seeds per arm remain;
+renewal-specific benefit and a best range are unestablished. Foreground logging
+continues at user request; the later 53rd trial also passed.
+
+**Interim read, 2026-10-09 16:46 UTC:** user requested an assessment while the
+remaining jobs keep running in the background. The frozen 19-trial snapshot
+`results/step25_interim_20261009_a.json` contains independent raw checks:
+1,192 distinct assemblies, 517 X-led. Each arm has only one to five completed
+seeds, so this is unbalanced interim evidence, not the final comparison.
+
+| Arm | Completed trials | X-led attempts / all X attempts | X chosen / first eligible honest decisions | Median successful X assembly latency |
+|---|---:|---:|---:|---:|
+| Stock following | 2 | 13/69 | 40/95 | 0.677s |
+| Passive stock | 1 | 19/20 | 61/92 | 1.246s |
+| Expiration-only 2s | 2 | 63/64 | 146/146 | 0.252s |
+| `(0,1]` | 5 | 154/155 | 351/351 | 0.266s |
+| `(0.25,1.25]` | 2 | 62/63 | 139/139 | 0.249s |
+| `(1,2]` | 1 | 28/28 | 65/65 | 0.248s |
+| `(2,3]` | 3 | 90/90 | 194/194 | 0.241s |
+| `(3,4]` | 3 | 88/90 | 208/215 | 0.274s |
+
+Early indications: shorter ads increase conditional native selection and reduce
+successful assembly latency versus passive stock in this instrumented local
+workload. Eventual leadership has a ceiling: passive stock is already 19/20;
+all 410 interior non-stock attempts in this snapshot led. All six non-stock
+non-leading attempts are outside the interior window (started in the last twelve
+seconds); this does not establish why they failed. Expiration-only 2s is similarly
+strong, so renewal-specific benefit and a best range are not established.
+Honest logical read interval medians are about 7–13ms across these arms while
+search is enabled; these are function-call intervals, not network packet rates.
+The later 20th trial also passed; subsequent counts remain live in the checkpoint.
 
 Harness: `step25_choice_measurement.py`. Fresh minimal calibration label (4/4 complete,
 native control-plane checks pass):

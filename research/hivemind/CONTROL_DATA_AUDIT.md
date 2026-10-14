@@ -355,7 +355,11 @@ touch, so a reader arriving from the grid or from Part 3 finds them either way.
 | **E02** | 8 record renewal, 11 availability, 12 leader choice, 13 admission | Can one peer keep short own-ad deadlines renewed, refuse to follow, and repeatedly lead groups of four or five without reading competitors' ads? | **Tested locally, step22.** Sliding expirations persist beyond the initial lifetime. Leadership and write cost measured on eight peers. No indefinite or public-WAN guarantee. |
 | **E03** | 8 record renewal, 12 repeated leader selection, 13 admission/retry | Does advancing an unreliable leader's own-ad expiration cause within-search retries and additional honest averaging delay or failure? | **In progress, step23.** Five paired local mechanism trials demonstrate retries; sixteen smoke trials pass. Confirmation halted after 15/160 trials when a reliable control returned an incorrect tensor alongside overlapping assembled group rosters. Cause unresolved; no harm result. |
 | **E04** | 8 record renewal, 11 availability, 12 leader choice, 13 admission | Which own-ad remaining-lifetime range yields more assembled groups and X-led assemblies at fixed 1 Hz refresh with equal simulated training delays? | **Completed locally, step24 control plane.** 8/8 smoke and 40/40 confirmation trials; 2,485 distinct assemblies, 1,053 X-led. Five 1 Hz ranges produce 147-156 X-led each; no clear shortest-range advantage. Winner/X deadlines and follower views exported; tensor outcomes diagnostic. 36 checks pass. |
-| **E05** | 8 record renewal, 11 availability, 12 leader choice, 13 admission | Does renewal improve X's per-attempt leadership, recruitment speed, and honest peers' actual selections; how often do searching peers read advertisements? | **In progress, step25.** Native queue/read-span hooks and independent analyzer implemented under research only; 80 focused checks pass. Final calibration 4/4 and fresh eight-arm smoke 8/8 pass; independent raw verification agrees. Eight policies × ten held-out seeds are running as `step25_confirm_20261009_a`. Instrumented local cadence only; calibration does not isolate observer overhead. |
+| **E05** | 8 record renewal, 11 availability, 12 leader choice, 13 admission | Does renewal improve X's per-attempt leadership, recruitment speed, and honest peers' actual selections; how often do searching peers read advertisements? | **Completed locally, step25.** 80/80 confirmation jobs pass; independent raw verification: 4,995 groups, 2,124 X-led. Passive stock leads 214/220 attempts; shorter-ad arms 99.0–99.7%, with all 1,665 interior non-stock attempts leading. Conditional first-eligible honest choices: 64.6% passive, 100% through `(2,3]`, 96.4% `(3,4]`. Successful assembly median 1.158s passive versus 0.276–0.327s shorter ads. Expiration-only 2s similarly strong; renewal-specific benefit/best range/sustained retry harm unestablished. Honest logical read medians 9.06–12.27ms, local instrumented calls. 88 focused checks pass; checkpoint preserves original 12, resumes only remaining 68 with frozen hashes. [Scalar table](results/step25_leadership_summary_20261009_a.csv), [read cadence](results/step25_read_cadence_summary_20261009_a.csv), [raw verification](results/step25_confirm_raw_verification_20261009_a.json). |
+| **E06** | 8 record renewal, 11 availability, 12 leader choice, 13 admission | How do initial lifetime, refresh frequency, and remote control-message delay interact in X's per-attempt leadership and recruitment speed? | **Completed, step26 preliminary screen.** 14/14 jobs, one seed, 30-second windows, eight peers; 319 groups, 120 X-led, 129 X attempts. All U=1/3s × f=0.5/2/s × one-way control-delay=0/150ms combinations plus six passive/single-ad controls. Under delay, single-ad U=3s leads 6/6; U=1s at 0.5/s leads 0/3 and at 2/s leads 1/3. Fast U=3s renewal reduces eligible first choices from 29/29 to 21/30. Seven extra X selections across six honest searches demonstrate bounded renewed-pair retries (four after assembly); three joins reject a newly later X expiration. Original source/raw traces preserved; separate teardown/closure audit corrections pass; all 410 Step25 baseline hashes unchanged. No deployment-rate, optimal-policy or sustained-harm claim. [Report and full table](results/step26_pilot_20261010_a/REPORT.md), [raw checks](results/step26_pilot_20261010_a/raw_verification_corrected.json), [mechanism witnesses](results/step26_pilot_20261010_a/mechanism_evidence.json). |
+| **E07** | 8 renewal, 12 leader choice/retry, 13 admission | Does renewal improve per-attempt leadership or add honest grouping delay, alone or with an unreliable X? | **Steps 27–28 complete.** Step 28 six validated comparisons support local renewal benefit: 74/75 versus 41/54 X-led attempts, lower failure-inclusive wait and higher honest participation in all three seeds. Step 27 observed unreliable-renewal delay; sustained harm and public-network reliability remain unestablished. |
+| **E08** | 8 publication/expiry, 12 native choice, 13 admission | Does refreshing before expiry improve leadership beyond exact native 1/2/5-second publication, and how much comes from refusing to follow? | **Step29 complete.** Eight 45-second pilot combinations at one paired seed, 373 groups/170 X-led/188 X attempts. Normal native 5s: 6/24 led, 18 followed; native 1/2s and renewal: 25/25 each. Recruit-only 5s already leads 15/15. Native normal 2s and renewal both yield 73/161 honest first X-led rosters; own-led successful means 0.362/0.290s. Only one search in each renewal arm republished, so reliable renewal advantage remains unestablished. Honest peers native 5s; all min2/target4; default request timeout3 retained (native warning at1/2s); zero added network delay. Raw/CSV/offline-resume checks pass; no larger confirmation started. [Report](results/step29_pilot_20261012_a/REPORT.md). |
+| **E09** | 8 publication/expiry, 12 choice/retry, 13 admission | Does pre-expiry renewal add harm beyond stock2s republication for equally unreliable recruit-only X? | **Step30 closed for now: 6/6 verified, all peers shut down. Recommendation: stop further renewal sweeps; reopen only with a concrete new hypothesis predicting materially greater harm and user direction.** Eight private peers,3 paired seeds, seeded100–200ms control-leg delays, no tensor averaging. Added waits +0.274/+0.290/+0.314s (paired mean +0.293s), below material thresholds; wait effect persists in later windows. First X choices40.1%→56.5%, retries268→745; failures5/1076→2/1022, fixed-window groups316→313. All exposure/cadence gates pass; no leadership-success claim and no further trials. [Final report](results/step30_confirm_20261012_v3_a/FINAL_REPORT.md). |
 
 ### E04: lifetime ranges with equal training delays
 
@@ -408,6 +412,80 @@ instead of 28.5. The latter assembled four groups, three verified, two X-led.
 This does not establish renewal as the cause of the stream failure.
 Confirmation is gated off and (1,2]
 was not reached. Counts have unequal exposure and must not be used to rank ranges.
+
+### E07: leadership benefit and control-plane harm (Steps 27–28)
+
+Step 28 is authorized as a direct reliable-single versus reliable-renewed
+comparison: two 20-second smoke checks, then three paired fresh seeds (2801–2803)
+and 120-second windows. Primary outcome: leadership success per submitted X
+attempt. Separately measure failure-inclusive formation time, unconditional
+honest first choices, any tries of X, native ACCEPTED replies, and first
+assembled-group membership under X versus other leaders. Keep 150ms control
+delay and all other Step 27 controls. Implementation and 15 offline checks are
+complete. Two smoke trials completed (17 groups, seven X-led), and their raw
+traces pass the separately versioned checker. The original checker had clock
+schema/join-ID indexing mismatches; original source and failure evidence remain
+preserved, and no smoke trial was rerun. All six comparisons completed under
+`results/step28_confirm_20261012_v2_b`. Two RPC-trace-incomplete seed-2803 runs
+were fully archived and excluded; their replacements used unchanged source
+and passed. Smoke counts establish operation, not policy ranking.
+
+Step 28 directly supports renewal benefit in this local setup. X-led attempts:
+single **41/54 (75.9%)**, renewed **74/75 (98.7%)**, with improvements in all
+three seeds and a passing predefined descriptive signal (mean paired gain
+23.0 percentage points; all six trials meet the ten-attempt floor). Honest
+first-choice-to-X rates rise **22.2% → 45.7%**; first X-led group membership
+rises **22.9% → 40.6%**. X mean capped waiting falls **4.290s → 2.329s**, while
+successful-only formation is slower with renewal (**1.845s → 2.198s**).
+Thus renewal improves eventual success and participation, with a timing tradeoff.
+Total groups are 146 versus 157, including drain. Raw verification confirms
+303 total/115 X-led groups and all exact member-step links. All 2,479 prior
+hashes remain unchanged; all peers shut down; no further experiments started.
+The one failed renewed attempt began 0.558s before the submission cutoff and
+stays in the denominator. This is descriptive local evidence, not guaranteed
+100% leadership, public-network reliability, or sustained training harm.
+Inspect [the Step 28 report](results/step28_confirm_20261012_v2_b/REPORT.md).
+
+Authorized preliminary screen: five publication/response arms, paired seeds
+2701/2702, 60-second windows, eight peers, 150ms one-way remote control delay.
+Compare native advertisement policy, genuine single 2-second ads, and renewal
+at requested 2 writes/sec; single/renewed are each tested with reliable X and
+X deliberately accepting, holding 0.5 seconds, then disbanding. X does not
+follow in any arm. Two 10-second smoke trials gate the 10-trial screen.
+
+Measure failure-inclusive X leadership per submitted attempt and early assembly
+from step_start, honest time-to-group capped at 12 seconds, no-group fractions,
+and honest roster memberships per peer-minute. Record expirations at selection,
+admission, and assembly; distinguish observed X deadlines from its latest
+publication. Classify renewed-pair retries before versus after X assembly.
+Use seed-level reliable renewal contrasts and a difference in differences for
+renewal-amplified unreliable behavior. Stop after the screen and report; longer
+reliability/sustained-harm stages remain deferred. Core and prior source/raw
+evidence stay unchanged.
+
+The screen completed all ten trials with passing control integrity and independent
+raw/export checks. Counts across seeds: native ads 49 groups and 17/18 X-led
+attempts; reliable single 49 and 13/18; reliable renewed 51 and 25/25; unreliable
+single 43 and 0/9; unreliable renewed 43 and 0/10. Unreliable X never assembles
+by design. The baseline uses native ads but still refuses outbound joins.
+
+The reliable renewed policy led within two seconds more often than native ads
+in both seeds (+41.7/+61.5 percentage points), meeting the exploratory policy
+screen. Versus the genuine single-ad control the differences were +13.1/-2.1
+points, and one control had only seven X attempts: renewal-specific leadership
+is inconclusive. Reliable renewal alone did not increase honest capped delay
+(-0.077/-0.069 seconds). Unreliable renewal produced 49/58 exact retry witnesses
+and adjusted honest delay increases of 0.806/1.128 seconds; the predefined
+at-least-one-second-in-both-seeds harm screen did not flag. These 60-second
+local measurements do not establish sustained harm or deployment reliability.
+All peers shut down; all 1,595 prior source/raw hashes are unchanged. No longer
+stage started. Inspect [the report](results/step27_pilot_20261012_a/REPORT.md),
+raw traces, per-seed contrasts, and independent `raw_verification.json` in that
+suite for exact denominators and provenance.
+Requested renewal cadence was 2/sec but achieved about 1.08/sec. An auxiliary
+client-receipt linkage bug was found after the run; separate raw receipt audit
+confirms 179/182 disbands (151/154 renewed). Original receipt flags undercount;
+primary group/retry/delay results are unaffected. Frozen sources remain intact.
 
 ### E03: renewal-induced retries
 
