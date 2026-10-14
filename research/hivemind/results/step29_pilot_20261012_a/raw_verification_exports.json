@@ -1,0 +1,75 @@
+{
+  "counts": {
+    "completed": 8,
+    "interrupted": 0,
+    "pending": 0
+  },
+  "errors": [],
+  "pass": true,
+  "trials": [
+    {
+      "groups": 47,
+      "honest_attempts": 162,
+      "raw_sha256": "ba2fe998c82a58b1b575b05c1a7c3e71003bc10240f6d17c6eb7079fdd6024c6",
+      "trial": "recruit_only_native_2s_s2901",
+      "x_attempts": 24,
+      "x_led": 24
+    },
+    {
+      "groups": 47,
+      "honest_attempts": 162,
+      "raw_sha256": "3c6fe91deca2b54edac1669d32f443cf52c4f94320b7b0e1bb6038d14a239736",
+      "trial": "normal_native_5s_s2901",
+      "x_attempts": 24,
+      "x_led": 6
+    },
+    {
+      "groups": 47,
+      "honest_attempts": 160,
+      "raw_sha256": "ddd824502c981ab31cd8dc25e8908f448410089466403ed07ff7752b5545467e",
+      "trial": "recruit_only_native_1s_s2901",
+      "x_attempts": 25,
+      "x_led": 25
+    },
+    {
+      "groups": 47,
+      "honest_attempts": 161,
+      "raw_sha256": "160e1573c76b2fe73eb48d0a8739fb1aa9b91a4788c3bfb502954df0fd5573eb",
+      "trial": "normal_native_2s_s2901",
+      "x_attempts": 25,
+      "x_led": 25
+    },
+    {
+      "groups": 47,
+      "honest_attempts": 163,
+      "raw_sha256": "759b5afb850de12e7b50e491ac7b7add1b525ec08ad0527d636edbbbd179a149",
+      "trial": "recruit_only_renew_1_2_s2901",
+      "x_attempts": 25,
+      "x_led": 25
+    },
+    {
+      "groups": 44,
+      "honest_attempts": 161,
+      "raw_sha256": "300d65c7d2ef62933469299330ac4d4789324f9a3cccc378c6d1feeb6ab415b1",
+      "trial": "recruit_only_native_5s_s2901",
+      "x_attempts": 15,
+      "x_led": 15
+    },
+    {
+      "groups": 47,
+      "honest_attempts": 161,
+      "raw_sha256": "953454a6e6ee134c4fdc19fab31cb56f8ae1365bc29ae2483f8e6d6cc4da34f7",
+      "trial": "normal_renew_1_2_s2901",
+      "x_attempts": 25,
+      "x_led": 25
+    },
+    {
+      "groups": 47,
+      "honest_attempts": 160,
+      "raw_sha256": "fd674d726230480f80c1a8a15dbca5ad1c67843d65c5c398b4e3e1dc35985693",
+      "trial": "normal_native_1s_s2901",
+      "x_attempts": 25,
+      "x_led": 25
+    }
+  ]
+}

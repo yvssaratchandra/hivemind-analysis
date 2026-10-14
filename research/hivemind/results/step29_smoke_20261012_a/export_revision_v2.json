@@ -1,0 +1,12 @@
+{
+  "completed_trial_sha256": "804ffc266de131d1bf09de994b23a0c973b4a3ba0eace9ee69ca77bdc4de43e3",
+  "export_revision_sha256": {
+    "run_step29_policies_v2.py": "d62bf87ef333e6f4c980d60326b054423e5c4f38a670d4a320b6be5441086dcc",
+    "test_step29_exports_v2.py": "f481ac6672dec48100571a99aac2c2da822e861f367d9aa06b6806b6d15f1a38"
+  },
+  "original_provenance_sha256": "873275ccb57e65dbad1f4beac309b1ce20fca3f57955cec3e537e9e85ae5695b",
+  "preserved_export_sha256": {
+    "halt.json": "87e4706986e57ed85aaa47b32ae09eedfc14178f1559640e50c0b23b953e3c06"
+  },
+  "reason": "Duplicate behavior/publication_policy keys in summary-row constructor; no runtime or raw evidence changes"
+}

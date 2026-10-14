@@ -1,0 +1,143 @@
+{
+  "allow_state_sharing": false,
+  "allreduce_timeout": 6,
+  "attempt_unit": "step_start",
+  "cached_reads_delayed": false,
+  "case": {
+    "behavior": "recruit_only",
+    "hold_seconds": 0.0,
+    "lifetime": 5.0,
+    "minimum": 2,
+    "mode": "passive",
+    "name": "recruit_only_native_5s",
+    "one_way_delay_seconds": 0.0,
+    "publication_policy": "native",
+    "response": "reliable",
+    "target": 4
+  },
+  "clock_jump_limit_seconds": 0.25,
+  "clock_monitor": true,
+  "control_delay_model": "remote find/store request+response; join request+each response",
+  "delay_location": "after observed FINISHED, before next step()",
+  "duplicate_read_views": false,
+  "duration": 45.0,
+  "event_transport": "batched",
+  "experiment": "step29",
+  "group_bits": "",
+  "harm_timeout_cap": 12,
+  "honest_ad_lifetime": 5,
+  "honest_min": 2,
+  "initial_offsets": {
+    "H0": 0.3114289360347,
+    "H1": 2.727250844007873,
+    "H2": 0.6413645435502957,
+    "H3": 0.19560644834911345,
+    "H4": 1.8634653338863862,
+    "H5": 0.694521385710889,
+    "H6": 2.475783456483479,
+    "X": 2.4379423538504463
+  },
+  "instrumentation": "detailed",
+  "leadership_latency_origin": "step_start",
+  "network": "eight-peer loopback",
+  "network_delay_injected": false,
+  "one_way_delay_seconds": 0.0,
+  "outcome": "grouping",
+  "peer_ids": {
+    "H0": "12D3KooWNdhv9KgWvHfucbrxVrqmQFs3i9XvNZUCyHdDoiP5QHdH",
+    "H1": "12D3KooWCNqq5ZkuqFXGtkTPE8Zb3xnz7Jn4dBj3wJMEiZcvqsQi",
+    "H2": "12D3KooWSwWwoDgJk7pS3QuE8eSSvfojpDKxwwQhMP5CRw2uLshA",
+    "H3": "12D3KooWD9iEu5efZWatWkx1DnKXov96FgzTCsLniFkxsdoYETb8",
+    "H4": "12D3KooWLKC1crDdd1pBo8Q36Lx7mPhhybagVaGcnsqRJeUMcN8u",
+    "H5": "12D3KooWRBXRkCvV961XR1rwRaQuCa3eAQStgNiR6TUDb1LorqAE",
+    "H6": "12D3KooWQHBR2iNaXLMwtEx85j7GF4iM4MGq9o6ma8wWbvGV6SBX",
+    "X": "12D3KooWGjFYVQ3nR8Dx6WNQEp2wH1DBoRAdNLhgYb7T5i9FXaEP"
+  },
+  "request_timeout": 3,
+  "response_policy": "reliable",
+  "runtime_matchmaking_config": {
+    "12D3KooWCNqq5ZkuqFXGtkTPE8Zb3xnz7Jn4dBj3wJMEiZcvqsQi": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "target_group_size": 4
+    },
+    "12D3KooWD9iEu5efZWatWkx1DnKXov96FgzTCsLniFkxsdoYETb8": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "target_group_size": 4
+    },
+    "12D3KooWGjFYVQ3nR8Dx6WNQEp2wH1DBoRAdNLhgYb7T5i9FXaEP": {
+      "behavior": "recruit_only",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5.0,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "target_group_size": 4
+    },
+    "12D3KooWLKC1crDdd1pBo8Q36Lx7mPhhybagVaGcnsqRJeUMcN8u": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "target_group_size": 4
+    },
+    "12D3KooWNdhv9KgWvHfucbrxVrqmQFs3i9XvNZUCyHdDoiP5QHdH": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "target_group_size": 4
+    },
+    "12D3KooWQHBR2iNaXLMwtEx85j7GF4iM4MGq9o6ma8wWbvGV6SBX": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "target_group_size": 4
+    },
+    "12D3KooWRBXRkCvV961XR1rwRaQuCa3eAQStgNiR6TUDb1LorqAE": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "target_group_size": 4
+    },
+    "12D3KooWSwWwoDgJk7pS3QuE8eSSvfojpDKxwwQhMP5CRw2uLshA": {
+      "behavior": "normal",
+      "min_group_size": 2,
+      "min_matchmaking_time": 5,
+      "publication_policy": "native",
+      "request_timeout": 3,
+      "target_group_size": 4
+    }
+  },
+  "scheduled_time": "native default",
+  "seed": 2901,
+  "started_monotonic": 70287.98086952,
+  "started_wall": 1791814937.3245153,
+  "store_delay": 0,
+  "submission_cutoff_checked_per_peer": true,
+  "target": 4,
+  "tensor_size": 128,
+  "tensor_transfer_delayed": false,
+  "timeout": 12,
+  "trace_batch_size": 32,
+  "training_delay": {
+    "lower": 0.1,
+    "mu": 0.2517227582341841,
+    "sigma": 0.5545130293761911,
+    "upper": 4.0
+  },
+  "x_min_group_size": 2,
+  "x_min_matchmaking_time": 5.0
+}

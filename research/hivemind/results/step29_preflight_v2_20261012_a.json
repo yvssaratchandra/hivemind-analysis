@@ -1,0 +1,64 @@
+{
+  "focused_tests": 11,
+  "original_sources_unchanged": true,
+  "pass_": true,
+  "smoke_checkpoint": {
+    "counts": {
+      "completed": 1,
+      "interrupted": 0,
+      "pending": 1
+    },
+    "experiment": "step29",
+    "jobs": [
+      {
+        "job": {
+          "case": {
+            "behavior": "normal",
+            "hold_seconds": 0.0,
+            "lifetime": 1.0,
+            "minimum": 2,
+            "mode": "stock",
+            "name": "normal_native_1s",
+            "one_way_delay_seconds": 0.0,
+            "publication_policy": "native",
+            "response": "reliable",
+            "target": 4
+          },
+          "duration": 10.0,
+          "seed": 2900
+        },
+        "status": "completed",
+        "trial_dir": "normal_native_1s_s2900"
+      },
+      {
+        "job": {
+          "case": {
+            "behavior": "normal",
+            "frequency": 1.0,
+            "hold_seconds": 0.0,
+            "lifetime": 2.0,
+            "minimum": 2,
+            "mode": "stock",
+            "name": "normal_renew_1_2",
+            "nominal_lower": 1.0,
+            "nominal_upper": 2.0,
+            "one_way_delay_seconds": 0.0,
+            "publication_policy": "renew",
+            "response": "reliable",
+            "target": 4
+          },
+          "duration": 10.0,
+          "seed": 2900
+        },
+        "status": "pending",
+        "trial_dir": "normal_renew_1_2_s2900"
+      }
+    ],
+    "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step29_smoke_20261012_a",
+    "valid": true
+  },
+  "source_sha256": {
+    "run_step29_policies_v2.py": "d62bf87ef333e6f4c980d60326b054423e5c4f38a670d4a320b6be5441086dcc",
+    "test_step29_exports_v2.py": "f481ac6672dec48100571a99aac2c2da822e861f367d9aa06b6806b6d15f1a38"
+  }
+}

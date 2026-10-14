@@ -1,0 +1,178 @@
+{
+  "counts": {
+    "completed": 8,
+    "interrupted": 0,
+    "pending": 0
+  },
+  "experiment": "step29",
+  "jobs": [
+    {
+      "job": {
+        "case": {
+          "behavior": "recruit_only",
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 2,
+          "mode": "passive",
+          "name": "recruit_only_native_2s",
+          "one_way_delay_seconds": 0.0,
+          "publication_policy": "native",
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 45.0,
+        "seed": 2901
+      },
+      "status": "completed",
+      "trial_dir": "recruit_only_native_2s_s2901"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "normal",
+          "hold_seconds": 0.0,
+          "lifetime": 5.0,
+          "minimum": 2,
+          "mode": "stock",
+          "name": "normal_native_5s",
+          "one_way_delay_seconds": 0.0,
+          "publication_policy": "native",
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 45.0,
+        "seed": 2901
+      },
+      "status": "completed",
+      "trial_dir": "normal_native_5s_s2901"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "recruit_only",
+          "hold_seconds": 0.0,
+          "lifetime": 1.0,
+          "minimum": 2,
+          "mode": "passive",
+          "name": "recruit_only_native_1s",
+          "one_way_delay_seconds": 0.0,
+          "publication_policy": "native",
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 45.0,
+        "seed": 2901
+      },
+      "status": "completed",
+      "trial_dir": "recruit_only_native_1s_s2901"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "normal",
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 2,
+          "mode": "stock",
+          "name": "normal_native_2s",
+          "one_way_delay_seconds": 0.0,
+          "publication_policy": "native",
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 45.0,
+        "seed": 2901
+      },
+      "status": "completed",
+      "trial_dir": "normal_native_2s_s2901"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "recruit_only",
+          "frequency": 1.0,
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 2,
+          "mode": "passive",
+          "name": "recruit_only_renew_1_2",
+          "nominal_lower": 1.0,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.0,
+          "publication_policy": "renew",
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 45.0,
+        "seed": 2901
+      },
+      "status": "completed",
+      "trial_dir": "recruit_only_renew_1_2_s2901"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "recruit_only",
+          "hold_seconds": 0.0,
+          "lifetime": 5.0,
+          "minimum": 2,
+          "mode": "passive",
+          "name": "recruit_only_native_5s",
+          "one_way_delay_seconds": 0.0,
+          "publication_policy": "native",
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 45.0,
+        "seed": 2901
+      },
+      "status": "completed",
+      "trial_dir": "recruit_only_native_5s_s2901"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "normal",
+          "frequency": 1.0,
+          "hold_seconds": 0.0,
+          "lifetime": 2.0,
+          "minimum": 2,
+          "mode": "stock",
+          "name": "normal_renew_1_2",
+          "nominal_lower": 1.0,
+          "nominal_upper": 2.0,
+          "one_way_delay_seconds": 0.0,
+          "publication_policy": "renew",
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 45.0,
+        "seed": 2901
+      },
+      "status": "completed",
+      "trial_dir": "normal_renew_1_2_s2901"
+    },
+    {
+      "job": {
+        "case": {
+          "behavior": "normal",
+          "hold_seconds": 0.0,
+          "lifetime": 1.0,
+          "minimum": 2,
+          "mode": "stock",
+          "name": "normal_native_1s",
+          "one_way_delay_seconds": 0.0,
+          "publication_policy": "native",
+          "response": "reliable",
+          "target": 4
+        },
+        "duration": 45.0,
+        "seed": 2901
+      },
+      "status": "completed",
+      "trial_dir": "normal_native_1s_s2901"
+    }
+  ],
+  "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step29_pilot_20261012_a",
+  "valid": true
+}

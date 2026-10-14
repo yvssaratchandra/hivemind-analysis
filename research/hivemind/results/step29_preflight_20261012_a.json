@@ -1,0 +1,152 @@
+{
+  "experiment": "step29",
+  "focused_tests": 9,
+  "focused_tests_pass": true,
+  "matrix_alignment_pass": true,
+  "native_registration_preflight_pass": true,
+  "new_files_sha256": {
+    "analyze_step29_policies.py": "5ef8d765782d8c65c8e71f6aab5ab7a2746cf52073fdf589e5321ebf9270a9e0",
+    "step29_policies.py": "449dadfc9264fe205324c9df3ec537a9f5c7f9c70d94c909875afa46178cef8c",
+    "step29_workload.py": "cb978b3a448d3998ca33fd9ca523b6d84406ed2cea64bc54fe0074a5f0da2324",
+    "test_step29_policies.py": "46e9bacb3ac806c6aae142c3b762ed1f5cc5cfd7f058de38385d717571f85858",
+    "verify_step28_exports_v2.py": "289f99f8292c1a0883092cbfb0ab813da31aba61c9db6c47c902af47b74e1dd3"
+  },
+  "pilot_jobs": [
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "hold_seconds": 0.0,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "recruit_only_native_2s",
+        "one_way_delay_seconds": 0.0,
+        "publication_policy": "native",
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 45.0,
+      "seed": 2901
+    },
+    {
+      "case": {
+        "behavior": "normal",
+        "hold_seconds": 0.0,
+        "lifetime": 5.0,
+        "minimum": 2,
+        "mode": "stock",
+        "name": "normal_native_5s",
+        "one_way_delay_seconds": 0.0,
+        "publication_policy": "native",
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 45.0,
+      "seed": 2901
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "hold_seconds": 0.0,
+        "lifetime": 1.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "recruit_only_native_1s",
+        "one_way_delay_seconds": 0.0,
+        "publication_policy": "native",
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 45.0,
+      "seed": 2901
+    },
+    {
+      "case": {
+        "behavior": "normal",
+        "hold_seconds": 0.0,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "stock",
+        "name": "normal_native_2s",
+        "one_way_delay_seconds": 0.0,
+        "publication_policy": "native",
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 45.0,
+      "seed": 2901
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "frequency": 1.0,
+        "hold_seconds": 0.0,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "recruit_only_renew_1_2",
+        "nominal_lower": 1.0,
+        "nominal_upper": 2.0,
+        "one_way_delay_seconds": 0.0,
+        "publication_policy": "renew",
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 45.0,
+      "seed": 2901
+    },
+    {
+      "case": {
+        "behavior": "recruit_only",
+        "hold_seconds": 0.0,
+        "lifetime": 5.0,
+        "minimum": 2,
+        "mode": "passive",
+        "name": "recruit_only_native_5s",
+        "one_way_delay_seconds": 0.0,
+        "publication_policy": "native",
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 45.0,
+      "seed": 2901
+    },
+    {
+      "case": {
+        "behavior": "normal",
+        "frequency": 1.0,
+        "hold_seconds": 0.0,
+        "lifetime": 2.0,
+        "minimum": 2,
+        "mode": "stock",
+        "name": "normal_renew_1_2",
+        "nominal_lower": 1.0,
+        "nominal_upper": 2.0,
+        "one_way_delay_seconds": 0.0,
+        "publication_policy": "renew",
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 45.0,
+      "seed": 2901
+    },
+    {
+      "case": {
+        "behavior": "normal",
+        "hold_seconds": 0.0,
+        "lifetime": 1.0,
+        "minimum": 2,
+        "mode": "stock",
+        "name": "normal_native_1s",
+        "one_way_delay_seconds": 0.0,
+        "publication_policy": "native",
+        "response": "reliable",
+        "target": 4
+      },
+      "duration": 45.0,
+      "seed": 2901
+    }
+  ],
+  "prior_sources_unchanged": true,
+  "synthetic_followed_latency_separation_pass": true
+}

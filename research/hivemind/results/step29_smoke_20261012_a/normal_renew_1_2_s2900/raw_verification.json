@@ -1,0 +1,25 @@
+{
+  "checked_metrics": {
+    "honest_accepted_other_reply_count": 15,
+    "honest_accepted_x_reply_count": 18,
+    "honest_first_choice_other_attempts": 15,
+    "honest_first_choice_x_attempts": 13,
+    "honest_first_group_other_led_attempts": 12,
+    "honest_first_group_x_led_attempts": 18,
+    "honest_no_group_attempts": 1,
+    "honest_no_outgoing_choice_attempts": 3,
+    "honest_submitted_attempts": 31,
+    "total_groups": 9,
+    "x_led_attempts": 6,
+    "x_led_groups": 6,
+    "x_led_rate": 1.0,
+    "x_mean_capped_latency_seconds": 0.2605254496690274,
+    "x_submitted_attempts": 6,
+    "x_success_only_mean_first_lead_latency_seconds": 0.2605254496690274,
+    "x_success_only_median_first_lead_latency_seconds": 0.21586675550497603
+  },
+  "errors": [],
+  "pass": true,
+  "pass_": true,
+  "raw_sha256": "80921bc2f1e808a97652a890b645043e452a7db0ccda8b8eec1c8713c7858df0"
+}

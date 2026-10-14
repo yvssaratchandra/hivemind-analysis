@@ -1,0 +1,14 @@
+{
+  "case": "normal_renew_1_2_s2901",
+  "step_id": "X:14",
+  "first_ad_ref": "2556790:5517",
+  "captured_native_wait_ref": "2556790:5647",
+  "second_ad_ref": "2556790:6066",
+  "assembly_ref": "2556790:6068",
+  "second_publication_offset_seconds": 28.107519,
+  "assembly_offset_seconds": 28.10796,
+  "group_size": 2,
+  "group_id": "b759c8030eec2fb9100f129967930476d3618ed5",
+  "source_explanation": "Local declared_expiration signal invalidates native pop_next_leader; minimum2 permits assembly before old expiration. Code inference supported by event ordering; one event.",
+  "renewed_availability_explains_assembly": false
+}
