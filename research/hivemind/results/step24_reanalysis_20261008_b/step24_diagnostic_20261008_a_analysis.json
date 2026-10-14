@@ -1,0 +1,2223 @@
+{
+  "phase": "diagnostic",
+  "complete": true,
+  "pass": true,
+  "halted": false,
+  "halt": null,
+  "expected_trials": 1,
+  "trial_count": 1,
+  "missing_jobs": [],
+  "incomplete_trials": [],
+  "trials": [
+    {
+      "case": "range_2_3",
+      "policy": {
+        "name": "range_2_3",
+        "mode": "refresh",
+        "minimum": 4,
+        "target": 4,
+        "frequency": 1.0,
+        "lifetime": 3.0,
+        "nominal_lower": 2.0,
+        "nominal_upper": 3.0
+      },
+      "seed": 2400,
+      "duration": 10,
+      "source": "research/hivemind/results/step24_diagnostic_20261008_a/range_2_3_s2400",
+      "total_assembled_groups": 10,
+      "x_assembled_leads": 5,
+      "total_verified_groups": 10,
+      "x_verified_leads": 5,
+      "x_leadership_share": 0.5,
+      "mean_x_verified_group_size": 4,
+      "x_ad_writes": 16,
+      "x_ad_attempts": 16,
+      "x_ad_write_attempts": 16,
+      "disband_replies": 2,
+      "incorrect_steps": [],
+      "failed_steps": [
+        "X:6"
+      ],
+      "pending": [],
+      "integrity_errors": [],
+      "error": null,
+      "groups": [
+        {
+          "group_id": "06371c51c69a2dec453ecaf7cded9993edc93c3d",
+          "leader": "X",
+          "leader_peer": "12D3KooWGBBZCbSz26kcDVNTX9tLsSqFBwed2rfZ8FjjRzURWAWy",
+          "roster": [
+            "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+            "12D3KooWGBBZCbSz26kcDVNTX9tLsSqFBwed2rfZ8FjjRzURWAWy",
+            "12D3KooWGfMQyFFaWJYu7vnivqFDzBAUb7wmgNNUUadf39kE9gB3",
+            "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR"
+          ],
+          "size": 4,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H0:1",
+            "H1:1",
+            "H2:1",
+            "X:1"
+          ],
+          "expected_mean": 12.5
+        },
+        {
+          "group_id": "1e54e37d1bcedc54de6c49e43aa9eaf737419641",
+          "leader": "H3",
+          "leader_peer": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+          "roster": [
+            "12D3KooWECmNDU3ptGpymmwx6we5vCxvFnoxy9XE9P1j1TWFnVxY",
+            "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+            "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+            "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR"
+          ],
+          "size": 4,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H0:5",
+            "H3:3",
+            "H5:3",
+            "H6:4"
+          ],
+          "expected_mean": 41.0
+        },
+        {
+          "group_id": "69f033cbea79c3a1d1b422f07c072ad4d2498a77",
+          "leader": "H6",
+          "leader_peer": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+          "roster": [
+            "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+            "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY"
+          ],
+          "size": 2,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H3:5",
+            "H6:5"
+          ],
+          "expected_mean": 54.5
+        },
+        {
+          "group_id": "77a59ec4edbf29095245a1ec58aacc9a450075bd",
+          "leader": "H5",
+          "leader_peer": "12D3KooWECmNDU3ptGpymmwx6we5vCxvFnoxy9XE9P1j1TWFnVxY",
+          "roster": [
+            "12D3KooWECmNDU3ptGpymmwx6we5vCxvFnoxy9XE9P1j1TWFnVxY",
+            "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+            "12D3KooWGfMQyFFaWJYu7vnivqFDzBAUb7wmgNNUUadf39kE9gB3",
+            "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX"
+          ],
+          "size": 4,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H1:4",
+            "H2:3",
+            "H4:3",
+            "H5:2"
+          ],
+          "expected_mean": 33.0
+        },
+        {
+          "group_id": "79eee014a9675b619ad02ed6bff3d94ee8e2a74b",
+          "leader": "X",
+          "leader_peer": "12D3KooWGBBZCbSz26kcDVNTX9tLsSqFBwed2rfZ8FjjRzURWAWy",
+          "roster": [
+            "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+            "12D3KooWGBBZCbSz26kcDVNTX9tLsSqFBwed2rfZ8FjjRzURWAWy",
+            "12D3KooWGfMQyFFaWJYu7vnivqFDzBAUb7wmgNNUUadf39kE9gB3",
+            "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR"
+          ],
+          "size": 4,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H0:4",
+            "H1:5",
+            "H2:4",
+            "X:5"
+          ],
+          "expected_mean": 47.5
+        },
+        {
+          "group_id": "9925f89b67f56cf4190d1dcbd058704f2646ce7a",
+          "leader": "H2",
+          "leader_peer": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+          "roster": [
+            "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+            "12D3KooWGfMQyFFaWJYu7vnivqFDzBAUb7wmgNNUUadf39kE9gB3",
+            "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+            "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX"
+          ],
+          "size": 4,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H1:2",
+            "H2:2",
+            "H3:1",
+            "H4:2"
+          ],
+          "expected_mean": 20.0
+        },
+        {
+          "group_id": "b7e41a16cc4d695ea29626a48f8dda98590dfa10",
+          "leader": "X",
+          "leader_peer": "12D3KooWGBBZCbSz26kcDVNTX9tLsSqFBwed2rfZ8FjjRzURWAWy",
+          "roster": [
+            "12D3KooWECmNDU3ptGpymmwx6we5vCxvFnoxy9XE9P1j1TWFnVxY",
+            "12D3KooWGBBZCbSz26kcDVNTX9tLsSqFBwed2rfZ8FjjRzURWAWy",
+            "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+            "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX"
+          ],
+          "size": 4,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H4:1",
+            "H5:1",
+            "H6:1",
+            "X:2"
+          ],
+          "expected_mean": 18.0
+        },
+        {
+          "group_id": "bef30d2605f861f96095d9e0e195f5e32519d097",
+          "leader": "X",
+          "leader_peer": "12D3KooWGBBZCbSz26kcDVNTX9tLsSqFBwed2rfZ8FjjRzURWAWy",
+          "roster": [
+            "12D3KooWGBBZCbSz26kcDVNTX9tLsSqFBwed2rfZ8FjjRzURWAWy",
+            "12D3KooWGfMQyFFaWJYu7vnivqFDzBAUb7wmgNNUUadf39kE9gB3",
+            "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+            "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR"
+          ],
+          "size": 4,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H0:2",
+            "H1:3",
+            "H6:2",
+            "X:3"
+          ],
+          "expected_mean": 28.5
+        },
+        {
+          "group_id": "d2fb347467fe35d5be816431a12d58899a3e9534",
+          "leader": "H1",
+          "leader_peer": "12D3KooWGfMQyFFaWJYu7vnivqFDzBAUb7wmgNNUUadf39kE9gB3",
+          "roster": [
+            "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+            "12D3KooWGfMQyFFaWJYu7vnivqFDzBAUb7wmgNNUUadf39kE9gB3",
+            "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+            "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX"
+          ],
+          "size": 4,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H1:6",
+            "H2:5",
+            "H3:4",
+            "H4:4"
+          ],
+          "expected_mean": 50.0
+        },
+        {
+          "group_id": "df348114e97acc5a26ae69e24d414cd5895a80c3",
+          "leader": "X",
+          "leader_peer": "12D3KooWGBBZCbSz26kcDVNTX9tLsSqFBwed2rfZ8FjjRzURWAWy",
+          "roster": [
+            "12D3KooWGBBZCbSz26kcDVNTX9tLsSqFBwed2rfZ8FjjRzURWAWy",
+            "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+            "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+            "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR"
+          ],
+          "size": 4,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H0:3",
+            "H3:2",
+            "H6:3",
+            "X:4"
+          ],
+          "expected_mean": 34.0
+        }
+      ],
+      "timing": {
+        "training": {
+          "schedules": [
+            {
+              "step_id": "X:1",
+              "delay": 0.7358029825207509,
+              "expected_delay": 0.7358029825207508,
+              "ready": 14811.991499953521,
+              "finished": 14811.255696971
+            },
+            {
+              "step_id": "H1:1",
+              "delay": 0.8497178822520554,
+              "expected_delay": 0.8497178822520552,
+              "ready": 14812.105414853253,
+              "finished": 14811.255696971
+            },
+            {
+              "step_id": "H2:1",
+              "delay": 0.8207459946364006,
+              "expected_delay": 0.8207459946364004,
+              "ready": 14812.086873894637,
+              "finished": 14811.2661279
+            },
+            {
+              "step_id": "H0:1",
+              "delay": 2.633695554349227,
+              "expected_delay": 2.6336955543492273,
+              "ready": 14813.899823454349,
+              "finished": 14811.2661279
+            },
+            {
+              "step_id": "H4:1",
+              "delay": 1.3693590765226675,
+              "expected_delay": 1.3693590765226673,
+              "ready": 14813.414499789524,
+              "finished": 14812.045140713
+            },
+            {
+              "step_id": "H6:1",
+              "delay": 1.8590664049447887,
+              "expected_delay": 1.8590664049447887,
+              "ready": 14813.904207117945,
+              "finished": 14812.045140713
+            },
+            {
+              "step_id": "H5:1",
+              "delay": 2.4494462732611284,
+              "expected_delay": 2.4494462732611284,
+              "ready": 14814.494586986262,
+              "finished": 14812.045140713
+            },
+            {
+              "step_id": "X:2",
+              "delay": 1.572270506951673,
+              "expected_delay": 1.5722705069516727,
+              "ready": 14813.617411219951,
+              "finished": 14812.045140713
+            },
+            {
+              "step_id": "H2:2",
+              "delay": 1.3327418244935785,
+              "expected_delay": 1.3327418244935783,
+              "ready": 14814.812264947494,
+              "finished": 14813.479523123
+            },
+            {
+              "step_id": "H1:2",
+              "delay": 0.7213651534320799,
+              "expected_delay": 0.7213651534320797,
+              "ready": 14814.200888276431,
+              "finished": 14813.479523123
+            },
+            {
+              "step_id": "H3:1",
+              "delay": 1.7421914188740941,
+              "expected_delay": 1.7421914188740941,
+              "ready": 14815.221714541874,
+              "finished": 14813.479523123
+            },
+            {
+              "step_id": "H4:2",
+              "delay": 1.3500710955732866,
+              "expected_delay": 1.3500710955732866,
+              "ready": 14814.829594218574,
+              "finished": 14813.479523123
+            },
+            {
+              "step_id": "H0:2",
+              "delay": 1.0118854022047552,
+              "expected_delay": 1.011885402204755,
+              "ready": 14815.344167444204,
+              "finished": 14814.332282042
+            },
+            {
+              "step_id": "H6:2",
+              "delay": 1.2057557070252654,
+              "expected_delay": 1.2057557070252654,
+              "ready": 14815.538037749026,
+              "finished": 14814.332282042
+            },
+            {
+              "step_id": "H1:3",
+              "delay": 0.824627811865807,
+              "expected_delay": 0.8246278118658069,
+              "ready": 14815.156909853866,
+              "finished": 14814.332282042
+            },
+            {
+              "step_id": "X:3",
+              "delay": 0.9093483568281223,
+              "expected_delay": 0.9093483568281222,
+              "ready": 14815.252387511828,
+              "finished": 14814.343039155
+            },
+            {
+              "step_id": "H5:2",
+              "delay": 1.9671479285722546,
+              "expected_delay": 1.9671479285722546,
+              "ready": 14817.189787983572,
+              "finished": 14815.222640055
+            },
+            {
+              "step_id": "H2:3",
+              "delay": 0.40180232303439234,
+              "expected_delay": 0.4018023230343923,
+              "ready": 14815.624442378035,
+              "finished": 14815.222640055
+            },
+            {
+              "step_id": "H4:3",
+              "delay": 2.9408364511853735,
+              "expected_delay": 2.9408364511853735,
+              "ready": 14818.163476506186,
+              "finished": 14815.222640055
+            },
+            {
+              "step_id": "H1:4",
+              "delay": 0.42014559896281806,
+              "expected_delay": 0.42014559896281795,
+              "ready": 14815.642785653963,
+              "finished": 14815.222640055
+            },
+            {
+              "step_id": "H3:2",
+              "delay": 1.1218085239617375,
+              "expected_delay": 1.1218085239617375,
+              "ready": 14816.712338266962,
+              "finished": 14815.590529743
+            },
+            {
+              "step_id": "X:4",
+              "delay": 0.9445924926739465,
+              "expected_delay": 0.9445924926739464,
+              "ready": 14816.535122235673,
+              "finished": 14815.590529743
+            },
+            {
+              "step_id": "H0:3",
+              "delay": 1.036950630448832,
+              "expected_delay": 1.0369506304488318,
+              "ready": 14816.627480373449,
+              "finished": 14815.590529743
+            },
+            {
+              "step_id": "H6:3",
+              "delay": 1.4493682790520963,
+              "expected_delay": 1.4493682790520963,
+              "ready": 14817.039898022053,
+              "finished": 14815.590529743
+            },
+            {
+              "step_id": "H2:4",
+              "delay": 1.253844843264083,
+              "expected_delay": 1.2538448432640827,
+              "ready": 14817.940779028264,
+              "finished": 14816.686934185
+            },
+            {
+              "step_id": "H1:5",
+              "delay": 0.7717057206312881,
+              "expected_delay": 0.771705720631288,
+              "ready": 14817.458639905632,
+              "finished": 14816.686934185
+            },
+            {
+              "step_id": "X:5",
+              "delay": 2.0091155022209772,
+              "expected_delay": 2.0091155022209772,
+              "ready": 14818.69604968722,
+              "finished": 14816.686934185
+            },
+            {
+              "step_id": "H0:4",
+              "delay": 0.7005305836782924,
+              "expected_delay": 0.7005305836782922,
+              "ready": 14817.387464768677,
+              "finished": 14816.686934185
+            },
+            {
+              "step_id": "H3:3",
+              "delay": 0.6107187472083793,
+              "expected_delay": 0.6107187472083792,
+              "ready": 14818.062038821208,
+              "finished": 14817.451320074
+            },
+            {
+              "step_id": "H6:4",
+              "delay": 1.9314143957087666,
+              "expected_delay": 1.9314143957087668,
+              "ready": 14819.38273446971,
+              "finished": 14817.451320074
+            },
+            {
+              "step_id": "H5:3",
+              "delay": 4.0,
+              "expected_delay": 4.0,
+              "ready": 14821.451320074,
+              "finished": 14817.451320074
+            },
+            {
+              "step_id": "H0:5",
+              "delay": 3.2087111074487322,
+              "expected_delay": 3.2087111074487322,
+              "ready": 14820.660031181449,
+              "finished": 14817.451320074
+            },
+            {
+              "step_id": "H1:6",
+              "delay": 2.043275019214186,
+              "expected_delay": 2.043275019214186,
+              "ready": 14820.265712224214,
+              "finished": 14818.222437205
+            },
+            {
+              "step_id": "H2:5",
+              "delay": 2.008261075150568,
+              "expected_delay": 2.008261075150568,
+              "ready": 14820.230698280151,
+              "finished": 14818.222437205
+            },
+            {
+              "step_id": "H3:4",
+              "delay": 1.3366065628163304,
+              "expected_delay": 1.3366065628163304,
+              "ready": 14819.559043767817,
+              "finished": 14818.222437205
+            },
+            {
+              "step_id": "H4:4",
+              "delay": 2.411937514223996,
+              "expected_delay": 2.4119375142239963,
+              "ready": 14820.634374719224,
+              "finished": 14818.222437205
+            },
+            {
+              "step_id": "H6:5",
+              "delay": 1.0349271702845522,
+              "expected_delay": 1.034927170284552,
+              "ready": 14825.478055673286,
+              "finished": 14824.443128503
+            },
+            {
+              "step_id": "H3:5",
+              "delay": 1.3807858284318708,
+              "expected_delay": 1.3807858284318708,
+              "ready": 14825.823914331433,
+              "finished": 14824.443128503
+            },
+            {
+              "step_id": "X:6",
+              "delay": 1.4713672940184142,
+              "expected_delay": 1.4713672940184142,
+              "ready": 14832.178741638018,
+              "finished": 14830.707374344
+            }
+          ],
+          "delay_count": 39,
+          "mean_delay": 1.4831780778955788,
+          "per_peer_schedule_counts": {
+            "X": 6,
+            "H1": 6,
+            "H2": 5,
+            "H0": 5,
+            "H4": 4,
+            "H6": 5,
+            "H5": 3,
+            "H3": 5
+          },
+          "scheduler_samples": [
+            {
+              "step_id": "X:2",
+              "previous_step": "X:1",
+              "finished": 14811.255696971,
+              "delay": 0.7358029825207509,
+              "ready": 14811.991499953521,
+              "actual_start": 14811.994241605,
+              "scheduler_lateness": 0.0027416514785727486
+            },
+            {
+              "step_id": "H2:2",
+              "previous_step": "H2:1",
+              "finished": 14811.2661279,
+              "delay": 0.8207459946364006,
+              "ready": 14812.086873894637,
+              "actual_start": 14812.089150534,
+              "scheduler_lateness": 0.002276639363117283
+            },
+            {
+              "step_id": "H1:2",
+              "previous_step": "H1:1",
+              "finished": 14811.255696971,
+              "delay": 0.8497178822520554,
+              "ready": 14812.105414853253,
+              "actual_start": 14812.110731438,
+              "scheduler_lateness": 0.005316584747561137
+            },
+            {
+              "step_id": "H4:2",
+              "previous_step": "H4:1",
+              "finished": 14812.045140713,
+              "delay": 1.3693590765226675,
+              "ready": 14813.414499789524,
+              "actual_start": 14813.421917928,
+              "scheduler_lateness": 0.007418138477078173
+            },
+            {
+              "step_id": "X:3",
+              "previous_step": "X:2",
+              "finished": 14812.045140713,
+              "delay": 1.572270506951673,
+              "ready": 14813.617411219951,
+              "actual_start": 14813.622355069,
+              "scheduler_lateness": 0.004943849047776894
+            },
+            {
+              "step_id": "H0:2",
+              "previous_step": "H0:1",
+              "finished": 14811.2661279,
+              "delay": 2.633695554349227,
+              "ready": 14813.899823454349,
+              "actual_start": 14813.900812818,
+              "scheduler_lateness": 0.0009893636506603798
+            },
+            {
+              "step_id": "H6:2",
+              "previous_step": "H6:1",
+              "finished": 14812.045140713,
+              "delay": 1.8590664049447887,
+              "ready": 14813.904207117945,
+              "actual_start": 14813.917709937,
+              "scheduler_lateness": 0.013502819056157023
+            },
+            {
+              "step_id": "H1:3",
+              "previous_step": "H1:2",
+              "finished": 14813.479523123,
+              "delay": 0.7213651534320799,
+              "ready": 14814.200888276431,
+              "actual_start": 14814.206971585,
+              "scheduler_lateness": 0.0060833085681224475
+            },
+            {
+              "step_id": "H5:2",
+              "previous_step": "H5:1",
+              "finished": 14812.045140713,
+              "delay": 2.4494462732611284,
+              "ready": 14814.494586986262,
+              "actual_start": 14814.501938595,
+              "scheduler_lateness": 0.00735160873773566
+            },
+            {
+              "step_id": "H2:3",
+              "previous_step": "H2:2",
+              "finished": 14813.479523123,
+              "delay": 1.3327418244935785,
+              "ready": 14814.812264947494,
+              "actual_start": 14814.818262093,
+              "scheduler_lateness": 0.0059971455066261115
+            },
+            {
+              "step_id": "H4:3",
+              "previous_step": "H4:2",
+              "finished": 14813.479523123,
+              "delay": 1.3500710955732866,
+              "ready": 14814.829594218574,
+              "actual_start": 14814.832038826,
+              "scheduler_lateness": 0.0024446074257866712
+            },
+            {
+              "step_id": "H1:4",
+              "previous_step": "H1:3",
+              "finished": 14814.332282042,
+              "delay": 0.824627811865807,
+              "ready": 14815.156909853866,
+              "actual_start": 14815.160866113,
+              "scheduler_lateness": 0.003956259133701678
+            },
+            {
+              "step_id": "H3:2",
+              "previous_step": "H3:1",
+              "finished": 14813.479523123,
+              "delay": 1.7421914188740941,
+              "ready": 14815.221714541874,
+              "actual_start": 14815.223733195,
+              "scheduler_lateness": 0.002018653125560377
+            },
+            {
+              "step_id": "X:4",
+              "previous_step": "X:3",
+              "finished": 14814.343039155,
+              "delay": 0.9093483568281223,
+              "ready": 14815.252387511828,
+              "actual_start": 14815.255214188,
+              "scheduler_lateness": 0.0028266761728446
+            },
+            {
+              "step_id": "H0:3",
+              "previous_step": "H0:2",
+              "finished": 14814.332282042,
+              "delay": 1.0118854022047552,
+              "ready": 14815.344167444204,
+              "actual_start": 14815.3512395,
+              "scheduler_lateness": 0.007072055796015775
+            },
+            {
+              "step_id": "H6:3",
+              "previous_step": "H6:2",
+              "finished": 14814.332282042,
+              "delay": 1.2057557070252654,
+              "ready": 14815.538037749026,
+              "actual_start": 14815.539090356,
+              "scheduler_lateness": 0.0010526069745537825
+            },
+            {
+              "step_id": "H2:4",
+              "previous_step": "H2:3",
+              "finished": 14815.222640055,
+              "delay": 0.40180232303439234,
+              "ready": 14815.624442378035,
+              "actual_start": 14815.627109857,
+              "scheduler_lateness": 0.0026674789642129326
+            },
+            {
+              "step_id": "H1:5",
+              "previous_step": "H1:4",
+              "finished": 14815.222640055,
+              "delay": 0.42014559896281806,
+              "ready": 14815.642785653963,
+              "actual_start": 14815.650301277,
+              "scheduler_lateness": 0.007515623037761543
+            },
+            {
+              "step_id": "X:5",
+              "previous_step": "X:4",
+              "finished": 14815.590529743,
+              "delay": 0.9445924926739465,
+              "ready": 14816.535122235673,
+              "actual_start": 14816.541072697,
+              "scheduler_lateness": 0.005950461327302037
+            },
+            {
+              "step_id": "H0:4",
+              "previous_step": "H0:3",
+              "finished": 14815.590529743,
+              "delay": 1.036950630448832,
+              "ready": 14816.627480373449,
+              "actual_start": 14816.630772825,
+              "scheduler_lateness": 0.0032924515508057084
+            },
+            {
+              "step_id": "H3:3",
+              "previous_step": "H3:2",
+              "finished": 14815.590529743,
+              "delay": 1.1218085239617375,
+              "ready": 14816.712338266962,
+              "actual_start": 14816.716527237,
+              "scheduler_lateness": 0.004188970038740081
+            },
+            {
+              "step_id": "H6:4",
+              "previous_step": "H6:3",
+              "finished": 14815.590529743,
+              "delay": 1.4493682790520963,
+              "ready": 14817.039898022053,
+              "actual_start": 14817.040034638,
+              "scheduler_lateness": 0.0001366159467579564
+            },
+            {
+              "step_id": "H5:3",
+              "previous_step": "H5:2",
+              "finished": 14815.222640055,
+              "delay": 1.9671479285722546,
+              "ready": 14817.189787983572,
+              "actual_start": 14817.19026559,
+              "scheduler_lateness": 0.0004776064270117786
+            },
+            {
+              "step_id": "H0:5",
+              "previous_step": "H0:4",
+              "finished": 14816.686934185,
+              "delay": 0.7005305836782924,
+              "ready": 14817.387464768677,
+              "actual_start": 14817.394252652,
+              "scheduler_lateness": 0.006787883323340793
+            },
+            {
+              "step_id": "H1:6",
+              "previous_step": "H1:5",
+              "finished": 14816.686934185,
+              "delay": 0.7717057206312881,
+              "ready": 14817.458639905632,
+              "actual_start": 14817.459515428,
+              "scheduler_lateness": 0.0008755223680054769
+            },
+            {
+              "step_id": "H2:5",
+              "previous_step": "H2:4",
+              "finished": 14816.686934185,
+              "delay": 1.253844843264083,
+              "ready": 14817.940779028264,
+              "actual_start": 14817.94386688,
+              "scheduler_lateness": 0.0030878517354722135
+            },
+            {
+              "step_id": "H3:4",
+              "previous_step": "H3:3",
+              "finished": 14817.451320074,
+              "delay": 0.6107187472083793,
+              "ready": 14818.062038821208,
+              "actual_start": 14818.063232287,
+              "scheduler_lateness": 0.001193465792312054
+            },
+            {
+              "step_id": "H4:4",
+              "previous_step": "H4:3",
+              "finished": 14815.222640055,
+              "delay": 2.9408364511853735,
+              "ready": 14818.163476506186,
+              "actual_start": 14818.163715717,
+              "scheduler_lateness": 0.00023921081447042525
+            },
+            {
+              "step_id": "X:6",
+              "previous_step": "X:5",
+              "finished": 14816.686934185,
+              "delay": 2.0091155022209772,
+              "ready": 14818.69604968722,
+              "actual_start": 14818.698620564,
+              "scheduler_lateness": 0.002570876780737308
+            },
+            {
+              "step_id": "H6:5",
+              "previous_step": "H6:4",
+              "finished": 14817.451320074,
+              "delay": 1.9314143957087666,
+              "ready": 14819.38273446971,
+              "actual_start": 14819.387690556,
+              "scheduler_lateness": 0.0049560862898943014
+            },
+            {
+              "step_id": "H3:5",
+              "previous_step": "H3:4",
+              "finished": 14818.222437205,
+              "delay": 1.3366065628163304,
+              "ready": 14819.559043767817,
+              "actual_start": 14819.563054221,
+              "scheduler_lateness": 0.004010453183582285
+            }
+          ],
+          "mean_scheduler_lateness": 0.003998145962654117
+        },
+        "native_leader_waits": [
+          {
+            "step_id": "H2:1",
+            "leader": "H2",
+            "follower": "H0",
+            "timeout": 4.914504289627075,
+            "captured_expiration": 1791466477.5390372,
+            "timer_started_wall": 1791466472.6245573,
+            "followers": 1
+          },
+          {
+            "step_id": "X:1",
+            "leader": "X",
+            "follower": "H2",
+            "timeout": 2.9838204383850098,
+            "captured_expiration": 1791466475.7413144,
+            "timer_started_wall": 1791466472.7575045,
+            "followers": 1
+          },
+          {
+            "step_id": "X:1",
+            "leader": "X",
+            "follower": "H0",
+            "timeout": 2.981050491333008,
+            "captured_expiration": 1791466475.7413144,
+            "timer_started_wall": 1791466472.7602766,
+            "followers": 2
+          },
+          {
+            "step_id": "X:1",
+            "leader": "X",
+            "follower": "H1",
+            "timeout": 2.829810857772827,
+            "captured_expiration": 1791466476.7424934,
+            "timer_started_wall": 1791466473.9127052,
+            "followers": 3
+          },
+          {
+            "step_id": "H4:1",
+            "leader": "H4",
+            "follower": "H6",
+            "timeout": 4.4317731857299805,
+            "captured_expiration": 1791466479.0063188,
+            "timer_started_wall": 1791466474.5745564,
+            "followers": 1
+          },
+          {
+            "step_id": "H4:1",
+            "leader": "H4",
+            "follower": "H5",
+            "timeout": 4.349312782287598,
+            "captured_expiration": 1791466479.0063188,
+            "timer_started_wall": 1791466474.6570206,
+            "followers": 2
+          },
+          {
+            "step_id": "X:2",
+            "leader": "X",
+            "follower": "H4",
+            "timeout": 2.9885661602020264,
+            "captured_expiration": 1791466477.7263372,
+            "timer_started_wall": 1791466474.7377782,
+            "followers": 1
+          },
+          {
+            "step_id": "X:2",
+            "leader": "X",
+            "follower": "H6",
+            "timeout": 2.985222578048706,
+            "captured_expiration": 1791466477.7263372,
+            "timer_started_wall": 1791466474.7411413,
+            "followers": 2
+          },
+          {
+            "step_id": "X:2",
+            "leader": "X",
+            "follower": "H5",
+            "timeout": 2.9846527576446533,
+            "captured_expiration": 1791466477.7263372,
+            "timer_started_wall": 1791466474.7416978,
+            "followers": 3
+          },
+          {
+            "step_id": "H2:2",
+            "leader": "H2",
+            "follower": "H1",
+            "timeout": 4.968559265136719,
+            "captured_expiration": 1791466479.8241496,
+            "timer_started_wall": 1791466474.8556015,
+            "followers": 1
+          },
+          {
+            "step_id": "H2:2",
+            "leader": "H2",
+            "follower": "H3",
+            "timeout": 4.8970701694488525,
+            "captured_expiration": 1791466479.8241496,
+            "timer_started_wall": 1791466474.9270856,
+            "followers": 2
+          },
+          {
+            "step_id": "H2:2",
+            "leader": "H2",
+            "follower": "H4",
+            "timeout": 3.6547787189483643,
+            "captured_expiration": 1791466479.8241496,
+            "timer_started_wall": 1791466476.1693814,
+            "followers": 3
+          },
+          {
+            "step_id": "X:3",
+            "leader": "X",
+            "follower": "H0",
+            "timeout": 2.700573444366455,
+            "captured_expiration": 1791466479.3566506,
+            "timer_started_wall": 1791466476.6560833,
+            "followers": 1
+          },
+          {
+            "step_id": "X:3",
+            "leader": "X",
+            "follower": "H6",
+            "timeout": 2.6878981590270996,
+            "captured_expiration": 1791466479.3566506,
+            "timer_started_wall": 1791466476.6687632,
+            "followers": 2
+          },
+          {
+            "step_id": "X:3",
+            "leader": "X",
+            "follower": "H1",
+            "timeout": 2.383201837539673,
+            "captured_expiration": 1791466479.3566506,
+            "timer_started_wall": 1791466476.9734738,
+            "followers": 3
+          },
+          {
+            "step_id": "H5:2",
+            "leader": "H5",
+            "follower": "H2",
+            "timeout": 4.667589426040649,
+            "captured_expiration": 1791466482.2376702,
+            "timer_started_wall": 1791466477.5700917,
+            "followers": 1
+          },
+          {
+            "step_id": "H5:2",
+            "leader": "H5",
+            "follower": "H4",
+            "timeout": 4.65353798866272,
+            "captured_expiration": 1791466482.2376702,
+            "timer_started_wall": 1791466477.5841532,
+            "followers": 2
+          },
+          {
+            "step_id": "H5:2",
+            "leader": "H5",
+            "follower": "H1",
+            "timeout": 4.32745099067688,
+            "captured_expiration": 1791466482.2376702,
+            "timer_started_wall": 1791466477.9102287,
+            "followers": 3
+          },
+          {
+            "step_id": "X:4",
+            "leader": "X",
+            "follower": "H3",
+            "timeout": 2.9875664710998535,
+            "captured_expiration": 1791466480.9868782,
+            "timer_started_wall": 1791466477.9993184,
+            "followers": 1
+          },
+          {
+            "step_id": "X:4",
+            "leader": "X",
+            "follower": "H0",
+            "timeout": 2.888131618499756,
+            "captured_expiration": 1791466480.9868782,
+            "timer_started_wall": 1791466478.0987544,
+            "followers": 2
+          },
+          {
+            "step_id": "X:4",
+            "leader": "X",
+            "follower": "H6",
+            "timeout": 2.6951711177825928,
+            "captured_expiration": 1791466480.9868782,
+            "timer_started_wall": 1791466478.2917192,
+            "followers": 3
+          },
+          {
+            "step_id": "H2:4",
+            "leader": "H2",
+            "follower": "H1",
+            "timeout": 4.966532230377197,
+            "captured_expiration": 1791466483.361865,
+            "timer_started_wall": 1791466478.3953412,
+            "followers": 1
+          },
+          {
+            "step_id": "X:5",
+            "leader": "X",
+            "follower": "H2",
+            "timeout": 2.9914467334747314,
+            "captured_expiration": 1791466482.2732303,
+            "timer_started_wall": 1791466479.2817912,
+            "followers": 1
+          },
+          {
+            "step_id": "X:5",
+            "leader": "X",
+            "follower": "H1",
+            "timeout": 2.988750457763672,
+            "captured_expiration": 1791466482.2732303,
+            "timer_started_wall": 1791466479.2844858,
+            "followers": 2
+          },
+          {
+            "step_id": "X:5",
+            "leader": "X",
+            "follower": "H0",
+            "timeout": 2.8962137699127197,
+            "captured_expiration": 1791466482.2732303,
+            "timer_started_wall": 1791466479.3770268,
+            "followers": 3
+          },
+          {
+            "step_id": "H3:3",
+            "leader": "H3",
+            "follower": "H6",
+            "timeout": 4.6663689613342285,
+            "captured_expiration": 1791466484.4514678,
+            "timer_started_wall": 1791466479.7851155,
+            "followers": 1
+          },
+          {
+            "step_id": "H3:3",
+            "leader": "H3",
+            "follower": "H5",
+            "timeout": 4.517324686050415,
+            "captured_expiration": 1791466484.4514678,
+            "timer_started_wall": 1791466479.9341552,
+            "followers": 2
+          },
+          {
+            "step_id": "H3:3",
+            "leader": "H3",
+            "follower": "H0",
+            "timeout": 4.308274984359741,
+            "captured_expiration": 1791466484.4514678,
+            "timer_started_wall": 1791466480.1432033,
+            "followers": 3
+          },
+          {
+            "step_id": "H1:6",
+            "leader": "H1",
+            "follower": "H2",
+            "timeout": 4.503937721252441,
+            "captured_expiration": 1791466485.1926239,
+            "timer_started_wall": 1791466480.688698,
+            "followers": 1
+          },
+          {
+            "step_id": "H1:6",
+            "leader": "H1",
+            "follower": "H3",
+            "timeout": 4.380522727966309,
+            "captured_expiration": 1791466485.1926239,
+            "timer_started_wall": 1791466480.8121095,
+            "followers": 2
+          },
+          {
+            "step_id": "H1:6",
+            "leader": "H1",
+            "follower": "H4",
+            "timeout": 4.279388189315796,
+            "captured_expiration": 1791466485.1926239,
+            "timer_started_wall": 1791466480.9132557,
+            "followers": 3
+          },
+          {
+            "step_id": "X:6",
+            "leader": "X",
+            "follower": "H6",
+            "timeout": 2.2855069637298584,
+            "captured_expiration": 1791466484.4337697,
+            "timer_started_wall": 1791466482.1482735,
+            "followers": 1
+          },
+          {
+            "step_id": "X:6",
+            "leader": "X",
+            "follower": "H3",
+            "timeout": 2.0954878330230713,
+            "captured_expiration": 1791466484.4337697,
+            "timer_started_wall": 1791466482.3382993,
+            "followers": 2
+          },
+          {
+            "step_id": "H6:5",
+            "leader": "H6",
+            "follower": "H3",
+            "timeout": 2.687455892562866,
+            "captured_expiration": 1791466487.1254456,
+            "timer_started_wall": 1791466484.4380076,
+            "followers": 1
+          }
+        ],
+        "join_arrivals": [
+          {
+            "leader": "H2",
+            "follower": "H0",
+            "step_id": "H2:1",
+            "monotonic": 14809.89488071,
+            "wall_time": 1791466472.6242237,
+            "request_expiration": 1791466477.5904
+          },
+          {
+            "leader": "X",
+            "follower": "H2",
+            "step_id": "X:1",
+            "monotonic": 14810.027975955,
+            "wall_time": 1791466472.7573183,
+            "request_expiration": 1791466477.5390372
+          },
+          {
+            "leader": "X",
+            "follower": "H0",
+            "step_id": "X:1",
+            "monotonic": 14810.030799202,
+            "wall_time": 1791466472.7601411,
+            "request_expiration": 1791466477.5904
+          },
+          {
+            "leader": "X",
+            "follower": "H1",
+            "step_id": "X:1",
+            "monotonic": 14811.181826085,
+            "wall_time": 1791466473.911168,
+            "request_expiration": 1791466478.8881977
+          },
+          {
+            "leader": "H4",
+            "follower": "H6",
+            "step_id": "H4:1",
+            "monotonic": 14811.845073164,
+            "wall_time": 1791466474.5744147,
+            "request_expiration": 1791466479.5623298
+          },
+          {
+            "leader": "H4",
+            "follower": "H5",
+            "step_id": "H4:1",
+            "monotonic": 14811.927558688,
+            "wall_time": 1791466474.6569004,
+            "request_expiration": 1791466479.6434894
+          },
+          {
+            "leader": "X",
+            "follower": "H4",
+            "step_id": "X:2",
+            "monotonic": 14812.008339849,
+            "wall_time": 1791466474.7376816,
+            "request_expiration": 1791466479.0063188
+          },
+          {
+            "leader": "X",
+            "follower": "H6",
+            "step_id": "X:2",
+            "monotonic": 14812.011023291,
+            "wall_time": 1791466474.7403653,
+            "request_expiration": 1791466479.5623298
+          },
+          {
+            "leader": "X",
+            "follower": "H5",
+            "step_id": "X:2",
+            "monotonic": 14812.012125907,
+            "wall_time": 1791466474.7414677,
+            "request_expiration": 1791466479.6434894
+          },
+          {
+            "leader": "H2",
+            "follower": "H1",
+            "step_id": "H2:2",
+            "monotonic": 14812.12614804,
+            "wall_time": 1791466474.85549,
+            "request_expiration": 1791466479.8446336
+          },
+          {
+            "leader": "H2",
+            "follower": "H3",
+            "step_id": "H2:2",
+            "monotonic": 14812.197655862,
+            "wall_time": 1791466474.9269974,
+            "request_expiration": 1791466479.913114
+          },
+          {
+            "leader": "H2",
+            "follower": "H4",
+            "step_id": "H2:2",
+            "monotonic": 14813.439724465,
+            "wall_time": 1791466476.1690664,
+            "request_expiration": 1791466481.1553557
+          },
+          {
+            "leader": "X",
+            "follower": "H0",
+            "step_id": "X:3",
+            "monotonic": 14813.926662873,
+            "wall_time": 1791466476.656005,
+            "request_expiration": 1791466481.6362147
+          },
+          {
+            "leader": "X",
+            "follower": "H6",
+            "step_id": "X:3",
+            "monotonic": 14813.939299424,
+            "wall_time": 1791466476.6686413,
+            "request_expiration": 1791466481.6523142
+          },
+          {
+            "leader": "X",
+            "follower": "H1",
+            "step_id": "X:3",
+            "monotonic": 14814.242754205,
+            "wall_time": 1791466476.9720967,
+            "request_expiration": 1791466481.9441767
+          },
+          {
+            "leader": "H5",
+            "follower": "H2",
+            "step_id": "H5:2",
+            "monotonic": 14814.840612024,
+            "wall_time": 1791466477.5699537,
+            "request_expiration": 1791466482.5527165
+          },
+          {
+            "leader": "H5",
+            "follower": "H4",
+            "step_id": "H5:2",
+            "monotonic": 14814.854685328,
+            "wall_time": 1791466477.584027,
+            "request_expiration": 1791466482.565717
+          },
+          {
+            "leader": "H5",
+            "follower": "H1",
+            "step_id": "H5:2",
+            "monotonic": 14815.180559186,
+            "wall_time": 1791466477.9099014,
+            "request_expiration": 1791466482.8940032
+          },
+          {
+            "leader": "X",
+            "follower": "H3",
+            "step_id": "X:4",
+            "monotonic": 14815.269898489,
+            "wall_time": 1791466477.9992404,
+            "request_expiration": 1791466482.956653
+          },
+          {
+            "leader": "X",
+            "follower": "H0",
+            "step_id": "X:4",
+            "monotonic": 14815.369327041,
+            "wall_time": 1791466478.098669,
+            "request_expiration": 1791466483.0869925
+          },
+          {
+            "leader": "X",
+            "follower": "H6",
+            "step_id": "X:4",
+            "monotonic": 14815.562157485,
+            "wall_time": 1791466478.2914994,
+            "request_expiration": 1791466483.2747252
+          },
+          {
+            "leader": "H2",
+            "follower": "H1",
+            "step_id": "H2:4",
+            "monotonic": 14815.665912184,
+            "wall_time": 1791466478.3952541,
+            "request_expiration": 1791466483.3824844
+          },
+          {
+            "leader": "X",
+            "follower": "H2",
+            "step_id": "X:5",
+            "monotonic": 14816.552371909,
+            "wall_time": 1791466479.2817137,
+            "request_expiration": 1791466483.361865
+          },
+          {
+            "leader": "X",
+            "follower": "H1",
+            "step_id": "X:5",
+            "monotonic": 14816.555074486,
+            "wall_time": 1791466479.2844164,
+            "request_expiration": 1791466483.3824844
+          },
+          {
+            "leader": "X",
+            "follower": "H0",
+            "step_id": "X:5",
+            "monotonic": 14816.64739972,
+            "wall_time": 1791466479.3767421,
+            "request_expiration": 1791466484.3653054
+          },
+          {
+            "leader": "H3",
+            "follower": "H6",
+            "step_id": "H3:3",
+            "monotonic": 14817.055595652,
+            "wall_time": 1791466479.784938,
+            "request_expiration": 1791466484.7722833
+          },
+          {
+            "leader": "H3",
+            "follower": "H5",
+            "step_id": "H3:3",
+            "monotonic": 14817.204670293,
+            "wall_time": 1791466479.9340124,
+            "request_expiration": 1791466484.922248
+          },
+          {
+            "leader": "H3",
+            "follower": "H0",
+            "step_id": "H3:3",
+            "monotonic": 14817.413585155,
+            "wall_time": 1791466480.1429272,
+            "request_expiration": 1791466485.1272511
+          },
+          {
+            "leader": "H1",
+            "follower": "H2",
+            "step_id": "H1:6",
+            "monotonic": 14817.959241741,
+            "wall_time": 1791466480.6885839,
+            "request_expiration": 1791466485.6765559
+          },
+          {
+            "leader": "H1",
+            "follower": "H3",
+            "step_id": "H1:6",
+            "monotonic": 14818.082675154,
+            "wall_time": 1791466480.812017,
+            "request_expiration": 1791466485.7974336
+          },
+          {
+            "leader": "H1",
+            "follower": "H4",
+            "step_id": "H1:6",
+            "monotonic": 14818.182908165,
+            "wall_time": 1791466480.91225,
+            "request_expiration": 1791466485.8975334
+          },
+          {
+            "leader": "X",
+            "follower": "H6",
+            "step_id": "X:6",
+            "monotonic": 14819.418801345,
+            "wall_time": 1791466482.1481435,
+            "request_expiration": 1791466487.1254456
+          },
+          {
+            "leader": "X",
+            "follower": "H3",
+            "step_id": "X:6",
+            "monotonic": 14819.608757872,
+            "wall_time": 1791466482.3381007,
+            "request_expiration": 1791466487.2995088
+          },
+          {
+            "leader": "H6",
+            "follower": "H3",
+            "step_id": "H6:5",
+            "monotonic": 14821.708451227,
+            "wall_time": 1791466484.4377935,
+            "request_expiration": 1791466487.2995088
+          }
+        ],
+        "holder_records": {
+          "source": "accepted holder_store records; not observed DHT visibility",
+          "clip_window": {
+            "start": 1791466472.389487,
+            "end": 1791466493.4368749
+          },
+          "interpretation": "logged receipt intervals and their internal gaps are diagnostics, not DHT visibility or contention measurements",
+          "intervals": [
+            {
+              "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466472.7538753,
+              "end": 1791466473.9410043,
+              "duration": 1.187129020690918
+            },
+            {
+              "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466474.734285,
+              "end": 1791466474.756528,
+              "duration": 0.02224278450012207
+            },
+            {
+              "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466476.3644803,
+              "end": 1791466477.0151987,
+              "duration": 0.6507184505462646
+            },
+            {
+              "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466477.995236,
+              "end": 1791466478.306775,
+              "duration": 0.3115391731262207
+            },
+            {
+              "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466479.27952,
+              "end": 1791466479.3959706,
+              "duration": 0.11645054817199707
+            },
+            {
+              "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466481.4479048,
+              "end": 1791466491.449792,
+              "duration": 10.001887083053589
+            },
+            {
+              "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466472.7528493,
+              "end": 1791466473.9412043,
+              "duration": 1.1883549690246582
+            },
+            {
+              "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466474.7335227,
+              "end": 1791466474.7555668,
+              "duration": 0.02204418182373047
+            },
+            {
+              "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466476.3639832,
+              "end": 1791466477.0168273,
+              "duration": 0.6528441905975342
+            },
+            {
+              "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466477.9946268,
+              "end": 1791466478.3059764,
+              "duration": 0.31134963035583496
+            },
+            {
+              "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466479.2796323,
+              "end": 1791466479.3952491,
+              "duration": 0.1156167984008789
+            },
+            {
+              "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466481.4484568,
+              "end": 1791466491.4485943,
+              "duration": 10.000137567520142
+            },
+            {
+              "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466472.7530239,
+              "end": 1791466473.9433186,
+              "duration": 1.1902947425842285
+            },
+            {
+              "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466474.7334783,
+              "end": 1791466474.755942,
+              "duration": 0.02246379852294922
+            },
+            {
+              "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466476.3639536,
+              "end": 1791466477.0136087,
+              "duration": 0.6496551036834717
+            },
+            {
+              "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466477.9947565,
+              "end": 1791466478.3070915,
+              "duration": 0.3123350143432617
+            },
+            {
+              "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466479.279074,
+              "end": 1791466479.397122,
+              "duration": 0.11804795265197754
+            },
+            {
+              "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466481.4479175,
+              "end": 1791466491.4486237,
+              "duration": 10.000706195831299
+            },
+            {
+              "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466472.7526178,
+              "end": 1791466473.9429324,
+              "duration": 1.190314531326294
+            },
+            {
+              "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466474.733453,
+              "end": 1791466474.7546754,
+              "duration": 0.021222352981567383
+            },
+            {
+              "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466476.3641365,
+              "end": 1791466477.0099683,
+              "duration": 0.645831823348999
+            },
+            {
+              "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466477.9945743,
+              "end": 1791466478.3076425,
+              "duration": 0.313068151473999
+            },
+            {
+              "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466479.280166,
+              "end": 1791466479.395235,
+              "duration": 0.11506915092468262
+            },
+            {
+              "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466481.4485607,
+              "end": 1791466491.4488416,
+              "duration": 10.000280857086182
+            },
+            {
+              "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466472.7534537,
+              "end": 1791466473.9411395,
+              "duration": 1.1876857280731201
+            },
+            {
+              "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466474.7343843,
+              "end": 1791466474.7560623,
+              "duration": 0.02167797088623047
+            },
+            {
+              "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466476.3640893,
+              "end": 1791466477.0112622,
+              "duration": 0.6471729278564453
+            },
+            {
+              "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466477.9955087,
+              "end": 1791466478.305957,
+              "duration": 0.31044840812683105
+            },
+            {
+              "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466479.2792253,
+              "end": 1791466479.3950539,
+              "duration": 0.1158285140991211
+            },
+            {
+              "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466481.44803,
+              "end": 1791466491.4486215,
+              "duration": 10.000591516494751
+            }
+          ],
+          "gaps": [
+            {
+              "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466473.9410043,
+              "end": 1791466474.734285,
+              "duration": 0.793280839920044,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466474.756528,
+              "end": 1791466476.3644803,
+              "duration": 1.607952356338501,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466477.0151987,
+              "end": 1791466477.995236,
+              "duration": 0.9800372123718262,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466478.306775,
+              "end": 1791466479.27952,
+              "duration": 0.9727449417114258,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466479.3959706,
+              "end": 1791466481.4479048,
+              "duration": 2.051934242248535,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466473.9412043,
+              "end": 1791466474.7335227,
+              "duration": 0.7923183441162109,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466474.7555668,
+              "end": 1791466476.3639832,
+              "duration": 1.6084163188934326,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466477.0168273,
+              "end": 1791466477.9946268,
+              "duration": 0.9777994155883789,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466478.3059764,
+              "end": 1791466479.2796323,
+              "duration": 0.9736559391021729,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466479.3952491,
+              "end": 1791466481.4484568,
+              "duration": 2.0532076358795166,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466473.9433186,
+              "end": 1791466474.7334783,
+              "duration": 0.7901597023010254,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466474.755942,
+              "end": 1791466476.3639536,
+              "duration": 1.6080114841461182,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466477.0136087,
+              "end": 1791466477.9947565,
+              "duration": 0.9811477661132812,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466478.3070915,
+              "end": 1791466479.279074,
+              "duration": 0.971982479095459,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466479.397122,
+              "end": 1791466481.4479175,
+              "duration": 2.050795555114746,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466473.9429324,
+              "end": 1791466474.733453,
+              "duration": 0.7905206680297852,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466474.7546754,
+              "end": 1791466476.3641365,
+              "duration": 1.6094610691070557,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466477.0099683,
+              "end": 1791466477.9945743,
+              "duration": 0.9846060276031494,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466478.3076425,
+              "end": 1791466479.280166,
+              "duration": 0.9725234508514404,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466479.395235,
+              "end": 1791466481.4485607,
+              "duration": 2.053325653076172,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466473.9411395,
+              "end": 1791466474.7343843,
+              "duration": 0.7932448387145996,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466474.7560623,
+              "end": 1791466476.3640893,
+              "duration": 1.6080269813537598,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466477.0112622,
+              "end": 1791466477.9955087,
+              "duration": 0.9842464923858643,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466478.305957,
+              "end": 1791466479.2792253,
+              "duration": 0.9732682704925537,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791466479.3950539,
+              "end": 1791466481.44803,
+              "duration": 2.052976131439209,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            }
+          ],
+          "by_holder": [
+            {
+              "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "logged_accepted_intervals": 6,
+              "intervals": [
+                {
+                  "start": 1791466472.7538753,
+                  "end": 1791466473.9410043
+                },
+                {
+                  "start": 1791466474.734285,
+                  "end": 1791466474.756528
+                },
+                {
+                  "start": 1791466476.3644803,
+                  "end": 1791466477.0151987
+                },
+                {
+                  "start": 1791466477.995236,
+                  "end": 1791466478.306775
+                },
+                {
+                  "start": 1791466479.27952,
+                  "end": 1791466479.3959706
+                },
+                {
+                  "start": 1791466481.4479048,
+                  "end": 1791466491.449792
+                }
+              ],
+              "logged_gaps": [
+                {
+                  "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466473.9410043,
+                  "end": 1791466474.734285,
+                  "duration": 0.793280839920044,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466474.756528,
+                  "end": 1791466476.3644803,
+                  "duration": 1.607952356338501,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466477.0151987,
+                  "end": 1791466477.995236,
+                  "duration": 0.9800372123718262,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466478.306775,
+                  "end": 1791466479.27952,
+                  "duration": 0.9727449417114258,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWEKc77QjWQUundpPZCJWFkkNStt5nVTd3d1DMqNgizVMU",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466479.3959706,
+                  "end": 1791466481.4479048,
+                  "duration": 2.051934242248535,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                }
+              ]
+            },
+            {
+              "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "logged_accepted_intervals": 6,
+              "intervals": [
+                {
+                  "start": 1791466472.7528493,
+                  "end": 1791466473.9412043
+                },
+                {
+                  "start": 1791466474.7335227,
+                  "end": 1791466474.7555668
+                },
+                {
+                  "start": 1791466476.3639832,
+                  "end": 1791466477.0168273
+                },
+                {
+                  "start": 1791466477.9946268,
+                  "end": 1791466478.3059764
+                },
+                {
+                  "start": 1791466479.2796323,
+                  "end": 1791466479.3952491
+                },
+                {
+                  "start": 1791466481.4484568,
+                  "end": 1791466491.4485943
+                }
+              ],
+              "logged_gaps": [
+                {
+                  "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466473.9412043,
+                  "end": 1791466474.7335227,
+                  "duration": 0.7923183441162109,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466474.7555668,
+                  "end": 1791466476.3639832,
+                  "duration": 1.6084163188934326,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466477.0168273,
+                  "end": 1791466477.9946268,
+                  "duration": 0.9777994155883789,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466478.3059764,
+                  "end": 1791466479.2796323,
+                  "duration": 0.9736559391021729,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWJGvjY7VsXdiFySEmjQEM88TPxZKemKWy7FR4TFwNifiP",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466479.3952491,
+                  "end": 1791466481.4484568,
+                  "duration": 2.0532076358795166,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                }
+              ]
+            },
+            {
+              "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "logged_accepted_intervals": 6,
+              "intervals": [
+                {
+                  "start": 1791466472.7530239,
+                  "end": 1791466473.9433186
+                },
+                {
+                  "start": 1791466474.7334783,
+                  "end": 1791466474.755942
+                },
+                {
+                  "start": 1791466476.3639536,
+                  "end": 1791466477.0136087
+                },
+                {
+                  "start": 1791466477.9947565,
+                  "end": 1791466478.3070915
+                },
+                {
+                  "start": 1791466479.279074,
+                  "end": 1791466479.397122
+                },
+                {
+                  "start": 1791466481.4479175,
+                  "end": 1791466491.4486237
+                }
+              ],
+              "logged_gaps": [
+                {
+                  "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466473.9433186,
+                  "end": 1791466474.7334783,
+                  "duration": 0.7901597023010254,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466474.755942,
+                  "end": 1791466476.3639536,
+                  "duration": 1.6080114841461182,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466477.0136087,
+                  "end": 1791466477.9947565,
+                  "duration": 0.9811477661132812,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466478.3070915,
+                  "end": 1791466479.279074,
+                  "duration": 0.971982479095459,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWJSoy8sccdcsH2oRY9jQQQxt4sCsPn82kNAKKa9B5NnKY",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466479.397122,
+                  "end": 1791466481.4479175,
+                  "duration": 2.050795555114746,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                }
+              ]
+            },
+            {
+              "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "logged_accepted_intervals": 6,
+              "intervals": [
+                {
+                  "start": 1791466472.7526178,
+                  "end": 1791466473.9429324
+                },
+                {
+                  "start": 1791466474.733453,
+                  "end": 1791466474.7546754
+                },
+                {
+                  "start": 1791466476.3641365,
+                  "end": 1791466477.0099683
+                },
+                {
+                  "start": 1791466477.9945743,
+                  "end": 1791466478.3076425
+                },
+                {
+                  "start": 1791466479.280166,
+                  "end": 1791466479.395235
+                },
+                {
+                  "start": 1791466481.4485607,
+                  "end": 1791466491.4488416
+                }
+              ],
+              "logged_gaps": [
+                {
+                  "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466473.9429324,
+                  "end": 1791466474.733453,
+                  "duration": 0.7905206680297852,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466474.7546754,
+                  "end": 1791466476.3641365,
+                  "duration": 1.6094610691070557,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466477.0099683,
+                  "end": 1791466477.9945743,
+                  "duration": 0.9846060276031494,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466478.3076425,
+                  "end": 1791466479.280166,
+                  "duration": 0.9725234508514404,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWKML4zKd2fDzPa71TAMYfjLt1BA2Y6F11TNcW4ZNT6CCR",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466479.395235,
+                  "end": 1791466481.4485607,
+                  "duration": 2.053325653076172,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                }
+              ]
+            },
+            {
+              "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "logged_accepted_intervals": 6,
+              "intervals": [
+                {
+                  "start": 1791466472.7534537,
+                  "end": 1791466473.9411395
+                },
+                {
+                  "start": 1791466474.7343843,
+                  "end": 1791466474.7560623
+                },
+                {
+                  "start": 1791466476.3640893,
+                  "end": 1791466477.0112622
+                },
+                {
+                  "start": 1791466477.9955087,
+                  "end": 1791466478.305957
+                },
+                {
+                  "start": 1791466479.2792253,
+                  "end": 1791466479.3950539
+                },
+                {
+                  "start": 1791466481.44803,
+                  "end": 1791466491.4486215
+                }
+              ],
+              "logged_gaps": [
+                {
+                  "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466473.9411395,
+                  "end": 1791466474.7343843,
+                  "duration": 0.7932448387145996,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466474.7560623,
+                  "end": 1791466476.3640893,
+                  "duration": 1.6080269813537598,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466477.0112622,
+                  "end": 1791466477.9955087,
+                  "duration": 0.9842464923858643,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466478.305957,
+                  "end": 1791466479.2792253,
+                  "duration": 0.9732682704925537,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWKQUokxn3HqHA2Q5NnFRj6zVKfEC8j1nLpZBU8B8ppDMX",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791466479.3950539,
+                  "end": 1791466481.44803,
+                  "duration": 2.052976131439209,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "aggregate": [
+    {
+      "case": "range_2_3",
+      "trials": 1,
+      "total_assembled_groups": 10,
+      "x_assembled_leads": 5,
+      "total_verified_groups": 10,
+      "x_verified_leads": 5,
+      "x_leadership_share": 0.5,
+      "mean_x_verified_group_size": 4,
+      "x_ad_writes": 16,
+      "x_ad_attempts": 16,
+      "disband_replies": 2,
+      "incorrect_steps": [],
+      "integrity_errors": [],
+      "pending": 0
+    }
+  ],
+  "policy_count": {
+    "expected": 1,
+    "observed": 1
+  },
+  "incorrect_steps": [],
+  "integrity_errors": [],
+  "pending": 0
+}

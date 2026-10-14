@@ -1,0 +1,25 @@
+{
+  "case": "same",
+  "response": "reject",
+  "mode": "same",
+  "guard": "native",
+  "phase": "mechanism",
+  "seed": 2302,
+  "pattern": "mechanism",
+  "honest_correct": 0,
+  "honest_count": 1,
+  "incorrect_steps": [],
+  "penalized_seconds": 18,
+  "honest_penalized_seconds": {
+    "H0": 18
+  },
+  "x_attempts": 1,
+  "x_retries": 0,
+  "renewal_retries": 0,
+  "x_wait_seconds": 0.005871453000509064,
+  "x_ad_attempts": 2,
+  "x_ad_accepted": 1,
+  "mechanism_retry_before_original_expiry": false,
+  "searches": 2,
+  "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_mechanism_20261008_b/same_mechanism_s2302"
+}

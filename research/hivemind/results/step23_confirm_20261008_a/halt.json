@@ -1,0 +1,19 @@
+{
+  "phase": "confirm",
+  "completed_trials_before_stop": 15,
+  "planned_trials": 160,
+  "stopped_before_harm_analysis": true,
+  "trigger": "correctness guard found a completed tensor inconsistent with its gathered contributors",
+  "trial": "reliable_expire_native_bursty_s2322",
+  "incorrect_peer": "H0",
+  "expected_tensor_value": 1.75,
+  "observed_tensor_value": 0.0,
+  "assembled_groups": [
+    {"group_id": "e462876fa19498cb04a13dafafbc95de4d35ac0d", "members": ["H4", "H0", "H2", "H1"]},
+    {"group_id": "5137e2c0554c5c653f3d97a1fe8259fae3650ed4", "members": ["H6", "X", "H3", "H1"]},
+    {"group_id": "ad29cf7ed737fc5c9435361d98b85fd32010bc1d", "members": ["H2", "H4", "H5"]}
+  ],
+  "observed_issue": "distinct assembled group rosters overlap at H1, then at H2 and H4",
+  "cause": "unresolved",
+  "harm_conclusion": null
+}

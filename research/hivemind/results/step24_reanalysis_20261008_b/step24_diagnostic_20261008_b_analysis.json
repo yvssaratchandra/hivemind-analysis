@@ -1,0 +1,1013 @@
+{
+  "phase": "diagnostic",
+  "complete": true,
+  "pass": false,
+  "halted": true,
+  "halt": {
+    "trial": "range_2_3_s2400",
+    "checked_trials": 1,
+    "reason": "RuntimeError: trial failed integrity guard; preserve evidence and diagnose"
+  },
+  "expected_trials": 1,
+  "trial_count": 1,
+  "missing_jobs": [],
+  "incomplete_trials": [],
+  "trials": [
+    {
+      "case": "range_2_3",
+      "policy": {
+        "name": "range_2_3",
+        "mode": "refresh",
+        "minimum": 4,
+        "target": 4,
+        "frequency": 1.0,
+        "lifetime": 3.0,
+        "nominal_lower": 2.0,
+        "nominal_upper": 3.0
+      },
+      "seed": 2400,
+      "duration": 10,
+      "source": "research/hivemind/results/step24_diagnostic_20261008_b/range_2_3_s2400",
+      "total_assembled_groups": 4,
+      "x_assembled_leads": 3,
+      "total_verified_groups": 3,
+      "x_verified_leads": 2,
+      "x_leadership_share": 0.6666666666666666,
+      "mean_x_verified_group_size": 4,
+      "x_ad_writes": 4,
+      "x_ad_attempts": 4,
+      "x_ad_write_attempts": 4,
+      "disband_replies": 0,
+      "incorrect_steps": [
+        "H6:2"
+      ],
+      "failed_steps": [],
+      "pending": [],
+      "integrity_errors": [],
+      "error": "incorrect returned tensor; stop submissions and preserve diagnostic trace",
+      "groups": [
+        {
+          "group_id": "00490c675d7058f5a88b05ffd2f2bb3aa8b2a614",
+          "leader": "H2",
+          "leader_peer": "12D3KooWPDchTxXd5ZTniBkzBHo7CRtKF1H1Zmk9iZ31wvMEAAyF",
+          "roster": [
+            "12D3KooWETGUyZkrT1in8wft23h6a6VoNVEnDK6ZC5oj5v4B2q3J",
+            "12D3KooWHGWg1qJMJEEPLXUofHtoU2CB9BHNoTnAfy1J82m876dp",
+            "12D3KooWNRrya1GnZoCySY3b1VjndwijcTvEMXAwty47GgrinHGU",
+            "12D3KooWPDchTxXd5ZTniBkzBHo7CRtKF1H1Zmk9iZ31wvMEAAyF"
+          ],
+          "size": 4,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H1:2",
+            "H2:2",
+            "H3:1",
+            "H4:2"
+          ],
+          "expected_mean": 20.0
+        },
+        {
+          "group_id": "559585c62e6f0c019e717ef195aa8297ac414125",
+          "leader": "X",
+          "leader_peer": "12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA",
+          "roster": [
+            "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv",
+            "12D3KooWHGWg1qJMJEEPLXUofHtoU2CB9BHNoTnAfy1J82m876dp",
+            "12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA",
+            "12D3KooWPDchTxXd5ZTniBkzBHo7CRtKF1H1Zmk9iZ31wvMEAAyF"
+          ],
+          "size": 4,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H0:1",
+            "H1:1",
+            "H2:1",
+            "X:1"
+          ],
+          "expected_mean": 12.5
+        },
+        {
+          "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6",
+          "leader": "X",
+          "leader_peer": "12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA",
+          "roster": [
+            "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv",
+            "12D3KooWHGWg1qJMJEEPLXUofHtoU2CB9BHNoTnAfy1J82m876dp",
+            "12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA",
+            "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy"
+          ],
+          "size": 4,
+          "verified": false,
+          "allreduce_pass": false,
+          "member_steps": [
+            "H0:2",
+            "H1:3",
+            "H6:2",
+            "X:3"
+          ],
+          "expected_mean": 28.5
+        },
+        {
+          "group_id": "d40690a0da50d164c9883456b854cf965b671153",
+          "leader": "X",
+          "leader_peer": "12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA",
+          "roster": [
+            "12D3KooWHE5k3McGT1QMSXKsQNghpAZNiGPpUrYGEJgyeiZWbAXJ",
+            "12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA",
+            "12D3KooWNRrya1GnZoCySY3b1VjndwijcTvEMXAwty47GgrinHGU",
+            "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy"
+          ],
+          "size": 4,
+          "verified": true,
+          "allreduce_pass": true,
+          "member_steps": [
+            "H4:1",
+            "H5:1",
+            "H6:1",
+            "X:2"
+          ],
+          "expected_mean": 18.0
+        }
+      ],
+      "timing": {
+        "training": {
+          "schedules": [
+            {
+              "step_id": "H2:1",
+              "delay": 0.8207459946364006,
+              "expected_delay": 0.8207459946364004,
+              "ready": 15447.700231315637,
+              "finished": 15446.879485321
+            },
+            {
+              "step_id": "H0:1",
+              "delay": 2.633695554349227,
+              "expected_delay": 2.6336955543492273,
+              "ready": 15449.513180875349,
+              "finished": 15446.879485321
+            },
+            {
+              "step_id": "X:1",
+              "delay": 0.7358029825207509,
+              "expected_delay": 0.7358029825207508,
+              "ready": 15447.615288303521,
+              "finished": 15446.879485321
+            },
+            {
+              "step_id": "H1:1",
+              "delay": 0.8497178822520554,
+              "expected_delay": 0.8497178822520552,
+              "ready": 15447.729203203253,
+              "finished": 15446.879485321
+            },
+            {
+              "step_id": "H4:1",
+              "delay": 1.3693590765226675,
+              "expected_delay": 1.3693590765226673,
+              "ready": 15449.039988965524,
+              "finished": 15447.670629889
+            },
+            {
+              "step_id": "H6:1",
+              "delay": 1.8590664049447887,
+              "expected_delay": 1.8590664049447887,
+              "ready": 15449.529696293945,
+              "finished": 15447.670629889
+            },
+            {
+              "step_id": "H5:1",
+              "delay": 2.4494462732611284,
+              "expected_delay": 2.4494462732611284,
+              "ready": 15450.120076162262,
+              "finished": 15447.670629889
+            },
+            {
+              "step_id": "X:2",
+              "delay": 1.572270506951673,
+              "expected_delay": 1.5722705069516727,
+              "ready": 15449.242900395951,
+              "finished": 15447.670629889
+            },
+            {
+              "step_id": "H2:2",
+              "delay": 1.3327418244935785,
+              "expected_delay": 1.3327418244935783,
+              "ready": 15450.432770277494,
+              "finished": 15449.100028453
+            },
+            {
+              "step_id": "H1:2",
+              "delay": 0.7213651534320799,
+              "expected_delay": 0.7213651534320797,
+              "ready": 15449.821393606431,
+              "finished": 15449.100028453
+            },
+            {
+              "step_id": "H3:1",
+              "delay": 1.7421914188740941,
+              "expected_delay": 1.7421914188740941,
+              "ready": 15450.842219871874,
+              "finished": 15449.100028453
+            },
+            {
+              "step_id": "H4:2",
+              "delay": 1.3500710955732866,
+              "expected_delay": 1.3500710955732866,
+              "ready": 15450.450099548574,
+              "finished": 15449.100028453
+            },
+            {
+              "step_id": "X:3",
+              "delay": 0.9093483568281223,
+              "expected_delay": 0.9093483568281222,
+              "ready": 15450.815534699828,
+              "finished": 15449.906186343
+            },
+            {
+              "step_id": "H0:2",
+              "delay": 1.0118854022047552,
+              "expected_delay": 1.011885402204755,
+              "ready": 15450.918071745204,
+              "finished": 15449.906186343
+            },
+            {
+              "step_id": "H6:2",
+              "delay": 1.2057557070252654,
+              "expected_delay": 1.2057557070252654,
+              "ready": 15451.111942050025,
+              "finished": 15449.906186343
+            },
+            {
+              "step_id": "H1:3",
+              "delay": 0.824627811865807,
+              "expected_delay": 0.8246278118658069,
+              "ready": 15450.730814154866,
+              "finished": 15449.906186343
+            }
+          ],
+          "delay_count": 16,
+          "mean_delay": 1.33675571535848,
+          "per_peer_schedule_counts": {
+            "H2": 2,
+            "H0": 2,
+            "X": 3,
+            "H1": 3,
+            "H4": 2,
+            "H6": 2,
+            "H5": 1,
+            "H3": 1
+          },
+          "scheduler_samples": [
+            {
+              "step_id": "X:2",
+              "previous_step": "X:1",
+              "finished": 15446.879485321,
+              "delay": 0.7358029825207509,
+              "ready": 15447.615288303521,
+              "actual_start": 15447.618871781,
+              "scheduler_lateness": 0.0035834774789691437
+            },
+            {
+              "step_id": "H2:2",
+              "previous_step": "H2:1",
+              "finished": 15446.879485321,
+              "delay": 0.8207459946364006,
+              "ready": 15447.700231315637,
+              "actual_start": 15447.70052574,
+              "scheduler_lateness": 0.00029442436243698467
+            },
+            {
+              "step_id": "H1:2",
+              "previous_step": "H1:1",
+              "finished": 15446.879485321,
+              "delay": 0.8497178822520554,
+              "ready": 15447.729203203253,
+              "actual_start": 15447.730764752,
+              "scheduler_lateness": 0.001561548746394692
+            },
+            {
+              "step_id": "H4:2",
+              "previous_step": "H4:1",
+              "finished": 15447.670629889,
+              "delay": 1.3693590765226675,
+              "ready": 15449.039988965524,
+              "actual_start": 15449.046041217,
+              "scheduler_lateness": 0.006052251475921366
+            },
+            {
+              "step_id": "X:3",
+              "previous_step": "X:2",
+              "finished": 15447.670629889,
+              "delay": 1.572270506951673,
+              "ready": 15449.242900395951,
+              "actual_start": 15449.250119885,
+              "scheduler_lateness": 0.007219489049020922
+            },
+            {
+              "step_id": "H0:2",
+              "previous_step": "H0:1",
+              "finished": 15446.879485321,
+              "delay": 2.633695554349227,
+              "ready": 15449.513180875349,
+              "actual_start": 15449.514398471,
+              "scheduler_lateness": 0.0012175956508144736
+            },
+            {
+              "step_id": "H6:2",
+              "previous_step": "H6:1",
+              "finished": 15447.670629889,
+              "delay": 1.8590664049447887,
+              "ready": 15449.529696293945,
+              "actual_start": 15449.53022953,
+              "scheduler_lateness": 0.0005332360560714733
+            },
+            {
+              "step_id": "H1:3",
+              "previous_step": "H1:2",
+              "finished": 15449.100028453,
+              "delay": 0.7213651534320799,
+              "ready": 15449.821393606431,
+              "actual_start": 15449.82208465,
+              "scheduler_lateness": 0.0006910435695317574
+            }
+          ],
+          "mean_scheduler_lateness": 0.0026441332986451016
+        },
+        "native_leader_waits": [
+          {
+            "step_id": "H2:1",
+            "leader": "H2",
+            "follower": "H0",
+            "timeout": 4.915226936340332,
+            "captured_expiration": 1791467113.1553762,
+            "timer_started_wall": 1791467108.2401638,
+            "followers": 1
+          },
+          {
+            "step_id": "X:1",
+            "leader": "X",
+            "follower": "H2",
+            "timeout": 2.9854183197021484,
+            "captured_expiration": 1791467111.3442647,
+            "timer_started_wall": 1791467108.358861,
+            "followers": 1
+          },
+          {
+            "step_id": "X:1",
+            "leader": "X",
+            "follower": "H0",
+            "timeout": 2.982781171798706,
+            "captured_expiration": 1791467111.3442647,
+            "timer_started_wall": 1791467108.361499,
+            "followers": 2
+          },
+          {
+            "step_id": "X:1",
+            "leader": "X",
+            "follower": "H1",
+            "timeout": 2.811375617980957,
+            "captured_expiration": 1791467112.3446283,
+            "timer_started_wall": 1791467109.5332856,
+            "followers": 3
+          },
+          {
+            "step_id": "H4:1",
+            "leader": "H4",
+            "follower": "H6",
+            "timeout": 4.431106328964233,
+            "captured_expiration": 1791467114.61441,
+            "timer_started_wall": 1791467110.1833217,
+            "followers": 1
+          },
+          {
+            "step_id": "H4:1",
+            "leader": "H4",
+            "follower": "H5",
+            "timeout": 4.346820116043091,
+            "captured_expiration": 1791467114.61441,
+            "timer_started_wall": 1791467110.2675989,
+            "followers": 2
+          },
+          {
+            "step_id": "X:2",
+            "leader": "X",
+            "follower": "H4",
+            "timeout": 2.9865779876708984,
+            "captured_expiration": 1791467113.3507478,
+            "timer_started_wall": 1791467110.3641775,
+            "followers": 1
+          },
+          {
+            "step_id": "X:2",
+            "leader": "X",
+            "follower": "H5",
+            "timeout": 2.9833056926727295,
+            "captured_expiration": 1791467113.3507478,
+            "timer_started_wall": 1791467110.3674488,
+            "followers": 2
+          },
+          {
+            "step_id": "X:2",
+            "leader": "X",
+            "follower": "H6",
+            "timeout": 2.9830715656280518,
+            "captured_expiration": 1791467113.3507478,
+            "timer_started_wall": 1791467110.3676825,
+            "followers": 3
+          },
+          {
+            "step_id": "H2:2",
+            "leader": "H2",
+            "follower": "H1",
+            "timeout": 4.9612462520599365,
+            "captured_expiration": 1791467115.4357283,
+            "timer_started_wall": 1791467110.4744902,
+            "followers": 1
+          },
+          {
+            "step_id": "H2:2",
+            "leader": "H2",
+            "follower": "H3",
+            "timeout": 4.901245832443237,
+            "captured_expiration": 1791467115.4357283,
+            "timer_started_wall": 1791467110.5344894,
+            "followers": 2
+          },
+          {
+            "step_id": "H2:2",
+            "leader": "H2",
+            "follower": "H4",
+            "timeout": 3.643582582473755,
+            "captured_expiration": 1791467115.4357283,
+            "timer_started_wall": 1791467111.7921557,
+            "followers": 3
+          },
+          {
+            "step_id": "X:3",
+            "leader": "X",
+            "follower": "H0",
+            "timeout": 2.717580556869507,
+            "captured_expiration": 1791467114.9843347,
+            "timer_started_wall": 1791467112.2667632,
+            "followers": 1
+          },
+          {
+            "step_id": "X:3",
+            "leader": "X",
+            "follower": "H6",
+            "timeout": 2.7066006660461426,
+            "captured_expiration": 1791467114.9843347,
+            "timer_started_wall": 1791467112.2777436,
+            "followers": 2
+          },
+          {
+            "step_id": "X:3",
+            "leader": "X",
+            "follower": "H1",
+            "timeout": 2.409794569015503,
+            "captured_expiration": 1791467114.9843347,
+            "timer_started_wall": 1791467112.5745466,
+            "followers": 3
+          }
+        ],
+        "join_arrivals": [
+          {
+            "leader": "H2",
+            "follower": "H0",
+            "step_id": "H2:1",
+            "monotonic": 15445.510625519,
+            "wall_time": 1791467108.2399676,
+            "request_expiration": 1791467113.210502
+          },
+          {
+            "leader": "X",
+            "follower": "H2",
+            "step_id": "X:1",
+            "monotonic": 15445.629318652,
+            "wall_time": 1791467108.3586607,
+            "request_expiration": 1791467113.1553762
+          },
+          {
+            "leader": "X",
+            "follower": "H0",
+            "step_id": "X:1",
+            "monotonic": 15445.631930816,
+            "wall_time": 1791467108.3612728,
+            "request_expiration": 1791467113.210502
+          },
+          {
+            "leader": "X",
+            "follower": "H1",
+            "step_id": "X:1",
+            "monotonic": 15446.801227563,
+            "wall_time": 1791467109.5305698,
+            "request_expiration": 1791467114.5040216
+          },
+          {
+            "leader": "H4",
+            "follower": "H6",
+            "step_id": "H4:1",
+            "monotonic": 15447.453787669,
+            "wall_time": 1791467110.1831295,
+            "request_expiration": 1791467115.1688116
+          },
+          {
+            "leader": "H4",
+            "follower": "H5",
+            "step_id": "H4:1",
+            "monotonic": 15447.53816477,
+            "wall_time": 1791467110.2675064,
+            "request_expiration": 1791467115.2569242
+          },
+          {
+            "leader": "X",
+            "follower": "H4",
+            "step_id": "X:2",
+            "monotonic": 15447.634737913,
+            "wall_time": 1791467110.36408,
+            "request_expiration": 1791467114.61441
+          },
+          {
+            "leader": "X",
+            "follower": "H5",
+            "step_id": "X:2",
+            "monotonic": 15447.638010386,
+            "wall_time": 1791467110.3673527,
+            "request_expiration": 1791467115.2569242
+          },
+          {
+            "leader": "X",
+            "follower": "H6",
+            "step_id": "X:2",
+            "monotonic": 15447.638161767,
+            "wall_time": 1791467110.3675034,
+            "request_expiration": 1791467115.1688116
+          },
+          {
+            "leader": "H2",
+            "follower": "H1",
+            "step_id": "H2:2",
+            "monotonic": 15447.745059306,
+            "wall_time": 1791467110.4744012,
+            "request_expiration": 1791467115.462691
+          },
+          {
+            "leader": "H2",
+            "follower": "H3",
+            "step_id": "H2:2",
+            "monotonic": 15447.805058363,
+            "wall_time": 1791467110.5344,
+            "request_expiration": 1791467115.5228348
+          },
+          {
+            "leader": "H2",
+            "follower": "H4",
+            "step_id": "H2:2",
+            "monotonic": 15449.062462665,
+            "wall_time": 1791467111.7918048,
+            "request_expiration": 1791467116.7788038
+          },
+          {
+            "leader": "X",
+            "follower": "H0",
+            "step_id": "X:3",
+            "monotonic": 15449.537319657,
+            "wall_time": 1791467112.2666616,
+            "request_expiration": 1791467117.25003
+          },
+          {
+            "leader": "X",
+            "follower": "H6",
+            "step_id": "X:3",
+            "monotonic": 15449.548302885,
+            "wall_time": 1791467112.2776449,
+            "request_expiration": 1791467117.264627
+          },
+          {
+            "leader": "X",
+            "follower": "H1",
+            "step_id": "X:3",
+            "monotonic": 15449.844991136,
+            "wall_time": 1791467112.5743332,
+            "request_expiration": 1791467117.5574958
+          }
+        ],
+        "holder_records": {
+          "source": "accepted holder_store records; not observed DHT visibility",
+          "clip_window": {
+            "start": 1791467107.9995172,
+            "end": 1791467112.6361144
+          },
+          "interpretation": "logged receipt intervals and their internal gaps are diagnostics, not DHT visibility or contention measurements",
+          "intervals": [
+            {
+              "holder": "12D3KooWETGUyZkrT1in8wft23h6a6VoNVEnDK6ZC5oj5v4B2q3J",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467108.3547204,
+              "end": 1791467109.5682642,
+              "duration": 1.2135438919067383
+            },
+            {
+              "holder": "12D3KooWETGUyZkrT1in8wft23h6a6VoNVEnDK6ZC5oj5v4B2q3J",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467110.357531,
+              "end": 1791467110.3812792,
+              "duration": 0.023748159408569336
+            },
+            {
+              "holder": "12D3KooWETGUyZkrT1in8wft23h6a6VoNVEnDK6ZC5oj5v4B2q3J",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467111.9916708,
+              "end": 1791467112.6001873,
+              "duration": 0.6085164546966553
+            },
+            {
+              "holder": "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467108.355069,
+              "end": 1791467109.5715008,
+              "duration": 1.2164318561553955
+            },
+            {
+              "holder": "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467110.35747,
+              "end": 1791467110.3812163,
+              "duration": 0.023746252059936523
+            },
+            {
+              "holder": "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467111.9915755,
+              "end": 1791467112.598671,
+              "duration": 0.60709547996521
+            },
+            {
+              "holder": "12D3KooWNRrya1GnZoCySY3b1VjndwijcTvEMXAwty47GgrinHGU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467108.3557334,
+              "end": 1791467109.5701745,
+              "duration": 1.2144410610198975
+            },
+            {
+              "holder": "12D3KooWNRrya1GnZoCySY3b1VjndwijcTvEMXAwty47GgrinHGU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467110.3581452,
+              "end": 1791467110.380502,
+              "duration": 0.022356748580932617
+            },
+            {
+              "holder": "12D3KooWNRrya1GnZoCySY3b1VjndwijcTvEMXAwty47GgrinHGU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467111.9921885,
+              "end": 1791467112.5996478,
+              "duration": 0.607459306716919
+            },
+            {
+              "holder": "12D3KooWPDchTxXd5ZTniBkzBHo7CRtKF1H1Zmk9iZ31wvMEAAyF",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467108.355207,
+              "end": 1791467109.5682447,
+              "duration": 1.2130377292633057
+            },
+            {
+              "holder": "12D3KooWPDchTxXd5ZTniBkzBHo7CRtKF1H1Zmk9iZ31wvMEAAyF",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467110.3572452,
+              "end": 1791467110.3818471,
+              "duration": 0.02460193634033203
+            },
+            {
+              "holder": "12D3KooWPDchTxXd5ZTniBkzBHo7CRtKF1H1Zmk9iZ31wvMEAAyF",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467111.991612,
+              "end": 1791467112.601169,
+              "duration": 0.6095571517944336
+            },
+            {
+              "holder": "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467108.3562517,
+              "end": 1791467109.569784,
+              "duration": 1.2135322093963623
+            },
+            {
+              "holder": "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467110.3571982,
+              "end": 1791467110.380711,
+              "duration": 0.023512840270996094
+            },
+            {
+              "holder": "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467111.9916797,
+              "end": 1791467112.598697,
+              "duration": 0.6070172786712646
+            }
+          ],
+          "gaps": [
+            {
+              "holder": "12D3KooWETGUyZkrT1in8wft23h6a6VoNVEnDK6ZC5oj5v4B2q3J",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467109.5682642,
+              "end": 1791467110.357531,
+              "duration": 0.78926682472229,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWETGUyZkrT1in8wft23h6a6VoNVEnDK6ZC5oj5v4B2q3J",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467110.3812792,
+              "end": 1791467111.9916708,
+              "duration": 1.610391616821289,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467109.5715008,
+              "end": 1791467110.35747,
+              "duration": 0.7859692573547363,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467110.3812163,
+              "end": 1791467111.9915755,
+              "duration": 1.6103591918945312,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWNRrya1GnZoCySY3b1VjndwijcTvEMXAwty47GgrinHGU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467109.5701745,
+              "end": 1791467110.3581452,
+              "duration": 0.787970781326294,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWNRrya1GnZoCySY3b1VjndwijcTvEMXAwty47GgrinHGU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467110.380502,
+              "end": 1791467111.9921885,
+              "duration": 1.6116864681243896,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWPDchTxXd5ZTniBkzBHo7CRtKF1H1Zmk9iZ31wvMEAAyF",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467109.5682447,
+              "end": 1791467110.3572452,
+              "duration": 0.7890005111694336,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWPDchTxXd5ZTniBkzBHo7CRtKF1H1Zmk9iZ31wvMEAAyF",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467110.3818471,
+              "end": 1791467111.991612,
+              "duration": 1.609764814376831,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467109.569784,
+              "end": 1791467110.3571982,
+              "duration": 0.7874143123626709,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            },
+            {
+              "holder": "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "start": 1791467110.380711,
+              "end": 1791467111.9916797,
+              "duration": 1.6109685897827148,
+              "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+            }
+          ],
+          "by_holder": [
+            {
+              "holder": "12D3KooWETGUyZkrT1in8wft23h6a6VoNVEnDK6ZC5oj5v4B2q3J",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "logged_accepted_intervals": 3,
+              "intervals": [
+                {
+                  "start": 1791467108.3547204,
+                  "end": 1791467109.5682642
+                },
+                {
+                  "start": 1791467110.357531,
+                  "end": 1791467110.3812792
+                },
+                {
+                  "start": 1791467111.9916708,
+                  "end": 1791467112.6001873
+                }
+              ],
+              "logged_gaps": [
+                {
+                  "holder": "12D3KooWETGUyZkrT1in8wft23h6a6VoNVEnDK6ZC5oj5v4B2q3J",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791467109.5682642,
+                  "end": 1791467110.357531,
+                  "duration": 0.78926682472229,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWETGUyZkrT1in8wft23h6a6VoNVEnDK6ZC5oj5v4B2q3J",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791467110.3812792,
+                  "end": 1791467111.9916708,
+                  "duration": 1.610391616821289,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                }
+              ]
+            },
+            {
+              "holder": "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "logged_accepted_intervals": 3,
+              "intervals": [
+                {
+                  "start": 1791467108.355069,
+                  "end": 1791467109.5715008
+                },
+                {
+                  "start": 1791467110.35747,
+                  "end": 1791467110.3812163
+                },
+                {
+                  "start": 1791467111.9915755,
+                  "end": 1791467112.598671
+                }
+              ],
+              "logged_gaps": [
+                {
+                  "holder": "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791467109.5715008,
+                  "end": 1791467110.35747,
+                  "duration": 0.7859692573547363,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791467110.3812163,
+                  "end": 1791467111.9915755,
+                  "duration": 1.6103591918945312,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                }
+              ]
+            },
+            {
+              "holder": "12D3KooWNRrya1GnZoCySY3b1VjndwijcTvEMXAwty47GgrinHGU",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "logged_accepted_intervals": 3,
+              "intervals": [
+                {
+                  "start": 1791467108.3557334,
+                  "end": 1791467109.5701745
+                },
+                {
+                  "start": 1791467110.3581452,
+                  "end": 1791467110.380502
+                },
+                {
+                  "start": 1791467111.9921885,
+                  "end": 1791467112.5996478
+                }
+              ],
+              "logged_gaps": [
+                {
+                  "holder": "12D3KooWNRrya1GnZoCySY3b1VjndwijcTvEMXAwty47GgrinHGU",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791467109.5701745,
+                  "end": 1791467110.3581452,
+                  "duration": 0.787970781326294,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWNRrya1GnZoCySY3b1VjndwijcTvEMXAwty47GgrinHGU",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791467110.380502,
+                  "end": 1791467111.9921885,
+                  "duration": 1.6116864681243896,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                }
+              ]
+            },
+            {
+              "holder": "12D3KooWPDchTxXd5ZTniBkzBHo7CRtKF1H1Zmk9iZ31wvMEAAyF",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "logged_accepted_intervals": 3,
+              "intervals": [
+                {
+                  "start": 1791467108.355207,
+                  "end": 1791467109.5682447
+                },
+                {
+                  "start": 1791467110.3572452,
+                  "end": 1791467110.3818471
+                },
+                {
+                  "start": 1791467111.991612,
+                  "end": 1791467112.601169
+                }
+              ],
+              "logged_gaps": [
+                {
+                  "holder": "12D3KooWPDchTxXd5ZTniBkzBHo7CRtKF1H1Zmk9iZ31wvMEAAyF",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791467109.5682447,
+                  "end": 1791467110.3572452,
+                  "duration": 0.7890005111694336,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWPDchTxXd5ZTniBkzBHo7CRtKF1H1Zmk9iZ31wvMEAAyF",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791467110.3818471,
+                  "end": 1791467111.991612,
+                  "duration": 1.609764814376831,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                }
+              ]
+            },
+            {
+              "holder": "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy",
+              "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+              "logged_accepted_intervals": 3,
+              "intervals": [
+                {
+                  "start": 1791467108.3562517,
+                  "end": 1791467109.569784
+                },
+                {
+                  "start": 1791467110.3571982,
+                  "end": 1791467110.380711
+                },
+                {
+                  "start": 1791467111.9916797,
+                  "end": 1791467112.598697
+                }
+              ],
+              "logged_gaps": [
+                {
+                  "holder": "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791467109.569784,
+                  "end": 1791467110.3571982,
+                  "duration": 0.7874143123626709,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                },
+                {
+                  "holder": "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy",
+                  "key": "0388f537e127312911192e6bdd567dd8f00eb566",
+                  "start": 1791467110.380711,
+                  "end": 1791467111.9916797,
+                  "duration": 1.6109685897827148,
+                  "interpretation": "gap between logged accepted holder records; not observed DHT visibility"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "aggregate": [
+    {
+      "case": "range_2_3",
+      "trials": 1,
+      "total_assembled_groups": 4,
+      "x_assembled_leads": 3,
+      "total_verified_groups": 3,
+      "x_verified_leads": 2,
+      "x_leadership_share": 0.6666666666666666,
+      "mean_x_verified_group_size": 4,
+      "x_ad_writes": 4,
+      "x_ad_attempts": 4,
+      "disband_replies": 0,
+      "incorrect_steps": [
+        "H6:2"
+      ],
+      "integrity_errors": [],
+      "pending": 0
+    }
+  ],
+  "policy_count": {
+    "expected": 1,
+    "observed": 1
+  },
+  "incorrect_steps": [
+    "H6:2"
+  ],
+  "integrity_errors": [],
+  "pending": 0
+}

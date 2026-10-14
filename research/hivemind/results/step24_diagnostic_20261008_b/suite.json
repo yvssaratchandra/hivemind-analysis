@@ -1,0 +1,28 @@
+{
+  "phase": "diagnostic",
+  "jobs": [
+    {
+      "case": {
+        "name": "range_2_3",
+        "mode": "refresh",
+        "minimum": 4,
+        "target": 4,
+        "frequency": 1.0,
+        "lifetime": 3.0,
+        "nominal_lower": 2.0,
+        "nominal_upper": 3.0
+      },
+      "seed": 2400,
+      "duration": 10
+    }
+  ],
+  "gate": null,
+  "diagnose": "research/hivemind/results/step24_smoke_20261008_a/range_2_3_s2400",
+  "order_seed": 240024,
+  "training_delay": {
+    "mu": 0.2517227582341841,
+    "sigma": 0.5545130293761911,
+    "lower": 0.1,
+    "upper": 4.0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "tests": 43,
+  "state_tests": 15,
+  "underlying_analyzer_tests": 14,
+  "election_tests": 14,
+  "smoke_trials": 8,
+  "confirmation_trials": 40,
+  "searches": 1184,
+  "led_searches": 1053,
+  "followed_searches": 122,
+  "no_group_searches": 9,
+  "original_all_groups": 2485,
+  "original_x_led_groups": 1053,
+  "other_groups": 1432,
+  "unchanged_input_hashes": true,
+  "extraction_snapshot_hashes_verified": true,
+  "submission_and_drain_coverage_verified": true,
+  "checks": "checks.txt",
+  "scope": "offline state reconstruction; no network rerun or core changes"
+}

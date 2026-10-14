@@ -1,0 +1,116 @@
+{
+  "phase": "smoke",
+  "jobs": [
+    {
+      "case": {
+        "name": "range_0_1",
+        "mode": "refresh",
+        "minimum": 4,
+        "target": 4,
+        "frequency": 1.0,
+        "lifetime": 1.0,
+        "nominal_lower": 0.0,
+        "nominal_upper": 1.0
+      },
+      "seed": 2400,
+      "duration": 10
+    },
+    {
+      "case": {
+        "name": "range_2_3",
+        "mode": "refresh",
+        "minimum": 4,
+        "target": 4,
+        "frequency": 1.0,
+        "lifetime": 3.0,
+        "nominal_lower": 2.0,
+        "nominal_upper": 3.0
+      },
+      "seed": 2400,
+      "duration": 10
+    },
+    {
+      "case": {
+        "name": "expire_2",
+        "mode": "expire",
+        "minimum": 4,
+        "target": 4,
+        "lifetime": 2.0
+      },
+      "seed": 2400,
+      "duration": 10
+    },
+    {
+      "case": {
+        "name": "range_1_2",
+        "mode": "refresh",
+        "minimum": 4,
+        "target": 4,
+        "frequency": 1.0,
+        "lifetime": 2.0,
+        "nominal_lower": 1.0,
+        "nominal_upper": 2.0
+      },
+      "seed": 2400,
+      "duration": 10
+    },
+    {
+      "case": {
+        "name": "stock",
+        "mode": "stock",
+        "minimum": 4,
+        "target": 4,
+        "lifetime": 5.0
+      },
+      "seed": 2400,
+      "duration": 10
+    },
+    {
+      "case": {
+        "name": "range_3_4",
+        "mode": "refresh",
+        "minimum": 4,
+        "target": 4,
+        "frequency": 1.0,
+        "lifetime": 4.0,
+        "nominal_lower": 3.0,
+        "nominal_upper": 4.0
+      },
+      "seed": 2400,
+      "duration": 10
+    },
+    {
+      "case": {
+        "name": "passive_stock",
+        "mode": "passive",
+        "minimum": 4,
+        "target": 4,
+        "lifetime": 5.0
+      },
+      "seed": 2400,
+      "duration": 10
+    },
+    {
+      "case": {
+        "name": "range_025_125",
+        "mode": "refresh",
+        "minimum": 4,
+        "target": 4,
+        "frequency": 1.0,
+        "lifetime": 1.25,
+        "nominal_lower": 0.25,
+        "nominal_upper": 1.25
+      },
+      "seed": 2400,
+      "duration": 10
+    }
+  ],
+  "gate": null,
+  "order_seed": 240024,
+  "training_delay": {
+    "mu": 0.2517227582341841,
+    "sigma": 0.5545130293761911,
+    "lower": 0.1,
+    "upper": 4.0
+  }
+}

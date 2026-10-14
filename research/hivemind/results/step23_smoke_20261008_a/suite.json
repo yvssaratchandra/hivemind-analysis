@@ -1,0 +1,513 @@
+{
+  "phase": "smoke",
+  "jobs": [
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2307,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2306,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2307,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2307,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2307,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2307,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2306,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2306,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2307,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2306,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2306,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2306,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2306,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2307,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2306,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "smoke",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2307,
+      "pattern": "bursty"
+    }
+  ],
+  "gate": {
+    "phase": "mechanism",
+    "trials": [
+      {
+        "case": "advance",
+        "response": "reject",
+        "mode": "advance",
+        "guard": "native",
+        "phase": "mechanism",
+        "seed": 2301,
+        "pattern": "mechanism",
+        "honest_correct": 0,
+        "honest_count": 1,
+        "incorrect_steps": [],
+        "penalized_seconds": 18,
+        "honest_penalized_seconds": {
+          "H0": 18
+        },
+        "x_attempts": 2,
+        "x_retries": 1,
+        "renewal_retries": 1,
+        "x_wait_seconds": 0.006847822000054293,
+        "x_ad_attempts": 2,
+        "x_ad_accepted": 2,
+        "mechanism_retry_before_original_expiry": true,
+        "searches": 2,
+        "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_mechanism_20261008_b/advance_mechanism_s2301"
+      },
+      {
+        "case": "advance",
+        "response": "reject",
+        "mode": "advance",
+        "guard": "native",
+        "phase": "mechanism",
+        "seed": 2302,
+        "pattern": "mechanism",
+        "honest_correct": 0,
+        "honest_count": 1,
+        "incorrect_steps": [],
+        "penalized_seconds": 18,
+        "honest_penalized_seconds": {
+          "H0": 18
+        },
+        "x_attempts": 2,
+        "x_retries": 1,
+        "renewal_retries": 1,
+        "x_wait_seconds": 0.008196576000045752,
+        "x_ad_attempts": 2,
+        "x_ad_accepted": 2,
+        "mechanism_retry_before_original_expiry": true,
+        "searches": 2,
+        "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_mechanism_20261008_b/advance_mechanism_s2302"
+      },
+      {
+        "case": "advance",
+        "response": "reject",
+        "mode": "advance",
+        "guard": "native",
+        "phase": "mechanism",
+        "seed": 2303,
+        "pattern": "mechanism",
+        "honest_correct": 0,
+        "honest_count": 1,
+        "incorrect_steps": [],
+        "penalized_seconds": 18,
+        "honest_penalized_seconds": {
+          "H0": 18
+        },
+        "x_attempts": 2,
+        "x_retries": 1,
+        "renewal_retries": 1,
+        "x_wait_seconds": 0.007079179000356817,
+        "x_ad_attempts": 2,
+        "x_ad_accepted": 2,
+        "mechanism_retry_before_original_expiry": true,
+        "searches": 2,
+        "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_mechanism_20261008_b/advance_mechanism_s2303"
+      },
+      {
+        "case": "advance",
+        "response": "reject",
+        "mode": "advance",
+        "guard": "native",
+        "phase": "mechanism",
+        "seed": 2304,
+        "pattern": "mechanism",
+        "honest_correct": 0,
+        "honest_count": 1,
+        "incorrect_steps": [],
+        "penalized_seconds": 18,
+        "honest_penalized_seconds": {
+          "H0": 18
+        },
+        "x_attempts": 2,
+        "x_retries": 1,
+        "renewal_retries": 1,
+        "x_wait_seconds": 0.009965350000129547,
+        "x_ad_attempts": 2,
+        "x_ad_accepted": 2,
+        "mechanism_retry_before_original_expiry": true,
+        "searches": 2,
+        "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_mechanism_20261008_b/advance_mechanism_s2304"
+      },
+      {
+        "case": "advance",
+        "response": "reject",
+        "mode": "advance",
+        "guard": "native",
+        "phase": "mechanism",
+        "seed": 2305,
+        "pattern": "mechanism",
+        "honest_correct": 0,
+        "honest_count": 1,
+        "incorrect_steps": [],
+        "penalized_seconds": 18,
+        "honest_penalized_seconds": {
+          "H0": 18
+        },
+        "x_attempts": 2,
+        "x_retries": 1,
+        "renewal_retries": 1,
+        "x_wait_seconds": 0.0026912280000033206,
+        "x_ad_attempts": 2,
+        "x_ad_accepted": 2,
+        "mechanism_retry_before_original_expiry": true,
+        "searches": 2,
+        "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_mechanism_20261008_b/advance_mechanism_s2305"
+      },
+      {
+        "case": "same",
+        "response": "reject",
+        "mode": "same",
+        "guard": "native",
+        "phase": "mechanism",
+        "seed": 2301,
+        "pattern": "mechanism",
+        "honest_correct": 0,
+        "honest_count": 1,
+        "incorrect_steps": [],
+        "penalized_seconds": 18,
+        "honest_penalized_seconds": {
+          "H0": 18
+        },
+        "x_attempts": 1,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_wait_seconds": 0.0035148769993611495,
+        "x_ad_attempts": 2,
+        "x_ad_accepted": 1,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 2,
+        "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_mechanism_20261008_b/same_mechanism_s2301"
+      },
+      {
+        "case": "same",
+        "response": "reject",
+        "mode": "same",
+        "guard": "native",
+        "phase": "mechanism",
+        "seed": 2302,
+        "pattern": "mechanism",
+        "honest_correct": 0,
+        "honest_count": 1,
+        "incorrect_steps": [],
+        "penalized_seconds": 18,
+        "honest_penalized_seconds": {
+          "H0": 18
+        },
+        "x_attempts": 1,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_wait_seconds": 0.005871453000509064,
+        "x_ad_attempts": 2,
+        "x_ad_accepted": 1,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 2,
+        "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_mechanism_20261008_b/same_mechanism_s2302"
+      },
+      {
+        "case": "same",
+        "response": "reject",
+        "mode": "same",
+        "guard": "native",
+        "phase": "mechanism",
+        "seed": 2303,
+        "pattern": "mechanism",
+        "honest_correct": 0,
+        "honest_count": 1,
+        "incorrect_steps": [],
+        "penalized_seconds": 18,
+        "honest_penalized_seconds": {
+          "H0": 18
+        },
+        "x_attempts": 1,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_wait_seconds": 0.002126606000274478,
+        "x_ad_attempts": 2,
+        "x_ad_accepted": 1,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 2,
+        "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_mechanism_20261008_b/same_mechanism_s2303"
+      },
+      {
+        "case": "same",
+        "response": "reject",
+        "mode": "same",
+        "guard": "native",
+        "phase": "mechanism",
+        "seed": 2304,
+        "pattern": "mechanism",
+        "honest_correct": 0,
+        "honest_count": 1,
+        "incorrect_steps": [],
+        "penalized_seconds": 18,
+        "honest_penalized_seconds": {
+          "H0": 18
+        },
+        "x_attempts": 1,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_wait_seconds": 0.0020045249993927428,
+        "x_ad_attempts": 2,
+        "x_ad_accepted": 1,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 2,
+        "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_mechanism_20261008_b/same_mechanism_s2304"
+      },
+      {
+        "case": "same",
+        "response": "reject",
+        "mode": "same",
+        "guard": "native",
+        "phase": "mechanism",
+        "seed": 2305,
+        "pattern": "mechanism",
+        "honest_correct": 0,
+        "honest_count": 1,
+        "incorrect_steps": [],
+        "penalized_seconds": 18,
+        "honest_penalized_seconds": {
+          "H0": 18
+        },
+        "x_attempts": 1,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_wait_seconds": 0.0045307769996725256,
+        "x_ad_attempts": 2,
+        "x_ad_accepted": 1,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 2,
+        "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_mechanism_20261008_b/same_mechanism_s2305"
+      }
+    ],
+    "trial_count": 10,
+    "mechanism_pass": true,
+    "smoke_pass": false,
+    "harm_pass": false,
+    "mechanism_pairs_demonstrated": 5,
+    "aggregate": [
+      {
+        "case": "advance",
+        "trials": 5,
+        "honest_correct": 0,
+        "honest_count": 5,
+        "x_retries": 5,
+        "renewal_retries": 5,
+        "x_ad_attempts": 10,
+        "x_wait_seconds": 0.03478015500058973,
+        "mean_penalized_seconds": 18
+      },
+      {
+        "case": "same",
+        "trials": 5,
+        "honest_correct": 0,
+        "honest_count": 5,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_ad_attempts": 10,
+        "x_wait_seconds": 0.01804823799920996,
+        "mean_penalized_seconds": 18
+      }
+    ]
+  }
+}

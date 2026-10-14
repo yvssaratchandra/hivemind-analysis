@@ -1,0 +1,314 @@
+[
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.575045164001494,
+    "kind": "assembled",
+    "peer": "X",
+    "remote": null,
+    "detail": {
+      "step_id": "X:3",
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6",
+      "roster": [
+        "12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA",
+        "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy",
+        "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv",
+        "12D3KooWHGWg1qJMJEEPLXUofHtoU2CB9BHNoTnAfy1J82m876dp"
+      ],
+      "user": {
+        "name": "X",
+        "sequence": 3,
+        "step_id": "X:3",
+        "value": 37.0
+      },
+      "members": {
+        "12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA": {
+          "name": "X",
+          "sequence": 3,
+          "step_id": "X:3",
+          "value": 37.0
+        },
+        "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy": {
+          "name": "H6",
+          "sequence": 2,
+          "step_id": "H6:2",
+          "value": 26.0
+        },
+        "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv": {
+          "name": "H0",
+          "sequence": 2,
+          "step_id": "H0:2",
+          "value": 20.0
+        },
+        "12D3KooWHGWg1qJMJEEPLXUofHtoU2CB9BHNoTnAfy1J82m876dp": {
+          "name": "H1",
+          "sequence": 3,
+          "step_id": "H1:3",
+          "value": 31.0
+        }
+      }
+    }
+  },
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.577060971001629,
+    "kind": "native_client_reply",
+    "peer": "H1",
+    "remote": "X",
+    "detail": {
+      "step_id": "H1:3",
+      "timeout": 7.982974290847778,
+      "request_expiration": 1791467117.5574958,
+      "phase": "waiting_for_group",
+      "code": "BEGIN_ALLREDUCE",
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6"
+    }
+  },
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.577227331999893,
+    "kind": "native_client_reply",
+    "peer": "H0",
+    "remote": "X",
+    "detail": {
+      "step_id": "H0:2",
+      "timeout": 7.982980012893677,
+      "request_expiration": 1791467117.25003,
+      "phase": "waiting_for_group",
+      "code": "BEGIN_ALLREDUCE",
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6"
+    }
+  },
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.577978827001061,
+    "kind": "native_client_reply",
+    "peer": "H6",
+    "remote": "X",
+    "detail": {
+      "step_id": "H6:2",
+      "timeout": 7.986460208892822,
+      "request_expiration": 1791467117.264627,
+      "phase": "waiting_for_group",
+      "code": "BEGIN_ALLREDUCE",
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6"
+    }
+  },
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.6061510810013715,
+    "kind": "allreduce_start",
+    "peer": "X",
+    "remote": null,
+    "detail": {
+      "step_id": "X:3",
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6",
+      "members": {
+        "12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA": {
+          "name": "X",
+          "sequence": 3,
+          "step_id": "X:3",
+          "value": 37.0
+        },
+        "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy": {
+          "name": "H6",
+          "sequence": 2,
+          "step_id": "H6:2",
+          "value": 26.0
+        },
+        "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv": {
+          "name": "H0",
+          "sequence": 2,
+          "step_id": "H0:2",
+          "value": 20.0
+        },
+        "12D3KooWHGWg1qJMJEEPLXUofHtoU2CB9BHNoTnAfy1J82m876dp": {
+          "name": "H1",
+          "sequence": 3,
+          "step_id": "H1:3",
+          "value": 31.0
+        }
+      },
+      "actual_input_first": 37.0
+    }
+  },
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.613040713000373,
+    "kind": "allreduce_start",
+    "peer": "H6",
+    "remote": null,
+    "detail": {
+      "step_id": "H6:2",
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6",
+      "members": {
+        "12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA": {
+          "name": "X",
+          "sequence": 3,
+          "step_id": "X:3",
+          "value": 37.0
+        },
+        "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy": {
+          "name": "H6",
+          "sequence": 2,
+          "step_id": "H6:2",
+          "value": 26.0
+        },
+        "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv": {
+          "name": "H0",
+          "sequence": 2,
+          "step_id": "H0:2",
+          "value": 20.0
+        },
+        "12D3KooWHGWg1qJMJEEPLXUofHtoU2CB9BHNoTnAfy1J82m876dp": {
+          "name": "H1",
+          "sequence": 3,
+          "step_id": "H1:3",
+          "value": 31.0
+        }
+      },
+      "actual_input_first": 26.0
+    }
+  },
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.615457597001296,
+    "kind": "allreduce_start",
+    "peer": "H1",
+    "remote": null,
+    "detail": {
+      "step_id": "H1:3",
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6",
+      "members": {
+        "12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA": {
+          "name": "X",
+          "sequence": 3,
+          "step_id": "X:3",
+          "value": 37.0
+        },
+        "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy": {
+          "name": "H6",
+          "sequence": 2,
+          "step_id": "H6:2",
+          "value": 26.0
+        },
+        "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv": {
+          "name": "H0",
+          "sequence": 2,
+          "step_id": "H0:2",
+          "value": 20.0
+        },
+        "12D3KooWHGWg1qJMJEEPLXUofHtoU2CB9BHNoTnAfy1J82m876dp": {
+          "name": "H1",
+          "sequence": 3,
+          "step_id": "H1:3",
+          "value": 31.0
+        }
+      },
+      "actual_input_first": 31.0
+    }
+  },
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.622695181000381,
+    "kind": "allreduce_start",
+    "peer": "H0",
+    "remote": null,
+    "detail": {
+      "step_id": "H0:2",
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6",
+      "members": {
+        "12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA": {
+          "name": "X",
+          "sequence": 3,
+          "step_id": "X:3",
+          "value": 37.0
+        },
+        "12D3KooWSrDQ3bGsEHumtRM9MqUDrMyoN1zHzPSZ4wwwuwVMezEy": {
+          "name": "H6",
+          "sequence": 2,
+          "step_id": "H6:2",
+          "value": 26.0
+        },
+        "12D3KooWGJS8HGwothjyC3feZJRJTBnT7JceUn1tT3Ns94BySSGv": {
+          "name": "H0",
+          "sequence": 2,
+          "step_id": "H0:2",
+          "value": 20.0
+        },
+        "12D3KooWHGWg1qJMJEEPLXUofHtoU2CB9BHNoTnAfy1J82m876dp": {
+          "name": "H1",
+          "sequence": 3,
+          "step_id": "H1:3",
+          "value": 31.0
+        }
+      },
+      "actual_input_first": 20.0
+    }
+  },
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.628265084000304,
+    "kind": "allreduce_end",
+    "peer": "X",
+    "remote": null,
+    "detail": {
+      "step_id": "X:3",
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6",
+      "error": null,
+      "actual_output_first": 28.5
+    }
+  },
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.631145344001197,
+    "kind": "allreduce_end",
+    "peer": "H0",
+    "remote": null,
+    "detail": {
+      "step_id": "H0:2",
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6",
+      "error": null,
+      "actual_output_first": 28.5
+    }
+  },
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.6319593750013155,
+    "kind": "reducer_exchange_failed",
+    "peer": "H6",
+    "remote": "X",
+    "detail": {
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6",
+      "error": "AllreduceException",
+      "error_message": "peer 12D3KooWJQQWuKkGj8uF9B5n2y7wJESwXYMKvUQ6XhRAPHhJiYXA sent 0 parts, but we expected 1",
+      "failed_elements": 128,
+      "step_id": null
+    }
+  },
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.632716755000729,
+    "kind": "allreduce_end",
+    "peer": "H6",
+    "remote": null,
+    "detail": {
+      "step_id": "H6:2",
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6",
+      "error": null,
+      "actual_output_first": 26.0
+    }
+  },
+  {
+    "suite": "step24_diagnostic_20261008_b",
+    "time_from_start": 4.633879035000064,
+    "kind": "allreduce_end",
+    "peer": "H1",
+    "remote": null,
+    "detail": {
+      "step_id": "H1:3",
+      "group_id": "930e3ade6ca69a8f263a67247a8b1c1bd06835b6",
+      "error": null,
+      "actual_output_first": 28.5
+    }
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "case": {
+    "name": "unreliable_expire_native",
+    "mode": "expire",
+    "response": "unreliable",
+    "phase": "confirm",
+    "guard": "native",
+    "minimum": 4,
+    "lifetime": 2,
+    "frequency": null
+  },
+  "seed": 2325,
+  "pattern": "staggered",
+  "offsets": {
+    "X": 0.46990797822935404,
+    "H0": 1.5579113394386712,
+    "H1": 1.196823294728385,
+    "H2": 2.8907844099185893,
+    "H3": 1.6442944530785872,
+    "H4": 2.6206012393856457,
+    "H5": 0.7810198964340402,
+    "H6": 2.775683919424757
+  },
+  "dht_count": 8,
+  "timeout": 12,
+  "allreduce_timeout": 6,
+  "correct_output_horizon": 18,
+  "lifetime": 2,
+  "frequency": null,
+  "hold": 0.5,
+  "target": 4,
+  "honest_min": 2,
+  "x_min": 4,
+  "request_timeout": 3,
+  "honest_min_matchmaking_time": 5,
+  "initial_group_bits": "",
+  "tensor_size": 128,
+  "peer_ids": {
+    "X": "12D3KooWB5JtfNu2Scb26RZ1roAPvmD1zmavdYbXHs3Qte2tvyLL",
+    "H0": "12D3KooWRFB96iiyGtrpXK2UwA3RPcs52mVVsPKsZH9kidYtDTke",
+    "H1": "12D3KooWMHbDiMmzBBwNrSagohkBQNHcoZfYu1hbzoX1xCdp1bQF",
+    "H2": "12D3KooWCnjGrYoQS8PvJYJfeae2ZXshAfgJ9CvDRpCxTetdCVqe",
+    "H3": "12D3KooWC8Um2Nav2Nma6aA7QY1nu27Hx3fuLMPiT5yaEQg1prLP",
+    "H4": "12D3KooWQawaM8Hcpq3dhmNHWtkkXY52KDqz1R8iearcwNMKnV8t",
+    "H5": "12D3KooWRnHsSuthXthEaRST3ggxULusGtq11SFb47NvuLuVu2Uk",
+    "H6": "12D3KooWGqqz755G5xhjETgedfCL5wt79ogqt9DtyzGiUWpfPQmP"
+  },
+  "node_ids": [
+    "105104418840844356273908737219841216617645785446",
+    "1109582274537888365952092569492226856711830793585",
+    "363900652183553696708184009673075975554847192725",
+    "900352472730331580065156231760812008035399841776",
+    "1310059477206119395216331038024100087391394749972",
+    "934467852046149835243209229030015568541402209726",
+    "1026648351800356169599635527806015481293135937651",
+    "1107322041572260347990999119930634235297253206742"
+  ]
+}

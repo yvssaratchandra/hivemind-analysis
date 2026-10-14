@@ -1,0 +1,12 @@
+{
+  "trial": "expire_2_s2501",
+  "pid": 1094762,
+  "state": "parent_terminated_after_peer_shutdown",
+  "children": "1094829 1094950",
+  "observed_utc": "2026-10-09 14:58:16 UTC",
+  "helper_pids": [
+    1094829,
+    1094950
+  ],
+  "terminated_utc": "2026-10-09 14:58:46 UTC"
+}

@@ -1,0 +1,31 @@
+{
+  "case": "unreliable_refresh_native",
+  "response": "unreliable",
+  "mode": "refresh",
+  "guard": "native",
+  "phase": "confirm",
+  "seed": 2315,
+  "pattern": "staggered",
+  "honest_correct": 6,
+  "honest_count": 7,
+  "incorrect_steps": [],
+  "penalized_seconds": 6.555044678285673,
+  "honest_penalized_seconds": {
+    "H0": 2.9641504060000443,
+    "H1": 5.151074555000378,
+    "H2": 18,
+    "H3": 5.47212306199981,
+    "H4": 5.670088152000062,
+    "H5": 3.5048382609993496,
+    "H6": 5.123038312000062
+  },
+  "x_attempts": 31,
+  "x_retries": 19,
+  "renewal_retries": 18,
+  "x_wait_seconds": 11.109038481000425,
+  "x_ad_attempts": 11,
+  "x_ad_accepted": 11,
+  "mechanism_retry_before_original_expiry": true,
+  "searches": 9,
+  "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_confirm_20261008_a/unreliable_refresh_native_staggered_s2315"
+}

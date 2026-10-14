@@ -1,0 +1,53 @@
+{
+  "case": {
+    "name": "range_2_3",
+    "mode": "refresh",
+    "minimum": 4,
+    "target": 4,
+    "frequency": 1.0,
+    "lifetime": 3.0,
+    "nominal_lower": 2.0,
+    "nominal_upper": 3.0
+  },
+  "seed": 2400,
+  "duration": 10,
+  "timeout": 12,
+  "tensor_size": 128,
+  "initial_offsets": {
+    "X": 0.33905358525113294,
+    "H0": 0.19246246845371595,
+    "H1": 1.4875608760735688,
+    "H2": 0.13539532420709754,
+    "H3": 2.5187124334222437,
+    "H4": 1.6013424205565925,
+    "H5": 2.2458316842195156,
+    "H6": 2.163309147460866
+  },
+  "training_delay": {
+    "mu": 0.2517227582341841,
+    "sigma": 0.5545130293761911,
+    "lower": 0.1,
+    "upper": 4.0
+  },
+  "honest_min": 2,
+  "target": 4,
+  "honest_ad_lifetime": 5,
+  "allreduce_timeout": 6,
+  "store_delay": 0,
+  "delay_location": "after observed FINISHED, before next step()",
+  "group_bits": "",
+  "scheduled_time": "native default",
+  "network": "eight-peer loopback",
+  "peer_ids": {
+    "X": "12D3KooWKPzTZpunT7wUqrahZXQJZPmLNzgbZYc9QfdvMdMhd8ov",
+    "H0": "12D3KooWERympyCmbapbHKP9gWuqKEyeUeCYS9rDTADVx4STo7Bx",
+    "H1": "12D3KooWNdDeEgbbTkRbQKwuQpctv3YnGuswz9ukw9GY2hnWWCvB",
+    "H2": "12D3KooWPHLi6mtj7XYMNtiBf1dDQKp7bFn7yP55o1QEyJWmsLVV",
+    "H3": "12D3KooWNk4KZE4AM35E9PJeeBpu7tRTEFzSfR2rAe9FViow9zHq",
+    "H4": "12D3KooWS4NKzszHm9sgnRLCARXHuC1K9uqZkmFW5hcFPapHs7kT",
+    "H5": "12D3KooWJ4eN9XeNhf4YCD9uGnjqz6DuaHL8NHRmyCgLJCBkGsbV",
+    "H6": "12D3KooWFRx2S41MRzKZyFZdmmBXJ2QcoMDEQ414m3ZQWZCT7PAe"
+  },
+  "started_monotonic": 14561.421525491,
+  "started_wall": 1791466224.1508873
+}

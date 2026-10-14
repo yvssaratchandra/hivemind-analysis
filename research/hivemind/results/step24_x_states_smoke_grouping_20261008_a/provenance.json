@@ -1,0 +1,46 @@
+{
+  "input_suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step24_smoke_grouping_20261008_a",
+  "input_sha256": {
+    "expire_2_s2400/config.json": "caefddfee588bc7ab0fee53cae033312897789f4e661cef1df4b609325c43d6a",
+    "expire_2_s2400/events.jsonl": "13cb39a7e1a1fc4dac17cf4c70cd2e16a3f13748a46e45be7f096b69fbfc0236",
+    "expire_2_s2400/summary.json": "539e44be1f92b03f01bd509d69682518ae4c4cfb9d18f24fdd44cbec5ee5acea",
+    "passive_stock_s2400/config.json": "d08e51f090ac61eb65613251db50cc4c5b41b8668fe42a58cac0998f80cf9c3e",
+    "passive_stock_s2400/events.jsonl": "c3f349f934af75a96b8db91a930bdda8436519ed4f528f89f1f5f3cc2952f84e",
+    "passive_stock_s2400/summary.json": "ae70ca59d224a5669808a49cabdb62292f9526474cb6fb4025276a0568926e16",
+    "provenance.json": "f36ec0d96f65c4f92e663121ace2e7be2be906c88427a8eb0a2fd07423117685",
+    "range_025_125_s2400/config.json": "6345034d136bd98d943d7dbb07d2d9b08c5ee651b89badefc0c69f00b59c3c93",
+    "range_025_125_s2400/events.jsonl": "247f89bbf42c95de914db47e393a33a9b2197883b1f17326f10a042bf56a70bd",
+    "range_025_125_s2400/summary.json": "93d0c0d1b7ec78330071c90100ade4a39d21680fcee98e39343d29075a9db46d",
+    "range_0_1_s2400/config.json": "e00c471ec620f45acd2f1ae6f6aaeff2bd8265255232097c0bb3fe1785088a2a",
+    "range_0_1_s2400/events.jsonl": "da8ea9536d98ac183c833ce32be3d3acb1410836674da1ba10595a7e671111f7",
+    "range_0_1_s2400/summary.json": "fbef94abe4fd57776b4564b17787d23e0ee6712c28c06f5618758d888f54371a",
+    "range_1_2_s2400/config.json": "5549daa9f6e032514aa23cc028dae214a5e4ea34ee951999ed139f78f02c7ef4",
+    "range_1_2_s2400/events.jsonl": "954cf7e174c45787f04eb4954f9e02c5f92b5dd6798e5d449ca973108013a554",
+    "range_1_2_s2400/summary.json": "6d8eab623d4b03c38881deb803b78abc65a39c29ea637fe5a3c10afccafbd2b6",
+    "range_2_3_s2400/config.json": "029d6629208da49dd0ecbcd7ea7ac6bd4abebedb530a937feb3a325d337010af",
+    "range_2_3_s2400/events.jsonl": "fdc1fca5ebdf32ef5cdabb1507a012cc796abc65d868f65fcbf63c68aac3a58c",
+    "range_2_3_s2400/summary.json": "9820162be7a276a324dd47b7c9ec0acdc84ab05fc8694c654cd1e5d3e8fa46f5",
+    "range_3_4_s2400/config.json": "b0b020d90bcf88c7d10e3ea251becfba5e47da83957daffe8a5e1a2bf5ee3ce5",
+    "range_3_4_s2400/events.jsonl": "25a5d51f46db0f1fcae1e29123a526192c8cf6462f5e1c1dfd2b1074dfba33f5",
+    "range_3_4_s2400/summary.json": "4c002bf15caf3befa67a4a7724fd1c75caae867e8cf5efea9ddc6a7eb83fc46b",
+    "stock_s2400/config.json": "63a94be6354e6c52d9b0e9f29bef849ee7b07900d9aa59bf361901f44b9d7408",
+    "stock_s2400/events.jsonl": "77670c822fbb56f2ebcec1dde92b0ba28292d84e9b85094c58c2200458386a1d",
+    "stock_s2400/summary.json": "93d5021c90c8e71ce24496017b28e4366478bb65c6c8585c5fe075532d388f16",
+    "suite.json": "e4b99364e2086b45a08354b7d6a8e2d32b73a7b6896d502e9cea8d9f9306d550"
+  },
+  "extraction_sha256": {
+    "analyze_step24_x_states.py": "e261139e0e134482b0ef37115d904f48c23ab79b9c61b1d37d9899a5fc51d2ac",
+    "analyze_step24_lifetime.py": "21bef4cb0f3a37511ce53d765c4bef58b39f6c432369899637ab2818784d6161",
+    "export_step24_elections.py": "834c2e46e54fe482c757d9d839efb301a6ec20a816f8f0a31cb98065bb29eab7",
+    "test_step24_x_states.py": "2796ea11fa7a70388a3e909c74dacc59b7275f7acdfe2946986a026b456ac763"
+  },
+  "python": "3.14.7 (main, Aug 14 2026, 06:38:32) [GCC 16.2.1 20260810]",
+  "argv": [
+    "research/hivemind/analyze_step24_x_states.py",
+    "research/hivemind/results/step24_smoke_grouping_20261008_a",
+    "--label",
+    "smoke_grouping_20261008_a"
+  ],
+  "primary_window": "submission",
+  "drain_endpoint": "last step_result across peers"
+}

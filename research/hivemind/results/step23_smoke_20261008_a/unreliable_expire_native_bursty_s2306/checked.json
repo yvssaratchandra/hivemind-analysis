@@ -1,0 +1,31 @@
+{
+  "case": "unreliable_expire_native",
+  "response": "unreliable",
+  "mode": "expire",
+  "guard": "native",
+  "phase": "smoke",
+  "seed": 2306,
+  "pattern": "bursty",
+  "honest_correct": 6,
+  "honest_count": 7,
+  "incorrect_steps": [],
+  "penalized_seconds": 4.366271451142633,
+  "honest_penalized_seconds": {
+    "H0": 0.16615706899938232,
+    "H1": 18,
+    "H2": 5.044311783000012,
+    "H3": 6.967188893000639,
+    "H4": 0.15157751699916844,
+    "H5": 0.09682646100009151,
+    "H6": 0.13783843499913928
+  },
+  "x_attempts": 12,
+  "x_retries": 6,
+  "renewal_retries": 4,
+  "x_wait_seconds": 6.039504553998995,
+  "x_ad_attempts": 6,
+  "x_ad_accepted": 6,
+  "mechanism_retry_before_original_expiry": false,
+  "searches": 8,
+  "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_smoke_20261008_a/unreliable_expire_native_bursty_s2306"
+}

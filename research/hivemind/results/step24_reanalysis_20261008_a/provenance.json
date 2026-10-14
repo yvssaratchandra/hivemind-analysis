@@ -1,0 +1,9 @@
+{
+  "purpose": "Independently recalculate saved trials; no new network experiment",
+  "harness_sha256": {
+    "analyze_step24_lifetime.py": "50ced006f6bfbcc1d7384215e5657d60f866beaa38dab115bfcdee23471cc34d",
+    "step24_lifetime_sweep.py": "ec1be725d8c4e5167d6cdc02f2bf4dc420e2fd171ffac64fca5077ee5d476679",
+    "test_step24_lifetime.py": "28f1613ccdae4a7770d1e66be8c8603e65860c48960d9683a885ba58c929a1b9",
+    "test_step24_harness.py": "3c7194273e10a15d237387e4257308aee43d808b3efec59214904c962cd92cbf"
+  }
+}

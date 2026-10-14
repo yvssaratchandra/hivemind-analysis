@@ -1,0 +1,116 @@
+{
+  "phase": "mechanism",
+  "jobs": [
+    {
+      "case": {
+        "name": "same",
+        "mode": "same",
+        "response": "reject",
+        "phase": "mechanism",
+        "guard": "native"
+      },
+      "seed": 2302,
+      "pattern": "mechanism"
+    },
+    {
+      "case": {
+        "name": "advance",
+        "mode": "advance",
+        "response": "reject",
+        "phase": "mechanism",
+        "guard": "native"
+      },
+      "seed": 2303,
+      "pattern": "mechanism"
+    },
+    {
+      "case": {
+        "name": "same",
+        "mode": "same",
+        "response": "reject",
+        "phase": "mechanism",
+        "guard": "native"
+      },
+      "seed": 2305,
+      "pattern": "mechanism"
+    },
+    {
+      "case": {
+        "name": "advance",
+        "mode": "advance",
+        "response": "reject",
+        "phase": "mechanism",
+        "guard": "native"
+      },
+      "seed": 2302,
+      "pattern": "mechanism"
+    },
+    {
+      "case": {
+        "name": "advance",
+        "mode": "advance",
+        "response": "reject",
+        "phase": "mechanism",
+        "guard": "native"
+      },
+      "seed": 2301,
+      "pattern": "mechanism"
+    },
+    {
+      "case": {
+        "name": "same",
+        "mode": "same",
+        "response": "reject",
+        "phase": "mechanism",
+        "guard": "native"
+      },
+      "seed": 2304,
+      "pattern": "mechanism"
+    },
+    {
+      "case": {
+        "name": "same",
+        "mode": "same",
+        "response": "reject",
+        "phase": "mechanism",
+        "guard": "native"
+      },
+      "seed": 2301,
+      "pattern": "mechanism"
+    },
+    {
+      "case": {
+        "name": "advance",
+        "mode": "advance",
+        "response": "reject",
+        "phase": "mechanism",
+        "guard": "native"
+      },
+      "seed": 2305,
+      "pattern": "mechanism"
+    },
+    {
+      "case": {
+        "name": "same",
+        "mode": "same",
+        "response": "reject",
+        "phase": "mechanism",
+        "guard": "native"
+      },
+      "seed": 2303,
+      "pattern": "mechanism"
+    },
+    {
+      "case": {
+        "name": "advance",
+        "mode": "advance",
+        "response": "reject",
+        "phase": "mechanism",
+        "guard": "native"
+      },
+      "seed": 2304,
+      "pattern": "mechanism"
+    }
+  ],
+  "gate": null
+}

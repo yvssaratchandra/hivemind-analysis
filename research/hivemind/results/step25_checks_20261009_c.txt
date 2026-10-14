@@ -1,0 +1,8 @@
+/tmp/hm-step23-env/lib/python3.14/site-packages/torch/jit/_script.py:1485: FutureWarning: `torch.jit.script` is not supported in Python 3.14+ and may break. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+................................Oct 09 16:33:29.548 [WARN] [hivemind.averaging.partition.finalize:174] Averaging: received 0.0% results
+...............................................
+----------------------------------------------------------------------
+Ran 79 tests in 0.082s
+
+OK

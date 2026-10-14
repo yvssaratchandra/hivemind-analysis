@@ -1,0 +1,25 @@
+{
+  "case": "advance",
+  "response": "reject",
+  "mode": "advance",
+  "guard": "native",
+  "phase": "mechanism",
+  "seed": 2305,
+  "pattern": "mechanism",
+  "honest_correct": 0,
+  "honest_count": 1,
+  "incorrect_steps": [],
+  "penalized_seconds": 18,
+  "honest_penalized_seconds": {
+    "H0": 18
+  },
+  "x_attempts": 2,
+  "x_retries": 1,
+  "renewal_retries": 1,
+  "x_wait_seconds": 0.0026912280000033206,
+  "x_ad_attempts": 2,
+  "x_ad_accepted": 2,
+  "mechanism_retry_before_original_expiry": true,
+  "searches": 2,
+  "source": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/step23_mechanism_20261008_b/advance_mechanism_s2305"
+}

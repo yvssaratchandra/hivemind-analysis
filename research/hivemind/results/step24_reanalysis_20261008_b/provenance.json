@@ -1,0 +1,9 @@
+{
+  "purpose": "Recalculate preserved experiments with final checker; no new network experiment",
+  "harness_sha256": {
+    "analyze_step24_lifetime.py": "50ced006f6bfbcc1d7384215e5657d60f866beaa38dab115bfcdee23471cc34d",
+    "step24_lifetime_sweep.py": "4a1786c78b510fca18a1ae8af6319be1e0ddf8f5028690da9a2a083a75030a6f",
+    "test_step24_lifetime.py": "28f1613ccdae4a7770d1e66be8c8603e65860c48960d9683a885ba58c929a1b9",
+    "test_step24_harness.py": "977e96414fa07e27e675b11c6af23f52238a90b79ceac5954173faf6f2af7693"
+  }
+}

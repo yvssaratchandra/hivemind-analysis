@@ -1,0 +1,2870 @@
+{
+  "phase": "confirm",
+  "jobs": [
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2315,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2325,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2315,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2328,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2318,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2311,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2326,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2314,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2327,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2311,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2321,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2319,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2318,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2311,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2322,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2329,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2313,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2313,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2311,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2322,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2312,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2318,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2314,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2323,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2322,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2325,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2329,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2323,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2321,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2328,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2325,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2320,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2324,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2317,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2322,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2328,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2311,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2316,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2312,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2318,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2313,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2321,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2329,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2314,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2318,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2323,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2316,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2323,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2317,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2319,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2317,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2330,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2314,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2328,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2323,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2317,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2326,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2317,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2330,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2323,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2323,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2322,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2324,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2315,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2322,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2315,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2314,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2324,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2320,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2325,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2319,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2319,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2327,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2329,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2317,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2326,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2321,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2312,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2312,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2326,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2312,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2315,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2320,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2327,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2330,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2328,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2313,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2327,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2314,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2312,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2317,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2330,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2329,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2327,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2315,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2326,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2324,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2319,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2313,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2315,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2320,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2316,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2327,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2311,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2315,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2322,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2312,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2327,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2321,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2330,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2313,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2317,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2330,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2329,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2314,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2325,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2319,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2329,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2325,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2321,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2316,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2330,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2329,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2324,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2320,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2316,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2325,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2316,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2327,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2325,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2319,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2318,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2324,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2323,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2324,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2322,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2328,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2318,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2320,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2311,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2318,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2314,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2328,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2320,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2320,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2321,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2328,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2313,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2321,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2311,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2316,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2324,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2326,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2316,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2313,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2312,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_expire_native",
+        "mode": "expire",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2326,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "unreliable_refresh_native",
+        "mode": "refresh",
+        "response": "unreliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2330,
+      "pattern": "staggered"
+    },
+    {
+      "case": {
+        "name": "reliable_refresh_native",
+        "mode": "refresh",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": 1
+      },
+      "seed": 2319,
+      "pattern": "bursty"
+    },
+    {
+      "case": {
+        "name": "reliable_expire_native",
+        "mode": "expire",
+        "response": "reliable",
+        "phase": "confirm",
+        "guard": "native",
+        "minimum": 4,
+        "lifetime": 2,
+        "frequency": null
+      },
+      "seed": 2326,
+      "pattern": "staggered"
+    }
+  ],
+  "gate": {
+    "phase": "smoke",
+    "trials": [
+      {
+        "case": "reliable_expire_native",
+        "response": "reliable",
+        "mode": "expire",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2306,
+        "pattern": "bursty",
+        "honest_correct": 7,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 0.6859664005714876,
+        "honest_penalized_seconds": {
+          "H0": 0.18220742199991946,
+          "H1": 0.5351282510000601,
+          "H2": 0.8732939339997756,
+          "H3": 2.7914564310003698,
+          "H4": 0.16688418800004,
+          "H5": 0.09877317900009075,
+          "H6": 0.15402139900015754
+        },
+        "x_attempts": 3,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_wait_seconds": 0.014029607999873406,
+        "x_ad_attempts": 1,
+        "x_ad_accepted": 1,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/reliable_expire_native_bursty_s2306"
+      },
+      {
+        "case": "reliable_expire_native",
+        "response": "reliable",
+        "mode": "expire",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2307,
+        "pattern": "bursty",
+        "honest_correct": 7,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 0.3277257417144678,
+        "honest_penalized_seconds": {
+          "H0": 0.1572332980003921,
+          "H1": 0.5117311720005091,
+          "H2": 0.14195930099958787,
+          "H3": 0.1081182580001041,
+          "H4": 0.18376071000056982,
+          "H5": 0.1373282009999457,
+          "H6": 1.0539492520001659
+        },
+        "x_attempts": 5,
+        "x_retries": 1,
+        "renewal_retries": 1,
+        "x_wait_seconds": 1.3366349269990678,
+        "x_ad_attempts": 2,
+        "x_ad_accepted": 2,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/reliable_expire_native_bursty_s2307"
+      },
+      {
+        "case": "reliable_expire_native",
+        "response": "reliable",
+        "mode": "expire",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2306,
+        "pattern": "staggered",
+        "honest_correct": 7,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 0.539843663999948,
+        "honest_penalized_seconds": {
+          "H0": 0.07181925900022179,
+          "H1": 1.2123377170000822,
+          "H2": 0.2184792779999043,
+          "H3": 0.7512624639994101,
+          "H4": 0.06089859199983039,
+          "H5": 0.23136146399974677,
+          "H6": 1.2327468740004406
+        },
+        "x_attempts": 3,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_wait_seconds": 0.5531410619996677,
+        "x_ad_attempts": 1,
+        "x_ad_accepted": 1,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/reliable_expire_native_staggered_s2306"
+      },
+      {
+        "case": "reliable_expire_native",
+        "response": "reliable",
+        "mode": "expire",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2307,
+        "pattern": "staggered",
+        "honest_correct": 7,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 0.4694857857143039,
+        "honest_penalized_seconds": {
+          "H0": 0.7135274299998855,
+          "H1": 0.15159937600037665,
+          "H2": 0.2793029390004449,
+          "H3": 0.8590746159998162,
+          "H4": 0.3518901059997006,
+          "H5": 0.08435842800008686,
+          "H6": 0.8466476049998164
+        },
+        "x_attempts": 3,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_wait_seconds": 0.012407764001181931,
+        "x_ad_attempts": 1,
+        "x_ad_accepted": 1,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/reliable_expire_native_staggered_s2307"
+      },
+      {
+        "case": "reliable_refresh_native",
+        "response": "reliable",
+        "mode": "refresh",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2306,
+        "pattern": "bursty",
+        "honest_correct": 7,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 0.6577035587142745,
+        "honest_penalized_seconds": {
+          "H0": 0.12933374000022013,
+          "H1": 0.5327723509999487,
+          "H2": 0.8796846100003677,
+          "H3": 2.7917782189997524,
+          "H4": 0.1113290009998309,
+          "H5": 0.05765501099995163,
+          "H6": 0.1013719789998504
+        },
+        "x_attempts": 3,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_wait_seconds": 0.013693269001123554,
+        "x_ad_attempts": 1,
+        "x_ad_accepted": 1,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/reliable_refresh_native_bursty_s2306"
+      },
+      {
+        "case": "reliable_refresh_native",
+        "response": "reliable",
+        "mode": "refresh",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2307,
+        "pattern": "bursty",
+        "honest_correct": 7,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 0.3304744825714546,
+        "honest_penalized_seconds": {
+          "H0": 0.15363083600004757,
+          "H1": 0.523977093999747,
+          "H2": 0.14252082399980281,
+          "H3": 0.12093109500074206,
+          "H4": 0.17389247400024033,
+          "H5": 0.12755275899962726,
+          "H6": 1.0708162959999754
+        },
+        "x_attempts": 3,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_wait_seconds": 1.4465860090003844,
+        "x_ad_attempts": 3,
+        "x_ad_accepted": 3,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/reliable_refresh_native_bursty_s2307"
+      },
+      {
+        "case": "reliable_refresh_native",
+        "response": "reliable",
+        "mode": "refresh",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2306,
+        "pattern": "staggered",
+        "honest_correct": 7,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 0.5368471967142666,
+        "honest_penalized_seconds": {
+          "H0": 0.05548073899990413,
+          "H1": 1.1919279319999987,
+          "H2": 0.23616737199972704,
+          "H3": 0.7705843439998716,
+          "H4": 0.07393188000060036,
+          "H5": 0.21230167399971833,
+          "H6": 1.2175364360000458
+        },
+        "x_attempts": 3,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_wait_seconds": 0.5763851699985025,
+        "x_ad_attempts": 1,
+        "x_ad_accepted": 1,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/reliable_refresh_native_staggered_s2306"
+      },
+      {
+        "case": "reliable_refresh_native",
+        "response": "reliable",
+        "mode": "refresh",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2307,
+        "pattern": "staggered",
+        "honest_correct": 7,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 0.4587141792856398,
+        "honest_penalized_seconds": {
+          "H0": 0.6962696020000294,
+          "H1": 0.13414861500041297,
+          "H2": 0.27857133300040005,
+          "H3": 0.8600173009999708,
+          "H4": 0.3318953429998146,
+          "H5": 0.06571984199945291,
+          "H6": 0.8443772189993979
+        },
+        "x_attempts": 3,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_wait_seconds": 0.012228530000356841,
+        "x_ad_attempts": 1,
+        "x_ad_accepted": 1,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/reliable_refresh_native_staggered_s2307"
+      },
+      {
+        "case": "unreliable_expire_native",
+        "response": "unreliable",
+        "mode": "expire",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2306,
+        "pattern": "bursty",
+        "honest_correct": 6,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 4.366271451142633,
+        "honest_penalized_seconds": {
+          "H0": 0.16615706899938232,
+          "H1": 18,
+          "H2": 5.044311783000012,
+          "H3": 6.967188893000639,
+          "H4": 0.15157751699916844,
+          "H5": 0.09682646100009151,
+          "H6": 0.13783843499913928
+        },
+        "x_attempts": 12,
+        "x_retries": 6,
+        "renewal_retries": 4,
+        "x_wait_seconds": 6.039504553998995,
+        "x_ad_attempts": 6,
+        "x_ad_accepted": 6,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/unreliable_expire_native_bursty_s2306"
+      },
+      {
+        "case": "unreliable_expire_native",
+        "response": "unreliable",
+        "mode": "expire",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2307,
+        "pattern": "bursty",
+        "honest_correct": 7,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 2.2634148178571456,
+        "honest_penalized_seconds": {
+          "H0": 0.13413035000030504,
+          "H1": 5.06413820599937,
+          "H2": 0.11883332999968843,
+          "H3": 4.658065939000153,
+          "H4": 0.15421514300032868,
+          "H5": 0.10278746799940564,
+          "H6": 5.611733289000767
+        },
+        "x_attempts": 8,
+        "x_retries": 4,
+        "renewal_retries": 4,
+        "x_wait_seconds": 4.032602419998511,
+        "x_ad_attempts": 4,
+        "x_ad_accepted": 4,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/unreliable_expire_native_bursty_s2307"
+      },
+      {
+        "case": "unreliable_expire_native",
+        "response": "unreliable",
+        "mode": "expire",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2306,
+        "pattern": "staggered",
+        "honest_correct": 6,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 4.492311301000102,
+        "honest_penalized_seconds": {
+          "H0": 0.05371029300022201,
+          "H1": 1.1869334749999325,
+          "H2": 5.119861295000192,
+          "H3": 5.664546302000417,
+          "H4": 18,
+          "H5": 0.2089292350001415,
+          "H6": 1.2121985069998118
+        },
+        "x_attempts": 13,
+        "x_retries": 7,
+        "renewal_retries": 7,
+        "x_wait_seconds": 6.549243608001234,
+        "x_ad_attempts": 6,
+        "x_ad_accepted": 6,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/unreliable_expire_native_staggered_s2306"
+      },
+      {
+        "case": "unreliable_expire_native",
+        "response": "unreliable",
+        "mode": "expire",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2307,
+        "pattern": "staggered",
+        "honest_correct": 6,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 4.1884460450000915,
+        "honest_penalized_seconds": {
+          "H0": 0.6984421209999709,
+          "H1": 0.13482082500013348,
+          "H2": 18,
+          "H3": 5.045501059999879,
+          "H4": 0.33524957499957964,
+          "H5": 0.06850767100058874,
+          "H6": 5.036601063000489
+        },
+        "x_attempts": 12,
+        "x_retries": 6,
+        "renewal_retries": 5,
+        "x_wait_seconds": 6.035219509001763,
+        "x_ad_attempts": 6,
+        "x_ad_accepted": 6,
+        "mechanism_retry_before_original_expiry": false,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/unreliable_expire_native_staggered_s2307"
+      },
+      {
+        "case": "unreliable_refresh_native",
+        "response": "unreliable",
+        "mode": "refresh",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2306,
+        "pattern": "bursty",
+        "honest_correct": 6,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 4.375382457143003,
+        "honest_penalized_seconds": {
+          "H0": 0.17957972600015637,
+          "H1": 18,
+          "H2": 5.066594418999557,
+          "H3": 6.9862435329996515,
+          "H4": 0.16099856000073487,
+          "H5": 0.10595040400039579,
+          "H6": 0.12831055800052127
+        },
+        "x_attempts": 16,
+        "x_retries": 10,
+        "renewal_retries": 9,
+        "x_wait_seconds": 8.05750143899877,
+        "x_ad_attempts": 11,
+        "x_ad_accepted": 11,
+        "mechanism_retry_before_original_expiry": true,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/unreliable_refresh_native_bursty_s2306"
+      },
+      {
+        "case": "unreliable_refresh_native",
+        "response": "unreliable",
+        "mode": "refresh",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2307,
+        "pattern": "bursty",
+        "honest_correct": 6,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 4.2043812734286155,
+        "honest_penalized_seconds": {
+          "H0": 0.19462967199979175,
+          "H1": 5.0622501230000125,
+          "H2": 0.1828893239999161,
+          "H3": 18,
+          "H4": 0.21662843299964152,
+          "H5": 0.16975327500040294,
+          "H6": 5.604518087000542
+        },
+        "x_attempts": 18,
+        "x_retries": 13,
+        "renewal_retries": 13,
+        "x_wait_seconds": 9.077452487999835,
+        "x_ad_attempts": 11,
+        "x_ad_accepted": 11,
+        "mechanism_retry_before_original_expiry": true,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/unreliable_refresh_native_bursty_s2307"
+      },
+      {
+        "case": "unreliable_refresh_native",
+        "response": "unreliable",
+        "mode": "refresh",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2306,
+        "pattern": "staggered",
+        "honest_correct": 6,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 4.472021168714361,
+        "honest_penalized_seconds": {
+          "H0": 0.046838420999847585,
+          "H1": 1.184350944000471,
+          "H2": 5.0641536279999855,
+          "H3": 5.5947392759999275,
+          "H4": 18,
+          "H5": 0.2047921920002409,
+          "H6": 1.2092737200000556
+        },
+        "x_attempts": 21,
+        "x_retries": 16,
+        "renewal_retries": 16,
+        "x_wait_seconds": 10.581710879000639,
+        "x_ad_attempts": 11,
+        "x_ad_accepted": 11,
+        "mechanism_retry_before_original_expiry": true,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/unreliable_refresh_native_staggered_s2306"
+      },
+      {
+        "case": "unreliable_refresh_native",
+        "response": "unreliable",
+        "mode": "refresh",
+        "guard": "native",
+        "phase": "smoke",
+        "seed": 2307,
+        "pattern": "staggered",
+        "honest_correct": 6,
+        "honest_count": 7,
+        "incorrect_steps": [],
+        "penalized_seconds": 4.20678054857113,
+        "honest_penalized_seconds": {
+          "H0": 0.7254145709994191,
+          "H1": 0.15577216999918164,
+          "H2": 18,
+          "H3": 5.0683636060002755,
+          "H4": 0.35399350299940124,
+          "H5": 0.08689340299952164,
+          "H6": 5.057026587000109
+        },
+        "x_attempts": 17,
+        "x_retries": 11,
+        "renewal_retries": 9,
+        "x_wait_seconds": 8.550483669000641,
+        "x_ad_attempts": 11,
+        "x_ad_accepted": 10,
+        "mechanism_retry_before_original_expiry": true,
+        "searches": 8,
+        "source": "research/hivemind/results/step23_smoke_20261008_a/unreliable_refresh_native_staggered_s2307"
+      }
+    ],
+    "trial_count": 16,
+    "mechanism_pass": false,
+    "smoke_pass": true,
+    "harm_pass": false,
+    "contrasts": {
+      "penalized_seconds": {
+        "primary": {
+          "mean": 0.48703045821428437,
+          "ci95": [
+            -0.005589563142685439,
+            0.9796504795712542
+          ],
+          "seeds": 2
+        },
+        "interaction": {
+          "mean": 0.4968510018929273,
+          "ci95": [
+            0.010040091428761777,
+            0.9836619123570928
+          ],
+          "seeds": 2
+        }
+      },
+      "honest_correct": {
+        "primary": {
+          "mean": -0.25,
+          "ci95": [
+            -0.5,
+            0
+          ],
+          "seeds": 2
+        },
+        "interaction": {
+          "mean": -0.25,
+          "ci95": [
+            -0.5,
+            0
+          ],
+          "seeds": 2
+        }
+      },
+      "x_retries": {
+        "primary": {
+          "mean": 6.75,
+          "ci95": [
+            6.5,
+            7
+          ],
+          "seeds": 2
+        },
+        "interaction": {
+          "mean": 7.0,
+          "ci95": [
+            6.5,
+            7.5
+          ],
+          "seeds": 2
+        }
+      },
+      "x_wait_seconds": {
+        "primary": {
+          "mean": 3.4026445959998455,
+          "ci95": [
+            3.02523207799959,
+            3.780057114000101
+          ],
+          "seeds": 2
+        },
+        "interaction": {
+          "mean": 3.3694746917497014,
+          "ci95": [
+            3.0137781934995473,
+            3.7251711899998554
+          ],
+          "seeds": 2
+        }
+      }
+    },
+    "aggregate": [
+      {
+        "case": "reliable_expire_native",
+        "trials": 4,
+        "honest_correct": 28,
+        "honest_count": 28,
+        "x_retries": 1,
+        "renewal_retries": 1,
+        "x_ad_attempts": 5,
+        "x_wait_seconds": 1.916213360999791,
+        "mean_penalized_seconds": 0.5057553980000518
+      },
+      {
+        "case": "reliable_refresh_native",
+        "trials": 4,
+        "honest_correct": 28,
+        "honest_count": 28,
+        "x_retries": 0,
+        "renewal_retries": 0,
+        "x_ad_attempts": 6,
+        "x_wait_seconds": 2.0488929780003673,
+        "mean_penalized_seconds": 0.4959348543214089
+      },
+      {
+        "case": "unreliable_expire_native",
+        "trials": 4,
+        "honest_correct": 25,
+        "honest_count": 28,
+        "x_retries": 23,
+        "renewal_retries": 20,
+        "x_ad_attempts": 22,
+        "x_wait_seconds": 22.656570091000503,
+        "mean_penalized_seconds": 3.827610903749993
+      },
+      {
+        "case": "unreliable_refresh_native",
+        "trials": 4,
+        "honest_correct": 24,
+        "honest_count": 28,
+        "x_retries": 50,
+        "renewal_retries": 47,
+        "x_ad_attempts": 44,
+        "x_wait_seconds": 36.267148474999885,
+        "mean_penalized_seconds": 4.314641361964277
+      }
+    ]
+  }
+}

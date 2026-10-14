@@ -1,0 +1,4 @@
+case,seed,duration,total_assembled_groups,x_assembled_leads,total_verified_groups,x_verified_leads,x_leadership_share,mean_x_verified_group_size,x_ad_attempts,x_ad_writes,disband_replies,suite,trial_error,pending,incorrect_steps
+range_0_1,2400,10,10,5,10,5,0.5,4,18,18,11,step24_smoke_20261008_a,,0,
+range_2_3,2400,10,4,1,3,0,0.0,,3,2,0,step24_smoke_20261008_a,incorrect returned tensor; stop submissions and preserve diagnostic trace,5,H0:1
+range_2_3,2400,10,10,5,10,5,0.5,4,16,16,2,step24_diagnostic_20261008_a,,0,

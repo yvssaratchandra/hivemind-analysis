@@ -1,0 +1,38 @@
+{
+  "case": {
+    "name": "same",
+    "mode": "same",
+    "response": "reject",
+    "phase": "mechanism",
+    "guard": "native"
+  },
+  "seed": 2303,
+  "pattern": "mechanism",
+  "offsets": {
+    "X": 0,
+    "H0": 0
+  },
+  "dht_count": 3,
+  "timeout": 6,
+  "allreduce_timeout": 6,
+  "correct_output_horizon": 18,
+  "lifetime": 2,
+  "frequency": null,
+  "hold": 0.5,
+  "target": 4,
+  "honest_min": 2,
+  "x_min": 4,
+  "request_timeout": 3,
+  "honest_min_matchmaking_time": 5,
+  "initial_group_bits": "",
+  "tensor_size": 128,
+  "peer_ids": {
+    "X": "12D3KooWHkLxzwAbge9q8zyjSYXeGD1Hp2dQDEAFSPqyEEzB1Zxu",
+    "H0": "12D3KooWNsXBFNLHJDi14dbnK8mzxoQfGWr4bxPhoEegDQ8CJaWU"
+  },
+  "node_ids": [
+    "161270856599156995501803644401980006103248608374",
+    "101806281644295656504672329792633119029597448012",
+    "356235133948074440772303029713342914448414827293"
+  ]
+}

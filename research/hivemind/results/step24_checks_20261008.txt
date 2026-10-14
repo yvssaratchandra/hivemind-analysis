@@ -1,0 +1,24 @@
+/tmp/hm-step23-env/lib/python3.14/site-packages/torch/jit/_script.py:1485: FutureWarning: `torch.jit.script` is not supported in Python 3.14+ and may break. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+test_client_exception_tracing_preserves_exception (test_step24_harness.NativeWaitTests.test_client_exception_tracing_preserves_exception) ... ok
+test_client_response_tracing_preserves_awaitable_and_message (test_step24_harness.NativeWaitTests.test_client_response_tracing_preserves_awaitable_and_message) ... ok
+test_native_failed_reducer_fallback_returns_zero_delta (test_step24_harness.NativeWaitTests.test_native_failed_reducer_fallback_returns_zero_delta) ... Oct 08 15:47:44.061 [WARN] [hivemind.averaging.partition.finalize:174] Averaging: received 0.0% results
+ok
+test_native_wait_is_observed_without_replacing_timeout_or_futures (test_step24_harness.NativeWaitTests.test_native_wait_is_observed_without_replacing_timeout_or_futures) ... ok
+test_other_waits_are_forwarded_without_native_timer_event (test_step24_harness.NativeWaitTests.test_other_waits_are_forwarded_without_native_timer_event) ... ok
+test_reducer_failure_tracing_preserves_native_exception (test_step24_harness.NativeWaitTests.test_reducer_failure_tracing_preserves_native_exception) ... ok
+test_incorrect_tensor_is_reported_without_raising (test_step24_lifetime.Step24AnalyzerTests.test_incorrect_tensor_is_reported_without_raising) ... ok
+test_member_input_conflict_is_returned_as_integrity_error (test_step24_lifetime.Step24AnalyzerTests.test_member_input_conflict_is_returned_as_integrity_error) ... ok
+test_overlapping_allreduces_for_same_step_are_integrity_error (test_step24_lifetime.Step24AnalyzerTests.test_overlapping_allreduces_for_same_step_are_integrity_error) ... ok
+test_partial_suite_is_gated_and_provenance_is_checked (test_step24_lifetime.Step24AnalyzerTests.test_partial_suite_is_gated_and_provenance_is_checked) ... ok
+test_reconstructs_verified_groups_and_leadership (test_step24_lifetime.Step24AnalyzerTests.test_reconstructs_verified_groups_and_leadership) ... ok
+test_same_roster_in_later_round_with_new_steps_is_valid (test_step24_lifetime.Step24AnalyzerTests.test_same_roster_in_later_round_with_new_steps_is_valid) ... ok
+test_sequential_failed_group_retry_is_not_overlap (test_step24_lifetime.Step24AnalyzerTests.test_sequential_failed_group_retry_is_not_overlap) ... ok
+test_suite_passes_and_reports_policy_aggregate (test_step24_lifetime.Step24AnalyzerTests.test_suite_passes_and_reports_policy_aggregate) ... ok
+test_summary_tamper_and_missing_trace_closure_raise (test_step24_lifetime.Step24AnalyzerTests.test_summary_tamper_and_missing_trace_closure_raise) ... ok
+test_training_delay_seed_and_next_start_are_checked (test_step24_lifetime.Step24AnalyzerTests.test_training_delay_seed_and_next_start_are_checked) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.041s
+
+OK

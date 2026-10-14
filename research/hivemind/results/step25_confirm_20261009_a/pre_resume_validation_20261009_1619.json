@@ -1,0 +1,162 @@
+{
+  "trials": [
+    {
+      "trial": "range_3_4_s2503",
+      "control_plane_pass": true,
+      "trace_integrity_pass": true,
+      "groups": 64,
+      "X_led": 29,
+      "cached_choices": true
+    },
+    {
+      "trial": "expire_2_s2506",
+      "control_plane_pass": true,
+      "trace_integrity_pass": true,
+      "groups": 61,
+      "X_led": 32,
+      "cached_choices": true
+    },
+    {
+      "trial": "range_2_3_s2503",
+      "control_plane_pass": true,
+      "trace_integrity_pass": true,
+      "groups": 64,
+      "X_led": 29,
+      "cached_choices": true
+    },
+    {
+      "trial": "range_0_1_s2503",
+      "control_plane_pass": true,
+      "trace_integrity_pass": true,
+      "groups": 64,
+      "X_led": 30,
+      "cached_choices": true
+    },
+    {
+      "trial": "passive_stock_s2510",
+      "control_plane_pass": true,
+      "trace_integrity_pass": true,
+      "groups": 59,
+      "X_led": 19,
+      "cached_choices": true
+    },
+    {
+      "trial": "range_0_1_s2507",
+      "control_plane_pass": true,
+      "trace_integrity_pass": true,
+      "groups": 63,
+      "X_led": 32,
+      "cached_choices": true
+    },
+    {
+      "trial": "range_025_125_s2507",
+      "control_plane_pass": true,
+      "trace_integrity_pass": true,
+      "groups": 63,
+      "X_led": 32,
+      "cached_choices": true
+    },
+    {
+      "trial": "range_2_3_s2504",
+      "control_plane_pass": true,
+      "trace_integrity_pass": true,
+      "groups": 64,
+      "X_led": 29,
+      "cached_choices": true
+    },
+    {
+      "trial": "range_025_125_s2505",
+      "control_plane_pass": true,
+      "trace_integrity_pass": true,
+      "groups": 61,
+      "X_led": 30,
+      "cached_choices": true
+    },
+    {
+      "trial": "range_2_3_s2506",
+      "control_plane_pass": true,
+      "trace_integrity_pass": true,
+      "groups": 61,
+      "X_led": 32,
+      "cached_choices": true
+    },
+    {
+      "trial": "range_0_1_s2509",
+      "control_plane_pass": true,
+      "trace_integrity_pass": true,
+      "groups": 64,
+      "X_led": 28,
+      "cached_choices": true
+    },
+    {
+      "trial": "expire_2_s2501",
+      "control_plane_pass": true,
+      "trace_integrity_pass": true,
+      "groups": 65,
+      "X_led": 31,
+      "cached_choices": false
+    }
+  ],
+  "file_sha256_before_resume": {
+    "range_3_4_s2503/events.jsonl": "41c121ed4dae8334e99a30cf150d74105406575b98219bbda33acd4a3dea3295",
+    "range_3_4_s2503/config.json": "da53968dbe02c2fdc24bbd6f1b21b5df30720af4865b6d1dee8e2b26cb91effd",
+    "range_3_4_s2503/summary.json": "34bc8a7a053a7a1eec7b786d98f066285a39c0244c1d9e2041d93256067a4a8c",
+    "range_3_4_s2503/analysis.json": "cd1e623a87cf3de686c28954171a8bdddcd4bf5cde3899ebbc15231d5612355d",
+    "range_3_4_s2503/choices.json": "8042b1314cb7a9014ffa091bef7dd930a70274ce2d1bf9c538a489a5b360d4d7",
+    "expire_2_s2506/events.jsonl": "b1f82b7b1b0678b72414fe995c22f5aeec021873f37cb61c1f93a3b164b36d9d",
+    "expire_2_s2506/config.json": "88af30716b8a2cb5f2ab223d3dae551ed04571badbfeaac996a5de23a0857fde",
+    "expire_2_s2506/summary.json": "e2c9ddbb509d21fbac4d3200fa2f2722d6948e5dfdef70f853b664b689f621fe",
+    "expire_2_s2506/analysis.json": "2dabf56e9c64ec93f2ba5ad4bf054f0cc7f0be50a413bbf228ddfefe45e63c0d",
+    "expire_2_s2506/choices.json": "62beea80ae1c1789413ccc34af4cac8cf06841df1ffd7247a0a64b4d0b329b04",
+    "range_2_3_s2503/events.jsonl": "87d625d761bf9c3959785322a8873ea163be20423eef96d958c0572d4c4c76c0",
+    "range_2_3_s2503/config.json": "ce5905c6cfb17c79737089b60db2fd14b18ab4ddd44ee16ebc5ca98f04dbe2b7",
+    "range_2_3_s2503/summary.json": "d1c55563872b6e4a0149ef95d720adb454822881e57c05eb36b25da86f3a2f09",
+    "range_2_3_s2503/analysis.json": "817707398997d5b621a355bc9ae23a589edc414da9b355f7cdfc5a9a7e508257",
+    "range_2_3_s2503/choices.json": "cd53bc5a10ac1425b01c28f0af97a80118fdbd3c213c7eaead5b1aacf4c77142",
+    "range_0_1_s2503/events.jsonl": "21ade0b4c2f572ab777902c7b8cbf4150374680d12b14e722fa570c61dcc75e9",
+    "range_0_1_s2503/config.json": "fd914b356d631085b65b9df185166c9ca52fa3b9d8191a495c3e9974124056c3",
+    "range_0_1_s2503/summary.json": "e9c7908a9495968cc082e2690b87e45c30978bd4888ef96c9ad1febde439f60a",
+    "range_0_1_s2503/analysis.json": "213d5150dac9b0c8d545db2f0fa31615765fc68337f6e9e6db5e5565288dd746",
+    "range_0_1_s2503/choices.json": "8190e6b3c1c961a6b776ac1debe02959a9b452c398fd26cb8495169c3441f412",
+    "passive_stock_s2510/events.jsonl": "075e2c683fb3a8eafbff6d069d5e3228eca4f1e4fcc09625dc1a9e258d80d6fa",
+    "passive_stock_s2510/config.json": "1b5d36663644fe973a64ac1ab97b452758e57196ceb4919022f4156c50200691",
+    "passive_stock_s2510/summary.json": "2887ec6058cf0694f9176f31419680745bb7ebaa6aa8471dabfc0930f40fe114",
+    "passive_stock_s2510/analysis.json": "cce149cf12a39498dc50538227abdd306a5dc6bab9a2bef4574d91ed8df40ffd",
+    "passive_stock_s2510/choices.json": "51e3823c467813663cb8e83bcac55c47b4e60002db05baed25778f94383e1f9d",
+    "range_0_1_s2507/events.jsonl": "ca90c00dbefde5126109d65fd4068da7c6c582c0124383a39c4c691c9085644d",
+    "range_0_1_s2507/config.json": "6a1df1d9d9a5a39d320d456267e57d9af41f96f7e8cd8360daf71d3f2ceaf24c",
+    "range_0_1_s2507/summary.json": "43f70bd8a3dbf5ce29faf44ed63b7f82a635b2d91cc5f2d148c2dd707e98f639",
+    "range_0_1_s2507/analysis.json": "bc18568105daf8e8e97fc3b0c0290754fe32ff36321a186f291195a91f28bb9f",
+    "range_0_1_s2507/choices.json": "dee8fea799c8359b8ffcc8b62f25efe9636680469ee0a2c0633630026068d920",
+    "range_025_125_s2507/events.jsonl": "f326ea78cf2317302f1e0ac1f38b808a453b3c9ef35b8f553e857912e8735968",
+    "range_025_125_s2507/config.json": "5d1ce23c14ae12868cb81c7604097bb8b5cdd6b177df3f629501154dd3550551",
+    "range_025_125_s2507/summary.json": "f8448a966b975e33ce1138ab125f1e1759850c6bdadbb1ad99cebdd93069ec7a",
+    "range_025_125_s2507/analysis.json": "ce7281fb50c0cdd34ac279ad1a1380be0993aff9c927a993cd4ac9916c3f1f32",
+    "range_025_125_s2507/choices.json": "20f8a9f963f2549b4d40e0f46a4032d42383f4c0ada6c94162cc461cab4c4d29",
+    "range_2_3_s2504/events.jsonl": "d782905a8d34e0ccd2c65b4bc22047e961bbcda5d1f7b8aae760189fe9e9a84c",
+    "range_2_3_s2504/config.json": "dd5e80bf790c52fe84af864d9201b65491aa5b5f518862ff54458f02c9c428f4",
+    "range_2_3_s2504/summary.json": "dd32d51043bf6f4d6d6962ab6c832f00b57ede47613d22c9373134b07fa841ca",
+    "range_2_3_s2504/analysis.json": "8a5bfede5f7a6a92ad5fc34aeabe68927c7ac9cba9f407adfed13813a13396d4",
+    "range_2_3_s2504/choices.json": "07e4218d4e3af5c8985bbbb08f6881e8729b13c94de798e53a4564840fd03084",
+    "range_025_125_s2505/events.jsonl": "418746a5805643505b13d7f7197c7c65d71ecbab7f9844ad6724415a1d019deb",
+    "range_025_125_s2505/config.json": "d04781a2e92b7224a72a42c863f9c90e27780079344989b67d66449e86558b2e",
+    "range_025_125_s2505/summary.json": "c81eb5f9c5a9351a4768802ca127228d055ce83c6d2ab96b98b1885c419932fc",
+    "range_025_125_s2505/analysis.json": "751f32b5b7a431e12542582d99a812ca6ef6e5ee0f97856aa5045536825e9727",
+    "range_025_125_s2505/choices.json": "7f831d86a02d7d9751010794280b4aec334e7f9ea08c0aaf1fe93fc4a69d46d1",
+    "range_2_3_s2506/events.jsonl": "c98f02fe8e144e4df14db2b903d48f2f3f2232c7af9498d54e17616e8a4c85f3",
+    "range_2_3_s2506/config.json": "8b1e892d4f88258e3427992ef723359eccf1c380789739551e7d9aa3224ce302",
+    "range_2_3_s2506/summary.json": "c95f0532942057a0c4a46514a65b70ede0a7cb63802c9f37efe47430e621a1ac",
+    "range_2_3_s2506/analysis.json": "6737ac4a8468857e7960ae148e1be8185d7a7d0e2715ec4d7551cfa8f72da0e2",
+    "range_2_3_s2506/choices.json": "f81d88ceb27445debb3e793c4cf1092731699c2dd86cc5e39627ab685fea5dd8",
+    "range_0_1_s2509/events.jsonl": "2bed480346c0d11580d17f2ddf5de0ddf6a4db994118f02fa335cadbd62ff3f9",
+    "range_0_1_s2509/config.json": "98fe8f58c1964050be422d048281addb877838d9a30f7a142e80ff7b0adb4cb1",
+    "range_0_1_s2509/summary.json": "7fdbe04aba6f217e3d2fac31a44add8857dbbd8f9ed16f6aefdc08fb3f616431",
+    "range_0_1_s2509/analysis.json": "b8acba93125716df5b919bc94755813939509a359a1990a5cd5a6efd2c9e1450",
+    "range_0_1_s2509/choices.json": "e234f254ba869d5f94d01c057c5273f5c3017c3c53159466d6debc5eb4dc36f1",
+    "expire_2_s2501/events.jsonl": "36fa716c0cf9427a8c8297037ce2e3f102ce5a7dfb285d95a0361201932c7459",
+    "expire_2_s2501/config.json": "7f4cd1a184cc7695ed7fe5b06c68e044ec7db9361eec11578b3349675de59ae5",
+    "expire_2_s2501/summary.json": "2afbe3e7a9e4b378d40ceceac3ed2497e99a26f69cc80f522d8d5f98b4308556"
+  },
+  "complete": 12,
+  "pending": 68
+}

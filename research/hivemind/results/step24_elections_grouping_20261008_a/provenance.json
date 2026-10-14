@@ -1,0 +1,11 @@
+{
+  "exporter_sha256": {
+    "export_step24_elections.py": "834c2e46e54fe482c757d9d839efb301a6ec20a816f8f0a31cb98065bb29eab7",
+    "test_step24_elections.py": "7f43995353d98a045c89d36f065abb6dfd0e912d025cb7a8bfd981b02edf8252"
+  },
+  "input_suites": [
+    "step24_smoke_grouping_20261008_a",
+    "step24_confirm_grouping_20261008_a"
+  ],
+  "scope": "assembly-time publisher-state reconstruction plus latest logged follower view before handshake"
+}

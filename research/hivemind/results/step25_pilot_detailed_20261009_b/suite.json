@@ -1,0 +1,66 @@
+{
+  "phase": "smoke",
+  "run_kind": "pilot",
+  "outcome": "grouping",
+  "instrumentation": "detailed",
+  "jobs": [
+    {
+      "case": {
+        "name": "range_0_1",
+        "mode": "refresh",
+        "minimum": 4,
+        "target": 4,
+        "frequency": 1.0,
+        "lifetime": 1.0,
+        "nominal_lower": 0.0,
+        "nominal_upper": 1.0
+      },
+      "seed": 2499,
+      "duration": 15
+    },
+    {
+      "case": {
+        "name": "passive_stock",
+        "mode": "passive",
+        "minimum": 4,
+        "target": 4,
+        "lifetime": 5.0
+      },
+      "seed": 2498,
+      "duration": 15
+    },
+    {
+      "case": {
+        "name": "range_0_1",
+        "mode": "refresh",
+        "minimum": 4,
+        "target": 4,
+        "frequency": 1.0,
+        "lifetime": 1.0,
+        "nominal_lower": 0.0,
+        "nominal_upper": 1.0
+      },
+      "seed": 2498,
+      "duration": 15
+    },
+    {
+      "case": {
+        "name": "passive_stock",
+        "mode": "passive",
+        "minimum": 4,
+        "target": 4,
+        "lifetime": 5.0
+      },
+      "seed": 2499,
+      "duration": 15
+    }
+  ],
+  "gate": null,
+  "order_seed": 250025,
+  "training_delay": {
+    "mu": 0.2517227582341841,
+    "sigma": 0.5545130293761911,
+    "lower": 0.1,
+    "upper": 4.0
+  }
+}

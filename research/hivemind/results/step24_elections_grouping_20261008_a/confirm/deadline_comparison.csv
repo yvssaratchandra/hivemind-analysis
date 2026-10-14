@@ -1,0 +1,9 @@
+case,groups_led_by_others,x_inactive,x_declared_but_expired,x_live_leader_earlier,x_live_x_earlier,x_live_tie,median_positive_gap_seconds,median_negative_gap_seconds,confirmed_follower_view_count,views_without_x,views_with_x
+stock,281,159,0,121,1,0,0.4655272960662842,-4.800451755523682,838,661,177
+passive_stock,191,111,0,79,1,0,0.41440629959106445,-0.11738181114196777,570,420,150
+range_0_1,159,156,0,0,3,0,,-3.2984890937805176,477,476,1
+range_025_125,159,158,0,0,1,0,,-2.780014991760254,470,469,1
+range_1_2,156,154,0,0,2,0,,-2.1091896295547485,467,466,1
+range_2_3,161,159,0,0,2,0,,-1.7380350828170776,476,475,1
+range_3_4,165,155,0,10,0,0,0.2225937843322754,,491,480,11
+expire_2,160,157,0,0,3,0,,-2.5777242183685303,476,474,2
