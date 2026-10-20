@@ -13,10 +13,12 @@
 
 - Use Plan mode with Sol High for substantial planning; the project defaults to Sol Medium for execution and Luna Max for subagents, with Fast mode preferred throughout. Choose another available model when the task or client requires it.
 - For a substantial, multi-step change, make a concise task-specific plan with a small `Implementation status` table. Do not create phase files or a status table for a simple edit or a discussion.
+- Every implementation plan must include the general approach, architecture and data flow, and a concrete coding plan. Specify component responsibilities, interfaces, implementation order, tests, acceptance criteria, and review gates clearly enough that a less capable coding agent can implement it without making research or architecture decisions. Scale the detail to the task.
 - Delegate at most three independent, bounded tasks when parallel work should save time. Assign exclusive file ownership; keep dependent edits and integration with the main agent.
 - A worker reviews its diff, runs focused checks, and reports changed files, results, and remaining risks. The main agent inspects the diff and integration before accepting the work or marking a task complete.
 - Run focused checks appropriate to the change. Diagnose failures before retrying, and rerun previously passing checks when a later change could affect them. Use a broader suite when there is a concrete regression risk.
 - Avoid speculative optimization and process documents that do not help complete the current task. Measure performance claims when practical.
+- After each meaningful task, review the changes, run appropriate checks, split the work into logical commits, and push to the configured remote unless the user says otherwise. Preserve unrelated work and keep bulky local artifacts out of Git with an inspectable inventory. Report commit IDs, checks, and any push failure.
 
 ## Presentations
 
