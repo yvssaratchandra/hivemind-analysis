@@ -1,0 +1,125 @@
+{
+  "note": "Raw probe traces/logs remain local, not backed up by this inventory.",
+  "files": [
+    {
+      "path": "reducer_mode_20261015_a/client_control/H0.jsonl",
+      "bytes": 8566,
+      "sha256": "bbfb4abb7fead6bda5746339914e6513b3edad40e355ee08b181ed4ff068e0ac"
+    },
+    {
+      "path": "reducer_mode_20261015_a/client_control/H0.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reducer_mode_20261015_a/client_control/H1.jsonl",
+      "bytes": 8562,
+      "sha256": "386dcbe805611efed94ceeb74b7e4a499bbfe872ba7511f8bf43ffb85f3b6122"
+    },
+    {
+      "path": "reducer_mode_20261015_a/client_control/H1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reducer_mode_20261015_a/client_control/X.jsonl",
+      "bytes": 4801,
+      "sha256": "cb206186e81f7e1b793f3864295670873fc42c49f7f8834e538032986d5c6414"
+    },
+    {
+      "path": "reducer_mode_20261015_a/client_control/X.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reducer_mode_20261015_b/client_control/H0.jsonl",
+      "bytes": 8568,
+      "sha256": "974b3005dc001b8ba51b066b5990cfa3e3ce73d0cf562b41c83c0ccfef552996"
+    },
+    {
+      "path": "reducer_mode_20261015_b/client_control/H0.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reducer_mode_20261015_b/client_control/H1.jsonl",
+      "bytes": 8560,
+      "sha256": "cc6745ec0b79e1c518351dd83f460b79b680a97379e8480b042d0062ba399e18"
+    },
+    {
+      "path": "reducer_mode_20261015_b/client_control/H1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reducer_mode_20261015_b/client_control/X.jsonl",
+      "bytes": 4801,
+      "sha256": "ffc955eebd0c7d53a57c064f5ecbd1c602e9cae8d86bea32879691b9acc0ac3f"
+    },
+    {
+      "path": "reducer_mode_20261015_b/client_control/X.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reducer_mode_20261015_c/client_control/H0.jsonl",
+      "bytes": 8583,
+      "sha256": "7117d6ed0a370e9d68fa13b0c2d2fec51e0919cf73585d06ad0cf00efd9807a4"
+    },
+    {
+      "path": "reducer_mode_20261015_c/client_control/H0.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reducer_mode_20261015_c/client_control/H1.jsonl",
+      "bytes": 8583,
+      "sha256": "f342b4dbca688d121f7b54d79d9fa9392e3f7d4018a13341a958d57fdade44b1"
+    },
+    {
+      "path": "reducer_mode_20261015_c/client_control/H1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reducer_mode_20261015_c/client_control/X.jsonl",
+      "bytes": 4819,
+      "sha256": "92df4c49663c98cda06ea3023eb96f3107d08323f04146c50a45e7fec80cbf85"
+    },
+    {
+      "path": "reducer_mode_20261015_c/client_control/X.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reducer_mode_20261015_c/node_claim/H0.jsonl",
+      "bytes": 7528,
+      "sha256": "9fd4da1e414b87f4b9f791b9b184100bba997cbff6e2f6bda680f170f448ac3d"
+    },
+    {
+      "path": "reducer_mode_20261015_c/node_claim/H0.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reducer_mode_20261015_c/node_claim/H1.jsonl",
+      "bytes": 7527,
+      "sha256": "81b4f9b6d6971fca76e1252f0a2a9673449b29b13ffba5bb8c9ddf32bf1ec8b9"
+    },
+    {
+      "path": "reducer_mode_20261015_c/node_claim/H1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reducer_mode_20261015_c/node_claim/X.jsonl",
+      "bytes": 7526,
+      "sha256": "043b5496b104969ee3eb427b110ff64fcb4c781166c7e993790687b1d7f2f39b"
+    },
+    {
+      "path": "reducer_mode_20261015_c/node_claim/X.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

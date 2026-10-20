@@ -1,0 +1,72 @@
+{
+  "client_control": {
+    "passed": true,
+    "allocations": {
+      "H0": {
+        "candidate_elements_target": 0,
+        "candidate_chunks": 0
+      },
+      "H1": {
+        "candidate_elements_target": 0,
+        "candidate_chunks": 0
+      },
+      "X": {
+        "candidate_elements_target": 0,
+        "candidate_chunks": 0
+      }
+    },
+    "candidate_response_chunks": {
+      "H0": 0,
+      "H1": 0
+    },
+    "independent_mean_error": {
+      "H0": 9.934107469966591e-08,
+      "H1": 9.934107469966591e-08,
+      "X": 9.934107469966591e-08
+    },
+    "shutdown": {
+      "exitcodes": {
+        "H0": 0,
+        "H1": 0,
+        "X": 0
+      },
+      "forced_descendants": [],
+      "survivors": []
+    }
+  },
+  "node_claim": {
+    "passed": true,
+    "allocations": {
+      "H0": {
+        "candidate_elements_target": 32,
+        "candidate_chunks": 4
+      },
+      "H1": {
+        "candidate_elements_target": 32,
+        "candidate_chunks": 4
+      },
+      "X": {
+        "candidate_elements_target": 32,
+        "candidate_chunks": 4
+      }
+    },
+    "candidate_response_chunks": {
+      "H0": 4,
+      "H1": 4
+    },
+    "independent_mean_error": {
+      "H0": 9.934107469966591e-08,
+      "H1": 9.934107469966591e-08,
+      "X": 9.934107469966591e-08
+    },
+    "shutdown": {
+      "exitcodes": {
+        "H0": 0,
+        "H1": 0,
+        "X": 0
+      },
+      "forced_descendants": [],
+      "survivors": []
+    }
+  }
+}

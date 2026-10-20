@@ -1,0 +1,28 @@
+{
+  "arm": "client_control",
+  "names": [
+    "H0",
+    "H1",
+    "X"
+  ],
+  "candidate": "X",
+  "candidate_mode": "client",
+  "honest_modes": [
+    "node",
+    "node"
+  ],
+  "bandwidths": [
+    1,
+    1,
+    1
+  ],
+  "tensor_elements": 96,
+  "epoch": 19,
+  "authentication": false,
+  "network": "loopback only",
+  "rounds": 1,
+  "random_seed": null,
+  "initialization": "arange(96)/96 + peer index",
+  "matchmaking_seconds": 6,
+  "aggregation_seconds": 20
+}

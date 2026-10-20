@@ -1,0 +1,56 @@
+Private Agora averaging-mode claim probe — 2026-10-15
+
+Result: the inspected native aggregation path assigns reduction work from the
+self-declared mode. This is a local capability result, not a public exploit.
+
+Three loopback peers: H0/H1 are NODE peers; X is the test contributor. One round
+per arm, fresh peer identities in each arm. X advertises CLIENT in the control
+and NODE in the comparison. All advertise equal bandwidth 1.0. The local mode
+setting changes X's advertised mode and its native behavior consistently; this
+does not test an advertisement-only change while X continues acting as CLIENT.
+No server-approved contributor/reducer entitlement is provided to the peers.
+
+96-element float32 input per peer: arange(96)/96 plus peer index (0, 1, or 2).
+No training, no sparsity, no poison, no injected delay. Native matchmaking,
+allocation, and AllReduceRunner execute through DecentralizedAverager; observers
+only record native arguments, rosters, allocations, and RPC responses. Matchmaking
+window 6s, aggregation timeout 20s, sender/reducer timeouts 8/12s, chunk size 32
+bytes. These are short mechanism-test settings, not the 8B baseline timings.
+
+Arm             X target elements    X chunks    Responses to H0 / H1
+CLIENT control       0 / 96              0                0 / 0
+NODE claim          32 / 96              4                4 / 4
+
+All three peers recorded the same ordered roster in each arm. In NODE mode both
+honest peers assigned X 32 elements and completed real aggregation streams with X.
+Each response chunk contains eight float32 parameter corrections. The expected
+mean is arange(96)/96 + 1. All peers' returned full vectors agree with an independent
+raw-input arithmetic mean to <=9.94e-8 (tolerance 1e-5). This is one round per arm;
+it is not a success-rate estimate. No malicious reducer behavior was exercised.
+
+Scope: authorization, compiled integrity checks, role/placement admission,
+monitoring policy, and public-network behavior are untested. The observation
+supports trusting the advertised averaging mode within this tested path only.
+It does not establish that an external contributor can pass deployed admission
+and obtain reducer duties in a public run.
+
+Evidence: client_control/ and node_claim/ contain immutable-at-completion config,
+identity map, per-peer raw JSONL and logs, and shutdown records. verification.json
+contains the probe's checks. independent_raw_check.json independently recomputes
+the arithmetic mean and counts candidate allocations and returned chunks.
+independent_shutdown.json checks recorded descendant PID/create-time pairs across
+all three probe suites; no survivors. Both successful arms exited normally with
+no forced termination. source_hashes.json and source_snapshots/ pin inspected
+runtime classes and preserve original baseline source digests. runtime.json pins
+the environment. The original baseline/experiment source and core are unchanged.
+
+Preserved preliminary attempts: labels 20261015_a and 20261015_b each ran only a
+correct CLIENT control, then halted on an invalid pre-worker-exit shutdown
+assertion. The final parent checks found zero survivors and no forced termination
+in both. The corrected probe records a pre-exit worker_closing marker and requires
+zero survivors only after parent join. Both earlier raw attempts and failures
+remain separate, unchanged; no NODE arm ran in them.
+
+Reproduce with a new distinct label (private loopback sockets required):
+cd /tmp
+/home/sarat/Projects/hivemind-analysis/research/agora/.runtime/venv/bin/python /home/sarat/Projects/hivemind-analysis/research/agora/probe_reducer_mode.py --label NEW_LABEL

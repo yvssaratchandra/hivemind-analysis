@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "arms": {
+    "client_control": {
+      "passed": true,
+      "allocations": {
+        "H0": {
+          "candidate_allocation": 0,
+          "candidate_parts": 0
+        },
+        "H1": {
+          "candidate_allocation": 0,
+          "candidate_parts": 0
+        },
+        "X": {
+          "candidate_allocation": 0,
+          "candidate_parts": 0
+        }
+      },
+      "inbound_reduction_responses": {
+        "H0": {
+          "12D3KooWHBAM7N6FpaH4rp6LfqZ4vALFkKR96QVpU5BKaF9PChY2": 6,
+          "12D3KooWRFXB2XogzKEb5fGuiNW8ZvULCNRTzctc2ABc7aPF3hcg": 6
+        },
+        "H1": {
+          "12D3KooWHEWCye4U6P8JAcEcwvptTaimFsE7fUUZAJiSNfW6YSBL": 6,
+          "12D3KooWRFXB2XogzKEb5fGuiNW8ZvULCNRTzctc2ABc7aPF3hcg": 6
+        },
+        "X": {}
+      },
+      "max_error": 1.1920928955078125e-07,
+      "roster_agreement": true
+    },
+    "node_claim": {
+      "passed": true,
+      "allocations": {
+        "H0": {
+          "candidate_allocation": 32,
+          "candidate_parts": 4
+        },
+        "H1": {
+          "candidate_allocation": 32,
+          "candidate_parts": 4
+        },
+        "X": {
+          "candidate_allocation": 32,
+          "candidate_parts": 4
+        }
+      },
+      "inbound_reduction_responses": {
+        "H0": {
+          "12D3KooWKh3Txc8k6AS2AmJT21JWaoF623JrD5bBJW638PMQ7R72": 4,
+          "12D3KooWGJJ7HBy9Wyk9BXfv5djgziiDyfPygqTDtaroPf7nJxJq": 4
+        },
+        "H1": {
+          "12D3KooWGJJ7HBy9Wyk9BXfv5djgziiDyfPygqTDtaroPf7nJxJq": 4,
+          "12D3KooWEUMsisXgsK5R7fhoda6famqoCjheo9hF1tGaBJZg2t1H": 4
+        },
+        "X": {
+          "12D3KooWKh3Txc8k6AS2AmJT21JWaoF623JrD5bBJW638PMQ7R72": 4,
+          "12D3KooWEUMsisXgsK5R7fhoda6famqoCjheo9hF1tGaBJZg2t1H": 4
+        }
+      },
+      "max_error": 1.1920928955078125e-07,
+      "roster_agreement": true
+    }
+  },
+  "checked_sources_unchanged": true,
+  "scope": "No admission, integrity service, stage placement, or public network tested"
+}
