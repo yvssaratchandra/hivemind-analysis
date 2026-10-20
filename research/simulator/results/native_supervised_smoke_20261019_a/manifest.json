@@ -1,0 +1,108 @@
+{
+  "status": "completed",
+  "seed": 101,
+  "config": {
+    "protocol": "hivemind",
+    "population": 8,
+    "profile": "controlled",
+    "populations": [
+      8
+    ],
+    "profiles": [
+      "controlled"
+    ],
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      101,
+      102,
+      103,
+      104,
+      105
+    ],
+    "target_group_size": 4,
+    "min_group_size": 2,
+    "min_matchmaking_time": 5.0,
+    "request_timeout": 3.0,
+    "search_timeout": 12.0,
+    "allreduce_timeout": 6,
+    "sender_timeout": 1,
+    "reducer_timeout": 2,
+    "payload_bytes": 512,
+    "chunk_bytes": 128,
+    "target_per_node": 10000,
+    "observation_seconds": 20,
+    "horizon_seconds": 20,
+    "initial_bits": 0,
+    "compute_seconds": 1.5,
+    "bandwidth_mbps": 100.0,
+    "latency_seconds": 0.0,
+    "initial_offset_seconds": 3,
+    "policies": {},
+    "registry_latency_seconds": 0.0
+  },
+  "duration_seconds": 20,
+  "pid_namespace": "pid:[4026531836]",
+  "package": "/home/sarat/Projects/hivemind-analysis/research/simulator/.native-runtime/root_snapshot_a/hivemind",
+  "source_hashes": {
+    "averaging/matchmaking.py": "6a775570b7183d7ea231d8a3a1030a5b63a4ddaa7fa5ceaabc178e3e74ae8814",
+    "averaging/key_manager.py": "99a24f165590493016d7731fe111be7d1497e3ce695de123a806ca9722cecdc9",
+    "averaging/allreduce.py": "2a67006fc98b9683e357e4b8a805832c9bec1e81afbf1ffcc41862bb56caab05",
+    "averaging/partition.py": "8905c51826c26d18281121e760758f3a3bfc77feca351886eade13cfbe571e23",
+    "averaging/averager.py": "932a59ddb7e0933de2dc674be8480ebcdc9eb9fd713f5040a33dd0e4cca59929",
+    "hivemind_cli/p2pd": "42f8f48e62583b97cdba3c31439c08029fb2b9fc506b5bdd82c46b7cc1d279d8"
+  },
+  "script_sha256": "499e6b814fc6beacecc27f721cbaef03b0d86b48dcf63938a5404a135d33ca8d",
+  "torch": "2.7.0+cpu",
+  "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]",
+  "survivors": [
+    513832
+  ],
+  "delay_scope": "DHT find/store and join legs only; no transfer shaping",
+  "peer_ids": {
+    "N0000": "00240801122078786423a8e9910994ec9e0ff98322ac77e1fee2b8ca95435e14965ab1d6f3cb",
+    "N0001": "002408011220ebe449189ab04368d7491c5ee4a9788d77e7bb863d52711898f9e1cdf5578abf",
+    "N0002": "0024080112204d8dc495b78eb52c7b646f442422bdf26cea79f3b0874b92c1ba2aa444e90ed9",
+    "N0003": "002408011220fd488781a962adb0b34506407f19ffc9fa34d3d08cf395dab7d8bf3861e64f4b",
+    "N0004": "00240801122033f855abf5ed3913c9f05ff429d19e2420cf7abfdea417a6bd5e494ecab4d74b",
+    "N0005": "00240801122037907a5394a1d827ff578962f3f1484d0dcb5476c8865669cf93ac17609f9b6c",
+    "N0006": "0024080112205d04c4128d12864a26fa4972277872a76e76c0fa4505d0d070bfa2f3617446e3",
+    "N0007": "00240801122001aa2d3a647e4d703c9ac972407dd29033930e615798defeee1fbaea1ef7e49a"
+  },
+  "trace_start_offset": 1.570880395000131,
+  "forced_cleanup": [],
+  "cleanup_errors": [],
+  "exit_pending_helpers": [
+    513832
+  ],
+  "owned_children": {
+    "513832": 1792422674.37,
+    "513833": 1792422674.51,
+    "513853": 1792422674.62,
+    "513857": 1792422674.65,
+    "513880": 1792422674.77,
+    "513888": 1792422674.79,
+    "513966": 1792422674.92,
+    "513970": 1792422674.94,
+    "514015": 1792422675.07,
+    "514019": 1792422675.09,
+    "514041": 1792422675.22,
+    "514046": 1792422675.25,
+    "514068": 1792422675.39,
+    "514072": 1792422675.41,
+    "514098": 1792422675.54,
+    "514102": 1792422675.56,
+    "514124": 1792422675.69,
+    "514103": 1792422675.58,
+    "514073": 1792422675.43,
+    "514047": 1792422675.27,
+    "514020": 1792422675.11,
+    "513973": 1792422674.96,
+    "513889": 1792422674.81,
+    "513862": 1792422674.66,
+    "513834": 1792422674.52
+  }
+}

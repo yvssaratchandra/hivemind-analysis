@@ -1,0 +1,81 @@
+{
+  "100": {
+    "censored": 0,
+    "completed": 1,
+    "completion_time_scope": "Observed completions only; inspect censoring counts.",
+    "metrics": {
+      "accepted_work_per_second_at_observation": {
+        "bootstrap_95_percentile_interval": [
+          4.405555555555556,
+          4.405555555555556
+        ],
+        "iqr": [
+          4.405555555555556,
+          4.405555555555556
+        ],
+        "median": 4.405555555555556,
+        "n": 1
+      },
+      "groups_at_observation": {
+        "bootstrap_95_percentile_interval": [
+          118.0,
+          118.0
+        ],
+        "iqr": [
+          118.0,
+          118.0
+        ],
+        "median": 118.0,
+        "n": 1
+      },
+      "median_ready_to_accept_seconds_at_observation": {
+        "bootstrap_95_percentile_interval": [
+          9.846629549010927,
+          9.846629549010927
+        ],
+        "iqr": [
+          9.846629549010927,
+          9.846629549010927
+        ],
+        "median": 9.846629549010927,
+        "n": 1
+      },
+      "median_unique_roster_partners_at_observation": {
+        "bootstrap_95_percentile_interval": [
+          21.0,
+          21.0
+        ],
+        "iqr": [
+          21.0,
+          21.0
+        ],
+        "median": 21.0,
+        "n": 1
+      },
+      "target_time": {
+        "bootstrap_95_percentile_interval": [
+          120.84321399586273,
+          120.84321399586273
+        ],
+        "iqr": [
+          120.84321399586273,
+          120.84321399586273
+        ],
+        "median": 120.84321399586273,
+        "n": 1
+      },
+      "zero_participation_at_observation": {
+        "bootstrap_95_percentile_interval": [
+          0.0,
+          0.0
+        ],
+        "iqr": [
+          0.0,
+          0.0
+        ],
+        "median": 0.0,
+        "n": 1
+      }
+    }
+  }
+}

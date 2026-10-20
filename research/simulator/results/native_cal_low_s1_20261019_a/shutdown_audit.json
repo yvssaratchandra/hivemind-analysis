@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "survivors": [],
+  "checked_pids": [
+    485824
+  ],
+  "manifest_sha256": "af0d299553365c585123fac98c89230c407b9a2a90962d1dfd55704dc0d32259",
+  "scope": "Independent post-parent-exit PID check; PID reuse is conservatively treated as alive"
+}

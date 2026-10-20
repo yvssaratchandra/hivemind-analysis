@@ -1,0 +1,12 @@
+{
+  "completed": [
+    {
+      "case": "calibration_low_s1",
+      "passed": false
+    }
+  ],
+  "duration": 120.0,
+  "failed_case": "calibration_low_s1",
+  "scope": "grouping",
+  "status": "calibration_failed"
+}

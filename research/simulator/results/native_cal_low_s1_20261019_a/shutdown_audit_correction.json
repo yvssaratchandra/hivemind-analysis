@@ -1,0 +1,4 @@
+{
+  "valid": false,
+  "reason": "Earlier sandbox audit could not establish native PID namespace equality. Original audit is not valid clean-exit evidence; a new native trial with same-namespace supervision is required."
+}

@@ -1,0 +1,6 @@
+{
+  "audited_runs": 0,
+  "expected_runs": 40,
+  "status": "interrupted_for_profiling",
+  "reason": "User requested profiling before committing to full sweep; partial runs are not a baseline."
+}

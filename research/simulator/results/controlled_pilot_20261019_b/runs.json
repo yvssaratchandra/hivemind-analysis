@@ -1,0 +1,38 @@
+[
+  {
+    "accepted_work": 793.0,
+    "accepted_work_at_observation": 793.0,
+    "accepted_work_per_second_at_observation": 4.405555555555556,
+    "elapsed_wall_seconds": 11.883001059999515,
+    "final_time": 180.0,
+    "group_count": 118,
+    "group_sizes_at_observation": {
+      "2": 6,
+      "3": 3,
+      "4": 1,
+      "8": 108
+    },
+    "groups_at_observation": 118,
+    "median_ready_to_accept_seconds_at_observation": 9.846629549010927,
+    "median_unique_roster_partners_at_observation": 21.0,
+    "p90_ready_to_accept_seconds_at_observation": 10.817581222226295,
+    "path": "n100_controlled_s1",
+    "population": 100,
+    "process_peak_rss_kib": 73468,
+    "profile": "controlled",
+    "randomized_readiness_verified": true,
+    "readiness_max": 9.953866747402355,
+    "readiness_min": 0.2748555233058336,
+    "replay_matches": true,
+    "seed": 1,
+    "status": "completed",
+    "target_time": 120.84321399586273,
+    "target_work": 500,
+    "terminal_outcomes": {
+      "complete": 793
+    },
+    "trace_bytes": 2517999,
+    "zero_participation_at_observation": 0,
+    "zero_participation_nodes": 0
+  }
+]

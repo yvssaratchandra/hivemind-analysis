@@ -1,0 +1,902 @@
+{
+  "N0000": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0000",
+    "peer_id": "6fe42e387fb9b2bf30036ec197c9fb617d0c831f9d0a972105b6949e41d471df",
+    "upload_bps": 12500000.0
+  },
+  "N0001": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0001",
+    "peer_id": "9e882c3ae8aabb22e2ba5c4c0caec44f2554b4d9af193ba8547f5b23ff4ab66c",
+    "upload_bps": 12500000.0
+  },
+  "N0002": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0002",
+    "peer_id": "91f1bc09b5ce1235effc6a2743d40092eb508a29081f8dff285c7951d2661ba6",
+    "upload_bps": 12500000.0
+  },
+  "N0003": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0003",
+    "peer_id": "3c36b09e96da0ebf231cd150cb84f1f6afd734076fd6fd514f6ea60b1f6be5c8",
+    "upload_bps": 12500000.0
+  },
+  "N0004": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0004",
+    "peer_id": "8a0dee8c4e22dd1b0f29b26f7b3b0970d4fe7f1d33698eebbdce7c92a2653a6d",
+    "upload_bps": 12500000.0
+  },
+  "N0005": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0005",
+    "peer_id": "7f201091ec647f4ac1579238b990320218449c85de1c5179328bead859db8045",
+    "upload_bps": 12500000.0
+  },
+  "N0006": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0006",
+    "peer_id": "5e5f2f649bf592d071c2eccbc6d16999c9212c2882f0c5f764eeca5f374a3e90",
+    "upload_bps": 12500000.0
+  },
+  "N0007": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0007",
+    "peer_id": "0f3b975efe88535ec01ba2b2a56be51cd67882384da7518c3a656510aee513e5",
+    "upload_bps": 12500000.0
+  },
+  "N0008": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0008",
+    "peer_id": "7e8e02ff835d5259a5fca32295ba5c4c4f2abf448c1f2571222a04f930bd006f",
+    "upload_bps": 12500000.0
+  },
+  "N0009": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0009",
+    "peer_id": "860b1311695b10cc775e31c205abd9aa2f52185c0b0aaea42a1d094c351e6590",
+    "upload_bps": 12500000.0
+  },
+  "N0010": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0010",
+    "peer_id": "65f77ac8668780b3825e09bac6ed7015c8fa9a24d213307eb6f3b2224cf00f58",
+    "upload_bps": 12500000.0
+  },
+  "N0011": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0011",
+    "peer_id": "3bc40b68ad28d000fa456e7eefa20dc9e5c23e78bfaf1bd3c4fb28c4dac67547",
+    "upload_bps": 12500000.0
+  },
+  "N0012": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0012",
+    "peer_id": "e850705f67143ffacd99ec6865633c1cd8c322675264238b9517948f104dc91e",
+    "upload_bps": 12500000.0
+  },
+  "N0013": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0013",
+    "peer_id": "e84e5bfd39c12105f4369d75a24c8d9b7b6146600641b1ecd3b31671cf8aa4c9",
+    "upload_bps": 12500000.0
+  },
+  "N0014": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0014",
+    "peer_id": "268a80edfa8ab4e9d3f8afaae64f72d4998106e5efee6325bdcdc7dccf3d9380",
+    "upload_bps": 12500000.0
+  },
+  "N0015": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0015",
+    "peer_id": "ccc5dc8d16a85c45558699d2fdf9f84b93efe4e855953b3a970fcdaa5164a065",
+    "upload_bps": 12500000.0
+  },
+  "N0016": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0016",
+    "peer_id": "da2f74e65dd0a6bfbeed2c5fc78a1217b9fa265822284ac2ef4f423c61c2a30e",
+    "upload_bps": 12500000.0
+  },
+  "N0017": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0017",
+    "peer_id": "df8b178965256314e68cd05443ec46610ac82e44a044dbeacdcc2c2b0a523148",
+    "upload_bps": 12500000.0
+  },
+  "N0018": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0018",
+    "peer_id": "04d61391ab41a19a487e59f2a4ff437773f831f1f15b69a8bf24d318db70991f",
+    "upload_bps": 12500000.0
+  },
+  "N0019": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0019",
+    "peer_id": "e15c605c2a24274f0b15b3634f0b2447bacd2ac4b23a9043e63039d382a05b02",
+    "upload_bps": 12500000.0
+  },
+  "N0020": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0020",
+    "peer_id": "838c0e4e5b4ab25bdf5d3e8eeca0b28977a8f1251199a7ff6f27cffb81296d31",
+    "upload_bps": 12500000.0
+  },
+  "N0021": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0021",
+    "peer_id": "82b35a2c202e348e2572d287a50e76c1898f8f6ed08f21e3b19309c34e4b5a54",
+    "upload_bps": 12500000.0
+  },
+  "N0022": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0022",
+    "peer_id": "8ca83785bee4c896bc6c84b42c776e9543ec801b3bf037469f978acabac6f744",
+    "upload_bps": 12500000.0
+  },
+  "N0023": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0023",
+    "peer_id": "a395c8a8b9db7b2d2d60bf93d0fddc1f4b6181eeadc195a778efb42e42d62ed7",
+    "upload_bps": 12500000.0
+  },
+  "N0024": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0024",
+    "peer_id": "672b2219dba1ac4bdd64c10cac3ae1e7db434e3313eb5cd75bdba510e467b668",
+    "upload_bps": 12500000.0
+  },
+  "N0025": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0025",
+    "peer_id": "c958b40e668c161d793d6afe9dce8b904ae4c5a5fee187155c31e7199bd4c9d1",
+    "upload_bps": 12500000.0
+  },
+  "N0026": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0026",
+    "peer_id": "335b2c744454d6375e7cabd269d60022a5793c96da3afc70a0035502b401e6dd",
+    "upload_bps": 12500000.0
+  },
+  "N0027": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0027",
+    "peer_id": "d8050289ae7e9dc46f3690138ea8ddc1604f4d9e6b1a2ca05e1ceb9728cfecce",
+    "upload_bps": 12500000.0
+  },
+  "N0028": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0028",
+    "peer_id": "d106ffbd40928160331f3a2c5b5dbcd04a815050c939b85f135457c4197b8a43",
+    "upload_bps": 12500000.0
+  },
+  "N0029": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0029",
+    "peer_id": "e06ec4d46f92c4153941ff979da81aad09f24369580f25be273e8e6475f26d0e",
+    "upload_bps": 12500000.0
+  },
+  "N0030": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0030",
+    "peer_id": "f896f6ad2f5b9831ca95200b45714f0ef729a4d3779cd63012656b89c3380bd1",
+    "upload_bps": 12500000.0
+  },
+  "N0031": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0031",
+    "peer_id": "be819ec8ed0b06f1a69b59cf29844032f973a00712062fb6f8ab764bc0a7bece",
+    "upload_bps": 12500000.0
+  },
+  "N0032": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0032",
+    "peer_id": "cfbae0219483a3e8382d04409b1383b8bd36e52687db57a980a51836433631c0",
+    "upload_bps": 12500000.0
+  },
+  "N0033": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0033",
+    "peer_id": "c2ed41fb577a93e198c16caee348cfef8e0ab0496b5fe1be469ceff29ba9328f",
+    "upload_bps": 12500000.0
+  },
+  "N0034": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0034",
+    "peer_id": "bfbe1f89fb0d3a66d07e66ecbb774e36c7e2c8754e299c023c86680723af5c4e",
+    "upload_bps": 12500000.0
+  },
+  "N0035": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0035",
+    "peer_id": "89e4e7cf9b3757dbb147c6d378c83c872245bdd28a899a5265e5d64ce69c653f",
+    "upload_bps": 12500000.0
+  },
+  "N0036": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0036",
+    "peer_id": "de09729ad6c842eb9e378c9f3d0d361a9022f9fac0dce0b6464e974cde317760",
+    "upload_bps": 12500000.0
+  },
+  "N0037": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0037",
+    "peer_id": "14fd60bae0ab8dab3db2e3f825cf273d06d4683464ea46122056f24540e493e8",
+    "upload_bps": 12500000.0
+  },
+  "N0038": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0038",
+    "peer_id": "435ba41faf0353287a2f5415a81884389a3b61440e713e0c81dddfd3c18438bd",
+    "upload_bps": 12500000.0
+  },
+  "N0039": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0039",
+    "peer_id": "1ec81730fbf18f6d8604f97d9bf0e4c59aa1664382ec19b9bf604876535fbca8",
+    "upload_bps": 12500000.0
+  },
+  "N0040": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0040",
+    "peer_id": "33b53b2cae44db748b37a92ef3dd65e1021efd92a88ebbfd78543359ed32d4ee",
+    "upload_bps": 12500000.0
+  },
+  "N0041": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0041",
+    "peer_id": "661821ab0cada09d52a5545743961700dbf4893f60429b27a54106f74942c6fd",
+    "upload_bps": 12500000.0
+  },
+  "N0042": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0042",
+    "peer_id": "93a733e15fb9b88e827b8d6e4dce492e262ad6b50af499098f874a488a2b5cf5",
+    "upload_bps": 12500000.0
+  },
+  "N0043": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0043",
+    "peer_id": "dbb74c94913a400776f3dce5436d9e48795154c67416ee11c040ee4a3ceafd87",
+    "upload_bps": 12500000.0
+  },
+  "N0044": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0044",
+    "peer_id": "2f439c7f1e578aac4b8fb4af50238928d0abea554cfc4a67b92d35809fa2400f",
+    "upload_bps": 12500000.0
+  },
+  "N0045": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0045",
+    "peer_id": "184ae2659beff91dafc90771e7e4c72bd93033e7a75301e8508bf348792d4a8a",
+    "upload_bps": 12500000.0
+  },
+  "N0046": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0046",
+    "peer_id": "fd88c29bcd30d84a18a8c967e6419109b24c6235ec3f40597de229eba061b008",
+    "upload_bps": 12500000.0
+  },
+  "N0047": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0047",
+    "peer_id": "b328f3ff2d6b84c1b508357d8c977842ae7ec95241c9b726c27cf8cc62d3e402",
+    "upload_bps": 12500000.0
+  },
+  "N0048": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0048",
+    "peer_id": "2389d123c36d0bca43e355e2fc3fb1b706ea142d064f8bf90b63772852c8cdf0",
+    "upload_bps": 12500000.0
+  },
+  "N0049": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0049",
+    "peer_id": "f5ea4318df13233bb8449cacb1102e10955e52fb6f1bd492ac0ea190e73405d9",
+    "upload_bps": 12500000.0
+  },
+  "N0050": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0050",
+    "peer_id": "25a432fd3ca15ce575bd008fd49e6bc925df35567b088cdd6210c47bb7106a84",
+    "upload_bps": 12500000.0
+  },
+  "N0051": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0051",
+    "peer_id": "051191509d2e6904c856ac5e951160f1b582cad07a37de8cf78955fdb98c4c5d",
+    "upload_bps": 12500000.0
+  },
+  "N0052": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0052",
+    "peer_id": "9a7fe0f7d7cb357968818758acad97f9c8fe603ea227b574f660c52117894488",
+    "upload_bps": 12500000.0
+  },
+  "N0053": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0053",
+    "peer_id": "fe00afcd56d6da8a02fc4c7bd2928a3a62d86f6a66db99ac85179cfc65cb8736",
+    "upload_bps": 12500000.0
+  },
+  "N0054": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0054",
+    "peer_id": "d10081c92cb58c8ffaf617a2d4795fc32fa31a649d50ec994401ecb28f287dd3",
+    "upload_bps": 12500000.0
+  },
+  "N0055": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0055",
+    "peer_id": "087b843d46aab4ac1400f24a99f35e03abf61140e996954d6015facaaeeb58b1",
+    "upload_bps": 12500000.0
+  },
+  "N0056": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0056",
+    "peer_id": "edc69f822111ee8d8e61ea81a2a0042ea6e492944078c726809e494606ad7b0d",
+    "upload_bps": 12500000.0
+  },
+  "N0057": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0057",
+    "peer_id": "3cc68c47cb0870ac512424388403b8791099ebc51d18ce8a90d68b268918a810",
+    "upload_bps": 12500000.0
+  },
+  "N0058": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0058",
+    "peer_id": "2b6935f3bddeaec38cd7cc432834bed32bdabd534d714c21da29708bf94ac337",
+    "upload_bps": 12500000.0
+  },
+  "N0059": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0059",
+    "peer_id": "23ca5cff5997f02f17711ed0aac1e439c1915464d49bbb14499bdcc2265a5368",
+    "upload_bps": 12500000.0
+  },
+  "N0060": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0060",
+    "peer_id": "64ea494dcdcdc1222178d22f6c9b844b1e2c17234ff2732c8bca2ac504a64f73",
+    "upload_bps": 12500000.0
+  },
+  "N0061": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0061",
+    "peer_id": "91a1b7a9108c6ea8133ef1b1ab30cccd1dc018091b5923535b3ca12801f79ce9",
+    "upload_bps": 12500000.0
+  },
+  "N0062": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0062",
+    "peer_id": "f065545f934e57e2b62d08c9bb8fb41b6b7e5f3a421f9f4ae69635520443d311",
+    "upload_bps": 12500000.0
+  },
+  "N0063": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0063",
+    "peer_id": "00d475af7f8bd85441f804c046f29d3f4f380afc7a12935efb7e7d6eb0b24a7f",
+    "upload_bps": 12500000.0
+  },
+  "N0064": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0064",
+    "peer_id": "b8aadafe96b2ea88c3682a0af5ec4491b8527236221799161dcf21d7b65079c8",
+    "upload_bps": 12500000.0
+  },
+  "N0065": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0065",
+    "peer_id": "d550f5055cba3dc063a6fff6cec26c4bfb3c6594b9a6c70cf22ec85b31892829",
+    "upload_bps": 12500000.0
+  },
+  "N0066": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0066",
+    "peer_id": "5085966e297a62fdc9e24e3db0c64f7a7f9e6103605732d5bf207958391df87f",
+    "upload_bps": 12500000.0
+  },
+  "N0067": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0067",
+    "peer_id": "530f91cce13c1b246a389e21c1cf7c01dd3e4f26d44636998d5e34749c1110eb",
+    "upload_bps": 12500000.0
+  },
+  "N0068": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0068",
+    "peer_id": "8f9bb3ac01d12cccf2fd58484175f6ac84f0a5fa19475d7b5a1268a3a258c6b1",
+    "upload_bps": 12500000.0
+  },
+  "N0069": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0069",
+    "peer_id": "2996d60bf9b6f5392053b9e827d15381c1eb7923f5174584153ce597e77c1404",
+    "upload_bps": 12500000.0
+  },
+  "N0070": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0070",
+    "peer_id": "66a20e773ba11516e5f7abe0a0419d9ff954ec6e167ba2dda05c08f203dc0be9",
+    "upload_bps": 12500000.0
+  },
+  "N0071": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0071",
+    "peer_id": "132d1134ef1911532dec9bd098d990dc8ad320771f326c3068594327573fee24",
+    "upload_bps": 12500000.0
+  },
+  "N0072": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0072",
+    "peer_id": "d218d78c748a91b7a04c1f34196344749252e7b2fc9c61512c07c538dbdf772e",
+    "upload_bps": 12500000.0
+  },
+  "N0073": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0073",
+    "peer_id": "4c8fd351e987ebe15b00e6c9f46ed6d07a3ebddc8f06f1d89257faa6102299f2",
+    "upload_bps": 12500000.0
+  },
+  "N0074": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0074",
+    "peer_id": "88bd3a646639ab6c099395ac128cc8d6018c95bdc799a053908ccd9a41897c86",
+    "upload_bps": 12500000.0
+  },
+  "N0075": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0075",
+    "peer_id": "b6acb323dd8a4e1d9b5596830c6c9a49926e07a3c88d201d160976204ac0324c",
+    "upload_bps": 12500000.0
+  },
+  "N0076": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0076",
+    "peer_id": "920d121b8ca97a3faab320aa0d9a605586b0c0dd2e38bd560b0f8327eef9c411",
+    "upload_bps": 12500000.0
+  },
+  "N0077": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0077",
+    "peer_id": "d844109107b6776d14c1775cc3790d95ec0e625058b9bcc13fc03a341de33dfb",
+    "upload_bps": 12500000.0
+  },
+  "N0078": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0078",
+    "peer_id": "d6c1fab5ddffd6549e15a5127dad9c507f079a7176f7f7243288b0537f39fe3f",
+    "upload_bps": 12500000.0
+  },
+  "N0079": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0079",
+    "peer_id": "6c6e479fd10a796cdaa40ba5fa90644f71a0d28b3dc8aa3919442ccf4e1f817b",
+    "upload_bps": 12500000.0
+  },
+  "N0080": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0080",
+    "peer_id": "31821ef848674a3e3159eb1f82e480623134f232c400a7c13aa5f6d95b288aaf",
+    "upload_bps": 12500000.0
+  },
+  "N0081": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0081",
+    "peer_id": "ca03bafef325830c4eb575569426ee4c5077562f7ada9a6daf692dfc6e09c6d4",
+    "upload_bps": 12500000.0
+  },
+  "N0082": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0082",
+    "peer_id": "dd60fae9320c7edb9eea1614fd72df7a94aa24c0271f1e2ee150997463bb4886",
+    "upload_bps": 12500000.0
+  },
+  "N0083": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0083",
+    "peer_id": "6e4a31d90c9d814c4f848e680424dab0f2ed2d4f756634fc26fcb3357fe90f46",
+    "upload_bps": 12500000.0
+  },
+  "N0084": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0084",
+    "peer_id": "c7998cb7b5325b3c7ef1f1edd37367c2c73758ba6b8bf570efcaf565b4261957",
+    "upload_bps": 12500000.0
+  },
+  "N0085": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0085",
+    "peer_id": "43d81877e3a1a663e98b3058b20d56c5a9a02fadfb0fafa073f704725efa5d4d",
+    "upload_bps": 12500000.0
+  },
+  "N0086": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0086",
+    "peer_id": "b36b57986d5fdc372c850605b885ea115d5740ab32cb8da126fb7f120b212346",
+    "upload_bps": 12500000.0
+  },
+  "N0087": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0087",
+    "peer_id": "0d3e22dd523aa6626ecb414b1951e41b1c1091f44142fe09542f1594ec656e77",
+    "upload_bps": 12500000.0
+  },
+  "N0088": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0088",
+    "peer_id": "6d0acbfe081498255ef5c741353a7dedbcb5c4235c49f86b77ddd203bb2dcce1",
+    "upload_bps": 12500000.0
+  },
+  "N0089": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0089",
+    "peer_id": "05ee27abb1840b8ee54f5f8a4947804a6deabf84270af09f7ac4943ebc42de7c",
+    "upload_bps": 12500000.0
+  },
+  "N0090": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0090",
+    "peer_id": "c88efa478f6ae435fbc48378a792b6923124a6729bc80002e0a7fe05eed42c5f",
+    "upload_bps": 12500000.0
+  },
+  "N0091": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0091",
+    "peer_id": "f3d3fbf4cc1de5e37070c5720fffc0d2dd2b5a700518f79f0330a07c5b3ea98e",
+    "upload_bps": 12500000.0
+  },
+  "N0092": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0092",
+    "peer_id": "3bf3d5fd09ae8591946207b4b07ff2b53a44412b96218fcf4f138d55e5d79a74",
+    "upload_bps": 12500000.0
+  },
+  "N0093": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0093",
+    "peer_id": "835c7a7c393c55e9ee8b9d54567ef437b6a29b668ee9d8489cb4d78cc5166719",
+    "upload_bps": 12500000.0
+  },
+  "N0094": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0094",
+    "peer_id": "9c055b562bdc9a166947a65b9de4e829ed107344bb6a53f1d03054df66b0359a",
+    "upload_bps": 12500000.0
+  },
+  "N0095": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0095",
+    "peer_id": "1d669c5eef04b4305d1615c69cfbb9cd00cc16e9c937e8ee11c807198136df83",
+    "upload_bps": 12500000.0
+  },
+  "N0096": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0096",
+    "peer_id": "bfbf31a296854444ea54e359d634f8766b7271b7706eef5ddcd3674842918c21",
+    "upload_bps": 12500000.0
+  },
+  "N0097": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0097",
+    "peer_id": "7cc2310feb0fd0a204656cb45f812d78796a1312cce80a129e75225245ce4a52",
+    "upload_bps": 12500000.0
+  },
+  "N0098": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "0",
+    "latency_seconds": 0.025,
+    "node_id": "N0098",
+    "peer_id": "64d32b2d821e5cff8ccd4236ace8cdd62074eeeea871f3b8713b1bdb8dc6a9ea",
+    "upload_bps": 12500000.0
+  },
+  "N0099": {
+    "compute_seconds": 10.0,
+    "download_bps": 12500000.0,
+    "initial_group_bits": "1",
+    "latency_seconds": 0.025,
+    "node_id": "N0099",
+    "peer_id": "d72ab98a4733495a0f5fad3327db05f196e1006d0d97354b360f8025128f1a8b",
+    "upload_bps": 12500000.0
+  }
+}

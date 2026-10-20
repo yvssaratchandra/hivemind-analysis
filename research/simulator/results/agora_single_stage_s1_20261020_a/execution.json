@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/home/sarat/Projects/hivemind-analysis/research/simulator/.venv/bin/python",
+    "-m",
+    "trainsim",
+    "run",
+    "--config",
+    "/home/sarat/Projects/hivemind-analysis/research/simulator/configs/agora_single_stage.json",
+    "--seed",
+    "1",
+    "--label",
+    "agora_single_stage_s1_20261020_a"
+  ],
+  "wall_limit_seconds": 600,
+  "returncode": 0,
+  "stdout": "/home/sarat/Projects/hivemind-analysis/research/simulator/results/agora_single_stage_s1_20261020_a\n",
+  "stderr": "",
+  "timed_out": false,
+  "wall_seconds": 250.59758497200528
+}

@@ -1,0 +1,5744 @@
+[
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 8594,
+    "time": 19.08546163513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0051",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 8595,
+    "time": 19.08546163513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 8596,
+    "time": 19.08546163513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 8597,
+    "time": 19.08546163513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 8598,
+    "time": 19.08546163513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 8599,
+    "time": 19.08546163513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0082",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 8600,
+    "time": 19.08546163513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 8601,
+    "time": 19.08546163513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 10397,
+    "time": 20.08546163513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0051",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 11960,
+    "time": 21.484374275135178
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 11961,
+    "time": 21.484374275135178
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 11962,
+    "time": 21.484374275135178
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 11963,
+    "time": 21.484374275135178
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 11964,
+    "time": 21.484374275135178
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 11965,
+    "time": 21.484374275135178
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0082",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 11966,
+    "time": 21.484374275135178
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 11967,
+    "time": 21.484374275135178
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0051",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 13588,
+    "time": 22.48434355513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 13606,
+    "time": 22.48434355513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 13624,
+    "time": 22.48434355513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 13642,
+    "time": 22.48434355513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 13660,
+    "time": 22.48434355513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 13678,
+    "time": 22.48434355513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_input",
+        "recipient": "N0082",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 13696,
+    "time": 22.48434355513518
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 16423,
+    "time": 25.232168835135177
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0051",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 17596,
+    "time": 26.232168835135177
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 17599,
+    "time": 26.232168835135177
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 17602,
+    "time": 26.232168835135177
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 17605,
+    "time": 26.232168835135177
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 17608,
+    "time": 26.232168835135177
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0082",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 17611,
+    "time": 26.232168835135177
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "57d5ac819729efbbeada348d62e06687",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 17614,
+    "time": 26.232168835135177
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 30168,
+    "time": 39.85055666740236
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 30169,
+    "time": 39.85055666740236
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0096",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 30170,
+    "time": 39.85055666740236
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 30171,
+    "time": 39.85055666740236
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 30172,
+    "time": 39.85055666740236
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0027",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 30173,
+    "time": 39.85055666740236
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 30174,
+    "time": 39.85055666740236
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0073",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 30175,
+    "time": 39.85055666740236
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 30666,
+    "time": 40.85055666740236
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 33183,
+    "time": 42.29987890740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0096",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 33184,
+    "time": 42.29987890740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 33185,
+    "time": 42.29987890740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 33186,
+    "time": 42.29987890740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0027",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 33187,
+    "time": 42.29987890740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 33188,
+    "time": 42.29987890740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 33189,
+    "time": 42.29987890740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0073",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 33190,
+    "time": 42.29987890740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 34652,
+    "time": 43.24943858740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 34670,
+    "time": 43.24943858740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 34688,
+    "time": 43.24943858740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 34706,
+    "time": 43.24943858740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0073",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 34724,
+    "time": 43.24943858740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0027",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 34742,
+    "time": 43.24943858740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_input",
+        "recipient": "N0096",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 34760,
+    "time": 43.24943858740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 37088,
+    "time": 46.09808306740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 39204,
+    "time": 47.09808306740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0096",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 39207,
+    "time": 47.09808306740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 39210,
+    "time": 47.09808306740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 39213,
+    "time": 47.09808306740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0027",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 39216,
+    "time": 47.09808306740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 39219,
+    "time": 47.09808306740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "a1ea174ac2a0bf4a25da23cb5cc2e3c5",
+        "kind": "reduce_result",
+        "recipient": "N0073",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 39222,
+    "time": 47.09808306740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 52155,
+    "time": 60.69793266740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0096",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 52156,
+    "time": 60.69793266740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 52157,
+    "time": 60.69793266740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0043",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 52158,
+    "time": 60.69793266740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 52159,
+    "time": 60.69793266740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0051",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 52160,
+    "time": 60.69793266740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0030",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 52161,
+    "time": 60.69793266740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0065",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 52162,
+    "time": 60.69793266740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 54735,
+    "time": 61.69793266740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0096",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 56176,
+    "time": 63.09684530740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 56177,
+    "time": 63.09684530740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0043",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 56178,
+    "time": 63.09684530740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 56179,
+    "time": 63.09684530740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0051",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 56180,
+    "time": 63.09684530740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0030",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 56181,
+    "time": 63.09684530740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 56182,
+    "time": 63.09684530740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0065",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 56183,
+    "time": 63.09684530740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0065",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 57104,
+    "time": 64.09681458740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0096",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 57122,
+    "time": 64.09681458740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 57140,
+    "time": 64.09681458740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0043",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 57158,
+    "time": 64.09681458740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 57176,
+    "time": 64.09681458740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0051",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 57194,
+    "time": 64.09681458740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_input",
+        "recipient": "N0030",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 57212,
+    "time": 64.09681458740235
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 60499,
+    "time": 66.84463986740234
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0096",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 61249,
+    "time": 67.84463986740234
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 61252,
+    "time": 67.84463986740234
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0043",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 61255,
+    "time": 67.84463986740234
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 61258,
+    "time": 67.84463986740234
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0051",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 61261,
+    "time": 67.84463986740234
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0030",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 61264,
+    "time": 67.84463986740234
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "402687e6cda4e47cba31ce7dc91e94de",
+        "kind": "reduce_result",
+        "recipient": "N0065",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 61267,
+    "time": 67.84463986740234
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 76237,
+    "time": 81.44448946740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 76238,
+    "time": 81.44448946740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 76239,
+    "time": 81.44448946740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0097",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 76240,
+    "time": 81.44448946740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 76241,
+    "time": 81.44448946740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 76242,
+    "time": 81.44448946740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0027",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 76243,
+    "time": 81.44448946740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 76244,
+    "time": 81.44448946740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 76948,
+    "time": 82.44448946740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 78527,
+    "time": 83.84340210740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 78528,
+    "time": 83.84340210740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0097",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 78529,
+    "time": 83.84340210740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 78530,
+    "time": 83.84340210740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 78531,
+    "time": 83.84340210740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 78532,
+    "time": 83.84340210740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0027",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 78533,
+    "time": 83.84340210740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 78534,
+    "time": 83.84340210740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 80072,
+    "time": 84.84337138740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 80090,
+    "time": 84.84337138740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0097",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 80108,
+    "time": 84.84337138740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 80126,
+    "time": 84.84337138740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 80144,
+    "time": 84.84337138740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0027",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 80162,
+    "time": 84.84337138740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_input",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 80180,
+    "time": 84.84337138740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 82399,
+    "time": 87.5911966674023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 83649,
+    "time": 88.59119666740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0097",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 83652,
+    "time": 88.59119666740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 83655,
+    "time": 88.59119666740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 83658,
+    "time": 88.59119666740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0027",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 83661,
+    "time": 88.59119666740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 83664,
+    "time": 88.59119666740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "7b7c154e1d59ba40c149180ef7986cf9",
+        "kind": "reduce_result",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 83667,
+    "time": 88.59119666740231
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 98963,
+    "time": 102.1910053074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0065",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 98964,
+    "time": 102.1910053074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 98965,
+    "time": 102.1910053074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0096",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 98966,
+    "time": 102.1910053074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 98967,
+    "time": 102.1910053074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 98968,
+    "time": 102.1910053074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 98969,
+    "time": 102.1910053074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0043",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 98970,
+    "time": 102.1910053074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 100144,
+    "time": 103.1910053074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0065",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 102086,
+    "time": 104.5899077074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 102087,
+    "time": 104.5899077074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0096",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 102088,
+    "time": 104.5899077074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 102089,
+    "time": 104.5899077074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 102090,
+    "time": 104.5899077074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 102091,
+    "time": 104.5899077074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0043",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 102092,
+    "time": 104.5899077074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 102093,
+    "time": 104.5899077074023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0065",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 102942,
+    "time": 105.5898872274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 102960,
+    "time": 105.5898872274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0096",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 102978,
+    "time": 105.5898872274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 102996,
+    "time": 105.5898872274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 103014,
+    "time": 105.5898872274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 103032,
+    "time": 105.5898872274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_input",
+        "recipient": "N0043",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 103050,
+    "time": 105.5898872274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 105394,
+    "time": 108.3376920274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0065",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 105891,
+    "time": 109.3376920274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 105894,
+    "time": 109.3376920274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0096",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 105897,
+    "time": 109.3376920274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 105900,
+    "time": 109.3376920274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0009",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 105903,
+    "time": 109.3376920274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0052",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 105906,
+    "time": 109.3376920274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "d4a1bef14007ac5783ab27e604ab650d",
+        "kind": "reduce_result",
+        "recipient": "N0043",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 105909,
+    "time": 109.3376920274023
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 121690,
+    "time": 122.93750066740229
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0006",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 121691,
+    "time": 122.93750066740229
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 121692,
+    "time": 122.93750066740229
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 121693,
+    "time": 122.93750066740229
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 121694,
+    "time": 122.93750066740229
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0025",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 121695,
+    "time": 122.93750066740229
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0087",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 121696,
+    "time": 122.93750066740229
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 121697,
+    "time": 122.93750066740229
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 123573,
+    "time": 123.93750066740229
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0006",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 124493,
+    "time": 125.33641330740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 124494,
+    "time": 125.33641330740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 124495,
+    "time": 125.33641330740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 124496,
+    "time": 125.33641330740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 124497,
+    "time": 125.33641330740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0025",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 124498,
+    "time": 125.33641330740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0087",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 124499,
+    "time": 125.33641330740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 124500,
+    "time": 125.33641330740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0006",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 126384,
+    "time": 126.33638258740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 126402,
+    "time": 126.33638258740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 126420,
+    "time": 126.33638258740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 126438,
+    "time": 126.33638258740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0025",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 126456,
+    "time": 126.33638258740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0087",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 126474,
+    "time": 126.33638258740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_input",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 126492,
+    "time": 126.33638258740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 127573,
+    "time": 129.08420786740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0006",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 128233,
+    "time": 130.08420786740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 128236,
+    "time": 130.08420786740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0025",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 128239,
+    "time": 130.08420786740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0087",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 128242,
+    "time": 130.08420786740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0098",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 128245,
+    "time": 130.08420786740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 128248,
+    "time": 130.08420786740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "340af78bb3b6ffd7b13ca067cf3b396c",
+        "kind": "reduce_result",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 128251,
+    "time": 130.08420786740228
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 145408,
+    "time": 143.68397554740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0030",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 145409,
+    "time": 143.68397554740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 145410,
+    "time": 143.68397554740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 145411,
+    "time": 143.68397554740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0043",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 145412,
+    "time": 143.68397554740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 145413,
+    "time": 143.68397554740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0031",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 145414,
+    "time": 143.68397554740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0097",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 145415,
+    "time": 143.68397554740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 146139,
+    "time": 144.68397554740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 147805,
+    "time": 146.08287794740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0030",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 147806,
+    "time": 146.08287794740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 147807,
+    "time": 146.08287794740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 147808,
+    "time": 146.08287794740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0043",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 147809,
+    "time": 146.08287794740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 147810,
+    "time": 146.08287794740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0031",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 147811,
+    "time": 146.08287794740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0097",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 147812,
+    "time": 146.08287794740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0030",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 148006,
+    "time": 147.08285746740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 148024,
+    "time": 147.08285746740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0031",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 148042,
+    "time": 147.08285746740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0097",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 148060,
+    "time": 147.08285746740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0043",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 148078,
+    "time": 147.08285746740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 148096,
+    "time": 147.08285746740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_input",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 148114,
+    "time": 147.08285746740233
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 149438,
+    "time": 149.83066226740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0030",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 150445,
+    "time": 150.83066226740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 150448,
+    "time": 150.83066226740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 150451,
+    "time": 150.83066226740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0043",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 150454,
+    "time": 150.83066226740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 150457,
+    "time": 150.83066226740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0031",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 150460,
+    "time": 150.83066226740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "cf79d9ea3a19bcc63aac1b649600e107",
+        "kind": "reduce_result",
+        "recipient": "N0097",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 150463,
+    "time": 150.83066226740232
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 169586,
+    "time": 167.69270274192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0082",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 169587,
+    "time": 167.69270274192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 169588,
+    "time": 167.69270274192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0066",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 169589,
+    "time": 167.69270274192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 169590,
+    "time": 167.69270274192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 169591,
+    "time": 167.69270274192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 169592,
+    "time": 167.69270274192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 169863,
+    "time": 168.69270274192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0082",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 170266,
+    "time": 169.75605058192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 170267,
+    "time": 169.75605058192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0066",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 170268,
+    "time": 169.75605058192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 170269,
+    "time": 169.75605058192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 170270,
+    "time": 169.75605058192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 170271,
+    "time": 169.75605058192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 170272,
+    "time": 169.75605058192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 170273,
+    "time": 169.75605058192718
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0082",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 171586,
+    "time": 170.7560301019272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 171602,
+    "time": 170.7560301019272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0066",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 171618,
+    "time": 170.7560301019272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 171634,
+    "time": 170.7560301019272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 171650,
+    "time": 170.7560301019272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 171666,
+    "time": 170.7560301019272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 172087,
+    "time": 172.8327257819272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0082",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 174227,
+    "time": 173.8327257819272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 174230,
+    "time": 173.8327257819272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0066",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 174233,
+    "time": 173.8327257819272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 174236,
+    "time": 173.8327257819272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 174239,
+    "time": 173.8327257819272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 174242,
+    "time": 173.8327257819272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "input_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_input",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 177024,
+    "time": 175.65084802192717
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0000",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 179026,
+    "time": 176.77625891962415
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0082",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 179057,
+    "time": 176.8239085819272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0066",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 179060,
+    "time": 176.8265251219272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0092",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 179063,
+    "time": 176.8265251219272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0071",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 179066,
+    "time": 176.8265251219272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0011",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 179069,
+    "time": 176.8265251219272
+  },
+  {
+    "actor": "N0000",
+    "data": {
+      "hook": "result_transfer",
+      "observation": {
+        "group_id": "056dea41a165126a88f1e8f52c809b16",
+        "kind": "reduce_result",
+        "recipient": "N0083",
+        "wire_bytes": 4194432
+      },
+      "proposed": {
+        "delay_seconds": 0.0
+      },
+      "selected": {
+        "delay_seconds": 1.0
+      }
+    },
+    "kind": "policy_action",
+    "parent": null,
+    "sequence": 180082,
+    "time": 177.85165984859387
+  }
+]

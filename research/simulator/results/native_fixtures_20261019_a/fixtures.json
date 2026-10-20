@@ -1,0 +1,165 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "case": "allocation_2_17",
+      "passed": true
+    },
+    {
+      "case": "partition_2_17",
+      "passed": true
+    },
+    {
+      "case": "allocation_2_129",
+      "passed": true
+    },
+    {
+      "case": "partition_2_129",
+      "passed": true
+    },
+    {
+      "case": "allocation_2_1024",
+      "passed": true
+    },
+    {
+      "case": "partition_2_1024",
+      "passed": true
+    },
+    {
+      "case": "allocation_3_17",
+      "passed": true
+    },
+    {
+      "case": "partition_3_17",
+      "passed": true
+    },
+    {
+      "case": "allocation_3_129",
+      "passed": true
+    },
+    {
+      "case": "partition_3_129",
+      "passed": true
+    },
+    {
+      "case": "allocation_3_1024",
+      "passed": true
+    },
+    {
+      "case": "partition_3_1024",
+      "passed": true
+    },
+    {
+      "case": "allocation_4_17",
+      "passed": true
+    },
+    {
+      "case": "partition_4_17",
+      "passed": true
+    },
+    {
+      "case": "allocation_4_129",
+      "passed": true
+    },
+    {
+      "case": "partition_4_129",
+      "passed": true
+    },
+    {
+      "case": "allocation_4_1024",
+      "passed": true
+    },
+    {
+      "case": "partition_4_1024",
+      "passed": true
+    },
+    {
+      "case": "allocation_8_17",
+      "passed": true
+    },
+    {
+      "case": "partition_8_17",
+      "passed": true
+    },
+    {
+      "case": "allocation_8_129",
+      "passed": true
+    },
+    {
+      "case": "partition_8_129",
+      "passed": true
+    },
+    {
+      "case": "allocation_8_1024",
+      "passed": true
+    },
+    {
+      "case": "partition_8_1024",
+      "passed": true
+    },
+    {
+      "case": "key_0_0",
+      "passed": true
+    },
+    {
+      "case": "key_0_1",
+      "passed": true
+    },
+    {
+      "case": "key_0_2",
+      "passed": true
+    },
+    {
+      "case": "key_0_3",
+      "passed": true
+    },
+    {
+      "case": "key_1_0",
+      "passed": true
+    },
+    {
+      "case": "key_1_1",
+      "passed": true
+    },
+    {
+      "case": "key_1_2",
+      "passed": true
+    },
+    {
+      "case": "key_1_3",
+      "passed": true
+    },
+    {
+      "case": "key_4_0",
+      "passed": true
+    },
+    {
+      "case": "key_4_1",
+      "passed": true
+    },
+    {
+      "case": "key_4_2",
+      "passed": true
+    },
+    {
+      "case": "key_4_3",
+      "passed": true
+    },
+    {
+      "case": "join_valid",
+      "passed": true
+    },
+    {
+      "case": "join_schema",
+      "passed": true
+    },
+    {
+      "case": "join_full",
+      "passed": true
+    },
+    {
+      "case": "join_duplicate",
+      "passed": true
+    }
+  ]
+}

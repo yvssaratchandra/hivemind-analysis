@@ -1,0 +1,44 @@
+{
+  "allreduce_timeout": 6,
+  "bandwidth_mbps": 100.0,
+  "chunk_bytes": 128,
+  "compute_seconds": 1.5,
+  "horizon_seconds": 120.0,
+  "initial_bits": 0,
+  "initial_offset_seconds": 3,
+  "latency_seconds": 0.0,
+  "min_group_size": 2,
+  "min_matchmaking_time": 5.0,
+  "observation_seconds": 120.0,
+  "payload_bytes": 512,
+  "policies": {},
+  "population": 8,
+  "populations": [
+    8
+  ],
+  "profile": "controlled",
+  "profiles": [
+    "controlled"
+  ],
+  "protocol": "hivemind",
+  "reducer_timeout": 2,
+  "registry_latency_seconds": 0.0,
+  "request_timeout": 3.0,
+  "search_timeout": 12.0,
+  "seed": 1,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    101,
+    102,
+    103,
+    104,
+    105
+  ],
+  "sender_timeout": 1,
+  "target_group_size": 4,
+  "target_per_node": 10000
+}

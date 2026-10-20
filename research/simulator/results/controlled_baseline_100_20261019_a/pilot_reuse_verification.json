@@ -1,0 +1,8 @@
+{
+  "reviewed_pilot": "research/simulator/results/controlled_pilot_20261019_b",
+  "repeated_pilot": "research/simulator/results/controlled_pilot_20261019_c",
+  "reason": "Normalize group-size dictionary keys to strings so audit rows survive JSON serialization; simulator runtime unchanged.",
+  "identical_decoded_trace_sha256": "02dc73769fb0a21a21479f44577007534490e6b2e5bc676e863e88c74196c52e",
+  "identical_runtime_sources": true,
+  "focused_test_result": "5 passed in 0.99 s"
+}

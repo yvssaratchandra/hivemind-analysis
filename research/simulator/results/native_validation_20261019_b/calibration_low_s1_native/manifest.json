@@ -1,0 +1,117 @@
+{
+  "status": "completed",
+  "seed": 1,
+  "config": {
+    "protocol": "hivemind",
+    "population": 8,
+    "profile": "controlled",
+    "populations": [
+      8
+    ],
+    "profiles": [
+      "controlled"
+    ],
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      101,
+      102,
+      103,
+      104,
+      105
+    ],
+    "target_group_size": 4,
+    "min_group_size": 2,
+    "min_matchmaking_time": 5.0,
+    "request_timeout": 3.0,
+    "search_timeout": 12.0,
+    "allreduce_timeout": 6,
+    "sender_timeout": 1,
+    "reducer_timeout": 2,
+    "payload_bytes": 512,
+    "chunk_bytes": 128,
+    "target_per_node": 10000,
+    "observation_seconds": 120.0,
+    "horizon_seconds": 120.0,
+    "initial_bits": 0,
+    "compute_seconds": 1.5,
+    "bandwidth_mbps": 100.0,
+    "latency_seconds": 0.0,
+    "initial_offset_seconds": 3,
+    "policies": {},
+    "registry_latency_seconds": 0.0
+  },
+  "duration_seconds": 120.0,
+  "pid_namespace": "pid:[4026531836]",
+  "package": "/home/sarat/Projects/hivemind-analysis/research/simulator/.native-runtime/root_snapshot_a/hivemind",
+  "source_hashes": {
+    "averaging/matchmaking.py": "6a775570b7183d7ea231d8a3a1030a5b63a4ddaa7fa5ceaabc178e3e74ae8814",
+    "averaging/key_manager.py": "99a24f165590493016d7731fe111be7d1497e3ce695de123a806ca9722cecdc9",
+    "averaging/allreduce.py": "2a67006fc98b9683e357e4b8a805832c9bec1e81afbf1ffcc41862bb56caab05",
+    "averaging/partition.py": "8905c51826c26d18281121e760758f3a3bfc77feca351886eade13cfbe571e23",
+    "averaging/averager.py": "932a59ddb7e0933de2dc674be8480ebcdc9eb9fd713f5040a33dd0e4cca59929",
+    "hivemind_cli/p2pd": "42f8f48e62583b97cdba3c31439c08029fb2b9fc506b5bdd82c46b7cc1d279d8"
+  },
+  "generated_proto_hashes": {
+    "proto/auth_pb2.py": "18b5fee9dbc8dd5fc958749ca1b7665fc14a86443f0a60162f6713e6e143942d",
+    "proto/averaging_pb2.py": "f66cbb36528b77ac1f2c9ffbd9b255d8a7bac83c4634c33864a061c8a0a9cb91",
+    "proto/crypto_pb2.py": "43db3932910623c7e19ba43028d3d61d681576bc4bbd511c16d645af2db8d764",
+    "proto/dht_pb2.py": "11e93e7c79cbb45518ba5410e1dc11239da28a06c794bcb23dc11bfbc967e3b3",
+    "proto/p2pd_pb2.py": "2cbd461404fce517ab8dc588521eb8cd8e18e3909ee21cddba1f841e345f940d",
+    "proto/runtime_pb2.py": "8183ebedeac438e8221465a91281ab38ffb3ae34210de1bdc0a7f584b02751f5",
+    "proto/test_pb2.py": "bc30922c9878b444376ddec1b10f8fcfb78518ab161331cf527baf05086efaa5"
+  },
+  "script_sha256": "e756b46e80b593be0c0a8dc97470f708bdfec5bcbf7c7cd65b730afb99841e21",
+  "torch": "2.7.0+cpu",
+  "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]",
+  "survivors": [
+    566051
+  ],
+  "delay_scope": "DHT find/store and join legs only; no transfer shaping",
+  "peer_ids": {
+    "N0000": "002408011220f56fe9cbd741b6c9c07c8d8b67b9e6ff6ee1062a1b3839ce0863003451230dd7",
+    "N0001": "002408011220989b6cc3690e3425eabd4d89ae09fd8ea0b7841a33bd853e20f988e6077afd4a",
+    "N0002": "002408011220a23a01022b6e6a3a5204d6531e9a1f008c925e1d2fd8202f716e6a3ecbca5d24",
+    "N0003": "002408011220529e36fa082b8485eda82ee979c044cb2289f0d7681a90a50478666269900b12",
+    "N0004": "00240801122097eecb7f626a0c796f822e62bd9885c5281933bfd6b8ae0ba1f9f2890af9eea8",
+    "N0005": "00240801122061cebbc1d475b0ad2e668cc03e0b8a1a13ab66106f14663baeb484e5453e2a77",
+    "N0006": "002408011220804599486424a1fd0d5eef9fdcc30d36f03b1bab6001dc48bee5c4ed904935f2",
+    "N0007": "00240801122046b945a49d7b8eaa8a81d260ec620e48e5fa0a6fb06a2e0e1b0fb4b4285f2130"
+  },
+  "trace_start_offset": 1.682646253000712,
+  "forced_cleanup": [],
+  "cleanup_errors": [],
+  "exit_pending_helpers": [
+    566051
+  ],
+  "owned_children": {
+    "566051": 1792423455.21,
+    "566052": 1792423455.35,
+    "566073": 1792423455.47,
+    "566079": 1792423455.49,
+    "566099": 1792423455.63,
+    "566105": 1792423455.65,
+    "566124": 1792423455.78,
+    "566131": 1792423455.81,
+    "566211": 1792423455.94,
+    "566216": 1792423455.96,
+    "566238": 1792423456.11,
+    "566243": 1792423456.14,
+    "566265": 1792423456.29,
+    "566270": 1792423456.31,
+    "566293": 1792423456.45,
+    "566297": 1792423456.47,
+    "566319": 1792423456.61,
+    "566298": 1792423456.49,
+    "566271": 1792423456.33,
+    "566244": 1792423456.16,
+    "566217": 1792423455.98,
+    "566189": 1792423455.83,
+    "566106": 1792423455.67,
+    "566080": 1792423455.51,
+    "566053": 1792423455.36
+  }
+}

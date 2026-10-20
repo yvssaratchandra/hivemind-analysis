@@ -1,0 +1,85 @@
+Mon Oct 19 18:37:01 2026    research/simulator/results/profile_cost_20261019_a/n1000.prof
+
+         198408878 function calls (183514569 primitive calls) in 52.045 seconds
+
+   Ordered by: cumulative time
+   List reduced from 1770 to 40 due to restriction <40>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+    191/1    0.005    0.000   52.207   52.207 {built-in method builtins.exec}
+        1    0.000    0.000   52.207   52.207 <string>:1(<module>)
+        1    0.000    0.000   52.207   52.207 <frozen runpy>:201(run_module)
+        1    0.000    0.000   52.206   52.206 <frozen runpy>:65(_run_code)
+        1    0.000    0.000   52.206   52.206 __main__.py:1(<module>)
+        1    0.001    0.001   52.192   52.192 cli.py:9(main)
+        1    0.002    0.002   52.163   52.163 runner.py:49(run)
+        1    0.629    0.629   42.621   42.621 engine.py:67(run)
+  1292250    0.589    0.000   41.587    0.000 core.py:181(step)
+   890902    0.613    0.000   40.119    0.000 events.py:387(_resume)
+   890902    0.327    0.000   39.237    0.000 {method 'send' of 'generator' objects}
+   890902    0.262    0.000   38.910    0.000 engine.py:46(waiter)
+    39724    0.085    0.000   33.197    0.001 network.py:352(_deliver)
+    38060    0.019    0.000   29.217    0.001 adapter.py:677(<lambda>)
+    38060    0.043    0.000   29.199    0.001 adapter.py:89(on_message)
+    43820    0.243    0.000   23.247    0.001 network.py:89(send)
+    42148    0.025    0.000   21.938    0.001 adapter.py:675(_network_send)
+    37952    0.059    0.000   21.353    0.001 adapter.py:654(send_group_message)
+    54009    1.532    0.000   21.250    0.000 network.py:198(_reallocate)
+478974/477034    0.953    0.000   19.271    0.000 observer.py:89(emit)
+    17792    0.010    0.000   17.952    0.001 adapter.py:527(_on_reduce_input)
+    17792    0.093    0.000   17.941    0.001 allreduce.py:144(input_received)
+    19240    0.077    0.000   17.185    0.001 allreduce.py:328(_advance_reducer)
+4354762/478974    3.404    0.000   13.595    0.000 observer.py:15(_value)
+   238517    0.200    0.000   12.539    0.000 engine.py:87(emit)
+   238517    0.197    0.000   12.273    0.000 runner.py:79(emit)
+    36736    0.057    0.000   11.715    0.000 allreduce.py:380(_send_next_output)
+594098/478974    0.646    0.000   10.848    0.000 observer.py:24(<dictcomp>)
+   155007    0.156    0.000   10.011    0.000 allreduce.py:295(_send_next_input)
+        1    0.001    0.001    9.187    9.187 runner.py:140(analyze)
+    47256    6.360    0.000    9.104    0.000 network.py:369(_max_min_rates)
+        1    0.567    0.567    8.898    8.898 report.py:20(analyze_trace)
+46821774/37996682    2.730    0.000    8.104    0.000 {built-in method builtins.isinstance}
+     1448    0.014    0.000    5.981    0.004 allreduce.py:96(start_member)
+  4412546    1.450    0.000    5.709    0.000 typing.py:1327(__instancecheck__)
+     1262    0.008    0.000    5.699    0.005 adapter.py:500(_on_begin_allreduce)
+   392542    0.912    0.000    4.300    0.000 network.py:251(_schedule_completion)
+  4412546    1.231    0.000    4.259    0.000 typing.py:1602(__subclasscheck__)
+    16072    0.011    0.000    4.099    0.000 adapter.py:532(_on_reduce_result)
+    16072    0.188    0.000    4.087    0.000 allreduce.py:193(result_received)
+
+
+Mon Oct 19 18:37:01 2026    research/simulator/results/profile_cost_20261019_a/n1000.prof
+
+         198408878 function calls (183514569 primitive calls) in 52.045 seconds
+
+   Ordered by: internal time
+   List reduced from 1770 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+    47256    6.360    0.000    9.104    0.000 network.py:369(_max_min_rates)
+4354762/478974    3.404    0.000   13.595    0.000 observer.py:15(_value)
+46821774/37996682    2.730    0.000    8.104    0.000 {built-in method builtins.isinstance}
+    54009    2.310    0.000    3.285    0.000 network.py:304(_connected_component)
+   489555    1.835    0.000    3.875    0.000 engine.py:34(schedule)
+  4413585    1.761    0.000    2.691    0.000 {built-in method builtins.issubclass}
+  5847116    1.744    0.000    1.746    0.000 {built-in method builtins.hasattr}
+    54009    1.532    0.000   21.250    0.000 network.py:198(_reallocate)
+  4412546    1.450    0.000    5.709    0.000 typing.py:1327(__instancecheck__)
+  4412546    1.231    0.000    4.259    0.000 typing.py:1602(__subclasscheck__)
+    20928    1.026    0.000    1.261    0.000 allreduce.py:420(_reset_input_timer)
+  4411546    1.017    0.000    1.798    0.000 dataclasses.py:1258(is_dataclass)
+     8598    0.998    0.000    0.998    0.000 {method 'compress' of 'zlib.Compress' objects}
+   250208    0.995    0.000    0.995    0.000 encoder.py:205(iterencode)
+478974/477034    0.953    0.000   19.271    0.000 observer.py:89(emit)
+   392542    0.912    0.000    4.300    0.000 network.py:251(_schedule_completion)
+  1292250    0.879    0.000    0.879    0.000 {built-in method _heapq.heappop}
+  4385835    0.710    0.000    0.710    0.000 {built-in method builtins.max}
+823859/88957    0.704    0.000    1.742    0.000 dataclasses.py:1289(_asdict_inner)
+     1928    0.684    0.000    1.493    0.001 observer.py:263(_on_aggregate_result)
+594098/478974    0.646    0.000   10.848    0.000 observer.py:24(<dictcomp>)
+  3547168    0.645    0.000    0.842    0.000 engine.py:29(now)
+        1    0.629    0.629   42.621   42.621 engine.py:67(run)
+   890902    0.613    0.000   40.119    0.000 events.py:387(_resume)
+  1292250    0.589    0.000   41.587    0.000 core.py:181(step)
+
+

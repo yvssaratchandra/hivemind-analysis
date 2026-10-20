@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "audited_seeds": 20,
+  "raw_accepted_total": 15965.0,
+  "all_evidence_hashes_match": true,
+  "partial_occurrences": 0,
+  "failed_work_attempts": 6,
+  "seeds_with_failed_attempts": [
+    5,
+    8,
+    20
+  ],
+  "failure_events": [
+    {
+      "seed": 5,
+      "node": "N0077",
+      "work_id": "N0077:4",
+      "time": 109.1522780774335,
+      "elapsed_since_ready": 12.0,
+      "last_phase": "searching",
+      "matches_12s_search_deadline": true
+    },
+    {
+      "seed": 8,
+      "node": "N0017",
+      "work_id": "N0017:0",
+      "time": 31.84014570317151,
+      "elapsed_since_ready": 12.0,
+      "last_phase": "searching",
+      "matches_12s_search_deadline": true
+    },
+    {
+      "seed": 8,
+      "node": "N0054",
+      "work_id": "N0054:2",
+      "time": 70.80386045648315,
+      "elapsed_since_ready": 12.0,
+      "last_phase": "searching",
+      "matches_12s_search_deadline": true
+    },
+    {
+      "seed": 8,
+      "node": "N0076",
+      "work_id": "N0076:5",
+      "time": 130.24420877824133,
+      "elapsed_since_ready": 12.0,
+      "last_phase": "searching",
+      "matches_12s_search_deadline": true
+    },
+    {
+      "seed": 20,
+      "node": "N0090",
+      "work_id": "N0090:0",
+      "time": 31.90413850569648,
+      "elapsed_since_ready": 12.0,
+      "last_phase": "searching",
+      "matches_12s_search_deadline": true
+    },
+    {
+      "seed": 20,
+      "node": "N0060",
+      "work_id": "N0060:6",
+      "time": 150.5471219360076,
+      "elapsed_since_ready": 12.0,
+      "last_phase": "searching",
+      "matches_12s_search_deadline": true
+    }
+  ]
+}

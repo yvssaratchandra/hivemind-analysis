@@ -1,0 +1,65 @@
+{
+  "status": "completed",
+  "seed": 1,
+  "config": {
+    "protocol": "hivemind",
+    "population": 8,
+    "profile": "controlled",
+    "populations": [
+      8
+    ],
+    "profiles": [
+      "controlled"
+    ],
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      101,
+      102,
+      103,
+      104,
+      105
+    ],
+    "target_group_size": 4,
+    "min_group_size": 2,
+    "min_matchmaking_time": 5.0,
+    "request_timeout": 3.0,
+    "search_timeout": 12.0,
+    "allreduce_timeout": 6,
+    "sender_timeout": 1,
+    "reducer_timeout": 2,
+    "payload_bytes": 512,
+    "chunk_bytes": 128,
+    "target_per_node": 10000,
+    "observation_seconds": 120,
+    "horizon_seconds": 120,
+    "initial_bits": 0,
+    "compute_seconds": 1.5,
+    "bandwidth_mbps": 100.0,
+    "latency_seconds": 0.0,
+    "initial_offset_seconds": 3,
+    "policies": {},
+    "registry_latency_seconds": 0.0
+  },
+  "duration_seconds": 120,
+  "package": "/home/sarat/Projects/hivemind-analysis/research/simulator/.native-runtime/root_snapshot_a/hivemind",
+  "source_hashes": {
+    "averaging/matchmaking.py": "6a775570b7183d7ea231d8a3a1030a5b63a4ddaa7fa5ceaabc178e3e74ae8814",
+    "averaging/key_manager.py": "99a24f165590493016d7731fe111be7d1497e3ce695de123a806ca9722cecdc9",
+    "averaging/allreduce.py": "2a67006fc98b9683e357e4b8a805832c9bec1e81afbf1ffcc41862bb56caab05",
+    "averaging/partition.py": "8905c51826c26d18281121e760758f3a3bfc77feca351886eade13cfbe571e23",
+    "averaging/averager.py": "932a59ddb7e0933de2dc674be8480ebcdc9eb9fd713f5040a33dd0e4cca59929",
+    "hivemind_cli/p2pd": "42f8f48e62583b97cdba3c31439c08029fb2b9fc506b5bdd82c46b7cc1d279d8"
+  },
+  "script_sha256": "594e5eed6a9ea89613f14481511e6064bc72f86ffcae6ef259da773bf0f4c4bc",
+  "torch": "2.7.0+cpu",
+  "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]",
+  "survivors": [
+    485824
+  ],
+  "delay_scope": "DHT find/store and join legs only; no transfer shaping",
+  "trace_start_offset": 1.339724806999584
+}

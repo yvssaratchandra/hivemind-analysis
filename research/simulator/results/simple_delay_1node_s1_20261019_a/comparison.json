@@ -1,0 +1,61 @@
+{
+  "controlled_nodes": [
+    "N0000"
+  ],
+  "delay_seconds": 1,
+  "honest_credit_reduction_fraction": 0.026751592356687892,
+  "honest_peers_sharing_attacker_roster": 21,
+  "metrics": [
+    {
+      "attack": 120.94354814150375,
+      "baseline": 120.84321399586273,
+      "difference": 0.10033414564102827,
+      "metric": "Time to 500 credits (simulated s)"
+    },
+    {
+      "attack": 771.0,
+      "baseline": 793.0,
+      "difference": -22.0,
+      "metric": "All credits by 180 s"
+    },
+    {
+      "attack": 764.0,
+      "baseline": 785.0,
+      "difference": -21.0,
+      "metric": "Honest-node credits by 180 s (same 99 nodes)"
+    },
+    {
+      "attack": 7.0,
+      "baseline": 8.0,
+      "difference": -1.0,
+      "metric": "N0000 credits by 180 s"
+    },
+    {
+      "attack": 112,
+      "baseline": 118,
+      "difference": -6,
+      "metric": "Groups formed by 180 s"
+    },
+    {
+      "attack": 0,
+      "baseline": 0,
+      "difference": 0,
+      "metric": "Nodes without credit by 180 s"
+    },
+    {
+      "attack": 0,
+      "baseline": 0,
+      "difference": 0,
+      "metric": "Failed work attempts by 180 s"
+    },
+    {
+      "attack": 9.846605018022046,
+      "baseline": 9.846629549010927,
+      "difference": -2.4530988881110716e-05,
+      "metric": "Median ready-to-credit wait (s)"
+    }
+  ],
+  "policy_actions_in_window": 261,
+  "seed": 1,
+  "target_time_increase_fraction": 0.0008302836570075467
+}
