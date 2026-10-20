@@ -1,0 +1,44 @@
+{
+  "condition": "control3",
+  "seed": 1,
+  "active": [
+    "B",
+    "D",
+    "C"
+  ],
+  "tensor_shape": [
+    48,
+    9
+  ],
+  "chunk_bytes": 144,
+  "mode": "NODE",
+  "weight": 1,
+  "bandwidth": null,
+  "sender_timeout": 5,
+  "reducer_timeout": 10,
+  "allreduce_timeout": 30,
+  "step_timeout": 45,
+  "target_group_size": 4,
+  "min_group_size": 3,
+  "caching": "native defaults",
+  "artificial_delay": false,
+  "allow_retries": false,
+  "cache_defaults": {
+    "cache_locally": true,
+    "cache_nearest": 1,
+    "cache_size": null,
+    "cache_refresh_before_expiry": 5,
+    "cache_on_store": true,
+    "reuse_get_requests": true
+  },
+  "prefix": "announce_409f32d63c2f4b19a631752e3aeaa0dd_control3",
+  "fixture": "B-only canonical assembly order; native registration and key update",
+  "request_timeout": 3,
+  "min_matchmaking_time": 5,
+  "condition_cap_seconds": 120,
+  "readiness_offsets": {
+    "D": 0.22099355326419992,
+    "C": 0.08929884170331484
+  },
+  "B_scheduled_time": 1792504988.3020089
+}

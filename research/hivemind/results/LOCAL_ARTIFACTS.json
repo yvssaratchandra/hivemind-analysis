@@ -2,6 +2,206 @@
   "description": "Raw traces, bulky analysis outputs, frozen harness/dependency copies and bundled executables retained locally and omitted from Git. Paths are relative to this results directory. Reports and compact evidence are tracked; full raw replay/resume requires these original local artifacts. No artifacts were deleted or modified.",
   "files": [
     {
+      "path": "announcement_s1_20261020_c/analysis.json",
+      "bytes": 288118,
+      "sha256": "93f7169bb9dfa4c83026a3dba2961ed7a2083be4b45e36b11cc6d9c82cbdae45"
+    },
+    {
+      "path": "announcement_s1_20261020_c/baseline4.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "announcement_s1_20261020_c/baseline4/analysis.json",
+      "bytes": 65750,
+      "sha256": "d0f396149c7573a1462a866a0e44954e29aadeed0eb4a835c4a9810a7c1de737"
+    },
+    {
+      "path": "announcement_s1_20261020_c/baseline4/controller.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "announcement_s1_20261020_c/baseline4/events_A.jsonl",
+      "bytes": 18021,
+      "sha256": "8ca25f6ada98a5235c7a86f4196c8268e58f40431d7c2201355880a28534f248"
+    },
+    {
+      "path": "announcement_s1_20261020_c/baseline4/events_B.jsonl",
+      "bytes": 20162,
+      "sha256": "f49380fcd48741759d056cdb7ce382033360a7fd5c45aa6ec1768fc2bd719403"
+    },
+    {
+      "path": "announcement_s1_20261020_c/baseline4/events_C.jsonl",
+      "bytes": 18137,
+      "sha256": "75a89dea65b499f0a3d3262716fb93a28d81cab795e2b97e2a3614453308fa10"
+    },
+    {
+      "path": "announcement_s1_20261020_c/baseline4/events_D.jsonl",
+      "bytes": 17985,
+      "sha256": "4a26229e5779d6c663adb114979244e80303e8c958cec77174db2657455854ef"
+    },
+    {
+      "path": "announcement_s1_20261020_c/baseline4/outputs.json",
+      "bytes": 54118,
+      "sha256": "be1afb63d2ed71f9c72df77f0431bcb930c75781b448c96efc5281760330702e"
+    },
+    {
+      "path": "announcement_s1_20261020_c/baseline4/sources.tar.gz",
+      "bytes": 68722,
+      "sha256": "2794d4370416613a006ac77ef7bf4746e986a411c486613f0893671ce865777c"
+    },
+    {
+      "path": "announcement_s1_20261020_c/control3.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "announcement_s1_20261020_c/control3/analysis.json",
+      "bytes": 45174,
+      "sha256": "da993f360d0adcd98a1c83282c59793b4037a4ce8ee6abd14d8cba8693c0735d"
+    },
+    {
+      "path": "announcement_s1_20261020_c/control3/controller.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "announcement_s1_20261020_c/control3/events_A.jsonl",
+      "bytes": 181,
+      "sha256": "1558d3c5307f837e57e1c27d6d8130268c946f333f28b265cebd3ffe3f487a39"
+    },
+    {
+      "path": "announcement_s1_20261020_c/control3/events_B.jsonl",
+      "bytes": 23953,
+      "sha256": "8d90e7695254f1166c86e719108c80015e27a14a791cde2a5d668ec547317764"
+    },
+    {
+      "path": "announcement_s1_20261020_c/control3/events_C.jsonl",
+      "bytes": 22726,
+      "sha256": "f924973c576a24a6f8b76dbb0be805f57c98a999745e3789cd9a623a739db80d"
+    },
+    {
+      "path": "announcement_s1_20261020_c/control3/events_D.jsonl",
+      "bytes": 22729,
+      "sha256": "2a8db444b29c62af8ef65b3a4c11e308fdea295e77f16fbf418c0376b9274dc5"
+    },
+    {
+      "path": "announcement_s1_20261020_c/control3/outputs.json",
+      "bytes": 65245,
+      "sha256": "1838c68f988a905d5dcb64d1ef3cfdd3bca0b652d9be6ae89f50cbce81c90dfb"
+    },
+    {
+      "path": "announcement_s1_20261020_c/control3/sources.tar.gz",
+      "bytes": 68722,
+      "sha256": "cb0a0cddc15af899caf724a175c4629681f84a7e0be283df54582ea153475cda"
+    },
+    {
+      "path": "announcement_s1_20261020_c/harness/analyze_announcement_probe.py",
+      "bytes": 112361,
+      "sha256": "37653a857c5bee7d2b5168d6ab56a15d097f1753f45e8e24e4e56a9ea6284008"
+    },
+    {
+      "path": "announcement_s1_20261020_c/harness/announcement_probe.py",
+      "bytes": 29987,
+      "sha256": "70193b3b17c9776b6d54ad93da4842f11344f7fd3fc47ecc023af398d7a255e2"
+    },
+    {
+      "path": "announcement_s1_20261020_c/harness/test_announcement_probe.py",
+      "bytes": 46291,
+      "sha256": "da4e6c72c6f8b9d029f6b65a307e9f9f71e15ef3b5fd758d5be54ac4bcfef2a9"
+    },
+    {
+      "path": "announcement_s1_20261020_c/membership.log",
+      "bytes": 4324,
+      "sha256": "35076c060e8ad7274f3169cc03f924103842a33ac204c47fffa6d873319a6395"
+    },
+    {
+      "path": "announcement_s1_20261020_c/membership/analysis.json",
+      "bytes": 62255,
+      "sha256": "b3ae9e86b67ad0f878c2bbd9d87e0018eb8cee9d93f5494be98413e2c0090086"
+    },
+    {
+      "path": "announcement_s1_20261020_c/membership/controller.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "announcement_s1_20261020_c/membership/events_A.jsonl",
+      "bytes": 7896,
+      "sha256": "d2aa1e0401d323f4e272418c84196c5dbcf7c7b942df86cb25cd751c6527068a"
+    },
+    {
+      "path": "announcement_s1_20261020_c/membership/events_B.jsonl",
+      "bytes": 25639,
+      "sha256": "c5d689785ecb640eb72e212254b01e447709c2e777df78689ba22ff7dc74882f"
+    },
+    {
+      "path": "announcement_s1_20261020_c/membership/events_C.jsonl",
+      "bytes": 23564,
+      "sha256": "14eb76c57a8872794b6b795c04d61773bc7ba2954ad132e8ab88a7fa07ea2ab9"
+    },
+    {
+      "path": "announcement_s1_20261020_c/membership/events_D.jsonl",
+      "bytes": 23564,
+      "sha256": "df7cb8bcf417810ce3e1ee8cbadb8e302a6b34db436192c4995b8c64427afb0a"
+    },
+    {
+      "path": "announcement_s1_20261020_c/membership/outputs.json",
+      "bytes": 65416,
+      "sha256": "ec09c6721cc496ad110e8da3a4c36495ab1c77f4c8760e5a98626c9490b484bb"
+    },
+    {
+      "path": "announcement_s1_20261020_c/membership/sources.tar.gz",
+      "bytes": 68722,
+      "sha256": "1a2fa033a46512c11a46960a24ec1c8108332dc37e31ec3554c6e8ebc874070c"
+    },
+    {
+      "path": "announcement_s1_20261020_c/ordering.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "announcement_s1_20261020_c/ordering/analysis.json",
+      "bytes": 65669,
+      "sha256": "8593cdcf655343abab824f2c1363c675314146536cf8facd6eb3e9d1df6db766"
+    },
+    {
+      "path": "announcement_s1_20261020_c/ordering/controller.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "announcement_s1_20261020_c/ordering/events_A.jsonl",
+      "bytes": 18025,
+      "sha256": "d496d5b28067bffbfba09bcbcedcdb27191d12740831a246cabd307a642d6a1c"
+    },
+    {
+      "path": "announcement_s1_20261020_c/ordering/events_B.jsonl",
+      "bytes": 20175,
+      "sha256": "5fe91b3c5afcd631ac169d595b0f786479823d10c7aef3c9303193925c2a0e84"
+    },
+    {
+      "path": "announcement_s1_20261020_c/ordering/events_C.jsonl",
+      "bytes": 18138,
+      "sha256": "c20b23b0d13ceff4077794097604fa76be6c71fcba898325e48a7362c71dfd61"
+    },
+    {
+      "path": "announcement_s1_20261020_c/ordering/events_D.jsonl",
+      "bytes": 17990,
+      "sha256": "6c6776cb42caa87f4b5edab3fd18d1afb5e0d62dc710fa324273313bbd7ce211"
+    },
+    {
+      "path": "announcement_s1_20261020_c/ordering/outputs.json",
+      "bytes": 54114,
+      "sha256": "0caa54191986a76862acf4a0401a9c3f8959e1c4b0796040fe5400ea0a7b3d68"
+    },
+    {
+      "path": "announcement_s1_20261020_c/ordering/sources.tar.gz",
+      "bytes": 68722,
+      "sha256": "27d91cdc3f00610362e5373abcd7f43d668feb6b8a27d779251bfc1dbf890eff"
+    },
+    {
       "path": "step23_confirm_20261008_a/harness/analyze_step23.py",
       "bytes": 16481,
       "sha256": "894427416dc32f8c34ff048576732d08e59e9e5ad2ab21af6401e93d6c1bd14b"

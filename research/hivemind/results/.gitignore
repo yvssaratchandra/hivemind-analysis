@@ -1374,3 +1374,14 @@
 
 # Additional frozen native dependency copies.
 **/native_source/
+
+# Announcement probe: bulky per-condition tensors and bundled source snapshots
+# (hashes are in each condition provenance.json and in LOCAL_ARTIFACTS.json).
+announcement_s1_*/*/outputs.json
+announcement_s1_*/*/sources.tar.gz
+
+# Superseded same-session announcement intermediates kept local only:
+# _a = initial run that hit the native teardown broken-pipe abort (now fixed);
+# _b = first clean run analyzed with the pre-fix analyzer. _c is authoritative.
+/announcement_s1_20261020_a/
+/announcement_s1_20261020_b/

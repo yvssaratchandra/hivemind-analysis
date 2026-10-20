@@ -1205,6 +1205,22 @@ optimal frequency. See the report and its matched controls before extrapolating.
 - **Next step.** Move to routing-table flooding, the third presentation track. A defence should make
   the ordered roster independently derivable or bind it into a transcript/group identifier that peers
   cross-check; a leader signature alone is insufficient because the leader is the equivocator.
+- **Follow-up (2026-10-20, `announcement_probe.py`).** A four-node loopback probe
+  re-ran this with embedded origin/coordinate markers, a designated leader B, a
+  single victim A, and a legitimate three-member control, under one averaging step
+  per node (`results/announcement_s1_20261020_c`, seed 1). It reproduces the
+  ordering result with explicit markers — A announced `[A,D,B,C]` vs `[B,D,A,C]`
+  for B,D,C, all four `success`, **coordinate markers wrong for all four**, no node
+  at the true mean (max error 6 at B,D,C, 18 at A) — and adds a **membership
+  omission** arm: B announces `[B,D,C]` to D,C and aggregates `[B,D,C]` but
+  announces `[B,D,A,C]` to A. B,D,C compute the correct three-member mean with A
+  absent from all 48 rows (**clean exclusion**); A's chunks are rejected by B,D,C's
+  reducers (`ValueError('<peer id> is not in list')`), it bans them, hits
+  `missing_part_fallback` for its whole share, and **falls back to its own local
+  value while returning `success`** (output 50 off the true mean). So beyond silent
+  corruption, an omitting leader can cleanly drop a participant from the aggregate
+  and silently isolate it. Controls match the independent mean to ≤ 5.1e-6; all
+  conditions shut down cleanly. See `ANNOUNCEMENT_PROBE.md` and HANDOFF §4.17.
 
 ### C15.S — Checkpoint 15, Select: does re-forming groups shed the attacker?
 

@@ -3,7 +3,13 @@
 Everything a new session needs: what the project is, where it stands, what is known, and what to do
 next. Written to be read without any prior conversation.
 
-Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-10-13
+Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-10-20
+
+**Latest experiment (2026-10-20):** native inconsistent-announcement probe — see §4.17 and
+`ANNOUNCEMENT_PROBE.md`. Four-condition loopback set `results/announcement_s1_20261020_c` (seed 1):
+ordering equivocation silently corrupts the whole group's coordinates; membership omission cleanly
+excludes the victim from the B,D,C mean and silently isolates it to a local fallback. 28 analyzer
+unit tests + 16 subtests pass.
 
 **Layout note (updated 2026-10-07):** Hivemind research is under `research/hivemind/`; its source
 remains unchanged at the repository-root `hivemind/`. Exo research is under `research/exo/`, with
@@ -2161,6 +2167,44 @@ already assumes rather than adding attacks — except the third, which is a nega
   the attacker must produce. Measured: 5 crafted nodes at K, K^1…K^4 took **5/5 replicas, 0/6 honest**.
   Contrast with S/Kademlia puzzles, where the ID *is* constrained to be a hash output and proximity
   genuinely costs work.
+
+### 4.17 Inconsistent announcements: ordering silently corrupts, membership omission cleanly excludes and isolates
+
+`announcement_probe.py` is a native four-node loopback probe (seed 1,
+`results/announcement_s1_20261020_c`) that extends the Step 16/17 roster
+equivocation with a targeted victim (A), a legitimate three-member control, and
+embedded origin/coordinate markers (one float32 48×9 tensor per node; data lane,
+four one-hot origin lanes, four origin-scaled coordinate lanes). B is the leader
+by earlier readiness/expiration; its only fixture is replacing the random
+assembly shuffle with a canonical order. Native follower code is observed, not
+patched. Four conditions, one averaging step each, all shut down cleanly:
+
+- **Controls reproduce correct arithmetic.** Four-member and three-member
+  (A idle) runs both match the independently computed mean to ≤ 5.1e-6; markers
+  confirm the right contributors and coordinate ranges.
+- **Ordering equivocation silently corrupts the whole group.** A received
+  `[A,D,B,C]` while B,D,C received `[B,D,A,C]`. All four returned `success` with
+  complete streams, but every node's coordinate markers are wrong and no node
+  matches the true mean (max error 6 at B,D,C, 18 at A); A agrees with nobody.
+  This confirms §4 roster equivocation's coordinate-mixing with explicit markers
+  and extends it to a single-victim ordering twist.
+- **Membership omission cleanly excludes *and* silently isolates the victim.**
+  B announced `[B,D,C]` to D,C and aggregated as `[B,D,C]`, but announced
+  `[B,D,A,C]` to A. B,D,C computed the correct three-member mean with A absent
+  from all 48 rows — a clean exclusion backed by markers, complete streams, and
+  no fallback. A, believing itself in a four-member group, had its chunks
+  rejected by B,D,C's reducers (native `ValueError('<peer id> is not in list')`),
+  banned them, hit `missing_part_fallback` for its entire share, and **fell back
+  to its own local value while still returning `success`** (output 50 off the
+  true mean). The excluded victim is silently isolated, not errored.
+
+**Scope.** These are single local runs under fixed timeouts, not deployment
+rates; they establish the native behaviours a later simulator extension must
+reproduce, and make no claim about public-WAN success, leadership-capture
+probability, or convergence. A native `success` that is a recorded fallback is
+treated as valid evidence of a degraded outcome, not a clean average. Raw traces,
+inputs/outputs, source hashes, and process-exit evidence are preserved locally
+(see `ANNOUNCEMENT_PROBE.md` and `results/LOCAL_ARTIFACTS.json`).
 
 ---
 
