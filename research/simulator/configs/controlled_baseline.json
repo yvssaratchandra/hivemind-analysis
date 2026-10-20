@@ -1,0 +1,18 @@
+{
+  "population": 100,
+  "profile": "controlled",
+  "populations": [100],
+  "profiles": ["controlled"],
+  "seeds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+  "compute_seconds": 10.0,
+  "bandwidth_mbps": 100.0,
+  "latency_seconds": 0.025,
+  "registry_latency_seconds": 0.025,
+  "initial_offset_seconds": 10.0,
+  "payload_bytes": 67108864,
+  "chunk_bytes": 4194304,
+  "target_per_node": 5,
+  "observation_seconds": 180.0,
+  "horizon_seconds": 600.0,
+  "policies": {}
+}

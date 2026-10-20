@@ -1,0 +1,22 @@
+{
+  "population": 8,
+  "profile": "controlled",
+  "populations": [8],
+  "profiles": ["controlled"],
+  "target_group_size": 4,
+  "min_group_size": 2,
+  "initial_bits": 0,
+  "payload_bytes": 512,
+  "chunk_bytes": 128,
+  "compute_seconds": 1.5,
+  "initial_offset_seconds": 3,
+  "latency_seconds": 0.0,
+  "registry_latency_seconds": 0.0,
+  "observation_seconds": 120,
+  "horizon_seconds": 120,
+  "target_per_node": 10000,
+  "allreduce_timeout": 6,
+  "sender_timeout": 1,
+  "reducer_timeout": 2,
+  "seeds": [1, 2, 3, 4, 5, 101, 102, 103, 104, 105]
+}
