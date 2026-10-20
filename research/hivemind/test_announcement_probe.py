@@ -245,6 +245,95 @@ def _condition_artifacts(path: Path, condition: str, *, fallback_b: bool = False
     (path / "shutdown.json").write_text(json.dumps({"safe": True, "surviving_pids": []}), encoding="utf-8")
 
 
+def _enable_native_shape_victim_fallback(path: Path) -> None:
+    """Turn the membership fixture's failed A operation into the recorded native fallback shape."""
+    outputs_path = path / "outputs.json"
+    outputs = json.loads(outputs_path.read_text(encoding="utf-8"))
+    outputs["A"].update(
+        status="success",
+        error=None,
+        final=outputs["A"]["initial"],
+        elapsed_seconds=6.0,
+        failed_size=324,
+        failed_peer_ids=["D", "C", "B"],
+        banned_senders=["B", "D", "C"],
+    )
+    outputs_path.write_text(json.dumps(outputs), encoding="utf-8")
+
+    events_path = path / "events_0.jsonl"
+    events = [json.loads(line) for line in events_path.read_text(encoding="utf-8").splitlines()]
+    group_id = next(event["native_group_id"] for event in events if event.get("kind") == "allocation" and event.get("node") == "A")
+    rewritten = []
+    for event in events:
+        if event.get("node") == "A" and event.get("kind") == "runner_finalized":
+            event = {
+                **event,
+                "time": 2.0,
+                "failed_size": 324,
+                "failed_peer_ids": ["D", "C", "B"],
+                "banned_senders": ["B", "D", "C"],
+            }
+        elif event.get("node") == "A" and event.get("kind") == "averaging_terminal":
+            event = {
+                **event,
+                "time": 2.1,
+                "status": "success",
+                "failed_size": 324,
+                "failed_peer_ids": ["D", "C", "B"],
+                "banned_senders": ["B", "D", "C"],
+            }
+        rewritten.append(event)
+
+    # Remote participants reject A's stream because their recipient rosters omit
+    # it. Keep the actual direction and lifecycle so the fallback is traceable.
+    for reducer in ("B", "D", "C"):
+        stream_id = f"{group_id}:A->{reducer}"
+        for kind, timestamp, extra in (
+            ("stream_started", 0.90, {}),
+            ("stream_error", 0.91, {"error": "rejected sender is not in reducer roster"}),
+            ("stream_closed", 0.92, {}),
+        ):
+            rewritten.append({
+                "kind": kind,
+                "node": reducer,
+                "time": timestamp,
+                "pid": 101 + NODES.index(reducer),
+                "sender": "A",
+                "receiver": reducer,
+                "stream_id": stream_id,
+                "native_group_id": group_id,
+                **extra,
+            })
+
+    # Each remote reducer's three 36-element output parts fall back to zero.
+    # After the three senders are banned, A's own three parts are processed as a
+    # local-only mean, also yielding zero correction.
+    for reducer in ("D", "C", "B"):
+        rewritten.append({
+            "kind": "missing_part_fallback", "node": "A", "time": 1.70,
+            "pid": 102, "reducer": reducer, "registered_parts": 0,
+            "native_group_id": group_id,
+        })
+        for part_index in range(3):
+            rewritten.append({
+                "kind": "processed_chunk", "node": "A", "time": 1.71 + part_index / 1000,
+                "pid": 102, "reducer": reducer, "part_index": part_index,
+                "values": [0.0] * 36, "native_group_id": group_id,
+            })
+    for sender in ("B", "D", "C"):
+        rewritten.append({
+            "kind": "sender_banned", "node": "A", "time": 1.85,
+            "pid": 102, "sender": sender, "native_group_id": group_id,
+        })
+    for part_index in range(3):
+        rewritten.append({
+            "kind": "processed_chunk", "node": "A", "time": 1.90 + part_index / 1000,
+            "pid": 102, "reducer": "A", "part_index": part_index,
+            "values": [0.0] * 36, "native_group_id": group_id,
+        })
+    events_path.write_text("".join(json.dumps(event) + "\n" for event in rewritten), encoding="utf-8")
+
+
 class AnnouncementProbeAnalyzerTests(unittest.TestCase):
     def test_output_mean_and_provenance_use_saved_inputs(self) -> None:
         initial = {node: _input_tensor(node) for node in NODES}
@@ -303,43 +392,94 @@ class AnnouncementProbeAnalyzerTests(unittest.TestCase):
             self.assertEqual(result["evidence"]["local_aggregation_rosters"]["B"], ["B", "D", "C"])
 
     def test_membership_victim_local_fallback_is_a_valid_confirmed_finding(self) -> None:
-        # Observed native behavior: the excluded victim A does not error. Its reducers
-        # reject A's chunks ("not in list"), A bans them and falls back to its own
-        # local value, yet the native step still returns success. That fully recorded
-        # fallback is valid evidence of a degraded outcome, not missing evidence, so
-        # the condition stays valid and the attack is still confirmed.
+        # The native fallback still has to reconstruct A's saved output, and the
+        # local-only mean is accepted only after matching sender-ban events.
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "membership"
             _condition_artifacts(path, "membership")
-            banned = ["B", "D", "C"]
-            outputs = json.loads((path / "outputs.json").read_text(encoding="utf-8"))
-            outputs["A"].update(status="success", error=None, final=outputs["A"]["initial"],
-                                failed_size=324, failed_peer_ids=banned, banned_senders=banned)
-            (path / "outputs.json").write_text(json.dumps(outputs), encoding="utf-8")
-            events_path = path / "events_0.jsonl"
-            events = [json.loads(line) for line in events_path.read_text(encoding="utf-8").splitlines()]
-            group_id = next(event["native_group_id"] for event in events if "native_group_id" in event)
-            rewritten = []
-            for event in events:
-                if event["node"] == "A" and event["kind"] == "runner_finalized":
-                    event = {**event, "failed_size": 324, "failed_peer_ids": banned, "banned_senders": banned}
-                if event["node"] == "A" and event["kind"] == "averaging_terminal":
-                    event = {**event, "status": "success", "failed_size": 324,
-                             "failed_peer_ids": banned, "banned_senders": banned}
-                rewritten.append(event)
-            for reducer in banned:
-                rewritten.append({"kind": "sender_banned", "node": "A", "time": 1.85, "pid": 102,
-                                  "sender": reducer, "native_group_id": group_id})
-                rewritten.append({"kind": "missing_part_fallback", "node": "A", "time": 1.80, "pid": 102,
-                                  "reducer": reducer, "registered_parts": 0, "native_group_id": group_id})
-            events_path.write_text("".join(json.dumps(event) + "\n" for event in rewritten), encoding="utf-8")
+            _enable_native_shape_victim_fallback(path)
             result = analyze_condition(path)
             self.assertTrue(result["valid_evidence"], result["evidence"]["errors"])
             self.assertTrue(result["interpretation"]["attack_hypothesis_confirmed"])
             self.assertEqual(result["interpretation"]["nodes_with_clean_A_exclusion"], ["B", "D", "C"])
             self.assertTrue(result["outputs"]["A"]["fallback_indicated"])
             self.assertFalse(result["outputs"]["A"]["stream_proof_complete"])
+            self.assertTrue(result["outputs"]["A"]["stream_evidence_complete"])
+            self.assertTrue(result["outputs"]["A"]["processed_output_valid"])
+            self.assertTrue(result["processed_output_proof"]["A"]["reconstructs_saved_final"])
+            self.assertEqual(result["processed_output_proof"]["A"]["processed_chunks"], 12)
             self.assertFalse(result["outputs"]["A"]["A_cleanly_excluded_from_completed_BDC_mean"])
+
+    def test_native_shape_fallback_rejects_missing_or_corrupted_evidence(self) -> None:
+        mutations = (
+            "remove_chunk",
+            "corrupt_fallback_delta",
+            "corrupt_final",
+            "remove_timed_ban",
+            "corrupt_failed_size",
+        )
+        for mutation in mutations:
+            with self.subTest(mutation=mutation), tempfile.TemporaryDirectory() as temp:
+                path = Path(temp) / "membership"
+                _condition_artifacts(path, "membership")
+                _enable_native_shape_victim_fallback(path)
+                events_path = path / "events_0.jsonl"
+                events = [json.loads(line) for line in events_path.read_text(encoding="utf-8").splitlines()]
+                outputs_path = path / "outputs.json"
+                outputs = json.loads(outputs_path.read_text(encoding="utf-8"))
+                if mutation == "remove_chunk":
+                    events = [event for event in events if not (
+                        event.get("kind") == "processed_chunk" and event.get("node") == "A"
+                        and event.get("reducer") == "D" and event.get("part_index") == 1
+                    )]
+                elif mutation == "corrupt_fallback_delta":
+                    event = next(event for event in events if event.get("kind") == "processed_chunk"
+                                 and event.get("node") == "A" and event.get("reducer") == "D")
+                    event["values"][0] = 1.0
+                elif mutation == "corrupt_final":
+                    outputs["A"]["final"][0][0] += 1000.0
+                    outputs_path.write_text(json.dumps(outputs), encoding="utf-8")
+                elif mutation == "remove_timed_ban":
+                    events = [event for event in events if not (
+                        event.get("kind") == "sender_banned" and event.get("node") == "A"
+                        and event.get("sender") == "B"
+                    )]
+                    outputs["A"]["banned_senders"] = ["D", "C"]
+                    outputs_path.write_text(json.dumps(outputs), encoding="utf-8")
+                    finalized = next(event for event in events if event.get("kind") == "runner_finalized" and event.get("node") == "A")
+                    finalized["banned_senders"] = ["D", "C"]
+                    terminal = next(event for event in events if event.get("kind") == "averaging_terminal" and event.get("node") == "A")
+                    terminal["banned_senders"] = ["D", "C"]
+                elif mutation == "corrupt_failed_size":
+                    outputs["A"]["failed_size"] = 288
+                    outputs_path.write_text(json.dumps(outputs), encoding="utf-8")
+                    finalized = next(event for event in events if event.get("kind") == "runner_finalized" and event.get("node") == "A")
+                    finalized["failed_size"] = 288
+                    terminal = next(event for event in events if event.get("kind") == "averaging_terminal" and event.get("node") == "A")
+                    terminal["failed_size"] = 288
+                events_path.write_text("".join(json.dumps(event) + "\n" for event in events), encoding="utf-8")
+                result = analyze_condition(path)
+                self.assertFalse(result["valid_evidence"], result["evidence"]["errors"])
+                self.assertFalse(result["processed_output_proof"]["A"]["valid"])
+
+    def test_stream_error_with_contradictory_direction_is_invalid(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "membership"
+            _condition_artifacts(path, "membership")
+            _enable_native_shape_victim_fallback(path)
+            events_path = path / "events_0.jsonl"
+            events = [json.loads(line) for line in events_path.read_text(encoding="utf-8").splitlines()]
+            event = next(event for event in events if (
+                event.get("kind") == "stream_error" and event.get("node") == "B"
+                and event.get("sender") == "A"
+            ))
+            event["receiver"] = "C"
+            events_path.write_text("".join(json.dumps(event) + "\n" for event in events), encoding="utf-8")
+            result = analyze_condition(path)
+            self.assertFalse(result["valid_evidence"])
+            self.assertFalse(result["outputs"]["B"]["stream_evidence_complete"])
+            self.assertTrue(any("stream_error node/sender/receiver identity is inconsistent" in issue
+                                for issue in result["outputs"]["B"]["stream_evidence_issues"]))
 
     def test_membership_victim_success_without_fallback_still_invalidates(self) -> None:
         # The fallback exemption is narrow: a success whose streams are incomplete but

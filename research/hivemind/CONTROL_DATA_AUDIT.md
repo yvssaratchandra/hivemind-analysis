@@ -1216,7 +1216,7 @@ optimal frequency. See the report and its matched controls before extrapolating.
   announces `[B,D,A,C]` to A. B,D,C compute the correct three-member mean with A
   absent from all 48 rows (**clean exclusion**); A's chunks are rejected by B,D,C's
   reducers (`ValueError('<peer id> is not in list')`), it bans them, hits
-  `missing_part_fallback` for its whole share, and **falls back to its own local
+  `missing_part_fallback` for its 324 remote-reduced elements, and **falls back to its own local
   value while returning `success`** (output 50 off the true mean). So beyond silent
   corruption, an omitting leader can cleanly drop a participant from the aggregate
   and silently isolate it. Controls match the independent mean to ≤ 5.1e-6; all

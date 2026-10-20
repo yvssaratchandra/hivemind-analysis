@@ -1007,7 +1007,13 @@ def _participant_agreement(outputs: dict[str, Any], active: list[str]) -> dict[s
     return {"absolute_tolerance": ABS_TOL, "by_node": by_node, "pairs": pairs}
 
 
-def _stream_proof(events: list[dict[str, Any]], active: list[str], outputs: dict[str, Any]) -> dict[str, Any]:
+def _stream_proof(
+    events: list[dict[str, Any]],
+    active: list[str],
+    outputs: dict[str, Any],
+    *,
+    matrix_parser=_flatten_matrix,
+) -> dict[str, Any]:
     """Validate saved inputs, native stream payloads, and returned corrections.
 
     Incoming chunks are checked against the sender's saved input and its
@@ -1029,19 +1035,32 @@ def _stream_proof(events: list[dict[str, Any]], active: list[str], outputs: dict
             allocations[node] = event
     for node, record in outputs.items():
         if node in active and isinstance(record, dict):
-            matrix = _flatten_matrix(record.get("initial"))
+            matrix = matrix_parser(record.get("initial"))
             if matrix is not None:
                 saved_inputs[node] = [value for row in matrix for value in row]
 
     inputs: dict[tuple[str, str], list[dict[str, Any]]] = {}
     results: dict[tuple[str, str], list[dict[str, Any]]] = {}
     stream_events: dict[tuple[str, str], dict[str, list[dict[str, Any]]]] = {}
+    sender_bans: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    fallbacks: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    local_processed: dict[str, list[dict[str, Any]]] = {node: [] for node in active}
     malformed: dict[str, list[str]] = {node: [] for node in active}
     for event in events:
         kind = _event_kind(event)
+        node = _event_node(event)
+        if node in active and kind == "sender_banned":
+            sender = _event_value(event, "sender")
+            if isinstance(sender, str):
+                sender_bans.setdefault((node, sender), []).append(event)
+        elif node in active and kind == "missing_part_fallback":
+            reducer = _event_value(event, "reducer")
+            if isinstance(reducer, str):
+                fallbacks.setdefault((node, reducer), []).append(event)
+        elif node in active and kind == "processed_chunk" and _event_value(event, "reducer", _event_value(event, "peer")) == node:
+            local_processed[node].append(event)
         if kind not in {"input_chunk", "result_chunk", "stream_started", "stream_closed", "stream_error", "stream_code"}:
             continue
-        node = _event_node(event)
         sender = _event_value(event, "sender")
         receiver = _event_value(event, "receiver")
         stream_id = _event_value(event, "stream_id")
@@ -1071,13 +1090,24 @@ def _stream_proof(events: list[dict[str, Any]], active: list[str], outputs: dict
                 malformed[node].append("stream_closed node/sender/receiver identity is inconsistent")
                 continue
             stream_events.setdefault((node, str(sender)), {}).setdefault(kind, []).append(event)
+        elif kind == "stream_error":
+            if node != receiver or sender is None:
+                malformed[node].append("stream_error node/sender/receiver identity is inconsistent")
+                continue
+            stream_events.setdefault((node, str(sender)), {}).setdefault(kind, []).append(event)
+        elif kind == "stream_code":
+            if receiver is None or (sender is not None and sender != node):
+                malformed[node].append("stream_code node/receiver identity is inconsistent")
+                continue
+            stream_events.setdefault((node, str(receiver)), {}).setdefault(kind, []).append(event)
         else:
-            peer = str(sender if sender is not None else receiver if receiver is not None else "?")
-            stream_events.setdefault((node, peer), {}).setdefault(kind, []).append(event)
+            malformed[node].append(f"unexpected native stream event kind {kind}")
 
     proof: dict[str, Any] = {}
     for node in active:
         issues = list(malformed.get(node, []))
+        evidence_issues = list(malformed.get(node, []))
+        expected_fallback_gaps: list[str] = []
         roster = rosters.get(node, [])
         allocation = allocations.get(node)
         ranges_by_peer = _event_value(allocation, "part_ranges") if allocation else None
@@ -1088,6 +1118,24 @@ def _stream_proof(events: list[dict[str, Any]], active: list[str], outputs: dict
         result_checked = 0
         input_alignment: dict[str, bool] = {}
         result_alignment: dict[str, bool] = {}
+
+        def valid_ban_before(peer: str, at_time: float | None) -> bool:
+            events_for_peer = sender_bans.get((node, peer), [])
+            if len(events_for_peer) != 1 or at_time is None:
+                return False
+            ban = events_for_peer[0]
+            ban_time = _event_time(ban)
+            group_id = _canonical_id(_event_value(allocation, "native_group_id")) if allocation else None
+            return (
+                ban_time is not None
+                and ban_time <= at_time
+                and _canonical_id(_event_value(ban, "native_group_id")) == group_id
+            )
+
+        first_local_process_time = min(
+            (_event_time(event) for event in local_processed[node] if _event_time(event) is not None),
+            default=None,
+        )
 
         # This node is the reducer. Verify every remote contribution against
         # the sending participant's own saved tensor and recipient partition.
@@ -1101,26 +1149,78 @@ def _stream_proof(events: list[dict[str, Any]], active: list[str], outputs: dict
             expected_count = source_parts.get(node) if isinstance(source_parts, dict) else None
             local_ranges = ranges_by_peer.get(node) if isinstance(ranges_by_peer, dict) else None
             input_alignment[sender] = expected_ranges == local_ranges
-            if not isinstance(expected_ranges, list) or not isinstance(expected_count, int):
-                issues.append(f"{sender}->{node}: sender allocation lacks recipient ranges/count")
-                continue
             chunks = sorted(inputs.get((node, sender), []), key=lambda event: _event_value(event, "part_index", -1))
             state = stream_events.get((node, sender), {})
+            if isinstance(expected_count, int) and not isinstance(expected_count, bool) and expected_count == 0:
+                if chunks or state:
+                    message = f"{sender}->{node}: stream evidence exists for a zero-part allocation"
+                    issues.append(message)
+                    evidence_issues.append(message)
+                continue
+            if not isinstance(expected_ranges, list) or not isinstance(expected_count, int) or isinstance(expected_count, bool):
+                # A sender whose own announcement excludes this reducer has no
+                # recipient partition to stream. This is an explained gap only
+                # when this reducer later records a matching, timely ban.
+                if (
+                    not expected_ranges
+                    and not chunks
+                    and node not in (rosters.get(sender) or [])
+                    and valid_ban_before(sender, first_local_process_time)
+                ):
+                    message = f"{sender}->{node}: inbound contribution is absent after a timed sender ban"
+                    issues.append(message)
+                    expected_fallback_gaps.append(message)
+                    continue
+                message = f"{sender}->{node}: sender allocation lacks recipient ranges/count"
+                issues.append(message)
+                evidence_issues.append(message)
+                continue
+            if len(expected_ranges) != expected_count:
+                message = f"{sender}->{node}: sender allocation ranges/count disagree"
+                issues.append(message)
+                evidence_issues.append(message)
+            if expected_count == 0:
+                if chunks or state:
+                    message = f"{sender}->{node}: stream evidence exists for a zero-part allocation"
+                    issues.append(message)
+                    evidence_issues.append(message)
+                continue
             if len(state.get("stream_started", [])) != 1 or len(state.get("stream_closed", [])) != 1:
-                issues.append(f"{sender}->{node}: expected one started and closed native stream")
-            if state.get("stream_error") or state.get("stream_code"):
-                issues.append(f"{sender}->{node}: native stream recorded an error or non-success code")
+                message = f"{sender}->{node}: expected one started and closed native stream"
+                issues.append(message)
+                evidence_issues.append(message)
+            has_stream_failure = bool(state.get("stream_error") or state.get("stream_code"))
+            if has_stream_failure:
+                message = f"{sender}->{node}: native stream recorded an error or non-success code"
+                issues.append(message)
+                evidence_issues.append(message)
             stream_ids = {
                 str(_event_value(item, "stream_id"))
                 for items in state.values() for item in items
                 if _event_value(item, "stream_id") is not None
             }
             if len(stream_ids) != 1:
-                issues.append(f"{sender}->{node}: native stream events do not share one stream_id")
-            if len(chunks) != expected_count or len(expected_ranges) != expected_count:
-                issues.append(f"{sender}->{node}: observed {len(chunks)} input chunks, expected {expected_count}")
-            if [_event_value(event, "part_index") for event in chunks] != list(range(expected_count)):
-                issues.append(f"{sender}->{node}: input part indices are missing, duplicated, or reordered")
+                message = f"{sender}->{node}: native stream events do not share one stream_id"
+                issues.append(message)
+                evidence_issues.append(message)
+            observed_indices = [_event_value(event, "part_index") for event in chunks]
+            complete_input = len(chunks) == expected_count and observed_indices == list(range(expected_count))
+            if not complete_input:
+                supported_partial = (
+                    observed_indices == list(range(len(observed_indices)))
+                    and has_stream_failure
+                    and valid_ban_before(sender, first_local_process_time)
+                )
+                message = f"{sender}->{node}: observed {len(chunks)} input chunks, expected {expected_count}"
+                issues.append(message)
+                if supported_partial:
+                    expected_fallback_gaps.append(message)
+                else:
+                    evidence_issues.append(message)
+                if observed_indices != list(range(len(observed_indices))):
+                    message = f"{sender}->{node}: input part indices are missing, duplicated, or reordered"
+                    issues.append(message)
+                    evidence_issues.append(message)
             saved = saved_inputs.get(sender)
             if saved is None:
                 issues.append(f"{sender}: saved initial tensor is missing")
@@ -1170,34 +1270,123 @@ def _stream_proof(events: list[dict[str, Any]], active: list[str], outputs: dict
             reducer_expected_count = reducer_parts.get(reducer) if isinstance(reducer_parts, dict) else None
             recipient_expected_count = parts_by_peer.get(reducer) if isinstance(parts_by_peer, dict) else None
             result_alignment[reducer] = reducer_self_ranges == recipient_ranges
-            if node not in reducer_roster:
-                issues.append(f"{reducer}->{node}: reducer's local roster excludes this recipient")
-            if not isinstance(reducer_self_ranges, list) or not isinstance(reducer_expected_count, int):
-                issues.append(f"{reducer}->{node}: reducer allocation lacks its own result ranges/count")
-                continue
-            if not isinstance(recipient_ranges, list) or not isinstance(recipient_expected_count, int):
-                issues.append(f"{reducer}->{node}: recipient allocation lacks output ranges/count")
-                continue
-            if reducer_expected_count != recipient_expected_count:
-                issues.append(f"{reducer}->{node}: reducer and recipient expect different result part counts "
-                               f"({reducer_expected_count} vs {recipient_expected_count})")
             chunks = sorted(results.get((reducer, node), []), key=lambda event: _event_value(event, "part_index", -1))
             state = stream_events.get((reducer, node), {})
+            fallback_records = fallbacks.get((node, reducer), [])
+
+            if isinstance(recipient_expected_count, int) and not isinstance(recipient_expected_count, bool) and recipient_expected_count == 0:
+                if chunks or state or fallback_records:
+                    message = f"{reducer}->{node}: evidence exists for a zero-part result allocation"
+                    issues.append(message)
+                    evidence_issues.append(message)
+                continue
+
+            if fallback_records:
+                registered = _event_value(fallback_records[0], "registered_parts") if len(fallback_records) == 1 else None
+                expected_group = _canonical_id(_event_value(allocation, "native_group_id")) if allocation else None
+                fallback_group = _canonical_id(_event_value(fallback_records[0], "native_group_id")) if len(fallback_records) == 1 else None
+                observed_indices = [_event_value(event, "part_index") for event in chunks]
+                fallback_is_well_formed = (
+                    len(fallback_records) == 1
+                    and isinstance(registered, int)
+                    and not isinstance(registered, bool)
+                    and isinstance(recipient_expected_count, int)
+                    and not isinstance(recipient_expected_count, bool)
+                    and 0 <= registered < recipient_expected_count
+                    and fallback_group == expected_group
+                    and observed_indices == list(range(registered))
+                    and bool(state.get("stream_error") or state.get("stream_code"))
+                    and len(state.get("stream_started", [])) == 1
+                    and len(state.get("stream_closed", [])) == 1
+                )
+                if node not in reducer_roster:
+                    fallback_is_well_formed = fallback_is_well_formed and registered == 0 and not chunks
+                if not fallback_is_well_formed:
+                    message = f"{reducer}->{node}: fallback does not explain the observed result stream"
+                    issues.append(message)
+                    evidence_issues.append(message)
+                else:
+                    message = f"{reducer}->{node}: result stream is incomplete and completed with recorded fallback"
+                    issues.append(message)
+                    expected_fallback_gaps.append(message)
+                # Any chunk received before a fallback still has to be a
+                # correctly shaped, numerically supported native correction.
+                # A peer excluded by the reducer's roster cannot have returned
+                # even a prefix of results.
+                if node not in reducer_roster:
+                    continue
+            elif node not in reducer_roster:
+                message = f"{reducer}->{node}: reducer's local roster excludes this recipient without fallback evidence"
+                issues.append(message)
+                evidence_issues.append(message)
+                continue
+
+            if node not in reducer_roster:
+                message = f"{reducer}->{node}: reducer's local roster excludes this recipient"
+                issues.append(message)
+                evidence_issues.append(message)
+            if not isinstance(reducer_self_ranges, list) or not isinstance(reducer_expected_count, int):
+                message = f"{reducer}->{node}: reducer allocation lacks its own result ranges/count"
+                issues.append(message)
+                evidence_issues.append(message)
+                continue
+            if not isinstance(recipient_ranges, list) or not isinstance(recipient_expected_count, int):
+                message = f"{reducer}->{node}: recipient allocation lacks output ranges/count"
+                issues.append(message)
+                evidence_issues.append(message)
+                continue
+            if reducer_expected_count != recipient_expected_count:
+                message = (f"{reducer}->{node}: reducer and recipient expect different result part counts "
+                           f"({reducer_expected_count} vs {recipient_expected_count})")
+                issues.append(message)
+                evidence_issues.append(message)
+            expected_results = reducer_expected_count
+            fallback_is_well_formed = bool(
+                fallback_records
+                and len(fallback_records) == 1
+                and isinstance(_event_value(fallback_records[0], "registered_parts"), int)
+                and not isinstance(_event_value(fallback_records[0], "registered_parts"), bool)
+                and 0 <= _event_value(fallback_records[0], "registered_parts") < recipient_expected_count
+                and _canonical_id(_event_value(fallback_records[0], "native_group_id"))
+                == (_canonical_id(_event_value(allocation, "native_group_id")) if allocation else None)
+                and [_event_value(event, "part_index") for event in chunks]
+                == list(range(_event_value(fallback_records[0], "registered_parts")))
+                and bool(state.get("stream_error") or state.get("stream_code"))
+                and len(state.get("stream_started", [])) == 1
+                and len(state.get("stream_closed", [])) == 1
+            )
+            if fallback_is_well_formed:
+                expected_results = _event_value(fallback_records[0], "registered_parts")
             if len(state.get("stream_started", [])) != 1 or len(state.get("stream_closed", [])) != 1:
-                issues.append(f"{reducer}->{node}: expected one started and closed native result stream")
+                message = f"{reducer}->{node}: expected one started and closed native result stream"
+                issues.append(message)
+                if not fallback_is_well_formed:
+                    evidence_issues.append(message)
             if state.get("stream_error") or state.get("stream_code"):
-                issues.append(f"{reducer}->{node}: native result stream recorded an error or non-success code")
+                message = f"{reducer}->{node}: native result stream recorded an error or non-success code"
+                issues.append(message)
+                if fallback_is_well_formed:
+                    expected_fallback_gaps.append(message)
+                else:
+                    evidence_issues.append(message)
             stream_ids = {
                 str(_event_value(item, "stream_id"))
                 for items in state.values() for item in items
                 if _event_value(item, "stream_id") is not None
             }
             if len(stream_ids) != 1:
-                issues.append(f"{reducer}->{node}: input/result events do not share one stream_id")
-            if len(chunks) != reducer_expected_count or len(reducer_self_ranges) != reducer_expected_count:
-                issues.append(f"{reducer}->{node}: observed {len(chunks)} result chunks, expected reducer-owned count {reducer_expected_count}")
-            if [_event_value(event, "part_index") for event in chunks] != list(range(reducer_expected_count)):
-                issues.append(f"{reducer}->{node}: result part indices are missing, duplicated, or reordered")
+                message = f"{reducer}->{node}: input/result events do not share one stream_id"
+                issues.append(message)
+                evidence_issues.append(message)
+            if len(chunks) != expected_results or len(reducer_self_ranges) < expected_results:
+                message = f"{reducer}->{node}: observed {len(chunks)} result chunks, expected reducer-owned count {expected_results}"
+                issues.append(message)
+                if not fallback_is_well_formed:
+                    evidence_issues.append(message)
+            if [_event_value(event, "part_index") for event in chunks] != list(range(expected_results)):
+                message = f"{reducer}->{node}: result part indices are missing, duplicated, or reordered"
+                issues.append(message)
+                evidence_issues.append(message)
             local = saved_inputs.get(reducer)
             reducer_inputs: dict[str, list[dict[str, Any]]] = {}
             for source in reducer_roster:
@@ -1257,9 +1446,32 @@ def _stream_proof(events: list[dict[str, Any]], active: list[str], outputs: dict
         for (reducer, recipient), chunks in results.items():
             if recipient == node and reducer not in roster:
                 issues.append(f"unexpected result chunks from {reducer}")
+        for (receiver, sender), state in stream_events.items():
+            if receiver != node or sender in roster:
+                continue
+            rejected_stream_is_explained = (
+                not inputs.get((receiver, sender))
+                and len(state.get("stream_started", [])) == 1
+                and len(state.get("stream_closed", [])) == 1
+                and bool(state.get("stream_error") or state.get("stream_code"))
+                and len({
+                    str(_event_value(event, "stream_id"))
+                    for events_for_kind in state.values()
+                    for event in events_for_kind
+                    if _event_value(event, "stream_id") is not None
+                }) == 1
+            )
+            if not rejected_stream_is_explained:
+                message = f"unexpected stream evidence from excluded sender {sender}"
+                issues.append(message)
+                evidence_issues.append(message)
+        evidence_issues = [issue for issue in issues if issue not in expected_fallback_gaps]
         proof[node] = {
             "valid": not issues,
+            "evidence_complete": not evidence_issues,
             "issues": issues,
+            "evidence_issues": evidence_issues,
+            "fallback_gaps": expected_fallback_gaps,
             "inbound_chunks_checked": input_checked,
             "result_chunks_checked": result_checked,
             "expected_members": roster,
@@ -1273,14 +1485,21 @@ def _stream_proof(events: list[dict[str, Any]], active: list[str], outputs: dict
     return proof
 
 
-def _processed_output_proof(events: list[dict[str, Any]], active: list[str], outputs: dict[str, Any]) -> dict[str, Any]:
+def _processed_output_proof(
+    events: list[dict[str, Any]],
+    active: list[str],
+    outputs: dict[str, Any],
+    *,
+    matrix_parser=_flatten_matrix,
+) -> dict[str, Any]:
     """Prove that recorded native output deltas account for each saved result."""
     roster_by_node: dict[str, list[str]] = {}
     allocation_by_node: dict[str, dict[str, Any]] = {}
     chunks_by_node: dict[str, list[dict[str, Any]]] = {node: [] for node in active}
     returned: dict[tuple[str, str, int], dict[str, Any]] = {}
     inbound: dict[tuple[str, str], list[dict[str, Any]]] = {}
-    fallback_after: dict[tuple[str, str], int] = {}
+    fallback_events: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    sender_bans: dict[tuple[str, str], list[dict[str, Any]]] = {}
     finalized_by_node: dict[str, dict[str, Any]] = {}
     for event in events:
         node = _event_node(event)
@@ -1296,6 +1515,10 @@ def _processed_output_proof(events: list[dict[str, Any]], active: list[str], out
             chunks_by_node[node].append(event)
         elif _event_kind(event) == "runner_finalized":
             finalized_by_node[node] = event
+        elif _event_kind(event) == "sender_banned":
+            sender = _event_value(event, "sender")
+            if isinstance(sender, str):
+                sender_bans.setdefault((node, sender), []).append(event)
         elif _event_kind(event) == "input_chunk":
             sender = _event_value(event, "sender")
             if isinstance(sender, str):
@@ -1309,16 +1532,15 @@ def _processed_output_proof(events: list[dict[str, Any]], active: list[str], out
         elif _event_kind(event) == "missing_part_fallback":
             owner = _event_node(event)
             reducer = _event_value(event, "reducer")
-            registered = _event_value(event, "registered_parts")
-            if owner is not None and isinstance(reducer, str) and isinstance(registered, int):
-                fallback_after[(owner, reducer)] = registered
+            if owner is not None and isinstance(reducer, str):
+                fallback_events.setdefault((owner, reducer), []).append(event)
 
     proof: dict[str, Any] = {}
     for node in active:
         issues: list[str] = []
         record = outputs.get(node)
-        initial = _flatten_matrix(record.get("initial")) if isinstance(record, dict) else None
-        final = _flatten_matrix(record.get("final")) if isinstance(record, dict) else None
+        initial = matrix_parser(record.get("initial")) if isinstance(record, dict) else None
+        final = matrix_parser(record.get("final")) if isinstance(record, dict) else None
         status = str(record.get("status", "missing")) if isinstance(record, dict) else "missing"
         allocation = allocation_by_node.get(node)
         roster = roster_by_node.get(node, [])
@@ -1346,15 +1568,38 @@ def _processed_output_proof(events: list[dict[str, Any]], active: list[str], out
         reconstructed = list(flat_initial)
         fallback_elements = 0
         unchanged_ranges: list[dict[str, Any]] = []
+        fallback_thresholds: dict[str, int] = {}
+        expected_failed_peers: set[str] = set()
         if not isinstance(ranges_by_peer, dict) or not isinstance(parts_by_peer, dict):
             issues.append("native allocation map is missing")
         else:
             for peer in roster:
                 ranges = ranges_by_peer.get(peer)
                 count = parts_by_peer.get(peer)
-                if not isinstance(count, int) or not isinstance(ranges, list) or len(ranges) != count:
+                if not isinstance(count, int) or isinstance(count, bool) or not isinstance(ranges, list) or len(ranges) != count:
                     issues.append(f"{peer}: allocation lacks part ranges/count for processed output")
                     continue
+                peer_fallbacks = fallback_events.get((node, peer), [])
+                if len(peer_fallbacks) > 1:
+                    issues.append(f"{peer}: duplicate missing_part_fallback events")
+                elif peer_fallbacks:
+                    fallback_event = peer_fallbacks[0]
+                    registered = _event_value(fallback_event, "registered_parts")
+                    expected_group = _canonical_id(_event_value(allocation, "native_group_id")) if allocation else None
+                    if (
+                        not isinstance(registered, int)
+                        or isinstance(registered, bool)
+                        or registered < 0
+                        or registered >= count
+                    ):
+                        issues.append(f"{peer}: fallback registered_parts is outside the failed range")
+                    elif _canonical_id(_event_value(fallback_event, "native_group_id")) != expected_group:
+                        issues.append(f"{peer}: fallback event has the wrong native group ID")
+                    else:
+                        fallback_thresholds[peer] = registered
+                        expected_failed_peers.add(peer)
+                elif peer == node and (node, peer) in fallback_events:
+                    issues.append(f"{peer}: local reducer unexpectedly has a missing-part fallback")
                 for part_index, interval in enumerate(ranges):
                     expected_keys.add((peer, part_index))
                     event = by_part.get((peer, part_index))
@@ -1384,7 +1629,7 @@ def _processed_output_proof(events: list[dict[str, Any]], active: list[str], out
                         else:
                             local_values = flat_initial[start:end]
                             remote_values: list[list[float]] = []
-                            complete_local_inputs = True
+                            processed_time = _event_time(event)
                             for source in roster:
                                 if source == node:
                                     continue
@@ -1394,16 +1639,32 @@ def _processed_output_proof(events: list[dict[str, Any]], active: list[str], out
                                     if _event_value(item, "part_index") == part_index
                                 ), None)
                                 parsed = _numeric_values(_event_value(input_event, "values")) if input_event else None
+                                ban_events = sender_bans.get((node, source), [])
+                                ban_event = ban_events[0] if len(ban_events) == 1 else None
+                                ban_time = _event_time(ban_event) if ban_event else None
+                                ban_group_matches = (
+                                    ban_event is not None
+                                    and _canonical_id(_event_value(ban_event, "native_group_id"))
+                                    == _canonical_id(_event_value(allocation, "native_group_id"))
+                                )
                                 if parsed is None:
-                                    complete_local_inputs = False
-                                    break
+                                    if ban_time is None or processed_time is None or ban_time > processed_time or not ban_group_matches:
+                                        issues.append(
+                                            f"{peer} part {part_index}: missing {source} input has no matching timed ban before local reduction"
+                                        )
+                                    continue
+                                input_time = _event_time(input_event)
+                                if input_time is None or processed_time is None or input_time > processed_time:
+                                    issues.append(f"{peer} part {part_index}: {source} input arrived after local reduction")
+                                    continue
+                                if ban_time is not None and ban_time <= input_time:
+                                    issues.append(f"{peer} part {part_index}: {source} input arrived after sender was banned")
+                                    continue
                                 remote_values.append(parsed)
-                            if not complete_local_inputs:
-                                issues.append(f"{peer} part {part_index}: cannot recompute local correction from received inputs")
-                            elif any(len(part) != len(local_values) for part in remote_values) or len(values) != len(local_values):
+                            if any(len(part) != len(local_values) for part in remote_values) or len(values) != len(local_values):
                                 issues.append(f"{peer} part {part_index}: local correction and accumulated input shapes differ")
                             else:
-                                divisor = len(roster)
+                                divisor = 1 + len(remote_values)
                                 expected_local_delta = [
                                     (local_values[offset] + sum(part[offset] for part in remote_values)) / divisor
                                     - local_values[offset]
@@ -1413,7 +1674,7 @@ def _processed_output_proof(events: list[dict[str, Any]], active: list[str], out
                                     issues.append(f"{peer} part {part_index}: applied local delta differs from native mean-minus-input correction")
                     else:
                         remote_result = returned.get((node, peer, part_index))
-                        threshold = fallback_after.get((node, peer))
+                        threshold = fallback_thresholds.get(peer)
                         if remote_result is not None:
                             returned_values = _numeric_values(_event_value(remote_result, "values"))
                             if threshold is not None and part_index >= threshold:
@@ -1434,17 +1695,36 @@ def _processed_output_proof(events: list[dict[str, Any]], active: list[str], out
             extras = set(by_part) - expected_keys
             if extras:
                 issues.append(f"processed chunks reference unexpected roster parts: {sorted(extras)}")
+        unexpected_fallback_peers = sorted(peer for owner, peer in fallback_events if owner == node and peer not in roster)
+        if unexpected_fallback_peers:
+            issues.append(f"fallback events reference peers outside the local roster: {unexpected_fallback_peers}")
         missing = expected_keys - set(by_part)
         if missing and status == "success":
             issues.append(f"successful output is missing processed chunks: {sorted(missing)}")
+        reconstructs_saved_final = False
         if final is not None and initial is not None and not missing and len(reconstructed) == len(flat_final):
-            if any(not _close(actual, expected) for actual, expected in zip(reconstructed, flat_final)):
+            reconstructs_saved_final = all(
+                _close(actual, expected) for actual, expected in zip(reconstructed, flat_final)
+            )
+            if not reconstructs_saved_final:
                 issues.append("reconstructed tensor from processed deltas differs from saved final tensor")
         finalized = finalized_by_node.get(node)
         if finalized is not None:
             actual_failed = _event_value(finalized, "failed_size")
-            if isinstance(actual_failed, (int, float)) and not isinstance(actual_failed, bool) and not _close(float(actual_failed), float(fallback_elements), atol=0.0):
+            if (
+                isinstance(actual_failed, bool)
+                or not isinstance(actual_failed, (int, float))
+                or not _close(float(actual_failed), float(fallback_elements), atol=0.0)
+            ):
                 issues.append(f"runner_finalized failed_size {actual_failed} differs from processed fallback elements {fallback_elements}")
+            actual_failed_peers = _event_value(finalized, "failed_peer_ids")
+            if not isinstance(actual_failed_peers, list) or {str(peer) for peer in actual_failed_peers} != expected_failed_peers:
+                issues.append(
+                    f"runner_finalized failed_peer_ids {actual_failed_peers} differs from recorded fallback peers "
+                    f"{sorted(expected_failed_peers)}"
+                )
+        elif status == "success":
+            issues.append("successful output has no runner_finalized event for fallback accounting")
         proof[node] = {
             "valid": not issues,
             "complete": not missing,
@@ -1452,7 +1732,7 @@ def _processed_output_proof(events: list[dict[str, Any]], active: list[str], out
             "processed_chunks": len(chunks_by_node[node]),
             "expected_chunks": len(expected_keys),
             "missing_chunks": [list(key) for key in sorted(missing)],
-            "reconstructs_saved_final": not missing and not any("differs from saved final tensor" in issue for issue in issues),
+            "reconstructs_saved_final": reconstructs_saved_final,
             "fallback_elements": fallback_elements,
             "unchanged_ranges": unchanged_ranges,
         }
@@ -1616,7 +1896,10 @@ def analyze_condition(path: str | Path) -> dict[str, Any]:
     for node in active:
         output_results[node]["stream_proof_complete"] = stream_proof[node]["valid"]
         output_results[node]["stream_proof_issues"] = stream_proof[node]["issues"]
+        output_results[node]["stream_evidence_complete"] = stream_proof[node]["evidence_complete"]
+        output_results[node]["stream_evidence_issues"] = stream_proof[node]["evidence_issues"]
         output_results[node]["processed_output_complete"] = processed_proof[node]["complete"]
+        output_results[node]["processed_output_valid"] = processed_proof[node]["valid"]
         output_results[node]["processed_output_issues"] = processed_proof[node]["issues"]
         output_results[node]["A_cleanly_excluded_from_completed_BDC_mean"] = bool(
             output_results[node]["A_cleanly_excluded_from_completed_BDC_mean"]
@@ -1625,17 +1908,9 @@ def analyze_condition(path: str | Path) -> dict[str, Any]:
             and processed_proof[node]["complete"]
         )
         if outputs.get(node, {}).get("status") == "success":
-            # A native 'success' that fell back to local values legitimately lacks
-            # complete averaged streams/deltas: the recorded fallback (bans, failed
-            # parts, missing_part_fallback) is itself complete evidence of that
-            # degraded outcome, not missing evidence, so it does not invalidate the
-            # condition. The baseline/control block below still rejects any fallback,
-            # keeping the controls strict. Only an unexplained gap -- a success with no
-            # recorded fallback -- signals genuinely missing stream/delta evidence.
-            fell_back = bool(output_results[node].get("fallback_indicated"))
-            if not stream_proof[node]["valid"] and not fell_back:
-                evidence["errors"].append(f"{node}: successful output lacks complete native stream proof")
-            if (not processed_proof[node]["valid"] or not processed_proof[node]["complete"]) and not fell_back:
+            if not stream_proof[node]["evidence_complete"]:
+                evidence["errors"].append(f"{node}: successful output lacks complete native stream proof or supported fallback evidence")
+            if not processed_proof[node]["valid"] or not processed_proof[node]["complete"]:
                 evidence["errors"].append(f"{node}: successful output lacks complete processed-delta proof")
     if condition in ("baseline4", "control3"):
         for node in active:
@@ -1811,9 +2086,12 @@ def _markdown_report(results: list[dict[str, Any]]) -> str:
             if item["kind"] not in report_timeline_kinds:
                 continue
             time_text = "?" if item["time"] is None else f"{item['time']:.6f}"
-            actor = item["node"] or "?"
-            recipient = f" → {item['recipient']}" if item.get("recipient") else ""
-            if item.get("follower"):
+            has_direction = item.get("sender") and item.get("receiver") and (
+                item["kind"].startswith("stream_") or item["kind"].startswith("averager_rpc_")
+            )
+            actor = str(item["sender"]) if has_direction else item["node"] or "?"
+            recipient = f" → {item['receiver']}" if has_direction else (f" → {item['recipient']}" if item.get("recipient") else "")
+            if item.get("follower") and not has_direction:
                 recipient = f" follower={item['follower']}"
             detail = f" members={item['members']}" if item.get("members") is not None else ""
             status = f" status={item['status']}" if item.get("status") is not None else ""
@@ -1874,15 +2152,21 @@ def _html_dashboard(results: list[dict[str, Any]]) -> str:
             if event["kind"] not in report_timeline_kinds:
                 continue
             when = "?" if event["time"] is None else f"{event['time']:.3f}s"
-            actor = event["node"] or "?"
-            target = event.get("recipient") or event.get("follower") or ""
+            has_direction = event.get("sender") and event.get("receiver") and (
+                event["kind"].startswith("stream_") or event["kind"].startswith("averager_rpc_")
+            )
+            actor = str(event["sender"]) if has_direction else event["node"] or "?"
+            target = event.get("receiver") if has_direction else (event.get("recipient") or event.get("follower") or "")
+            route = f"{html.escape(str(actor))} → {html.escape(str(target))}" if has_direction else (
+                f"{html.escape(str(actor))} {html.escape(str(target))}"
+            )
             members = event.get("members") or ""
             state = event.get("status") or ""
             code = event.get("code_name") or event.get("code")
             error = event.get("error")
             native_result = f" code={code}" if code is not None else ""
             native_error = f" {error}" if error else ""
-            timeline.append(f"<li><code>{html.escape(when)}</code> <b>{html.escape(event['kind'])}</b> {html.escape(actor)} {html.escape(str(target))} {html.escape(str(members))} {html.escape(str(state))}{html.escape(native_result)}{html.escape(native_error)}</li>")
+            timeline.append(f"<li><code>{html.escape(when)}</code> <b>{html.escape(event['kind'])}</b> {route} {html.escape(str(members))} {html.escape(str(state))}{html.escape(native_result)}{html.escape(native_error)}</li>")
         gaps = "".join(f"<li>{html.escape(error)}</li>" for error in result["evidence"]["errors"])
         details.append(
             f"<section><h2>{html.escape(result['condition'])}</h2>"

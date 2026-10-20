@@ -2194,9 +2194,9 @@ patched. Four conditions, one averaging step each, all shut down cleanly:
   from all 48 rows — a clean exclusion backed by markers, complete streams, and
   no fallback. A, believing itself in a four-member group, had its chunks
   rejected by B,D,C's reducers (native `ValueError('<peer id> is not in list')`),
-  banned them, hit `missing_part_fallback` for its entire share, and **fell back
+  banned them, hit `missing_part_fallback` for its 324 remote-reduced elements, and **fell back
   to its own local value while still returning `success`** (output 50 off the
-  true mean). The excluded victim is silently isolated, not errored.
+  true mean). Its own 108-element reducer share completed using only its local input. The operation returned success despite warnings and degraded aggregation.
 
 **Scope.** These are single local runs under fixed timeouts, not deployment
 rates; they establish the native behaviours a later simulator extension must

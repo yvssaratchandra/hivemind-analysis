@@ -1,5 +1,51 @@
 # Native announcement validation
 
+## Learning-impact programme (2026-10-20)
+
+Approved sequence: repair evidence checks (E0); three fresh equal-allocation
+four-condition sets, seeds 2–4, and one unequal-bandwidth boundary set, seed 5
+(E1); six native ten-round gradient-SGD trajectories, seed 201 (E2); numerical
+simulator differential validation (E3); 200-round convergence and recovery
+pilots followed by five paired confirmation seeds 202–206 (E4/E5).
+
+| Implementation status | State |
+|---|---|
+| E0 evidence gate and report direction | Complete: 30 focused tests; original raw suite revalidated in `results/announcement_e0_review_20261020_a` |
+| E1 repeatability and allocation boundary | Pending E0 |
+| E2 native learning reference | Pending E1; workload implementation in progress |
+| E3 numerical protocol model | Pending native reference |
+| E4/E5 convergence and recovery | Pending differential validation |
+
+The native loop computes full-batch gradients for a 48-coefficient noiseless
+linear regression, averages them, then applies float32 SGD (learning rate 0.1,
+no momentum or parameter synchronization). Each peer has 512 Gaussian examples;
+evaluation uses 4,096 independent examples. The distinctive-data arm zeros the
+last twelve features outside A. A fallback preserves A's **gradient**, so A
+continues taking local SGD updates. Native inputs, returned gradients, models,
+rosters, delta traces and shutdown evidence must reconstruct every update.
+
+The numerical workload owns model state; protocol code owns local roster views,
+coordinate allocation, reduction and fallback; policies choose recipient-specific
+announcements. Existing throughput workloads remain available independently.
+Implementation order is evidence checker, native fixtures, training controller,
+numerical model, differential checks, then paired learning runs. Native source
+under root `hivemind/` remains unchanged.
+
+E4 arms are baseline, random benign omission at 25%/100%, targeted membership
+omission at 25%/100%, and targeted ordering corruption at 25%/100%. E5 adds
+each targeted attack for rounds 1–100 followed by honest rounds 101–200.
+Both data distributions use matched problem and attack-schedule seeds. Random
+omission chooses A/D/C uniformly; all 25% arms share affected rounds.
+
+Review gates require valid controls, fully explained native outcomes, numerical
+agreement (markers atol 1e-4; gradients/models atol 1e-5, rtol 1e-4), preserved
+baseline accounting, and valid pilot evidence. Confirmation is not contingent on
+observing harm. Report per-honest-node/mean/worst test loss, exclusive-feature
+loss, distance to optimum, disagreement, final and trajectory-average loss,
+and first sustained ten-round crossing of 10% initial loss (otherwise censored).
+These are rounds/compute comparisons with designated leadership, not deployment
+timing or leadership-capture estimates. Stop after E5; no automatic broader sweep.
+
 Private loopback experiment; one seed, four independent conditions, one averaging
 operation per active node. No training or public network. Root Hivemind source
 is unchanged. Prior Step 17 already demonstrated recipient-specific ordering;
@@ -17,14 +63,15 @@ and embedded origin/coordinate markers.
 
 All four conditions produced valid evidence and shut down cleanly (exit 0, no
 surviving processes). Both attacks produced incorrect or degraded outcomes with
-no error surfaced to the participants.
+no failure returned by the averaging operation. Membership omission emitted
+handler and partial-aggregation warnings in the native logs.
 
 | Condition | Outcome |
 |---|---|
 | baseline4 (control) | Correct four-member mean at every node; all origin/coordinate markers correct. |
 | control3 (control) | Correct B,D,C mean; A idle; A absent from every row. |
 | ordering (attack) | A was announced `[A,D,B,C]` while B,D,C saw `[B,D,A,C]`. All four completed with `success` and full streams, but **coordinate markers are wrong for all four** and no node matches the true mean (max error 6 at B,D,C; 18 at A); A agrees with nobody. Inconsistent ordering silently corrupts the averaged coordinates across the whole group with no error. |
-| membership (attack) | B announced `[B,D,C]` to D,C and aggregated as `[B,D,C]`, but announced `[B,D,A,C]` to A. B,D,C computed the correct three-member mean with **A absent from all 48 rows (clean exclusion)**. A, believing it was in a four-member group, had its chunks rejected by B,D,C's reducers (native `ValueError('<peer id> is not in list')`), banned them, hit `missing_part_fallback` for its whole share, and **fell back to its own local value while returning `success`** (its output is 50 off the true mean). The excluded victim is silently isolated, not errored. |
+| membership (attack) | B announced `[B,D,C]` to D,C and aggregated as `[B,D,C]`, but announced `[B,D,A,C]` to A. B,D,C computed the correct three-member mean with **A absent from all 48 rows (clean exclusion)**. A, believing it was in a four-member group, had its chunks rejected by B,D,C's reducers (native `ValueError('<peer id> is not in list')`), banned them, hit `missing_part_fallback` for its 324 remote-reduced elements, and **fell back to its own local value while returning `success`** (its output is 50 off the true mean). Its own 108-element reducer share completed using only its local input. The operation returned success despite warnings and degraded aggregation. |
 
 Clean exclusion is asserted only for B,D,C, which each hold a completed,
 numerically supported B,D,C mean with no A origin markers and no fallback. A's

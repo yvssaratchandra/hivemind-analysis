@@ -1385,3 +1385,15 @@ announcement_s1_*/*/sources.tar.gz
 # _b = first clean run analyzed with the pre-fix analyzer. _c is authoritative.
 /announcement_s1_20261020_a/
 /announcement_s1_20261020_b/
+
+# Learning programme: full evidence is local and hashed in each run's
+# artifact_inventory.json; compact configs, status, checks and reports are tracked.
+announcement_e*/*/outputs.json
+announcement_e*/*/sources.tar.gz
+announcement_e*/*/inputs.json
+announcement_e*/learning_data.npz
+announcement_e*/trajectory.json
+announcement_e*/round_*_requested_inputs.json
+announcement_e*/round_*/
+announcement_e*/cases/
+announcement_e*/review_harness/
