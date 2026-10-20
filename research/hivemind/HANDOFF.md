@@ -3,6 +3,41 @@
 Everything a new session needs: what the project is, where it stands, what is known, and what to do
 next. Written to be read without any prior conversation.
 
+**Paused by user for system suspend (2026-10-20).** The announcement learning
+programme is specified in `ANNOUNCEMENT_PROBE.md`. E0 is complete: 30 focused
+tests pass, the original raw suite remains unchanged, and the repaired analysis
+is preserved in `results/announcement_e0_review_20261020_a` with its frozen
+review analyzer and artifact inventory. No fresh E1/E2 native experiments or
+E4/E5 learning runs have been launched. All delegated work was interrupted.
+
+Implementation checkpoint, **not experimental results**:
+
+- `announcement_probe.py` now accepts supplied flat gradients, chunk size and an
+  unequal-bandwidth profile, and exposes controller-side shutdown auditing.
+  Unequal preflight only: BDAC dense counts 0/94/150/188 and chunks 0/3/4/5;
+  ADBC counts 150/94/0/188 and chunks 4/3/0/5; BDC counts 0/190/242 and
+  chunks 0/5/7. Extend the marker analyzer's allocation/metadata checks before
+  the unequal arm; it currently expects equal unspecified bandwidths.
+- Deterministic learning workload: eight tests passed. Native training
+  controller: ten focused tests passed, but no native integration run.
+- Optional numerical backend and announcement policies under the existing
+  simulator project: six analytic tests; the complete simulator suite passed
+  111 tests. This is a fixed-group numerical model, separate from the
+  uncalibrated timing backend; it is **not yet natively validated**.
+- `announcement_reference.py`, `validate_announcement_learning.py`, and the
+  E4/E5 runner/tests are integration work in progress. The independent review
+  of the first two and the numerical backend was interrupted; inspect any
+  `test_announcement_reference.py` and runner test files before use.
+- Resume at E1 equal-allocation seeds 2–4 after checking the checkpoint diff;
+  then finish the unequal seed-5 checker and run its boundary set. Follow the
+  E2/E3 gates before any convergence suite. E3 requires all three fresh marker
+  seeds and six ten-round native training trajectories at seed 201.
+- Runtime: use `/home/sarat/.local/bin/python3.11`; prepared site-packages live
+  in `research/agora/.runtime/venv/lib/python3.11/site-packages` (NumPy/native)
+  and `research/simulator/.venv/lib/python3.11/site-packages` (SimPy/pytest).
+  Put both plus `research/simulator/src` on PYTHONPATH for the full tests.
+  Existing venv executable symlinks can be stale.
+
 Branch `research/net-security` · remote `origin` (the fork) · last updated 2026-10-20
 
 **Latest experiment (2026-10-20):** native inconsistent-announcement probe — see §4.17 and

@@ -300,13 +300,19 @@ def run_condition(args):
     from hivemind import DHT
     from hivemind.averaging import DecentralizedAverager
     from hivemind.utils import get_dht_time
+    from hivemind.averaging.load_balancing import load_balance_peers
     from hivemind.averaging.control import AveragingStage
     path = args.case_path
     path.mkdir(exist_ok=False)
     condition = args.condition
+    supplied_inputs = json.loads(args.inputs_json.read_text()) if args.inputs_json else None
+    chunk_bytes = args.chunk_bytes
+    bandwidths = dict(zip(NODES, (1., 2., 3., 4.))) if args.bandwidth_profile == 'unequal' else dict.fromkeys(NODES)
+    shape = list(torch.tensor(supplied_inputs['B']).shape) if supplied_inputs else [48, 9]
     active = ['B', 'D', 'C'] if condition == 'control3' else list(NODES)
-    config = dict(condition=condition, seed=args.seed, active=active, tensor_shape=[48,9],
-                  chunk_bytes=144, mode='NODE', weight=1, bandwidth=None,
+    config = dict(condition=condition, seed=args.seed, active=active, tensor_shape=shape,
+                  chunk_bytes=chunk_bytes, mode='NODE', weight=1, bandwidth=None,
+                  bandwidth_profile=args.bandwidth_profile, bandwidths=bandwidths,
                   sender_timeout=5, reducer_timeout=10, allreduce_timeout=30, step_timeout=45,
                   target_group_size=4, min_group_size=3, caching='native defaults',
                   artificial_delay=False, allow_retries=False,
@@ -314,7 +320,16 @@ def run_condition(args):
                   prefix='announce_'+uuid.uuid4().hex+'_'+condition,
                   fixture='B-only canonical assembly order; native registration and key update',
                   request_timeout=3, min_matchmaking_time=5, condition_cap_seconds=120)
+    if args.bandwidth_profile == 'unequal':
+        # Pin this runtime's LP choice; numerical reductions are checked independently.
+        total = torch.zeros(shape).numel()
+        config['allocation_reference'] = {
+            ','.join(order): list(map(int, load_balance_peers(total, [bandwidths[n] for n in order])))
+            for order in (list(NODES), ['A','D','B','C'], ['B','D','C'])
+        }
     write(path/'config.json', config)
+    if supplied_inputs:
+        write(path/'inputs.json', supplied_inputs)
     write(path/'provenance.json', provenance)
     with tarfile.open(path/'sources.tar.gz', 'w:gz') as archive:
         archive.add(Path(__file__), arcname='announcement_probe.py')
@@ -352,15 +367,20 @@ def run_condition(args):
         write(path/'identities.json', {n:str(d.peer_id) for n,d in zip(NODES,dhts)})
         install_hooks(condition)
         for i,(n,dht) in enumerate(zip(NODES,dhts)):
-            tensor = torch.zeros(48,9)
-            tensor[:,0] = torch.arange(1,49)+100*i
-            tensor[:,1+i] = 1
-            tensor[:,5+i] = torch.arange(1,49)
+            if supplied_inputs:
+                tensor = torch.tensor(supplied_inputs[n], dtype=torch.float32)
+                if list(tensor.shape) != shape or not torch.isfinite(tensor).all():
+                    raise ValueError('Input tensors must have identical shapes and finite values')
+            else:
+                tensor = torch.zeros(48,9)
+                tensor[:,0] = torch.arange(1,49)+100*i
+                tensor[:,1+i] = 1
+                tensor[:,5+i] = torch.arange(1,49)
             initial[n] = tensor.tolist()
             peers[n] = DecentralizedAverager([tensor], dht, prefix=config['prefix'],
-                initial_group_bits='', bandwidth=None, target_group_size=4, min_group_size=3,
+                initial_group_bits='', bandwidth=bandwidths[n], target_group_size=4, min_group_size=3,
                 min_matchmaking_time=5, request_timeout=3, allreduce_timeout=30,
-                sender_timeout=5, reducer_timeout=10, part_size_bytes=144,
+                sender_timeout=5, reducer_timeout=10, part_size_bytes=chunk_bytes,
                 averaging_alpha=1, allow_state_sharing=False, client_mode=False,
                 shutdown_timeout=3, start=True)
             sample()
@@ -458,6 +478,43 @@ def run_condition(args):
     if error:raise RuntimeError(error)
 
 
+def audit_shutdown(case_path, exitcode, dependencies):
+    """Audit only recorded owned processes after the native worker exits."""
+    sys.path.insert(0, str(Path(dependencies).resolve()))
+    import psutil
+    shutdown_path = Path(case_path)/'shutdown.json'
+    if not shutdown_path.exists():
+        raise RuntimeError(f'Missing worker shutdown evidence: {shutdown_path}')
+    shutdown = json.loads(shutdown_path.read_text())
+    def survivors():
+        found = []
+        for pid, created in shutdown['owned'].items():
+            try:
+                proc = psutil.Process(int(pid))
+                if proc.create_time() == created and proc.status() != psutil.STATUS_ZOMBIE:
+                    found.append(proc)
+            except psutil.NoSuchProcess:
+                pass
+        return found
+    audit_until = time.monotonic()+15
+    while survivors() and time.monotonic() < audit_until:
+        time.sleep(.1)
+    for proc in survivors():
+        shutdown['forced_cleanup'].append(proc.pid)
+        proc.terminate()
+    _, remaining = psutil.wait_procs(survivors(), timeout=2)
+    for proc in remaining:
+        proc.kill()
+    psutil.wait_procs(remaining, timeout=2)
+    shutdown['worker_closing_survivors'] = shutdown['surviving_pids']
+    shutdown['surviving_pids'] = [p.pid for p in survivors()]
+    shutdown['safe'] = not shutdown['surviving_pids']
+    shutdown['controller_audited_after_worker_exit'] = True
+    shutdown['worker_exitcode'] = exitcode
+    write(shutdown_path, shutdown)
+    return shutdown
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--label')
@@ -468,7 +525,16 @@ def main():
     parser.add_argument('--condition',choices=CONDITIONS)
     parser.add_argument('--case-path',type=Path)
     parser.add_argument('--preflight',action='store_true')
+    parser.add_argument('--bandwidth-profile', choices=('equal','unequal'), default='equal')
+    parser.add_argument('--inputs-json', type=Path)
+    parser.add_argument('--chunk-bytes', type=int, default=144)
     args=parser.parse_args()
+    if args.inputs_json:
+        args.inputs_json = args.inputs_json.resolve()
+        if not args.condition:
+            parser.error('--inputs-json requires a single --condition worker')
+    if args.chunk_bytes <= 0 or args.chunk_bytes % 4:
+        parser.error('--chunk-bytes must be a positive multiple of four')
     if args.preflight:
         _,info=native_imports(args);print(json.dumps(info,indent=2));return
     if args.condition:
@@ -501,7 +567,8 @@ def main():
     write(suite/'harness_hashes.json', {p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in frozen.iterdir()})
     for condition in CONDITIONS:
         command=[sys.executable,str(Path(__file__).resolve()),'--condition',condition,'--case-path',str((suite/condition).resolve()),
-                 '--package-root',str(args.package_root.resolve()),'--dependencies',str(args.dependencies.resolve()),'--seed',str(args.seed)]
+                 '--package-root',str(args.package_root.resolve()),'--dependencies',str(args.dependencies.resolve()),'--seed',str(args.seed),
+                 '--bandwidth-profile', args.bandwidth_profile, '--chunk-bytes',str(args.chunk_bytes)]
         print('RUN',condition,flush=True)
         with (suite/f'{condition}.log').open('w') as log:
             process=subprocess.Popen(command,stdout=log,stderr=subprocess.STDOUT,start_new_session=True,cwd='/tmp')
@@ -514,32 +581,9 @@ def main():
                 status.update(status='interrupted',failed=condition);write(suite/'status.json',status);raise
         # Final process audit belongs outside the native interpreter, so its
         # legitimate shared-memory helper has an opportunity to exit normally.
-        sys.path.insert(0,str(args.dependencies.resolve()))
-        import psutil
         shutdown_path=suite/condition/'shutdown.json'
         if shutdown_path.exists():
-            shutdown=json.loads(shutdown_path.read_text())
-            def survivors():
-                found=[]
-                for pid,created in shutdown['owned'].items():
-                    try:
-                        proc=psutil.Process(int(pid))
-                        if proc.create_time()==created and proc.status()!=psutil.STATUS_ZOMBIE:found.append(proc)
-                    except psutil.NoSuchProcess:pass
-                return found
-            audit_until=time.monotonic()+15
-            while survivors() and time.monotonic()<audit_until:time.sleep(.1)
-            for proc in survivors():
-                shutdown['forced_cleanup'].append(proc.pid);proc.terminate()
-            _,remaining=psutil.wait_procs(survivors(),timeout=2)
-            for proc in remaining:proc.kill()
-            psutil.wait_procs(remaining,timeout=2)
-            shutdown['worker_closing_survivors']=shutdown['surviving_pids']
-            shutdown['surviving_pids']=[p.pid for p in survivors()]
-            shutdown['safe']=not shutdown['surviving_pids']
-            shutdown['controller_audited_after_worker_exit']=True
-            shutdown['worker_exitcode']=code
-            write(shutdown_path,shutdown)
+            audit_shutdown(suite/condition, code, args.dependencies)
         if code:
             status.update(status='infrastructure_error',failed=condition);write(suite/'status.json',status)
             raise RuntimeError(f'{condition}: subprocess exit {code}; see log')

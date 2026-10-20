@@ -1,5 +1,22 @@
 # Hivemind adapter source map
 
+## Optional numerical backend
+
+`numerical.py` is a separate fixed-group backend for the announcement learning
+study. Each participant has its own ordered roster and coordinate allocation.
+It applies reducer mean-minus-sender-input corrections at each recipient's
+own coordinate ranges, and preserves local inputs for failed remote reducers.
+Absent expected senders expire before the reducer completes. NumPy is optional;
+the existing independent-work timing adapter below retains its original model.
+
+This numerical backend assumes reliable delivery before deadlines, equal
+unspecified bandwidths and compatible stream lengths. It explicitly rejects
+incompatible lengths rather than guessing the native error sequence. Leadership,
+the fixed grouping and attack schedule are scenario inputs. It makes no
+wall-clock prediction; the timed adapter's unresolved calibration is not used
+to estimate convergence speed. Differential evidence is required before running
+the learning suite, including native membership fallback and ordering fixtures.
+
 The adapter implements a timing and control-flow model of the checked-out
 Hivemind sources. The simulator does not import Hivemind, PyTorch, or NumPy at
 runtime. The table identifies the primary code used to derive each behavior.
