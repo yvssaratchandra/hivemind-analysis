@@ -1,0 +1,114 @@
+% Speaker notes for opening-slide.svg. Plain LaTeX content for reuse in a notes deck.
+\section*{Agora: continue or skip?}
+
+Before the technical walkthrough, ask whether this architecture addresses the
+research question closely enough to justify the remaining presentation time.
+Continue if Agora is useful as a comparison case; otherwise skip the walkthrough.
+
+\paragraph{Stage placement and group formation are different.}
+The authorizer assigns a stage when a worker joins. The inspected client keeps
+that assignment during its worker session; we have not established that a
+participant can never be reassigned across sessions or by operator action.
+Stage affinity is therefore relatively fixed, but averaging membership is not:
+each round collects current declarations and independently constructs a roster.
+Do not describe this as a permanent fixed group. Agora's inspected matchmaking
+does not elect a Hivemind-style leader or use that leader's admission decisions.
+
+\paragraph{Central authority is relevant to research fit.}
+The paper explicitly calls the authorizer a single admission and trust authority
+and gives it ownership of stage placement. This changes the threat model for
+placement and role selection. It does not, by itself, establish that downstream
+DHT discovery, roster construction, or parameter aggregation is secure.
+
+\paragraph{Lineage does not establish identical behavior.}
+Agora credits Hivemind and reuses its foundations, but its stage-based training,
+per-round roster construction, and designated reduction roles need separate
+analysis. Frame this as a difference in mechanisms and assumptions rather than
+as a criticism that Agora ought to reproduce Hivemind.
+
+\paragraph{Candidate question, not a demonstrated vulnerability.}
+Can an admitted participant influence stage placement or obtain a trainer role
+outside the intended policy? Stage, trainer/worker role, and reducer duty are
+distinct decisions. A contributor worker already performs training computation;
+it is not automatically a trainer that chooses data and routes microbatches.
+The paper does not document an outside worker becoming a trainer. We have not
+verified an exploit or inspected the server-side authorization policy completely.
+Our private baseline bypasses authorization, uses one synthetic stage, and does
+not test role escalation, stage placement, or a multi-stage trainer pipeline.
+
+\paragraph{Suggested judgment.}
+Keep Agora as a comparison case for central placement followed by distributed
+coordination. Prioritize it further only if a concrete accessible control-plane
+surface fits the study. Role or placement influence is a promising question,
+with feasibility still to be established.
+
+\paragraph{Sources.}
+Agora paper: \texttt{https://arxiv.org/html/2607.13332v1}, sections 3.3.1--3.3.2
+and 3.6.1. Pinned code revision: \texttt{37d29a966528675635161007d7b43388012a98b2}.
+See \texttt{agora/src/agora/security/authorizer.py}, method
+\texttt{get\_authorization}; and
+\texttt{agora\_server/src/agora\_server/core/all\_reduce/matchmaking.py},
+method \texttt{look\_for\_group}.
+
+\paragraph{Deck provenance.}
+The preserved 15-page input is \texttt{research/agora/Pluraris Agora.pdf}.
+The new opening page precedes
+the original title slide. Existing page artwork is unchanged. Footer artwork
+comes from input page 2, rendered at 1280 pixels wide and cropped to the bottom
+48 pixels; it retains the original institutional branding and presentation date.
+
+\section*{Research plan: influence who gets averaged}
+
+This is a proposed research direction. No matchmaking attack, Krum integration,
+or successful poisoning experiment is demonstrated by the existing Agora baseline.
+The research-plan slide follows the original deck, after the opening fit question.
+
+\paragraph{Hypothesis.}
+A modest global attacker population may gain disproportionate representation
+among the senders whose vectors actually reach a particular aggregation.
+Test whether manipulated discovery or roster formation can increase that local
+representation and thereby worsen a robust aggregation rule's behavior.
+Stage assignment alone does not establish such influence. The first experimental
+gate must demonstrate a working membership manipulation in the private testbed.
+Keep reducers honest to isolate this effect from a reducer simply returning lies.
+
+\paragraph{Controls and denominators.}
+Hold the global attacker budget, seeds, data, poisoning policy, and network model
+fixed between native-membership and manipulated-membership arms. Compare mean
+aggregation with a separately specified Krum comparison. Record the global
+attacker fraction, each peer's roster, expected senders, actually received
+contributions per reducer/coordinate, and the resulting local attacker fraction.
+An advertised attacker is not necessarily an effective contributing attacker.
+Keep incomplete, failed, and inconsistent rounds visible in the outcome accounting.
+
+\paragraph{Krum's guarantee and demonstrated failure.}
+The original Krum paper assumes gradient vectors and establishes resilience under
+the count condition $2f+2<n$ together with gradient-distribution and accuracy
+conditions. Here $n$ is the aggregation population and $f$ is the tolerated number
+of Byzantine inputs. Record Krum's configured tolerance separately from the actual
+number of malicious inputs. An actual count above that tolerance, or failure of
+the count condition, removes the guarantee; it does not prove an attack succeeds.
+Report poisoned-vector selection, output error or direction, held-out loss, and
+recovery against matched controls. Selection alone need not imply learning harm.
+
+\paragraph{Integration is an open implementation question.}
+The inspected Agora reducer computes a weighted arithmetic mean, not Krum:
+\texttt{agora\_server/core/all\_reduce/partition.py},
+\texttt{TensorPartReducer.accumulate\_part} and
+\texttt{check\_current\_part\_finished}.
+Krum requires pairwise distances between complete candidate vectors for the
+defined aggregation domain. Applying it independently to reducer chunks is a
+different rule and must not be presented as original whole-vector Krum.
+First define a controlled whole-vector Krum comparison and its communication cost.
+If the domain is only the selected sparse parameter slice, explicitly call this
+a Krum-based sparse-state comparison. Agora's asynchronous parameter snapshots
+are not the original paper's unbiased gradient estimator setting, so its SGD
+theorem does not transfer automatically. A separate gradient-based toy experiment
+could test the original setting. Do not claim a drop-in defense or proven bound
+for sparse asynchronous state averaging before resolving these choices.
+
+\paragraph{Source.}
+Blanchard, El Mhamdi, Guerraoui, and Stainer (2017),
+\emph{Machine Learning with Adversaries: Byzantine Tolerant Gradient Descent}.
+\texttt{https://papers.nips.cc/paper/2017/file/f4b9ec30ad9f68f89b29639786cb62ef-Paper.pdf}.
+Existing native source is pinned to the Agora revision cited above.

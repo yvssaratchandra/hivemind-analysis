@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="720" viewBox="0 0 1280 720">
+  <title>Research plan: influence who gets averaged</title>
+  <desc>Proposed research, not a measured result: influence matchmaking, concentrate a fixed attacker budget within an averaging group, and test whether a Krum comparison selects poisoned vectors and harms learning.</desc>
+  <rect width="1280" height="720" fill="#ecece8"/>
+  <g font-family="Aptos, Arial, sans-serif">
+    <text x="48" y="110" font-size="40" font-weight="bold" fill="#414be1">Research plan: influence who gets averaged</text>
+    <text x="48" y="160" font-size="25" fill="#25283b">Can matchmaking concentrate attackers enough to defeat Krum?</text>
+
+    <rect x="48" y="218" width="364" height="250" rx="14" fill="white" stroke="#cdd0de"/>
+    <text x="72" y="268" font-size="25" font-weight="bold" fill="#414be1">1  Influence matchmaking</text>
+    <text x="72" y="325" font-size="24" fill="#25283b">Change which honest peers</text>
+    <text x="72" y="358" font-size="24" fill="#25283b">discover and join the round.</text>
+    <text x="72" y="429" font-size="20" fill="#646b7f">DHT discovery / roster formation</text>
+
+    <path d="M 422 342 H 445 M 436 333 L 445 342 L 436 351" fill="none" stroke="#414be1" stroke-width="3"/>
+
+    <rect x="458" y="218" width="364" height="250" rx="14" fill="white" stroke="#cdd0de"/>
+    <text x="482" y="268" font-size="25" font-weight="bold" fill="#414be1">2  Concentrate attackers</text>
+    <text x="482" y="325" font-size="24" fill="#25283b">Same global attacker budget;</text>
+    <text x="482" y="358" font-size="24" fill="#25283b">higher share in the group.</text>
+    <text x="482" y="429" font-size="20" fill="#646b7f">Measure actual contributing senders</text>
+
+    <path d="M 832 342 H 855 M 846 333 L 855 342 L 846 351" fill="none" stroke="#414be1" stroke-width="3"/>
+
+    <rect x="868" y="218" width="364" height="250" rx="14" fill="white" stroke="#cdd0de"/>
+    <text x="892" y="268" font-size="25" font-weight="bold" fill="#414be1">3  Test Krum</text>
+    <text x="892" y="325" font-size="24" fill="#25283b">Compare native membership</text>
+    <text x="892" y="358" font-size="24" fill="#25283b">with manipulated membership.</text>
+    <text x="892" y="429" font-size="20" fill="#646b7f">Keep poisoning policy fixed</text>
+
+    <rect x="48" y="500" width="1184" height="87" rx="6" fill="#deddd5"/>
+    <text x="72" y="534" font-size="23" font-weight="bold" fill="#25283b">Evidence needed</text>
+    <text x="72" y="568" font-size="24" fill="#25283b">Local attacker share → poisoned-vector selection → loss and recovery</text>
+    <text x="58" y="620" font-size="18" fill="#25283b">Proposed comparison: native Agora uses weighted averaging; Krum would be added experimentally.</text>
+    <text x="58" y="649" font-size="14" fill="#646b7f">Exceeding Krum’s tolerance assumptions alone is not proof of failure. Reference: Blanchard et al., NeurIPS 2017.</text>
+  </g>
+  <image x="0" y="672" width="1280" height="48" xlink:href="footer.png"/>
+</svg>

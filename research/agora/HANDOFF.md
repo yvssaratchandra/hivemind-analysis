@@ -1,5 +1,23 @@
 # Agora private baseline handoff
 
+## Local reducer-mode probe (2026-10-15)
+
+Completed and stopped: `probe_reducer_mode.py`, results
+`results/reducer_mode_20261015_c/REPORT.txt`. Three loopback peers, one aggregation
+round per arm, no authorization or integrity service. Native matchmaking and
+allocation give X zero reduction elements advertising CLIENT, versus 32/96
+advertising NODE; X returns four eight-element correction chunks to each honest
+peer in the NODE arm. Independent raw arithmetic checks agree within 9.94e-8.
+All peers stop normally; independent recorded-PID checks find no survivors.
+This tests locally configured mode and resulting advertised behavior, not
+deployment admission or a modified-client integrity bypass. No poisoning tested.
+The source and evidence of the existing eight-peer baseline remain unchanged.
+Labels a/b preserve successful CLIENT controls halted by a pre-worker-exit
+shutdown-check mistake; final parent checks found no survivors. Label c fixes
+closure ordering, completes both arms, and preserves the earlier failures.
+
+## Eight-peer baseline
+
 Approved scope: eight honest private peers, four reducers and four contributors,
 one stage, synthetic CPU training. Native Agora DHT discovery, local roster
 construction, sparse partitioning and all-reduce; upstream source unchanged.
@@ -86,3 +104,22 @@ dry-run was verified without launching peers. Seeded inputs control RTT sampling
 toy data, partitions and readiness offsets; native peer/DHT identities are fresh
 and recorded per attempt. Keep the unresolved first-smoke dropped part visible
 when interpreting future baseline reliability.
+
+## Single-stage simulator pilot (2026-10-20)
+
+Implemented the separate Agora adapter in `research/simulator/src/trainsim/protocols/agora/`.
+Fixed assignment to one stage, 96 CLIENT contributors and 4 NODE reducers;
+no Authorizer, placement algorithm, full pipeline or attack. Synthetic timings,
+continuous local compute, randomized initial offsets, native-derived local
+matchmaking, sparse tensor partitioning, CLIENT input-close behavior, and
+per-stream timeouts. Three-part transport window remains an explicit approximation.
+
+Pilot: `research/simulator/results/agora_single_stage_s1_20261020_a/`. Seed 1,
+500 accepted sparse snapshots by 222.725724 simulated seconds, 240-second window;
+five per node, five unanimous 100-member roster epochs, 500 completed local
+averages, no failures/partials/skips. Driver finished in 250.598 wall seconds.
+105 tests passed; final allocation adjustment passed 16 focused checks. Frozen
+sources, raw trace, replay and independent receipt audit are retained. Open
+`DASHBOARD.html`; observed-peer ranges there include intermediate discovery
+polls, while final roster membership is shown separately. No additional seed
+or attack run: await user review. This is not a WAN or convergence result.
