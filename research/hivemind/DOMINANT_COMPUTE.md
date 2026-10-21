@@ -9,7 +9,7 @@ separate from the completed E0–E5 fixed-round experiment.
 |---|---|
 | C0 sample-weight marker checks | Complete: 9/9; current frozen harness marker suite `_d` |
 | C1 persistent native harness and pilot | Complete: `_b`, all three native cases pass |
-| C2 five paired confirmation seeds | Running: `compute_c2_confirmation_20261021_a` |
+| C2 five paired confirmation seeds | Batch complete; three runs invalidated by suspend; clean paired seeds 304–306 |
 | C3 compute-share simulation | Stopped at numerical gate: one baseline partial response is unmodeled; no timing/sweep |
 
 ## Contract
@@ -121,7 +121,12 @@ three native evidence checks pass. Exclusion and absent numerical replays pass;
 baseline has one confirmed partial-response replay discrepancy. Exclusion records A's
 post-training cleanup deadline overrun with no surviving owned processes. The
 compact report is `results/compute_c1_report_20261021_a/REPORT.md`. These remain
-single-seed pilot results; paired confirmation is running with unchanged settings.
+single-seed pilot results. Confirmation completed with unchanged settings, but
+system suspension invalidated `exclusion_s302`, `absent_s302`, and
+`exclusion_s303`. Seeds 304–306 have uninterrupted three-arm comparisons.
+The latest sleep occurred after batch completion. See
+`results/compute_suspend_audit_20261021_b/REPORT.md`; replace affected paired
+seeds before full five-seed confirmation claims.
 
 `results/compute_c3_pilot_gate_20261021_a` records the genuine numerical gate
 failure: at about 14.38 seconds in the baseline, B registered two of three

@@ -1,14 +1,16 @@
 # Handoff — read this first
 
-**Suspension audit 2026-10-21:** two laptop suspensions affected
-`compute_c2_confirmation_20261021_a/exclusion_s302` and `absent_s302`.
-Their original native checks pass, but they are **not eligible for clean timing
-comparisons**: 300 recorded seconds spanned approximately 827 and 3793 wall
-seconds. Baseline seed 302 completed before suspension; seed 303 exclusion
-started after resume and was progressing normally at audit time. Preserve the
-original suite; replace affected seed 302 under a fresh label before final
-confirmation claims. See `results/compute_suspend_audit_20261021_a/REPORT.md`
-and its saved system journal. Do not infer clean timing from `checks.json` alone.
+**Updated suspension audit 2026-10-21:** the confirmation batch completed at
+13:57 Europe/Stockholm, before the latest 13:59–14:11 sleep. That sleep affected
+no run. Earlier sleeps affected `exclusion_s302`, `absent_s302`, and
+`exclusion_s303` in `compute_c2_confirmation_20261021_a`. Their original native
+checks pass, but they are **not eligible for clean timing comparisons**. The
+additional 12:57–12:59 sleep updates the earlier assessment of seed 303.
+Twelve of fifteen runs have no suspension overlap; seeds 304–306 are complete
+uninterrupted three-arm comparisons. Preserve originals; replace affected paired
+seeds 302 and 303 under fresh labels before full confirmation claims. The suite
+inventory verifies. See `results/compute_suspend_audit_20261021_b/REPORT.md`
+and its saved journal. The report guard blocks all three affected cases.
 
 Everything a new session needs: what the project is, where it stands, what is known, and what to do
 next. Written to be read without any prior conversation.
@@ -29,7 +31,8 @@ Fresh frozen marker `_d` and pilot `_b` completed: all three pilot native checks
 pass, with D/C crossings 40/57/121 seconds for
 baseline/exclusion/absent. `results/compute_c1_report_20261021_a` contains the
 report; these are single-seed pilot observations. Five paired confirmation seeds
-are running under `results/compute_c2_confirmation_20261021_a`. C3 candidate
+finished under `results/compute_c2_confirmation_20261021_a`, with suspension
+exceptions recorded above. C3 candidate
 code is unvalidated. C3 stopped at a genuine numerical gate: one baseline
 partial C-reducer response made B preserve coordinates `[32:36]`, while the
 reliable-delivery model predicts a full weighted mean. Exact evidence is in

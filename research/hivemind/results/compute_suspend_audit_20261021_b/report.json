@@ -1,0 +1,179 @@
+{
+  "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/compute_c2_confirmation_20261021_a",
+  "suite_inventory_sha256": "7f520b8baab4361ec7553fee321cc14a6e646ef4edaebab978c166eab3eb5a5c",
+  "audit_time_utc": "2026-10-21T12:16:10.464045+00:00",
+  "suite_completed_utc": "2026-10-21T11:57:18.467115+00:00",
+  "suspensions": [
+    {
+      "start_utc": "2026-10-21T09:36:01+00:00",
+      "end_utc": "2026-10-21T09:44:49+00:00"
+    },
+    {
+      "start_utc": "2026-10-21T09:52:08+00:00",
+      "end_utc": "2026-10-21T10:50:23+00:00"
+    },
+    {
+      "start_utc": "2026-10-21T10:57:09+00:00",
+      "end_utc": "2026-10-21T10:59:17+00:00"
+    },
+    {
+      "start_utc": "2026-10-21T11:59:18+00:00",
+      "end_utc": "2026-10-21T12:11:15+00:00"
+    }
+  ],
+  "cases": [
+    {
+      "case": "absent_s302",
+      "start_utc": "2026-10-21T09:49:18.353096+00:00",
+      "end_utc": "2026-10-21T10:52:31.019922+00:00",
+      "wall_seconds": 3792.6668252944946,
+      "recorded_seconds": 300.0000621750005,
+      "suspension_indices": [
+        1
+      ],
+      "timing_eligible": false
+    },
+    {
+      "case": "absent_s303",
+      "start_utc": "2026-10-21T11:00:15.158449+00:00",
+      "end_utc": "2026-10-21T11:05:15.159803+00:00",
+      "wall_seconds": 300.001353263855,
+      "recorded_seconds": 300.00020583600417,
+      "suspension_indices": [],
+      "timing_eligible": true
+    },
+    {
+      "case": "absent_s304",
+      "start_utc": "2026-10-21T11:10:30.861725+00:00",
+      "end_utc": "2026-10-21T11:15:30.863915+00:00",
+      "wall_seconds": 300.00219082832336,
+      "recorded_seconds": 300.0000944429994,
+      "suspension_indices": [],
+      "timing_eligible": true
+    },
+    {
+      "case": "absent_s305",
+      "start_utc": "2026-10-21T11:36:37.515714+00:00",
+      "end_utc": "2026-10-21T11:41:37.516524+00:00",
+      "wall_seconds": 300.0008099079132,
+      "recorded_seconds": 300.0002081570128,
+      "suspension_indices": [],
+      "timing_eligible": true
+    },
+    {
+      "case": "absent_s306",
+      "start_utc": "2026-10-21T11:47:05.531430+00:00",
+      "end_utc": "2026-10-21T11:52:05.533356+00:00",
+      "wall_seconds": 300.00192618370056,
+      "recorded_seconds": 300.00014607100456,
+      "suspension_indices": [],
+      "timing_eligible": true
+    },
+    {
+      "case": "baseline_s302",
+      "start_utc": "2026-10-21T09:30:00.567971+00:00",
+      "end_utc": "2026-10-21T09:35:00.569780+00:00",
+      "wall_seconds": 300.00180888175964,
+      "recorded_seconds": 300.00009805799345,
+      "suspension_indices": [],
+      "timing_eligible": true
+    },
+    {
+      "case": "baseline_s303",
+      "start_utc": "2026-10-21T11:05:21.321377+00:00",
+      "end_utc": "2026-10-21T11:10:21.321875+00:00",
+      "wall_seconds": 300.0004985332489,
+      "recorded_seconds": 300.0001080669972,
+      "suspension_indices": [],
+      "timing_eligible": true
+    },
+    {
+      "case": "baseline_s304",
+      "start_utc": "2026-10-21T11:15:37.297988+00:00",
+      "end_utc": "2026-10-21T11:20:37.298985+00:00",
+      "wall_seconds": 300.0009973049164,
+      "recorded_seconds": 300.0001008239997,
+      "suspension_indices": [],
+      "timing_eligible": true
+    },
+    {
+      "case": "baseline_s305",
+      "start_utc": "2026-10-21T11:26:07.108016+00:00",
+      "end_utc": "2026-10-21T11:31:07.109291+00:00",
+      "wall_seconds": 300.0012743473053,
+      "recorded_seconds": 300.00008064999565,
+      "suspension_indices": [],
+      "timing_eligible": true
+    },
+    {
+      "case": "baseline_s306",
+      "start_utc": "2026-10-21T11:52:11.853789+00:00",
+      "end_utc": "2026-10-21T11:57:11.855007+00:00",
+      "wall_seconds": 300.00121879577637,
+      "recorded_seconds": 300.00012030299695,
+      "suspension_indices": [],
+      "timing_eligible": true
+    },
+    {
+      "case": "exclusion_s302",
+      "start_utc": "2026-10-21T09:35:09.255547+00:00",
+      "end_utc": "2026-10-21T09:48:56.580820+00:00",
+      "wall_seconds": 827.325272321701,
+      "recorded_seconds": 300.00013298699923,
+      "suspension_indices": [
+        0
+      ],
+      "timing_eligible": false
+    },
+    {
+      "case": "exclusion_s303",
+      "start_utc": "2026-10-21T10:52:36.527718+00:00",
+      "end_utc": "2026-10-21T10:59:43.101978+00:00",
+      "wall_seconds": 426.57426023483276,
+      "recorded_seconds": 300.0000521550028,
+      "suspension_indices": [
+        2
+      ],
+      "timing_eligible": false
+    },
+    {
+      "case": "exclusion_s304",
+      "start_utc": "2026-10-21T11:20:46.657002+00:00",
+      "end_utc": "2026-10-21T11:25:46.658413+00:00",
+      "wall_seconds": 300.0014109611511,
+      "recorded_seconds": 300.000054037002,
+      "suspension_indices": [],
+      "timing_eligible": true
+    },
+    {
+      "case": "exclusion_s305",
+      "start_utc": "2026-10-21T11:31:16.126120+00:00",
+      "end_utc": "2026-10-21T11:36:16.127168+00:00",
+      "wall_seconds": 300.00104880332947,
+      "recorded_seconds": 300.00011151599756,
+      "suspension_indices": [],
+      "timing_eligible": true
+    },
+    {
+      "case": "exclusion_s306",
+      "start_utc": "2026-10-21T11:41:43.957017+00:00",
+      "end_utc": "2026-10-21T11:46:43.957954+00:00",
+      "wall_seconds": 300.000937461853,
+      "recorded_seconds": 300.00010891600687,
+      "suspension_indices": [],
+      "timing_eligible": true
+    }
+  ],
+  "invalidated_cases": [
+    "absent_s302",
+    "exclusion_s302",
+    "exclusion_s303"
+  ],
+  "latest_suspension_affected_cases": [],
+  "clean_paired_seeds": [
+    304,
+    305,
+    306
+  ],
+  "decision": "Latest suspension occurred after batch completion. Earlier additional suspension invalidates exclusion_s303. Preserve all evidence; replace affected paired seeds 302 and 303 before full five-seed confirmation claims."
+}
