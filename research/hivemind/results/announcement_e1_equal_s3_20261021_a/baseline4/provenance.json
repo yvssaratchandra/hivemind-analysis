@@ -1,0 +1,77 @@
+{
+  "allocations": {
+    "3": {
+      "elements": [
+        144,
+        144,
+        144
+      ],
+      "chunks": [
+        4,
+        4,
+        4
+      ]
+    },
+    "4": {
+      "elements": [
+        108,
+        108,
+        108,
+        108
+      ],
+      "chunks": [
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "cache_defaults": {
+    "cache_locally": true,
+    "cache_nearest": 1,
+    "cache_size": null,
+    "cache_refresh_before_expiry": 5,
+    "cache_on_store": true,
+    "reuse_get_requests": true
+  },
+  "executable": "/home/sarat/.local/bin/python3.11",
+  "dependencies": "/home/sarat/Projects/hivemind-analysis/research/agora/.runtime/venv/lib/python3.11/site-packages",
+  "dependency_versions": {
+    "torch": "2.7.0+cpu",
+    "numpy": "2.3.5",
+    "protobuf": "7.36.2",
+    "grpcio": "1.84.0",
+    "psutil": "7.2.2"
+  },
+  "package": "/home/sarat/Projects/hivemind-analysis/research/simulator/.native-runtime/root_snapshot_a/hivemind",
+  "hashes": {
+    "averaging/matchmaking.py": "6a775570b7183d7ea231d8a3a1030a5b63a4ddaa7fa5ceaabc178e3e74ae8814",
+    "averaging/key_manager.py": "99a24f165590493016d7731fe111be7d1497e3ce695de123a806ca9722cecdc9",
+    "averaging/allreduce.py": "2a67006fc98b9683e357e4b8a805832c9bec1e81afbf1ffcc41862bb56caab05",
+    "averaging/partition.py": "8905c51826c26d18281121e760758f3a3bfc77feca351886eade13cfbe571e23",
+    "averaging/averager.py": "932a59ddb7e0933de2dc674be8480ebcdc9eb9fd713f5040a33dd0e4cca59929",
+    "averaging/load_balancing.py": "e615b5b303add017001608f19c223288a276f87c8526c16aaba6be7c19a141fd",
+    "averaging/group_info.py": "e2b8a97737fc6888f8f6e27b3d264fce1e10ef81fa2d8d930f7ca2c9620310f1",
+    "proto/averaging.proto": "96cd1a5d20786ba2e4f79447e14357a2f963b61392c9702547432f5e63c60da4",
+    "dht/node.py": "0957c32e123e13b0e2bd8f4a740032fd794a2fcd9b01e49cede6b013b58efadb",
+    "dht/dht.py": "b41230a61e3d04e44e3ced567eb7beba738aad49cc7f2ceaf113dc4a4de2a8a5",
+    "dht/protocol.py": "2fc86983799b090aa1637beee487115f1323d6d82f6a386a343d1ac8f1d69a6f",
+    "p2p/p2p_daemon.py": "a054940d3f89e2c51f12323f4a0dc2b9f24d4c4b4d2100246928d98a7a00347b",
+    "utils/serializer.py": "7b22cfb275a5a9f23051e88d9c55b3a5948cc558609ade14555f649c30b3fe7e",
+    "compression/serialization.py": "0c94266be46552b3c25664bb900e7e71a42518ec758e6786d28fd92fed38bcd2"
+  },
+  "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]",
+  "torch": "2.7.0+cpu",
+  "hivemind": "1.2.0.dev0",
+  "proto_hashes": {
+    "test_pb2.py": "bc30922c9878b444376ddec1b10f8fcfb78518ab161331cf527baf05086efaa5",
+    "runtime_pb2.py": "8183ebedeac438e8221465a91281ab38ffb3ae34210de1bdc0a7f584b02751f5",
+    "p2pd_pb2.py": "2cbd461404fce517ab8dc588521eb8cd8e18e3909ee21cddba1f841e345f940d",
+    "dht_pb2.py": "11e93e7c79cbb45518ba5410e1dc11239da28a06c794bcb23dc11bfbc967e3b3",
+    "crypto_pb2.py": "43db3932910623c7e19ba43028d3d61d681576bc4bbd511c16d645af2db8d764",
+    "averaging_pb2.py": "f66cbb36528b77ac1f2c9ffbd9b255d8a7bac83c4634c33864a061c8a0a9cb91",
+    "auth_pb2.py": "18b5fee9dbc8dd5fc958749ca1b7665fc14a86443f0a60162f6713e6e143942d"
+  },
+  "p2pd_sha256": "42f8f48e62583b97cdba3c31439c08029fb2b9fc506b5bdd82c46b7cc1d279d8"
+}

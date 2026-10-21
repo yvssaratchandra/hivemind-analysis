@@ -11,10 +11,26 @@ pilots followed by five paired confirmation seeds 202–206 (E4/E5).
 | Implementation status | State |
 |---|---|
 | E0 evidence gate and report direction | Complete: 30 focused tests; original raw suite revalidated in `results/announcement_e0_review_20261020_a` |
-| E1 repeatability and allocation boundary | Pending E0 |
-| E2 native learning reference | Pending E1; workload implementation in progress |
+| E1 repeatability and allocation boundary | Complete: equal seeds 2–4 and unequal seed 5; all 16 condition checks passed |
+| E2 native learning reference | Running six ten-round trajectories; iid baseline and membership complete |
 | E3 numerical protocol model | Pending native reference |
 | E4/E5 convergence and recovery | Pending differential validation |
+
+E1 local results (2026-10-21): `announcement_e1_equal_s{2,3,4}_20261021_a`
+reproduced coordinate errors of 18 for A and 6 for B/D/C in ordering; membership
+returned the B/D/C mean and left A unchanged (324 remote fallback elements,
+108 own-only elements). `announcement_e1_unequal_s5_20261021_b` reproduced
+ordering errors of 12 for A and 4 for B/D/C; membership left A unchanged with
+288 fallback elements and 144 own-only elements. Controls were accurate within
+5.1e-6. These are identifiable marker values, not loss measurements or deployment
+success rates. Every completed set has a raw-file SHA256 inventory.
+
+The unequal `_a` attempt stopped after its successful native baseline because
+the checker incorrectly required NODE allocation mode for zero-allocation B.
+Native `AllReduceRunner` defaults such peers to CLIENT. The corrected checker
+passed a temporary-copy reanalysis; the stopped attempt remains preserved and
+the full set uses `_b`. The numerical learning backend remains scoped to equal
+allocations; this boundary result does not expand its validation scope.
 
 The native loop computes full-batch gradients for a 48-coefficient noiseless
 linear regression, averages them, then applies float32 SGD (learning rate 0.1,

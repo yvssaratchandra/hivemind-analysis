@@ -20,7 +20,15 @@ def inventory(root: Path) -> dict:
 def verify(root: Path) -> list[str]:
     manifest = json.loads((root / "artifact_inventory.json").read_text())
     failures = []
+    actual_paths = {item["path"] for item in inventory(root)["files"]}
+    listed_paths = [item["path"] for item in manifest["files"]]
+    if len(listed_paths) != len(set(listed_paths)):
+        failures.append("duplicate inventory paths")
+    failures.extend(sorted(actual_paths - set(listed_paths)))
     for item in manifest["files"]:
+        if Path(item["path"]).is_absolute() or ".." in Path(item["path"]).parts:
+            failures.append(item["path"])
+            continue
         path = root / item["path"]
         if (not path.is_file() or path.stat().st_size != item["bytes"]
                 or hashlib.sha256(path.read_bytes()).hexdigest() != item["sha256"]):

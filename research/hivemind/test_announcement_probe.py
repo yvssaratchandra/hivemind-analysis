@@ -17,6 +17,8 @@ from analyze_announcement_probe import (
     NODES,
     analyze_condition,
     analyze_suite,
+    _allocation_errors,
+    _evidence_checks,
     _mean_from_saved_inputs,
     _output_analysis,
 )
@@ -33,6 +35,56 @@ def _input_tensor(node: str) -> list[list[float]]:
         row[5 + node_index] = row_index + 1
         result.append(row)
     return result
+
+
+_UNEQUAL_COUNTS = {
+    "B,D,A,C": [0, 94, 150, 188],
+    "A,D,B,C": [150, 94, 0, 188],
+    "B,D,C": [0, 190, 242],
+}
+_UNEQUAL_RANGES = {
+    "B,D,A,C": {
+        "B": [],
+        "D": [[0, 36], [36, 72], [72, 108]],
+        "A": [[108, 144], [144, 180], [180, 216], [216, 252]],
+        "C": [[252, 288], [288, 324], [324, 360], [360, 396], [396, 432]],
+    },
+    "A,D,B,C": {
+        "A": [[0, 36], [36, 72], [72, 108], [108, 144]],
+        "D": [[144, 180], [180, 216], [216, 252]],
+        "B": [],
+        "C": [[252, 288], [288, 324], [324, 360], [360, 396], [396, 432]],
+    },
+    "B,D,C": {
+        "B": [],
+        "D": [[0, 36], [36, 72], [72, 108], [108, 144], [144, 180]],
+        "C": [[180, 216], [216, 252], [252, 288], [288, 324], [324, 360], [360, 396], [396, 432]],
+    },
+}
+
+
+def _unequal_config() -> dict:
+    return {
+        "bandwidth_profile": "unequal",
+        "bandwidths": {"B": 1.0, "D": 2.0, "A": 3.0, "C": 4.0},
+        "allocation_reference": _UNEQUAL_COUNTS,
+        "tensor_shape": [48, 9],
+        "chunk_bytes": 144,
+    }
+
+
+def _unequal_allocation_event(node: str, members: list[str]) -> dict:
+    key = ",".join(members)
+    ranges = _UNEQUAL_RANGES[key]
+    return {
+        "kind": "allocation",
+        "node": node,
+        "members": members,
+        "allocations": _UNEQUAL_COUNTS[key],
+        "modes": [1 if count == 0 else 0 for count in _UNEQUAL_COUNTS[key]],
+        "parts": {peer: len(ranges[peer]) for peer in members},
+        "part_ranges": ranges,
+    }
 
 
 def _condition_artifacts(path: Path, condition: str, *, fallback_b: bool = False) -> None:
@@ -706,6 +758,78 @@ class AnnouncementProbeAnalyzerTests(unittest.TestCase):
             self.assertIn("gap or overlap", errors)
             self.assertFalse(result["evidence"]["allocation_checks"]["B"]["valid"])
 
+    def test_unequal_profile_checks_roster_metadata_and_native_allocation_reference(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "baseline4"
+            _condition_artifacts(path, "baseline4")
+            events = [json.loads(line) for line in (path / "events_0.jsonl").read_text().splitlines()]
+            outputs = json.loads((path / "outputs.json").read_text())
+            config = _unequal_config()
+            for event in events:
+                if event["kind"] == "local_roster":
+                    event["bandwidths"] = [config["bandwidths"][member] for member in event["members"]]
+                elif event["kind"] == "allocation":
+                    expected = _unequal_allocation_event(event["node"], event["members"])
+                    event.update({key: expected[key] for key in ("allocations", "modes", "parts", "part_ranges")})
+
+            evidence = _evidence_checks("baseline4", events, outputs, True, config)
+            self.assertTrue(evidence["valid"], evidence["errors"])
+            self.assertTrue(all(check["valid"] for check in evidence["allocation_checks"].values()))
+            self.assertEqual(evidence["allocation_checks"]["B"]["allocations"], [0, 94, 150, 188])
+            self.assertEqual(evidence["allocation_checks"]["B"]["parts"], {"B": 0, "D": 3, "A": 4, "C": 5})
+            allocation = next(event for event in events if event["kind"] == "allocation" and event["node"] == "B")
+            self.assertEqual(allocation["modes"], [1, 0, 0, 0])
+            (path / "config.json").write_text(json.dumps(config), encoding="utf-8")
+            (path / "events_0.jsonl").write_text(
+                "".join(json.dumps(event) + "\n" for event in events), encoding="utf-8"
+            )
+            analyzed = analyze_condition(path)
+            self.assertTrue(all(check["valid"] for check in analyzed["evidence"]["allocation_checks"].values()))
+
+            bad_metadata = [dict(event) for event in events]
+            roster = next(event for event in bad_metadata if event["kind"] == "local_roster" and event["node"] == "B")
+            roster["bandwidths"] = [1.0, 2.0, 2.5, 4.0]
+            rejected = _evidence_checks("baseline4", bad_metadata, outputs, True, config)
+            self.assertFalse(rejected["valid"])
+            self.assertTrue(any("native bandwidths" in error for error in rejected["errors"]))
+
+            bad_mode_events = [dict(event) for event in events]
+            zero_fraction_allocation = next(
+                event for event in bad_mode_events
+                if event["kind"] == "allocation" and event["node"] == "B"
+            )
+            zero_fraction_allocation["modes"] = [0, 0, 0, 0]
+            rejected_mode = _evidence_checks("baseline4", bad_mode_events, outputs, True, config)
+            self.assertFalse(rejected_mode["valid"])
+            self.assertTrue(any("mode" in error.lower() for error in rejected_mode["errors"]))
+            wrong_config = _unequal_config()
+            wrong_config["bandwidths"]["A"] = 2.5
+            rejected_config = _evidence_checks("baseline4", events, outputs, True, wrong_config)
+            self.assertFalse(rejected_config["valid"])
+            self.assertTrue(any("config bandwidths differ" in error for error in rejected_config["errors"]))
+
+    def test_unequal_profile_rejects_wrong_dense_counts_and_chunk_ownership(self) -> None:
+        config = _unequal_config()
+        for members in (list(NODES), ["A", "D", "B", "C"], ["B", "D", "C"]):
+            with self.subTest(roster=members):
+                event = _unequal_allocation_event("B", members)
+                self.assertEqual(_allocation_errors(event, "B", members, config), [])
+
+                wrong_counts = dict(event)
+                wrong_counts["allocations"] = list(event["allocations"])
+                wrong_counts["allocations"][0] += 1
+                errors = _allocation_errors(wrong_counts, "B", members, config)
+                self.assertTrue(any("expected configured dense allocations" in error for error in errors), errors)
+
+                wrong_ranges = dict(event)
+                wrong_ranges["part_ranges"] = {peer: [list(interval) for interval in ranges]
+                                               for peer, ranges in event["part_ranges"].items()}
+                owner = next(peer for peer in members if wrong_ranges["part_ranges"][peer])
+                wrong_ranges["part_ranges"][owner][0][0] += 36
+                errors = _allocation_errors(wrong_ranges, "B", members, config)
+                self.assertTrue(any("part ranges differ from dense-allocation chunk ownership" in error
+                                    for error in errors), errors)
+
     def test_native_allocation_mode_weight_and_compression_are_checked(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "baseline4"
@@ -720,7 +844,7 @@ class AnnouncementProbeAnalyzerTests(unittest.TestCase):
             result = analyze_condition(path)
             self.assertFalse(result["valid_evidence"])
             errors = "\n".join(result["evidence"]["errors"])
-            self.assertIn("expected NODE mode", errors)
+            self.assertIn("expected modes", errors)
             self.assertIn("weight is missing or differs from 1", errors)
             self.assertIn("did not record NoCompression", errors)
             self.assertFalse(result["evidence"]["allocation_checks"]["B"]["valid"])

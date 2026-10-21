@@ -25,6 +25,9 @@ LANES = 9
 ABS_TOL = 1e-4
 REL_TOL = 0.0
 CONDITIONS = ("baseline4", "control3", "ordering", "membership")
+DEFAULT_CHUNK_BYTES = 144
+FLOAT32_BYTES = 4
+UNEQUAL_BANDWIDTHS = {"B": 1.0, "D": 2.0, "A": 3.0, "C": 4.0}
 
 
 def _load_json(path: Path) -> Any:
@@ -140,20 +143,42 @@ def _mode_name(value: Any) -> str | None:
 
 
 def _roster_metadata_errors(
-    event: dict[str, Any], node: str, members: list[str], *, check_bandwidths: bool = True
+    event: dict[str, Any],
+    node: str,
+    members: list[str],
+    *,
+    check_bandwidths: bool = True,
+    expected_bandwidths: list[float | None] | None = None,
+    expected_modes: list[str] | None = None,
 ) -> list[str]:
     errors = []
     modes = _event_value(event, "modes")
+    wanted_modes = expected_modes if expected_modes is not None else ["NODE"] * len(members)
     if not isinstance(modes, list) or len(modes) != len(members):
         errors.append(f"{node}: native modes must be aligned with the local roster")
-    elif [_mode_name(value) for value in modes] != ["NODE"] * len(members):
-        errors.append(f"{node}: expected NODE mode for every roster member, got {modes!r}")
+    elif [_mode_name(value) for value in modes] != wanted_modes:
+        errors.append(f"{node}: expected modes {wanted_modes}, got {modes!r}")
     if check_bandwidths:
         bandwidths = _event_value(event, "bandwidths")
         if not isinstance(bandwidths, list) or len(bandwidths) != len(members):
             errors.append(f"{node}: native bandwidths must be aligned with the local roster")
-        elif any(value is not None for value in bandwidths):
-            errors.append(f"{node}: expected unspecified native bandwidths, got {bandwidths!r}")
+        elif expected_bandwidths is None:
+            if any(value is not None for value in bandwidths):
+                errors.append(f"{node}: expected unspecified native bandwidths, got {bandwidths!r}")
+        elif any(
+            (expected is None and actual is not None)
+            or (
+                expected is not None
+                and (
+                    isinstance(actual, bool)
+                    or not isinstance(actual, (int, float))
+                    or not math.isfinite(float(actual))
+                    or float(actual) != expected
+                )
+            )
+            for actual, expected in zip(bandwidths, expected_bandwidths)
+        ):
+            errors.append(f"{node}: native bandwidths {bandwidths!r} differ from expected {expected_bandwidths!r}")
     return errors
 
 
@@ -398,8 +423,61 @@ def _source_provenance_check(path: Path) -> tuple[dict[str, Any], list[str]]:
     }, errors
 
 
-def _allocation_errors(event: dict[str, Any], node: str, expected_members: list[str]) -> list[str]:
-    """Check dense allocation, part count, and complete non-overlapping ranges."""
+def _tensor_partition(config: dict[str, Any] | None) -> tuple[int, int, list[str]]:
+    """Return the configured dense size and float32 chunk length."""
+    settings = config if isinstance(config, dict) else {}
+    errors: list[str] = []
+    shape = settings.get("tensor_shape")
+    total = ROWS * LANES
+    if shape is not None:
+        if (
+            not isinstance(shape, list)
+            or not shape
+            or any(isinstance(dim, bool) or not isinstance(dim, int) or dim <= 0 for dim in shape)
+        ):
+            errors.append(f"invalid tensor_shape in config: {shape!r}")
+        else:
+            total = math.prod(shape)
+    chunk_bytes = settings.get("chunk_bytes", DEFAULT_CHUNK_BYTES)
+    if isinstance(chunk_bytes, bool) or not isinstance(chunk_bytes, int) or chunk_bytes <= 0 or chunk_bytes % FLOAT32_BYTES:
+        errors.append(f"invalid float32 chunk_bytes in config: {chunk_bytes!r}")
+        chunk_size = DEFAULT_CHUNK_BYTES // FLOAT32_BYTES
+    else:
+        chunk_size = chunk_bytes // FLOAT32_BYTES
+    return total, chunk_size, errors
+
+
+def _ranges_from_dense_allocations(
+    members: list[str], allocations: list[int], total: int, chunk_size: int
+) -> dict[str, list[list[int]]]:
+    """Assign fixed-size chunks to the dense interval with greatest overlap.
+
+    Ties go to the first peer in roster order, matching the native partitioner's
+    ``argmax`` behavior. This derives chunk ownership independently from the
+    serialized ``parts`` and ``part_ranges`` metadata.
+    """
+    boundaries = [0]
+    for count in allocations:
+        boundaries.append(boundaries[-1] + count)
+    ranges = {peer: [] for peer in members}
+    for start in range(0, total, chunk_size):
+        end = min(start + chunk_size, total)
+        overlaps = [
+            max(0, min(end, boundaries[index + 1]) - max(start, boundaries[index]))
+            for index in range(len(members))
+        ]
+        owner_index = max(range(len(members)), key=lambda index: overlaps[index])
+        ranges[members[owner_index]].append([start, end])
+    return ranges
+
+
+def _allocation_errors(
+    event: dict[str, Any],
+    node: str,
+    expected_members: list[str],
+    config: dict[str, Any] | None = None,
+) -> list[str]:
+    """Check dense allocation and independently derived complete chunk ranges."""
     errors: list[str] = []
     members = _members(_event_value(event, "members"))
     allocations = _event_value(event, "allocations")
@@ -408,38 +486,65 @@ def _allocation_errors(event: dict[str, Any], node: str, expected_members: list[
     if members != expected_members:
         errors.append(f"{node}: allocation roster {members} differs from expected {expected_members}")
         return errors
-    member_count = len(members)
-    expected_dense = 108 if member_count == 4 else 144 if member_count == 3 else None
-    expected_parts = 3 if member_count == 4 else 4 if member_count == 3 else None
-    if expected_dense is None or expected_parts is None:
-        errors.append(f"{node}: unsupported allocation roster size {member_count}")
+
+    settings = config if isinstance(config, dict) else {}
+    profile = settings.get("bandwidth_profile", "equal")
+    total, chunk_size, config_errors = _tensor_partition(settings)
+    errors.extend(f"{node}: {error}" for error in config_errors)
+    if profile == "unequal":
+        reference = settings.get("allocation_reference")
+        reference_values = reference.get(",".join(members)) if isinstance(reference, dict) else None
+        if (
+            not isinstance(reference_values, list)
+            or len(reference_values) != len(members)
+            or any(isinstance(value, bool) or not isinstance(value, int) or value < 0 for value in reference_values)
+            or sum(reference_values) != total
+        ):
+            errors.append(f"{node}: config allocation_reference lacks valid dense counts for {members}")
+            return errors
+        expected_dense = reference_values
+    elif profile == "equal":
+        if len(members) not in (3, 4) or total % len(members):
+            errors.append(f"{node}: unsupported equal allocation roster size or tensor size {len(members)}/{total}")
+            return errors
+        expected_dense = [total // len(members)] * len(members)
+    else:
+        errors.append(f"{node}: unsupported bandwidth_profile {profile!r}")
         return errors
 
-    if not isinstance(allocations, list) or len(allocations) != member_count:
-        errors.append(f"{node}: allocations must be a {member_count}-entry list aligned with members")
-    else:
-        if any(isinstance(value, bool) or not isinstance(value, int) for value in allocations):
-            errors.append(f"{node}: allocations must contain integer dense-element counts")
-        elif allocations != [expected_dense] * member_count:
-            errors.append(f"{node}: expected equal dense allocations {[expected_dense] * member_count}, got {allocations}")
+    expected_ranges = _ranges_from_dense_allocations(members, expected_dense, total, chunk_size)
+    expected_parts = {peer: len(expected_ranges[peer]) for peer in members}
+    equal_profile = profile == "equal"
+    if not isinstance(allocations, list) or len(allocations) != len(members):
+        errors.append(f"{node}: allocations must be a {len(members)}-entry list aligned with members")
+    elif any(isinstance(value, bool) or not isinstance(value, int) for value in allocations):
+        errors.append(f"{node}: allocations must contain integer dense-element counts")
+    elif allocations != expected_dense:
+        label = "equal" if equal_profile else "configured"
+        errors.append(f"{node}: expected {label} dense allocations {expected_dense}, got {allocations}")
 
     if not isinstance(parts, dict) or set(parts) != set(members):
         errors.append(f"{node}: parts must map exactly the local roster members to counts")
     else:
         for peer in members:
             value = parts.get(peer)
-            if isinstance(value, bool) or not isinstance(value, int) or value != expected_parts:
-                errors.append(f"{node}: {peer} should own {expected_parts} chunks, got {value!r}")
+            if isinstance(value, bool) or not isinstance(value, int) or value != expected_parts[peer]:
+                errors.append(f"{node}: {peer} should own {expected_parts[peer]} chunks, got {value!r}")
 
     if not isinstance(part_ranges, dict) or set(part_ranges) != set(members):
         errors.append(f"{node}: part_ranges must map exactly the local roster members to ranges")
         return errors
-    ranges: list[tuple[int, int, str]] = []
+    observed_ranges: list[tuple[int, int, str]] = []
     for peer in members:
         peer_ranges = part_ranges.get(peer)
-        if not isinstance(peer_ranges, list) or len(peer_ranges) != expected_parts:
-            errors.append(f"{node}: {peer} should have {expected_parts} part ranges")
+        if not isinstance(peer_ranges, list):
+            errors.append(f"{node}: {peer} part ranges must be a list")
             continue
+        if peer_ranges != expected_ranges[peer]:
+            errors.append(
+                f"{node}: {peer} part ranges differ from dense-allocation chunk ownership "
+                f"(expected {expected_ranges[peer]}, got {peer_ranges})"
+            )
         for interval in peer_ranges:
             if not isinstance(interval, list) or len(interval) != 2:
                 errors.append(f"{node}: invalid part range for {peer}: {interval!r}")
@@ -448,21 +553,18 @@ def _allocation_errors(event: dict[str, Any], node: str, expected_members: list[
                 errors.append(f"{node}: non-integer part range for {peer}: {interval!r}")
                 continue
             start, end = interval
-            if end - start != 36 or start < 0 or end > 432 or start % 36 or end % 36:
-                errors.append(f"{node}: range {interval!r} for {peer} is not one aligned 36-float chunk")
-            ranges.append((start, end, peer))
-    if len(ranges) != 12:
-        errors.append(f"{node}: found {len(ranges)} ranges, expected exactly 12 chunks")
-    else:
-        ranges.sort(key=lambda item: (item[0], item[1], item[2]))
-        cursor = 0
-        for start, end, peer in ranges:
-            if start != cursor:
-                errors.append(f"{node}: part ranges have a gap or overlap at flat offset {cursor} (next {start})")
-                break
-            cursor = end
-        if cursor != 432:
-            errors.append(f"{node}: part ranges cover {cursor} floats, expected 432")
+            if end <= start or end - start > chunk_size or start < 0 or end > total or start % chunk_size:
+                errors.append(f"{node}: range {interval!r} for {peer} is not an aligned tensor chunk")
+            observed_ranges.append((start, end, peer))
+    observed_ranges.sort(key=lambda item: (item[0], item[1], item[2]))
+    cursor = 0
+    for start, end, _peer in observed_ranges:
+        if start != cursor:
+            errors.append(f"{node}: part ranges have a gap or overlap at flat offset {cursor} (next {start})")
+            break
+        cursor = end
+    if cursor != total:
+        errors.append(f"{node}: part ranges cover {cursor} floats, expected {total}")
     return errors
 
 
@@ -475,8 +577,37 @@ def _evidence_checks(
     events: list[dict[str, Any]],
     outputs: dict[str, Any],
     shutdown_ok: bool,
+    config: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     errors: list[str] = []
+    settings = config if isinstance(config, dict) else {}
+    bandwidth_profile = settings.get("bandwidth_profile", "equal")
+    configured_bandwidths = settings.get("bandwidths")
+    if bandwidth_profile not in {"equal", "unequal"}:
+        errors.append(f"unsupported bandwidth_profile in config: {bandwidth_profile!r}")
+    elif bandwidth_profile == "unequal":
+        if not isinstance(configured_bandwidths, dict) or set(configured_bandwidths) != set(NODES):
+            errors.append("unequal config bandwidths must map every node to its declared bandwidth")
+        elif any(
+            isinstance(configured_bandwidths.get(peer), bool)
+            or not isinstance(configured_bandwidths.get(peer), (int, float))
+            or not math.isfinite(float(configured_bandwidths[peer]))
+            or float(configured_bandwidths[peer]) != expected
+            for peer, expected in UNEQUAL_BANDWIDTHS.items()
+        ):
+            errors.append(f"unequal config bandwidths differ from the declared profile {UNEQUAL_BANDWIDTHS}")
+    elif configured_bandwidths is not None and (
+        not isinstance(configured_bandwidths, dict)
+        or set(configured_bandwidths) != set(NODES)
+        or any(value is not None for value in configured_bandwidths.values())
+    ):
+        errors.append("equal config bandwidths must be unspecified for every node")
+
+    def expected_bandwidths(members: list[str]) -> list[float | None]:
+        if bandwidth_profile == "unequal":
+            return [UNEQUAL_BANDWIDTHS.get(member) for member in members]
+        return [None] * len(members)
+
     active = _active_nodes(condition)
     kinds = [_event_kind(event) for event in events]
     allocation_checks: dict[str, Any] = {}
@@ -742,19 +873,31 @@ def _evidence_checks(
             if observed is not None and gathered_nodes != observed:
                 errors.append(f"{node}: local gathered metadata is missing or misaligned with its roster")
             if observed is not None:
-                errors.extend(_roster_metadata_errors(event, node, observed))
+                errors.extend(_roster_metadata_errors(
+                    event,
+                    node,
+                    observed,
+                    expected_bandwidths=expected_bandwidths(observed),
+                ))
         if kind == "allocation" and node in active:
             expected = _expected_local_roster(condition, node)
             if expected is None:
                 errors.append(f"{node}: no expected local roster for allocation validation")
             else:
-                check_errors = _allocation_errors(event, node, expected)
+                check_errors = _allocation_errors(event, node, expected, settings)
                 weight = _event_value(event, "weight")
                 if isinstance(weight, bool) or not isinstance(weight, (int, float)) or not _close(float(weight), 1.0):
                     check_errors.append(f"{node}: native averaging weight is missing or differs from 1")
                 if _event_value(event, "compression") not in {"NoCompression", "NoCompression()"}:
                     check_errors.append(f"{node}: native allocation did not record NoCompression")
-                check_errors.extend(_roster_metadata_errors(event, node, expected, check_bandwidths=False))
+                # Native AllReduceRunner defaults zero-allocation peers to CLIENT,
+                # even though their gathered matchmaking mode remains NODE.
+                reference = settings.get("allocation_reference", {})
+                dense = reference.get(",".join(expected), []) if isinstance(reference, dict) else []
+                modes = (["CLIENT" if count == 0 else "NODE" for count in dense]
+                         if bandwidth_profile == "unequal" and len(dense) == len(expected) else None)
+                check_errors.extend(_roster_metadata_errors(
+                    event, node, expected, check_bandwidths=False, expected_modes=modes))
                 if _event_value(event, "native_group_id") is None:
                     check_errors.append(f"{node}: allocation has no native_group_id")
                 errors.extend(check_errors)
@@ -1874,7 +2017,7 @@ def analyze_condition(path: str | Path) -> dict[str, Any]:
     shutdown_ok, shutdown_error = _shutdown_check(condition_path)
     identity_check, identity_errors = _identity_check(condition_path)
     provenance_check, provenance_errors = _source_provenance_check(condition_path)
-    evidence = _evidence_checks(condition, events, outputs, shutdown_ok)
+    evidence = _evidence_checks(condition, events, outputs, shutdown_ok, config)
     evidence["errors"].extend(identity_errors)
     evidence["errors"].extend(provenance_errors)
     evidence["identity_check"] = identity_check
