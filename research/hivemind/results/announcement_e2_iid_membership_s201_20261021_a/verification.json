@@ -1,0 +1,8 @@
+{
+  "fallback_updates_reconstructed": 10,
+  "method": "recompute float32 full-batch X.T @ (X @ w - y) / 512 and local SGD from learning_data.npz",
+  "participant_gradients_reconstructed": 40,
+  "rounds": 10,
+  "successful_sgd_updates_reconstructed": 40,
+  "valid": true
+}

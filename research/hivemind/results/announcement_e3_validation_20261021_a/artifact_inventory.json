@@ -1,0 +1,35 @@
+{
+  "description": "Frozen local evidence; paths relative to this experiment directory.",
+  "files": [
+    {
+      "path": "REPORT.md",
+      "bytes": 164,
+      "sha256": "a73aa12f4a8f79237da33efcaf1097da1dbede590483b93a3a3bbfdafb61e8c3"
+    },
+    {
+      "path": "harness/analyze_announcement_probe.py",
+      "bytes": 134856,
+      "sha256": "13b1f102363c50ec68414a1e69a8f0b6f798350bc5ddb2387258eb5d19e4a0ce"
+    },
+    {
+      "path": "harness/announcement_reference.py",
+      "bytes": 8222,
+      "sha256": "dd8da8a057413d58df9c686b4f99b161bc80872454897cb16b5a8eaeaead1909"
+    },
+    {
+      "path": "harness/run_announcement_training.py",
+      "bytes": 30638,
+      "sha256": "2fbb71a47c765f99cd0bc15921a9889964f4f2dac653260c0735d998b87b4993"
+    },
+    {
+      "path": "harness/validate_announcement_learning.py",
+      "bytes": 10340,
+      "sha256": "ac63aaa93a4a65e10452cd90786ea2babe03507990385196363a7d50f92fd2d4"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 225938,
+      "sha256": "caae32061e48ac6029a34f0ea0bf8605cd331f91d32a45142ff993f708f81fc7"
+    }
+  ]
+}

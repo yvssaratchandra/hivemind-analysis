@@ -33,10 +33,20 @@ def numeric_matrix(value):
 
 
 def verify_native_round(path: str | Path) -> dict:
+    try:
+        return _verify_native_round(path)
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        return {"valid": False, "errors": [f"Malformed or missing native evidence: {exc}"],
+                "condition": None, "native_source": {}, "streams": {}, "processed": {}}
+
+
+def _verify_native_round(path: str | Path) -> dict:
     path = Path(path)
     errors = []
     config = json.loads((path / "config.json").read_text())
     outputs = json.loads((path / "outputs.json").read_text())
+    if set(outputs) != set(NODES):
+        errors.append("Native outputs must contain exactly B, D, A, C")
     events, read_errors = _read_events(path)
     errors.extend(read_errors)
     safe, shutdown_error = _shutdown_check(path)
@@ -76,32 +86,55 @@ def verify_native_round(path: str | Path) -> dict:
                 or recorded.get("parts") != {peer: len(chunks) for peer, chunks in zip(expected, parts)}):
             errors.append(f"{node}: allocation differs from independent equal partition")
         if (recorded.get("weight") != 1 or recorded.get("compression") != "NoCompression"
-                or local[0].get("bandwidths") != [None] * len(expected)):
+                or local[0].get("bandwidths") != [None] * len(expected)
+                or local[0].get("modes") != [0] * len(expected)
+                or recorded.get("modes") != [0] * len(expected)
+                or recorded.get("members") != expected):
             errors.append(f"{node}: unexpected numerical averaging settings")
         record = outputs.get(node, {})
         if record.get("status") != "success" or terminals[0].get("status") != "success":
             errors.append(f"{node}: native training operation did not succeed")
         for key in ("initial", "final"):
             matrix = numeric_matrix(record.get(key))
-            if matrix is None or len(matrix[0]) != 48:
+            if (matrix is None or len(matrix[0]) != 48
+                    or len(record[key]) != 48 or any(isinstance(v, list) for v in record[key])):
                 errors.append(f"{node}: invalid {key} gradient")
         for key in ("failed_size", "failed_peer_ids", "banned_senders"):
             if record.get(key) != terminals[0].get(key):
                 errors.append(f"{node}: output {key} differs from terminal evidence")
-    sent = {e.get("recipient"): e for e in events if e.get("kind") == "announcement_sent"}
-    received = {e.get("node"): e for e in events if e.get("kind") == "announcement_received"}
+    sent_events = [e for e in events if e.get("kind") == "announcement_sent"]
+    received_events = [e for e in events if e.get("kind") == "announcement_received"]
+    if (len(sent_events) != 3 or len(received_events) != 3
+            or sorted(e.get("recipient", "") for e in sent_events) != ["A", "C", "D"]
+            or sorted(e.get("node", "") for e in received_events) != ["A", "C", "D"]):
+        errors.append("Expected exactly one sent and received announcement per follower")
+    sent = {e.get("recipient"): e for e in sent_events}
+    received = {e.get("node"): e for e in received_events}
     for node in ("D", "A", "C"):
         s, r = sent.get(node), received.get(node)
         if s is None or r is None:
             errors.append(f"{node}: missing announcement")
+        elif s.get("node") != "B" or r.get("sender") != "B" or not s.get("payload_hex"):
+            errors.append(f"{node}: invalid announcement origin or missing bytes")
         elif any(s.get(k) != r.get(k) for k in ("payload_hex", "group_id", "members", "gathered_nodes")):
             errors.append(f"{node}: announcement bytes or decoded metadata differ")
         elif r.get("members") != rosters.get(node):
             errors.append(f"{node}: aggregation differs from announced roster")
+        elif r.get("gathered_nodes") != rosters.get(node):
+            errors.append(f"{node}: announcement gathered metadata is not aligned")
+        if s is not None:
+            try:
+                payload = s.get("payload_hex")
+                if not isinstance(payload, str) or not bytes.fromhex(payload):
+                    raise ValueError("empty payload")
+            except ValueError:
+                errors.append(f"{node}: announcement payload is not hexadecimal bytes")
     group_ids = {e.get("native_group_id") for e in events
                  if e.get("kind") in ("leader_assembled", "local_roster", "allocation", "runner_finalized")}
     if len(group_ids) != 1 or None in group_ids:
         errors.append("Inconsistent or missing native group identity")
+    elif any(e.get("group_id") not in group_ids for e in sent_events + received_events):
+        errors.append("Announcement group identity differs from native aggregation")
     if any(e.get("kind") in ("unexpected_leader", "infrastructure_error") for e in events):
         errors.append("Unexpected leader or native infrastructure error")
     streams = _stream_proof(events, list(NODES), outputs, matrix_parser=numeric_matrix)

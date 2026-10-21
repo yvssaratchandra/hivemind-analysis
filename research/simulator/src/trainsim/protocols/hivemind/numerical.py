@@ -62,7 +62,7 @@ def aggregate(inputs, views, chunk_elements=4, arrival_order=None):
     size = next(iter(arrays.values())).size
     if size == 0 or any(not np.isfinite(value).all() for value in arrays.values()):
         raise ValueError("Inputs must be finite and nonempty")
-    if not set(views).issubset(arrays):
+    if not views or not set(views).issubset(arrays):
         raise ValueError("Every active participant needs an input")
     layout = {}
     for node, roster in views.items():

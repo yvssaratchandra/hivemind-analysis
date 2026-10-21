@@ -12,9 +12,9 @@ pilots followed by five paired confirmation seeds 202–206 (E4/E5).
 |---|---|
 | E0 evidence gate and report direction | Complete: 30 focused tests; original raw suite revalidated in `results/announcement_e0_review_20261020_a` |
 | E1 repeatability and allocation boundary | Complete: equal seeds 2–4 and unequal seed 5; all 16 condition checks passed |
-| E2 native learning reference | Running six ten-round trajectories; iid baseline and membership complete |
-| E3 numerical protocol model | Pending native reference |
-| E4/E5 convergence and recovery | Pending differential validation |
+| E2 native learning reference | Complete: six ten-round native trajectories, seed 201; all round proofs and SGD reconstructions passed |
+| E3 numerical protocol model | Complete: 1,710 checks passed in `results/announcement_e3_validation_20261021_a` |
+| E4/E5 convergence and recovery | 18-case pilot running; confirmation remains gated on pilot review |
 
 E1 local results (2026-10-21): `announcement_e1_equal_s{2,3,4}_20261021_a`
 reproduced coordinate errors of 18 for A and 6 for B/D/C in ordering; membership

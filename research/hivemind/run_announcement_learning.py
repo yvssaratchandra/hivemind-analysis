@@ -14,8 +14,8 @@ import gzip
 import hashlib
 import json
 import math
+import platform
 from pathlib import Path
-import shutil
 import sys
 from typing import Any, Iterable, TextIO
 
@@ -117,6 +117,32 @@ def source_hashes() -> dict[str, str]:
     return {name: _sha256(ROOT / name) for name in CORE_SOURCE_PATHS}
 
 
+def _verify_native_reference(reference: dict[str, Any]) -> None:
+    raw_path = Path(reference["path"])
+    if raw_path.is_absolute() or ".." in raw_path.parts:
+        raise ValueError("E3 native reference path must be repository-relative")
+    directory = (ROOT / raw_path).resolve()
+    if ROOT not in directory.parents or not directory.is_dir():
+        raise ValueError(f"E3 native reference directory is missing or outside the repository: {raw_path}")
+    inventory_path = directory / "artifact_inventory.json"
+    if not inventory_path.is_file() or _sha256(inventory_path) != reference["artifact_inventory_sha256"]:
+        raise ValueError(f"E3 native reference inventory hash mismatch: {raw_path}")
+    inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
+    listed = inventory.get("files")
+    if not isinstance(listed, list):
+        raise ValueError(f"E3 native reference inventory has no files list: {raw_path}")
+    actual = []
+    for artifact in sorted(directory.rglob("*")):
+        if artifact.is_file() and artifact.name != "artifact_inventory.json" and "__pycache__" not in artifact.parts:
+            actual.append({
+                "path": artifact.relative_to(directory).as_posix(),
+                "bytes": artifact.stat().st_size,
+                "sha256": _sha256(artifact),
+            })
+    if listed != actual:
+        raise ValueError(f"E3 native reference artifacts are missing, changed, or unlisted: {raw_path}")
+
+
 def _verify_validation(path: str | Path) -> dict[str, Any]:
     validation_path = Path(path).resolve()
     validation = json.loads(validation_path.read_text(encoding="utf-8"))
@@ -127,14 +153,20 @@ def _verify_validation(path: str | Path) -> dict[str, Any]:
     if validation.get("errors"):
         raise ValueError("E3 validation contains errors")
     references = validation.get("native_references")
-    if not isinstance(references, list) or not references:
-        raise ValueError("E3 validation must cite at least one native reference")
+    if not isinstance(references, list) or len(references) != 9:
+        raise ValueError("E3 validation must cite the 9 native marker/training reference inventories")
+    seen_reference_paths = set()
     for reference in references:
-        if not isinstance(reference, dict) or not reference.get("path"):
+        if not isinstance(reference, dict) or not isinstance(reference.get("path"), str) or not reference.get("path"):
             raise ValueError("E3 native reference entries need a path")
         digest = reference.get("artifact_inventory_sha256")
-        if not isinstance(digest, str) or len(digest) != 64:
+        if (not isinstance(digest, str) or len(digest) != 64
+                or any(character not in "0123456789abcdef" for character in digest)):
             raise ValueError("E3 native references need a SHA256 artifact inventory")
+        if reference["path"] in seen_reference_paths:
+            raise ValueError("E3 native reference paths must be unique")
+        seen_reference_paths.add(reference["path"])
+        _verify_native_reference(reference)
     expected = source_hashes()
     observed = validation.get("source_hashes")
     if not isinstance(observed, dict):
@@ -177,8 +209,32 @@ def _verify_reviewed_pilot(path: str | Path, *, validation: dict[str, Any], prob
     if (not isinstance(runs, list) or len(runs) != 18
             or any(row.get("status") not in ("complete", "verified_divergence") for row in runs)):
         raise ValueError("reviewed pilot run catalog is incomplete or contains failed runs")
+    expected_runs = {
+        (201, distribution, arm)
+        for distribution in ("iid", "distinctive")
+        for arm in SCHEDULE_ARMS
+    }
+    observed_runs = set()
+    run_paths = set()
+    for row in runs:
+        key = (row.get("seed"), row.get("distribution"), row.get("arm"))
+        relative = row.get("path")
+        if key not in expected_runs or key in observed_runs:
+            raise ValueError("reviewed pilot run catalog does not match the frozen 18-run matrix")
+        if not isinstance(relative, str):
+            raise ValueError("reviewed pilot run paths must be repository-relative suite paths")
+        relative_path = Path(relative)
+        if relative_path.is_absolute() or ".." in relative_path.parts or relative in run_paths:
+            raise ValueError("reviewed pilot run paths must be unique and remain inside the suite")
+        observed_runs.add(key)
+        run_paths.add(relative)
+    if observed_runs != expected_runs:
+        raise ValueError("reviewed pilot run catalog does not cover the frozen 18-run matrix")
     if manifest.get("source_hashes") != source_hashes():
         raise ValueError("reviewed pilot source hashes differ from the current model")
+    current_runner_hash = _sha256(ROOT / RUNNER_SOURCE_PATH)
+    if manifest.get("runner_sha256") != current_runner_hash:
+        raise ValueError("reviewed pilot runner source differs from the current runner")
     if manifest.get("validation_sha256") != validation["sha256"]:
         raise ValueError("reviewed pilot used a different E3 validation artifact")
     if manifest.get("workload_contract_sha256") != _contract_sha256(problem):
@@ -191,7 +247,13 @@ def _verify_reviewed_pilot(path: str | Path, *, validation: dict[str, Any], prob
     if not isinstance(data_entries, dict) or set(data_entries) != {"seed201_iid", "seed201_distinctive"}:
         raise ValueError("reviewed pilot data artifact catalog is incomplete")
     for key, row in data_entries.items():
-        directory = pilot_root / row["directory"]
+        if not isinstance(row, dict) or not isinstance(row.get("directory"), str):
+            raise ValueError(f"reviewed pilot data path is malformed: {key}")
+        relative = Path(row["directory"])
+        directory = (pilot_root / relative).resolve()
+        if (relative.is_absolute() or ".." in relative.parts
+                or pilot_root not in directory.parents or not directory.is_dir()):
+            raise ValueError(f"reviewed pilot data directory is missing or outside the suite: {key}")
         if _sha256(directory / "learning_manifest.json") != row["manifest_sha256"]:
             raise ValueError(f"reviewed pilot data manifest changed: {key}")
         loaded = load_problem(directory)
@@ -201,15 +263,66 @@ def _verify_reviewed_pilot(path: str | Path, *, validation: dict[str, Any], prob
     if _sha256(inventory_path) != manifest.get("artifact_inventory_sha256"):
         raise ValueError("reviewed pilot artifact inventory fingerprint changed")
     inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
+    if not isinstance(inventory, dict):
+        raise ValueError("reviewed pilot artifact inventory must be a path-to-SHA256 object")
+    actual_paths = {
+        artifact.relative_to(pilot_root).as_posix()
+        for artifact in pilot_root.rglob("*")
+        if artifact.is_file() and artifact.name not in ("artifact_inventory.json", "manifest.json")
+    }
+    if set(inventory) != actual_paths:
+        raise ValueError("reviewed pilot artifact inventory omits or adds suite artifacts")
     for relative, digest in inventory.items():
-        artifact = (pilot_root / relative).resolve()
-        if pilot_root not in artifact.parents or not artifact.is_file() or _sha256(artifact) != digest:
+        relative_path = Path(relative)
+        artifact = (pilot_root / relative_path).resolve()
+        if (relative_path.is_absolute() or ".." in relative_path.parts
+                or pilot_root not in artifact.parents or not artifact.is_file()
+                or not isinstance(digest, str) or _sha256(artifact) != digest):
             raise ValueError(f"reviewed pilot artifact changed or escaped its suite: {relative}")
+    for source_name, source_digest in {**manifest["source_hashes"], RUNNER_SOURCE_PATH: current_runner_hash}.items():
+        frozen_name = f"harness/{source_name}"
+        if inventory.get(frozen_name) != source_digest:
+            raise ValueError(f"reviewed pilot frozen source is missing or mismatched: {source_name}")
     for row in runs:
-        verification_path = pilot_root / row["path"] / "verification.json"
+        run_directory = (pilot_root / row["path"]).resolve()
+        if pilot_root not in run_directory.parents or not run_directory.is_dir():
+            raise ValueError(f"reviewed pilot run directory is missing or outside the suite: {row['path']}")
+        required = ("trace.jsonl.gz", "metrics.csv", "summary.json", "verification.json")
+        if any(not (run_directory / name).is_file() for name in required):
+            raise ValueError(f"reviewed pilot run artifacts are incomplete: {row['path']}")
+        verification_path = run_directory / "verification.json"
         verification = json.loads(verification_path.read_text(encoding="utf-8"))
         if verification.get("valid") is not True:
             raise ValueError(f"reviewed pilot run failed trace replay: {row['path']}")
+        if verification.get("scheduled_rounds") != ROUNDS or verification.get("rounds", 0) <= 0:
+            raise ValueError(f"reviewed pilot run replay does not cover the frozen horizon: {row['path']}")
+        summary = json.loads((run_directory / "summary.json").read_text(encoding="utf-8"))
+        if verification.get("summary") != summary:
+            raise ValueError(f"reviewed pilot run summary differs from replay: {row['path']}")
+        if (summary.get("scheduled_rounds") != ROUNDS
+                or summary.get("rounds") != verification["rounds"]
+                or summary.get("gradient_evaluations") != summary.get("rounds", 0) * len(NODES)):
+            raise ValueError(f"reviewed pilot run work accounting is inconsistent: {row['path']}")
+        diverged = summary.get("trajectory_status") == "diverged_nonfinite"
+        if diverged != bool(verification.get("diverged_nonfinite")):
+            raise ValueError(f"reviewed pilot divergence status differs from replay: {row['path']}")
+        expected_status = "verified_divergence" if diverged else "complete"
+        if row.get("status") != expected_status:
+            raise ValueError(f"reviewed pilot run status differs from its replay: {row['path']}")
+        if row.get("rounds") != summary["rounds"]:
+            raise ValueError(f"reviewed pilot run-round count differs from its summary: {row['path']}")
+        if row.get("gradient_evaluations") != summary["gradient_evaluations"]:
+            raise ValueError(f"reviewed pilot run work count differs from its summary: {row['path']}")
+        if row.get("divergence") != summary.get("divergence"):
+            raise ValueError(f"reviewed pilot run divergence record differs from its summary: {row['path']}")
+        if row["arm"] == "baseline":
+            initial_loss = summary.get("initial_honest_mean_test_loss")
+            final_loss = summary.get("final_honest_mean_test_loss")
+            if (diverged or not isinstance(initial_loss, (int, float))
+                    or not isinstance(final_loss, (int, float))
+                    or not math.isfinite(initial_loss) or not math.isfinite(final_loss)
+                    or final_loss >= initial_loss):
+                raise ValueError("reviewed pilot baseline failed the finite learning and loss-reduction gate")
     return {"path": str(pilot_root), "manifest_sha256": _sha256(manifest_path)}
 
 
@@ -313,20 +426,21 @@ def _first_nonfinite(vectors: dict[str, Any]) -> str | None:
     return None
 
 
-def _divergence_reason(gradients, numerical, weights_after, metrics) -> dict[str, Any] | None:
+def _divergence_reason(gradients, numerical, weights_after, metrics,
+                       *, round_index: int) -> dict[str, Any] | None:
     node = _first_nonfinite(gradients)
     if node is not None:
-        return {"stage": "gradient", "node": node}
+        return {"round": round_index, "stage": "gradient", "node": node}
     if numerical is not None:
         node = _first_nonfinite(numerical.values)
         if node is not None:
-            return {"stage": "aggregate", "node": node}
+            return {"round": round_index, "stage": "aggregate", "node": node}
     node = _first_nonfinite(weights_after)
     if node is not None:
-        return {"stage": "model", "node": node}
+        return {"round": round_index, "stage": "model", "node": node}
     fields = metrics.get("nonfinite_metric_fields", [])
     if fields:
-        return {"stage": "metric", "field": fields[0], "fields": fields}
+        return {"round": round_index, "stage": "metric", "field": fields[0], "fields": fields}
     return None
 
 
@@ -347,7 +461,9 @@ def _summary(problem: LearningProblem, rounds: list[dict[str, Any]], scheduled_r
         if row.get("divergence") is not None or loss is None:
             divergence = row.get("divergence") or {"round": round_index, "stage": "metric"}
             break
-        if loss <= threshold:
+        if convergence_start is not None:
+            continue
+        if loss < threshold:
             if streak_start is None:
                 streak_start = round_index
                 streak_length = 0
@@ -355,11 +471,13 @@ def _summary(problem: LearningProblem, rounds: list[dict[str, Any]], scheduled_r
             if streak_length >= CONVERGENCE_STREAK:
                 convergence_start = streak_start
                 convergence_confirmed = round_index
-                break
         else:
             streak_start = None
             streak_length = 0
     final_metrics = rounds[-1]["metrics"] if rounds else initial
+    honest_loss_values = [row["metrics"]["honest_mean_test_loss"] for row in rounds
+                          if row["metrics"]["honest_mean_test_loss"] is not None]
+    final_exclusive_values = [final_metrics[node]["exclusive_block_loss"] for node in HONEST_NODES]
     per_node = {}
     for node in NODES:
         values = [row["metrics"][node] for row in rounds
@@ -387,24 +505,20 @@ def _summary(problem: LearningProblem, rounds: list[dict[str, Any]], scheduled_r
         "first_round_sustained_below_threshold": convergence_start,
         "round_when_sustained_threshold_confirmed": convergence_confirmed,
         "convergence_censored": convergence_start is None,
-        "censor_reason": (divergence["stage"] if divergence is not None
-                          else ("horizon_reached" if convergence_start is None else None)),
+        "censor_reason": (None if convergence_start is not None
+                           else (divergence["stage"] if divergence is not None else "horizon_reached")),
         "trajectory_status": "diverged_nonfinite" if divergence is not None else "completed",
         "stopped_early": divergence is not None and len(rounds) < scheduled_rounds,
         "divergence": divergence,
         "final_honest_mean_test_loss": final_metrics["honest_mean_test_loss"],
         "final_honest_worst_test_loss": final_metrics["honest_worst_test_loss"],
         "trajectory_mean_honest_test_loss": (
-            float(sum(row["metrics"]["honest_mean_test_loss"] for row in rounds
-                      if row["metrics"]["honest_mean_test_loss"] is not None)
-                      / sum(row["metrics"]["honest_mean_test_loss"] is not None for row in rounds))
-            if any(row["metrics"]["honest_mean_test_loss"] is not None for row in rounds)
-            else initial_mean
+            float(sum(honest_loss_values) / len(honest_loss_values)) if honest_loss_values else None
         ),
         "final_honest_mean_disagreement": final_metrics["honest_mean_disagreement"],
         "final_honest_mean_exclusive_block_loss": float(
             sum(final_metrics[node]["exclusive_block_loss"] for node in HONEST_NODES) / len(HONEST_NODES)
-        ),
+        ) if all(value is not None for value in final_exclusive_values) else None,
         "participants": per_node,
     }
 
@@ -419,7 +533,7 @@ def _open_trace(path: Path):
 
 
 def _write_metric_rows(writer: csv.DictWriter | None, *, problem: LearningProblem, arm: str,
-                       schedule_row: dict[str, Any], metrics: dict[str, Any]) -> None:
+                       schedule_row: dict[str, Any], metrics: dict[str, Any], updated: bool) -> None:
     if writer is None:
         return
     for node in NODES:
@@ -432,7 +546,7 @@ def _write_metric_rows(writer: csv.DictWriter | None, *, problem: LearningProble
             "node": node,
             "condition": schedule_row["condition"],
             "target": schedule_row["target"] or "",
-            "updated": True,
+            "updated": updated,
             **values,
             "honest_mean_test_loss": metrics["honest_mean_test_loss"],
             "honest_worst_test_loss": metrics["honest_worst_test_loss"],
@@ -492,9 +606,10 @@ def run_case(
                     numerical = aggregate(inputs, views, chunk_elements=CHUNK_ELEMENTS)
                     weights = {node: problem.update(before[node], numerical.values[node]) for node in NODES}
                     metrics = _round_metrics(problem, weights)
-            divergence = _divergence_reason(inputs, numerical, weights, metrics)
+            divergence = _divergence_reason(inputs, numerical, weights, metrics,
+                                            round_index=expected_round)
             _write_metric_rows(metric_writer, problem=problem, arm=arm,
-                               schedule_row=schedule_row, metrics=metrics)
+                               schedule_row=schedule_row, metrics=metrics, updated=numerical is not None)
             record = {
                 "schema": "announcement-learning-round-v1",
                 "seed": problem.seed,
@@ -579,7 +694,8 @@ def verify_trace(problem: LearningProblem, trace_path: str | Path, *, expected_r
                 raise ValueError("trace replay active membership mismatch")
             for node in NODES:
                 _assert_vector_equal(weights[node], row["weights_before"][node], label=f"round {count} {node} pre-state")
-            gradients = _make_round_inputs(problem, weights)
+            with _numpy().errstate(over="ignore", invalid="ignore"):
+                gradients = _make_round_inputs(problem, weights)
             for node in NODES:
                 _assert_vector_equal(gradients[node], row["input_gradients"][node], label=f"round {count} {node} gradient")
             if _first_nonfinite(gradients) is not None:
@@ -597,7 +713,8 @@ def verify_trace(problem: LearningProblem, trace_path: str | Path, *, expected_r
             expected_numerical = _json_safe(_normalized_result(numerical)) if numerical is not None else None
             if row.get("numerical_result") != expected_numerical:
                 raise ValueError(f"trace replay numerical aggregation mismatch at round {count}")
-            divergence = _divergence_reason(gradients, numerical, after, metrics)
+            divergence = _divergence_reason(gradients, numerical, after, metrics,
+                                            round_index=count)
             if _json_safe(divergence) != row.get("divergence"):
                 raise ValueError(f"trace replay divergence marker mismatch at round {count}")
             for node in NODES:
@@ -670,7 +787,6 @@ def run_suite(
     destination.mkdir(parents=True)
     hashes = source_hashes()
     runner_hash = _sha256(ROOT / RUNNER_SOURCE_PATH)
-    _freeze_sources(destination, {**hashes, RUNNER_SOURCE_PATH: runner_hash})
     manifest: dict[str, Any] = {
         "schema": SUITE_SCHEMA,
         "label": label,
@@ -678,12 +794,21 @@ def run_suite(
         "status": "running",
         "seeds": list(seeds),
         "rounds": ROUNDS,
+        "chunk_elements": CHUNK_ELEMENTS,
         "arms": list(SCHEDULE_ARMS),
         "distributions": ["iid", "distinctive"],
         "leader": "B",
         "honest_metrics_nodes": list(HONEST_NODES),
         "source_hashes": hashes,
         "runner_sha256": runner_hash,
+        "runtime": {
+            "python_version": platform.python_version(),
+            "python_implementation": platform.python_implementation(),
+            "platform": platform.platform(),
+            "optional_dependencies": {
+                "numpy": {"required_for_this_suite": True, "version": _numpy().__version__},
+            },
+        },
         "validation_path": validation["path"],
         "validation_sha256": validation["sha256"],
         "workload_contract_sha256": _contract_sha256(probe),
@@ -703,6 +828,7 @@ def run_suite(
     }
     _write_json(destination / "manifest.json", manifest)
     try:
+        _freeze_sources(destination, {**hashes, RUNNER_SOURCE_PATH: runner_hash})
         for seed in seeds:
             schedules = make_schedules(seed, ROUNDS)
             _write_json(destination / "schedules" / f"seed{seed}.json", schedules)

@@ -9,12 +9,14 @@ four-condition sets (seeds 2–4) and an unequal-bandwidth set (seed 5), all pas
 The unequal `_a` attempt stopped at a checker assumption about zero-allocation
 CLIENT mode; raw evidence is retained, and the corrected full run is `_b`.
 
-E2 is running six ten-round native gradient-SGD references (seed 201; baseline,
-membership, ordering × iid/distinctive). The iid baseline and membership have
-completed. E3 requires all six plus the three equal marker sets before E4/E5.
-The baseline native gradients already matched the numerical backend to 2.98e-8
-maximum absolute error; this is a preliminary single-condition check, not the
-complete E3 validation. No full convergence suite has run yet.
+E2 is complete: six ten-round native gradient-SGD references (seed 201; baseline,
+membership, ordering × iid/distinctive), all passing round proofs and SGD
+reconstruction. E3 passed **1,710 checks** in
+`results/announcement_e3_validation_20261021_a`, including the three equal marker
+sets, seeded data provenance, returned gradients and recurrent model updates.
+The 18-case 200-round E4/E5 pilot is running as
+`results/announcement_learning_e4e5_pilot_20261021_a`; confirmation requires its
+completed inventory, trace replay, baseline learning and fixed workload checks.
 
 Implementation: native evidence checks now enforce announcement origin/count,
 group identity, metadata alignment, flat gradients, per-chunk arithmetic and

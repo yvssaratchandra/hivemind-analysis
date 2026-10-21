@@ -1,0 +1,94 @@
+{
+  "condition": "membership",
+  "distribution": "iid",
+  "frozen_source_hashes": {
+    "analyze_announcement_probe.py": "49fad4bfc9288554e41ec887212cf50cc018da3438c190b398746942800acbcc",
+    "announcement_learning.py": "024d63f148a45eef21e252cd15ddfc162497ee4c014c121c24f155fed8ab8e09",
+    "announcement_probe.py": "016923fb76a8d8ed64af1697045c5ba710bbbe40f3835c586f407a3118914c8c",
+    "announcement_reference.py": "592aae5c3237354a33cc6efbc77f8e3ea0fe2d94ca83625551ab9d9ee9e072f9",
+    "partitioning.py": "a2f4566605e01127785e5bbb2ab88ca351e7d95e5f2c389c10eb39eedae7bb8e",
+    "run_announcement_training.py": "2fbb71a47c765f99cd0bc15921a9889964f4f2dac653260c0735d998b87b4993"
+  },
+  "label": "announcement_e2_iid_membership_s201_20261021_a",
+  "learning_data_manifest": {
+    "config_file": "learning_config.json",
+    "config_file_sha256": "e84a04747c48d534fe880290077fd553ed40b520f2b2e68fb18d7895205bd52b",
+    "config_sha256": "e84a04747c48d534fe880290077fd553ed40b520f2b2e68fb18d7895205bd52b",
+    "data_file": "learning_data.npz",
+    "data_file_sha256": "7e892d1da606b7333a9fa371b5ade5284432eeeba195f8bbae2a7d2f153650ca",
+    "evaluation": {
+      "x_sha256": "313eb35e9aa6809a32ea41779bdff4234d7628d888edfddd21f0e6ed01a51d4c",
+      "y_sha256": "ba27f8ffa62cfc96e2632938b3541b49fe3616621765884dab7347441c145187"
+    },
+    "source_sha256": "024d63f148a45eef21e252cd15ddfc162497ee4c014c121c24f155fed8ab8e09",
+    "target_sha256": "c4f0b0131f9ecf634833928fcda7018f59a0be5cde0e8542565d9c959bf86a16",
+    "training": {
+      "A": {
+        "x_sha256": "f2d2501643fff5b0d15dd28058662a7ad7ac05f1d293f40f2e920cc0990078a6",
+        "y_sha256": "e023b6a78e8b29fafa902768f9a163bedbdaece2286efb17634256683ec5b597"
+      },
+      "B": {
+        "x_sha256": "3da33c83d283ed033c96b44ce68635404aac92d8842bd8b2255dc85272b85458",
+        "y_sha256": "3425ab77314e5926890431ab4d56780637cc4431ed30539335e5712e6d040408"
+      },
+      "C": {
+        "x_sha256": "4e35d83031898a03d8b67870183a4e21882b0877deab36b02a1c11d38e7c91ce",
+        "y_sha256": "2012ba232e7c8299196de936a8ad2484cc11e69c55b84128b8b9b43b40232f52"
+      },
+      "D": {
+        "x_sha256": "54cc022447302f67e9aa4565dd0ed030c8650c0f01e882f747641d457ff6e223",
+        "y_sha256": "42b19eb5e8ff76018f6461f1cfd2d38a64b558fe8d0660dbf80efad648631692"
+      }
+    }
+  },
+  "learning_problem": {
+    "dimensions": 48,
+    "distinctive_features": [
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47
+    ],
+    "distribution": "iid",
+    "dtype": "float32",
+    "evaluation_examples": 4096,
+    "gradient": "full-batch local gradient",
+    "initialization": "zero float32 vector",
+    "learning_rate": 0.1,
+    "loss": "half mean squared error",
+    "nodes": [
+      "B",
+      "D",
+      "A",
+      "C"
+    ],
+    "optimizer": "SGD",
+    "rng": "named SHA-256-derived streams with NumPy default_rng",
+    "schema": "announcement-learning-problem-v1",
+    "seed": 201,
+    "target": "shared seeded unit-norm vector",
+    "targets": "noiseless X @ target",
+    "training_examples_per_node": 512
+  },
+  "model_state": "controller preserves participant vectors between fresh native averaging groups",
+  "native": {
+    "chunk_bytes": 16,
+    "dependencies": "/home/sarat/Projects/hivemind-analysis/research/agora/.runtime/venv/lib/python3.11/site-packages",
+    "group": "four nodes, equal allocations, designated leader B",
+    "network": "private loopback, new group and peer identities every round",
+    "package_root": "/home/sarat/Projects/hivemind-analysis/research/simulator/.native-runtime/root_snapshot_a",
+    "timeout_seconds": 120,
+    "worker": "announcement_probe.py"
+  },
+  "rounds": 10,
+  "schema": "announcement-native-training-run-v1",
+  "seed": 201
+}

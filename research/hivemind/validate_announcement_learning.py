@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT / "research/simulator/src"))
 from trainsim.policies.announcements import AnnouncementPolicy
 from trainsim.protocols.hivemind.numerical import aggregate, announced_views
 from announcement_artifacts import verify, inventory
-from announcement_learning import NODES, load_problem
+from announcement_learning import NODES, load_problem, make_problem
 from announcement_reference import verify_native_round
 
 COMPONENTS = (
@@ -43,6 +43,11 @@ def validate(marker_suites, training_runs, destination):
     import numpy as np
     destination = Path(destination)
     destination.mkdir(parents=True, exist_ok=False)
+    frozen = destination / "harness"
+    frozen.mkdir()
+    for name in ("validate_announcement_learning.py", "announcement_reference.py",
+                 "analyze_announcement_probe.py", "run_announcement_training.py"):
+        shutil.copyfile(Path(__file__).parent / name, frozen / name)
     checks, errors, references = [], [], []
     def check(name, value):
         checks.append({"name": name, "passed": bool(value)})
@@ -53,7 +58,9 @@ def validate(marker_suites, training_runs, destination):
         references.append({"path": str(root.relative_to(ROOT)),
                            "artifact_inventory_sha256": hashlib.sha256((root / "artifact_inventory.json").read_bytes()).hexdigest()})
     marker_seeds = set()
+    check("exactly three marker suites and six training runs", len(marker_suites) == 3 and len(training_runs) == 6)
     for suite in marker_suites:
+        suite_seeds = set()
         from analyze_announcement_probe import analyze_suite
         with tempfile.TemporaryDirectory(prefix="announcement-validation-") as temporary:
             copied = Path(temporary) / suite.name
@@ -65,15 +72,18 @@ def validate(marker_suites, training_runs, destination):
             config = json.loads((case / "config.json").read_text())
             if config.get("bandwidth_profile", "equal") != "equal":
                 raise ValueError("Unequal allocation is a retained native boundary, outside this backend")
-            marker_seeds.add(config["seed"])
+            suite_seeds.add(config["seed"])
             outputs = json.loads((case / "outputs.json").read_text())
             result = numerical_case(outputs, condition, 36)
             for node, record in outputs.items():
                 check(f"{suite.name}/{condition}/{node}: marker output",
                       np.allclose(result.values[node], np.asarray(record["final"]).reshape(-1), atol=1e-4, rtol=0))
                 check(f"{suite.name}/{condition}/{node}: fallback size",
-                      sum(b-a for a,b in result.fallback_ranges[node]) == record.get("failed_size", 0))
-    check("all three fresh marker seeds included", marker_seeds.issuperset({2, 3, 4}))
+                      sum(b-a for a,b in result.fallback_ranges[node])
+                      == (0 if record.get("status") == "idle" else record.get("failed_size", 0)))
+        check(f"{suite.name}: single paired marker seed", len(suite_seeds) == 1)
+        marker_seeds.update(suite_seeds)
+    check("all three fresh marker seeds included", marker_seeds == {2, 3, 4})
     covered = set()
     for run in training_runs:
         config = json.loads((run / "config.json").read_text())
@@ -81,12 +91,33 @@ def validate(marker_suites, training_runs, destination):
         distribution = config["distribution"]
         covered.add((condition, distribution))
         problem = load_problem(run)
-        check(f"{run.name}: pilot seed", problem.seed == 201)
+        regenerated = make_problem(problem.seed, distribution)
+        check(f"{run.name}: exact seeded workload arrays",
+              {k:v for k,v in problem.hashes().items() if k != "source_sha256"}
+              == {k:v for k,v in regenerated.hashes().items() if k != "source_sha256"})
+        frozen_sources = json.loads((run / "frozen_sources.json").read_text())["files"]
+        check(f"{run.name}: workload source provenance",
+              problem.source_sha256 == frozen_sources.get("announcement_learning.py")
+              == hashlib.sha256((run / "harness/announcement_learning.py").read_bytes()).hexdigest())
+        check(f"{run.name}: pilot seed and distribution", problem.seed == config.get("seed") == 201
+              and problem.distribution == distribution and config.get("rounds") == 10)
+        status = json.loads((run / "status.json").read_text())
+        trajectory_record = json.loads((run / "trajectory.json").read_text())
+        check(f"{run.name}: completed trajectory", status.get("status") == "completed"
+              and status.get("completed_rounds") == 10 and trajectory_record.get("status") == "completed"
+              and len(trajectory_record.get("rounds", [])) == 10)
+        from run_announcement_training import verify_trajectory
+        try:
+            verify_trajectory(run / "learning_data.npz", trajectory_record)
+            check(f"{run.name}: independently recomputed SGD", True)
+        except (ValueError, KeyError, TypeError) as exc:
+            check(f"{run.name}: independently recomputed SGD ({exc})", False)
         rounds = sorted(run.glob("round_[0-9][0-9][0-9]"))
-        check(f"{run.name}: ten native rounds", len(rounds) == 10)
+        check(f"{run.name}: ten native rounds", [p.name for p in rounds] == [f"round_{i:03d}" for i in range(1, 11)])
         models = {node: problem.initial_weights for node in NODES}
         for case in rounds:
             proof = verify_native_round(case)
+            check(f"{run.name}/{case.name}: condition matches run", proof["condition"] == condition)
             check(f"{run.name}/{case.name}: native proof", proof["valid"])
             if not proof["valid"]:
                 errors.extend(proof["errors"])
@@ -115,6 +146,8 @@ def validate(marker_suites, training_runs, destination):
     report = {"schema": "announcement-numerical-validation-v1", "valid": not errors,
               "source_hashes": source_hashes(), "native_references": references,
               "checks": checks, "errors": errors,
+              "tolerances": {"marker": {"atol": 1e-4, "rtol": 0},
+                             "gradient_and_model": {"atol": 1e-5, "rtol": 1e-4}},
               "scope": "Fixed four-node equal-bandwidth gradient averaging; no timing or leadership validation."}
     (destination / "validation.json").write_text(json.dumps(report, indent=2) + "\n")
     (destination / "REPORT.md").write_text(

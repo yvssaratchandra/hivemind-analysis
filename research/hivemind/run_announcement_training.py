@@ -40,6 +40,7 @@ TIMEOUT_SECONDS = 120
 SHUTDOWN_GRACE_SECONDS = 5
 SOURCE_FILES = (
     "announcement_probe.py",
+    "analyze_announcement_probe.py",
     "announcement_learning.py",
     "announcement_reference.py",
     "run_announcement_training.py",
@@ -75,6 +76,10 @@ def _freeze_sources(destination: Path) -> dict[str, str]:
         contents = source.read_bytes()
         (frozen / filename).write_bytes(contents)
         hashes[filename] = hashlib.sha256(contents).hexdigest()
+    partition_source = ROOT / "research/simulator/src/trainsim/protocols/partitioning.py"
+    partition_bytes = partition_source.read_bytes()
+    (frozen / "partitioning.py").write_bytes(partition_bytes)
+    hashes["partitioning.py"] = hashlib.sha256(partition_bytes).hexdigest()
     _write_json(destination / "harness_hashes.json", {
         "announcement_probe.py": hashes["announcement_probe.py"],
     })
