@@ -332,6 +332,32 @@ def _install_candidate_observer(prefix_channels: Mapping[str, str], current_roun
     GroupKeyManager.get_averagers = observed
 
 
+def _install_leadership_observer() -> None:
+    """Keep leadership after native matchmaking clears current_leader."""
+    from hivemind.averaging.matchmaking import Matchmaking
+
+    leader_assemble = Matchmaking.leader_assemble_group
+    follower_assemble = Matchmaking.follower_assemble_group
+
+    def remember(matchmaking, group, leader):
+        if not hasattr(matchmaking, "_observed_group_leaders"):
+            matchmaking._observed_group_leaders = {}
+        matchmaking._observed_group_leaders[group.group_id] = leader
+
+    async def observed_leader(self):
+        group = await leader_assemble(self)
+        remember(self, group, self.peer_id)
+        return group
+
+    async def observed_follower(self, leader, message):
+        group = await follower_assemble(self, leader, message)
+        remember(self, group, leader)
+        return group
+
+    Matchmaking.leader_assemble_group = observed_leader
+    Matchmaking.follower_assemble_group = observed_follower
+
+
 def _tensor_values(averager) -> list[float]:
     with averager.get_tensors() as tensors:
         return [float(value) for value in tensors[0].detach().cpu().reshape(-1).tolist()]
@@ -413,7 +439,7 @@ def _make_averager_class(identity_map, current_round, prefix_channels, arm: str,
                         native_members = [self._label(PeerID(raw)) for raw in response.ordered_peer_ids]
                         effective_members = list(native_members)
                     _emit("announcement_sent", arm=self._arm, channel=self._channel,
-                          round=self._round_no(), leader="X", leader_peer_id=attacker_peer_id,
+                          round=self._round_no(), leader=self._node_label, leader_peer_id=str(self.peer_id),
                           recipient=requester, recipient_peer_id=requester_id,
                           group_id=response.group_id.hex(), native_members=native_members,
                           effective_members=effective_members, excluded_target=excluded,
@@ -422,11 +448,12 @@ def _make_averager_class(identity_map, current_round, prefix_channels, arm: str,
 
         async def _aggregate_with_group(self, group_info, min_vector_size, **kwargs):
             participant_view_members = [self._label(peer) for peer in group_info.peer_ids]
-            leader_peer = getattr(self._matchmaking, "current_leader", None)
-            leader = self._node_label if leader_peer is None else self._label(leader_peer)
+            leader_peer = getattr(self._matchmaking, "_observed_group_leaders", {}).pop(group_info.group_id, None)
+            leader = self._label(leader_peer) if leader_peer is not None else None
+            role = "unknown" if leader is None else ("leader" if leader == self._node_label else "follower")
             effective_group = group_info
             omitted = False
-            if (self._node_label == "X" and self._arm == "capture_exclusion" and
+            if (self._node_label == "X" and leader == "X" and self._arm == "capture_exclusion" and
                     "A" in participant_view_members):
                 filtered_ids, filtered_data, omitted = smoke.filter_roster(
                     group_info.peer_ids, group_info.gathered, "A", self._label)
@@ -436,7 +463,7 @@ def _make_averager_class(identity_map, current_round, prefix_channels, arm: str,
             effective_members = [self._label(peer) for peer in effective_group.peer_ids]
             round_no = self._round_no()
             _emit("aggregate_input", arm=self._arm, channel=self._channel, round=round_no,
-                  peer=self._node_label, role="leader" if leader == self._node_label else "follower",
+                  peer=self._node_label, role=role,
                   leader=leader, group_id=group_info.group_id.hex(),
                   participant_view_members=participant_view_members,
                   leader_native_members=(participant_view_members if leader == self._node_label else None),
@@ -451,7 +478,7 @@ def _make_averager_class(identity_map, current_round, prefix_channels, arm: str,
                 raise
             after = _tensor_values(self)
             _emit("aggregate_output", arm=self._arm, channel=self._channel, round=round_no,
-                  peer=self._node_label, role="leader" if leader == self._node_label else "follower",
+                  peer=self._node_label, role=role,
                   leader=leader, group_id=group_info.group_id.hex(),
                   participant_view_members=participant_view_members,
                   leader_native_members=(participant_view_members if leader == self._node_label else None),
@@ -596,6 +623,7 @@ def _run_arm(args) -> None:
         current_round = manager.dict()
         prefix_channels = {spec["prefix"]: channel for channel, spec in key_specs.items()}
         _install_candidate_observer(prefix_channels, current_round, identities, args.arm)
+        _install_leadership_observer()
         averager_cls = _make_averager_class(identities, current_round, prefix_channels,
                                             args.arm, victim_peer_id, attacker_peer_id)
         round_values = {}

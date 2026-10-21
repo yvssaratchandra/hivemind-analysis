@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import importlib.util
 import multiprocessing as mp
 import os
@@ -7,6 +8,7 @@ from pathlib import Path
 import sys
 from types import SimpleNamespace
 import unittest
+from unittest.mock import AsyncMock, patch
 
 
 MODULE_PATH = Path(__file__).with_name("recordholder_exclusion_smoke.py")
@@ -133,6 +135,73 @@ class RecordHolderExclusionSmokeTests(unittest.TestCase):
         self.assertEqual(sorted(process_fields & subclass_methods), [])
         self.assertIs(averager_class.rpc_join_group.__annotations__["request"],
                       self.averaging_pb2.JoinRequest)
+
+    def test_assembly_retains_leader_after_native_cleanup(self):
+        from hivemind.averaging.matchmaking import Matchmaking
+
+        group = SimpleNamespace(group_id=b"assembled")
+        leader = SimpleNamespace(peer_id="D")
+        follower = SimpleNamespace(peer_id="X", current_leader="D")
+        with patch.object(Matchmaking, "leader_assemble_group", AsyncMock(return_value=group)), \
+             patch.object(Matchmaking, "follower_assemble_group", AsyncMock(return_value=group)):
+            probe._install_leadership_observer()
+            self.assertIs(asyncio.run(Matchmaking.leader_assemble_group(leader)), group)
+            self.assertIs(asyncio.run(Matchmaking.follower_assemble_group(follower, "D", None)), group)
+            follower.current_leader = None  # native _request_join_group finally block
+            self.assertEqual(leader._observed_group_leaders[group.group_id], "D")
+            self.assertEqual(follower._observed_group_leaders[group.group_id], "D")
+
+    def test_x_follower_and_unknown_leadership_do_not_omit_target(self):
+        from hivemind.averaging import DecentralizedAverager
+        from hivemind.averaging.group_info import GroupInfo
+
+        cls = probe._make_averager_class({}, {}, {}, "capture_exclusion", "A", "X")
+        group = GroupInfo(b"group", tuple(probe.NODES), tuple(b"" for _ in probe.NODES))
+        for known_leaders, expected_leader, expected_role in (
+            ({b"group": "D"}, "D", "follower"), ({}, None, "unknown"),
+            ({b"group": "X"}, "X", "leader"),
+        ):
+            fake = SimpleNamespace(_node_label="X", _arm="capture_exclusion",
+                                   _channel="gradient_probe", _label=str, _round_no=lambda: 0,
+                                   _matchmaking=SimpleNamespace(current_leader=None,
+                                                               _observed_group_leaders=known_leaders))
+            # super() needs an instance of the instrumented class; no process is started.
+            instance = object.__new__(cls)
+            mp.Process.__init__(instance)
+            instance.__dict__.update(vars(fake))
+            with patch.object(DecentralizedAverager, "_aggregate_with_group", AsyncMock()) as aggregate, \
+                 patch.object(probe, "_tensor_values", return_value=probe.marker_vector("X")), \
+                 patch.object(probe, "_emit") as emit:
+                asyncio.run(instance._aggregate_with_group(group, 1))
+                effective = aggregate.call_args.args[0]
+                self.assertEqual("A" in effective.peer_ids, expected_leader != "X")
+                self.assertEqual(emit.call_args.kwargs["leader"], expected_leader)
+                self.assertEqual(emit.call_args.kwargs["role"], expected_role)
+
+    def test_non_x_announcement_reports_actual_sender(self):
+        from hivemind.averaging import DecentralizedAverager
+
+        cls = probe._make_averager_class({}, {}, {}, "capture_exclusion", "A", "X")
+        instance = object.__new__(cls)
+        mp.Process.__init__(instance)
+        instance.__dict__.update(_node_label="D", _arm="capture_exclusion",
+                                 _channel="gradient_probe", _label=str, _round_no=lambda: 0)
+        response = self.averaging_pb2.MessageFromLeader(
+            code=self.averaging_pb2.BEGIN_ALLREDUCE, group_id=b"group")
+
+        async def native_rpc(*args):
+            yield response
+
+        async def collect():
+            return [message async for message in instance.rpc_join_group(
+                None, SimpleNamespace(remote_id="A"))]
+
+        with patch.object(DecentralizedAverager, "rpc_join_group", native_rpc), \
+             patch.object(cls, "peer_id", "actual-D-id"), patch.object(probe, "_emit") as emit:
+            self.assertEqual(asyncio.run(collect()), [response])
+            self.assertEqual(emit.call_args.kwargs["leader"], "D")
+            self.assertEqual(emit.call_args.kwargs["leader_peer_id"], "actual-D-id")
+            self.assertFalse(emit.call_args.kwargs["excluded_target"])
 
     def test_summary_uses_saved_inputs_and_separates_partial_native_groups(self):
         events = []
