@@ -1,0 +1,5 @@
+{
+  "status": "harness_failure",
+  "completed": false,
+  "error": "RuntimeError('(\\'error\\', \\'A\\', \"ValueError(\\'rpc_download_state is expected to have type annotations like `dht_pb2.FindRequest` or `AsyncIterator[dht_pb2.FindRequest]` for the `request` parameter and the return value\\')\")')"
+}

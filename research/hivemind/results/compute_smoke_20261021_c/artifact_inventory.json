@@ -1,0 +1,90 @@
+{
+  "description": "Frozen local evidence; paths relative to this experiment directory.",
+  "files": [
+    {
+      "path": "baseline_s300/config.json",
+      "bytes": 1059,
+      "sha256": "a8ecc7745afa74d2a9b8d1c9881facab56218c4910be2c4a61f70f3dccb64e9c"
+    },
+    {
+      "path": "baseline_s300/events_A_1568529.jsonl",
+      "bytes": 2951,
+      "sha256": "5f45e1f9f5ea1cbd6e3afce9ca56f76288bf4950ddbc5ffc047415e39ecbd5ce"
+    },
+    {
+      "path": "baseline_s300/events_B_1568524.jsonl",
+      "bytes": 2952,
+      "sha256": "2ce57aa377f620526493381d11061c9e462f833255d6a368640e4defc2a84fe8"
+    },
+    {
+      "path": "baseline_s300/events_C_1568532.jsonl",
+      "bytes": 2952,
+      "sha256": "1853df1f0c64d32c3ed7e9e482b5ba39f6a7ca58b86bf367cb0488305478a92d"
+    },
+    {
+      "path": "baseline_s300/events_D_1568526.jsonl",
+      "bytes": 2951,
+      "sha256": "dfebfef766bb85dac4e44b50993cf1487574064760d142b38eb6fa6c2f0c7c64"
+    },
+    {
+      "path": "baseline_s300/failure.json",
+      "bytes": 686,
+      "sha256": "475f01d22979690b1bf1fb487e7f698b3b4f5f98163ad1944af151f2679b2f3b"
+    },
+    {
+      "path": "baseline_s300/outcome.json",
+      "bytes": 304,
+      "sha256": "edc7e38fa193558dbd8f8051fe99f6ced7269a4a50f9554a6368db79c80f586b"
+    },
+    {
+      "path": "baseline_s300/provenance.json",
+      "bytes": 3382,
+      "sha256": "d2df30520ac76cbda876cc6fdad09338424c4e8c4a0bd765c00c69ac0c377767"
+    },
+    {
+      "path": "baseline_s300/shutdown.json",
+      "bytes": 1183,
+      "sha256": "f5a5b28111a0a9bffbdb8b17a9e9402fd4854a9fd2c1a4b917f217ccb7912376"
+    },
+    {
+      "path": "baseline_s300/worker.log",
+      "bytes": 8524,
+      "sha256": "6bb8062739e1f145578f0fd786b77bc709995fa820dfd4f86ddcc9acaa4d32ae"
+    },
+    {
+      "path": "harness/analyze_compute_exclusion.py",
+      "bytes": 44889,
+      "sha256": "001931fdfcee3535697603845332c81e5f490daa9e734188a55f25222e731113"
+    },
+    {
+      "path": "harness/announcement_artifacts.py",
+      "bytes": 2271,
+      "sha256": "aea9921c4abbb77bb256271e21bfbb93cf8e9bffd601997748b609ede6af1ef7"
+    },
+    {
+      "path": "harness/announcement_probe.py",
+      "bytes": 32243,
+      "sha256": "016923fb76a8d8ed64af1697045c5ba710bbbe40f3835c586f407a3118914c8c"
+    },
+    {
+      "path": "harness/compute_native_hooks.py",
+      "bytes": 38563,
+      "sha256": "a8bf82f5efdb30561976702a2e0bca4bd18682c812ffd97e3c4fcc88c4db731d"
+    },
+    {
+      "path": "harness/compute_workload.py",
+      "bytes": 16002,
+      "sha256": "28c3af3215fd0d8eae2bcb190c851bdb7d709de8e9d5338e7167347cbb9801ff"
+    },
+    {
+      "path": "harness/run_compute_exclusion.py",
+      "bytes": 27990,
+      "sha256": "573c573fd713089527803c100ad594e8b8f5f7b00d6c2449991b380634e36184"
+    },
+    {
+      "path": "source_hashes.json",
+      "bytes": 587,
+      "sha256": "cafb7e525b617ea93ad506580e433ab0c411ec08e0d4a0443fa10c5c2a04a9c2"
+    }
+  ]
+}

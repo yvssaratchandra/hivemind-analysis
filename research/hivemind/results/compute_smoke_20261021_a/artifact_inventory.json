@@ -1,0 +1,60 @@
+{
+  "description": "Frozen local evidence; paths relative to this experiment directory.",
+  "files": [
+    {
+      "path": "baseline_s300/config.json",
+      "bytes": 1033,
+      "sha256": "46f931db55763915e53155acc4f35aff88d638d0da9422262ff3f9eef8815135"
+    },
+    {
+      "path": "baseline_s300/failure.json",
+      "bytes": 1154,
+      "sha256": "9fec4bb1eab195bb0aff14215f5b76d2e8a9a0f254b59fb7d4d544b55430d645"
+    },
+    {
+      "path": "baseline_s300/provenance.json",
+      "bytes": 3382,
+      "sha256": "d2df30520ac76cbda876cc6fdad09338424c4e8c4a0bd765c00c69ac0c377767"
+    },
+    {
+      "path": "baseline_s300/shutdown.json",
+      "bytes": 479,
+      "sha256": "14c6fd5f7c4281ea47d1f5755c04a555de7539ac1638e33ba6a3c92ca296b5e7"
+    },
+    {
+      "path": "baseline_s300/worker.log",
+      "bytes": 2860,
+      "sha256": "54a489e309f9ae3a684021215eeb849c0eb47bd7657d9e9b39f41eca66d87b38"
+    },
+    {
+      "path": "harness/announcement_artifacts.py",
+      "bytes": 2271,
+      "sha256": "aea9921c4abbb77bb256271e21bfbb93cf8e9bffd601997748b609ede6af1ef7"
+    },
+    {
+      "path": "harness/announcement_probe.py",
+      "bytes": 32243,
+      "sha256": "016923fb76a8d8ed64af1697045c5ba710bbbe40f3835c586f407a3118914c8c"
+    },
+    {
+      "path": "harness/compute_native_hooks.py",
+      "bytes": 31695,
+      "sha256": "2c606725bc9ff0f78357886ad09db80b11b589478bcff68fb3c59391ff4456c5"
+    },
+    {
+      "path": "harness/compute_workload.py",
+      "bytes": 16002,
+      "sha256": "28c3af3215fd0d8eae2bcb190c851bdb7d709de8e9d5338e7167347cbb9801ff"
+    },
+    {
+      "path": "harness/run_compute_exclusion.py",
+      "bytes": 26099,
+      "sha256": "fa7d45f15e99baa47c10e543369c90c0070dea493c9ac080c2858f544f1da71a"
+    },
+    {
+      "path": "source_hashes.json",
+      "bytes": 485,
+      "sha256": "0d7b92e8611180277efb3a7456e840c254b8fe5418963e8e7b6cd1790640a693"
+    }
+  ]
+}

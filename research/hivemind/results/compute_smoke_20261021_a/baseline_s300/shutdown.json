@@ -1,0 +1,21 @@
+{
+  "safe": true,
+  "owned": {
+    "1550613": 1792572173.03,
+    "1550667": 1792572173.04,
+    "1550674": 1792572173.24,
+    "1550687": 1792572173.42,
+    "1550690": 1792572173.42,
+    "1550693": 1792572173.43,
+    "1550696": 1792572173.43,
+    "1550676": 1792572173.26
+  },
+  "surviving_pids": [],
+  "forced_cleanup": [],
+  "error": "KeyboardInterrupt()",
+  "worker_closing_survivors": [
+    1550667
+  ],
+  "controller_audited_after_worker_exit": true,
+  "worker_exitcode": 1
+}

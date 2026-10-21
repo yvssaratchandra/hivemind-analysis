@@ -1,0 +1,409 @@
+{
+  "reference": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/compute_c0_markers_20261021_c",
+  "reference_inventory_sha256": "dbc4ef9ed946d3114341440aee02ffb708a444c47187e78cd510232c4d37a392",
+  "cases": [
+    {
+      "case": "baseline_s11",
+      "seed": 11,
+      "condition": "baseline",
+      "valid": true,
+      "weights": {
+        "B": 32,
+        "D": 32,
+        "A": 224,
+        "C": 32
+      },
+      "first_four_output_coordinates": {
+        "B": [
+          0.10000002384185791,
+          0.10000000149011612,
+          0.699999988079071,
+          0.10000000149011612
+        ],
+        "D": [
+          0.10000000149011612,
+          0.10000002384185791,
+          0.699999988079071,
+          0.10000000149011612
+        ],
+        "A": [
+          0.10000000149011612,
+          0.10000000149011612,
+          0.699999988079071,
+          0.10000000149011612
+        ],
+        "C": [
+          0.10000000149011612,
+          0.10000000149011612,
+          0.699999988079071,
+          0.10000002384185791
+        ]
+      },
+      "numerical_replay": {
+        "groups_seen": 1,
+        "groups_replayed": 1,
+        "groups_excluded_shutdown": 0,
+        "allocation_nodes_checked": 4,
+        "outputs_checked": 4,
+        "native_chunks_checked": 48,
+        "fallback_nodes_checked": 4
+      }
+    },
+    {
+      "case": "exclusion_s11",
+      "seed": 11,
+      "condition": "exclusion",
+      "valid": true,
+      "weights": {
+        "B": 32,
+        "D": 32,
+        "A": 224,
+        "C": 32
+      },
+      "first_four_output_coordinates": {
+        "B": [
+          0.3333333730697632,
+          0.3333333432674408,
+          0.0,
+          0.3333333432674408
+        ],
+        "D": [
+          0.3333333432674408,
+          0.3333333730697632,
+          0.0,
+          0.3333333432674408
+        ],
+        "A": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "C": [
+          0.3333333432674408,
+          0.3333333432674408,
+          0.0,
+          0.3333333730697632
+        ]
+      },
+      "numerical_replay": {
+        "groups_seen": 1,
+        "groups_replayed": 1,
+        "groups_excluded_shutdown": 0,
+        "allocation_nodes_checked": 4,
+        "outputs_checked": 4,
+        "native_chunks_checked": 48,
+        "fallback_nodes_checked": 4
+      }
+    },
+    {
+      "case": "absent_s11",
+      "seed": 11,
+      "condition": "absent",
+      "valid": true,
+      "weights": {
+        "B": 32,
+        "D": 32,
+        "C": 32
+      },
+      "first_four_output_coordinates": {
+        "B": [
+          0.3333333730697632,
+          0.3333333432674408,
+          0.0,
+          0.3333333432674408
+        ],
+        "D": [
+          0.3333333432674408,
+          0.3333333730697632,
+          0.0,
+          0.3333333432674408
+        ],
+        "C": [
+          0.3333333432674408,
+          0.3333333432674408,
+          0.0,
+          0.3333333730697632
+        ]
+      },
+      "numerical_replay": {
+        "groups_seen": 1,
+        "groups_replayed": 1,
+        "groups_excluded_shutdown": 0,
+        "allocation_nodes_checked": 3,
+        "outputs_checked": 3,
+        "native_chunks_checked": 36,
+        "fallback_nodes_checked": 3
+      }
+    },
+    {
+      "case": "exclusion_s12",
+      "seed": 12,
+      "condition": "exclusion",
+      "valid": true,
+      "weights": {
+        "B": 32,
+        "D": 32,
+        "A": 224,
+        "C": 32
+      },
+      "first_four_output_coordinates": {
+        "B": [
+          0.3333333730697632,
+          0.3333333432674408,
+          0.0,
+          0.3333333432674408
+        ],
+        "D": [
+          0.3333333432674408,
+          0.3333333730697632,
+          0.0,
+          0.3333333432674408
+        ],
+        "A": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "C": [
+          0.3333333432674408,
+          0.3333333432674408,
+          0.0,
+          0.3333333730697632
+        ]
+      },
+      "numerical_replay": {
+        "groups_seen": 1,
+        "groups_replayed": 1,
+        "groups_excluded_shutdown": 0,
+        "allocation_nodes_checked": 4,
+        "outputs_checked": 4,
+        "native_chunks_checked": 48,
+        "fallback_nodes_checked": 4
+      }
+    },
+    {
+      "case": "absent_s12",
+      "seed": 12,
+      "condition": "absent",
+      "valid": true,
+      "weights": {
+        "B": 32,
+        "D": 32,
+        "C": 32
+      },
+      "first_four_output_coordinates": {
+        "B": [
+          0.3333333730697632,
+          0.3333333432674408,
+          0.0,
+          0.3333333432674408
+        ],
+        "D": [
+          0.3333333432674408,
+          0.3333333730697632,
+          0.0,
+          0.3333333432674408
+        ],
+        "C": [
+          0.3333333432674408,
+          0.3333333432674408,
+          0.0,
+          0.3333333730697632
+        ]
+      },
+      "numerical_replay": {
+        "groups_seen": 1,
+        "groups_replayed": 1,
+        "groups_excluded_shutdown": 0,
+        "allocation_nodes_checked": 3,
+        "outputs_checked": 3,
+        "native_chunks_checked": 36,
+        "fallback_nodes_checked": 3
+      }
+    },
+    {
+      "case": "baseline_s12",
+      "seed": 12,
+      "condition": "baseline",
+      "valid": true,
+      "weights": {
+        "B": 32,
+        "D": 32,
+        "A": 224,
+        "C": 32
+      },
+      "first_four_output_coordinates": {
+        "B": [
+          0.10000002384185791,
+          0.10000000149011612,
+          0.699999988079071,
+          0.10000000149011612
+        ],
+        "D": [
+          0.10000000149011612,
+          0.10000002384185791,
+          0.699999988079071,
+          0.10000000149011612
+        ],
+        "A": [
+          0.10000000149011612,
+          0.10000000149011612,
+          0.699999988079071,
+          0.10000000149011612
+        ],
+        "C": [
+          0.10000000149011612,
+          0.10000000149011612,
+          0.699999988079071,
+          0.10000002384185791
+        ]
+      },
+      "numerical_replay": {
+        "groups_seen": 1,
+        "groups_replayed": 1,
+        "groups_excluded_shutdown": 0,
+        "allocation_nodes_checked": 4,
+        "outputs_checked": 4,
+        "native_chunks_checked": 48,
+        "fallback_nodes_checked": 4
+      }
+    },
+    {
+      "case": "absent_s13",
+      "seed": 13,
+      "condition": "absent",
+      "valid": true,
+      "weights": {
+        "B": 32,
+        "D": 32,
+        "C": 32
+      },
+      "first_four_output_coordinates": {
+        "B": [
+          0.3333333730697632,
+          0.3333333432674408,
+          0.0,
+          0.3333333432674408
+        ],
+        "D": [
+          0.3333333432674408,
+          0.3333333730697632,
+          0.0,
+          0.3333333432674408
+        ],
+        "C": [
+          0.3333333432674408,
+          0.3333333432674408,
+          0.0,
+          0.3333333730697632
+        ]
+      },
+      "numerical_replay": {
+        "groups_seen": 1,
+        "groups_replayed": 1,
+        "groups_excluded_shutdown": 0,
+        "allocation_nodes_checked": 3,
+        "outputs_checked": 3,
+        "native_chunks_checked": 36,
+        "fallback_nodes_checked": 3
+      }
+    },
+    {
+      "case": "baseline_s13",
+      "seed": 13,
+      "condition": "baseline",
+      "valid": true,
+      "weights": {
+        "B": 32,
+        "D": 32,
+        "A": 224,
+        "C": 32
+      },
+      "first_four_output_coordinates": {
+        "B": [
+          0.10000002384185791,
+          0.10000000149011612,
+          0.699999988079071,
+          0.10000000149011612
+        ],
+        "D": [
+          0.10000000149011612,
+          0.10000002384185791,
+          0.699999988079071,
+          0.10000000149011612
+        ],
+        "A": [
+          0.10000000149011612,
+          0.10000000149011612,
+          0.699999988079071,
+          0.10000000149011612
+        ],
+        "C": [
+          0.10000000149011612,
+          0.10000000149011612,
+          0.699999988079071,
+          0.10000002384185791
+        ]
+      },
+      "numerical_replay": {
+        "groups_seen": 1,
+        "groups_replayed": 1,
+        "groups_excluded_shutdown": 0,
+        "allocation_nodes_checked": 4,
+        "outputs_checked": 4,
+        "native_chunks_checked": 48,
+        "fallback_nodes_checked": 4
+      }
+    },
+    {
+      "case": "exclusion_s13",
+      "seed": 13,
+      "condition": "exclusion",
+      "valid": true,
+      "weights": {
+        "B": 32,
+        "D": 32,
+        "A": 224,
+        "C": 32
+      },
+      "first_four_output_coordinates": {
+        "B": [
+          0.3333333730697632,
+          0.3333333432674408,
+          0.0,
+          0.3333333432674408
+        ],
+        "D": [
+          0.3333333432674408,
+          0.3333333730697632,
+          0.0,
+          0.3333333432674408
+        ],
+        "A": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "C": [
+          0.3333333432674408,
+          0.3333333432674408,
+          0.0,
+          0.3333333730697632
+        ]
+      },
+      "numerical_replay": {
+        "groups_seen": 1,
+        "groups_replayed": 1,
+        "groups_excluded_shutdown": 0,
+        "allocation_nodes_checked": 4,
+        "outputs_checked": 4,
+        "native_chunks_checked": 48,
+        "fallback_nodes_checked": 4
+      }
+    }
+  ],
+  "conclusion": "Nine local marker cases passed; three exclusion cases removed A from B/D/C weighted results. No deployment success-rate claim; no timing simulation validation."
+}

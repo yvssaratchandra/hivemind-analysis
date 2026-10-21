@@ -1234,6 +1234,12 @@ optimal frequency. See the report and its matched controls before extrapolating.
   with no leader-exposure or timing claim. See `ANNOUNCEMENT_PROBE.md` for controls,
   recovery, artifacts and limitations. **Approved programme complete; stop at E5.**
 
+- **New approved follow-up (2026-10-21):** `DOMINANT_COMPUTE.md` specifies
+  C0–C3 to test dominant-compute omission with real sample accumulation and the
+  native Optimizer, including state sharing. Implementation is in progress;
+  this is not covered by the completed fixed-round E0–E5 results. Simulation
+  remains conditional on native behavioral and held-out timing validation.
+
 ### C15.S — Checkpoint 15, Select: does re-forming groups shed the attacker?
 
 - **Question.** Groups reshuffle between rounds. Does that dilute an attacker's presence?

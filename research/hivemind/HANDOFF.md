@@ -3,6 +3,16 @@
 Everything a new session needs: what the project is, where it stands, what is known, and what to do
 next. Written to be read without any prior conversation.
 
+**Active 2026-10-21: dominant-compute follow-up approved.** The user authorized
+C0–C3 in `DOMINANT_COMPUTE.md`: native sample-weight markers, persistent native
+Optimizer training with state sharing enabled, a pilot and five paired seeds,
+then simulation in the existing framework only if native behavioral/timing gates
+pass. C0 is complete: all nine native marker cases and numerical replays pass
+(`results/compute_c0_markers_20261021_c`). A 10-second native optimizer smoke
+completed with finite models and safe shutdown. C1 pilot seed 301 is running in
+`results/compute_c1_pilot_20261021_a`; no convergence comparison is available yet. This new
+authorization is separate from the completed E0–E5 programme below.
+
 **Resumed 2026-10-21.** The approved announcement learning programme is in
 `ANNOUNCEMENT_PROBE.md`. E0 is complete. E1 now has three fresh equal-allocation
 four-condition sets (seeds 2–4) and an unequal-bandwidth set (seed 5), all passing.

@@ -1,0 +1,16 @@
+{
+  "schema": "compute-native-suite-v1",
+  "mode": "markers",
+  "status": "failed",
+  "cases": [],
+  "seeds": [
+    11,
+    12,
+    13
+  ],
+  "duration": 300,
+  "baseline_learning_passed": false,
+  "reference": null,
+  "reference_inventory_sha256": null,
+  "error": "UnboundLocalError(\"cannot access local variable 'condition' where it is not associated with a value\")"
+}

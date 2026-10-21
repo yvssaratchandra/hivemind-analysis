@@ -1,0 +1,4 @@
+{
+  "error": "RuntimeError('(\\'error\\', \\'A\\', \"ValueError(\\'rpc_download_state is expected to have type annotations like `dht_pb2.FindRequest` or `AsyncIterator[dht_pb2.FindRequest]` for the `request` parameter and the return value\\')\")')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/sarat/Projects/hivemind-analysis/research/hivemind/run_compute_exclusion.py\", line 382, in trial_worker\n    raise RuntimeError(str(message))\nRuntimeError: ('error', 'A', \"ValueError('rpc_download_state is expected to have type annotations like `dht_pb2.FindRequest` or `AsyncIterator[dht_pb2.FindRequest]` for the `request` parameter and the return value')\")\n"
+}

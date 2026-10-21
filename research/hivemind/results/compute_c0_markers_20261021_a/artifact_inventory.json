@@ -1,0 +1,145 @@
+{
+  "description": "Frozen local evidence; paths relative to this experiment directory.",
+  "files": [
+    {
+      "path": "baseline_s11/config.json",
+      "bytes": 1061,
+      "sha256": "8371e47fb7665f64363b4a6e776ac72f487901dafb11926b1d8badd3e61fe1f2"
+    },
+    {
+      "path": "baseline_s11/events_A_1596855.jsonl",
+      "bytes": 9308,
+      "sha256": "a94620c9402da6c35340af7dccb47c7a7083959711307a71951bb71810590e9a"
+    },
+    {
+      "path": "baseline_s11/events_A_1596965.jsonl",
+      "bytes": 35551,
+      "sha256": "7dca6aa766e7f62a9591e9bc68bbc14f75361265d612891f615a2e0bbafc3100"
+    },
+    {
+      "path": "baseline_s11/events_B_1596850.jsonl",
+      "bytes": 3199,
+      "sha256": "a5d0c0e5260907722f125fce33303844ff53de95ee1ad22b2a136c172c03dced"
+    },
+    {
+      "path": "baseline_s11/events_B_1596966.jsonl",
+      "bytes": 40027,
+      "sha256": "82bf1cd5df5a18c84dafafdf9c18f461337401f9db8237b3f9be1345988edcef"
+    },
+    {
+      "path": "baseline_s11/events_C_1596858.jsonl",
+      "bytes": 3199,
+      "sha256": "2475bd2d5728e6972421c45e05be1807ddf67f64385af18e981c2ad7d44e9634"
+    },
+    {
+      "path": "baseline_s11/events_C_1596964.jsonl",
+      "bytes": 35097,
+      "sha256": "82b9a05e7d89ff7038ad470e8534726f88ada0915eda54059a7e15e0f5aea84e"
+    },
+    {
+      "path": "baseline_s11/events_D_1596852.jsonl",
+      "bytes": 3200,
+      "sha256": "3dc31f1c743406c010f2daa4581c3e39f954ce72cd60c666f56de2f7155d10a4"
+    },
+    {
+      "path": "baseline_s11/events_D_1596963.jsonl",
+      "bytes": 35209,
+      "sha256": "ad3361c1e3c56714bd285f9e54cf101e56e95cea2cec7c339251a7dfcb8d252f"
+    },
+    {
+      "path": "baseline_s11/identities.json",
+      "bytes": 255,
+      "sha256": "a6fc326295f43719c54bfc0ec3ea216e13d9f9aa2bd7c932c4bfa8b05dbd74db"
+    },
+    {
+      "path": "baseline_s11/outcome.json",
+      "bytes": 93,
+      "sha256": "0316551b28d239f853331a17b3ea390cf4fcfb57a7b993e8defdc0a0fde05d1a"
+    },
+    {
+      "path": "baseline_s11/output_A.json",
+      "bytes": 2393,
+      "sha256": "903627d46e312558ed044d4ed5fef0294cb609d480a734e23e036cce882bf100"
+    },
+    {
+      "path": "baseline_s11/output_B.json",
+      "bytes": 2142,
+      "sha256": "958bb4b48d264dc436d71b20d9f554ea837583c4360a66472185e48fb8a5592b"
+    },
+    {
+      "path": "baseline_s11/output_C.json",
+      "bytes": 2142,
+      "sha256": "4046dcc2f2d7aa1359a289ab470d2b9e03c1f0b781fed90c04fe76e51a8fab6a"
+    },
+    {
+      "path": "baseline_s11/output_D.json",
+      "bytes": 2143,
+      "sha256": "0685f002130b4565a68481e5a13ec1c0a52c90f2bfac83f1b629d8a1c8c6e2e8"
+    },
+    {
+      "path": "baseline_s11/owned_processes.json",
+      "bytes": 59,
+      "sha256": "9c8408334c41b151944f014188de160d5a96635f0904a64db9c66e753b2c07ee"
+    },
+    {
+      "path": "baseline_s11/provenance.json",
+      "bytes": 3382,
+      "sha256": "d2df30520ac76cbda876cc6fdad09338424c4e8c4a0bd765c00c69ac0c377767"
+    },
+    {
+      "path": "baseline_s11/release.json",
+      "bytes": 127,
+      "sha256": "9b0d9ecb0e0f956d6fe535370f866897729456efe743fc62e8559c202d84940e"
+    },
+    {
+      "path": "baseline_s11/shutdown.json",
+      "bytes": 822,
+      "sha256": "5e062cde523aaabe53c4e54d19b208e736cec73b884605fa63f46e52e35505ae"
+    },
+    {
+      "path": "baseline_s11/worker.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "harness/analyze_compute_exclusion.py",
+      "bytes": 62270,
+      "sha256": "45a5b13e10ccbd95b3bca46e2b7818f8e2882cbb636a15f120d4288a0a52cd91"
+    },
+    {
+      "path": "harness/announcement_artifacts.py",
+      "bytes": 2271,
+      "sha256": "aea9921c4abbb77bb256271e21bfbb93cf8e9bffd601997748b609ede6af1ef7"
+    },
+    {
+      "path": "harness/announcement_probe.py",
+      "bytes": 32243,
+      "sha256": "016923fb76a8d8ed64af1697045c5ba710bbbe40f3835c586f407a3118914c8c"
+    },
+    {
+      "path": "harness/compute_native_hooks.py",
+      "bytes": 39163,
+      "sha256": "613d6c82bbc516142dc6f6864dda58417874b798a71ca0da012bde8208d8c0e2"
+    },
+    {
+      "path": "harness/compute_workload.py",
+      "bytes": 16002,
+      "sha256": "28c3af3215fd0d8eae2bcb190c851bdb7d709de8e9d5338e7167347cbb9801ff"
+    },
+    {
+      "path": "harness/run_compute_exclusion.py",
+      "bytes": 29895,
+      "sha256": "12126e7a0d70f7cb69e1eb79a3e499337aea533a4ac3dee5fd3be073b7071c2d"
+    },
+    {
+      "path": "source_hashes.json",
+      "bytes": 587,
+      "sha256": "afd585364e9436cf10d966766318e3b78a3e1a66d3c1ce8e6ffaf24a6b3e0c64"
+    },
+    {
+      "path": "status.json",
+      "bytes": 374,
+      "sha256": "41008326bd07db6b2d216438beae2f90cc8261db2a4d8e42fd61de3ee3251904"
+    }
+  ]
+}

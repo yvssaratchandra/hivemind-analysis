@@ -1,0 +1,4 @@
+{
+  "error": "RuntimeError('(\\'error\\', \\'A\\', \"TimeoutError(\\'Native progress discovery did not find expected peers\\')\")')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/sarat/Projects/hivemind-analysis/research/hivemind/run_compute_exclusion.py\", line 375, in trial_worker\n    raise RuntimeError(str(message))\nRuntimeError: ('error', 'A', \"TimeoutError('Native progress discovery did not find expected peers')\")\n"
+}

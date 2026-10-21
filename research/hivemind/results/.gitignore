@@ -1401,3 +1401,10 @@ announcement_learning_*/problems/
 announcement_learning_*/runs/
 announcement_learning_*/schedules/
 announcement_e4e5_report_*/report.json
+
+# Dominant-compute trials: raw tensors/data are retained in suite inventories.
+compute_*/*/evaluation_data.npz
+compute_*/*/output_*.json
+
+# Frozen C0 validator source is inventoried alongside its compact report.
+compute_c0_report_*/validator.py

@@ -1,0 +1,46 @@
+{
+  "safe": true,
+  "owned": {
+    "1568440": 1792572466.01,
+    "1568488": 1792572466.02,
+    "1568501": 1792572466.17,
+    "1568524": 1792572466.3,
+    "1568526": 1792572466.3,
+    "1568529": 1792572466.3,
+    "1568532": 1792572466.3,
+    "1568533": 1792572466.31,
+    "1568503": 1792572466.18,
+    "1568544": 1792572466.31,
+    "1568548": 1792572466.32,
+    "1568540": 1792572466.31,
+    "1568547": 1792572466.32,
+    "1568537": 1792572466.31,
+    "1568546": 1792572466.32,
+    "1568543": 1792572466.31
+  },
+  "surviving_pids": [],
+  "forced_cleanup": [
+    {
+      "pid": 1568524,
+      "action": "terminate"
+    },
+    {
+      "pid": 1568526,
+      "action": "terminate"
+    },
+    {
+      "pid": 1568529,
+      "action": "terminate"
+    },
+    {
+      "pid": 1568532,
+      "action": "terminate"
+    }
+  ],
+  "error": "RuntimeError('(\\'error\\', \\'A\\', \"ValueError(\\'rpc_download_state is expected to have type annotations like `dht_pb2.FindRequest` or `AsyncIterator[dht_pb2.FindRequest]` for the `request` parameter and the return value\\')\")')",
+  "worker_closing_survivors": [
+    1568488
+  ],
+  "controller_audited_after_worker_exit": true,
+  "worker_exitcode": 1
+}
