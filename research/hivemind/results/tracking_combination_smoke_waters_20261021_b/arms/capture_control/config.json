@@ -1,0 +1,58 @@
+{
+  "allreduce_timeout_seconds": 5.0,
+  "arm": "capture_control",
+  "arm_measurement_cap_seconds": 90.0,
+  "artificial_wan_delay": false,
+  "attacker": "X",
+  "attacker_min_matchmaking_time_seconds": 0.5,
+  "bootstrap_assistance": "A and X are pre-placed in the same initial shard; recorded above",
+  "bucket_count": 2,
+  "channel_implementation": "two independent native DecentralizedAverager prefixes on each DHT peer",
+  "channels": [
+    "gradient_probe",
+    "state_probe"
+  ],
+  "exclusion": "attacker local GroupInfo projection; outgoing BEGIN_ALLREDUCE is filtered only for non-target recipients",
+  "group_size": 2,
+  "honest_min_matchmaking_time_seconds": 5.0,
+  "host_addresses": [
+    "/ip4/127.0.0.1/tcp/0"
+  ],
+  "initial_group_bits": {
+    "A": "0",
+    "H2": "0",
+    "H3": "0",
+    "H4": "1",
+    "H5": "1",
+    "H6": "1",
+    "H7": "1",
+    "X": "0"
+  },
+  "label": "waters_20261021_b",
+  "leader_fixture": "earlier attacker advertisement plus selective admission of A only",
+  "marker_tensor": "8-element one-hot origin vector; coordinate i identifies node i",
+  "marker_values_reset_between_rounds": false,
+  "min_group_size": 2,
+  "native_peer_ids_and_group_ids": "cryptographically random; recorded raw",
+  "nodes": [
+    "A",
+    "X",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6",
+    "H7"
+  ],
+  "not_optimizer_training_state_averaging": true,
+  "public_network": false,
+  "request_timeout_seconds": 0.25,
+  "round_timeout_seconds": 12.0,
+  "rounds_requested": 5,
+  "sharding": "initial_group_bits length 1; native re-bucketing",
+  "step_timeout_seconds": 10.0,
+  "target_announcement": "keeps native roster; group_size=2 means there is no non-target follower",
+  "training": false,
+  "victim": "A",
+  "weight": 1.0
+}

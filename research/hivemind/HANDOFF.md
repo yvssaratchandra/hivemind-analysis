@@ -1,6 +1,81 @@
 # Handoff — read this first
 
-**Recovery running 2026-10-21:** user has an uninterrupted window. Launched
+**Completed 2026-10-21: tracking + admission + exclusion smoke.** User requested a
+short native test after the dominant-compute recovery batch finishes. Reuse the
+step4 next-bucket prediction and step3 attacker-side admission/early-deadline
+policy, then apply roster omission on two independently matched native averaging
+channels. Identifiable tensors expose membership/output effects; this is a
+mechanism probe, not an Optimizer convergence or persistent-isolation result.
+
+| Implementation status | State |
+|---|---|
+| Bounded combined native probe and focused tests | Complete; four tests pass |
+| Background recovery completion/process gate | Recovery exited; zero experiment processes before smoke |
+| Paired control/omission runs and raw evidence review | Complete under `tracking_combination_smoke_waters_20261021_b` |
+
+Architecture: a separate research script owns private loopback peers, per-channel
+bucket tracking, attacker-only admission and announcement edits, and raw JSONL
+traces. Honest peers retain native matchmaking. The controller owns run deadlines,
+clock auditing and child cleanup; the report distinguishes bucket prediction,
+co-membership, attacker leadership, omitted rosters and numerical outputs. A
+matched control retains tracking/admission but disables omission. Any assisted
+initial placement is explicit and is not evidence of bootstrap success. No native
+core or frozen compute-harness edits. Implementation order: probe and analyzer,
+offline tests/review, wait for existing runs to finish, bounded native comparison,
+inspect traces/report, commit compact evidence and inventory. Acceptance is an
+auditable result, including a negative or inconclusive result; do not extend the
+budget to chase successful capture. Review gates: independent channel membership,
+all-attempt denominators, output evidence, suspension check and no owned survivors.
+
+Result: eight peers, one attacker X, target A, two buckets, group size two,
+five synchronized attempts per native marker channel. A and X begin in the same
+bucket (assisted initial placement, not forced co-membership or leadership).
+Both channels use independent DecentralizedAverager prefixes; `state_probe` is
+not an Optimizer/TrainingStateAverager scheduling experiment. Capture-control
+keeps tracking, earlier attacker deadline and selective admission but no omission.
+It captured A in X-led groups on 4/5 gradient-probe and 3/5 state-probe attempts.
+Exclusion captured 2/5 gradient-probe groups (rounds 3–4) and 5/5 state-probe
+groups. Thus both channels were captured together only in the last two rounds.
+X omitted A only when X led; all seven omitted outputs preserved X's input and
+had zero A-origin coefficient. Group size two means this is X's local roster
+omission, not a rewritten roster received by another honest follower.
+
+The critical negative finding is incomplete isolation: in exclusion gradient
+rounds 0–2, A led groups with H2/H3, and A-origin markers subsequently appeared
+at H2/H3/H4/H5. On the state-probe channel A's marker remained at A and did not
+reach the six other honest peers. These channels do not exchange tensors with
+each other, so do not infer an actual trained model's overall information flow.
+Keep the positive composition finding and the failed whole-run isolation claim
+separate. Raw group identities, marker vectors, all 160 step outcomes (including
+no-group/error outcomes), clocks and process audits are preserved. Controller
+wall time was ~54s control + ~59s exclusion; both clock and cleanup audits pass.
+No larger run or sweep followed. Report:
+`results/tracking_combination_smoke_waters_20261021_b/report.md`.
+
+Initial label `_a` is preserved as an incomplete harness attempt: a helper named
+`_name` collided with multiprocessing.Process's string field, and stage logging
+incorrectly converted a plain Enum to int. Both were fixed with a native-class
+offline regression test before the fresh paired `_b` run. Inventories for both
+labels verify; source snapshots and bulky traces remain local.
+
+**Recovery stopped 2026-10-21:** all six replacement measurement windows ended;
+the first five passed native and clock checks. Final `baseline_s303` completed
+training with a valid clock audit and zero surviving owned processes, but failed
+native evidence validation (malformed inbound reducer chunks in gradient group
+`ab0859d458446d14ed629cbd661db71103a52299`). The wrapper marked the recovery failed;
+no clean composite or full confirmation report was generated. Preserve evidence
+and diagnose before any acceptance or rerun. No long rerun has been started.
+
+Read-only diagnosis: the analyzer's inbound-chunk check rejects `weight <= 0`.
+The final group has A weight 2848 and B/C/D weight zero, with complete streams,
+no bans/fallbacks, and reducer outputs matching weighted inputs within 9.1e-13.
+The group straddles the horizon: announcements ~299.06s, B/C/D training terminals
+~300.05s, A final update ~300.096s. This is an analyzer false positive on legitimate
+zero-weight inputs, not a suspension. Preserve the original failing checks; a
+separately versioned offline reanalysis is still needed before accepting the
+sixth replacement and building the full report. Do not rerun merely to avoid it.
+
+Recovery configuration: launched
 `run_compute_recovery.py` under label `compute_c2_recovery_20261021_a`: all three
 arms for seeds 302 and 303, six sequential 300-second native runs. It checks
 boot/monotonic/wall clocks and stops if suspension or a clock jump exceeds one

@@ -1,0 +1,5272 @@
+{
+  "arm_status": {
+    "capture_control": {
+      "arm": "capture_control",
+      "clock_audit": {
+        "boottime_elapsed": 50.4597029290162,
+        "monotonic_elapsed": 50.45970317500178,
+        "suspend_seconds": -2.4598557502031326e-07,
+        "valid": true,
+        "wall_elapsed": 50.45970439910889,
+        "wall_jump_seconds": 1.4700926840305328e-06
+      },
+      "controller_audit": {
+        "arm": "capture_control",
+        "controller_clock_audit": {
+          "boottime_elapsed": 54.01300363399787,
+          "monotonic_elapsed": 54.01300466900284,
+          "suspend_seconds": -1.0350049706175923e-06,
+          "valid": true,
+          "wall_elapsed": 54.01300597190857,
+          "wall_jump_seconds": 2.3379107005894184e-06
+        },
+        "suspension_detected_by_controller": false,
+        "worker_exitcode": 0,
+        "worker_process_audit": {
+          "controller_audited_after_worker_exit": true,
+          "forced_cleanup_pids": [],
+          "observed_owned_pids": {
+            "1919278": 1792587492.4,
+            "1919280": 1792587492.54,
+            "1919281": 1792587492.55,
+            "1919304": 1792587492.68,
+            "1919305": 1792587492.69,
+            "1919326": 1792587492.81,
+            "1919327": 1792587492.82,
+            "1919346": 1792587492.94,
+            "1919347": 1792587492.95,
+            "1919427": 1792587493.08,
+            "1919428": 1792587493.08,
+            "1919449": 1792587493.21,
+            "1919450": 1792587493.22,
+            "1919471": 1792587493.34,
+            "1919472": 1792587493.35,
+            "1919493": 1792587493.48,
+            "1919494": 1792587493.49,
+            "1919515": 1792587493.62,
+            "1919521": 1792587493.65,
+            "1919528": 1792587493.69,
+            "1919533": 1792587493.75,
+            "1919538": 1792587493.78,
+            "1919543": 1792587493.81,
+            "1919548": 1792587493.84,
+            "1919553": 1792587493.87,
+            "1919558": 1792587493.9,
+            "1919563": 1792587493.93,
+            "1919568": 1792587493.96,
+            "1919630": 1792587493.99,
+            "1919635": 1792587494.03,
+            "1919640": 1792587494.06,
+            "1919645": 1792587494.09,
+            "1919650": 1792587494.12
+          },
+          "safe": true,
+          "surviving_pids": []
+        },
+        "worker_timed_out": false
+      },
+      "elapsed_seconds": 50.46016565999889,
+      "error": null,
+      "events": 695,
+      "rounds_observed": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shutdown": {
+        "elapsed_seconds": 50.459482801990816,
+        "error": null,
+        "forced_cleanup_pids": [],
+        "owned_processes": {
+          "1919278": 1792587492.4,
+          "1919280": 1792587492.54,
+          "1919281": 1792587492.55,
+          "1919304": 1792587492.68,
+          "1919305": 1792587492.69,
+          "1919326": 1792587492.81,
+          "1919327": 1792587492.82,
+          "1919346": 1792587492.94,
+          "1919347": 1792587492.95,
+          "1919427": 1792587493.08,
+          "1919428": 1792587493.08,
+          "1919449": 1792587493.21,
+          "1919450": 1792587493.22,
+          "1919471": 1792587493.34,
+          "1919472": 1792587493.35,
+          "1919493": 1792587493.48,
+          "1919494": 1792587493.49,
+          "1919515": 1792587493.62,
+          "1919521": 1792587493.65,
+          "1919528": 1792587493.69,
+          "1919533": 1792587493.75,
+          "1919538": 1792587493.78,
+          "1919543": 1792587493.81,
+          "1919548": 1792587493.84,
+          "1919553": 1792587493.87,
+          "1919558": 1792587493.9,
+          "1919563": 1792587493.93,
+          "1919568": 1792587493.96,
+          "1919630": 1792587493.99,
+          "1919635": 1792587494.03,
+          "1919640": 1792587494.06,
+          "1919645": 1792587494.09,
+          "1919650": 1792587494.12
+        },
+        "safe_at_worker_exit": false,
+        "worker_exit_pending_helpers": [
+          1919278
+        ]
+      },
+      "status": "complete"
+    },
+    "capture_exclusion": {
+      "arm": "capture_exclusion",
+      "clock_audit": {
+        "boottime_elapsed": 55.44286439701682,
+        "monotonic_elapsed": 55.442864630997065,
+        "suspend_seconds": -2.339802449569106e-07,
+        "valid": true,
+        "wall_elapsed": 55.44286584854126,
+        "wall_jump_seconds": 1.4515244401991367e-06
+      },
+      "controller_audit": {
+        "arm": "capture_exclusion",
+        "controller_clock_audit": {
+          "boottime_elapsed": 58.80730294599198,
+          "monotonic_elapsed": 58.807302943998366,
+          "suspend_seconds": 1.9936123862862587e-09,
+          "valid": true,
+          "wall_elapsed": 58.80730366706848,
+          "wall_jump_seconds": 7.210765033960342e-07
+        },
+        "suspension_detected_by_controller": false,
+        "worker_exitcode": 0,
+        "worker_process_audit": {
+          "controller_audited_after_worker_exit": true,
+          "forced_cleanup_pids": [],
+          "observed_owned_pids": {
+            "1922796": 1792587546.27,
+            "1922797": 1792587546.41,
+            "1922798": 1792587546.42,
+            "1922820": 1792587546.55,
+            "1922821": 1792587546.56,
+            "1922843": 1792587546.68,
+            "1922844": 1792587546.69,
+            "1922866": 1792587546.81,
+            "1922867": 1792587546.82,
+            "1922888": 1792587546.95,
+            "1922889": 1792587546.95,
+            "1922966": 1792587547.08,
+            "1922967": 1792587547.09,
+            "1922985": 1792587547.22,
+            "1922986": 1792587547.22,
+            "1923010": 1792587547.35,
+            "1923011": 1792587547.36,
+            "1923034": 1792587547.5,
+            "1923040": 1792587547.54,
+            "1923045": 1792587547.58,
+            "1923050": 1792587547.62,
+            "1923055": 1792587547.65,
+            "1923060": 1792587547.68,
+            "1923065": 1792587547.71,
+            "1923070": 1792587547.75,
+            "1923075": 1792587547.78,
+            "1923080": 1792587547.81,
+            "1923085": 1792587547.84,
+            "1923090": 1792587547.87,
+            "1923095": 1792587547.9,
+            "1923100": 1792587547.93,
+            "1923105": 1792587547.96,
+            "1923125": 1792587547.98
+          },
+          "safe": true,
+          "surviving_pids": []
+        },
+        "worker_timed_out": false
+      },
+      "elapsed_seconds": 55.44314184400719,
+      "error": null,
+      "events": 701,
+      "rounds_observed": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shutdown": {
+        "elapsed_seconds": 55.44252364100248,
+        "error": null,
+        "forced_cleanup_pids": [],
+        "owned_processes": {
+          "1922796": 1792587546.27,
+          "1922797": 1792587546.41,
+          "1922798": 1792587546.42,
+          "1922820": 1792587546.55,
+          "1922821": 1792587546.56,
+          "1922843": 1792587546.68,
+          "1922844": 1792587546.69,
+          "1922866": 1792587546.81,
+          "1922867": 1792587546.82,
+          "1922888": 1792587546.95,
+          "1922889": 1792587546.95,
+          "1922966": 1792587547.08,
+          "1922967": 1792587547.09,
+          "1922985": 1792587547.22,
+          "1922986": 1792587547.22,
+          "1923010": 1792587547.35,
+          "1923011": 1792587547.36,
+          "1923034": 1792587547.5,
+          "1923040": 1792587547.54,
+          "1923045": 1792587547.58,
+          "1923050": 1792587547.62,
+          "1923055": 1792587547.65,
+          "1923060": 1792587547.68,
+          "1923065": 1792587547.71,
+          "1923070": 1792587547.75,
+          "1923075": 1792587547.78,
+          "1923080": 1792587547.81,
+          "1923085": 1792587547.84,
+          "1923090": 1792587547.87,
+          "1923095": 1792587547.9,
+          "1923100": 1792587547.93,
+          "1923105": 1792587547.96,
+          "1923125": 1792587547.98
+        },
+        "safe_at_worker_exit": false,
+        "worker_exit_pending_helpers": [
+          1922796
+        ]
+      },
+      "status": "complete"
+    }
+  },
+  "channel_summaries": [
+    {
+      "arm": "capture_control",
+      "attacker_local_omission_rounds": [],
+      "attacker_local_omission_target_coefficients": [],
+      "attacker_next_bucket_matches": 4,
+      "capture_round_count": 4,
+      "captured_rounds_with_attacker_as_leader": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "channel": "gradient_probe",
+      "honest_follower_received_rewritten_roster_tested": false,
+      "limitations": [
+        "group_size=2 leaves no honest follower in a captured group",
+        "the state_probe is a separately matched DecentralizedAverager channel, not Optimizer TrainingStateAverager scheduling",
+        "no training, progress tracking, state recovery, WAN delay, or public swarm behavior is tested"
+      ],
+      "longest_consecutive_capture_streak": 4,
+      "rounds_requested": 5,
+      "step_attempt_count": 40,
+      "step_attempts": [
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 1.8396844189992407
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.839956470998004
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 1.8402149709872901
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8403352789900964
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8663797169865575
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8665088009875035
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8666141819994664
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H6",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8667054859979544
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 1.952029603999108
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 1.9521074449876323
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.978372904995922
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.9785246219980763
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.978567830999964
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.9786961579957278
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 11.966261034991476
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H6",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 11.966511899998295
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 12.034590852999827
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 12.034795135987224
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 12.0350352509995
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 12.035068041994236
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 12.061581907997606
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 12.061706587992376
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 22.059557179993135
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H6",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 22.059736350987805
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 22.157729284997913
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 22.15790596298757
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H4",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 22.234834625996882
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 22.234960263987887
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H6",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 22.23531361199275
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 22.235361752987956
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 32.1479874689976
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 32.17341401199519
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.25,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 32.238695064996136
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.25,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 32.238775454999995
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.1875,
+            0.1875,
+            0.1875,
+            0.1875,
+            0.125,
+            0.125
+          ],
+          "peer": "H4",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 32.31546861499373
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.1875,
+            0.1875,
+            0.1875,
+            0.1875,
+            0.125,
+            0.125
+          ],
+          "peer": "H5",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 32.315624550989014
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.1875,
+            0.1875,
+            0.1875,
+            0.1875,
+            0.125,
+            0.125
+          ],
+          "peer": "H3",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 32.315663955989294
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.1875,
+            0.1875,
+            0.1875,
+            0.1875,
+            0.125,
+            0.125
+          ],
+          "peer": "H6",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 32.31578115498996
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.5,
+          "time": 42.21838336098881
+        },
+        {
+          "arm": "capture_control",
+          "channel": "gradient_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 42.24413057298807
+        }
+      ],
+      "successful_victim_next_bucket_predictions": 4,
+      "target_marker_coefficients_by_peer": {
+        "A": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.25
+          }
+        ],
+        "H2": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.25
+          }
+        ],
+        "H3": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0
+          }
+        ],
+        "H4": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0
+          }
+        ],
+        "H5": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0
+          }
+        ],
+        "H6": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0
+          }
+        ],
+        "H7": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "error",
+            "target_coefficient": 0.0
+          }
+        ],
+        "X": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 4,
+            "status": "error",
+            "target_coefficient": 0.5
+          }
+        ]
+      },
+      "tracking_checks": [
+        {
+          "attacker_next_advertised": [
+            "1"
+          ],
+          "attacker_tracks_victim": true,
+          "predicted_victim_next_bits": "1",
+          "prediction_matches_victim": true,
+          "round": 0,
+          "victim_next_advertised": [
+            "1"
+          ]
+        },
+        {
+          "attacker_next_advertised": [
+            "0"
+          ],
+          "attacker_tracks_victim": true,
+          "predicted_victim_next_bits": "0",
+          "prediction_matches_victim": true,
+          "round": 1,
+          "victim_next_advertised": [
+            "0"
+          ]
+        },
+        {
+          "attacker_next_advertised": [
+            "0"
+          ],
+          "attacker_tracks_victim": true,
+          "predicted_victim_next_bits": "0",
+          "prediction_matches_victim": true,
+          "round": 2,
+          "victim_next_advertised": [
+            "0"
+          ]
+        },
+        {
+          "attacker_next_advertised": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "attacker_tracks_victim": true,
+          "predicted_victim_next_bits": "0",
+          "prediction_matches_victim": true,
+          "round": 3,
+          "victim_next_advertised": [
+            "0"
+          ]
+        }
+      ],
+      "victim_received_full_native_roster": true
+    },
+    {
+      "arm": "capture_control",
+      "attacker_local_omission_rounds": [],
+      "attacker_local_omission_target_coefficients": [],
+      "attacker_next_bucket_matches": 2,
+      "capture_round_count": 3,
+      "captured_rounds_with_attacker_as_leader": [
+        0,
+        1,
+        3
+      ],
+      "channel": "state_probe",
+      "honest_follower_received_rewritten_roster_tested": false,
+      "limitations": [
+        "group_size=2 leaves no honest follower in a captured group",
+        "the state_probe is a separately matched DecentralizedAverager channel, not Optimizer TrainingStateAverager scheduling",
+        "no training, progress tracking, state recovery, WAN delay, or public swarm behavior is tested"
+      ],
+      "longest_consecutive_capture_streak": 2,
+      "rounds_requested": 5,
+      "step_attempt_count": 40,
+      "step_attempts": [
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 1.8398506269877544
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.840119557993603
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 1.8402770899992902
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8403988599893637
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8665692129870877
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8666545349988155
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8920603070000652
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H6",
+          "pid": 1919201,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.892094206996262
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 1.9520769259979716
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 1.9521306859969627
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.9784735049906885
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.978607381999609
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.97865142399678
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.9787337229936384
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 11.966435442998772
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H6",
+          "pid": 1919201,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 11.966591394986608
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.25,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 12.034974851994775
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.25,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 12.03509992499312
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H3",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 12.061749939995934
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H6",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 12.061867026990512
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H4",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 12.0874565539998
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H7",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 12.087659343989799
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.5,
+          "time": 22.008689087000675
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1919201,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 22.059703439997975
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.375,
+            0.375,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.375,
+          "time": 22.15782460499031
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.375,
+            0.375,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.375,
+          "time": 22.1579483050009
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.1875,
+            0.1875,
+            0.1875,
+            0.1875,
+            0.125,
+            0.125
+          ],
+          "peer": "H4",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 22.234933846993954
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.1875,
+            0.1875,
+            0.1875,
+            0.1875,
+            0.125,
+            0.125
+          ],
+          "peer": "H5",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 22.235114702998544
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125
+          ],
+          "peer": "H3",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.125,
+          "time": 22.235251222999068
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125
+          ],
+          "peer": "H2",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.125,
+          "time": 22.235399327997584
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H7",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 22.2609766079986
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H6",
+          "pid": 1919201,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 22.26103157599573
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.25,
+            0.09375,
+            0.09375,
+            0.09375,
+            0.09375,
+            0.0625,
+            0.0625
+          ],
+          "peer": "A",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 32.23874260998855
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.25,
+            0.09375,
+            0.09375,
+            0.09375,
+            0.09375,
+            0.0625,
+            0.0625
+          ],
+          "peer": "H2",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 32.23880046499835
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0625,
+            0.0625,
+            0.15625,
+            0.15625,
+            0.15625,
+            0.15625,
+            0.125,
+            0.125
+          ],
+          "peer": "H4",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0625,
+          "time": 32.315576344000874
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0625,
+            0.0625,
+            0.15625,
+            0.15625,
+            0.15625,
+            0.15625,
+            0.125,
+            0.125
+          ],
+          "peer": "H3",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0625,
+          "time": 32.31570371698763
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.15625,
+            0.15625,
+            0.15625,
+            0.15625,
+            0.1875,
+            0.1875
+          ],
+          "peer": "H7",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 32.341372046998
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.15625,
+            0.15625,
+            0.15625,
+            0.15625,
+            0.1875,
+            0.1875
+          ],
+          "peer": "H5",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 32.341473183987546
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.375,
+            0.375,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.375,
+          "time": 42.21860825798649
+        },
+        {
+          "arm": "capture_control",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H6",
+          "pid": 1919201,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 42.24422690398933
+        }
+      ],
+      "successful_victim_next_bucket_predictions": 3,
+      "target_marker_coefficients_by_peer": {
+        "A": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.375
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.25
+          }
+        ],
+        "H2": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.125
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.25
+          }
+        ],
+        "H3": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.125
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0625
+          }
+        ],
+        "H4": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0625
+          }
+        ],
+        "H5": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0
+          }
+        ],
+        "H6": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "error",
+            "target_coefficient": 0.0
+          }
+        ],
+        "H7": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0
+          }
+        ],
+        "X": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 2,
+            "status": "error",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.375
+          },
+          {
+            "round": 4,
+            "status": "error",
+            "target_coefficient": 0.375
+          }
+        ]
+      },
+      "tracking_checks": [
+        {
+          "attacker_next_advertised": [],
+          "attacker_tracks_victim": false,
+          "predicted_victim_next_bits": "1",
+          "prediction_matches_victim": true,
+          "round": 0,
+          "victim_next_advertised": [
+            "1"
+          ]
+        },
+        {
+          "attacker_next_advertised": [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "attacker_tracks_victim": true,
+          "predicted_victim_next_bits": "1",
+          "prediction_matches_victim": true,
+          "round": 1,
+          "victim_next_advertised": [
+            "1"
+          ]
+        },
+        {
+          "attacker_next_advertised": [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "attacker_tracks_victim": true,
+          "predicted_victim_next_bits": "1",
+          "prediction_matches_victim": true,
+          "round": 3,
+          "victim_next_advertised": [
+            "1"
+          ]
+        }
+      ],
+      "victim_received_full_native_roster": true
+    },
+    {
+      "arm": "capture_exclusion",
+      "attacker_local_omission_rounds": [
+        3,
+        4
+      ],
+      "attacker_local_omission_target_coefficients": [
+        0.0,
+        0.0
+      ],
+      "attacker_next_bucket_matches": 1,
+      "capture_round_count": 2,
+      "captured_rounds_with_attacker_as_leader": [
+        3,
+        4
+      ],
+      "channel": "gradient_probe",
+      "honest_follower_received_rewritten_roster_tested": false,
+      "limitations": [
+        "group_size=2 leaves no honest follower in a captured group",
+        "the state_probe is a separately matched DecentralizedAverager channel, not Optimizer TrainingStateAverager scheduling",
+        "no training, progress tracking, state recovery, WAN delay, or public swarm behavior is tested"
+      ],
+      "longest_consecutive_capture_streak": 2,
+      "rounds_requested": 5,
+      "step_attempt_count": 40,
+      "step_attempts": [
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.0,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 1.835690000996692
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.5,
+            0.0,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.5,
+          "time": 1.835768343997188
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H6",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8619996790075675
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8621140979958
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8621983899938641
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8622337069973582
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.5,
+            0.0,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 6.884941430005711
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.5,
+            0.0,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 6.8850444330018945
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.0,
+            0.25,
+            0.0,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 6.974141105005401
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 6.974261722003575
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 6.974379179999232
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.0,
+            0.25,
+            0.0,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 6.974420404003467
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "peer": "H5",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 7.000126721002744
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "peer": "H7",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 7.000238430002355
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.25,
+            0.0,
+            0.25,
+            0.0,
+            0.0,
+            0.25,
+            0.25
+          ],
+          "peer": "H6",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 11.967383052993682
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.25,
+            0.0,
+            0.25,
+            0.0,
+            0.0,
+            0.25,
+            0.25
+          ],
+          "peer": "X",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 11.967531463000341
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.125,
+            0.25,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 17.034066381005687
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.125,
+            0.25,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 17.03416640299838
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.125,
+            0.25,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 17.060807771005784
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.125,
+            0.25,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 17.060862508995342
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H6",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 17.086283516007825
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H5",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 17.086377701998572
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "X",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 22.084520934993634
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H7",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 22.08465935800632
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "X",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 27.124240118995658
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.125,
+            0.25,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 27.124292556996807
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.125,
+            0.25,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 27.124332189996494
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125
+          ],
+          "peer": "H5",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.125,
+          "time": 27.150931202995707
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125,
+            0.125
+          ],
+          "peer": "H4",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.125,
+          "time": 27.151181434004684
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H6",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 27.176706037003896
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H7",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 27.17680607699731
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.125,
+            0.25,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 30.11371264299669
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "X",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 37.21088017099828
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.25,
+            0.125,
+            0.25,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.25,
+          "time": 37.210923855003784
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.1875,
+            0.125,
+            0.1875,
+            0.125,
+            0.125,
+            0.125,
+            0.0625,
+            0.0625
+          ],
+          "peer": "H5",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.1875,
+          "time": 37.23765109000669
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.1875,
+            0.125,
+            0.1875,
+            0.125,
+            0.125,
+            0.125,
+            0.0625,
+            0.0625
+          ],
+          "peer": "H2",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.1875,
+          "time": 37.23788098500518
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.1875,
+            0.125,
+            0.1875,
+            0.125,
+            0.125,
+            0.125,
+            0.0625,
+            0.0625
+          ],
+          "peer": "H3",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.1875,
+          "time": 37.23915007599862
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.1875,
+            0.125,
+            0.1875,
+            0.125,
+            0.125,
+            0.125,
+            0.0625,
+            0.0625
+          ],
+          "peer": "H4",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.1875,
+          "time": 37.23917219899886
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H6",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 47.22558816100354
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "gradient_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.25,
+            0.25
+          ],
+          "peer": "H7",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 47.22569778400066
+        }
+      ],
+      "successful_victim_next_bucket_predictions": 1,
+      "target_marker_coefficients_by_peer": {
+        "A": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.25
+          }
+        ],
+        "H2": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.5
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.1875
+          }
+        ],
+        "H3": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.1875
+          }
+        ],
+        "H4": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.25
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.125
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.1875
+          }
+        ],
+        "H5": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.125
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.1875
+          }
+        ],
+        "H6": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "error",
+            "target_coefficient": 0.0
+          }
+        ],
+        "H7": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "error",
+            "target_coefficient": 0.0
+          }
+        ],
+        "X": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0
+          }
+        ]
+      },
+      "tracking_checks": [
+        {
+          "attacker_next_advertised": [
+            "1"
+          ],
+          "attacker_tracks_victim": true,
+          "predicted_victim_next_bits": "1",
+          "prediction_matches_victim": true,
+          "round": 3,
+          "victim_next_advertised": [
+            "1"
+          ]
+        },
+        {
+          "attacker_next_advertised": [],
+          "attacker_tracks_victim": false,
+          "predicted_victim_next_bits": "1",
+          "prediction_matches_victim": false,
+          "round": 4,
+          "victim_next_advertised": []
+        }
+      ],
+      "victim_received_full_native_roster": true
+    },
+    {
+      "arm": "capture_exclusion",
+      "attacker_local_omission_rounds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "attacker_local_omission_target_coefficients": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "attacker_next_bucket_matches": 3,
+      "capture_round_count": 5,
+      "captured_rounds_with_attacker_as_leader": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "channel": "state_probe",
+      "honest_follower_received_rewritten_roster_tested": false,
+      "limitations": [
+        "group_size=2 leaves no honest follower in a captured group",
+        "the state_probe is a separately matched DecentralizedAverager channel, not Optimizer TrainingStateAverager scheduling",
+        "no training, progress tracking, state recovery, WAN delay, or public swarm behavior is tested"
+      ],
+      "longest_consecutive_capture_streak": 5,
+      "rounds_requested": 5,
+      "step_attempt_count": 40,
+      "step_attempts": [
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8353959740052233
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8355450130038662
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8357393549958942
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8357913109939545
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8358143450022908
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8876950099947862
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H6",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 1.8878077139961533
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1922707,
+          "round": 0,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 1.0,
+          "time": 4.801429825005471
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 1.0,
+          "time": 6.947387955995509
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 6.947501533999457
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 6.9738753529964015
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 6.9740775209938874
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 6.974216061993502
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 6.974330555996858
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H6",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 16.942002024006797
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1922707,
+          "round": 1,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 16.967274606999126
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 17.034202754002763
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 17.06032193399733
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 17.060429115997977
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 17.060487750000902
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 17.060716552005033
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 1.0,
+          "time": 20.036728367005708
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H6",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 27.033077580999816
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1922707,
+          "round": 2,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 27.05869686299411
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 27.124357552005677
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 27.150804998003878
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 27.150995446005254
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 27.151046938000945
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 27.151107694007806
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 1.0,
+          "time": 30.113663045995054
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 37.1443675430055
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H6",
+          "pid": 1922707,
+          "round": 3,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 37.14442342599796
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "A",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 1.0,
+          "time": 37.210821833999944
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "peer": "X",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 37.210957924995455
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H2",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 37.23746690999542
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H4",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 37.23777933100064
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H3",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 37.23908073799976
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": null,
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "peer": "H5",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "success",
+          "target_coefficient": 0.0,
+          "time": 37.239124597006594
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H7",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 47.22562157000357
+        },
+        {
+          "arm": "capture_exclusion",
+          "channel": "state_probe",
+          "error": "AllreduceException('Averaging step failed: could not find a group')",
+          "kind": "step_result",
+          "output_tensor": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "peer": "H6",
+          "pid": 1922707,
+          "round": 4,
+          "stage": "FINISHED",
+          "status": "error",
+          "target_coefficient": 0.0,
+          "time": 47.225654925001436
+        }
+      ],
+      "successful_victim_next_bucket_predictions": 4,
+      "target_marker_coefficients_by_peer": {
+        "A": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 1.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 1.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 1.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 1.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 1.0
+          }
+        ],
+        "H2": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0
+          }
+        ],
+        "H3": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0
+          }
+        ],
+        "H4": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0
+          }
+        ],
+        "H5": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0
+          }
+        ],
+        "H6": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "error",
+            "target_coefficient": 0.0
+          }
+        ],
+        "H7": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "error",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "error",
+            "target_coefficient": 0.0
+          }
+        ],
+        "X": [
+          {
+            "round": 0,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 1,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 2,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 3,
+            "status": "success",
+            "target_coefficient": 0.0
+          },
+          {
+            "round": 4,
+            "status": "success",
+            "target_coefficient": 0.0
+          }
+        ]
+      },
+      "tracking_checks": [
+        {
+          "attacker_next_advertised": [
+            "0"
+          ],
+          "attacker_tracks_victim": true,
+          "predicted_victim_next_bits": "0",
+          "prediction_matches_victim": true,
+          "round": 0,
+          "victim_next_advertised": [
+            "0"
+          ]
+        },
+        {
+          "attacker_next_advertised": [
+            "0"
+          ],
+          "attacker_tracks_victim": true,
+          "predicted_victim_next_bits": "0",
+          "prediction_matches_victim": true,
+          "round": 1,
+          "victim_next_advertised": [
+            "0"
+          ]
+        },
+        {
+          "attacker_next_advertised": [],
+          "attacker_tracks_victim": false,
+          "predicted_victim_next_bits": "0",
+          "prediction_matches_victim": true,
+          "round": 2,
+          "victim_next_advertised": [
+            "0"
+          ]
+        },
+        {
+          "attacker_next_advertised": [
+            "1"
+          ],
+          "attacker_tracks_victim": true,
+          "predicted_victim_next_bits": "1",
+          "prediction_matches_victim": true,
+          "round": 3,
+          "victim_next_advertised": [
+            "1"
+          ]
+        },
+        {
+          "attacker_next_advertised": [],
+          "attacker_tracks_victim": false,
+          "predicted_victim_next_bits": "1",
+          "prediction_matches_victim": false,
+          "round": 4,
+          "victim_next_advertised": []
+        }
+      ],
+      "victim_received_full_native_roster": true
+    }
+  ],
+  "controller_audits": [
+    {
+      "arm": "capture_control",
+      "controller_clock_audit": {
+        "boottime_elapsed": 54.01300363399787,
+        "monotonic_elapsed": 54.01300466900284,
+        "suspend_seconds": -1.0350049706175923e-06,
+        "valid": true,
+        "wall_elapsed": 54.01300597190857,
+        "wall_jump_seconds": 2.3379107005894184e-06
+      },
+      "suspension_detected_by_controller": false,
+      "worker_exitcode": 0,
+      "worker_process_audit": {
+        "controller_audited_after_worker_exit": true,
+        "forced_cleanup_pids": [],
+        "observed_owned_pids": {
+          "1919278": 1792587492.4,
+          "1919280": 1792587492.54,
+          "1919281": 1792587492.55,
+          "1919304": 1792587492.68,
+          "1919305": 1792587492.69,
+          "1919326": 1792587492.81,
+          "1919327": 1792587492.82,
+          "1919346": 1792587492.94,
+          "1919347": 1792587492.95,
+          "1919427": 1792587493.08,
+          "1919428": 1792587493.08,
+          "1919449": 1792587493.21,
+          "1919450": 1792587493.22,
+          "1919471": 1792587493.34,
+          "1919472": 1792587493.35,
+          "1919493": 1792587493.48,
+          "1919494": 1792587493.49,
+          "1919515": 1792587493.62,
+          "1919521": 1792587493.65,
+          "1919528": 1792587493.69,
+          "1919533": 1792587493.75,
+          "1919538": 1792587493.78,
+          "1919543": 1792587493.81,
+          "1919548": 1792587493.84,
+          "1919553": 1792587493.87,
+          "1919558": 1792587493.9,
+          "1919563": 1792587493.93,
+          "1919568": 1792587493.96,
+          "1919630": 1792587493.99,
+          "1919635": 1792587494.03,
+          "1919640": 1792587494.06,
+          "1919645": 1792587494.09,
+          "1919650": 1792587494.12
+        },
+        "safe": true,
+        "surviving_pids": []
+      },
+      "worker_timed_out": false
+    },
+    {
+      "arm": "capture_exclusion",
+      "controller_clock_audit": {
+        "boottime_elapsed": 58.80730294599198,
+        "monotonic_elapsed": 58.807302943998366,
+        "suspend_seconds": 1.9936123862862587e-09,
+        "valid": true,
+        "wall_elapsed": 58.80730366706848,
+        "wall_jump_seconds": 7.210765033960342e-07
+      },
+      "suspension_detected_by_controller": false,
+      "worker_exitcode": 0,
+      "worker_process_audit": {
+        "controller_audited_after_worker_exit": true,
+        "forced_cleanup_pids": [],
+        "observed_owned_pids": {
+          "1922796": 1792587546.27,
+          "1922797": 1792587546.41,
+          "1922798": 1792587546.42,
+          "1922820": 1792587546.55,
+          "1922821": 1792587546.56,
+          "1922843": 1792587546.68,
+          "1922844": 1792587546.69,
+          "1922866": 1792587546.81,
+          "1922867": 1792587546.82,
+          "1922888": 1792587546.95,
+          "1922889": 1792587546.95,
+          "1922966": 1792587547.08,
+          "1922967": 1792587547.09,
+          "1922985": 1792587547.22,
+          "1922986": 1792587547.22,
+          "1923010": 1792587547.35,
+          "1923011": 1792587547.36,
+          "1923034": 1792587547.5,
+          "1923040": 1792587547.54,
+          "1923045": 1792587547.58,
+          "1923050": 1792587547.62,
+          "1923055": 1792587547.65,
+          "1923060": 1792587547.68,
+          "1923065": 1792587547.71,
+          "1923070": 1792587547.75,
+          "1923075": 1792587547.78,
+          "1923080": 1792587547.81,
+          "1923085": 1792587547.84,
+          "1923090": 1792587547.87,
+          "1923095": 1792587547.9,
+          "1923100": 1792587547.93,
+          "1923105": 1792587547.96,
+          "1923125": 1792587547.98
+        },
+        "safe": true,
+        "surviving_pids": []
+      },
+      "worker_timed_out": false
+    }
+  ],
+  "interpretation": {
+    "channels": "gradient_probe and state_probe are independent native DecentralizedAverager prefixes with identical marker fixtures",
+    "combination_tested": "native bucket tracking + earlier attacker leader deadline + selective admission + attacker-local target roster omission",
+    "not_tested": [
+      "Optimizer TrainingStateAverager scheduling",
+      "honest follower receiving an altered announcement",
+      "model learning/convergence",
+      "progress tracking or recovery",
+      "public/WAN behavior"
+    ],
+    "sample_size_warning": "one local smoke per arm/channel; no probability estimate",
+    "success_requires_observed_events": [
+      "target and attacker in native group",
+      "attacker owns leadership",
+      "attacker predicts target's next bucket",
+      "attacker advertises in target's next bucket",
+      "target marker coefficient in attacker's output recorded"
+    ]
+  },
+  "label": "waters_20261021_b",
+  "status": "complete"
+}
