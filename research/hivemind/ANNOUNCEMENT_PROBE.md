@@ -14,7 +14,7 @@ pilots followed by five paired confirmation seeds 202–206 (E4/E5).
 | E1 repeatability and allocation boundary | Complete: equal seeds 2–4 and unequal seed 5; all 16 condition checks passed |
 | E2 native learning reference | Complete: six ten-round native trajectories, seed 201; all round proofs and SGD reconstructions passed |
 | E3 numerical protocol model | Complete: 1,710 checks passed in `results/announcement_e3_validation_20261021_a` |
-| E4/E5 convergence and recovery | 18-case pilot running; confirmation remains gated on pilot review |
+| E4/E5 convergence and recovery | Complete: 18 pilot + 90 confirmation trajectories; all finite, 200 rounds each, every trace replay passed |
 
 E1 local results (2026-10-21): `announcement_e1_equal_s{2,3,4}_20261021_a`
 reproduced coordinate errors of 18 for A and 6 for B/D/C in ordering; membership
@@ -61,6 +61,61 @@ loss, distance to optimum, disagreement, final and trajectory-average loss,
 and first sustained ten-round crossing of 10% initial loss (otherwise censored).
 These are rounds/compute comparisons with designated leadership, not deployment
 timing or leadership-capture estimates. Stop after E5; no automatic broader sweep.
+
+### Learning results (2026-10-21)
+
+Completed the predeclared pilot (seed 201) and confirmation (seeds 202–206),
+200 rounds per case. All 108 trajectories completed finite and passed replay.
+The confirmation table reports the median across five seeds of the mean test
+loss of honest models A/D/C, after round 200; half mean squared error, initial
+loss about 0.5. Exact paired results and every arm are retained in the suite
+artifacts and the [generated learning report](results/announcement_e4e5_report_20261021_a/REPORT.md)
+(with exact paired CSVs and JSON). The generated report tables use means across
+seeds; the compact table below uses medians, explicitly labeled.
+
+| Condition | iid median final loss | Distinctive-data median final loss |
+|---|---:|---:|
+| Baseline | 9.99e-14 | 2.20e-5 |
+| Random omission, 25% | 5.07e-6 | 0.00948 |
+| Random omission, 100% | 1.53e-6 | 0.0504 |
+| Targeted membership omission, 25% | 2.59e-7 | 0.0197 |
+| Targeted membership omission, 100% | 4.81e-12 | 0.0752 |
+| Ordering corruption, 25% | 2.52e-6 | 5.46e-5 |
+| Ordering corruption, 100% | 0.1225 | 0.1289 |
+| Membership attack rounds 1–100, then honest | 1.55e-7 | 0.0751 |
+| Ordering attack rounds 1–100, then honest | 0.0360 | 0.0395 |
+
+Persistent membership omission with distinctive data failed the sustained
+10%-of-initial-loss threshold in all five confirmation seeds; iid omission
+crossed in rounds 12–13. Persistent ordering failed that threshold in all five
+seeds for both distributions. These counts describe the five fixed experimental
+seeds, not an estimated deployment success probability. In distinctive data,
+A alone sees the final twelve features; removal therefore removes information,
+not merely one redundant iid gradient.
+
+The loss is concentrated in the other honest models: under persistent distinctive
+membership omission, A's median final loss is 1.42e-11 while D and C each have
+0.1127. A continues local SGD; excluding its contribution prevents its peers
+from learning those features. The excluded participant's own model need not
+be the model harmed most.
+
+Recovery is partial or absent in this gradient-only workload. Inference from
+its update rule: after regrouping, equal gradients applied to separate model
+vectors preserve their existing differences (up to floating-point rounding).
+A locally fitted model also has little remaining gradient with which to teach
+its distinctive coefficients to the other models. No parameter synchronization
+is included. The measured outcome is therefore a convergence/information-sharing
+failure for this four-node linear-regression workload, not evidence about a
+large neural-network training deployment.
+
+Artifacts: `results/announcement_learning_e4e5_pilot_20261021_a` and
+`results/announcement_learning_e4e5_confirmation_20261021_a`, each with frozen
+source/data, schedules, full compressed traces, metrics, replay records, and a
+SHA256 inventory. The approved programme is complete; stop without further
+parameter sweeps. A separate future question about parameter synchronization or
+changing participants would require a new scoped experiment and native reference.
+
+## Original marker probe (2026-10-20)
 
 Private loopback experiment; one seed, four independent conditions, one averaging
 operation per active node. No training or public network. Root Hivemind source

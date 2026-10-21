@@ -1,0 +1,336 @@
+{
+  "arms": [
+    "baseline",
+    "random_omission_25",
+    "random_omission_100",
+    "membership_25",
+    "membership_100",
+    "ordering_25",
+    "ordering_100",
+    "membership_recovery",
+    "ordering_recovery"
+  ],
+  "artifact_inventory_sha256": "0cac63db2ed031eb54e28d7d5177a01a8acfcb6651986740e668bd74b1ac2a7c",
+  "attack_exposure": "conditional; leader B is designated",
+  "chunk_elements": 4,
+  "data_artifacts": {
+    "seed201_distinctive": {
+      "directory": "problems/seed201_distinctive",
+      "hashes": {
+        "config_sha256": "84d5913fab1567c4667151ff7a9d12443bcdd8db741927e5340bb4cd57efd54a",
+        "evaluation": {
+          "x_sha256": "313eb35e9aa6809a32ea41779bdff4234d7628d888edfddd21f0e6ed01a51d4c",
+          "y_sha256": "ba27f8ffa62cfc96e2632938b3541b49fe3616621765884dab7347441c145187"
+        },
+        "source_sha256": "024d63f148a45eef21e252cd15ddfc162497ee4c014c121c24f155fed8ab8e09",
+        "target_sha256": "c4f0b0131f9ecf634833928fcda7018f59a0be5cde0e8542565d9c959bf86a16",
+        "training": {
+          "A": {
+            "x_sha256": "f2d2501643fff5b0d15dd28058662a7ad7ac05f1d293f40f2e920cc0990078a6",
+            "y_sha256": "e023b6a78e8b29fafa902768f9a163bedbdaece2286efb17634256683ec5b597"
+          },
+          "B": {
+            "x_sha256": "59240df5dad74de650b61e7e809d89a4f2d664d667a2c11aac3c6b262876bd5a",
+            "y_sha256": "d85341ea2718bc415e7f9674870bd72375a9a37292893706f8e2c7a12fc427ff"
+          },
+          "C": {
+            "x_sha256": "3bbb2192c852cd9828a94cd9d698f6b8d5de27ca124282cafb680813130968a1",
+            "y_sha256": "03263cc68648319f20a4a10b58252d92f922ed859f14a550811205a3ba65b191"
+          },
+          "D": {
+            "x_sha256": "f9d81493d6421714ee51f326234ce8fc143c6ccfa22e067e28cc3af780bd37fd",
+            "y_sha256": "e82f6c61bbbdca05354e1e1ecb7a03e6a3cbf7b05f1c1c4115e4e80d74e1db94"
+          }
+        }
+      },
+      "manifest_sha256": "5c78d2934908a708f9bdf7906544069d5ed081edcfdb020fe7aba64535ea4b6b"
+    },
+    "seed201_iid": {
+      "directory": "problems/seed201_iid",
+      "hashes": {
+        "config_sha256": "e84a04747c48d534fe880290077fd553ed40b520f2b2e68fb18d7895205bd52b",
+        "evaluation": {
+          "x_sha256": "313eb35e9aa6809a32ea41779bdff4234d7628d888edfddd21f0e6ed01a51d4c",
+          "y_sha256": "ba27f8ffa62cfc96e2632938b3541b49fe3616621765884dab7347441c145187"
+        },
+        "source_sha256": "024d63f148a45eef21e252cd15ddfc162497ee4c014c121c24f155fed8ab8e09",
+        "target_sha256": "c4f0b0131f9ecf634833928fcda7018f59a0be5cde0e8542565d9c959bf86a16",
+        "training": {
+          "A": {
+            "x_sha256": "f2d2501643fff5b0d15dd28058662a7ad7ac05f1d293f40f2e920cc0990078a6",
+            "y_sha256": "e023b6a78e8b29fafa902768f9a163bedbdaece2286efb17634256683ec5b597"
+          },
+          "B": {
+            "x_sha256": "3da33c83d283ed033c96b44ce68635404aac92d8842bd8b2255dc85272b85458",
+            "y_sha256": "3425ab77314e5926890431ab4d56780637cc4431ed30539335e5712e6d040408"
+          },
+          "C": {
+            "x_sha256": "4e35d83031898a03d8b67870183a4e21882b0877deab36b02a1c11d38e7c91ce",
+            "y_sha256": "2012ba232e7c8299196de936a8ad2484cc11e69c55b84128b8b9b43b40232f52"
+          },
+          "D": {
+            "x_sha256": "54cc022447302f67e9aa4565dd0ed030c8650c0f01e882f747641d457ff6e223",
+            "y_sha256": "42b19eb5e8ff76018f6461f1cfd2d38a64b558fe8d0660dbf80efad648631692"
+          }
+        }
+      },
+      "manifest_sha256": "a714657fc94d43be75266a1b7abf294d602a1d04779460198e4c62e1b72403fc"
+    }
+  },
+  "distributions": [
+    "iid",
+    "distinctive"
+  ],
+  "honest_metrics_nodes": [
+    "A",
+    "D",
+    "C"
+  ],
+  "label": "e4e5_pilot_20261021_a",
+  "leader": "B",
+  "mode": "pilot",
+  "parameter_synchronization": false,
+  "recovery_interpretation": "honest regrouping averages gradients but does not synchronize participant parameters; existing model differences may persist",
+  "reviewed_pilot": null,
+  "rounds": 200,
+  "run_count": 18,
+  "runner_sha256": "5dd9d3bab9fb8f54ce3392b4ceb3f9de2efa3de1a9dd5ee6d6149240d079c6f4",
+  "runs": [
+    {
+      "arm": "baseline",
+      "distribution": "iid",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/iid/baseline",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "random_omission_25",
+      "distribution": "iid",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/iid/random_omission_25",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "random_omission_100",
+      "distribution": "iid",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/iid/random_omission_100",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "membership_25",
+      "distribution": "iid",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/iid/membership_25",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "membership_100",
+      "distribution": "iid",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/iid/membership_100",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "ordering_25",
+      "distribution": "iid",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/iid/ordering_25",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "ordering_100",
+      "distribution": "iid",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/iid/ordering_100",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "membership_recovery",
+      "distribution": "iid",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/iid/membership_recovery",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "ordering_recovery",
+      "distribution": "iid",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/iid/ordering_recovery",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "baseline",
+      "distribution": "distinctive",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/distinctive/baseline",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "random_omission_25",
+      "distribution": "distinctive",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/distinctive/random_omission_25",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "random_omission_100",
+      "distribution": "distinctive",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/distinctive/random_omission_100",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "membership_25",
+      "distribution": "distinctive",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/distinctive/membership_25",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "membership_100",
+      "distribution": "distinctive",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/distinctive/membership_100",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "ordering_25",
+      "distribution": "distinctive",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/distinctive/ordering_25",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "ordering_100",
+      "distribution": "distinctive",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/distinctive/ordering_100",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "membership_recovery",
+      "distribution": "distinctive",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/distinctive/membership_recovery",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    },
+    {
+      "arm": "ordering_recovery",
+      "distribution": "distinctive",
+      "gradient_evaluations": 800,
+      "path": "runs/seed201/distinctive/ordering_recovery",
+      "rounds": 200,
+      "seed": 201,
+      "status": "complete"
+    }
+  ],
+  "runtime": {
+    "optional_dependencies": {
+      "numpy": {
+        "required_for_this_suite": true,
+        "version": "2.3.5"
+      }
+    },
+    "platform": "Linux-7.2.9-2-cachyos-x86_64-with-glibc2.44",
+    "python_implementation": "CPython",
+    "python_version": "3.11.17"
+  },
+  "schema": "announcement-learning-suite-v1",
+  "seeds": [
+    201
+  ],
+  "source_hashes": {
+    "research/hivemind/announcement_learning.py": "024d63f148a45eef21e252cd15ddfc162497ee4c014c121c24f155fed8ab8e09",
+    "research/simulator/src/trainsim/policies/announcements.py": "118442397ea8acebd1b1c6e128e7c6d9ba7295f20f52247bcab6ee87f11ec42f",
+    "research/simulator/src/trainsim/protocols/hivemind/numerical.py": "1c330712dd34d3371af549a65faca684fa88a3d390ccf9dc8a3e24c5e227a8e2",
+    "research/simulator/src/trainsim/protocols/partitioning.py": "a2f4566605e01127785e5bbb2ab88ca351e7d95e5f2c389c10eb39eedae7bb8e"
+  },
+  "source_hashes_after_run": {
+    "research/hivemind/announcement_learning.py": "024d63f148a45eef21e252cd15ddfc162497ee4c014c121c24f155fed8ab8e09",
+    "research/simulator/src/trainsim/policies/announcements.py": "118442397ea8acebd1b1c6e128e7c6d9ba7295f20f52247bcab6ee87f11ec42f",
+    "research/simulator/src/trainsim/protocols/hivemind/numerical.py": "1c330712dd34d3371af549a65faca684fa88a3d390ccf9dc8a3e24c5e227a8e2",
+    "research/simulator/src/trainsim/protocols/partitioning.py": "a2f4566605e01127785e5bbb2ab88ca351e7d95e5f2c389c10eb39eedae7bb8e"
+  },
+  "status": "complete",
+  "timing_claims": "none; fixed rounds and gradient evaluations only",
+  "validation_path": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/announcement_e3_validation_20261021_a/validation.json",
+  "validation_sha256": "caae32061e48ac6029a34f0ea0bf8605cd331f91d32a45142ff993f708f81fc7",
+  "validation_source_hashes": {
+    "research/hivemind/announcement_learning.py": "024d63f148a45eef21e252cd15ddfc162497ee4c014c121c24f155fed8ab8e09",
+    "research/simulator/src/trainsim/policies/announcements.py": "118442397ea8acebd1b1c6e128e7c6d9ba7295f20f52247bcab6ee87f11ec42f",
+    "research/simulator/src/trainsim/protocols/hivemind/numerical.py": "1c330712dd34d3371af549a65faca684fa88a3d390ccf9dc8a3e24c5e227a8e2",
+    "research/simulator/src/trainsim/protocols/partitioning.py": "a2f4566605e01127785e5bbb2ab88ca351e7d95e5f2c389c10eb39eedae7bb8e"
+  },
+  "verified_divergence_count": 0,
+  "workload_contract": {
+    "dimensions": 48,
+    "distinctive_features": [
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47
+    ],
+    "dtype": "float32",
+    "evaluation_examples": 4096,
+    "gradient": "full-batch local gradient",
+    "initialization": "zero float32 vector",
+    "learning_rate": 0.1,
+    "loss": "half mean squared error",
+    "nodes": [
+      "B",
+      "D",
+      "A",
+      "C"
+    ],
+    "optimizer": "SGD",
+    "rng": "named SHA-256-derived streams with NumPy default_rng",
+    "schema": "announcement-learning-problem-v1",
+    "target": "shared seeded unit-norm vector",
+    "targets": "noiseless X @ target",
+    "training_examples_per_node": 512
+  },
+  "workload_contract_sha256": "18a287a367298c7ee4f6658cf474de1f332bf24392c86a9c7bcc0939ce53626d"
+}

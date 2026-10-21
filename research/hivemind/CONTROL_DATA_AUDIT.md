@@ -1222,6 +1222,18 @@ optimal frequency. See the report and its matched controls before extrapolating.
   and silently isolate it. Controls match the independent mean to ≤ 5.1e-6; all
   conditions shut down cleanly. See `ANNOUNCEMENT_PROBE.md` and HANDOFF §4.17.
 
+- **Learning follow-up complete (2026-10-21).** E1 repeated the marker mechanism
+  across equal seeds 2–4 and unequal seed 5. E2 preserved sixty native SGD rounds;
+  E3 passed 1,710 differential checks. E4/E5 completed 18 pilot and 90 confirmation
+  cases with all trace replays valid. In five confirmation seeds, median honest
+  final loss under persistent membership omission was near zero for iid data but
+  0.0752 with A-only distinctive features (baseline 0.000022). Persistent ordering
+  left losses 0.1225 iid / 0.1289 distinctive. Gradient-only honest regrouping did
+  not restore baseline performance within 100 recovery rounds. These are
+  fixed-four-node linear-regression simulations tied to a native reference,
+  with no leader-exposure or timing claim. See `ANNOUNCEMENT_PROBE.md` for controls,
+  recovery, artifacts and limitations. **Approved programme complete; stop at E5.**
+
 ### C15.S — Checkpoint 15, Select: does re-forming groups shed the attacker?
 
 - **Question.** Groups reshuffle between rounds. Does that dilute an attacker's presence?

@@ -14,9 +14,23 @@ membership, ordering × iid/distinctive), all passing round proofs and SGD
 reconstruction. E3 passed **1,710 checks** in
 `results/announcement_e3_validation_20261021_a`, including the three equal marker
 sets, seeded data provenance, returned gradients and recurrent model updates.
-The 18-case 200-round E4/E5 pilot is running as
-`results/announcement_learning_e4e5_pilot_20261021_a`; confirmation requires its
-completed inventory, trace replay, baseline learning and fixed workload checks.
+E4/E5 are complete: 18 pilot cases (seed 201) and 90 confirmation cases
+(seeds 202–206), all finite through 200 rounds and all trace replays valid.
+Results are in `results/announcement_learning_e4e5_pilot_20261021_a` and
+`results/announcement_learning_e4e5_confirmation_20261021_a` with inventories.
+
+Main confirmation finding: removing A matters substantially when A alone owns
+12 distinctive features (median honest-node final loss 0.0752 versus baseline
+0.000022), but iid persistent omission still reaches near-zero loss. Persistent
+ordering leaves median losses 0.1225 iid / 0.1289 distinctive. Honest regrouping
+after round 100 only partially repairs ordering and does not repair distinctive
+membership omission in this gradient-only, unsynchronized-parameter workload.
+See `ANNOUNCEMENT_PROBE.md` for the measured table and scope, and
+`results/announcement_e4e5_report_20261021_a/REPORT.md` for all arms and paired
+CSV/JSON artifacts. Core checks: 183 tests plus six report tests passed.
+Commits `b8fd18e` (E1) and `ece7611` (E2/E3/runner) are pushed; final E4/E5 results
+are the subsequent completion commit. **Programme complete;
+stop at E5.** Do not start new sweeps from this handoff.
 
 Implementation: native evidence checks now enforce announcement origin/count,
 group identity, metadata alignment, flat gradients, per-chunk arithmetic and

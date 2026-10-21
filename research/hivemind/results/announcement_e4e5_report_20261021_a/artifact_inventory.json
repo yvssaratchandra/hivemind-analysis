@@ -1,0 +1,30 @@
+{
+  "description": "Frozen local evidence; paths relative to this experiment directory.",
+  "files": [
+    {
+      "path": "REPORT.md",
+      "bytes": 8582,
+      "sha256": "dd03b7f52dbde3c8fa5b69e960a7a80da04fe5e90a8b785932af9a1219aa92de"
+    },
+    {
+      "path": "case_metrics.csv",
+      "bytes": 93824,
+      "sha256": "d3c411c4f4a2a368e1e9d3b676becabb1ee063ee1cc44eb036997d2e363d273a"
+    },
+    {
+      "path": "harness/report_announcement_learning.py",
+      "bytes": 43625,
+      "sha256": "19774a3cd4def4b083070ba0bc3569b1249b9067f200c294d9cb8277d1bcfe65"
+    },
+    {
+      "path": "paired_losses.csv",
+      "bytes": 46827,
+      "sha256": "a0af98f97a4118e711cfa2aee55fd50e6170924f38f4552f723921b2494a893e"
+    },
+    {
+      "path": "report.json",
+      "bytes": 931967,
+      "sha256": "1463464263e254c58386b7297200ab0bd0fd3fa943dd7585dc0891b207c6cf3b"
+    }
+  ]
+}
