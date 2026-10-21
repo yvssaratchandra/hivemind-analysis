@@ -2,6 +2,7 @@
 """Private native Optimizer pilot: record-holder capture and dual-channel omission."""
 from __future__ import annotations
 import argparse
+from collections import deque
 import hashlib
 import json
 import multiprocessing as mp
@@ -31,7 +32,7 @@ SOURCES = ('run_capture_training.py', 'capture_training_hooks.py', 'analyze_capt
            'announcement_artifacts.py', 'announcement_probe.py', 'analyze_compute_exclusion.py')
 
 
-def evaluator(path, seed, arrays, origin, duration, stop):
+def evaluator(path, seed, arrays, origin, duration, stop, stop_on_target=False):
     from compute_workload import evaluation
     from capture_training_workload import evaluate_models
     import numpy as np
@@ -39,6 +40,7 @@ def evaluator(path, seed, arrays, origin, duration, stop):
     np.savez_compressed(path / 'evaluation_data.npz', x=x, y=y)
     initial = evaluate_models({n: np.zeros(48, dtype=np.float32) for n in arrays}, x, y)
     thresholds = {n: .1 * initial['per_node'][n] for n in ('D', 'C')}
+    recent = deque(maxlen=10)
     with (path / 'evaluations.jsonl').open('w') as stream:
         for tick in range(int(duration) + 1):
             until = origin.value + tick
@@ -60,6 +62,22 @@ def evaluator(path, seed, arrays, origin, duration, stop):
                        weights={n: v.tolist() for n,v in models.items()}, metrics=result,
                        thresholds=thresholds, evaluation_seconds=time.monotonic()-captured)
             stream.write(json.dumps(row, allow_nan=False) + '\n'); stream.flush()
+            recent.append(row)
+            if stop_on_target:
+                endpoint = confirmed_target(recent, duration)
+                if endpoint is not None:
+                    write(path/'target_reached.json', endpoint)
+                    stop.set()
+                    return
+
+
+def confirmed_target(rows, horizon):
+    """Use the same sustained-threshold definition as independent analysis."""
+    from compute_workload import summarize_evaluations
+    result = summarize_evaluations(rows, horizon=horizon)
+    if result['censored']:
+        return None
+    return {key: result[key] for key in ('crossing_time', 'confirmed_time', 'thresholds')}
 
 
 def peer_worker(path, config, node, bootstrap, identities, identities_ready,
@@ -226,6 +244,7 @@ def trial_worker(path):
     messages, holder_events = ctx.Queue(), manager.Queue()
     ready_holders, identities_ready, release, stop = (ctx.Event() for _ in range(4))
     origin, anchor = ctx.Value('d', 0.), ctx.Value('d', 0.)
+    training_stop = ctx.Event()
     snapshots = {n: ctx.Array('d', 50, lock=True) for n in NODES}
     children, owned = [], {}
     bootstrap = None
@@ -274,7 +293,7 @@ def trial_worker(path):
             raise RuntimeError(f'Expected 40 holders, found {len(holder_ids)}')
         for node in NODES:
             proc = ctx.Process(target=peer_worker, args=(path, config, node, addresses,
-                identities, identities_ready, release, origin, stop, messages, snapshots, anchor),
+                identities, identities_ready, release, origin, training_stop, messages, snapshots, anchor),
                 name=f'capture_{node}')
             proc.start(); children.append(proc)
         deadline = time.monotonic()+100
@@ -310,12 +329,17 @@ def trial_worker(path):
         origin.value = time.monotonic()
         write(path/'release.json', dict(monotonic=origin.value, ready=sorted(ready)))
         proc = ctx.Process(target=evaluator, args=(path, config['seed'], snapshots,
-                          origin, config['duration'], stop), name='capture_evaluator')
+                          origin, config['duration'], training_stop, config.get('stop_on_target', False)),
+                           name='capture_evaluator')
         proc.start(); children.append(proc)
         release.set()
         deadline = origin.value+config['duration']+35
+        target_shutdown_started = False
         while len(done) != 4 and time.monotonic() < deadline:
             monitor()
+            if not target_shutdown_started and (path/'target_reached.json').exists():
+                deadline = min(deadline, time.monotonic()+35)
+                target_shutdown_started = True
             try:
                 message = messages.get(timeout=.1)
             except queue.Empty:
@@ -325,13 +349,14 @@ def trial_worker(path):
             if message[0] == 'done':
                 done.add(message[1])
         outcome = dict(completed=len(done)==4, status='completed' if len(done)==4 else 'native_noncompletion',
-                       done=sorted(done), observed_seconds=time.monotonic()-origin.value)
+                       done=sorted(done), observed_seconds=time.monotonic()-origin.value,
+                       stop_reason='target_confirmed' if target_shutdown_started else 'horizon')
     except BaseException as exc:
         error = repr(exc)
         write(path/'failure.json', dict(error=error, traceback=traceback.format_exc()))
     finally:
         monitor()
-        stop.set(); release.set(); identities_ready.set()
+        training_stop.set(); stop.set(); release.set(); identities_ready.set()
         # Allow ordinary native shutdown first; preserve every forced termination.
         until = time.monotonic()+20
         while any(p.is_alive() for p in children) and time.monotonic() < until:
@@ -355,10 +380,10 @@ def trial_worker(path):
     return 1 if error else 0
 
 
-def launch_case(path, treatment, seed, duration):
+def launch_case(path, treatment, seed, duration, stop_on_target=False):
     path.mkdir()
     config = dict(schema='capture-training-v1', mode='pilot', condition='baseline',
-        treatment=treatment, seed=seed, duration=duration, active=list(NODES),
+        treatment=treatment, seed=seed, duration=duration, stop_on_target=stop_on_target, active=list(NODES),
         run_id='capture_'+uuid.uuid4().hex, rates={'A':896,'X':128,'D':128,'C':128},
         workload_stream_alias={'X':'B'}, gradient_leader_fixture=False,
         topology=dict(participants=4, holders=40, bootstrap=1),
@@ -423,6 +448,9 @@ def launch_case(path, treatment, seed, duration):
 def run_suite(args):
     destination = base.label_path(args.label)
     destination.mkdir()
+    write(destination/'suite_config.json', dict(schema='capture-training-suite-v1',
+        label=args.label, seed=args.seed, duration=args.duration, conditions=args.conditions,
+        stop_on_target=args.stop_on_target))
     (destination/'harness').mkdir()
     import shutil
     hashes = {}
@@ -432,12 +460,13 @@ def run_suite(args):
         hashes[name] = hashlib.sha256(source.read_bytes()).hexdigest()
     write(destination/'source_hashes.json', hashes)
     status = dict(status='running', seed=args.seed, duration=args.duration,
-                  conditions=args.conditions, cases=[])
+                  conditions=args.conditions, stop_on_target=args.stop_on_target, cases=[])
     write(destination/'status.json', status)
     try:
         for condition in args.conditions:
             print(f'Start {condition}, seed {args.seed}, {args.duration}s', flush=True)
-            report = launch_case(destination/condition, condition, args.seed, args.duration)
+            report = launch_case(destination/condition, condition, args.seed, args.duration,
+                                 stop_on_target=args.stop_on_target)
             status['cases'].append(dict(condition=condition, valid=report['valid']))
             write(destination/'status.json', status)
             print(f'Done {condition}: crossing={report["learning"]["crossing_time"]}, exposure={report["exposure"]}', flush=True)
@@ -456,9 +485,31 @@ def run_suite(args):
     return 0
 
 
+def validate_suite_settings(settings):
+    expected = {'schema', 'label', 'seed', 'duration', 'conditions', 'stop_on_target'}
+    if not isinstance(settings, dict) or set(settings) != expected or settings['schema'] != 'capture-training-suite-v1':
+        raise ValueError('Invalid suite configuration schema')
+    base.label_path(settings['label'])
+    if type(settings['seed']) is not int or settings['seed'] < 0:
+        raise ValueError('Seed must be a nonnegative integer')
+    if type(settings['duration']) is not int or settings['duration'] < 10:
+        raise ValueError('Duration must be an integer >=10 seconds')
+    conditions = settings['conditions']
+    if not isinstance(conditions, list) or not conditions or any(c not in CONDITIONS for c in conditions) or len(set(conditions)) != len(conditions):
+        raise ValueError('Conditions must be unique known condition names')
+    if type(settings['stop_on_target']) is not bool:
+        raise ValueError('stop_on_target must be boolean')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--worker', type=Path)
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument('--worker', type=Path)
+    mode.add_argument('--config', type=Path, help='Run exactly the settings saved by --configure-only')
+    mode.add_argument('--configure-only', type=Path, metavar='FILE',
+                        help='Save suite settings to FILE and exit without launching any process')
+    parser.add_argument('--stop-on-target', action='store_true',
+                        help='Stop training after the sustained D/C threshold is confirmed')
     parser.add_argument('--label')
     parser.add_argument('--seed', type=int, default=501)
     parser.add_argument('--duration', type=int, default=180)
@@ -466,8 +517,25 @@ def main():
     args = parser.parse_args()
     if args.worker:
         return trial_worker(args.worker)
-    if not args.label or args.duration < 10:
-        parser.error('A fresh label and duration >=10 seconds are required')
+    if args.config:
+        if args.configure_only or any(token == flag or token.startswith(flag+'=')
+                for token in sys.argv[1:]
+                for flag in ('--label', '--seed', '--duration', '--conditions', '--stop-on-target')):
+            parser.error('--config cannot be combined with suite setting overrides')
+        settings = json.loads(args.config.read_text())
+        validate_suite_settings(settings)
+        for key in ('label', 'seed', 'duration', 'conditions', 'stop_on_target'):
+            setattr(args, key, settings[key])
+    settings = dict(schema='capture-training-suite-v1', label=args.label, seed=args.seed,
+                    duration=args.duration, conditions=args.conditions, stop_on_target=args.stop_on_target)
+    validate_suite_settings(settings)
+    if args.configure_only:
+        if args.configure_only.exists():
+            parser.error('Configuration already exists; choose a fresh path')
+        args.configure_only.parent.mkdir(parents=True, exist_ok=True)
+        write(args.configure_only, settings)
+        print(f'Configured only; no experiment launched: {args.configure_only}')
+        return 0
     return run_suite(args)
 
 

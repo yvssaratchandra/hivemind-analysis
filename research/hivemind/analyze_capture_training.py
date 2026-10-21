@@ -217,6 +217,24 @@ def validate_announcement(event, should_remove, errors):
         errors.append(str(exc))
 
 
+def validate_target_stop(config, learning, target, outcome, rows, errors):
+    """A short run is valid only when its recorded stop matches the raw endpoint."""
+    enabled = config.get('stop_on_target', False)
+    if target is not None:
+        if not enabled or learning['censored']:
+            errors.append('Target stop was recorded without a confirmed enabled endpoint')
+        for key in ('crossing_time', 'confirmed_time', 'thresholds'):
+            if target.get(key) != learning.get(key):
+                errors.append(f'Target stop disagrees with raw evaluations: {key}')
+        if outcome.get('stop_reason') != 'target_confirmed':
+            errors.append('Outcome does not identify the confirmed target stop')
+    elif enabled:
+        if not learning['censored']:
+            errors.append('Confirmed endpoint lacks target stop evidence')
+        if not rows or rows[-1]['time'] < config['duration'] - 1.5:
+            errors.append('Run ended before its cap without a confirmed target')
+
+
 def analyze_case(path):
     path = Path(path)
     errors = []
@@ -301,6 +319,9 @@ def analyze_case(path):
         if row['thresholds'] != thresholds:
             errors.append('Threshold differs from initial loss')
     learning = summarize_evaluations(rows, horizon=config['duration'])
+    target_path = path/'target_reached.json'
+    target = json.loads(target_path.read_text()) if target_path.exists() else None
+    validate_target_stop(config, learning, target, outcome, rows, errors)
     batches = 0
     for event in events:
         if event['kind']!='microbatch':
@@ -338,6 +359,26 @@ def analyze_case(path):
                 clock=clock, shutdown_safe=shutdown['safe'])
 
 
+def timing_comparisons(cases):
+    """Compute observed deltas only when both endpoints passed evidence checks."""
+    indexed = {row['treatment']: row for row in cases}
+    result = []
+    for condition in ('capture_control', 'gradient_exclusion', 'dual_exclusion'):
+        for reference in ('baseline', 'capture_control'):
+            if condition == reference or condition not in indexed or reference not in indexed:
+                continue
+            current, control = indexed[condition], indexed[reference]
+            available = (current['valid'] and control['valid'] and
+                         not current['learning']['censored'] and not control['learning']['censored'])
+            delta = ratio = None
+            if available:
+                a, b = current['learning']['crossing_time'], control['learning']['crossing_time']
+                delta, ratio = a-b, a/b if b>0 else None
+            result.append(dict(condition=condition, reference=reference, available=available,
+                               crossing_delta_seconds=delta, crossing_ratio=ratio))
+    return result
+
+
 def report_suite(path):
     path = Path(path)
     rows = []
@@ -365,5 +406,15 @@ def report_suite(path):
     lines+=['','Actual Optimizer gradient/state prefixes are used. X must win native leadership; honest advertisements are not suppressed. '
              'Missing groups and escapes remain in the exposure denominator. Averages with incomplete streams retain native fallback. '
              'This pilot does not validate simulation timing or establish population success rates.']
+    comparisons = timing_comparisons(rows)
+    lines += ['', '| Condition | Reference | Additional seconds to target | Time ratio |',
+              '|---|---|---:|---:|']
+    for item in comparisons:
+        delta = f'{item["crossing_delta_seconds"]:.2f}' if item['available'] else 'unavailable'
+        ratio = f'{item["crossing_ratio"]:.3f}' if item.get('crossing_ratio') is not None else 'unavailable'
+        lines.append(f'| {item["condition"]} | {item["reference"]} | {delta} | {ratio} |')
+    lines += ['', 'Target times have one-second evaluation resolution. A finite cap cannot guarantee convergence; '
+              'an unavailable difference is not imputed from that cap. In stop-on-target mode, final losses are '
+              'taken at different stopping times and should not be compared at a common horizon.']
     (path/'REPORT.md').write_text('\n'.join(lines)+'\n')
-    (path/'report.json').write_text(json.dumps(dict(cases=rows),indent=2)+'\n')
+    (path/'report.json').write_text(json.dumps(dict(cases=rows, timing_comparisons=comparisons),indent=2)+'\n')

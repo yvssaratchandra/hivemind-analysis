@@ -199,5 +199,89 @@ class LockedEvidenceTests(CaptureEvidenceTests):
                 uninstall()
 
 
+class UntilTargetConfigurationTests(unittest.TestCase):
+    def rows(self, times):
+        return [dict(time=t, metrics={'per_node':{'D':.01,'C':.01}},
+                     thresholds={'D':.1,'C':.1}) for t in times]
+
+    def test_stop_requires_ten_consecutive_values_and_respects_gaps(self):
+        from run_capture_training import confirmed_target
+        self.assertIsNone(confirmed_target(self.rows(range(9)),1800))
+        result=confirmed_target(self.rows(range(10)),1800)
+        self.assertEqual(result['crossing_time'],0)
+        self.assertEqual(result['confirmed_time'],9)
+        self.assertIsNone(confirmed_target(self.rows([0,1,2,3,4,7,8,9,10,11]),1800))
+        rows=self.rows(range(10));rows[4]['metrics']['per_node']['D']=.1
+        self.assertIsNone(confirmed_target(rows,1800))
+        self.assertIsNone(confirmed_target(self.rows(range(1800,1810)),1800))
+
+    def test_tampered_stop_and_unconfirmed_short_run_are_rejected(self):
+        from analyze_capture_training import validate_target_stop
+        config=dict(stop_on_target=True,duration=1800)
+        learning=dict(censored=False,crossing_time=10.,confirmed_time=19.,thresholds={'D':.1,'C':.1})
+        target={k:learning[k] for k in ('crossing_time','confirmed_time','thresholds')}
+        errors=[]
+        validate_target_stop(config,learning,target,dict(stop_reason='target_confirmed'),[dict(time=19.)],errors)
+        self.assertEqual(errors,[])
+        validate_target_stop(config,learning,dict(target,confirmed_time=20.),dict(stop_reason='target_confirmed'),[dict(time=19.)],errors)
+        self.assertTrue(errors)
+        errors=[]
+        validate_target_stop(config,dict(learning,censored=True),None,{},[dict(time=19.)],errors)
+        self.assertTrue(errors)
+
+    def test_censored_times_are_not_used_as_exact_differences(self):
+        from analyze_capture_training import timing_comparisons
+        rows=[dict(treatment=name,valid=True,learning=dict(censored=False,crossing_time=time))
+              for name,time in (('baseline',60.),('capture_control',150.),('dual_exclusion',450.))]
+        result=timing_comparisons(rows)
+        contrast=next(r for r in result if r['condition']=='dual_exclusion' and r['reference']=='capture_control')
+        self.assertEqual(contrast['crossing_delta_seconds'],300.)
+        self.assertEqual(contrast['crossing_ratio'],3.)
+        rows[-1]['learning'].update(censored=True,crossing_time=None)
+        result=timing_comparisons(rows)
+        self.assertTrue(all(r['crossing_delta_seconds'] is None for r in result if r['condition']=='dual_exclusion'))
+
+    def test_configure_only_creates_no_workers_and_can_be_loaded(self):
+        import json,tempfile
+        import run_capture_training as runner
+        with tempfile.TemporaryDirectory() as tmp:
+            target=Path(tmp)/'planned.json'
+            argv=['run_capture_training.py','--label','until_target_test','--duration','1800',
+                  '--stop-on-target','--configure-only',str(target)]
+            with patch.object(sys,'argv',argv),patch.object(runner,'run_suite') as run, \
+                 patch.object(runner,'native_imports') as native,patch.object(runner.subprocess,'Popen') as popen:
+                self.assertEqual(runner.main(),0)
+                run.assert_not_called();native.assert_not_called();popen.assert_not_called()
+            saved=json.loads(target.read_text())
+            self.assertEqual(saved['duration'],1800)
+            self.assertTrue(saved['stop_on_target'])
+            with patch.object(sys,'argv',['run_capture_training.py','--config',str(target)]), \
+                 patch.object(runner,'run_suite',return_value=0) as run:
+                self.assertEqual(runner.main(),0)
+                self.assertEqual(run.call_args.args[0].duration,1800)
+                self.assertTrue(run.call_args.args[0].stop_on_target)
+            self.assertFalse((runner.HERE/'results'/'until_target_test').exists())
+
+    def test_configure_only_cannot_be_combined_with_worker_execution(self):
+        import run_capture_training as runner
+        import io
+        with patch.object(sys,'argv',['run_capture_training.py','--worker','existing_case',
+                                     '--configure-only','planned.json']), \
+             patch.object(runner,'trial_worker') as worker, patch.object(sys,'stderr',io.StringIO()):
+            with self.assertRaises(SystemExit):
+                runner.main()
+            worker.assert_not_called()
+
+    def test_malformed_saved_configuration_is_rejected(self):
+        from run_capture_training import validate_suite_settings
+        settings=dict(schema='capture-training-suite-v1',label='until_target_test',seed=501,
+                      duration=1800,conditions=['baseline','dual_exclusion'],stop_on_target=True)
+        validate_suite_settings(settings)
+        for key,value in (('duration',True),('duration',1),('conditions',['baseline','baseline']),
+                          ('stop_on_target','yes'),('seed',-1)):
+            with self.assertRaises(ValueError):
+                validate_suite_settings(dict(settings,**{key:value}))
+
+
 if __name__ == '__main__':
     unittest.main()
