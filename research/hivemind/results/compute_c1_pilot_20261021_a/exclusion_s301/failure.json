@@ -1,0 +1,4 @@
+{
+  "error": "RuntimeError('Child compute_A exitcode=None')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/sarat/Projects/hivemind-analysis/research/hivemind/run_compute_exclusion.py\", line 423, in trial_worker\n    raise RuntimeError(f'Child {process.name} exitcode={process.exitcode}')\nRuntimeError: Child compute_A exitcode=None\n"
+}

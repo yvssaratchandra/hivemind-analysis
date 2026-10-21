@@ -328,6 +328,29 @@ def peer_worker(path, config, node, bootstrap, identities, identities_ready,
                     emit('cleanup_error', error=repr(exc))
 
 
+def join_completed_workers(children, outcome):
+    """Separate completed training from a native worker's shutdown liveness.
+
+    A worker sends ``done`` before calling native shutdown, which can wait for
+    peers that have already left. The caller still audits/cleans every owned
+    process. Evaluator failure and actual child crashes remain harness errors.
+    """
+    pending, skipped = [], []
+    for process in children:
+        if outcome['status'] == 'native_noncompletion' and process.name != 'compute_evaluator':
+            skipped.append(process.name.removeprefix('compute_'))
+            continue
+        process.join(timeout=10)
+        if process.exitcode is None and process.name != 'compute_evaluator':
+            pending.append(process.name.removeprefix('compute_'))
+        elif process.exitcode != 0:
+            raise RuntimeError(f'Child {process.name} exitcode={process.exitcode}')
+    outcome['cleanup_status'] = ('training_incomplete' if skipped else
+                                 'deadline_exceeded' if pending else 'joined')
+    outcome['cleanup_pending_nodes'] = pending
+    outcome['cleanup_skipped_nodes'] = skipped
+
+
 def trial_worker(path):
     import multiprocessing as mp
     path = Path(path).resolve()
@@ -415,12 +438,7 @@ def trial_worker(path):
         if len(done) == len(config['active']):
             outcome = dict(status='completed', completed=True,
                            observed_seconds=time.monotonic()-origin.value)
-        for process in children:
-            if outcome['status'] == 'native_noncompletion' and process.name != 'compute_evaluator':
-                continue
-            process.join(timeout=10)
-            if process.exitcode != 0:
-                raise RuntimeError(f'Child {process.name} exitcode={process.exitcode}')
+        join_completed_workers(children, outcome)
     except BaseException as exc:
         error = repr(exc)
         outcome = dict(status='harness_failure', completed=False, error=error)

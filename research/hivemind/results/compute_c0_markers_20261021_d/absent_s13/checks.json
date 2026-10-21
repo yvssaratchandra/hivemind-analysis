@@ -1,0 +1,14 @@
+{
+  "schema": "compute-native-analysis-v1",
+  "valid": true,
+  "errors": [],
+  "mode": "markers",
+  "condition": "absent",
+  "seed": 13,
+  "event_count": 156,
+  "active_nodes": [
+    "B",
+    "D",
+    "C"
+  ]
+}

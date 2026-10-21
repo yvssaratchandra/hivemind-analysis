@@ -8,7 +8,7 @@ separate from the completed E0–E5 fixed-round experiment.
 | Implementation status | State |
 |---|---|
 | C0 sample-weight marker checks | Complete: 9/9 native cases and numerical replays |
-| C1 persistent native harness and pilot | Pilot running, seed 301 × three conditions |
+| C1 persistent native harness and pilot | Corrected post-training shutdown accounting; new frozen validation in progress |
 | C2 five paired confirmation seeds | Gated on pilot |
 | C3 compute-share simulation | Gated on native behavior and timing |
 
@@ -96,3 +96,21 @@ Smoke labels `_a`–`_c` preserve startup/instrumentation failures; `_d` complet
 unconsumed all-zero-weight averaging rounds with NaNs; these are explicitly
 classified only after every participant's training terminal event, never treated
 as valid learning outputs.
+
+## Pilot lifecycle correction
+
+`compute_c1_pilot_20261021_a` preserves the initial baseline and exclusion
+attempts. Both reached the full 300-second evaluation horizon, with observed
+D/C crossings at 40 and 57 seconds respectively. Baseline passed all checks;
+exclusion replayed all 126 numerical groups, but the controller classified A's
+post-training shutdown delay as a harness failure (`exitcode=None` after a
+ten-second join). All four training-terminal events are present and the owned
+process audit found no survivors. The absent arm did not run. These are
+diagnostic pilot observations, not a completed three-arm comparison.
+
+The controller now records post-training cleanup deadline overruns separately
+from training completion, then terminates and audits owned processes as before.
+Evaluator failure and child crashes remain errors. No training, pacing, attack,
+or optimizer settings changed. Fresh labels retain the strict frozen-source
+reference rule: marker suite `compute_c0_markers_20261021_d`, followed by pilot
+`compute_c1_pilot_20261021_b`. The original evidence remains unchanged.

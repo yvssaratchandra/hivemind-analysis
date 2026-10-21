@@ -5,13 +5,36 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import run_compute_exclusion as runner
 from announcement_artifacts import inventory
 
 
 class ControllerTests(unittest.TestCase):
+    def test_shutdown_delay_preserves_completed_training_and_records_pending_worker(self):
+        worker = Mock(name='worker'); worker.name = 'compute_A'; worker.exitcode = None
+        evaluator = Mock(name='evaluator'); evaluator.name = 'compute_evaluator'; evaluator.exitcode = 0
+        outcome = dict(status='completed', completed=True)
+        runner.join_completed_workers([worker, evaluator], outcome)
+        self.assertTrue(outcome['completed'])
+        self.assertEqual(outcome['cleanup_status'], 'deadline_exceeded')
+        self.assertEqual(outcome['cleanup_pending_nodes'], ['A'])
+        evaluator.exitcode = None
+        with self.assertRaises(RuntimeError):
+            runner.join_completed_workers([evaluator], outcome)
+        worker.exitcode = 1
+        with self.assertRaises(RuntimeError):
+            runner.join_completed_workers([worker], outcome)
+
+    def test_incomplete_training_is_not_reported_as_cleanly_joined(self):
+        worker = Mock(); worker.name = 'compute_A'
+        outcome = dict(status='native_noncompletion', completed=False)
+        runner.join_completed_workers([worker], outcome)
+        worker.join.assert_not_called()
+        self.assertEqual(outcome['cleanup_status'], 'training_incomplete')
+        self.assertEqual(outcome['cleanup_skipped_nodes'], ['A'])
+
     def test_native_progress_serializes_bytes_and_nonfinite_eta(self):
         @dataclasses.dataclass
         class Progress:

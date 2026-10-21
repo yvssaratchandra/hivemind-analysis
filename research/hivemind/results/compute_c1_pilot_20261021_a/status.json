@@ -1,0 +1,19 @@
+{
+  "schema": "compute-native-suite-v1",
+  "mode": "pilot",
+  "status": "failed",
+  "cases": [
+    {
+      "path": "baseline_s301",
+      "valid": true
+    }
+  ],
+  "seeds": [
+    301
+  ],
+  "duration": 300,
+  "baseline_learning_passed": true,
+  "reference": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/compute_c0_markers_20261021_c",
+  "reference_inventory_sha256": "dbc4ef9ed946d3114341440aee02ffb708a444c47187e78cd510232c4d37a392",
+  "error": "RuntimeError('Native case failed: /home/sarat/Projects/hivemind-analysis/research/hivemind/results/compute_c1_pilot_20261021_a/exclusion_s301; inspect worker.log/failure.json')"
+}

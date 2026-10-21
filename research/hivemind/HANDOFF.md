@@ -9,8 +9,14 @@ Optimizer training with state sharing enabled, a pilot and five paired seeds,
 then simulation in the existing framework only if native behavioral/timing gates
 pass. C0 is complete: all nine native marker cases and numerical replays pass
 (`results/compute_c0_markers_20261021_c`). A 10-second native optimizer smoke
-completed with finite models and safe shutdown. C1 pilot seed 301 is running in
-`results/compute_c1_pilot_20261021_a`; no convergence comparison is available yet. This new
+completed with finite models and safe shutdown. Initial C1 pilot
+`results/compute_c1_pilot_20261021_a` stopped after exclusion's post-training
+shutdown exceeded the controller join allowance. Training reached 300 seconds;
+diagnostic baseline/exclusion crossings were 40/57 seconds, and numerical replays
+passed, but no absent arm ran. The original failed suite is preserved. The
+controller now records cleanup delays separately from training completion;
+fresh frozen marker `_d` and pilot `_b` validation are next. See the lifecycle
+correction in `DOMINANT_COMPUTE.md`. This new
 authorization is separate from the completed E0–E5 programme below.
 
 **Resumed 2026-10-21.** The approved announcement learning programme is in

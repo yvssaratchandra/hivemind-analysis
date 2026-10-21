@@ -1,0 +1,52 @@
+{
+  "schema": "compute-native-suite-v1",
+  "mode": "markers",
+  "status": "complete",
+  "cases": [
+    {
+      "path": "baseline_s11",
+      "valid": true
+    },
+    {
+      "path": "exclusion_s11",
+      "valid": true
+    },
+    {
+      "path": "absent_s11",
+      "valid": true
+    },
+    {
+      "path": "exclusion_s12",
+      "valid": true
+    },
+    {
+      "path": "absent_s12",
+      "valid": true
+    },
+    {
+      "path": "baseline_s12",
+      "valid": true
+    },
+    {
+      "path": "absent_s13",
+      "valid": true
+    },
+    {
+      "path": "baseline_s13",
+      "valid": true
+    },
+    {
+      "path": "exclusion_s13",
+      "valid": true
+    }
+  ],
+  "seeds": [
+    11,
+    12,
+    13
+  ],
+  "duration": 300,
+  "baseline_learning_passed": false,
+  "reference": null,
+  "reference_inventory_sha256": null
+}
