@@ -7,8 +7,8 @@ rate or a confirmed convergence-effect estimate.
 
 | Implementation status | State |
 |---|---|
-| Native integration and focused checks | Complete; 54 focused checks pass |
-| Bounded four-condition training pilot | Ready; corrected 20s smoke passes, gradient capture only |
+| Native integration and focused checks | Complete; 58 focused checks pass |
+| Bounded four-condition training pilot | Fresh pilot pending after instrumentation diagnosis |
 | Raw evidence review, report and commits | Pending |
 
 ## Approach and data flow
@@ -76,3 +76,20 @@ clocks and cleanup; X leads one gradient group containing A and one C output
 excludes A. No state group forms in 20 seconds, so dual-channel exposure is not
 established by the smoke. Preserve these outcomes; the 180-second pilot tests
 the actual scheduled state path without forcing honest leadership choices.
+
+Pilot `_a`: baseline passed (crossing 50s, confirmed 59s); capture_control
+completed training (diagnostic crossing 140s, confirmed 149s) but failed seven
+borrowed numerical checks. Raw evidence shows wire chunks arriving after native
+sender bans and an outer aggregate snapshot of zero after the tensor lock was
+released. Neither run is overwritten. A dedicated observation layer now samples
+inside `_run_allreduce_inplace_` while the native lock is held and records successful
+`TensorPartReducer.accumulate_part` returns. Arithmetic uses accepted contributions,
+not merely received chunks. Regression tests cover late banned data, buffer reset,
+zero weights and tampered reducer results. The fresh `_b` four-condition pilot
+keeps the same workload/attack settings and repeats the baseline to match the new
+observation overhead. Earlier timings remain diagnostic and are not pooled.
+
+Ordinary baseline uses matchmaking_time=1s; the capture fixture retains the marker
+smoke's 0.35s X / 3s honest settings. Therefore the ordinary-baseline contrast
+includes these scheduling settings. The causal omission comparison is against
+capture_control, which shares all scheduling, topology and admission settings.

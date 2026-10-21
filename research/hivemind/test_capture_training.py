@@ -97,12 +97,16 @@ class CapturePolicyTests(unittest.TestCase):
                 self.assertEqual(list(other.gathered),[b'X',b'D',b'C'])
                 self.assertEqual(len(other.ordered_peer_ids),3)
                 self.assertEqual(events[-1][1]['channel'],'state')
+                from analyze_capture_training import validate_announcement
+                event=dict(events[-1][1], kind='capture_announcement')
+                errors=[]
+                validate_announcement(event,True,errors)
+                self.assertEqual(errors,[])
+                event['gathered_hex'][0]=b'tampered'.hex()
+                validate_announcement(event,True,errors)
+                self.assertTrue(errors)
             finally:
                 uninstall()
-
-
-if __name__=='__main__':
-    unittest.main()
 
 
 class CaptureEvidenceTests(unittest.TestCase):
@@ -149,3 +153,51 @@ class CaptureWorkloadTests(unittest.TestCase):
         self.assertEqual(actual['per_node']['X'],expected['per_node']['B'])
         self.assertEqual(actual['per_node']['D'],expected['per_node']['D'])
         self.assertEqual(set(actual['per_node']),set(models))
+
+
+class LockedEvidenceTests(CaptureEvidenceTests):
+    def test_locked_snapshot_and_accepted_inputs_override_late_observations(self):
+        from analyze_capture_training import _verify_group_outputs
+        events=self.events()
+        common={k:events[0][k] for k in ('node','prefix','group_id')}
+        # The outer buffer observation raced with a subsequent reset.
+        events[3]['values']=[[0.]*48]
+        events.extend([
+            dict(common,kind='locked_aggregate_input',values=[[1.]*48]),
+            dict(common,kind='locked_aggregate_output',values=[[1.]*48]),
+            dict(common,kind='reducer_accepted',part_index=0,sender_peer_id='A',
+                 weight=224.,values=[1.]*48,result=[1.]*48),
+            dict(common,kind='reducer_accepted',part_index=0,sender_peer_id='X',
+                 weight=0.,values=[7.]*48,result=[1.]*48),
+        ])
+        # Late wire data was not accepted into the reducer.
+        events[-4]['values']=[[1.]*48]
+        events[5]['weight']=1000.
+        errors=[]
+        proof=_verify_group_outputs(events,errors)
+        self.assertEqual(errors,[])
+        self.assertEqual(proof['weighted_coordinates_checked'],48)
+        events[-1]['result'][0]=9.
+        _verify_group_outputs(events,errors)
+        self.assertTrue(errors)
+
+    def test_reducer_rejection_does_not_emit_acceptance(self):
+        from hivemind.averaging.partition import TensorPartReducer, BannedException
+        from capture_training_evidence import install_evidence
+        import torch
+        async def rejected(*args,**kwargs):
+            raise BannedException('late sender')
+        events=[]
+        with patch.object(TensorPartReducer,'accumulate_part',rejected):
+            uninstall=install_evidence(lambda k,**v:events.append((k,v)))
+            try:
+                obj=SimpleNamespace(_capture_context=dict(prefix='g',group_id='a',senders=['A']))
+                with self.assertRaises(BannedException):
+                    asyncio.run(TensorPartReducer.accumulate_part(obj,0,0,torch.ones(4),1.))
+                self.assertEqual(events,[])
+            finally:
+                uninstall()
+
+
+if __name__ == '__main__':
+    unittest.main()

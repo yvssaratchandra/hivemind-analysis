@@ -26,7 +26,7 @@ from run_compute_exclusion import event_writer, write, native_imports
 NODES = ('A', 'X', 'D', 'C')
 SOURCES = ('run_capture_training.py', 'capture_training_hooks.py', 'analyze_capture_training.py',
            'run_compute_exclusion.py', 'compute_native_hooks.py', 'compute_workload.py',
-           'capture_training_workload.py',
+           'capture_training_workload.py', 'capture_training_evidence.py',
            'recordholder_exclusion_smoke.py', 'tracking_combination_smoke.py',
            'announcement_artifacts.py', 'announcement_probe.py', 'analyze_compute_exclusion.py')
 
@@ -72,6 +72,7 @@ def peer_worker(path, config, node, bootstrap, identities, identities_ready,
     from compute_workload import batch, next_batch_delay
     from compute_native_hooks import install_hooks
     from capture_training_hooks import install_capture_policy
+    from capture_training_evidence import install_evidence
     emit = event_writer(path, node, origin)
     torch.set_num_threads(1)
     dht = optimizer = averager = None
@@ -100,6 +101,7 @@ def peer_worker(path, config, node, bootstrap, identities, identities_ready,
         install_capture_policy(condition=config['treatment'], gradient_prefix=prefix,
                                state_prefix=config['run_id']+'_state_averager',
                                identities=identities, emit=emit)
+        install_evidence(emit)
         active = config['active']
         common = dict(target_group_size=len(active), min_group_size=3,
                       initial_group_bits='', part_size_bytes=16,

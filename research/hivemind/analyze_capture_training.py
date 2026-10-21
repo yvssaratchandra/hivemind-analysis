@@ -12,9 +12,23 @@ from analyze_compute_exclusion import (_read_jsonl, _ranges, _group_key, _parts_
 
 def _verify_group_outputs(events: list[dict[str, Any]], errors: list[str],
                          *, allow_incomplete: bool = False) -> dict[str, Any]:
+    # Prefer snapshots taken while the native tensor lock is still held.
+    locked = {(e['node'], e['prefix'], e['group_id']) for e in events
+              if e.get('kind') == 'locked_aggregate_input'}
+    canonical = []
+    for event in events:
+        key = _group_key(event)
+        kind = event.get('kind')
+        if key in locked and kind in ('aggregate_input', 'aggregate_output'):
+            continue
+        if kind in ('locked_aggregate_input', 'locked_aggregate_output'):
+            event = dict(event, kind=kind.removeprefix('locked_'),
+                         channel='gradient' if event['prefix'].endswith('_grad_averager') else 'state')
+        canonical.append(event)
+    events = canonical
     grouped: dict[tuple[Any, Any, Any], list[dict[str, Any]]] = {}
     for event in events:
-        if event.get("channel") in {"gradient", "state"} and event.get("group_id") is not None:
+        if (event.get("channel") in {"gradient", "state"} or event.get("kind") == "reducer_accepted") and event.get("group_id") is not None:
             grouped.setdefault(_group_key(event), []).append(event)
     checked, weighted_checked = 0, 0
     summaries, incomplete, shutdown_groups = [], [], []
@@ -114,46 +128,71 @@ def _verify_group_outputs(events: list[dict[str, Any]], errors: list[str],
             errors.append(f"group {key} reducer deltas do not reconstruct aggregate output")
         checked += 1
 
-        # Independently check the coordinates owned by this local reducer from
-        # the exact chunks and weights it observed. Failed senders are absent
-        # from those chunks and are reported by the native fallback/banning logs.
-        node = key[0]
-        own_ranges = parts.get(node, [])
-        weight = allocation.get("weight")
-        inbound = {}
-        for row in rows:
-            if row.get("kind") == "input_chunk" and row.get("direction") == "received" and row.get("receiver") == node:
-                inbound.setdefault((row.get("sender"), row.get("part_index")), row)
-        for index, (start, end) in enumerate(own_ranges):
-            values = [(local_input[start:end], float(weight))]
-            for sender in allocation.get("members", []):
-                if sender == node:
+        # Completion of accumulate_part proves acceptance. Wire receipt alone
+        # does not: native RPCs can receive chunks after banning their sender.
+        accepted = [r for r in rows if r.get('kind') == 'reducer_accepted']
+        if accepted:
+            for index, (start, end) in enumerate(parts.get(key[0], [])):
+                part_rows = [r for r in accepted if r['part_index'] == index]
+                if not part_rows:
                     continue
-                incoming = inbound.get((sender, index))
-                if incoming is None:
+                values = [(_vec(r['values'],end-start),r['weight']) for r in part_rows]
+                if any(v is None or not isinstance(w,(int,float)) or not np.isfinite(w) or w<0 for v,w in values):
+                    errors.append(f'group {key} malformed accepted reducer input')
                     continue
-                chunk = _vec(incoming.get("values"), length=end - start)
-                incoming_weight = incoming.get("weight")
-                if chunk is None or not isinstance(incoming_weight, (int, float)) or incoming_weight < 0:
-                    errors.append(f"group {key} inbound reducer chunk is malformed")
+                denominator = sum(w for _,w in values)
+                if denominator <= 0:
+                    errors.append(f'group {key} accepted reducer total weight is nonpositive')
                     continue
-                values.append((chunk, float(incoming_weight)))
-            if len(values) < 2 and len(allocation.get("members", [])) > 1:
-                banned = any(row.get("kind") == "sender_banned" and row.get("sender") in allocation.get("members", [])
-                             for row in rows)
-                if not banned:
-                    errors.append(f"group {key} reducer input lacks remote chunks and a sender-ban record")
+                mean = sum(v*w for v,w in values)/denominator
+                if any(not _same(mean,r['result']) for r in part_rows):
+                    errors.append(f'group {key} accepted inputs differ from reducer result')
+                own_fallback = any(r.get('kind') == 'fallback' and r.get('reducer') == key[0]
+                                   and r.get('registered_parts',0) <= index for r in rows)
+                if not own_fallback and not _same(mean,aggregate_output[start:end]):
+                    errors.append(f'group {key} accepted reducer mean differs from applied output')
+                weighted_checked += end-start
+        else:
+            # Independently check the coordinates owned by this local reducer from
+            # the exact chunks and weights it observed. Failed senders are absent
+            # from those chunks and are reported by the native fallback/banning logs.
+            node = key[0]
+            own_ranges = parts.get(node, [])
+            weight = allocation.get("weight")
+            inbound = {}
+            for row in rows:
+                if row.get("kind") == "input_chunk" and row.get("direction") == "received" and row.get("receiver") == node:
+                    inbound.setdefault((row.get("sender"), row.get("part_index")), row)
+            for index, (start, end) in enumerate(own_ranges):
+                values = [(local_input[start:end], float(weight))]
+                for sender in allocation.get("members", []):
+                    if sender == node:
+                        continue
+                    incoming = inbound.get((sender, index))
+                    if incoming is None:
+                        continue
+                    chunk = _vec(incoming.get("values"), length=end - start)
+                    incoming_weight = incoming.get("weight")
+                    if chunk is None or not isinstance(incoming_weight, (int, float)) or incoming_weight < 0:
+                        errors.append(f"group {key} inbound reducer chunk is malformed")
+                        continue
+                    values.append((chunk, float(incoming_weight)))
+                if len(values) < 2 and len(allocation.get("members", [])) > 1:
+                    banned = any(row.get("kind") == "sender_banned" and row.get("sender") in allocation.get("members", [])
+                                 for row in rows)
+                    if not banned:
+                        errors.append(f"group {key} reducer input lacks remote chunks and a sender-ban record")
+                        continue
+                numerator = sum(vector * sample_weight for vector, sample_weight in values)
+                denominator = sum(sample_weight for _, sample_weight in values)
+                if denominator <= 0:
+                    errors.append(f"group {key} reducer has nonpositive total weight")
                     continue
-            numerator = sum(vector * sample_weight for vector, sample_weight in values)
-            denominator = sum(sample_weight for _, sample_weight in values)
-            if denominator <= 0:
-                errors.append(f"group {key} reducer has nonpositive total weight")
-                continue
-            expected = numerator / denominator
-            if not _same(expected, aggregate_output[start:end]):
-                errors.append(f"group {key} native weighted reducer result differs on coordinates {start}:{end}")
-            else:
-                weighted_checked += end - start
+                expected = numerator / denominator
+                if not _same(expected, aggregate_output[start:end]):
+                    errors.append(f"group {key} native weighted reducer result differs on coordinates {start}:{end}")
+                else:
+                    weighted_checked += end - start
     return {"groups_reconstructed": checked, "weighted_coordinates_checked": weighted_checked,
             "fallbacks": summaries, "incomplete_groups": incomplete,
             "shutdown_zero_weight_groups": shutdown_groups}
