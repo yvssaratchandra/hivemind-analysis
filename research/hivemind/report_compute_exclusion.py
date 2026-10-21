@@ -22,6 +22,18 @@ STATE_EVENTS = (
 )
 
 
+def check_timing_eligibility(suite, audit_root=None):
+    """External interruption audits supersede a case's protocol-only checks."""
+    audit_root = audit_root or Path(__file__).resolve().parent / 'results'
+    affected = []
+    for source in audit_root.glob('compute_suspend_audit_*/report.json'):
+        audit = json.loads(source.read_text())
+        if Path(audit['suite']).name == suite.name:
+            affected.extend(audit.get('invalidated_cases', []))
+    if affected:
+        raise ValueError(f'System suspension invalidated timing cases: {sorted(set(affected))}; see suspension audit')
+
+
 def _compact_native(raw):
     nodes = {}
     for node, metrics in raw.get('nodes', {}).items():
@@ -155,6 +167,7 @@ def paired_summary(rows):
 
 
 def build(suite, destination):
+    check_timing_eligibility(suite)
     if verify(suite):
         raise ValueError('Suite inventory mismatch')
     status = json.loads((suite / 'status.json').read_text())

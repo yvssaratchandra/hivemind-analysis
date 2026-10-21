@@ -1,0 +1,46 @@
+{
+  "audit_time_utc": "2026-10-21T10:57:07.530529+00:00",
+  "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/compute_c2_confirmation_20261021_a",
+  "cases": [
+    {
+      "case": "baseline_s302",
+      "suite": "compute_c2_confirmation_20261021_a",
+      "recorded_seconds": 300.00009805799345,
+      "wall_seconds": 300.00180888175964,
+      "start_utc": "2026-10-21T09:30:00.567971+00:00",
+      "end_utc": "2026-10-21T09:35:00.569780+00:00",
+      "existing_checks_valid": true,
+      "timing_eligible": true,
+      "reason": "No suspension overlap"
+    },
+    {
+      "case": "exclusion_s302",
+      "suite": "compute_c2_confirmation_20261021_a",
+      "recorded_seconds": 300.00013298699923,
+      "wall_seconds": 827.325272321701,
+      "start_utc": "2026-10-21T09:35:09.255547+00:00",
+      "end_utc": "2026-10-21T09:48:56.580820+00:00",
+      "existing_checks_valid": true,
+      "timing_eligible": false,
+      "reason": "Confirmed system suspension overlaps measured trial"
+    },
+    {
+      "case": "absent_s302",
+      "suite": "compute_c2_confirmation_20261021_a",
+      "recorded_seconds": 300.0000621750005,
+      "wall_seconds": 3792.6668252944946,
+      "start_utc": "2026-10-21T09:49:18.353096+00:00",
+      "end_utc": "2026-10-21T10:52:31.019922+00:00",
+      "existing_checks_valid": true,
+      "timing_eligible": false,
+      "reason": "Confirmed system suspension overlaps measured trial"
+    }
+  ],
+  "invalidated_cases": [
+    "exclusion_s302",
+    "absent_s302"
+  ],
+  "decision": "Preserve original traces and exclude affected runs from timing comparisons. Replace affected paired seed under a new result label before final confirmation claims.",
+  "clock_explanation": "Harness uses time.monotonic; native get_dht_time aliases time.time. Suspend gaps are absent from recorded training elapsed time but affect native wall-clock deadlines and DHT expiration.",
+  "ongoing_case": "exclusion_s303 started after the last observed resume; progressing normally at audit time, not a completed validation."
+}

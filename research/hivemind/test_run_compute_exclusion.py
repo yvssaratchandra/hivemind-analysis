@@ -91,6 +91,17 @@ class ControllerTests(unittest.TestCase):
 
 
 class ReportTests(unittest.TestCase):
+    def test_suspension_audit_blocks_otherwise_valid_suite(self):
+        from report_compute_exclusion import check_timing_eligibility
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            audit = root/'compute_suspend_audit_test'; audit.mkdir()
+            (audit/'report.json').write_text(json.dumps(dict(
+                suite='/original/results/affected_suite', invalidated_cases=['exclusion_s302'])))
+            with self.assertRaisesRegex(ValueError, 'suspension invalidated'):
+                check_timing_eligibility(Path('/new/results/affected_suite'), root)
+            check_timing_eligibility(Path('/new/results/other_suite'), root)
+
     def test_paired_summary_retains_censored_pairs(self):
         from report_compute_exclusion import paired_summary
         rows = [dict(seed=1, condition='baseline', censored=False, crossing_time=10),

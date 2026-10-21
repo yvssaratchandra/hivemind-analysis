@@ -1,5 +1,15 @@
 # Handoff — read this first
 
+**Suspension audit 2026-10-21:** two laptop suspensions affected
+`compute_c2_confirmation_20261021_a/exclusion_s302` and `absent_s302`.
+Their original native checks pass, but they are **not eligible for clean timing
+comparisons**: 300 recorded seconds spanned approximately 827 and 3793 wall
+seconds. Baseline seed 302 completed before suspension; seed 303 exclusion
+started after resume and was progressing normally at audit time. Preserve the
+original suite; replace affected seed 302 under a fresh label before final
+confirmation claims. See `results/compute_suspend_audit_20261021_a/REPORT.md`
+and its saved system journal. Do not infer clean timing from `checks.json` alone.
+
 Everything a new session needs: what the project is, where it stands, what is known, and what to do
 next. Written to be read without any prior conversation.
 
