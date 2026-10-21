@@ -1416,3 +1416,8 @@ recordholder_exclusion_smoke_*/arms/*/frozen_sources.tar.gz
 # Record-holder exclusion smoke: bulky machine report retained locally (hashed in
 # each run artifact_inventory.json); the compact report.md stays tracked.
 recordholder_exclusion_smoke_*/report.json
+
+# Capture-training raw numerical evidence remains inventoried locally.
+capture_training_*/*/evaluation_data.npz
+capture_training_*/*/analysis.json
+capture_training_*/report.json

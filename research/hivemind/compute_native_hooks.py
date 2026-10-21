@@ -89,12 +89,15 @@ def install_hooks(
     gradient_prefix: str,
     identities: Mapping[str, str],
     snapshot: Callable[[], Any] | None = None,
+    leader_fixture: bool = True,
 ) -> Callable[[], None]:
     """Install native averaging hooks and return an uninstaller.
 
     ``identities`` is normally a multiprocessing-manager mapping keyed by
     ``str(peer_id)``. Workers should populate it before releasing any optimizer
     step, so both the parent and forked averager children can resolve names.
+    ``leader_fixture=False`` retains native leader declarations and join expiry;
+    use condition="baseline" with this option for observation-only hooks.
     ``snapshot`` is an optional no-argument callback returning a JSON-safe
     model/state snapshot. It is called only in the installing process, around
     state application methods; it is not invoked from averager children.
@@ -242,7 +245,7 @@ def install_hooks(
     async def observed_begin_search(self, step, key_manager, declare=True):
         prefix = str(getattr(key_manager, "prefix", ""))
         peer_name = name_peer(getattr(self, "peer_id", None))
-        suppress = prefix == gradient_prefix and peer_name != "B" and declare
+        suppress = leader_fixture and prefix == gradient_prefix and peer_name != "B" and declare
         if suppress:
             scoped(
                 "leader_advertisement_suppressed",
@@ -267,7 +270,7 @@ def install_hooks(
         peer_name = name_peer(getattr(self, "peer_id", None))
         step = getattr(self, "step_control", None)
         deadline = getattr(step, "deadline", None)
-        if prefix == gradient_prefix and peer_name != "B" and isinstance(deadline, (int, float)) and isfinite(deadline):
+        if leader_fixture and prefix == gradient_prefix and peer_name != "B" and isinstance(deadline, (int, float)) and isfinite(deadline):
             expiration_time = float(deadline)
             basis = "step_deadline"
         else:
@@ -295,7 +298,8 @@ def install_hooks(
         prefix = prefix_of(self)
         peer_name = name_peer(peer_id)
         if (
-            prefix == gradient_prefix
+            leader_fixture
+            and prefix == gradient_prefix
             and looking_for_group
             and peer_name != "B"
         ):

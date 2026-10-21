@@ -1,0 +1,78 @@
+# Record-holder capture and exclusion during native training
+
+Approved 2026-10-21. Connect the completed two-channel marker mechanism to the
+native Optimizer and measure sustained D/C target-loss time. All nodes use private
+loopback; root Hivemind remains unchanged. This is one pilot seed, not a success
+rate or a confirmed convergence-effect estimate.
+
+| Implementation status | State |
+|---|---|
+| Native integration and focused checks | Complete; 54 focused checks pass |
+| Bounded four-condition training pilot | Ready; corrected 20s smoke passes, gradient capture only |
+| Raw evidence review, report and commits | Pending |
+
+## Approach and data flow
+
+Use four actual Optimizers A/X/D/C, forty DHT-only holders (twenty near each
+actual gradient/state advertisement key), and one bootstrap in every condition.
+Use fixed empty group bits, as in the marker smoke; native key updates preserve
+empty bits. Honest peers retain native advertisements, leader choices, progress,
+readiness and recovery. Only controlled holders filter discovery responses.
+X's early declaration and A-first admission policy are enabled in the three
+capture conditions. The plain baseline uses native timing and pass-through holders.
+Record group assembly leadership before native transient leader fields clear.
+Omit A only when X actually leads; an escaped group is an outcome, never a retry.
+
+Reuse the deterministic 48-dimensional iid regression workload, real batches of
+32, SGD lr .1, target batch 4096, A=896 examples/s, others=128, no pacing catch-up,
+and native state averaging each epoch. Trace state application and downloads;
+do not block downloads or assert complete isolation. Map X to the earlier B data
+stream explicitly to preserve paired workload provenance.
+
+## Coding order and interfaces
+
+1. Add an optional `leader_fixture=False` mode to existing trace hooks, preserving
+   default behavior. A separate capture-policy module wraps native matchmaking:
+   candidate/assembly logs, bounded A-first hold, announcement rewrite, leader-only
+   local roster rewrite on explicitly named gradient/state prefixes. Install before
+   Optimizer construction; preserve RPC annotations and opaque metadata alignment.
+2. A separate runner owns topology, source/config snapshots, process barriers,
+   actual Optimizers, evaluator and exact PID/create-time cleanup. Reuse existing
+   workload/evaluator and holder implementation. Keep both averagers native;
+   never replace scheduled parameter averaging with an independent probe.
+3. Analyze raw events for each channel's attempted groups, actual X leadership,
+   target presence, rewritten rosters, D/C completions, fallback and state recovery.
+   Reconstruct applied reducer outputs, completed SGD updates, deterministic batches
+   and evaluation losses. Evidence failures are separate from attack failures.
+4. Run focused tests and a 20-second capture smoke, then one four-condition pilot
+   with seed 501 and 180 seconds of training per condition. Order: baseline,
+   capture_control, gradient_exclusion, dual_exclusion. Preserve startup/cleanup
+   separately from training. No automatic seed expansion or simulation sweep.
+
+## Measurements and acceptance
+
+Primary endpoint: both D/C below 10% of their own initial evaluation loss for ten
+consecutive one-second evaluations; gaps over 1.5s break the streak. Censor at the
+horizon and retain noncompletion. Report first crossing and confirmation, final
+D/C losses, A separately, actual exposure by channel and state-download routes.
+Compare dual exclusion to capture_control and plain baseline; gradient-only gives
+the incremental parameter-exclusion contrast. Report overhead of capture itself.
+
+Tests must cover unknown/non-X leadership (no local omission), honest native
+advertising, exact prefix scoping, A's unchanged announcement, aligned metadata,
+actual state prefix, threshold/censoring and evidence tampering. Before accepting
+any native result require finite work/evaluations, source/runtime identity, valid
+monotonic/boot/wall clocks and zero surviving owned processes. Missing groups or
+no slowdown remain valid outcomes; no state-channel capture is inconclusive for
+combined exclusion. Stop on harness/clock failure and diagnose before retrying
+under a fresh label. Freeze bulky sources/traces locally with a tracked inventory.
+Commit implementation and evidence separately, then push. Simulation remains
+gated by the earlier numerical and held-out timing validation requirements.
+
+Smoke `_a` preserves a completed native run whose report failed because the old
+evaluator omitted attacker label X (the old workload names it B). An explicit
+naming adapter fixes that integration error. Fresh smoke `_b` passes raw checks,
+clocks and cleanup; X leads one gradient group containing A and one C output
+excludes A. No state group forms in 20 seconds, so dual-channel exposure is not
+established by the smoke. Preserve these outcomes; the 180-second pilot tests
+the actual scheduled state path without forcing honest leadership choices.
