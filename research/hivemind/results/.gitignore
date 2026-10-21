@@ -1408,3 +1408,11 @@ compute_*/*/output_*.json
 
 # Frozen C0 validator source is inventoried alongside its compact report.
 compute_c0_report_*/validator.py
+
+# Combined-mechanism source archives are retained in per-run inventories.
+tracking_combination_smoke_*/arms/*/frozen_sources.tar.gz
+recordholder_exclusion_smoke_*/arms/*/frozen_sources.tar.gz
+
+# Record-holder exclusion smoke: bulky machine report retained locally (hashed in
+# each run artifact_inventory.json); the compact report.md stays tracked.
+recordholder_exclusion_smoke_*/report.json

@@ -1,0 +1,19 @@
+{
+  "arm_hard_measurement_cap_seconds": 100.0,
+  "arms": [
+    "capture_control",
+    "capture_exclusion"
+  ],
+  "channels": [
+    "gradient_probe",
+    "state_probe"
+  ],
+  "claim_boundary": "native holder-response, leader-roster, and marker exclusion mechanism smoke",
+  "dependencies": "/home/sarat/Projects/hivemind-analysis/research/agora/.runtime/venv/lib/python3.11/site-packages",
+  "expected_total_wall_seconds_upper_bound": 285.0,
+  "label": "rh_excl_20261021_a",
+  "native_package_root": "/home/sarat/Projects/hivemind-analysis/research/simulator/.native-runtime/root_snapshot_a",
+  "network_scope": "loopback-only private DHT; no remote bootstrap or address inputs",
+  "round_timeout_seconds": 10.0,
+  "rounds": 3
+}

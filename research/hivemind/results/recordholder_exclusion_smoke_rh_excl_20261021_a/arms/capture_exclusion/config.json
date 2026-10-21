@@ -1,0 +1,193 @@
+{
+  "admission": "X holds D/C join RPCs until authenticated A is present in X's current followers; A is admitted directly",
+  "arm": "capture_exclusion",
+  "channel_keys": {
+    "gradient_probe": {
+      "key": "rhsmoke_rh_excl_20261021_a_gradient_probe.0b",
+      "key_hex": "2939dee8f2eb907b8ae5344bb148543ce56bb751",
+      "prefix": "rhsmoke_rh_excl_20261021_a_gradient_probe",
+      "target_id": 235359182275975937641843772097712030307486250833
+    },
+    "state_probe": {
+      "key": "rhsmoke_rh_excl_20261021_a_state_probe.0b",
+      "key_hex": "155d930653c0760506e8bab52aa2b3c18ce8fd22",
+      "prefix": "rhsmoke_rh_excl_20261021_a_state_probe",
+      "target_id": 121975583149815386612545688101891332026013383970
+    }
+  },
+  "channels": [
+    "gradient_probe",
+    "state_probe"
+  ],
+  "dht": {
+    "bootstrap": "private loopback only",
+    "bucket_size": 20,
+    "cache_policy": "native defaults retained",
+    "host_maddrs": [
+      "/ip4/127.0.0.1/tcp/0"
+    ],
+    "num_replicas": 5
+  },
+  "group": {
+    "fixed_unsharded_keys": true,
+    "initial_group_bits": "",
+    "minimum_group_size": 2,
+    "target_group_size": 4
+  },
+  "holder_count": 40,
+  "holders": {
+    "gradient_probe": {
+      "all_nearby_peer_ids": [
+        "12D3KooWSYUX8iz5LsuBR1dHZwohySDacGCFvwPvabusjaRD6QTv",
+        "12D3KooWHW5mhof7kjYgqAq1sxoUhFqW28RrFirJYGAXQpDo9dtA",
+        "12D3KooWQuCFM32Ry6NBsqMGxQHUeMfQXJso71vPPN3KU5o6BGni",
+        "12D3KooWMaULrZdcrfaSQBqVFizy7MhXGQ9e7A42NVYjtJKLQzU5",
+        "12D3KooWDsRhFZKVTPZYZKdtQBBoZTzqPVuwR5gsibomMadFpf4g",
+        "12D3KooWJQnt1TKDvbKLUoQbr9xm853v6PX812Vp24mJk8FjHsYJ",
+        "12D3KooWFFqdtr4GKjmsUwaLN48jtt591FcQnkB2ydSxhN9A2dby",
+        "12D3KooWJvhv4ZcUf6Gwc6NsqLGWCiW7N5D9J6W2iFHKJUupUqqP",
+        "12D3KooWMFW4PtYHsquvnwHZPejKhsWhModnpwKqQGmCXYpuRJbc",
+        "12D3KooWRMLipbsEfVnKxzdyU4mdbmsThc54HpMyFuCicVCpmS3Z",
+        "12D3KooWRKVo18cv7P38ASSedJFRc3U4Bfq7qt3EgfH5VFga1Tqb",
+        "12D3KooWJH7fdontdXFGXhyNobSpg1rRH2qH6L5o3jcubQRPx7Hp",
+        "12D3KooWPnh8rxbgNBt6H5E4bDh9uLUQ3gqVmpTtb4JWN3wm8AW6",
+        "12D3KooWQi7c2kQdYG7MvFFrAtNHm7XAESpbLKwn1rfUfSiJyTQp",
+        "12D3KooWLKRpmoMrrS37uBo9QvrUHcCKq8NejUk4jum1DtDDi4Pz",
+        "12D3KooWPYxdX8EDGQCcqhK27LLa9Qdh7d5CRpvvqspomPD51rrs",
+        "12D3KooWEdx8VBvKWX1YxK585mEkT38gS6F2N9jYdQYyLU3yQm4X",
+        "12D3KooWR4Qm2SLhnqHmNaHHDKnQu7zq99G5pDvi83SAjYceicPt",
+        "12D3KooWAVHCATTeCuQiEjKFqrWvxAkSphVn4SevpE324dGmnLc9",
+        "12D3KooWNtZr4j79YmJobD14gtvmm9hCZ2ZmCa8ucfGXxSSApeGf"
+      ],
+      "designed_replica_peer_ids": [
+        "12D3KooWSYUX8iz5LsuBR1dHZwohySDacGCFvwPvabusjaRD6QTv",
+        "12D3KooWHW5mhof7kjYgqAq1sxoUhFqW28RrFirJYGAXQpDo9dtA",
+        "12D3KooWQuCFM32Ry6NBsqMGxQHUeMfQXJso71vPPN3KU5o6BGni",
+        "12D3KooWMaULrZdcrfaSQBqVFizy7MhXGQ9e7A42NVYjtJKLQzU5",
+        "12D3KooWDsRhFZKVTPZYZKdtQBBoZTzqPVuwR5gsibomMadFpf4g"
+      ],
+      "key": "rhsmoke_rh_excl_20261021_a_gradient_probe.0b",
+      "key_hex": "2939dee8f2eb907b8ae5344bb148543ce56bb751",
+      "xor_distances": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    "state_probe": {
+      "all_nearby_peer_ids": [
+        "12D3KooWHoagx7tht3cAUwypgzqL7He71KJon37sQU7Cbm6y3Mjs",
+        "12D3KooWSxTMChqBB15wPUF9esy72eZFpg5p3TJ5iaafs7tdA9zu",
+        "12D3KooWMW1tiQpMPRRAk2CzSycXhhqQzTRJn5LGsh6wLy8jiUKE",
+        "12D3KooWHn1y5iYMmchC5n1Nm59stsdXJLdZ7Hyo4DyvzG1VbJSZ",
+        "12D3KooWMErEgL6Dnk6gH91NycDcYVvDHwCdYMuwEd8AT73cJtpU",
+        "12D3KooWJLC4rBUK3ZtYWRyEAEesTjSxrBF8ZtJkvLpLVMWeGSLt",
+        "12D3KooWRwARjj6dz52xihL9tK4ZNkieKknwvfqoqZsXCFZueV4n",
+        "12D3KooWHjPdyf9fMBEnQ8GjgsRDcrCzY6CunZjx6Le4js8VvjDF",
+        "12D3KooWHCyuRNdFh3jdhf4BkuXHGiKEKMfq7vxKsTMxQpCj9v8s",
+        "12D3KooWN7MAwUR7h4XK8s24biTEcPMq87GPKCDaPaS7ExK2tKQo",
+        "12D3KooWHmKfTGRSZAhMeWtS8um5oGbPLyXbbRvVDCMEk25EGVaK",
+        "12D3KooWDACFofzQpurgkXgfmViT5y7q82q39rAzhwVg7qkEKkAk",
+        "12D3KooWS8KVySSHnrTgCc6n7DsW6uLhFGzsLNHGwUu7X6WXHWpk",
+        "12D3KooWJwZSuo8C2PXuXHamtBAByTrdrwhqHzVgzFRtbxEm8E4K",
+        "12D3KooWMCYLSKmNMXUYY9uv25Nsbf5ibuqseByva1ipTigY2atN",
+        "12D3KooWPMYNMR8dBqK5Xprz8BaXwytHU6DPoTuYDne66aNciiPJ",
+        "12D3KooWFHvvrY1oJnweDk96eKxYyjG64t3fCVaJAfocKa6qys7E",
+        "12D3KooWDreUiHbEjYTd2iRP9w4JyrS6KVz4wmWLcVSWGiXAByaC",
+        "12D3KooWMuLHvFcPZx9dPbre7sZVk61WFWbXR8esECAc6PezQZJq",
+        "12D3KooWJsrgCrz5j2jKddZLREyEAjsqKhab8ZcS8TZ7xkbq5KrE"
+      ],
+      "designed_replica_peer_ids": [
+        "12D3KooWHoagx7tht3cAUwypgzqL7He71KJon37sQU7Cbm6y3Mjs",
+        "12D3KooWSxTMChqBB15wPUF9esy72eZFpg5p3TJ5iaafs7tdA9zu",
+        "12D3KooWMW1tiQpMPRRAk2CzSycXhhqQzTRJn5LGsh6wLy8jiUKE",
+        "12D3KooWHn1y5iYMmchC5n1Nm59stsdXJLdZ7Hyo4DyvzG1VbJSZ",
+        "12D3KooWMErEgL6Dnk6gH91NycDcYVvDHwCdYMuwEd8AT73cJtpU"
+      ],
+      "key": "rhsmoke_rh_excl_20261021_a_state_probe.0b",
+      "key_hex": "155d930653c0760506e8bab52aa2b3c18ce8fd22",
+      "xor_distances": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    }
+  },
+  "label": "rh_excl_20261021_a",
+  "limits": [
+    "not full Optimizer training",
+    "not scheduled model state averaging",
+    "no progress tracking or recovery",
+    "no WAN delay",
+    "no public swarm",
+    "cold prepositioned holder topology; holder acquisition is not measured"
+  ],
+  "marker": {
+    "coordinates_per_block": 4,
+    "order": [
+      "A",
+      "X",
+      "D",
+      "C"
+    ],
+    "part_size_bytes": 64,
+    "repeated_blocks": 48,
+    "reset_each_round": true,
+    "vector_size": 192
+  },
+  "nodes": [
+    "A",
+    "X",
+    "D",
+    "C"
+  ],
+  "participants": {
+    "A": "12D3KooWKDrFoydxRz7hQU4DnxzXSAyJSxUDfe9XF4AJyrJbAggY",
+    "C": "12D3KooWCQCkvxsBmdHZ6c2byWq1gxUvMz4PzmTkCv5cAxLhthWN",
+    "D": "12D3KooWGpLux7WvUHvsuLfFwGGcTLxTph4q2GswJixhH63DhGaw",
+    "X": "12D3KooWQhSA9tWG5RLZqmymXT5QKu6dM6ECkiTJXU525Sp762cc"
+  },
+  "record_filter": "only controlled holder DHTProtocol.rpc_find handlers; exact two key IDs; A/D/C see only X while X and other requesters receive native responses",
+  "roster_exclusion": "X removes A from its own GroupInfo and announcements to D/C; A receives full native roster",
+  "rounds_requested": 3,
+  "time_limits": {
+    "allreduce_timeout_seconds": 8.0,
+    "arm_cap_seconds": 100.0,
+    "round_timeout_seconds": 10.0
+  },
+  "topology_settle_seconds": 9.0
+}

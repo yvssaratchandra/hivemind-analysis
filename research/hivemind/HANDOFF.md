@@ -1,5 +1,55 @@
 # Handoff — read this first
 
+**Completed 2026-10-21: record-holder control + attacker leadership + exclusion.**
+User requested a native combination test after the tracking smoke. A separate
+`recordholder_exclusion_smoke.py` runs two policy-matched arms, omission off
+and on, with target A, malicious leader candidate X, and honest recipients D/C.
+Two independently matched marker channels use fixed unsharded advertisement
+keys. Twenty crafted DHT-only identities per key supply the earlier record-holder
+policy without changing the native default bucket size or replication factor.
+This tests native averaging/discovery mechanics, not an Optimizer training run,
+moving-bucket tracking, public-network acquisition or deployment success rates.
+
+| Implementation status | State |
+|---|---|
+| Separate combined native driver and marker analysis | Complete; 6 offline tests pass; main agent reviewed |
+| Focused offline checks and main-agent review | Complete; leader-field self-labelling quirk is cosmetic (analysis keys off announcement native_members, not it) |
+| Bounded paired native run, trace/inventory/process review | Complete under `recordholder_exclusion_smoke_rh_excl_20261021_a`; both arms safe, clocks valid |
+
+Result (`recordholder_exclusion_smoke_rh_excl_20261021_a`, 3 rounds, two channels):
+X captured leadership and assembled a full four-peer native group (A natively
+admitted) in all 3 rounds on both channels. In the control arm (omission off) the
+six honest D/C outputs each retained A's origin marker and matched the four-peer
+mean. In the exclusion arm X omitted A from the announcements to D/C and from its
+own aggregation; all six honest D/C outputs then had **zero A-origin coordinates
+and matched the A-excluded three-peer mean**, while A still received the complete
+roster and averaged as if present. This meets the pre-stated positive criterion
+(matched control retains A's marker; attacked honest outputs drop it) on both
+channels. Every step succeeded (24/24 per arm, zero no-group/error), both arms
+shut down with zero surviving processes and valid clock audits. Scope stays a
+native holder-response/leader-roster/marker mechanism smoke: it does not estimate
+holder-acquisition cost, training convergence, Optimizer state scheduling, WAN
+behaviour, or public-swarm rates. Report:
+`results/recordholder_exclusion_smoke_rh_excl_20261021_a/report.md`.
+
+Architecture/data flow: controlled DHT processes filter responses for the two
+specified advertisement keys; honest DHT responses remain native. X advertises
+an earlier deadline and admits D/C only after A has joined, while honest peers
+retain native leadership choices. On X-led groups only, omission leaves A's
+announcement intact, removes A from D/C's announcements and X's local roster.
+Repeated origin-marker blocks make A's coordinates inspectable in every output.
+The controller owns unique labels, raw streamed traces, source/runtime hashes,
+three-round attempt denominators, finite wall-time caps, clock checks and exact
+owned-process cleanup. The analysis links DHT response manipulation, actual
+leadership, native/effective rosters and D/C outputs rather than assuming any
+stage succeeded. Implementation order: new script/tests, offline review, paired
+native runs, evidence review, compact results/commits. Acceptance allows failure
+or inconclusive capture; do not retry to manufacture a positive result. A positive
+exclusion result requires a normal-announcement control retaining A's marker and
+successful attacked outputs at honest D/C without that marker. All failures and
+missing groups remain in the denominator. Previous harnesses and raw results
+remain unchanged; no long convergence rerun is part of this request.
+
 **Completed 2026-10-21: tracking + admission + exclusion smoke.** User requested a
 short native test after the dominant-compute recovery batch finishes. Reuse the
 step4 next-bucket prediction and step3 attacker-side admission/early-deadline
@@ -1690,6 +1740,11 @@ reaches `min_group_size = 2` on its own peers and assembles before the victim ar
 therefore holds the group open until the victim has joined.
 
 ### 4.4 Re-formation sheds a naive attacker, not a tracking one
+
+Historical findings below predate the 2026-10-21 two-channel composition smoke.
+Its bounded tracking/admission/exclusion results and remaining scope limits are
+recorded at the top of this handoff; older statements that composition was never
+tested describe the earlier experiment queue.
 
 `step4_reformation.py`, 16 peers, group size 4, 4 buckets, sharding **switched on** (the default has
 none — see §4.8).
