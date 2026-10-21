@@ -1,0 +1,37 @@
+{
+  "mode": "confirmation_recovery",
+  "status": "failed",
+  "seeds": [
+    302,
+    303
+  ],
+  "cases": [
+    {
+      "path": "baseline_s302",
+      "valid": true
+    },
+    {
+      "path": "exclusion_s302",
+      "valid": true
+    },
+    {
+      "path": "absent_s302",
+      "valid": true
+    },
+    {
+      "path": "exclusion_s303",
+      "valid": true
+    },
+    {
+      "path": "absent_s303",
+      "valid": true
+    }
+  ],
+  "duration": 300,
+  "original": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/compute_c2_confirmation_20261021_a",
+  "original_inventory_sha256": "7f520b8baab4361ec7553fee321cc14a6e646ef4edaebab978c166eab3eb5a5c",
+  "reference": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/compute_c1_pilot_20261021_b",
+  "audit": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/compute_suspend_audit_20261021_b",
+  "wrapper_sha256": "07523faf4c2a2dcbdf610e84d0f6b6bb1cb6ae7117a623ba2ed878c4f46d3fff",
+  "error": "RuntimeError('Native case evidence failed: [\"group (\\'A\\', \\'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager\\', \\'ab0859d458446d14ed629cbd661db71103a52299\\') inbound reducer chunk is malformed\", \"group (\\'A\\', \\'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager\\', \\'ab0859d458446d14ed629cbd661db71103a52299\\') inbound reducer chunk is malformed\", \"group (\\'A\\', \\'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager\\', \\'ab0859d458446d14ed629cbd661db71103a52299\\') inbound reducer chunk is malformed\", \"group (\\'A\\', \\'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager\\', \\'ab0859d458446d14ed629cbd661db71103a52299\\') reducer input lacks remote chunks and a sender-ban record\", \"group (\\'A\\', \\'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager\\', \\'ab0859d458446d14ed629cbd661db71103a52299\\') inbound reducer chunk is malformed\", \"group (\\'A\\', \\'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager\\', \\'ab0859d458446d14ed629cbd661db71103a52299\\') inbound reducer chunk is malformed\", \"group (\\'A\\', \\'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager\\', \\'ab0859d458446d14ed629cbd661db71103a52299\\') inbound reducer chunk is malformed\", \"group (\\'A\\', \\'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager\\', \\'ab0859d458446d14ed629cbd661db71103a52299\\') reducer input lacks remote chunks and a sender-ban record\"]')"
+}

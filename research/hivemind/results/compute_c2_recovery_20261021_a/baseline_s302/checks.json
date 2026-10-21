@@ -1,0 +1,84 @@
+{
+  "schema": "compute-native-analysis-v1",
+  "valid": true,
+  "errors": [],
+  "mode": "confirmation",
+  "condition": "baseline",
+  "seed": 302,
+  "event_count": 69218,
+  "active_nodes": [
+    "B",
+    "D",
+    "A",
+    "C"
+  ],
+  "learning": {
+    "censored": false,
+    "crossing_time": 40.00008422900282,
+    "confirmed_time": 49.000076228010585,
+    "censor_reason": null,
+    "final_metrics": {
+      "per_node": {
+        "B": 1.2524171371218107e-08,
+        "D": 1.2524171371218107e-08,
+        "A": 1.2524171371218107e-08,
+        "C": 1.2524171371218107e-08
+      },
+      "node_status": {
+        "B": "ok",
+        "D": "ok",
+        "A": "ok",
+        "C": "ok"
+      },
+      "DC_mean": 1.2524171371218107e-08,
+      "DC_worst": 1.2524171371218107e-08,
+      "A": 1.2524171371218107e-08
+    },
+    "nodes": {
+      "B": {
+        "microbatches": 1175,
+        "accepted_accumulations": 1175,
+        "rejected_accumulations": 0,
+        "completed_without_accumulation": 0,
+        "incomplete_submissions": [],
+        "updates": 83,
+        "loaded_gradients": 83,
+        "gradient_norm_mean": 0.18331388571382592,
+        "state_application_events": 166
+      },
+      "D": {
+        "microbatches": 1175,
+        "accepted_accumulations": 1175,
+        "rejected_accumulations": 0,
+        "completed_without_accumulation": 0,
+        "incomplete_submissions": [],
+        "updates": 83,
+        "loaded_gradients": 83,
+        "gradient_norm_mean": 0.18536901616610935,
+        "state_application_events": 166
+      },
+      "A": {
+        "microbatches": 7465,
+        "accepted_accumulations": 7465,
+        "rejected_accumulations": 0,
+        "completed_without_accumulation": 0,
+        "incomplete_submissions": [],
+        "updates": 83,
+        "loaded_gradients": 83,
+        "gradient_norm_mean": 0.1871355412700495,
+        "state_application_events": 166
+      },
+      "C": {
+        "microbatches": 1175,
+        "accepted_accumulations": 1175,
+        "rejected_accumulations": 0,
+        "completed_without_accumulation": 0,
+        "incomplete_submissions": [],
+        "updates": 83,
+        "loaded_gradients": 83,
+        "gradient_norm_mean": 0.1852580463196917,
+        "state_application_events": 166
+      }
+    }
+  }
+}

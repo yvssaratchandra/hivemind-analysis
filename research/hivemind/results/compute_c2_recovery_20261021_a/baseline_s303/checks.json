@@ -1,0 +1,115 @@
+{
+  "schema": "compute-native-analysis-v1",
+  "valid": false,
+  "errors": [
+    "group ('A', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('A', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('A', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('A', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') reducer input lacks remote chunks and a sender-ban record",
+    "group ('A', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('A', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('A', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('A', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') reducer input lacks remote chunks and a sender-ban record",
+    "group ('A', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('A', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('A', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('A', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') reducer input lacks remote chunks and a sender-ban record",
+    "group ('B', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('B', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('B', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('B', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('B', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('B', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('C', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('C', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('C', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('C', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('C', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('C', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('D', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('D', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('D', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('D', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('D', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed",
+    "group ('D', 'compute_d1982448d35f4059a910e6b31066ed7c_grad_averager', 'ab0859d458446d14ed629cbd661db71103a52299') inbound reducer chunk is malformed"
+  ],
+  "mode": "confirmation",
+  "condition": "baseline",
+  "seed": 303,
+  "event_count": 69231,
+  "active_nodes": [
+    "B",
+    "D",
+    "A",
+    "C"
+  ],
+  "learning": {
+    "censored": false,
+    "crossing_time": 40.00006293501065,
+    "confirmed_time": 49.00003152000136,
+    "censor_reason": null,
+    "final_metrics": {
+      "per_node": {
+        "B": 1.285088521568802e-08,
+        "D": 1.285088521568802e-08,
+        "A": 1.285088521568802e-08,
+        "C": 1.285088521568802e-08
+      },
+      "node_status": {
+        "B": "ok",
+        "D": "ok",
+        "A": "ok",
+        "C": "ok"
+      },
+      "DC_mean": 1.285088521568802e-08,
+      "DC_worst": 1.285088521568802e-08,
+      "A": 1.285088521568802e-08
+    },
+    "nodes": {
+      "B": {
+        "microbatches": 1175,
+        "accepted_accumulations": 1175,
+        "rejected_accumulations": 0,
+        "completed_without_accumulation": 0,
+        "incomplete_submissions": [],
+        "updates": 83,
+        "loaded_gradients": 83,
+        "gradient_norm_mean": 0.1822285198233408,
+        "state_application_events": 166
+      },
+      "D": {
+        "microbatches": 1175,
+        "accepted_accumulations": 1175,
+        "rejected_accumulations": 0,
+        "completed_without_accumulation": 0,
+        "incomplete_submissions": [],
+        "updates": 83,
+        "loaded_gradients": 83,
+        "gradient_norm_mean": 0.18756907245549534,
+        "state_application_events": 166
+      },
+      "A": {
+        "microbatches": 7470,
+        "accepted_accumulations": 7470,
+        "rejected_accumulations": 0,
+        "completed_without_accumulation": 0,
+        "incomplete_submissions": [],
+        "updates": 84,
+        "loaded_gradients": 84,
+        "gradient_norm_mean": 0.18604471291048547,
+        "state_application_events": 166
+      },
+      "C": {
+        "microbatches": 1175,
+        "accepted_accumulations": 1175,
+        "rejected_accumulations": 0,
+        "completed_without_accumulation": 0,
+        "incomplete_submissions": [],
+        "updates": 83,
+        "loaded_gradients": 83,
+        "gradient_norm_mean": 0.18629741954861978,
+        "state_application_events": 166
+      }
+    }
+  }
+}

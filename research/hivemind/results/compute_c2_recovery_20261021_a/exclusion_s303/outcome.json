@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "completed": true,
+  "observed_seconds": 301.6914331490116,
+  "cleanup_status": "deadline_exceeded",
+  "cleanup_pending_nodes": [
+    "A"
+  ],
+  "cleanup_skipped_nodes": []
+}

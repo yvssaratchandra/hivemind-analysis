@@ -1,0 +1,21 @@
+{
+  "valid": true,
+  "elapsed": {
+    "monotonic": 321.22305292400415,
+    "boot": 321.2230532009853,
+    "wall": 321.2230532169342
+  },
+  "suspend_seconds": 2.7698115445673466e-07,
+  "wall_clock_jump_seconds": 1.594889909029007e-08,
+  "tolerance_seconds": 1,
+  "before": {
+    "monotonic": 68678.961302882,
+    "boot": 337828.589675779,
+    "wall": 1792586279.6467524
+  },
+  "after": {
+    "monotonic": 69000.184355806,
+    "boot": 338149.81272898,
+    "wall": 1792586600.8698056
+  }
+}

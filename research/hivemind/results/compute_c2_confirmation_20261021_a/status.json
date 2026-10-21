@@ -1,0 +1,78 @@
+{
+  "schema": "compute-native-suite-v1",
+  "mode": "confirmation",
+  "status": "complete",
+  "cases": [
+    {
+      "path": "baseline_s302",
+      "valid": true
+    },
+    {
+      "path": "exclusion_s302",
+      "valid": true
+    },
+    {
+      "path": "absent_s302",
+      "valid": true
+    },
+    {
+      "path": "exclusion_s303",
+      "valid": true
+    },
+    {
+      "path": "absent_s303",
+      "valid": true
+    },
+    {
+      "path": "baseline_s303",
+      "valid": true
+    },
+    {
+      "path": "absent_s304",
+      "valid": true
+    },
+    {
+      "path": "baseline_s304",
+      "valid": true
+    },
+    {
+      "path": "exclusion_s304",
+      "valid": true
+    },
+    {
+      "path": "baseline_s305",
+      "valid": true
+    },
+    {
+      "path": "exclusion_s305",
+      "valid": true
+    },
+    {
+      "path": "absent_s305",
+      "valid": true
+    },
+    {
+      "path": "exclusion_s306",
+      "valid": true
+    },
+    {
+      "path": "absent_s306",
+      "valid": true
+    },
+    {
+      "path": "baseline_s306",
+      "valid": true
+    }
+  ],
+  "seeds": [
+    302,
+    303,
+    304,
+    305,
+    306
+  ],
+  "duration": 300,
+  "baseline_learning_passed": false,
+  "reference": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/compute_c1_pilot_20261021_b",
+  "reference_inventory_sha256": "73abccbf96c1f9505d6629d352810f1c379d12d8c84479d0f556bcc6cd20e998"
+}

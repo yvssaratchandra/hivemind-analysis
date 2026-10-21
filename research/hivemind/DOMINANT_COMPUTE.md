@@ -9,7 +9,7 @@ separate from the completed E0–E5 fixed-round experiment.
 |---|---|
 | C0 sample-weight marker checks | Complete: 9/9; current frozen harness marker suite `_d` |
 | C1 persistent native harness and pilot | Complete: `_b`, all three native cases pass |
-| C2 five paired confirmation seeds | Original complete; replacement paired seeds 302–303 running; retain clean 304–306 |
+| C2 five paired confirmation seeds | Replacement batch stopped: 5 pass; final baseline303 evidence failure; retain clean 304–306 |
 | C3 compute-share simulation | Stopped at numerical gate: one baseline partial response is unmodeled; no timing/sweep |
 
 ## Contract
