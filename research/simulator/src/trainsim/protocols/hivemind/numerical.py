@@ -7,7 +7,9 @@ NumPy is optional and imported only when this backend is used.
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
+import math
 from typing import Any
 
 from ...policies.base import PolicyObservation
@@ -46,13 +48,15 @@ def announced_views(members, leader, policy, group_id="numerical"):
     return views
 
 
-def aggregate(inputs, views, chunk_elements=4, arrival_order=None):
+def aggregate(inputs, views, chunk_elements=4, arrival_order=None, weights=None):
     """Apply native mean-minus-input corrections using each peer's own coordinates.
 
     No attack labels enter this function. A sender addresses the reducers in
     its own view. A reducer accepts only senders in its own view. Absent remote
     results preserve the recipient's input. Unequal stream lengths are rejected
-    as outside the validated numerical backend rather than guessed.
+    as outside the validated numerical backend rather than guessed. Optional
+    ``weights`` maps every input node to its scalar contribution weight; omitted
+    weights preserve the native default of one per peer.
     """
     import numpy as np
 
@@ -64,6 +68,22 @@ def aggregate(inputs, views, chunk_elements=4, arrival_order=None):
         raise ValueError("Inputs must be finite and nonempty")
     if not views or not set(views).issubset(arrays):
         raise ValueError("Every active participant needs an input")
+    if weights is None:
+        peer_weights = {node: 1.0 for node in arrays}
+    else:
+        if not isinstance(weights, Mapping) or set(weights) != set(arrays):
+            raise ValueError("Weights must map exactly the input nodes")
+        peer_weights = {}
+        for node, weight in weights.items():
+            if isinstance(weight, (str, bytes, bool, np.bool_)) or not np.isscalar(weight):
+                raise ValueError("Weights must be finite, nonnegative numeric scalars")
+            try:
+                numeric_weight = float(weight)
+            except (TypeError, ValueError, OverflowError) as exc:
+                raise ValueError("Weights must be finite, nonnegative numeric scalars") from exc
+            if not math.isfinite(numeric_weight) or numeric_weight < 0:
+                raise ValueError("Weights must be finite, nonnegative numeric scalars")
+            peer_weights[node] = numeric_weight
     layout = {}
     for node, roster in views.items():
         if node not in roster or len(set(roster)) != len(roster) or not set(roster).issubset(views):
@@ -101,9 +121,17 @@ def aggregate(inputs, views, chunk_elements=4, arrival_order=None):
                     raise ValueError("Incompatible chunk shapes")
             # Native reducer uses float32 accumulated weighted sums.
             mean = np.zeros(end - start, dtype=np.float32)
+            total_weight = 0.0
             for source in senders:
-                mean += pieces[source]
-            mean /= np.float32(len(senders))
+                weight = peer_weights[source]
+                if weight == 1.0:
+                    mean += pieces[source]
+                elif weight != 0.0:
+                    mean += pieces[source] * np.float32(weight)
+                total_weight += weight
+            if total_weight == 0.0:
+                raise ValueError("Accepted sender weights must have a positive total")
+            mean /= total_weight
             for recipient in senders:
                 left, right = layout[recipient][reducer][index]
                 delta = np.asarray(mean - pieces[recipient], dtype=np.float32)
