@@ -7,13 +7,15 @@ and on, with target A, malicious leader candidate X, and honest recipients D/C.
 Two independently matched marker channels use fixed unsharded advertisement
 keys. Twenty crafted DHT-only identities per key supply the earlier record-holder
 policy without changing the native default bucket size or replication factor.
+Each arm uses 45 local DHT nodes: four averaging participants (A/X/D/C),
+40 controlled DHT-only record holders (20 per key), and one bootstrap node.
 This tests native averaging/discovery mechanics, not an Optimizer training run,
 moving-bucket tracking, public-network acquisition or deployment success rates.
 
 | Implementation status | State |
 |---|---|
-| Separate combined native driver and marker analysis | Complete; 6 offline tests pass; main agent reviewed |
-| Focused offline checks and main-agent review | Complete; leader-field self-labelling quirk is cosmetic (analysis keys off announcement native_members, not it) |
+| Separate combined native driver and marker analysis | Complete; 9 offline tests pass; main agent reviewed |
+| Focused offline checks and main-agent review | Complete; actual sender and assembly-time leadership now logged; omission requires confirmed X leadership |
 | Bounded paired native run, trace/inventory/process review | Complete under `recordholder_exclusion_smoke_rh_excl_20261021_a`; both arms safe, clocks valid |
 
 Result (`recordholder_exclusion_smoke_rh_excl_20261021_a`, 3 rounds, two channels):
@@ -23,7 +25,8 @@ six honest D/C outputs each retained A's origin marker and matched the four-peer
 mean. In the exclusion arm X omitted A from the announcements to D/C and from its
 own aggregation; all six honest D/C outputs then had **zero A-origin coordinates
 and matched the A-excluded three-peer mean**, while A still received the complete
-roster and averaged as if present. This meets the pre-stated positive criterion
+roster but retained its own input exactly in all six attacked channel-rounds.
+A did not receive the four-peer average. This meets the pre-stated positive criterion
 (matched control retains A's marker; attacked honest outputs drop it) on both
 channels. Every step succeeded (24/24 per arm, zero no-group/error), both arms
 shut down with zero surviving processes and valid clock audits. Scope stays a
@@ -31,6 +34,15 @@ native holder-response/leader-roster/marker mechanism smoke: it does not estimat
 holder-acquisition cost, training convergence, Optimizer state scheduling, WAN
 behaviour, or public-swarm rates. Report:
 `results/recordholder_exclusion_smoke_rh_excl_20261021_a/report.md`.
+
+Post-run review: historical aggregate events can incorrectly label followers as
+leaders because native matchmaking clears `current_leader` before aggregation.
+Announcement logging also hard-coded X. For this saved run, announcement process
+IDs independently confirm X sent every announcement in both arms. The fixes
+preserve assembly-time leadership, report the actual announcement sender, and
+guard local omission against X being a follower or leadership being unknown.
+Nine offline regression tests pass; the corrected driver has not been rerun
+natively. Saved traces and their original source inventory remain unchanged.
 
 Architecture/data flow: controlled DHT processes filter responses for the two
 specified advertisement keys; honest DHT responses remain native. X advertises
