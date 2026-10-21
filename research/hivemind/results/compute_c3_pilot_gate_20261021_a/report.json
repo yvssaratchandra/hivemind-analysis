@@ -1,0 +1,135 @@
+{
+  "status": "gate_failed",
+  "gate": "numerical_replay",
+  "scope": "Completed native pilot; no timing calibration or share sweep performed.",
+  "reference": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/compute_c1_pilot_20261021_b",
+  "reference_inventory_sha256": "73abccbf96c1f9505d6629d352810f1c379d12d8c84479d0f556bcc6cd20e998",
+  "native_cases_valid": true,
+  "replays": [
+    {
+      "schema": "compute-exclusion-numerical-replay-v1",
+      "case_path": "research/hivemind/results/compute_c1_pilot_20261021_b/baseline_s301",
+      "scope": "numerical replay only; native timing and simulation gate eligibility are not assessed",
+      "simulation_gate_eligible": false,
+      "valid": false,
+      "checks": {
+        "groups_seen": 166,
+        "groups_replayed": 165,
+        "groups_excluded_shutdown": 0,
+        "allocation_nodes_checked": 664,
+        "outputs_checked": 663,
+        "native_chunks_checked": 7967,
+        "fallback_nodes_checked": 663
+      },
+      "failures": [
+        "prefix='compute_d9ca681e2bd64b36b538375410fde9a4_grad_averager', group_id='e1d2a2bf56ba5e8351d7ee858d859125c61e835e': B native aggregate_output differs from weighted simulator output",
+        "prefix='compute_d9ca681e2bd64b36b538375410fde9a4_grad_averager', group_id='e1d2a2bf56ba5e8351d7ee858d859125c61e835e': native processed_chunk delta differs from simulator for ('B', 'C', 2)",
+        "prefix='compute_d9ca681e2bd64b36b538375410fde9a4_grad_averager', group_id='e1d2a2bf56ba5e8351d7ee858d859125c61e835e': B native fallback ranges differ from simulator; timing/partial fallback is unmodeled",
+        "prefix='compute_d9ca681e2bd64b36b538375410fde9a4_grad_averager', group_id='e1d2a2bf56ba5e8351d7ee858d859125c61e835e': B finalize sizes disagree with simulator fallback coverage"
+      ]
+    },
+    {
+      "schema": "compute-exclusion-numerical-replay-v1",
+      "case_path": "research/hivemind/results/compute_c1_pilot_20261021_b/exclusion_s301",
+      "scope": "numerical replay only; native timing and simulation gate eligibility are not assessed",
+      "simulation_gate_eligible": false,
+      "valid": true,
+      "checks": {
+        "groups_seen": 125,
+        "groups_replayed": 124,
+        "groups_excluded_shutdown": 1,
+        "allocation_nodes_checked": 495,
+        "outputs_checked": 495,
+        "native_chunks_checked": 5940,
+        "fallback_nodes_checked": 495
+      },
+      "failures": []
+    },
+    {
+      "schema": "compute-exclusion-numerical-replay-v1",
+      "case_path": "research/hivemind/results/compute_c1_pilot_20261021_b/absent_s301",
+      "scope": "numerical replay only; native timing and simulation gate eligibility are not assessed",
+      "simulation_gate_eligible": false,
+      "valid": true,
+      "checks": {
+        "groups_seen": 54,
+        "groups_replayed": 54,
+        "groups_excluded_shutdown": 0,
+        "allocation_nodes_checked": 162,
+        "outputs_checked": 162,
+        "native_chunks_checked": 1944,
+        "fallback_nodes_checked": 162
+      },
+      "failures": []
+    }
+  ],
+  "partial_fallback": {
+    "group_id": "e1d2a2bf56ba5e8351d7ee858d859125c61e835e",
+    "case": "baseline_s301",
+    "node": "B",
+    "reducer": "C",
+    "part_index": 2,
+    "coordinate_range_half_open": [
+      32,
+      36
+    ],
+    "native_input": [
+      -0.07543524354696274,
+      0.0389573760330677,
+      -0.04615466296672821,
+      0.12566769123077393
+    ],
+    "native_output": [
+      -0.07543524354696274,
+      0.0389573760330677,
+      -0.04615466296672821,
+      0.12566769123077393
+    ],
+    "simulated_output": [
+      -0.05789927765727043,
+      0.018663035705685616,
+      -0.052272215485572815,
+      0.18438921868801117
+    ],
+    "max_absolute_output_difference": 0.058721527457237244,
+    "native_preserved_local_input": true,
+    "events": [
+      {
+        "reducer": "C",
+        "part_count": 3,
+        "registered_parts": 2,
+        "kind": "fallback",
+        "node": "B",
+        "time": 14.3833130790008
+      },
+      {
+        "reducer": "C",
+        "part_index": 2,
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "kind": "processed_chunk",
+        "node": "B",
+        "time": 14.383575066996855
+      },
+      {
+        "failed_size": 4,
+        "total_elements": 48,
+        "kind": "finalize",
+        "node": "B",
+        "time": 14.384321837002062
+      },
+      {
+        "outcome": "complete",
+        "failed_size": 4,
+        "kind": "terminal",
+        "node": "B",
+        "time": 14.384529369002848
+      }
+    ]
+  },
+  "interpretation": "Native B preserved four coordinates after a partial reducer response; the numerical model assumes reliable complete delivery. The cause of the early stream termination is not established. This is not the attack-induced two-second fallback."
+}

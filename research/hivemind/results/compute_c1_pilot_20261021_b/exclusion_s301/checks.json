@@ -1,0 +1,84 @@
+{
+  "schema": "compute-native-analysis-v1",
+  "valid": true,
+  "errors": [],
+  "mode": "pilot",
+  "condition": "exclusion",
+  "seed": 301,
+  "event_count": 50328,
+  "active_nodes": [
+    "B",
+    "D",
+    "A",
+    "C"
+  ],
+  "learning": {
+    "censored": false,
+    "crossing_time": 57.0001300369986,
+    "confirmed_time": 66.00007499600179,
+    "censor_reason": null,
+    "final_metrics": {
+      "per_node": {
+        "B": 1.2059503027489015e-06,
+        "D": 1.2059503027489015e-06,
+        "A": 9.725744822886783e-07,
+        "C": 1.2059503027489015e-06
+      },
+      "node_status": {
+        "B": "ok",
+        "D": "ok",
+        "A": "ok",
+        "C": "ok"
+      },
+      "DC_mean": 1.2059503027489015e-06,
+      "DC_worst": 1.2059503027489015e-06,
+      "A": 9.725744822886783e-07
+    },
+    "nodes": {
+      "B": {
+        "microbatches": 1179,
+        "accepted_accumulations": 1179,
+        "rejected_accumulations": 0,
+        "completed_without_accumulation": 0,
+        "incomplete_submissions": [],
+        "updates": 62,
+        "loaded_gradients": 62,
+        "gradient_norm_mean": 0.24674622814004288,
+        "state_application_events": 124
+      },
+      "D": {
+        "microbatches": 1181,
+        "accepted_accumulations": 1181,
+        "rejected_accumulations": 0,
+        "completed_without_accumulation": 0,
+        "incomplete_submissions": [],
+        "updates": 62,
+        "loaded_gradients": 62,
+        "gradient_norm_mean": 0.246257141309527,
+        "state_application_events": 124
+      },
+      "A": {
+        "microbatches": 4672,
+        "accepted_accumulations": 4672,
+        "rejected_accumulations": 0,
+        "completed_without_accumulation": 0,
+        "incomplete_submissions": [],
+        "updates": 62,
+        "loaded_gradients": 62,
+        "gradient_norm_mean": 0.23686851627065555,
+        "state_application_events": 122
+      },
+      "C": {
+        "microbatches": 1181,
+        "accepted_accumulations": 1181,
+        "rejected_accumulations": 0,
+        "completed_without_accumulation": 0,
+        "incomplete_submissions": [],
+        "updates": 62,
+        "loaded_gradients": 62,
+        "gradient_norm_mean": 0.25115337745538113,
+        "state_application_events": 124
+      }
+    }
+  }
+}

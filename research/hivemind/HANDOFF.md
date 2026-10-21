@@ -14,9 +14,17 @@ completed with finite models and safe shutdown. Initial C1 pilot
 shutdown exceeded the controller join allowance. Training reached 300 seconds;
 diagnostic baseline/exclusion crossings were 40/57 seconds, and numerical replays
 passed, but no absent arm ran. The original failed suite is preserved. The
-controller now records cleanup delays separately from training completion;
-fresh frozen marker `_d` and pilot `_b` validation are next. See the lifecycle
-correction in `DOMINANT_COMPUTE.md`. This new
+controller now records cleanup delays separately from training completion.
+Fresh frozen marker `_d` and pilot `_b` completed: all three pilot native checks
+pass, with D/C crossings 40/57/121 seconds for
+baseline/exclusion/absent. `results/compute_c1_report_20261021_a` contains the
+report; these are single-seed pilot observations. Five paired confirmation seeds
+are running under `results/compute_c2_confirmation_20261021_a`. C3 candidate
+code is unvalidated. C3 stopped at a genuine numerical gate: one baseline
+partial C-reducer response made B preserve coordinates `[32:36]`, while the
+reliable-delivery model predicts a full weighted mean. Exact evidence is in
+`results/compute_c3_pilot_gate_20261021_a`; exclusion/absent replays pass. No
+timing validation or share sweep is enabled. See `DOMINANT_COMPUTE.md`. This new
 authorization is separate from the completed E0–E5 programme below.
 
 **Resumed 2026-10-21.** The approved announcement learning programme is in

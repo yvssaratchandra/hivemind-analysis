@@ -1,0 +1,26 @@
+{
+  "schema": "compute-native-suite-v1",
+  "mode": "pilot",
+  "status": "complete",
+  "cases": [
+    {
+      "path": "baseline_s301",
+      "valid": true
+    },
+    {
+      "path": "exclusion_s301",
+      "valid": true
+    },
+    {
+      "path": "absent_s301",
+      "valid": true
+    }
+  ],
+  "seeds": [
+    301
+  ],
+  "duration": 300,
+  "baseline_learning_passed": true,
+  "reference": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/compute_c0_markers_20261021_d",
+  "reference_inventory_sha256": "eda0d581b8a2fa1d2341aa2c6293e5c7a9647621601f23ee6bf2779d39a3df68"
+}

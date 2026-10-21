@@ -1,0 +1,397 @@
+{
+  "suite": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/compute_c1_pilot_20261021_b",
+  "mode": "pilot",
+  "rows": [
+    {
+      "seed": 301,
+      "condition": "baseline",
+      "crossing_time": 40.000149207000504,
+      "confirmed_time": 49.00008788699779,
+      "censored": false,
+      "final_DC_mean": 1.3728386433811993e-08,
+      "final_DC_worst": 1.3728386433811993e-08,
+      "final_A": 1.3728386433811993e-08,
+      "outcome": "completed",
+      "cleanup_status": "joined",
+      "cleanup_pending_nodes": [],
+      "native_summary": {
+        "measured_horizon_seconds": 300.0,
+        "nodes": {
+          "A": {
+            "submitted_samples": 237184,
+            "submitted_samples_per_second": 790.6133333333333,
+            "completed_updates": 83,
+            "median_update_interval_seconds": 3.593355266501021,
+            "accepted_into_accumulator_samples": 237184,
+            "discarded_submitted_samples": 0,
+            "pending_submitted_samples": 0
+          },
+          "B": {
+            "submitted_samples": 37408,
+            "submitted_samples_per_second": 124.69333333333333,
+            "completed_updates": 83,
+            "median_update_interval_seconds": 3.586804326496349,
+            "accepted_into_accumulator_samples": 37408,
+            "discarded_submitted_samples": 0,
+            "pending_submitted_samples": 0
+          },
+          "C": {
+            "submitted_samples": 37408,
+            "submitted_samples_per_second": 124.69333333333333,
+            "completed_updates": 83,
+            "median_update_interval_seconds": 3.5864649600007397,
+            "accepted_into_accumulator_samples": 37408,
+            "discarded_submitted_samples": 0,
+            "pending_submitted_samples": 0
+          },
+          "D": {
+            "submitted_samples": 37408,
+            "submitted_samples_per_second": 124.69333333333333,
+            "completed_updates": 83,
+            "median_update_interval_seconds": 3.585804812999413,
+            "accepted_into_accumulator_samples": 37408,
+            "discarded_submitted_samples": 0,
+            "pending_submitted_samples": 0
+          }
+        },
+        "gradient_group_input_sample_weights_by_origin": {
+          "A": 235680.0,
+          "B": 37184.0,
+          "C": 37184.0,
+          "D": 37184.0
+        },
+        "gradient_input_note": "Sample-count weights submitted to numerical gradient groups, counted once per origin and group. These differ from accepted accumulations that may never reach a group; they are not a count of end-to-end parameter influence through state sharing.",
+        "group_timing_seconds": {
+          "state": {
+            "count": 332,
+            "sum": 4.639417242993659,
+            "mean": 0.013974148322270057,
+            "median": 0.01313889949960867,
+            "p95": 0.020252720998541918
+          },
+          "gradient": {
+            "count": 332,
+            "sum": 25.10948306204955,
+            "mean": 0.07563097307846249,
+            "median": 0.040672574996278854,
+            "p95": 0.22302461999788648
+          }
+        },
+        "roster_omission": {
+          "A_native_present_group_count": 83,
+          "A_proposed_view_count": 332,
+          "A_effective_present_view_count": 332,
+          "A_omitted_view_count": 0,
+          "A_omitted_unique_group_count": 0,
+          "A_gradient_weight_in_groups_with_an_omitted_view": 0,
+          "interpretation": "Roster omission is local to that reducer view and does not mean all of A\u2019s work was wasted."
+        },
+        "state_sharing": {
+          "event_counts": {
+            "state_application": 664,
+            "state_recovery_fetch": 0,
+            "state_recovery_application": 0,
+            "state_download_chunk": 0,
+            "state_download_terminal": 0
+          },
+          "downloads_by_path": {},
+          "A_paths": {}
+        },
+        "untraced_boundary_examples_upper_bound_per_node": 32,
+        "sample_counting_note": "Counts include logged batches submitted after pacing. If the horizon hits during pacing, up to one already-computed microbatch per node is unlogged.",
+        "accumulation_note": "Accepted samples count submissions accepted into a local gradient accumulator; they do not by themselves establish incorporation into final parameters.",
+        "errors": []
+      },
+      "numerical_replay": {
+        "available": true,
+        "valid": false,
+        "simulation_gate_eligible": false,
+        "checks": {
+          "groups_seen": 166,
+          "groups_replayed": 165,
+          "groups_excluded_shutdown": 0,
+          "allocation_nodes_checked": 664,
+          "outputs_checked": 663,
+          "native_chunks_checked": 7967,
+          "fallback_nodes_checked": 663
+        },
+        "group_status_counts": {
+          "replayed": 165,
+          "unmodeled": 1,
+          "excluded_shutdown": 0
+        },
+        "failure_count": 4,
+        "failures": [
+          "prefix='compute_d9ca681e2bd64b36b538375410fde9a4_grad_averager', group_id='e1d2a2bf56ba5e8351d7ee858d859125c61e835e': B native aggregate_output differs from weighted simulator output",
+          "prefix='compute_d9ca681e2bd64b36b538375410fde9a4_grad_averager', group_id='e1d2a2bf56ba5e8351d7ee858d859125c61e835e': native processed_chunk delta differs from simulator for ('B', 'C', 2)",
+          "prefix='compute_d9ca681e2bd64b36b538375410fde9a4_grad_averager', group_id='e1d2a2bf56ba5e8351d7ee858d859125c61e835e': B native fallback ranges differ from simulator; timing/partial fallback is unmodeled",
+          "prefix='compute_d9ca681e2bd64b36b538375410fde9a4_grad_averager', group_id='e1d2a2bf56ba5e8351d7ee858d859125c61e835e': B finalize sizes disagree with simulator fallback coverage"
+        ]
+      }
+    },
+    {
+      "seed": 301,
+      "condition": "exclusion",
+      "crossing_time": 57.0001300369986,
+      "confirmed_time": 66.00007499600179,
+      "censored": false,
+      "final_DC_mean": 1.2059503027489015e-06,
+      "final_DC_worst": 1.2059503027489015e-06,
+      "final_A": 9.725744822886783e-07,
+      "outcome": "completed",
+      "cleanup_status": "deadline_exceeded",
+      "cleanup_pending_nodes": [
+        "A"
+      ],
+      "native_summary": {
+        "measured_horizon_seconds": 300.0,
+        "nodes": {
+          "A": {
+            "submitted_samples": 149504,
+            "submitted_samples_per_second": 498.3466666666667,
+            "completed_updates": 62,
+            "median_update_interval_seconds": 4.788596031998168,
+            "accepted_into_accumulator_samples": 149504,
+            "discarded_submitted_samples": 0,
+            "pending_submitted_samples": 0
+          },
+          "B": {
+            "submitted_samples": 37728,
+            "submitted_samples_per_second": 125.76,
+            "completed_updates": 62,
+            "median_update_interval_seconds": 4.810116852997453,
+            "accepted_into_accumulator_samples": 37728,
+            "discarded_submitted_samples": 0,
+            "pending_submitted_samples": 0
+          },
+          "C": {
+            "submitted_samples": 37792,
+            "submitted_samples_per_second": 125.97333333333333,
+            "completed_updates": 62,
+            "median_update_interval_seconds": 4.810581325997191,
+            "accepted_into_accumulator_samples": 37792,
+            "discarded_submitted_samples": 0,
+            "pending_submitted_samples": 0
+          },
+          "D": {
+            "submitted_samples": 37792,
+            "submitted_samples_per_second": 125.97333333333333,
+            "completed_updates": 62,
+            "median_update_interval_seconds": 4.809219915994618,
+            "accepted_into_accumulator_samples": 37792,
+            "discarded_submitted_samples": 0,
+            "pending_submitted_samples": 0
+          }
+        },
+        "gradient_group_input_sample_weights_by_origin": {
+          "A": 147296.0,
+          "B": 37184.0,
+          "C": 37248.0,
+          "D": 37248.0
+        },
+        "gradient_input_note": "Sample-count weights submitted to numerical gradient groups, counted once per origin and group. These differ from accepted accumulations that may never reach a group; they are not a count of end-to-end parameter influence through state sharing.",
+        "group_timing_seconds": {
+          "state": {
+            "count": 247,
+            "sum": 4.028174638064229,
+            "mean": 0.01630839934438959,
+            "median": 0.014629002995206974,
+            "p95": 0.020282732002669945
+          },
+          "gradient": {
+            "count": 248,
+            "sum": 130.04338153698336,
+            "mean": 0.5243684739394491,
+            "median": 0.014965619498980232,
+            "p95": 2.012078150997695
+          }
+        },
+        "roster_omission": {
+          "A_native_present_group_count": 63,
+          "A_proposed_view_count": 126,
+          "A_effective_present_view_count": 63,
+          "A_omitted_view_count": 63,
+          "A_omitted_unique_group_count": 63,
+          "A_gradient_weight_in_groups_with_an_omitted_view": 147296.0,
+          "interpretation": "Roster omission is local to that reducer view and does not mean all of A\u2019s work was wasted."
+        },
+        "state_sharing": {
+          "event_counts": {
+            "state_application": 494,
+            "state_recovery_fetch": 0,
+            "state_recovery_application": 0,
+            "state_download_chunk": 0,
+            "state_download_terminal": 0
+          },
+          "downloads_by_path": {},
+          "A_paths": {}
+        },
+        "untraced_boundary_examples_upper_bound_per_node": 32,
+        "sample_counting_note": "Counts include logged batches submitted after pacing. If the horizon hits during pacing, up to one already-computed microbatch per node is unlogged.",
+        "accumulation_note": "Accepted samples count submissions accepted into a local gradient accumulator; they do not by themselves establish incorporation into final parameters.",
+        "errors": []
+      },
+      "numerical_replay": {
+        "available": true,
+        "valid": true,
+        "simulation_gate_eligible": false,
+        "checks": {
+          "groups_seen": 125,
+          "groups_replayed": 124,
+          "groups_excluded_shutdown": 1,
+          "allocation_nodes_checked": 495,
+          "outputs_checked": 495,
+          "native_chunks_checked": 5940,
+          "fallback_nodes_checked": 495
+        },
+        "group_status_counts": {
+          "replayed": 124,
+          "unmodeled": 0,
+          "excluded_shutdown": 1
+        },
+        "failure_count": 0,
+        "failures": []
+      }
+    },
+    {
+      "seed": 301,
+      "condition": "absent",
+      "crossing_time": 121.0001621390038,
+      "confirmed_time": 130.0001773490003,
+      "censored": false,
+      "final_DC_mean": 0.0017774708684066445,
+      "final_DC_worst": 0.0017774708684066445,
+      "final_A": null,
+      "outcome": "completed",
+      "cleanup_status": "joined",
+      "cleanup_pending_nodes": [],
+      "native_summary": {
+        "measured_horizon_seconds": 300.0,
+        "nodes": {
+          "B": {
+            "submitted_samples": 37600,
+            "submitted_samples_per_second": 125.33333333333333,
+            "completed_updates": 27,
+            "median_update_interval_seconds": 10.977346619001764,
+            "accepted_into_accumulator_samples": 37600,
+            "discarded_submitted_samples": 0,
+            "pending_submitted_samples": 0
+          },
+          "C": {
+            "submitted_samples": 37600,
+            "submitted_samples_per_second": 125.33333333333333,
+            "completed_updates": 27,
+            "median_update_interval_seconds": 10.973018520995538,
+            "accepted_into_accumulator_samples": 37600,
+            "discarded_submitted_samples": 0,
+            "pending_submitted_samples": 0
+          },
+          "D": {
+            "submitted_samples": 37600,
+            "submitted_samples_per_second": 125.33333333333333,
+            "completed_updates": 27,
+            "median_update_interval_seconds": 10.978185689000384,
+            "accepted_into_accumulator_samples": 37600,
+            "discarded_submitted_samples": 0,
+            "pending_submitted_samples": 0
+          }
+        },
+        "gradient_group_input_sample_weights_by_origin": {
+          "B": 37152.0,
+          "C": 37152.0,
+          "D": 37152.0
+        },
+        "gradient_input_note": "Sample-count weights submitted to numerical gradient groups, counted once per origin and group. These differ from accepted accumulations that may never reach a group; they are not a count of end-to-end parameter influence through state sharing.",
+        "group_timing_seconds": {
+          "state": {
+            "count": 81,
+            "sum": 1.7801890050104703,
+            "mean": 0.0219776420371663,
+            "median": 0.021617823003907688,
+            "p95": 0.03412356400076533
+          },
+          "gradient": {
+            "count": 81,
+            "sum": 4.345851501027937,
+            "mean": 0.05365248766701157,
+            "median": 0.052647521006292664,
+            "p95": 0.07983502199931536
+          }
+        },
+        "roster_omission": {
+          "A_native_present_group_count": 0,
+          "A_proposed_view_count": 0,
+          "A_effective_present_view_count": 0,
+          "A_omitted_view_count": 0,
+          "A_omitted_unique_group_count": 0,
+          "A_gradient_weight_in_groups_with_an_omitted_view": 0,
+          "interpretation": "Roster omission is local to that reducer view and does not mean all of A\u2019s work was wasted."
+        },
+        "state_sharing": {
+          "event_counts": {
+            "state_application": 162,
+            "state_recovery_fetch": 0,
+            "state_recovery_application": 0,
+            "state_download_chunk": 0,
+            "state_download_terminal": 0
+          },
+          "downloads_by_path": {},
+          "A_paths": {}
+        },
+        "untraced_boundary_examples_upper_bound_per_node": 32,
+        "sample_counting_note": "Counts include logged batches submitted after pacing. If the horizon hits during pacing, up to one already-computed microbatch per node is unlogged.",
+        "accumulation_note": "Accepted samples count submissions accepted into a local gradient accumulator; they do not by themselves establish incorporation into final parameters.",
+        "errors": []
+      },
+      "numerical_replay": {
+        "available": true,
+        "valid": true,
+        "simulation_gate_eligible": false,
+        "checks": {
+          "groups_seen": 54,
+          "groups_replayed": 54,
+          "groups_excluded_shutdown": 0,
+          "allocation_nodes_checked": 162,
+          "outputs_checked": 162,
+          "native_chunks_checked": 1944,
+          "fallback_nodes_checked": 162
+        },
+        "group_status_counts": {
+          "replayed": 54,
+          "unmodeled": 0,
+          "excluded_shutdown": 0
+        },
+        "failure_count": 0,
+        "failures": []
+      }
+    }
+  ],
+  "paired": {
+    "exclusion": {
+      "observed_pairs": [
+        {
+          "seed": 301,
+          "baseline_seconds": 40.000149207000504,
+          "treatment_seconds": 57.0001300369986,
+          "difference_seconds": 16.999980829998094
+        }
+      ],
+      "censored_pairs": [],
+      "median_paired_difference_seconds": 16.999980829998094
+    },
+    "absent": {
+      "observed_pairs": [
+        {
+          "seed": 301,
+          "baseline_seconds": 40.000149207000504,
+          "treatment_seconds": 121.0001621390038,
+          "difference_seconds": 81.0000129320033
+        }
+      ],
+      "censored_pairs": [],
+      "median_paired_difference_seconds": 81.0000129320033
+    }
+  },
+  "scope": "Private native loopback; controlled gradient leader; state sharing enabled.",
+  "numerical_replay_scope": "Numerical replay is supplementary; replay failures are retained and do not override analyzer-validated native measurements."
+}

@@ -7,10 +7,10 @@ separate from the completed E0–E5 fixed-round experiment.
 
 | Implementation status | State |
 |---|---|
-| C0 sample-weight marker checks | Complete: 9/9 native cases and numerical replays |
-| C1 persistent native harness and pilot | Corrected post-training shutdown accounting; new frozen validation in progress |
-| C2 five paired confirmation seeds | Gated on pilot |
-| C3 compute-share simulation | Gated on native behavior and timing |
+| C0 sample-weight marker checks | Complete: 9/9; current frozen harness marker suite `_d` |
+| C1 persistent native harness and pilot | Complete: `_b`, all three native cases pass |
+| C2 five paired confirmation seeds | Running: `compute_c2_confirmation_20261021_a` |
+| C3 compute-share simulation | Stopped at numerical gate: one baseline partial response is unmodeled; no timing/sweep |
 
 ## Contract
 
@@ -114,3 +114,57 @@ Evaluator failure and child crashes remain errors. No training, pacing, attack,
 or optimizer settings changed. Fresh labels retain the strict frozen-source
 reference rule: marker suite `compute_c0_markers_20261021_d`, followed by pilot
 `compute_c1_pilot_20261021_b`. The original evidence remains unchanged.
+
+The corrected pilot completed all three arms: baseline D/C crossing 40 seconds
+(confirmed 49), exclusion 57 (confirmed 66), absent 121 (confirmed 130). All
+three native evidence checks pass. Exclusion and absent numerical replays pass;
+baseline has one confirmed partial-response replay discrepancy. Exclusion records A's
+post-training cleanup deadline overrun with no surviving owned processes. The
+compact report is `results/compute_c1_report_20261021_a/REPORT.md`. These remain
+single-seed pilot results; paired confirmation is running with unchanged settings.
+
+`results/compute_c3_pilot_gate_20261021_a` records the genuine numerical gate
+failure: at about 14.38 seconds in the baseline, B registered two of three
+response parts from C and preserved its own input on coordinates `[32:36]`.
+Native reconstruction verifies that fallback, while the numerical backend
+assumes reliable complete delivery and predicts the full weighted mean (maximum
+output discrepancy 0.05872). This occurred about 60 ms after B's aggregation
+entry; its underlying stream-termination cause is unknown, and it is not the
+attack-induced two-second wait. Do not discard or rerun this otherwise valid
+native result to obtain a passing simulation gate. Timing calibration/validation
+and the share sweep are therefore not enabled. Candidate event-model code is
+unvalidated; synthetic tests do not override this gate.
+
+## C3 candidate implementation and review gates
+
+The candidate uses `trainsim.Engine` and the existing announcement policy and
+weighted numerical backend. A new Hivemind compute model owns per-node paced
+microbatches, progress publication/polling and readiness, gradient rendezvous,
+completion deadlines, SGD, and delayed state results/application. Workload
+callbacks supply actual iid gradients and evaluation; the policy alone changes
+rosters. Samples, not assigned compute shares, determine aggregation weights.
+Post-step stalls delay the next microbatch without catch-up.
+
+`compute_calibration.py` extracts component measurements from the pilot: ordinary
+step overhead excluding update calls, inter-batch overhead, fast gradient service,
+fallback waits, and state service after the last group input (excluding rendezvous
+wait). Progress visibility inferred from step snapshots is only an upper bound;
+there is no exact DHT publication/fetch trace. Unobserved recovery durations must
+not be invented. Unsupported recovery, membership, or state-executor overlap
+must stop the candidate explicitly rather than silently approximate it.
+
+`compute_simulation.py` will verify the evidence chain, freeze calibration and
+model sources, replay native numerical groups, run the candidate at the native
+70% configured share, and compare held-out seeds 302–306. For each condition,
+require median D/C update interval and uncensored threshold crossing within 20%
+of native values, disclose every seed's discrepancy, and require matching censor
+classification. A missing endpoint is not a synthetic 300-second observation.
+No held-out outcome fitting is allowed. Only a passing artifact enables the
+predeclared share sweep; unsupported sweep paths remain explicit failures.
+
+Implementation order: component extraction and event model independently;
+main-agent interface integration and synthetic scheduling checks; pilot-only
+calibration; held-out validation; then conditional sweep/report. Review gates
+cover policy/model separation, sample accounting, delayed state application
+after gradient computation, fallback-induced pacing stalls, and fail-closed
+unsupported behavior. A numerical replay pass alone cannot enable the sweep.

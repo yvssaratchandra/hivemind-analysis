@@ -31,9 +31,16 @@ def _compact_native(raw):
         nodes[node]['pending_submitted_samples'] = nodes[node].pop('pending_samples')
     roster = raw.get('roster_contribution_summary', {})
     state = raw.get('state', {})
+    gradient_weights = {node: sum(group['weight_by_node'].get(node, 0)
+        for group in raw.get('unique_group_weight_totals', []) if group['channel'] == 'gradient')
+        for node in nodes}
     return {
         'measured_horizon_seconds': raw.get('measured_horizon_seconds'),
         'nodes': nodes,
+        'gradient_group_input_sample_weights_by_origin': gradient_weights,
+        'gradient_input_note': ('Sample-count weights submitted to numerical gradient groups, counted once '
+            'per origin and group. These differ from accepted accumulations that may never reach a group; '
+            'they are not a count of end-to-end parameter influence through state sharing.'),
         'group_timing_seconds': raw.get('group_timing_seconds', {}),
         'roster_omission': {
             'A_native_present_group_count': roster.get('A_native_present_group_count'),
@@ -100,6 +107,7 @@ def _csv_row(row):
                     'submitted_samples_per_second', 'completed_updates',
                     'median_update_interval_seconds'):
             flat[f'{node}_{key}'] = metrics.get(key)
+        flat[f'{node}_gradient_group_input_sample_weight'] = native['gradient_group_input_sample_weights_by_origin'].get(node)
     timing = native['group_timing_seconds']
     for channel in ('gradient', 'state'):
         stats = timing.get(channel, {})

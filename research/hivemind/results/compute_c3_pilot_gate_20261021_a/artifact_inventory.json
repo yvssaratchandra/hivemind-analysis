@@ -1,0 +1,25 @@
+{
+  "description": "Frozen local evidence; paths relative to this experiment directory.",
+  "files": [
+    {
+      "path": "REPORT.md",
+      "bytes": 892,
+      "sha256": "5fbc84608400940ed3fe4f8b0c62dc034499bf692931191eeb3bf25df9723983"
+    },
+    {
+      "path": "harness/compute_simulation.py",
+      "bytes": 21349,
+      "sha256": "8c5f9d94fee493e6a932d9351f673fe878c2cf66bccd315cbb6ffcf8c72df666"
+    },
+    {
+      "path": "harness/validate_compute_exclusion.py",
+      "bytes": 28602,
+      "sha256": "80ea508fd9f66690bcaa4171820e68ffbc70ef1e7817bd03ba92501106436077"
+    },
+    {
+      "path": "report.json",
+      "bytes": 4858,
+      "sha256": "8bfd1606a297ee34d69269909a31a0c04494dfec302c169434e6d913f195d4dd"
+    }
+  ]
+}

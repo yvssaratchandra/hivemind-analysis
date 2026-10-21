@@ -1,0 +1,20 @@
+{
+  "description": "Frozen local evidence; paths relative to this experiment directory.",
+  "files": [
+    {
+      "path": "REPORT.md",
+      "bytes": 1596,
+      "sha256": "966212542b8cff39769ce408657e45300be24f405a355ec0288af266ddb89704"
+    },
+    {
+      "path": "report.json",
+      "bytes": 15954,
+      "sha256": "dad8088839c320a82f512b320ff7b9bdde6ea1d341d5778c0da57e1ca6826fa5"
+    },
+    {
+      "path": "timings.csv",
+      "bytes": 4944,
+      "sha256": "1cc442f244a531331d9307acb639d2bcf4152522f9c3a5a1809c0ad55fa9dcfa"
+    }
+  ]
+}
