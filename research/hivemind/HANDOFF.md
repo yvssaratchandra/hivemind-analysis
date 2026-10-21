@@ -190,17 +190,20 @@ authorization is separate from the completed E0–E5 programme below.
 Candidate preserved and verified fail-closed (2026-10-21, main agent). The C3
 candidate code is now committed: `d537373` (trainsim event model
 `trainsim/protocols/hivemind/compute.py` + 6 tests) and `9b3c1d0`
-(`compute_calibration.py`, the staged `compute_simulation.py` validate/sweep,
+(`compute_calibration.py`, the `compute_simulation.py` validate/sweep candidate,
 and their tests). Reviewed and re-ran under the combined numpy + simpy + trainsim
 environment (simulator `.venv` plus the native deps): all 15 candidate tests
 pass, including `test_numerical_failure_prevents_calibration_and_timing_runs`,
-which confirms a numerical-replay failure blocks every downstream
-calibration/timing/sweep. The numerical gate was NOT forced: `validate_stage`
-stops at `gate_failed='numerical_replay'` before calibration, matching the
-committed gate record, and the candidate stays unvalidated with no sweep enabled.
+which uses a mocked numerical-replay failure to verify that `validate_stage`
+returns `status='gate_failed', gate='numerical_replay'` before calibration or
+prediction. This unit test is not a new end-to-end native validation run.
+Separately, the preserved real pilot gate record reports the numerical failure.
+The clean C2 confirmation suite is still unavailable, so the production reference
+chain cannot yet be accepted. The candidate remains unvalidated with no sweep enabled.
 The baseline partial-response cause remains unknown; it was not modelled, invented
 or replayed away. Unsupported engine paths raise `UnsupportedBehavior` and stop
-the run rather than approximating. These two commits are local only (unpushed).
+the run rather than approximating. The candidate commits are included in the
+subsequent native-pilot evidence push.
 
 **Resumed 2026-10-21.** The approved announcement learning programme is in
 `ANNOUNCEMENT_PROBE.md`. E0 is complete. E1 now has three fresh equal-allocation
