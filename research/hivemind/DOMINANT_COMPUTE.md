@@ -9,7 +9,7 @@ separate from the completed E0–E5 fixed-round experiment.
 |---|---|
 | C0 sample-weight marker checks | Complete: 9/9; current frozen harness marker suite `_d` |
 | C1 persistent native harness and pilot | Complete: `_b`, all three native cases pass |
-| C2 five paired confirmation seeds | Batch complete; three runs invalidated by suspend; clean paired seeds 304–306 |
+| C2 five paired confirmation seeds | Original complete; replacement paired seeds 302–303 running; retain clean 304–306 |
 | C3 compute-share simulation | Stopped at numerical gate: one baseline partial response is unmodeled; no timing/sweep |
 
 ## Contract
@@ -127,6 +127,20 @@ system suspension invalidated `exclusion_s302`, `absent_s302`, and
 The latest sleep occurred after batch completion. See
 `results/compute_suspend_audit_20261021_b/REPORT.md`; replace affected paired
 seeds before full five-seed confirmation claims.
+
+Recovery implementation uses a separate `run_compute_recovery.py` wrapper so
+the native harness and reference hashes remain unchanged. It verifies the
+original inventory and suspension audit, derives affected seeds independently
+of outcomes, and reruns every arm for each affected seed in the original order.
+Each case records monotonic, boot and wall elapsed time; a suspension or clock
+jump over one second stops the batch. Only verified complete replacements enter
+the new clean suite, alongside original seeds 304–306. `selection.json` maps
+every case to its immutable source inventory. The existing report builder then
+produces the five-seed comparison. Focused tests cover clock rejection and
+paired-seed selection; acceptance requires six valid replacements, clean clock
+audits, verified inventories and a complete fifteen-case report. Inspect those
+checks before accepting results. Labels: `compute_c2_recovery_20261021_a`,
+`compute_c2_confirmation_20261021_clean_a`, `compute_c2_report_20261021_a`.
 
 `results/compute_c3_pilot_gate_20261021_a` records the genuine numerical gate
 failure: at about 14.38 seconds in the baseline, B registered two of three

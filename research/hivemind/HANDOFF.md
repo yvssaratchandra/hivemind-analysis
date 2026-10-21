@@ -1,5 +1,15 @@
 # Handoff — read this first
 
+**Recovery running 2026-10-21:** user has an uninterrupted window. Launched
+`run_compute_recovery.py` under label `compute_c2_recovery_20261021_a`: all three
+arms for seeds 302 and 303, six sequential 300-second native runs. It checks
+boot/monotonic/wall clocks and stops if suspension or a clock jump exceeds one
+second. On success it combines replacements with original seeds 304–306 into
+`compute_c2_confirmation_20261021_clean_a`, preserving source inventories and
+case selection, then creates `compute_c2_report_20261021_a`. Check recovery
+`status.json` before claiming completion. Native harness sources remain frozen;
+the original contaminated suite remains preserved. C3 remains gated off.
+
 **Updated suspension audit 2026-10-21:** the confirmation batch completed at
 13:57 Europe/Stockholm, before the latest 13:59–14:11 sleep. That sleep affected
 no run. Earlier sleeps affected `exclusion_s302`, `absent_s302`, and
