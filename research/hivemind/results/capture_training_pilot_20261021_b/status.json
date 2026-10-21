@@ -1,0 +1,29 @@
+{
+  "status": "complete",
+  "seed": 501,
+  "duration": 180,
+  "conditions": [
+    "baseline",
+    "capture_control",
+    "gradient_exclusion",
+    "dual_exclusion"
+  ],
+  "cases": [
+    {
+      "condition": "baseline",
+      "valid": true
+    },
+    {
+      "condition": "capture_control",
+      "valid": true
+    },
+    {
+      "condition": "gradient_exclusion",
+      "valid": true
+    },
+    {
+      "condition": "dual_exclusion",
+      "valid": true
+    }
+  ]
+}

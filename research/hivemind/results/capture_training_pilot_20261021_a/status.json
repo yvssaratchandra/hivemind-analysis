@@ -1,0 +1,18 @@
+{
+  "status": "failed",
+  "seed": 501,
+  "duration": 180,
+  "conditions": [
+    "baseline",
+    "capture_control",
+    "gradient_exclusion",
+    "dual_exclusion"
+  ],
+  "cases": [
+    {
+      "condition": "baseline",
+      "valid": true
+    }
+  ],
+  "error": "RuntimeError('Case evidence failed: /home/sarat/Projects/hivemind-analysis/research/hivemind/results/capture_training_pilot_20261021_a/capture_control: [\"group (\\'X\\', \\'capture_63393449251c4251b8d34f44876fbe54_grad_averager\\', \\'d33d4067d06985660b1a1deb3972368a3896f8a9\\') reducer deltas do not reconstruct aggregate output\", \"group (\\'X\\', \\'capture_63393449251c4251b8d34f44876fbe54_grad_averager\\', \\'d33d4067d06985660b1a1deb3972368a3896f8a9\\') native weighted reducer result differs on coordinates 24:28\", \"group (\\'X\\', \\'capture_63393449251c4251b8d34f44876fbe54_grad_averager\\', \\'d33d4067d06985660b1a1deb3972368a3896f8a9\\') native weighted reducer result differs on coordinates 28:32\", \"group (\\'X\\', \\'capture_63393449251c4251b8d34f44876fbe54_grad_averager\\', \\'d33d4067d06985660b1a1deb3972368a3896f8a9\\') native weighted reducer result differs on coordinates 32:36\", \"group (\\'C\\', \\'capture_63393449251c4251b8d34f44876fbe54_grad_averager\\', \\'d33d4067d06985660b1a1deb3972368a3896f8a9\\') native weighted reducer result differs on coordinates 36:40\", \"group (\\'X\\', \\'capture_63393449251c4251b8d34f44876fbe54_grad_averager\\', \\'e2e779a4db425ec5135d77cf80c47fc901203d34\\') native weighted reducer result differs on coordinates 36:40\", \"group (\\'C\\', \\'capture_63393449251c4251b8d34f44876fbe54_grad_averager\\', \\'e2e779a4db425ec5135d77cf80c47fc901203d34\\') native weighted reducer result differs on coordinates 0:4\"]')"
+}

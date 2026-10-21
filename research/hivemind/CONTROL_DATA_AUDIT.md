@@ -1240,6 +1240,21 @@ optimal frequency. See the report and its matched controls before extrapolating.
   this is not covered by the completed fixed-round E0–E5 results. Simulation
   remains conditional on native behavioral and held-out timing validation.
 
+- **Actual training composition pilot complete (2026-10-21):**
+  `capture_training_pilot_20261021_b` connects record-holder filtering, native
+  X leadership/admission and gradient/state roster omission to real Optimizers.
+  Four conditions, seed 501, 180s each, 45 DHT nodes per condition, nominal A share
+  70%. D/C target crossing: baseline 62s, matched capture-control 153s, neither
+  exclusion arm by 180s. Dual omission has nine completed honest gradient outputs
+  and four parameter outputs from A-excluded rosters. Independent raw reanalysis
+  matches all saved checks; clocks and cleanup pass. This is a positive local
+  mechanism and one-seed learning-harm result, not a deployment rate or evidence
+  of parameter omission's incremental causal effect. Ordinary-baseline scheduling
+  differs; use capture-control for the omission contrast. Native state downloads
+  remain enabled. See `CAPTURE_TRAINING.md` and
+  `results/capture_training_review_20261021_a/REPORT.md`. No seed expansion or
+  simulation sweep followed; earlier C2/C3 gates are separate and unresolved.
+
 ### C15.S — Checkpoint 15, Select: does re-forming groups shed the attacker?
 
 - **Question.** Groups reshuffle between rounds. Does that dilute an attacker's presence?

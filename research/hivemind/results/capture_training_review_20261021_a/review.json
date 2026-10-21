@@ -1,0 +1,374 @@
+{
+  "reference": "/home/sarat/Projects/hivemind-analysis/research/hivemind/results/capture_training_pilot_20261021_b",
+  "reference_inventory_sha256": "47898f24dc58a31c47e7fd6c17918cf3e609612c968e043b89a3b1ade72039ab",
+  "cases": [
+    {
+      "condition": "baseline",
+      "learning": {
+        "horizon": 180.0,
+        "crossing_time": 62.00006185899838,
+        "confirmed_time": 71.00004205499135,
+        "censored": false,
+        "censor_reason": null,
+        "censor_time": null,
+        "final_metrics": {
+          "per_node": {
+            "B": null,
+            "D": 0.00044731610343533333,
+            "A": 0.00044731610343533333,
+            "C": 0.000508364669701277
+          },
+          "node_status": {
+            "B": "missing",
+            "D": "ok",
+            "A": "ok",
+            "C": "ok"
+          },
+          "DC_mean": 0.0004778403865683052,
+          "DC_worst": 0.000508364669701277,
+          "A": 0.00044731610343533333
+        },
+        "thresholds": {
+          "D": 0.05178570601485353,
+          "C": 0.05178570601485353
+        },
+        "evaluations_used": 180,
+        "gap_resets": 0
+      },
+      "final_losses": {
+        "D": 0.00044731610343533333,
+        "A": 0.00044731610343533333,
+        "C": 0.000508364669701277,
+        "X": 0.00044731610343533333
+      },
+      "exposure": {
+        "gradient": {
+          "native_groups": 40,
+          "x_led_with_A": 0,
+          "omitted_D_C_announcements": 0,
+          "completed_omitted_D_C_outputs": 0,
+          "D_C_outputs": 75,
+          "filtered_holder_responses": 0
+        },
+        "state": {
+          "native_groups": 39,
+          "x_led_with_A": 1,
+          "omitted_D_C_announcements": 0,
+          "completed_omitted_D_C_outputs": 0,
+          "D_C_outputs": 74,
+          "filtered_holder_responses": 0
+        }
+      },
+      "submitted_examples": {
+        "A": 109760,
+        "C": 15424,
+        "X": 20800,
+        "D": 14144
+      },
+      "actual_SGD_updates": {
+        "A": 38,
+        "C": 38,
+        "X": 39,
+        "D": 39
+      },
+      "reducer_groups_reconstructed": 283,
+      "incomplete_reducer_groups": 2,
+      "state_downloads": [
+        {
+          "sender": "X",
+          "recipient": "A",
+          "success": true
+        },
+        {
+          "sender": "D",
+          "recipient": "A",
+          "success": true
+        },
+        {
+          "sender": "X",
+          "recipient": "C",
+          "success": true
+        },
+        {
+          "sender": "X",
+          "recipient": "C",
+          "success": true
+        }
+      ],
+      "state_applications": 134,
+      "shutdown_safe": true,
+      "clocks_valid": true
+    },
+    {
+      "condition": "capture_control",
+      "learning": {
+        "horizon": 180.0,
+        "crossing_time": 153.0000580240012,
+        "confirmed_time": 162.00008327700198,
+        "censored": false,
+        "censor_reason": null,
+        "censor_time": null,
+        "final_metrics": {
+          "per_node": {
+            "B": null,
+            "D": 0.04662317952868448,
+            "A": 0.03789467874673536,
+            "C": 0.037894678746669005
+          },
+          "node_status": {
+            "B": "missing",
+            "D": "ok",
+            "A": "ok",
+            "C": "ok"
+          },
+          "DC_mean": 0.042258929137676746,
+          "DC_worst": 0.04662317952868448,
+          "A": 0.03789467874673536
+        },
+        "thresholds": {
+          "D": 0.05178570601485353,
+          "C": 0.05178570601485353
+        },
+        "evaluations_used": 180,
+        "gap_resets": 0
+      },
+      "final_losses": {
+        "D": 0.04662317952868448,
+        "A": 0.03789467874673536,
+        "C": 0.037894678746669005,
+        "X": 0.037894678746669005
+      },
+      "exposure": {
+        "gradient": {
+          "native_groups": 18,
+          "x_led_with_A": 18,
+          "omitted_D_C_announcements": 0,
+          "completed_omitted_D_C_outputs": 0,
+          "D_C_outputs": 28,
+          "filtered_holder_responses": 17498
+        },
+        "state": {
+          "native_groups": 14,
+          "x_led_with_A": 14,
+          "omitted_D_C_announcements": 0,
+          "completed_omitted_D_C_outputs": 0,
+          "D_C_outputs": 23,
+          "filtered_holder_responses": 11036
+        }
+      },
+      "submitted_examples": {
+        "A": 64128,
+        "X": 8800,
+        "D": 5760,
+        "C": 8288
+      },
+      "actual_SGD_updates": {
+        "A": 22,
+        "X": 22,
+        "D": 19,
+        "C": 20
+      },
+      "reducer_groups_reconstructed": 115,
+      "incomplete_reducer_groups": 0,
+      "state_downloads": [
+        {
+          "sender": "X",
+          "recipient": "D",
+          "success": true
+        },
+        {
+          "sender": "A",
+          "recipient": "D",
+          "success": true
+        },
+        {
+          "sender": "X",
+          "recipient": "D",
+          "success": true
+        },
+        {
+          "sender": "C",
+          "recipient": "D",
+          "success": true
+        },
+        {
+          "sender": "A",
+          "recipient": "C",
+          "success": true
+        },
+        {
+          "sender": "A",
+          "recipient": "C",
+          "success": true
+        }
+      ],
+      "state_applications": 61,
+      "shutdown_safe": true,
+      "clocks_valid": true
+    },
+    {
+      "condition": "gradient_exclusion",
+      "learning": {
+        "horizon": 180.0,
+        "crossing_time": null,
+        "confirmed_time": null,
+        "censored": true,
+        "censor_reason": "horizon",
+        "censor_time": 180.0,
+        "final_metrics": {
+          "per_node": {
+            "B": null,
+            "D": 0.1709604856704788,
+            "A": 0.1709604856704788,
+            "C": 0.1709604856704788
+          },
+          "node_status": {
+            "B": "missing",
+            "D": "ok",
+            "A": "ok",
+            "C": "ok"
+          },
+          "DC_mean": 0.1709604856704788,
+          "DC_worst": 0.1709604856704788,
+          "A": 0.1709604856704788
+        },
+        "thresholds": {
+          "D": 0.05178570601485353,
+          "C": 0.05178570601485353
+        },
+        "evaluations_used": 180,
+        "gap_resets": 0
+      },
+      "final_losses": {
+        "D": 0.1709604856704788,
+        "A": 0.1709604856704788,
+        "C": 0.1709604856704788,
+        "X": 0.1709604856704788
+      },
+      "exposure": {
+        "gradient": {
+          "native_groups": 10,
+          "x_led_with_A": 10,
+          "omitted_D_C_announcements": 12,
+          "completed_omitted_D_C_outputs": 10,
+          "D_C_outputs": 10,
+          "filtered_holder_responses": 13414
+        },
+        "state": {
+          "native_groups": 6,
+          "x_led_with_A": 6,
+          "omitted_D_C_announcements": 0,
+          "completed_omitted_D_C_outputs": 0,
+          "D_C_outputs": 10,
+          "filtered_holder_responses": 13058
+        }
+      },
+      "submitted_examples": {
+        "D": 12256,
+        "C": 5280,
+        "X": 4800,
+        "A": 34432
+      },
+      "actual_SGD_updates": {
+        "D": 14,
+        "C": 14,
+        "X": 14,
+        "A": 14
+      },
+      "reducer_groups_reconstructed": 48,
+      "incomplete_reducer_groups": 6,
+      "state_downloads": [],
+      "state_applications": 44,
+      "shutdown_safe": true,
+      "clocks_valid": true
+    },
+    {
+      "condition": "dual_exclusion",
+      "learning": {
+        "horizon": 180.0,
+        "crossing_time": null,
+        "confirmed_time": null,
+        "censored": true,
+        "censor_reason": "horizon",
+        "censor_time": 180.0,
+        "final_metrics": {
+          "per_node": {
+            "B": null,
+            "D": 0.24761710438130818,
+            "A": 0.2232110121930442,
+            "C": 0.2476171044365913
+          },
+          "node_status": {
+            "B": "missing",
+            "D": "ok",
+            "A": "ok",
+            "C": "ok"
+          },
+          "DC_mean": 0.24761710440894974,
+          "DC_worst": 0.2476171044365913,
+          "A": 0.2232110121930442
+        },
+        "thresholds": {
+          "D": 0.05178570601485353,
+          "C": 0.05178570601485353
+        },
+        "evaluations_used": 180,
+        "gap_resets": 0
+      },
+      "final_losses": {
+        "D": 0.24761710438130818,
+        "A": 0.2232110121930442,
+        "C": 0.2476171044365913,
+        "X": 0.3073591839871249
+      },
+      "exposure": {
+        "gradient": {
+          "native_groups": 6,
+          "x_led_with_A": 6,
+          "omitted_D_C_announcements": 9,
+          "completed_omitted_D_C_outputs": 9,
+          "D_C_outputs": 9,
+          "filtered_holder_responses": 13210
+        },
+        "state": {
+          "native_groups": 3,
+          "x_led_with_A": 3,
+          "omitted_D_C_announcements": 4,
+          "completed_omitted_D_C_outputs": 4,
+          "D_C_outputs": 4,
+          "filtered_holder_responses": 13358
+        }
+      },
+      "submitted_examples": {
+        "X": 3040,
+        "A": 40896,
+        "D": 5984,
+        "C": 8032
+      },
+      "actual_SGD_updates": {
+        "X": 14,
+        "A": 15,
+        "D": 14,
+        "C": 15
+      },
+      "reducer_groups_reconstructed": 30,
+      "incomplete_reducer_groups": 1,
+      "state_downloads": [
+        {
+          "sender": "X",
+          "recipient": "D",
+          "success": true
+        },
+        {
+          "sender": "X",
+          "recipient": "D",
+          "success": true
+        }
+      ],
+      "state_applications": 46,
+      "shutdown_safe": true,
+      "clocks_valid": true
+    }
+  ],
+  "review_script_sha256": "191e07f69ad28d83d6cc621ee08ce7bc8aedf7eef22c039a49e02a77e47d6784"
+}

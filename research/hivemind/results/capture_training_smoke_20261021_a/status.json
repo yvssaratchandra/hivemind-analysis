@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "seed": 501,
+  "duration": 20,
+  "conditions": [
+    "capture_control"
+  ],
+  "cases": [],
+  "error": "KeyError('X')"
+}

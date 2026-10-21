@@ -1,5 +1,52 @@
 # Handoff — read this first
 
+**Completed 2026-10-21: capture + exclusion during actual Optimizer training.**
+`CAPTURE_TRAINING.md` specifies the separate four-condition native pilot,
+`capture_training_pilot_20261021_b`, seed 501, 180 seconds per condition,
+45 local DHT nodes each. A is paced at 896 examples/s; X/D/C at 128 each.
+Both actual Optimizer gradient and TrainingStateAverager channels are attacked;
+this is no longer two independent marker probes. Honest advertisements and
+native progress/recovery remain enabled. Fixed empty group bits and prepositioned
+holders bound this to local capture, not moving-bucket tracking or acquisition.
+
+| Condition | D/C target crossing | Confirmed | Final worst D/C loss |
+|---|---:|---:|---:|
+| Ordinary baseline | 62s | 71s | 0.000508365 |
+| Capture without exclusion | 153s | 162s | 0.0466232 |
+| Gradient exclusion | Not reached by 180s | — | 0.170960 |
+| Gradient + parameter exclusion | Not reached by 180s | — | 0.247617 |
+
+Target: both D/C below 10% of their own initial loss for ten consecutive
+one-second evaluations. Censored conditions are not assigned a crossing time.
+The combined arm has six X-led gradient groups containing A and three X-led
+state groups containing A; nine completed D/C gradient outputs and four
+parameter outputs use A-excluded rosters. All four cases pass raw numerical,
+workload, SGD, evaluation, clock and cleanup checks. Independent reanalysis
+exactly reproduces the saved analyses: 476 completed per-node reducer groups
+reconstructed; nine incomplete groups retained separately. Group counts are
+assembled groups, not every matchmaking attempt or a deployment success rate.
+
+This establishes the combined mechanism during native training and shows learning
+harm in one pilot seed. It does not establish reproducibility or the additional
+causal effect of parameter omission beyond gradient omission. Capture-control
+shares all capture/admission/timing settings with both attacks and is the matched
+omission control. Ordinary baseline uses matchmaking_time=1s; capture fixtures
+use 0.35s at X and 3s at honest peers, so that contrast bundles scheduling and
+capture effects. Native downloads remain enabled; dual exclusion recorded two
+successful X-to-D downloads and no direct A-to-D/C download. Do not infer complete
+removal of A's indirect influence. No seed expansion or simulation sweep followed.
+
+Implementation commits: `368eb6a`, `0e8947f`. Fifty-eight native-focused tests pass.
+Smoke `_a` retains the X/B evaluator naming error; smoke `_b` passes with gradient
+exposure only. Pilot `_a` retains capture-control evidence failures: chunks logged
+at wire receipt can arrive after sender bans, and tensor snapshots after unlock
+can race with buffer reset. Pilot `_b` records accepted reducer inputs and locked
+tensor snapshots, without tuning workload/attack settings. Previous artifacts
+remain unchanged. Independent review and inspectable inventory:
+`results/capture_training_review_20261021_a/REPORT.md`. All native windows ended
+and owned-process audits report zero survivors. The separate dominant-compute
+C2 recovery and C3 simulation gates below remain unresolved.
+
 **Completed 2026-10-21: record-holder control + attacker leadership + exclusion.**
 User requested a native combination test after the tracking smoke. A separate
 `recordholder_exclusion_smoke.py` runs two policy-matched arms, omission off

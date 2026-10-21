@@ -1,0 +1,40 @@
+{
+  "schema": "capture-training-v1",
+  "mode": "pilot",
+  "condition": "baseline",
+  "treatment": "gradient_exclusion",
+  "seed": 501,
+  "duration": 180,
+  "active": [
+    "A",
+    "X",
+    "D",
+    "C"
+  ],
+  "run_id": "capture_e7a763089a384aa192df859f1736a756",
+  "rates": {
+    "A": 896,
+    "X": 128,
+    "D": 128,
+    "C": 128
+  },
+  "workload_stream_alias": {
+    "X": "B"
+  },
+  "gradient_leader_fixture": false,
+  "topology": {
+    "participants": 4,
+    "holders": 40,
+    "bootstrap": 1
+  },
+  "state_sharing": true,
+  "average_state_every": 1,
+  "fixed_empty_group_bits": true,
+  "dim": 48,
+  "target_batch_size": 4096,
+  "learning_rate": 0.1,
+  "microbatch_size": 32,
+  "threshold_fraction": 0.1,
+  "confirmation_evaluations": 10,
+  "maximum_evaluation_gap": 1.5
+}

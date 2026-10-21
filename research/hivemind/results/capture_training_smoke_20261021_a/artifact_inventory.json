@@ -1,0 +1,205 @@
+{
+  "description": "Frozen local evidence; paths relative to this experiment directory.",
+  "files": [
+    {
+      "path": "REPORT.md",
+      "bytes": 808,
+      "sha256": "13f661dd667fcc82bd089fd798309bef9e44659a0d7ad70fd47a3ed2a9ad90e4"
+    },
+    {
+      "path": "capture_control/clock_audit.json",
+      "bytes": 264,
+      "sha256": "491b23140154f84f99a415d1c65a641757aeafd41bf3d2251ea11c1a58808a91"
+    },
+    {
+      "path": "capture_control/config.json",
+      "bytes": 773,
+      "sha256": "ea644f1437c7af10b647b165eb14cb76db7abde8ef87c4da683ae3f6dbcf741b"
+    },
+    {
+      "path": "capture_control/evaluation_data.npz",
+      "bytes": 743831,
+      "sha256": "b79fc8d2a3985735bae2040f9c697009b188bb16d455b509dcb7a43edd302af1"
+    },
+    {
+      "path": "capture_control/evaluations.jsonl",
+      "bytes": 61046,
+      "sha256": "5f19703da666a6e81169c4b26dbbd5d78e1d3925ca22b092ede1f07bab80bfff"
+    },
+    {
+      "path": "capture_control/events_A_2066524.jsonl",
+      "bytes": 1009656,
+      "sha256": "093c23cd0c5332f82a986d6e1a1e7fb7c56d6d406b8459cd52aaed133dbb4e15"
+    },
+    {
+      "path": "capture_control/events_A_2067344.jsonl",
+      "bytes": 31735,
+      "sha256": "635737e5e15f62b29f8d7557f683af6c8e3eb425b84414b317501bc0e4aed44b"
+    },
+    {
+      "path": "capture_control/events_A_2067353.jsonl",
+      "bytes": 66893,
+      "sha256": "cdf2d4cb12e2dc8c6b40fa292832fea03a8156dde496c215d92b417e06d52fe7"
+    },
+    {
+      "path": "capture_control/events_C_2066543.jsonl",
+      "bytes": 174346,
+      "sha256": "dfb64359fd079829632cd960f3cdd909359d1fd72ce23b7345d956b858113c58"
+    },
+    {
+      "path": "capture_control/events_C_2067287.jsonl",
+      "bytes": 26097,
+      "sha256": "ae0b098b26c159c8d6adce7c5f1631889f3e64aecb75163fa78e60f37afcd14a"
+    },
+    {
+      "path": "capture_control/events_C_2067313.jsonl",
+      "bytes": 60578,
+      "sha256": "02f7903b0b4fd0c110332d7a5baab085b38e47b0f3837182e133eaf8800e7572"
+    },
+    {
+      "path": "capture_control/events_D_2066535.jsonl",
+      "bytes": 72401,
+      "sha256": "09664479ef43e0e87d834729ec5b63f5923e0e9060afa25eeb7ad76d344fc429"
+    },
+    {
+      "path": "capture_control/events_D_2067288.jsonl",
+      "bytes": 678270,
+      "sha256": "9f55e2185094e01c8461a890003383a3511eb315afd3f9040d5e0ab7111cb623"
+    },
+    {
+      "path": "capture_control/events_D_2067314.jsonl",
+      "bytes": 54722,
+      "sha256": "71c05b925ec5612b3d214b238d6f7fe79466725eb328c03a90e818129b504afd"
+    },
+    {
+      "path": "capture_control/events_X_2066529.jsonl",
+      "bytes": 174428,
+      "sha256": "90bb13cce43509da509bd9a2016bd4c2dbd4364655d57d5453fb4268174a1d0d"
+    },
+    {
+      "path": "capture_control/events_X_2067286.jsonl",
+      "bytes": 28097,
+      "sha256": "b39ef8db0e266752574b5ee5bd52472508c85b032a1a3578020b49c63bf0399e"
+    },
+    {
+      "path": "capture_control/events_X_2067315.jsonl",
+      "bytes": 97136,
+      "sha256": "6aa2ee7da7433c191ae7b58f32e8956700cb57fe63916a0286d48ba9a5f5d64a"
+    },
+    {
+      "path": "capture_control/holder_events.jsonl",
+      "bytes": 51834261,
+      "sha256": "706506ec7cdaf18dadf7e4ccd9ede850ccd097bc3b2eb0dbaea92863c5cfdb38"
+    },
+    {
+      "path": "capture_control/identities.json",
+      "bytes": 3266,
+      "sha256": "f920250c543dc03863907ca4f5aaf4f8c42b81077f68054b25513a3bb5e6571a"
+    },
+    {
+      "path": "capture_control/keys.json",
+      "bytes": 582,
+      "sha256": "26984afcc0f39d6543b4afdcfb9f1214f1ff0f3d7e06e670cbf38872ffec8574"
+    },
+    {
+      "path": "capture_control/outcome.json",
+      "bytes": 158,
+      "sha256": "cfae12460328422a1aa38575122d8ccc34134ab557aee5c760b776dfdf453d08"
+    },
+    {
+      "path": "capture_control/owned_processes.json",
+      "bytes": 2961,
+      "sha256": "050d7f0313f4a327c0cb7595e42c501c31913bf71776d2554e4f75442af302c0"
+    },
+    {
+      "path": "capture_control/provenance.json",
+      "bytes": 3382,
+      "sha256": "d2df30520ac76cbda876cc6fdad09338424c4e8c4a0bd765c00c69ac0c377767"
+    },
+    {
+      "path": "capture_control/release.json",
+      "bytes": 86,
+      "sha256": "397f4269f72c83e5cb9b89955e56cdb045f276a2682abe6228af1f57f90a0959"
+    },
+    {
+      "path": "capture_control/shutdown.json",
+      "bytes": 3377,
+      "sha256": "1206338b55e72775e80f72f9e4f064e31aadd8a5f9fb79a71ff7283b8b3f6489"
+    },
+    {
+      "path": "capture_control/worker.log",
+      "bytes": 6208,
+      "sha256": "f8f9c0de97b427bf5aa8bddc8a9926e98d3b3a62d93e96d77733ae00235bec27"
+    },
+    {
+      "path": "harness/analyze_capture_training.py",
+      "bytes": 19112,
+      "sha256": "87778908cd41ece328f7c421f965bd3e3dfc1968657fddea8d65bc0108463b79"
+    },
+    {
+      "path": "harness/analyze_compute_exclusion.py",
+      "bytes": 62187,
+      "sha256": "36866db510f6cfd61387421ccda3876c7252895b56d31ecc759867c3135fe88e"
+    },
+    {
+      "path": "harness/announcement_artifacts.py",
+      "bytes": 2271,
+      "sha256": "aea9921c4abbb77bb256271e21bfbb93cf8e9bffd601997748b609ede6af1ef7"
+    },
+    {
+      "path": "harness/announcement_probe.py",
+      "bytes": 32243,
+      "sha256": "016923fb76a8d8ed64af1697045c5ba710bbbe40f3835c586f407a3118914c8c"
+    },
+    {
+      "path": "harness/capture_training_hooks.py",
+      "bytes": 6689,
+      "sha256": "87cf3f1558661f66c4c76de179b14756ad0d1fb8d866d7c94c086378c81934ab"
+    },
+    {
+      "path": "harness/compute_native_hooks.py",
+      "bytes": 39420,
+      "sha256": "b1120b4d9a8c3bfe97b008ba150bbf1d449e4a34f13d5586fe93b012f58cc8db"
+    },
+    {
+      "path": "harness/compute_workload.py",
+      "bytes": 16002,
+      "sha256": "28c3af3215fd0d8eae2bcb190c851bdb7d709de8e9d5338e7167347cbb9801ff"
+    },
+    {
+      "path": "harness/recordholder_exclusion_smoke.py",
+      "bytes": 60978,
+      "sha256": "05afc1cdda289f53861bdf947c2e2c4e3164962910facffa75665b7a824e56ca"
+    },
+    {
+      "path": "harness/run_capture_training.py",
+      "bytes": 23321,
+      "sha256": "71fe9ff8e6ca97f91d4ddd6950ffddeca07b45ad260097b045377cf4c7bfd5f1"
+    },
+    {
+      "path": "harness/run_compute_exclusion.py",
+      "bytes": 30776,
+      "sha256": "f016cb9cb58703f8988f8173b4d533d1162909fdc4d1c24cc00a6242388d72af"
+    },
+    {
+      "path": "harness/tracking_combination_smoke.py",
+      "bytes": 51580,
+      "sha256": "b12547dfe098e76d4ab9ad4e9d6792734db09595176d74d373d4c6394887b484"
+    },
+    {
+      "path": "report.json",
+      "bytes": 18,
+      "sha256": "c41b9cea4116b4b920816f5df9ef44c80d79873f8801769d3072885ee6754e73"
+    },
+    {
+      "path": "source_hashes.json",
+      "bytes": 1092,
+      "sha256": "f1e802390268187c061a33d49274cb0adf44952558aceb302c590d6c4599dbc6"
+    },
+    {
+      "path": "status.json",
+      "bytes": 146,
+      "sha256": "5af1d304a046bdd87ab8e91300b07c5d561ae3d3a31cbf44862b9e6fac2270c1"
+    }
+  ]
+}

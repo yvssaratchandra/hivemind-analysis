@@ -8,8 +8,8 @@ rate or a confirmed convergence-effect estimate.
 | Implementation status | State |
 |---|---|
 | Native integration and focused checks | Complete; 58 focused checks pass |
-| Bounded four-condition training pilot | Fresh pilot pending after instrumentation diagnosis |
-| Raw evidence review, report and commits | Pending |
+| Bounded four-condition training pilot | Complete under capture_training_pilot_20261021_b; four cases valid |
+| Raw evidence review, report and commits | Complete; independent raw reanalysis matches all four cases |
 
 ## Approach and data flow
 
@@ -93,3 +93,20 @@ Ordinary baseline uses matchmaking_time=1s; the capture fixture retains the mark
 smoke's 0.35s X / 3s honest settings. Therefore the ordinary-baseline contrast
 includes these scheduling settings. The causal omission comparison is against
 capture_control, which shares all scheduling, topology and admission settings.
+
+## Completed pilot
+
+All four `_b` cases and immutable inventories pass independent reanalysis. D/C
+crossing/confirmation: baseline 62/71s; capture_control 153/162s; neither exclusion
+condition reaches the threshold within 180s. Final worst D/C losses are 0.000508365,
+0.0466232, 0.170960 and 0.247617 respectively. Dual exclusion produces nine completed
+A-excluded D/C gradient outputs and four parameter outputs, on six and three
+X-led native groups containing A respectively. This is one-seed evidence of the
+complete local mechanism and learning harm, not a reproducible slowdown estimate.
+Parameter omission's incremental causal effect remains unestablished.
+
+All clocks and cleanup checks pass; no native workers remain. Independent review
+preserves incomplete groups, actual submitted samples and SGD counts, A's final
+loss and native state-download routes. See
+`results/capture_training_review_20261021_a/REPORT.md` and its inventory. No further
+seeds or simulation sweep are authorized by completing this pilot.
