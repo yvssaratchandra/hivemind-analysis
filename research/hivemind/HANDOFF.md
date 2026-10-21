@@ -1,5 +1,18 @@
 # Handoff — read this first
 
+**Configured only 2026-10-21: longer native time-to-target follow-up.**
+User rejected the 180s cap as insufficient for measuring the actual slowdown,
+then explicitly said **do not run yet; configure it**. Preset
+`configs/capture_training_until_target_20261021_a.json` covers all four conditions,
+seed 501, 1800s maximum training each, stopping after the same ten consecutive
+D/C target-loss evaluations. No new native suite has been launched. Wait for the
+user to ask to start. The evaluator uses a separate training-stop signal so
+record holders remain available during in-flight native calls. Independent
+analysis validates the stop record and reports observed time differences/ratios
+against both controls; no crossing is imputed if the cap is reached. Timing
+resolution stays one second. See `CAPTURE_TRAINING.md` for the prepared command
+and implementation status. Old fixed-duration behavior and results are preserved.
+
 **Completed 2026-10-21: capture + exclusion during actual Optimizer training.**
 `CAPTURE_TRAINING.md` specifies the separate four-condition native pilot,
 `capture_training_pilot_20261021_b`, seed 501, 180 seconds per condition,

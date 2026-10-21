@@ -11,6 +11,47 @@ rate or a confirmed convergence-effect estimate.
 | Bounded four-condition training pilot | Complete under capture_training_pilot_20261021_b; four cases valid |
 | Raw evidence review, report and commits | Complete; independent raw reanalysis matches all four cases |
 
+## Longer time-to-target configuration — prepared, not started
+
+User requested a higher cap to observe actual target times, then explicitly asked
+to configure only. No native run or smoke is authorized by this configuration step.
+
+| Implementation status | State |
+|---|---|
+| Saved four-condition preset, seed 501, 1800s cap each | Configured only |
+| Stop after ten consecutive D/C target evaluations | Implemented; offline checks pass |
+| Additional seconds and ratios vs both controls | Implemented; censored pairs never imputed |
+| Longer native execution | Not started; wait for user instruction |
+
+Preset: `configs/capture_training_until_target_20261021_a.json`. All four conditions
+retain the previous workload, topology, policies, rates and target definition.
+Each may train for up to 30 minutes; all four could therefore consume up to two
+hours plus startup/cleanup. They stop early once both D/C stay below 10% of their
+own initial loss for ten consecutive one-second evaluations. Crossing and
+confirmation remain distinct. Measurement resolution is one second; raising a
+finite cap cannot guarantee that a condition converges.
+
+The evaluator atomically records `target_reached.json` before signalling a
+separate training-stop event. Workers finish current native calls, while holders
+stay available until the controller owns shutdown. The analyzer independently
+checks the stop record against raw evaluations and rejects unexplained early
+termination. Legacy fixed-duration execution remains the default. Reports add
+observed crossing differences and ratios against baseline and capture_control;
+final losses in early-stop runs are not a common-time comparison. No completed
+native artifacts have been changed.
+
+Prepared command for a later explicit start (not executed):
+
+```sh
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
+PYTHONPATH=research/hivemind:research/agora/.runtime/venv/lib/python3.11/site-packages \
+/home/sarat/.local/bin/python3.11 research/hivemind/run_capture_training.py \
+  --config research/hivemind/configs/capture_training_until_target_20261021_a.json
+```
+
+The JSON is validated before launch and copied into the future suite inventory.
+`--configure-only FILE` writes settings and exits before any worker is started.
+
 ## Approach and data flow
 
 Use four actual Optimizers A/X/D/C, forty DHT-only holders (twenty near each
