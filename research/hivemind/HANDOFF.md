@@ -1,5 +1,28 @@
 # Handoff — read this first
 
+**Prepared 2026-10-27: first Vera baseline; not executed on Vera.**
+The user manually operates Vera; agents have no cluster access. See
+`VERA_BASELINE.md` for inspection, setup, submission and evidence-sharing steps.
+`baseline.slurm` and `run_vera_baseline.py` prepare one honest `baseline4`
+aggregation, seed 1: one node/task, four allocated CPUs, 8 GiB, five-minute
+Slurm limit, 120-second worker limit, one thread per numerical library, loopback
+only, no GPU, retry, requeue, sweep or automatic reordering follow-up. The
+controller rejects unexpected allocations and uses the existing single-condition
+analyzer; the earlier chat batch example incorrectly used the four-condition
+suite analyzer and must not be reused. Shutdown, numerical evidence and
+controller status must all pass. Failed or partial runs retain an inventory;
+forced cleanup prevents acceptance. Process ownership uses PID/create-time pairs.
+
+Local verification: 22 new offline/controller/lifecycle tests plus 32 existing
+announcement tests pass under isolated Python 3.11.17 with psutil 7.2.2; shell
+syntax and diff whitespace checks pass. Tests use synthetic numerical fixtures
+and harmless dummy child processes, not native Hivemind or Slurm. ShellCheck
+is unavailable locally. No Vera account, dependency installation, allocation,
+transport, timing or resource use has been verified. First operator step is
+read-only checkout/account/quota/environment inspection. No cluster job has
+been submitted. Existing native and simulation experiment restrictions below
+remain in force; this work prepares only the separately requested first baseline.
+
 **Configured only 2026-10-21: longer native time-to-target follow-up.**
 User rejected the 180s cap as insufficient for measuring the actual slowdown,
 then explicitly said **do not run yet; configure it**. Preset

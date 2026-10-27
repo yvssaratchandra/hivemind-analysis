@@ -11,3 +11,7 @@ presentations/rendered/*-previews/
 presentations/rendered/*-pdfinfo.txt
 presentations/rendered/*-text-bounds.html
 thesis_ad_history/Cyber_physical_report.pdf
+
+# Vera software and raw first-run artifacts are local; each run writes an inventory.
+/.cluster-venv/
+/results/vera_baseline_*/
