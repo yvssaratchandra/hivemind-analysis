@@ -1,5 +1,27 @@
 # Handoff — read this first
 
+**Vera provenance fix/offline review prepared 2026-10-27:** operator setup job
+10549676 passed explicit dependency and native import preflight checks (exit 0).
+Baseline job 10549678 then completed four peer operations with correct means and
+clean native/controller cleanup, but analysis failed. Operator-provided evidence
+reports exactly `suite harness_hashes.json is missing`; all fourteen native
+source hashes verified. These are operator-reported results, not independently
+replayed local raw data. The controller saved path-keyed `source_hashes.json`
+and frozen harness files but omitted the analyzer's basename-keyed manifest.
+The writer now emits both. Its integration test had accidentally supplied a
+fixture manifest; it now tests the actual controller output and reproduces the
+missing-manifest failure. Local checks: 31 new-suite tests plus 32 existing
+announcement tests pass on Python 3.11.17; shell syntax/whitespace checks pass.
+
+`run_vera_baseline.py --review-run ORIGINAL --review-output NEW_DIRECTORY`
+verifies original inventory/worker/cleanup and frozen source hashes, then derives
+the missing manifest and reanalyzes a copy. No native peers or jobs are started;
+original bytes and failed execution status remain unchanged. Review result and
+provenance go to `review.json`; other evidence failures still fail acceptance.
+See `VERA_BASELINE.md` for the exact job-10549678 offline command. No rerun is
+needed before inspecting this review. Acceptance remains pending the operator's
+review output; do not mark the original Slurm execution successful.
+
 **Vera runtime repair prepared 2026-10-27:** corrected operator preflight job
 10549166 passed all allocation guards, then failed importing missing NumPy.
 Operator-provided inventory shows only CPU Torch 2.7.0+cpu, psutil 7.2.2 and

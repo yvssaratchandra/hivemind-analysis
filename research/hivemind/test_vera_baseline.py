@@ -8,6 +8,7 @@ import signal
 import subprocess
 import sys
 import tempfile
+import tarfile
 import time
 import unittest
 from unittest.mock import patch
@@ -186,7 +187,7 @@ class ControllerTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         self.calls = []
 
-    def invoke(self, *, preflight=False, fail=None):
+    def invoke(self, *, preflight=False, fail=None, omit_manifest=False):
         def fake_bounded(command, directory, name, seconds, deadline, owned):
             self.calls.append(name)
             (directory / f'{name}.log').write_text('offline fixture\n')
@@ -195,7 +196,24 @@ class ControllerTests(unittest.TestCase):
             if name == 'worker':
                 case = directory / 'baseline4'
                 case.mkdir()
+                # The generic fixture writes its own manifest. Preserve the one
+                # actually produced by our controller so it cannot mask omissions.
+                manifest = directory / 'harness_hashes.json'
+                original = manifest.read_bytes() if manifest.exists() else None
                 _condition_artifacts(case, 'baseline4')
+                if original is None or omit_manifest:
+                    manifest.unlink()
+                else:
+                    manifest.write_bytes(original)
+                with tarfile.open(case / 'sources.tar.gz', 'r:gz') as archive:
+                    contents = {member.name: archive.extractfile(member).read()
+                                for member in archive.getmembers() if member.isfile()}
+                contents['announcement_probe.py'] = (directory / 'harness/announcement_probe.py').read_bytes()
+                with tarfile.open(case / 'sources.tar.gz', 'w:gz') as archive:
+                    for name, data in contents.items():
+                        member = tarfile.TarInfo(name)
+                        member.size = len(data)
+                        archive.addfile(member, io.BytesIO(data))
             if name == 'audit':
                 path = directory / 'baseline4/shutdown.json'
                 data = json.loads(path.read_text())
@@ -230,6 +248,11 @@ class ControllerTests(unittest.TestCase):
         self.assertEqual(self.invoke(preflight=True), 0)
         self.assertNotIn('worker', self.calls)
 
+    def test_missing_controller_manifest_reproduces_observed_failure(self):
+        self.assertEqual(self.invoke(omit_manifest=True), 1)
+        analysis = json.loads((self.root / 'vera_baseline_123/baseline4/analysis.json').read_text())
+        self.assertIn('suite harness_hashes.json is missing', analysis['evidence']['errors'])
+
     def test_failed_preflight_cannot_start_worker_or_pass(self):
         self.assertEqual(self.invoke(fail='preflight'), 1)
         self.assertNotIn('worker', self.calls)
@@ -241,6 +264,68 @@ class ControllerTests(unittest.TestCase):
         with self.assertRaises(FileExistsError):
             self.invoke()
         self.assertEqual(self.calls, [])
+
+
+class OfflineReviewTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.source = Path(self.temp.name) / 'original'
+        self.case = self.source / 'baseline4'
+        self.case.mkdir(parents=True)
+        _condition_artifacts(self.case, 'baseline4')
+        (self.source / 'harness_hashes.json').unlink()
+        with tarfile.open(self.case / 'sources.tar.gz', 'r:gz') as archive:
+            data = archive.extractfile('announcement_probe.py').read()
+        (self.source / 'harness').mkdir()
+        (self.source / 'harness/announcement_probe.py').write_bytes(data)
+        runner.write(self.source / 'source_hashes.json', {
+            'research/hivemind/announcement_probe.py': runner.hashlib.sha256(data).hexdigest()})
+        runner.write(self.source / 'status.json', {'status': 'failed', 'preflight_only': False})
+        runner.write(self.source / 'worker_outcome.json', {'exitcode': 0, 'reason': None})
+        runner.write(self.source / 'controller_cleanup.json', {'forced_cleanup': [], 'surviving_pids': []})
+        shutdown = json.loads((self.case / 'shutdown.json').read_text())
+        shutdown.update(forced_cleanup=[], error=None, worker_exitcode=0,
+                        controller_audited_after_worker_exit=True)
+        runner.write(self.case / 'shutdown.json', shutdown)
+        runner.inventory(self.source)
+        self.output = Path(self.temp.name) / 'review'
+
+    def original_bytes(self):
+        return {str(p.relative_to(self.source)): p.read_bytes()
+                for p in self.source.rglob('*') if p.is_file()}
+
+    def test_review_derives_manifest_without_changing_original(self):
+        before = self.original_bytes()
+        self.assertTrue(runner.review_run(self.source, self.output))
+        self.assertEqual(before, self.original_bytes())
+        self.assertEqual(json.loads((self.output / 'review.json').read_text())['status'], 'passed')
+        self.assertEqual(json.loads((self.output / 'status.json').read_text())['status'], 'failed')
+        self.assertTrue((self.output / 'original_artifact_inventory.json').exists())
+
+    def test_original_inventory_mismatch_stops_before_copy(self):
+        (self.case / 'outputs.json').write_text('{}')
+        with self.assertRaisesRegex(ValueError, 'inventory mismatch'):
+            runner.review_run(self.source, self.output)
+        self.assertFalse(self.output.exists())
+
+    def test_frozen_source_mismatch_still_rejected(self):
+        (self.source / 'harness/announcement_probe.py').write_text('wrong source')
+        runner.inventory(self.source)
+        with self.assertRaisesRegex(ValueError, 'Frozen harness mismatch'):
+            runner.review_run(self.source, self.output)
+
+    def test_other_numerical_failure_cannot_be_repaired(self):
+        data = json.loads((self.case / 'outputs.json').read_text())
+        data['A']['final'][0][0] = -999
+        runner.write(self.case / 'outputs.json', data)
+        runner.inventory(self.source)
+        self.assertFalse(runner.review_run(self.source, self.output))
+
+    def test_review_does_not_overwrite_or_copy_into_original(self):
+        for destination in (self.source, self.source / 'review'):
+            with self.assertRaises(ValueError):
+                runner.review_run(self.source, destination)
 
 
 if __name__ == '__main__':

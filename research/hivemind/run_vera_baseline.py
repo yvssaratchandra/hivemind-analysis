@@ -12,6 +12,7 @@ import json
 import os
 from pathlib import Path
 import resource
+import shutil
 import signal
 import subprocess
 import sys
@@ -203,6 +204,75 @@ def inventory(directory):
         if path.is_file() and path.name != 'artifact_inventory.json']})
 
 
+def review_run(source, destination):
+    """Verify original evidence, reconstruct only the omitted manifest in a copy.
+
+    This never starts peers, audits current processes or changes the original run.
+    Keep the original failed execution status separate from the offline review.
+    """
+    source, destination = source.resolve(), destination.resolve()
+    if destination.exists() or destination.is_relative_to(source):
+        raise ValueError('Review output must be a new directory outside the original run')
+    if output_bytes(source) > OUTPUT_LIMIT or any(p.is_symlink() for p in source.rglob('*')):
+        raise ValueError('Refusing oversized or symlink-containing evidence')
+    original_inventory = json.loads((source / 'artifact_inventory.json').read_text())
+    verified = set()
+    for entry in original_inventory['files']:
+        relative = Path(entry['path'])
+        path = (source / relative).resolve()
+        if relative.is_absolute() or not path.is_relative_to(source) or relative in verified:
+            raise ValueError('Unsafe or duplicate inventory path')
+        data = path.read_bytes()
+        if len(data) != entry['bytes'] or hashlib.sha256(data).hexdigest() != entry['sha256']:
+            raise ValueError(f'Original inventory mismatch: {relative}')
+        verified.add(relative)
+    present = {p.relative_to(source) for p in source.rglob('*') if p.is_file()}
+    if present != verified | {Path('artifact_inventory.json')}:
+        raise ValueError('Original run has uninventoried or missing files')
+    if (source / 'harness_hashes.json').exists():
+        raise ValueError('This review only reconstructs the missing harness manifest')
+    status = json.loads((source / 'status.json').read_text())
+    if status.get('status') != 'failed' or status.get('preflight_only') is not False:
+        raise ValueError('Expected a failed native baseline run, not a preflight or accepted run')
+    worker = json.loads((source / 'worker_outcome.json').read_text())
+    cleanup_info = json.loads((source / 'controller_cleanup.json').read_text())
+    if worker.get('exitcode') != 0 or worker.get('reason') is not None:
+        raise ValueError('Original native worker did not complete successfully')
+    if cleanup_info != {'forced_cleanup': [], 'surviving_pids': []}:
+        raise ValueError('Original controller cleanup was not clean')
+    hashes = json.loads((source / 'source_hashes.json').read_text())
+    reconstructed = {}
+    for name, digest in hashes.items():
+        relative = Path(name)
+        if relative.is_absolute() or '..' in relative.parts:
+            raise ValueError('Unsafe recorded source path')
+        snapshot = source / 'harness' / relative.name
+        if hashlib.sha256(snapshot.read_bytes()).hexdigest() != digest:
+            raise ValueError(f'Frozen harness mismatch: {name}')
+        if relative.name in reconstructed:
+            raise ValueError('Ambiguous frozen harness names')
+        reconstructed[relative.name] = digest
+    if 'announcement_probe.py' not in reconstructed:
+        raise ValueError('Missing recorded announcement harness hash')
+    config = json.loads((source / 'baseline4/config.json').read_text())
+    if config.get('condition') != 'baseline4' or config.get('seed') != 1:
+        raise ValueError('Expected the seed-1 baseline only')
+    shutil.copytree(source, destination)
+    (destination / 'artifact_inventory.json').rename(destination / 'original_artifact_inventory.json')
+    write(destination / 'harness_hashes.json', reconstructed)
+    passed = validate_case(destination / 'baseline4')
+    write(destination / 'review.json', {
+        'status': 'passed' if passed else 'failed', 'source_run': str(source),
+        'original_execution_status': status, 'verified_original_files': len(verified),
+        'reconstructed_file': 'harness_hashes.json',
+        'derivation': 'Recorded source_hashes.json cross-checked with original frozen harness files',
+        'analysis_harness': str(Path(__file__).resolve()),
+        'analysis_harness_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'new_native_execution': False})
+    inventory(destination)
+    return passed
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--package-root', type=Path)
@@ -210,7 +280,14 @@ def main():
     parser.add_argument('--output-root', type=Path, default=HERE / 'results')
     parser.add_argument('--preflight-only', action='store_true')
     parser.add_argument('--analyze-case', type=Path, help=argparse.SUPPRESS)
+    parser.add_argument('--review-run', type=Path, help='Offline review of a saved run; starts no peers')
+    parser.add_argument('--review-output', type=Path, help='New directory for derived review evidence')
     args = parser.parse_args()
+    if args.review_run or args.review_output:
+        if (not args.review_run or not args.review_output or args.analyze_case
+                or args.preflight_only or args.package_root or args.dependencies):
+            parser.error('Use --review-run and --review-output together, without execution options')
+        return 0 if review_run(args.review_run, args.review_output) else 1
     if args.analyze_case:
         return 0 if validate_case(args.analyze_case.resolve()) else 1
     allocation_info = allocation(os.environ)
@@ -247,6 +324,8 @@ def main():
         for path in files:
             (sources / path.name).write_bytes(path.read_bytes())
         write(directory / 'source_hashes.json', hashes)
+        write(directory / 'harness_hashes.json', {path.name: hashes[str(path.relative_to(ROOT))]
+                                                 for path in files})
         write(directory / 'host.json', {'hostname': os.uname().nodename,
               'python': sys.version, 'executable': sys.executable,
               'affinity': sorted(os.sched_getaffinity(0)),

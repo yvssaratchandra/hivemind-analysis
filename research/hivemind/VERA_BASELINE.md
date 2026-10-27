@@ -12,9 +12,9 @@ tests do not establish that this works on Vera.
 |---|---|
 | Native baseline and single-condition analysis | Reused; no native core changes |
 | Slurm wrapper and bounded controller | Implemented; local verification recorded in HANDOFF |
-| Vera account, checkout, environment and quota | Unverified; operator checks required |
-| Vera preflight | 10549158 rejected memory; corrected 10549166 passed allocation but failed importing missing NumPy |
-| Vera baseline execution | Not started |
+| Vera account, checkout, environment and quota | Operator verified account/main/quota; setup 10549676 passed dependency/import checks |
+| Vera preflight | Earlier failures 10549158/10549166 preserved; setup preflight passed |
+| Vera baseline execution | 10549678 completed native work/cleanup but failed analysis due to omitted harness manifest; offline review pending |
 
 ## 1. Inspect first — user on the login node
 
@@ -216,6 +216,46 @@ process containment is made from userspace monitoring alone.
 Keep this small experiment on `/cephyr`; do not assume that this choice scales
 to high-I/O experiments. Stop after one baseline. Review numerical results,
 Slurm CPU/memory usage, trace size and cleanup before planning reordering.
+
+## Offline provenance review of job 10549678 — no new allocation
+
+The operator-provided report shows correct means, four successful peers and
+clean shutdown; its only evidence error is `suite harness_hashes.json is missing`.
+The new controller had saved `source_hashes.json` and frozen harness files but
+omitted the analyzer's required basename-keyed `harness_hashes.json`. The writer
+is now corrected. This is a launcher integration failure, not justification to
+skip provenance validation or claim the failed job passed as submitted.
+
+After pulling the correction, run this lightweight offline review from the
+repository root. It imports no native Hivemind and submits/starts no jobs/peers:
+
+```bash
+research/hivemind/.cluster-venv/bin/python research/hivemind/run_vera_baseline.py \
+  --review-run research/hivemind/results/vera_baseline_10549678 \
+  --review-output research/hivemind/results/vera_baseline_10549678_review1
+```
+
+The review verifies the original inventory, successful worker and clean controller
+audit. It cross-checks recorded source hashes against the original frozen files,
+copies the run without overwriting anything, derives the missing manifest in
+the copy, and reruns all existing single-condition checks. It rejects modified
+or incomplete evidence and preserves other numerical/stream failures. It does
+not extract an archive onto the filesystem or use the current working harness
+as a substitute for the original recorded source.
+
+Share these generated outputs:
+
+```bash
+cat research/hivemind/results/vera_baseline_10549678_review1/review.json
+cat research/hivemind/results/vera_baseline_10549678_review1/REPORT.md
+```
+
+`review.json` is the derived offline review result. The original `status.json`
+remains `failed`, including in the review copy; do not relabel the original job
+as a successful execution. The derived inventory retains the original inventory
+as `original_artifact_inventory.json` and records review-script provenance.
+If review fails, share the error and stop; do not resubmit or alter raw evidence.
+Native baseline acceptance remains pending until this review's output is checked.
 
 ## Sources
 
