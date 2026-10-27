@@ -13,7 +13,7 @@ tests do not establish that this works on Vera.
 | Native baseline and single-condition analysis | Reused; no native core changes |
 | Slurm wrapper and bounded controller | Implemented; local verification recorded in HANDOFF |
 | Vera account, checkout, environment and quota | Unverified; operator checks required |
-| Vera preflight | Job 10549158 rejected effective memory before native imports; correction prepared |
+| Vera preflight | 10549158 rejected memory; corrected 10549166 passed allocation but failed importing missing NumPy |
 | Vera baseline execution | Not started |
 
 ## 1. Inspect first — user on the login node
@@ -67,7 +67,7 @@ python -m venv research/hivemind/.cluster-venv
 HM_PYTHON="$PWD/research/hivemind/.cluster-venv/bin/python"
 "$HM_PYTHON" -m pip install 'setuptools>=64' wheel 'grpcio-tools>=1.33.2,<1.68'
 "$HM_PYTHON" -m pip install torch==2.7.0 --index-url https://download.pytorch.org/whl/cpu
-"$HM_PYTHON" -m pip install . psutil
+"$HM_PYTHON" -m pip install -r requirements.txt . psutil
 "$HM_PYTHON" -m pip check
 ```
 
@@ -77,6 +77,36 @@ This is a starting installation recipe, **not a Vera-validated dependency lock**
 Stop at the first failure. Reusing an older installed Hivemind may require a
 reviewed reinstall: preflight rejects native files that differ from the checkout.
 Do not copy the Agora lock verbatim; it contains local machine paths.
+
+**Existing incomplete Vera environment (job 10549166):** the installed inventory
+contains CPU Torch, psutil and Torch's dependencies, but no NumPy or most of
+`requirements.txt`. Hivemind's installed metadata has no declared requirements,
+so `pip check` alone did not expose the omission. Retain the failed run evidence.
+Use the reviewed dependency-repair job below, not another baseline submission:
+
+```bash
+sbatch --test-only -A ACTUAL_ACCOUNT research/hivemind/baseline_setup.slurm
+sbatch -A ACTUAL_ACCOUNT research/hivemind/baseline_setup.slurm
+```
+
+Run the second command only if request validation succeeds. This single-node
+setup job requests two CPUs, 8 GiB (effective memory subject to Vera's policy)
+and 15 minutes, with no GPU or requeue. It repairs the **existing** venv, pins
+the already installed `torch==2.7.0+cpu`, explicitly installs repository
+requirements, avoids native-heavy source builds, and bounds network attempts
+and pip stages. It runs `pip check`, checks every repository requirement against
+installed metadata, and runs the native import preflight, which starts no peers.
+It does not rebuild Hivemind or fix package metadata. If package-server access
+or an available wheel is missing, stop and inspect the log; do not lift guards
+or repeatedly resubmit. A failed pip operation may leave partial changes inside
+the venv, which must be reviewed before further work.
+
+Setup evidence is under `results/vera_baseline_setup_JOBID/`: installer logs,
+input requirements, constraints, installed versions after successful installation,
+explicit dependency check, import preflight and `exitcode.txt`. Share the Slurm
+log and the failing stage's log. Success requires exit code zero and a successful
+preflight; stop afterward to review before manually submitting any baseline.
+The installation recipe itself has not been executed on Vera by an agent.
 
 The local-only `.gitignore` in this directory excludes the venv and first-run
 results. Keep bulky artifacts out of Git; the controller writes a hash inventory.

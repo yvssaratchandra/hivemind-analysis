@@ -1,5 +1,22 @@
 # Handoff — read this first
 
+**Vera runtime repair prepared 2026-10-27:** corrected operator preflight job
+10549166 passed all allocation guards, then failed importing missing NumPy.
+Operator-provided inventory shows only CPU Torch 2.7.0+cpu, psutil 7.2.2 and
+Torch dependencies; installed Hivemind metadata declares no requirements.
+`pip check` was therefore insufficient. Cleanup reports no forced cleanup or
+survivors; no native peers started. `baseline_setup.slurm` prepares a separate
+two-CPU, one-node, 15-minute dependency repair in the existing venv, installing
+`requirements.txt` explicitly while preserving CPU Torch and bounding pip/network
+attempts. It checks every requirement and runs import preflight, with no peer
+startup or automatic follow-up. Native-heavy dependencies require wheels.
+See `VERA_BASELINE.md`; user must pull, validate the Slurm request, submit once
+and share setup logs. Agents have not executed setup on Vera. The original
+baseline runtime remains unverified pending those checks.
+Local setup checks: Bash syntax, refusal outside Slurm, embedded Python 3.11
+syntax, and mocked complete/missing/old-version/wrong-Torch-build dependency
+cases pass. No installer or native preflight was run locally for this repair.
+
 **Vera preflight correction 2026-10-27:** user-submitted preflight job 10549158
 received four CPUs, one node/task, no GPU and 47,400 MiB effective memory despite
 the 8 GiB request (operator-provided Slurm log). The controller rejected its
