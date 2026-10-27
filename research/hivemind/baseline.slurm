@@ -9,6 +9,9 @@
 #SBATCH --no-requeue
 #SBATCH --output=slurm-%j.out
 
+# Vera may replace this memory request with its proportional per-CPU share.
+# The controller accepts 8192 or the observed 47400 MiB; it still requires 4 CPUs.
+
 set -eo pipefail
 cd "${SLURM_SUBMIT_DIR:?Submit from the repository root}"
 test -f research/hivemind/run_vera_baseline.py

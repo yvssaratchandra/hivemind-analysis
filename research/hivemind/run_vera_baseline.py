@@ -20,6 +20,9 @@ import time
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 OUTPUT_LIMIT = 256 * 1024 * 1024
+# 8192 is our request. Vera job 10549158 assigned 47400 MiB with four CPUs
+# (site-documented proportional node memory). Do not accept arbitrary increases.
+ALLOWED_MEMORY_MIB = (8192, 47400)
 THREAD_VARS = ('OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS',
                'BLIS_NUM_THREADS', 'NUMEXPR_NUM_THREADS', 'VECLIB_MAXIMUM_THREADS')
 STOP_SIGNAL = None
@@ -34,12 +37,15 @@ def write(path, data):
 def allocation(env):
     """Fail closed before any native import; Slurm CPUs need not be physical cores."""
     expected = {'SLURM_JOB_NUM_NODES': '1', 'SLURM_NTASKS': '1',
-                'SLURM_CPUS_PER_TASK': '4', 'SLURM_MEM_PER_NODE': '8192'}
+                'SLURM_CPUS_PER_TASK': '4'}
     if not env.get('SLURM_JOB_ID', '').isdigit():
         raise ValueError('A Slurm job is required; do not launch peers on a login node')
     for key, value in expected.items():
         if env.get(key) != value:
             raise ValueError(f'Unexpected allocation: {key}={env.get(key)!r}; expected {value}')
+    if env.get('SLURM_MEM_PER_NODE') not in tuple(map(str, ALLOWED_MEMORY_MIB)):
+        raise ValueError(f'Unexpected SLURM_MEM_PER_NODE={env.get("SLURM_MEM_PER_NODE")!r}; '
+                         f'allowed MiB: {ALLOWED_MEMORY_MIB}')
     if env.get('SLURM_JOB_CPUS_PER_NODE') not in ('4', '4(x1)'):
         raise ValueError('Expected four total allocated CPUs; refuse a larger/exclusive allocation')
     if not env.get('SLURM_JOB_ACCOUNT'):
@@ -53,7 +59,8 @@ def allocation(env):
         raise ValueError(f'Expected affinity to four allocated CPUs, got {affinity}')
     return {key: value for key, value in env.items()
             if key in (*expected, 'SLURM_JOB_ID', 'SLURM_JOB_ACCOUNT',
-                       'SLURM_JOB_PARTITION', 'SLURM_JOB_NODELIST', 'SLURM_JOB_CPUS_PER_NODE')}
+                       'SLURM_JOB_PARTITION', 'SLURM_JOB_NODELIST', 'SLURM_JOB_CPUS_PER_NODE',
+                       'SLURM_MEM_PER_NODE')}
 
 
 def child_limits():

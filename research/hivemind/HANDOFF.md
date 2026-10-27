@@ -1,10 +1,24 @@
 # Handoff — read this first
 
+**Vera preflight correction 2026-10-27:** user-submitted preflight job 10549158
+received four CPUs, one node/task, no GPU and 47,400 MiB effective memory despite
+the 8 GiB request (operator-provided Slurm log). The controller rejected its
+8,192-MiB equality check before native imports or peer startup; no run directory
+was created. C3SE's intro documents proportional memory for partial-node jobs.
+The guard now accepts exactly 8,192 or the observed 47,400 MiB, records effective
+memory, and retains all CPU/node/task/affinity/GPU guards. Arbitrary larger or
+smaller memory values remain rejected. This corrects the original allocation
+assumption; it does not measure RAM use or verify native operation. Local checks:
+25 controller/allocation/lifecycle tests and 32 announcement tests pass under
+Python 3.11.17; shell syntax and whitespace checks pass. The corrected preflight
+still needs a manual operator submission. Preserve the original Slurm log.
+
 **Prepared 2026-10-27: first Vera baseline; not executed on Vera.**
 The user manually operates Vera; agents have no cluster access. See
 `VERA_BASELINE.md` for inspection, setup, submission and evidence-sharing steps.
 `baseline.slurm` and `run_vera_baseline.py` prepare one honest `baseline4`
-aggregation, seed 1: one node/task, four allocated CPUs, 8 GiB, five-minute
+aggregation, seed 1: one node/task, four allocated CPUs, 8 GiB requested (effective
+memory subject to the site policy noted above), five-minute
 Slurm limit, 120-second worker limit, one thread per numerical library, loopback
 only, no GPU, retry, requeue, sweep or automatic reordering follow-up. The
 controller rejects unexpected allocations and uses the existing single-condition

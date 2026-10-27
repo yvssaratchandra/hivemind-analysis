@@ -13,7 +13,8 @@ tests do not establish that this works on Vera.
 | Native baseline and single-condition analysis | Reused; no native core changes |
 | Slurm wrapper and bounded controller | Implemented; local verification recorded in HANDOFF |
 | Vera account, checkout, environment and quota | Unverified; operator checks required |
-| Vera preflight and baseline execution | Not started |
+| Vera preflight | Job 10549158 rejected effective memory before native imports; correction prepared |
+| Vera baseline execution | Not started |
 
 ## 1. Inspect first — user on the login node
 
@@ -83,11 +84,21 @@ results. Keep bulky artifacts out of Git; the controller writes a hash inventory
 ## 3. Review and submit — user from the repository root
 
 First inspect the actual script. It requests **one node, one task, four Slurm
-CPUs, 8 GiB, five minutes**, no GPU, no exclusive node and no requeue. C3SE states
+CPUs, an 8 GiB memory request, five minutes**, no GPU, no exclusive node and no requeue. C3SE states
 that `-N 1` does not reserve an entire node. CPU affinity must contain exactly
 four logical CPUs; the controller refuses a different binding rather than
 assuming a CPU equals a physical core. If the check fails, inspect Slurm's
 allocation/binding before changing the request.
+
+**Observed Vera allocation:** preflight job 10549158 received four CPUs and
+47,400 MiB despite the 8 GiB request. C3SE documents proportional memory for
+partial-node jobs. The controller accepts exactly 8,192 MiB or this observed
+47,400 MiB, records the assigned value, and still rejects other values or more
+than four CPUs. The larger allocation is not a measured application requirement
+or actual RAM consumption. Do not describe this as an 8 GiB enforced job limit.
+The original job stopped before native imports/peers and before creating its
+result directory, so its evidence is the operator-provided Slurm output, not a
+missing successful run report. Retain that original log; do not overwrite it.
 
 ```bash
 cat research/hivemind/baseline.slurm
@@ -179,6 +190,7 @@ Slurm CPU/memory usage, trace size and cleanup before planning reordering.
 ## Sources
 
 - [C3SE batch jobs](https://www.c3se.chalmers.se/documentation/submitting_jobs/running_jobs/)
+- [Vera introduction: proportional memory for partial nodes](https://www.c3se.chalmers.se/documentation/first_time_users/intro-vera/slides/)
 - [Python environments and pip defaults](https://www.c3se.chalmers.se/documentation/module_system/python/)
 - [Storage, quota and temporary files](https://www.c3se.chalmers.se/documentation/file_transfer/filesystem/)
 - [Monitoring](https://www.c3se.chalmers.se/documentation/submitting_jobs/monitoring/)

@@ -29,6 +29,22 @@ class AllocationTests(unittest.TestCase):
         with patch('os.sched_getaffinity', return_value={0, 1, 2, 3}):
             self.assertEqual(runner.allocation(self.env)['SLURM_JOB_ID'], '123')
 
+    def test_observed_vera_memory_is_accepted_and_recorded(self):
+        with patch('os.sched_getaffinity', return_value={0, 1, 2, 3}):
+            result = runner.allocation({**self.env, 'SLURM_MEM_PER_NODE': '47400'})
+        self.assertEqual(result['SLURM_MEM_PER_NODE'], '47400')
+        self.assertEqual(result['SLURM_JOB_CPUS_PER_NODE'], '4')
+
+    def test_memory_allowance_does_not_allow_more_cpus(self):
+        with self.assertRaises(ValueError):
+            runner.allocation({**self.env, 'SLURM_MEM_PER_NODE': '47400',
+                               'SLURM_JOB_CPUS_PER_NODE': '64'})
+
+    def test_other_memory_values_still_fail(self):
+        for memory in ('', '0', '4096', '32768', '47401', '758400', '8G'):
+            with self.subTest(memory=memory), self.assertRaises(ValueError):
+                runner.allocation({**self.env, 'SLURM_MEM_PER_NODE': memory})
+
     def test_rejects_login_node_and_unexpected_resources(self):
         for key, value in [('SLURM_JOB_ID', ''), ('SLURM_JOB_NUM_NODES', '2'),
                            ('SLURM_NTASKS', '4'), ('SLURM_CPUS_PER_TASK', '64'),
