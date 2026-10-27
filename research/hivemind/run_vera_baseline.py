@@ -12,6 +12,7 @@ import json
 import os
 from pathlib import Path
 import resource
+import runpy
 import shutil
 import signal
 import subprocess
@@ -164,8 +165,9 @@ def bounded(command, directory, name, seconds, deadline, owned):
     return result
 
 
-def validate_case(case):
-    from analyze_announcement_probe import analyze_condition
+def validate_case(case, analyze_condition=None):
+    if analyze_condition is None:
+        from analyze_announcement_probe import analyze_condition
     analysis = analyze_condition(case)
     outputs = json.loads((case / 'outputs.json').read_text())
     shutdown = json.loads((case / 'shutdown.json').read_text())
@@ -260,14 +262,28 @@ def review_run(source, destination):
     shutil.copytree(source, destination)
     (destination / 'artifact_inventory.json').rename(destination / 'original_artifact_inventory.json')
     write(destination / 'harness_hashes.json', reconstructed)
-    passed = validate_case(destination / 'baseline4')
+    # Preserve review code separately from the original experiment's harness.
+    # Execute the saved analyzer so a cached import cannot differ from the record.
+    review_sources = destination / 'review_code'
+    review_sources.mkdir(exist_ok=False)
+    review_code = {}
+    for path in (Path(__file__).resolve(), HERE / 'analyze_announcement_probe.py'):
+        data = path.read_bytes()
+        snapshot = review_sources / path.name
+        snapshot.write_bytes(data)
+        review_code[path.name] = {'source_path': str(path),
+                                 'snapshot': str(snapshot.relative_to(destination)),
+                                 'sha256': hashlib.sha256(data).hexdigest()}
+    analyzer = runpy.run_path(str(review_sources / 'analyze_announcement_probe.py'))
+    passed = validate_case(destination / 'baseline4', analyzer['analyze_condition'])
     write(destination / 'review.json', {
         'status': 'passed' if passed else 'failed', 'source_run': str(source),
         'original_execution_status': status, 'verified_original_files': len(verified),
         'reconstructed_file': 'harness_hashes.json',
         'derivation': 'Recorded source_hashes.json cross-checked with original frozen harness files',
         'analysis_harness': str(Path(__file__).resolve()),
-        'analysis_harness_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'analysis_harness_sha256': review_code[Path(__file__).name]['sha256'],
+        'review_code': review_code,
         'new_native_execution': False})
     inventory(destination)
     return passed

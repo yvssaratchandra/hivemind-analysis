@@ -254,6 +254,11 @@ cat research/hivemind/results/vera_baseline_10549678_review1/REPORT.md
 remains `failed`, including in the review copy; do not relabel the original job
 as a successful execution. The derived inventory retains the original inventory
 as `original_artifact_inventory.json` and records review-script provenance.
+The `review_code/` directory preserves the review wrapper and analyzer, with
+their SHA256 hashes in `review.json` and the new inventory. The review executes
+that saved analyzer; the original experiment's `harness/` remains separate.
+For another review, use a fresh output name such as
+`vera_baseline_10549678_review2`; existing review directories are never overwritten.
 If review fails, share the error and stop; do not resubmit or alter raw evidence.
 Native baseline acceptance remains pending until this review's output is checked.
 

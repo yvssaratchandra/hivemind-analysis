@@ -1,5 +1,15 @@
 # Handoff — read this first
 
+**Offline review provenance corrected 2026-10-27:** review output now preserves
+both the current wrapper and analyzer under `review_code/` and records their
+hashes in `review.json` and the inventory. The review executes the saved analyzer
+instead of relying on a cached import. Original experiment sources and evidence
+remain unchanged. A regression test checks execution despite a poisoned cached
+analyzer, saved source bytes, and both hash records. No new Vera job is required;
+use a fresh review output directory. Operator review acceptance remains pending.
+Local validation: 32 Vera tests and 32 announcement tests pass on Python 3.11;
+diff whitespace checks pass. No native experiment or cluster job was run.
+
 **Vera provenance fix/offline review prepared 2026-10-27:** operator setup job
 10549676 passed explicit dependency and native import preflight checks (exit 0).
 Baseline job 10549678 then completed four peer operations with correct means and

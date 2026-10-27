@@ -309,6 +309,21 @@ class OfflineReviewTests(unittest.TestCase):
             runner.review_run(self.source, self.output)
         self.assertFalse(self.output.exists())
 
+    def test_review_preserves_and_executes_recorded_analyzer(self):
+        # A cached module must not silently substitute for the saved analyzer.
+        with patch('analyze_announcement_probe.analyze_condition',
+                   side_effect=AssertionError('Used cached analyzer')):
+            self.assertTrue(runner.review_run(self.source, self.output))
+        review = json.loads((self.output / 'review.json').read_text())
+        inventory = json.loads((self.output / 'artifact_inventory.json').read_text())
+        recorded = {entry['path']: entry['sha256'] for entry in inventory['files']}
+        for name in ('run_vera_baseline.py', 'analyze_announcement_probe.py'):
+            entry = review['review_code'][name]
+            saved = (self.output / entry['snapshot']).read_bytes()
+            self.assertEqual(saved, (runner.HERE / name).read_bytes())
+            self.assertEqual(runner.hashlib.sha256(saved).hexdigest(), entry['sha256'])
+            self.assertEqual(recorded[entry['snapshot']], entry['sha256'])
+
     def test_frozen_source_mismatch_still_rejected(self):
         (self.source / 'harness/announcement_probe.py').write_text('wrong source')
         runner.inventory(self.source)
