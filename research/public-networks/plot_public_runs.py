@@ -3,6 +3,7 @@
 import argparse
 from collections import Counter
 import hashlib
+import gzip
 import json
 import os
 from pathlib import Path
@@ -18,12 +19,19 @@ def records(snapshot):
     for entry in manifest['entries']:
         if entry.get('status') != 200 or not entry.get('path'):
             continue
+        url = entry.get('url', '')
+        # Verify plotted inputs here; the independent verifier covers all bodies.
+        # Avoid parsing multi-gigabyte histories that this figure does not use.
+        if not (('/runs/' in url and ('/training?' in url or url.endswith('/leaderboard')))
+                or url.endswith('/api/mech1/history')
+                or entry['path'].endswith('distributed_training_miners/page-0000.json')):
+            continue
         path = snapshot / entry['path']
         content = path.read_bytes()
         if hashlib.sha256(content).hexdigest() != entry['sha256']:
             raise ValueError('Hash mismatch: ' + str(path))
         try:
-            yield entry, json.loads(content)
+            yield entry, json.loads(gzip.decompress(content) if content.startswith(b'\x1f\x8b') else content)
         except (ValueError, UnicodeError):
             continue
 

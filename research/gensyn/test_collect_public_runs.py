@@ -124,6 +124,38 @@ class CollectorIntegrityTests(unittest.TestCase):
             self.assertEqual(rows[0]["participation_score"], "23")
             self.assertEqual(rows[0]["training_reward"], "12")
 
+    def test_dashboard_api_hosts_remain_distinct_in_normalized_rows(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            output = Path(temp) / "snapshot"
+            (output / "raw").mkdir(parents=True)
+            entries = []
+            expected_urls = set()
+            for index, host in enumerate(collector_module.DASHBOARD_API_HOSTS):
+                url = f"{host}/api/v1/leaderboard"
+                expected_urls.add(url)
+                payload = {"entries": [{
+                    "peerId": f"peer-{index}",
+                    "score": index + 1,
+                    "reward": index + 10,
+                }]}
+                body = json.dumps(payload).encode()
+                relative = Path("raw") / f"leaderboard-{index}.json"
+                (output / relative).write_bytes(body)
+                entries.append({
+                    "url": url,
+                    "path": str(relative),
+                    "status": 200,
+                    "bytes": len(body),
+                    "sha256": collector_module.hashlib.sha256(body).hexdigest(),
+                })
+            (output / "manifest.json").write_text(json.dumps({"entries": entries}))
+            with patch.object(collector_module, "write_inventory"):
+                summary = collector_module.analyze(output)
+            with (output / "normalized/nodes.csv").open(encoding="utf-8") as handle:
+                rows = list(collector_module.csv.DictReader(handle))
+            self.assertEqual(summary["nodes_normalized"], 3)
+            self.assertEqual({row["source_url"] for row in rows}, expected_urls)
+
 
 if __name__ == "__main__":
     unittest.main()

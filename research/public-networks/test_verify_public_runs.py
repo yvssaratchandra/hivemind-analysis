@@ -8,6 +8,16 @@ from verify_public_runs import verify_snapshot
 
 
 class VerificationTests(unittest.TestCase):
+    def test_unrecorded_raw_file_is_not_silently_accepted(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / 'raw').mkdir()
+            (root / 'raw/orphan.json').write_text('{}')
+            (root / 'manifest.json').write_text(json.dumps({'entries': []}))
+            result = verify_snapshot(root)
+            self.assertEqual(result['errors'], [{'path': 'raw/orphan.json',
+                                                'error': 'raw file is not recorded in manifest'}])
+
     def test_integrity_does_not_claim_access_coverage(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

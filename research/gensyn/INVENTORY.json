@@ -27,7 +27,7 @@
       "stored_bytes": 10046278
     }
   ],
-  "generated_utc": "2026-10-29T10:27:19.091582Z",
+  "generated_utc": "2026-10-29T10:43:30.994113Z",
   "latest_snapshot": "research/gensyn/data/public_runs_20261029T101259Z",
   "limitations": [
     "The dashboard leaderboard endpoint returns a finite ranked entries list (100 entries in the observed math snapshot); it exposes no pagination control in the linked client.",
@@ -42,7 +42,7 @@
     "On-chain history reconstruction was out of scope."
   ],
   "manifest_path": "research/gensyn/data/public_runs_20261029T101259Z/manifest.json",
-  "manifest_sha256": "b3a5cddc909c03da41389856a3f0c113154054170333f492f158b66ef681c2a8",
+  "manifest_sha256": "a62d1570e1ba986781c8e4156f7b0c412f923396ca382168d919d7791073e248",
   "project": "gensyn-rl-swarm",
   "raw_files": [
     {
@@ -476,6 +476,114 @@
       "sha256": "16cb9317b924ac30a5a927db7bd0563d67e9becf4d6586c35cad5d40f8128205",
       "status": 200,
       "url": "https://huggingface.co/Gensyn/Qwen2.5-7B-Instruct/raw/main/README.md"
+    },
+    {
+      "bytes": 0,
+      "discovered_from": "https://swarm.gensyn.ai same-host public dashboard JavaScript bundle",
+      "path": null,
+      "retrieved_at": "2026-10-29T10:39:42.582970Z",
+      "sha256": null,
+      "status": "request_error",
+      "url": "https://swarm.gensyn.ai/api/v1/nodes-connected"
+    },
+    {
+      "bytes": 0,
+      "discovered_from": "https://swarm.gensyn.ai same-host public dashboard JavaScript bundle",
+      "path": null,
+      "retrieved_at": "2026-10-29T10:39:42.589637Z",
+      "sha256": null,
+      "status": "request_error",
+      "url": "https://swarm.gensyn.ai/api/v1/round-stage"
+    },
+    {
+      "bytes": 0,
+      "discovered_from": "https://swarm.gensyn.ai same-host public dashboard JavaScript bundle",
+      "path": null,
+      "retrieved_at": "2026-10-29T10:39:43.641447Z",
+      "sha256": null,
+      "status": "request_error",
+      "url": "https://swarm.gensyn.ai/api/v1/top-rewards"
+    },
+    {
+      "bytes": 0,
+      "discovered_from": "https://swarm.gensyn.ai same-host public dashboard JavaScript bundle",
+      "path": null,
+      "retrieved_at": "2026-10-29T10:39:44.696199Z",
+      "sha256": null,
+      "status": "request_error",
+      "url": "https://swarm.gensyn.ai/api/v1/leaderboard"
+    },
+    {
+      "bytes": 0,
+      "discovered_from": "https://swarm.gensyn.ai same-host public dashboard JavaScript bundle",
+      "path": null,
+      "retrieved_at": "2026-10-29T10:39:45.741993Z",
+      "sha256": null,
+      "status": "request_error",
+      "url": "https://swarm.gensyn.ai/api/v1/unique-voters"
+    },
+    {
+      "bytes": 0,
+      "discovered_from": "https://swarm.gensyn.ai same-host public dashboard JavaScript bundle",
+      "path": null,
+      "retrieved_at": "2026-10-29T10:39:46.791918Z",
+      "sha256": null,
+      "status": "request_error",
+      "url": "https://swarm.gensyn.ai/api/v1/gossip-messages"
+    },
+    {
+      "bytes": 42,
+      "discovered_from": "https://swarm.gensyn.ai same-host public dashboard JavaScript bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_c1a5bbba5a.json",
+      "retrieved_at": "2026-10-29T10:40:38.928035Z",
+      "sha256": "eec73dd1d423bcbe1d3b50b9cdfce102261a9c36cd340883cd44383d58ce990f",
+      "status": 500,
+      "url": "https://swarm.gensyn.ai/api/v1/nodes-connected"
+    },
+    {
+      "bytes": 24,
+      "discovered_from": "https://swarm.gensyn.ai same-host public dashboard JavaScript bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_9519a63b6d.json",
+      "retrieved_at": "2026-10-29T10:40:40.861768Z",
+      "sha256": "b3af8d6bf8a30cc0dacfe3ec3471af9acd67f2fa1af11f74d00a82ced74dcd7a",
+      "status": 200,
+      "url": "https://swarm.gensyn.ai/api/v1/round-stage"
+    },
+    {
+      "bytes": 1082,
+      "discovered_from": "https://swarm.gensyn.ai same-host public dashboard JavaScript bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_60a86d1286.json",
+      "retrieved_at": "2026-10-29T10:40:42.443997Z",
+      "sha256": "a95ecbb2c667c3a11ac429c7c817c0f1f4db14bd0c1f4f22b7c56800cbb7494e",
+      "status": 200,
+      "url": "https://swarm.gensyn.ai/api/v1/top-rewards"
+    },
+    {
+      "bytes": 18814,
+      "discovered_from": "https://swarm.gensyn.ai same-host public dashboard JavaScript bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_e45ecaaebc.json",
+      "retrieved_at": "2026-10-29T10:40:42.908888Z",
+      "sha256": "ba8239d38e92124f0576b5e53117a34ef83c534f66a3e745f83b5663507039df",
+      "status": 200,
+      "url": "https://swarm.gensyn.ai/api/v1/leaderboard"
+    },
+    {
+      "bytes": 16,
+      "discovered_from": "https://swarm.gensyn.ai same-host public dashboard JavaScript bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_8a61664af6.json",
+      "retrieved_at": "2026-10-29T10:40:44.098195Z",
+      "sha256": "3d2ee6a28f8498f60a634625c3ce8e8d68ae95fa3bc93339894e77dcc366de2b",
+      "status": 200,
+      "url": "https://swarm.gensyn.ai/api/v1/unique-voters"
+    },
+    {
+      "bytes": 33024,
+      "discovered_from": "https://swarm.gensyn.ai same-host public dashboard JavaScript bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_9242f91acd.json",
+      "retrieved_at": "2026-10-29T10:40:45.397762Z",
+      "sha256": "9bda29661657724f87b646a1ff601fda92326912b5a979dac375b6156c88d20e",
+      "status": 200,
+      "url": "https://swarm.gensyn.ai/api/v1/gossip-messages"
     }
   ],
   "schema_version": 1,
@@ -526,16 +634,16 @@
     "shallow": false
   },
   "summary": {
-    "analyzed_utc": "2026-10-29T10:27:19.090425Z",
-    "dashboard_metric_scalars": 7,
-    "gossip_messages": 102,
+    "analyzed_utc": "2026-10-29T10:43:30.993347Z",
+    "dashboard_metric_scalars": 10,
+    "gossip_messages": 202,
     "model_metadata_records": 11233,
     "model_metadata_records_by_evidence_class": {
       "name_search_candidate": 11223,
       "official_curated_collection_member": 5,
       "official_curated_collection_model_card_metadata": 5
     },
-    "nodes_normalized": 200,
+    "nodes_normalized": 300,
     "notes": [
       "The linked dashboard frontend labels the raw leaderboard score field as participation; reward and participation are leaderboard measures, not measured GPU time or per-node compute share.",
       "The unique-voters endpoint is a separate aggregate counter, not the number of rows returned by the leaderboard endpoint.",
@@ -545,22 +653,23 @@
       "In this snapshot, the identified public dashboards, official documentation, repository, and technical report exposed no raw per-node train-step histories; this is a discovery limitation, not an exclusion from the research question."
     ],
     "project": "gensyn-rl-swarm",
-    "requested_responses": 48,
+    "requested_responses": 60,
     "requests_by_host": {
       "dashboard-math.gensyn.ai": 9,
       "dashboard.gensyn.ai": 8,
       "docs.gensyn.ai": 4,
       "huggingface.co": 23,
-      "swarm.gensyn.ai": 2,
+      "swarm.gensyn.ai": 14,
       "www.gensyn.ai": 2
     },
     "response_status_counts": {
-      "200": 46,
-      "500": 2
+      "200": 51,
+      "500": 3,
+      "request_error": 6
     },
     "source_snapshot_started_utc": "2026-10-29T10:13:06.439859Z",
-    "top_reward_rows": 20,
-    "total_bytes": 18403466
+    "top_reward_rows": 30,
+    "total_bytes": 18456468
   },
-  "total_bytes": 18403466
+  "total_bytes": 18456468
 }

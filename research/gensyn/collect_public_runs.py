@@ -36,13 +36,18 @@ DASHBOARDS = (
     "https://dashboard-math.gensyn.ai/",
     "https://swarm.gensyn.ai/",
 )
-MATH_PUBLIC_API_PATHS = (
+DASHBOARD_PUBLIC_API_PATHS = (
     "nodes-connected",
     "round-stage",
     "top-rewards",
     "leaderboard",
     "unique-voters",
     "gossip-messages",
+)
+DASHBOARD_API_HOSTS = (
+    "https://dashboard.gensyn.ai",
+    "https://dashboard-math.gensyn.ai",
+    "https://swarm.gensyn.ai",
 )
 OFFICIAL_CONTEXT_URLS = (
     "https://docs.gensyn.ai/testnet/rl-swarm",
@@ -352,14 +357,16 @@ def collect(collector: Collector, discovery_only: bool = False) -> None:
     for url in OFFICIAL_CONTEXT_URLS:
         collector.get(url, discovered_from="official Gensyn RL Swarm documentation or news page")
 
-    # These unauthenticated GET routes are explicitly called by the public
-    # historical math dashboard's own linked JavaScript bundle.
-    # The dashboard bundles on both hosts use the same `/api/v1` route names.
-    # Only unauthenticated read routes rendered by the public frontend are used.
-    for host in ("https://dashboard.gensyn.ai", "https://dashboard-math.gensyn.ai"):
+    # Each public frontend's own same-host JavaScript calls these
+    # unauthenticated `/api/v1` read routes. Keep the host-specific responses
+    # separate because similar bundles do not establish shared backends.
+    for host in DASHBOARD_API_HOSTS:
         api_root = host + "/api/v1/"
-        for endpoint in MATH_PUBLIC_API_PATHS:
-            collector.get(urllib.parse.urljoin(api_root, endpoint), discovered_from=host + "/assets dashboard bundle")
+        for endpoint in DASHBOARD_PUBLIC_API_PATHS:
+            collector.get(
+                urllib.parse.urljoin(api_root, endpoint),
+                discovered_from=host + " same-host public dashboard JavaScript bundle",
+            )
 
     # Public Hugging Face metadata only: collection members and repository
     # metadata for names matching the swarm model naming convention. No files

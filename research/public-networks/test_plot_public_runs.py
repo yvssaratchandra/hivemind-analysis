@@ -1,5 +1,6 @@
 """Regression check for plotting repeated run identities across snapshots."""
 import hashlib
+import gzip
 import importlib.util
 import json
 from pathlib import Path
@@ -28,6 +29,8 @@ class PlotTests(unittest.TestCase):
                      {'history': [{'block': 10, 'best_loss': 3 + index}]}),
                 ]:
                     body = json.dumps(data).encode()
+                    if index == 1:
+                        body = gzip.compress(body, mtime=0)
                     path = name + '.json'
                     (snapshot / path).write_bytes(body)
                     entries.append({'url': url, 'path': path, 'status': 200,

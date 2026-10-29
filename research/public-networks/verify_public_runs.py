@@ -15,6 +15,10 @@ def verify_snapshot(snapshot):
     manifest = json.loads(manifest_path.read_text())
     entries = manifest['entries']
     checked, errors, unarchived, statuses = [], [], [], collections.Counter()
+    referenced = {str((snapshot / e['path']).resolve()) for e in entries if e.get('path')}
+    orphaned = [str(p.relative_to(snapshot)) for p in (snapshot / 'raw').rglob('*')
+                if p.is_file() and str(p.resolve()) not in referenced]
+    errors.extend({'path': path, 'error': 'raw file is not recorded in manifest'} for path in orphaned)
     for entry in entries:
         statuses[str(entry.get('status'))] += 1
         if not entry.get('path'):
