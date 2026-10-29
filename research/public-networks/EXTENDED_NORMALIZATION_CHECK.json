@@ -1,0 +1,36 @@
+{
+  "scope": "Independent comparison of every ov_loss_ma time/token/value triple from all captured runs against normalized CSV",
+  "series": 20,
+  "points": 113008,
+  "errors": [],
+  "normalized_rows_by_chart": {
+    "ov_loss_ma": 113008,
+    "ov_throughput": 61010,
+    "ov_mfu": 30515,
+    "loss": 167716,
+    "pl_gantt": 4257,
+    "pl_phase_progress": 5772,
+    "pl_flow": 6392,
+    "p2p_sankey": 2205,
+    "p2p_submissions": 1335,
+    "p2p_completion": 64,
+    "mn_gpu_over_time": 1238,
+    "mn_activations": 30913,
+    "mn_weights": 19182,
+    "mn_partition": 28545,
+    "mn_leaderboard": 1415
+  },
+  "passed": true,
+  "leaderboard_check": {
+    "runs": 10,
+    "rows": 1415,
+    "mismatched_urls": [],
+    "passed": true
+  },
+  "templar_check": {
+    "bpb_points": 600,
+    "matches_raw_order_and_values": true,
+    "pipeline_rows_misattributed_to_72b": 0,
+    "passed": true
+  }
+}

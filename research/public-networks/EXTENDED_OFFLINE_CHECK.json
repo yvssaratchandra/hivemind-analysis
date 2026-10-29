@@ -1,0 +1,18 @@
+[
+  {
+    "path": "research/iota/data/extended_20261029/dashboard_overview/artifacts/page.mhtml",
+    "title": "Overview | Project Orion | IOTA | Macrocosmos.ai",
+    "visible_text_length": 523,
+    "visible_text_start": "IOTA\n\nProject Orion\n\nOrion 16B \u00b7 10 stages \u00b7 10 replicas\n\nResearch\nOrion 16B\nUpdated 29 Oct 2026, 17:37\nOverview\nPipeline\nP2P\nMiners\nLeaderboard\nGeography\nLoss\n2.7181\nTokens\n45.52B\nTokens/s\n32.4K\nActive nodes\n107\nMFU\n23.00%\nParameters\n16.2B\nRun Config\nLoss \u00b7 Moving Avg\nTokens\nTime\nLinear\nLog-Log\nThroughput\nTPS\nTPRS\nMFU \u00b7 Model FLOPs Utilization\nGET THE LATEST UPDATES\nCompany\nDelegation Guide\nHome\nOur purpose\nTeam\nCareers\nDocumentation\nDocs\nGithub\nResearch\nSubstack\nContact\nEmail\n\n\u00a9 2026 Macrocosmos, ALL RIGHTS RESERVED",
+    "offline": true,
+    "visual_review": "Header metrics preserved; canvas charts blank in offline MHTML. Full-page PNG preserves visible curves; raw API responses separately archived."
+  },
+  {
+    "path": "research/intellect-2/data/extended_20261029/public_sources/captures/release_page/artifacts/page.mhtml",
+    "title": "INTELLECT-2 Release: The First 32B Parameter Model Trained Through Globally Distributed Reinforcement Learning",
+    "visible_text_length": 7967,
+    "visible_text_start": "TRAINING\n01\nINFERENCE\n02\nCOMPUTE\n03\nRESEARCH\n04\nDOCS\nBLOG\nCAREERS\n39\nLOGIN\nSTART TRAINING\nINTELLECT-2 Release: The First 32B Parameter Model Trained Through Globally Distributed Reinforcement Learning\nPRIME INTELLECT TEAM\nMAY 11TH, 2025\n\u2022\nANNOUNCEMENTS\nContents\nParadigm Shift for Distributed Training\nTraining Infrastructure\nTraining Recipe\nExperiments\nFuture Work\nJoin Us\n\nWe're excited to release INTELLECT-2, the first 32B parameter model trained via globally distributed reinforcement learning. Unlike traditional centralized training efforts, INTELLECT-2 trains a reasoning language model using fully asynchronous RL across a dynamic, heterogeneous swarm of compute contributors.\n\nTo enable a t",
+    "offline": true,
+    "visual_review": "Original release-page PNG inspected: architecture figures, training reward/length curves and benchmark table are visible. MHTML offline text opened successfully; not an interactive training dashboard."
+  }
+]

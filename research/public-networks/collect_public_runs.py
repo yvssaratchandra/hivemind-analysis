@@ -10,7 +10,14 @@ from pathlib import Path
 
 RESEARCH = Path(__file__).resolve().parent.parent
 PROJECTS = ('node0', 'gensyn', 'distributed-training', 'agora')
+EXTENDED_PROJECTS = ('psyche', 'templar', 'grail', 'iota', 'intellect-1', 'intellect-2')
 SOURCE_URLS = {
+    'psyche': ['https://github.com/PsycheFoundation/nousnet', 'https://mainnet.psyche.network/'],
+    'templar': ['https://github.com/one-covenant/templar', 'https://www.tplr.ai/dashboard'],
+    'grail': ['https://github.com/one-covenant/grail', 'https://wandb.ai/tplr/grail', 'https://grail-grafana.tplr.ai/'],
+    'iota': ['https://github.com/macrocosm-os/iota', 'https://iota.macrocosmos.ai/dashboard/overview'],
+    'intellect-1': ['https://github.com/PrimeIntellect-ai/prime-diloco', 'https://huggingface.co/PrimeIntellect/INTELLECT-1'],
+    'intellect-2': ['https://github.com/PrimeIntellect-ai/prime-rl', 'https://huggingface.co/PrimeIntellect/INTELLECT-2'],
     'node0': ['https://github.com/PluralisResearch/node0', 'https://agora.pluralis.ai/api/runs'],
     'gensyn': ['https://github.com/gensyn-ai/rl-swarm', 'https://dashboard.gensyn.ai/', 'https://swarm.gensyn.ai/'],
     'distributed-training': ['https://github.com/dstrbtd/DistributedTraining', 'https://dash.dstrbtd.ai/mech1',
@@ -21,10 +28,10 @@ SOURCE_URLS = {
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--project', choices=('all',) + PROJECTS, default='all')
+    parser.add_argument('--project', choices=('all', 'extended') + PROJECTS + EXTENDED_PROJECTS, default='all')
     parser.add_argument('--label', default='public_runs_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ'))
     parser.add_argument('--max-bytes', type=int, default=20_000_000_000,
-                        help='Target total bytes; raw writes capped at 80%%, derived size checked after each project')
+                        help='Total target; extended projects capped at 3 GB each; legacy raw writes capped at 80%%')
     parser.add_argument('--resume', action='store_true')
     parser.add_argument('--analyze-only', action='store_true')
     parser.add_argument('--discover-only', action='store_true', help='Print known source catalog without network or writes')
@@ -33,7 +40,8 @@ def main():
         parser.error('label must be a single safe directory name')
     if not 1 <= args.max_bytes <= 20_000_000_000:
         parser.error('budget must be positive and no greater than 20 GB')
-    projects = PROJECTS if args.project == 'all' else (args.project,)
+    projects = (PROJECTS if args.project == 'all' else
+                EXTENDED_PROJECTS if args.project == 'extended' else (args.project,))
     if args.discover_only:
         print(json.dumps({p: SOURCE_URLS[p] for p in projects}, indent=2))
         return 0
@@ -46,6 +54,9 @@ def main():
                     for p in projects}
         # Return unused allocations to later projects rather than discard usable budget.
         per_project = existing[project] + max(0, raw_budget - sum(existing.values())) // (len(projects) - index)
+        if project in EXTENDED_PROJECTS:
+            # New collectors accept a total output budget, including derived files.
+            per_project = min(3_000_000_000, args.max_bytes // len(projects))
         if per_project < 1:
             failed.append(project)
             continue

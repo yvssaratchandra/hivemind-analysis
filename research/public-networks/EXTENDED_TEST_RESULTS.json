@@ -1,0 +1,123 @@
+{
+  "suites": [
+    {
+      "project": "shared",
+      "command": [
+        "research/public-networks/.plot-env/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/public-networks",
+        "-p",
+        "test_*.py"
+      ],
+      "returncode": 0,
+      "tests": 28,
+      "output": "large 200 0\ndenied 403 9\nretry 200 7\nlater 429 0\nretry 200 7\nlarge 200 0\nlarge 200 6\nsource 200 7\nPROJECT psyche OUTPUT /tmp/tmpbqedbl4_/psyche/data/test\nPROJECT templar OUTPUT /tmp/tmpbqedbl4_/templar/data/test\nPROJECT grail OUTPUT /tmp/tmpbqedbl4_/grail/data/test\nPROJECT iota OUTPUT /tmp/tmpbqedbl4_/iota/data/test\nPROJECT intellect-1 OUTPUT /tmp/tmpbqedbl4_/intellect-1/data/test\nPROJECT intellect-2 OUTPUT /tmp/tmpbqedbl4_/intellect-2/data/test\n{\n  \"label\": \"test\",\n  \"failed_projects\": []\n}\n............................\n----------------------------------------------------------------------\nRan 28 tests in 0.666s\n\nOK\n"
+    },
+    {
+      "project": "psyche",
+      "command": [
+        "/usr/sbin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/psyche",
+        "-p",
+        "test_*.py"
+      ],
+      "returncode": 0,
+      "tests": 4,
+      "output": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "project": "iota",
+      "command": [
+        "/usr/sbin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/iota",
+        "-p",
+        "test_*.py"
+      ],
+      "returncode": 0,
+      "tests": 5,
+      "output": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "project": "templar",
+      "command": [
+        "/usr/sbin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/templar/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "returncode": 0,
+      "tests": 6,
+      "output": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "project": "grail",
+      "command": [
+        "/usr/sbin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/grail/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "returncode": 0,
+      "tests": 5,
+      "output": "wandb_api_project_metadata 200 25\nwandb_api_project_metadata reused 25\nwandb_api_project_metadata 200 37\n.....\n----------------------------------------------------------------------\nRan 5 tests in 0.002s\n\nOK\n"
+    },
+    {
+      "project": "intellect-1",
+      "command": [
+        "/usr/sbin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/intellect-1",
+        "-p",
+        "test_*.py"
+      ],
+      "returncode": 0,
+      "tests": 10,
+      "output": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "project": "intellect-2",
+      "command": [
+        "/usr/sbin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/intellect-2",
+        "-p",
+        "test_*.py"
+      ],
+      "returncode": 0,
+      "tests": 10,
+      "output": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+    }
+  ],
+  "passed": true,
+  "total_tests": 68,
+  "offline_analysis_runner": {
+    "command": "python research/public-networks/collect_public_runs.py --project extended --label extended_20261029 --analyze-only",
+    "returncode": 0,
+    "failed_projects": []
+  }
+}

@@ -1,0 +1,422 @@
+[
+  {
+    "path": "research/psyche/upstream",
+    "head": {
+      "exitcode": 0,
+      "output": "0bdb13d94a05675da93d69ffa5d4c4e5a680736c",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "https://github.com/PsycheFoundation/nousnet.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/templar/upstream",
+    "head": {
+      "exitcode": 0,
+      "output": "0fefc2ad763cd4cfda080e58267fe562455f3b45",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "https://github.com/one-covenant/templar.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/grail/upstream",
+    "head": {
+      "exitcode": 0,
+      "output": "54d6342928dc516b1169342d801596fe4b88ef6f",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "https://github.com/one-covenant/grail.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/iota/upstream",
+    "head": {
+      "exitcode": 0,
+      "output": "ed0fecb190ab7277ebb1e76ddba920eb4dcf7543",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "https://github.com/macrocosm-os/iota.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/intellect-1/upstream",
+    "head": {
+      "exitcode": 0,
+      "output": "de5b9317da5f57247f11abed2fca259076795460",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "https://github.com/PrimeIntellect-ai/prime-diloco.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/intellect-2/upstream",
+    "head": {
+      "exitcode": 0,
+      "output": "cd58e4d3e35897c69b7b5f875dce049c2313bdef",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "https://github.com/PrimeIntellect-ai/prime-rl.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/intellect-2/upstream/deps/prime-envs",
+    "head": {
+      "exitcode": 0,
+      "output": "548244b959e89e5b951e28b205776c1eee247bd5",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "git@github.com:PrimeIntellect-ai/prime-envs.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/intellect-2/upstream/deps/prime-kernels",
+    "head": {
+      "exitcode": 0,
+      "output": "b52bd9dd4fb8f1c8b14bc5bc7c7155f9b62dde17",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "https://github.com/PrimeIntellect-ai/prime-kernels",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/intellect-2/upstream/deps/pydantic-config",
+    "head": {
+      "exitcode": 0,
+      "output": "65b15dffba82d4be19efdaf8b2b9705cc1756be8",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "https://github.com/PrimeIntellect-ai/pydantic-config",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/intellect-2/upstream/deps/renderers",
+    "head": {
+      "exitcode": 0,
+      "output": "b6ab8c7d67229be6fb99d57a8395f978d94b0566",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "git@github.com:PrimeIntellect-ai/renderers.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/intellect-2/upstream/deps/verifiers",
+    "head": {
+      "exitcode": 0,
+      "output": "60290d436fcb4c2ad6dd7d0986bcf00ff2366031",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "git@github.com:PrimeIntellect-ai/verifiers.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/intellect-2/supporting/protocol",
+    "head": {
+      "exitcode": 0,
+      "output": "d389f2035ec2c3c485c6b3e270625f86c7609d50",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "https://github.com/PrimeIntellect-ai/protocol.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/intellect-2/supporting/toploc",
+    "head": {
+      "exitcode": 0,
+      "output": "7ab7bcd6a4459ba4400fd41e4636bbeed7438997",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "https://github.com/PrimeIntellect-ai/toploc.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/intellect-2/supporting/toploc-experiments",
+    "head": {
+      "exitcode": 0,
+      "output": "1d8323203dbec04873a0b1a0530c6bcaa80233bf",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "https://github.com/PrimeIntellect-ai/toploc-experiments.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  },
+  {
+    "path": "research/intellect-2/supporting/protocol/smart-contracts",
+    "head": {
+      "exitcode": 0,
+      "output": "b3cadb3a4a001d5106d3a6f76d01b0974a959e8b",
+      "stderr": ""
+    },
+    "remote": {
+      "exitcode": 0,
+      "output": "https://github.com/PrimeIntellect-ai/smart-contracts.git",
+      "stderr": ""
+    },
+    "shallow": {
+      "exitcode": 0,
+      "output": "false",
+      "stderr": ""
+    },
+    "fsck": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    },
+    "status": {
+      "exitcode": 0,
+      "output": "",
+      "stderr": ""
+    }
+  }
+]
