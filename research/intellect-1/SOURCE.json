@@ -1,0 +1,88 @@
+{
+  "project": "INTELLECT-1",
+  "collected_at": "2026-10-29",
+  "primary_source_repository": {
+    "repository": "https://github.com/PrimeIntellect-ai/prime-diloco.git",
+    "checkout_path": "research/intellect-1/upstream",
+    "checkout_ref": "main",
+    "checkout_commit": "de5b9317da5f57247f11abed2fca259076795460",
+    "commit_date": "2025-04-10T13:29:58-07:00",
+    "full_history": true,
+    "shallow": false,
+    "lfs_smudge_skipped": true,
+    "submodules_initialized": false,
+    "submodules": [
+      {
+        "path": "third_party/gloo",
+        "url": "https://github.com/facebookincubator/gloo.git",
+        "pinned_commit": "5354032ea08eadd7fc4456477f7f7c6308818509",
+        "fetched": false
+      }
+    ],
+    "historical_references": [
+      {
+        "ref": "origin/feat-10b",
+        "commit": "55f21502c3a133188f59b917df9c39abbbaab21b",
+        "commit_date": "2024-10-09T20:49:32+08:00",
+        "subject": "use prime data mix",
+        "interpretation": "Historical 10B development reference near the reported run start; not proven to be the deployed run SHA."
+      },
+      {
+        "ref": "origin/intellect-1-technical-report",
+        "commit": "29984ac5a22bc6fc9c4c5023da9966300d9b506e",
+        "commit_date": "2024-11-29T12:26:44-08:00",
+        "subject": "uploaded intellect-1 technical report",
+        "interpretation": "Official report-upload branch after the run; not the deployed run SHA."
+      },
+      {
+        "ref": "origin/intellect-1-technical-report:configs/10B/H100.toml",
+        "git_blob": "70505d4d8854354d0423fe6c8ff77c111359a05a",
+        "sha256": "39fcbd1f9a7a123afae868c4bdd777aa1a948eee5d4942c883b0c92d288fd040",
+        "interpretation": "Paper-era 10B configuration reference with the reported dataset mix and 1T token target; preserved as a source reference, not asserted as the exact run launch configuration."
+      },
+      {
+        "ref": "v0.1",
+        "commit": "499e997936b2166f1c487dd476d85f2b4bcea8d5",
+        "commit_date": "2024-10-11T11:10:53-07:00"
+      },
+      {
+        "ref": "v0.2",
+        "commit": "b7fec7b866083088625709d72a0b2c490dfe210b",
+        "commit_date": "2024-10-14T16:29:05-07:00"
+      },
+      {
+        "ref": "v0.3",
+        "commit": "b0171d3ffc2bce5d32a35aa86f825303cc784e66",
+        "commit_date": "2024-10-16T18:31:49-07:00"
+      },
+      {
+        "ref": "v0.5",
+        "commit": "eaf6486ca6b12b0945347190ca26a059dbdf05b2",
+        "commit_date": "2024-10-21T23:31:43-07:00"
+      }
+    ],
+    "report_file": {
+      "path": "INTELLECT_1_Technical_Report.pdf",
+      "bytes": 1462229,
+      "sha256": "673752831cddeca865b3fb78477935a387a35643e8e52b94039e511005d02f98"
+    }
+  },
+  "official_public_sources": [
+    {"url": "https://arxiv.org/abs/2412.01152", "role": "technical report metadata"},
+    {"url": "https://arxiv.org/html/2412.01152", "role": "technical report HTML and figures"},
+    {"url": "https://arxiv.org/pdf/2412.01152", "role": "technical report PDF"},
+    {"url": "https://www.primeintellect.ai/blog/intellect-1-release", "role": "official release post"},
+    {"url": "https://app.primeintellect.ai/intelligence", "role": "historical dashboard linked by the technical report; current public-page attempt captured"},
+    {"url": "https://huggingface.co/api/models/PrimeIntellect/INTELLECT-1", "role": "model metadata only"},
+    {"url": "https://huggingface.co/PrimeIntellect/INTELLECT-1/raw/main/README.md", "role": "model card only"},
+    {"url": "https://huggingface.co/api/models/PrimeIntellect/INTELLECT-1-Instruct", "role": "instruction model metadata only"},
+    {"url": "https://huggingface.co/PrimeIntellect/INTELLECT-1-Instruct/raw/main/README.md", "role": "instruction model card only"},
+    {"url": "https://huggingface.co/collections/PrimeIntellect/intellect-1", "role": "official model collection metadata"},
+    {"url": "https://huggingface.co/collections/PrimeIntellect/intellect-1-dataset", "role": "official dataset collection metadata; no dataset contents"}
+  ],
+  "snapshot_root": "research/intellect-1/data/extended_20261029/public_sources",
+  "collector": "research/intellect-1/collect_public_runs.py",
+  "raw_evidence_manifest": "http_archive/manifest.json",
+  "browser_capture_manifests": "captures/*/manifest.json",
+  "scope": "Public pages, paper, model-card/metadata responses, and source history only. No model weights, dataset contents, credentials, training, or swarm activity."
+}

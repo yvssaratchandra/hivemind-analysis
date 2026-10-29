@@ -1,0 +1,11 @@
+# INTELLECT-1 public evidence
+
+The primary technical source is Prime Intellect’s [INTELLECT-1 Technical Report](https://arxiv.org/abs/2412.01152), with implementation history in the official [prime-diloco repository](https://github.com/PrimeIntellect-ai/prime-diloco) and the [release post](https://www.primeintellect.ai/blog/intellect-1-release). The report links the public training dashboard at [app.primeintellect.ai/intelligence](https://app.primeintellect.ai/intelligence).
+
+The report says the 10B model trained on one trillion tokens over 42 days, October 10 through November 22, 2024, with 30 compute providers and up to 14 concurrent nodes. Its figures include active-node counts and a declining perplexity curve. These numbers and curves are Prime Intellect’s reported measurements. The paper contains figures and narrative; no raw historical metric series or run-by-run node-contribution export was found among the linked public materials.
+
+The historical source checkout is `prime-diloco`, the repository containing the report, training implementation, and older code history. Its full clone preserves all fetched Git branches and tags. The `origin/intellect-1-technical-report` ref points to the November 29 report-upload commit, after the reported run. A 10B configuration at that ref matches the paper’s dataset mix and one-trillion-token target, but the paper does not identify that commit or config as the exact launch revision. The clone’s current `main` is later still and is not treated as run provenance.
+
+The current public capture of the paper-cited dashboard route returned HTTP 404. The current page state does not establish whether the dashboard was public during training. The archived paper remains evidence of the reported curve, while the raw underlying time series are unavailable in the observed public sources. No W&B project or run-history URL is linked in the paper, release post, or preserved report-era repository references; no guessed W&B endpoints were queried.
+
+The collector stores the paper, release page, dashboard attempt, and Hugging Face model-card/metadata responses without downloading weights or dataset content. See [SOURCE.json](SOURCE.json) for pinned source refs and [INVENTORY.md](INVENTORY.md) for local paths. The ignored snapshot is stored at `data/extended_20261029/public_sources/`.
