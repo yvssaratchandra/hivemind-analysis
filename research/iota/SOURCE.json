@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/macrocosm-os/iota.git",
+  "canonical_name": "Macrocosmos IOTA",
+  "branch": "main",
+  "commit": "ed0fecb190ab7277ebb1e76ddba920eb4dcf7543",
+  "commit_date": "2026-10-15T16:59:34Z",
+  "cloned_utc": "2026-10-29",
+  "shallow": false,
+  "history": "Full Git history cloned; no depth limit.",
+  "submodules": [],
+  "lfs": "GIT_LFS_SKIP_SMUDGE=1 was set for clone; no model weights or datasets were fetched.",
+  "checkout_bytes_observed": 17939787,
+  "commit_count_observed": 307,
+  "scope": "Official source checkout and passive public documentation/dashboard research; no runtime or training dependencies launched."
+}

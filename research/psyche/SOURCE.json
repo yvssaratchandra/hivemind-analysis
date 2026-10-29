@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/PsycheFoundation/nousnet.git",
+  "canonical_name": "Psyche / nousnet",
+  "branch": "main",
+  "commit": "0bdb13d94a05675da93d69ffa5d4c4e5a680736c",
+  "commit_date": "2026-03-20T19:58:10Z",
+  "cloned_utc": "2026-10-29",
+  "shallow": false,
+  "history": "Full Git history cloned; no depth limit.",
+  "submodules": [],
+  "lfs": "GIT_LFS_SKIP_SMUDGE=1 was set for clone; no model weights or datasets were fetched.",
+  "checkout_bytes_observed": 135368870,
+  "commit_count_observed": 2560,
+  "scope": "Official source checkout and passive public documentation/dashboard research; no runtime or training dependencies launched."
+}
