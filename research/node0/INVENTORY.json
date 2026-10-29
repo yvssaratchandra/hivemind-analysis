@@ -1,0 +1,82 @@
+{
+  "coverage": [
+    {
+      "bytes": 993,
+      "error": null,
+      "key": "runs_registry",
+      "path": "raw/runs_registry_5a12385fddb223d1.body",
+      "retrieved_at": "2026-10-29T10:00:41Z",
+      "sha256": "c72fbc72f6228ed96320b5e0abe8310747a2ee51900108cc1bd63c4e55aa1d12",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs"
+    },
+    {
+      "bytes": 0,
+      "error": "HTTP 403",
+      "key": "node0_dashboard_home",
+      "path": null,
+      "retrieved_at": "2026-10-29T10:00:41Z",
+      "sha256": null,
+      "status": 403,
+      "url": "https://dashboard.pluralis.ai/"
+    },
+    {
+      "bytes": 860296,
+      "error": null,
+      "key": "node0_peers",
+      "path": "raw/node0_peers_d4342236c0c98547.body",
+      "retrieved_at": "2026-10-29T10:00:43Z",
+      "sha256": "0b6427e08938bc76b75722b866b55f580ad343127b0cb6d64d6c961cac990b41",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/node0-7-5b/peers"
+    },
+    {
+      "bytes": 166253,
+      "error": null,
+      "key": "node0_training",
+      "path": "raw/node0_training_12a3c0e243fbbb2f.body",
+      "retrieved_at": "2026-10-29T10:00:43Z",
+      "sha256": "0e563c395cae00841e2605648a145ed08fa372af58762ec704deb88b82f638ec",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/node0-7-5b/training?range=all"
+    },
+    {
+      "bytes": 36585,
+      "error": null,
+      "key": "node0_leaderboard",
+      "path": "raw/node0_leaderboard_532800f67b533643.body",
+      "retrieved_at": "2026-10-29T10:00:44Z",
+      "sha256": "4e88dbb9ab5ada8d9055379559f42b8876ee5543c9e697d4c966094d78bf0487",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/node0-7-5b/leaderboard"
+    },
+    {
+      "bytes": 8025734,
+      "error": null,
+      "key": "node0_telemetry_workers",
+      "path": "raw/node0_telemetry_workers_a31dd83434ae8025.body",
+      "retrieved_at": "2026-10-29T10:00:51Z",
+      "sha256": "4e6ce721c6faf1a64e04cb2bb8f4ae9d446cefd532d65dde5d22988a8b874504",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/node0-7-5b/prometheus-timeseries?range=all"
+    }
+  ],
+  "latest_snapshot": "research/node0/data/public_runs_20261029T100000Z",
+  "manifest_sha256": "04b139af734daa7ef497545a6bea3e8a71e9d1c6bdeb4f1505743aea44a52490",
+  "note": "Raw snapshot is intentionally excluded from Git; its manifest and hashes remain in the snapshot directory and the compact coverage list is tracked here.",
+  "project": "Node0 (Pluralis)",
+  "raw_bytes": 9089861,
+  "raw_response_count": 5,
+  "request_count": 6,
+  "run_id": "node0-7-5b",
+  "schema_version": 1,
+  "source": {
+    "branch": "main",
+    "checkout_path": "research/node0/upstream/",
+    "commit": "32bd084de15dbdc8e30723ad66db7d01acf70c03",
+    "commit_date": "2025-09-23T04:43:54Z",
+    "lfs_smudge": "disabled during clone; no model weights fetched",
+    "license": "Apache-2.0 (upstream LICENSE)",
+    "repository": "https://github.com/PluralisResearch/node0"
+  }
+}

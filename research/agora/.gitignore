@@ -1,6 +1,7 @@
 /upstream/
 /.runtime/
 __pycache__/
+/data/
 
 # Collection export superseded by the pinned RUN_8B_DATA input.
 /LATEST_RUN_DATA_20261013.json

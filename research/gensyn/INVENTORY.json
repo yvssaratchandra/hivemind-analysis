@@ -1,0 +1,566 @@
+{
+  "discovery_log": "research/gensyn/DISCOVERY_LOG.md",
+  "earlier_snapshots": [
+    {
+      "disposition": "superseded attempt retained for provenance; not used as the latest normalized snapshot",
+      "entry_count": 12,
+      "manifest_path": "research/gensyn/data/public_runs_20261029T100232Z/manifest.json",
+      "manifest_sha256": "806cc4cb4d9c32e0eeb27b4957aa3f1ba0460d93649b0ec6437adeeeb88bd2c7",
+      "path": "research/gensyn/data/public_runs_20261029T100232Z",
+      "status_counts": {
+        "200": 11,
+        "500": 1
+      },
+      "stored_bytes": 5987639
+    },
+    {
+      "disposition": "superseded attempt retained for provenance; not used as the latest normalized snapshot",
+      "entry_count": 26,
+      "manifest_path": "research/gensyn/data/public_runs_20261029T101104Z/manifest.json",
+      "manifest_sha256": "eb299718e5d7e2907d08c50b788ae3dc8c9a575f6e280c4b815dfcd38f7404d8",
+      "path": "research/gensyn/data/public_runs_20261029T101104Z",
+      "status_counts": {
+        "200": 24,
+        "400": 1,
+        "500": 1
+      },
+      "stored_bytes": 10046278
+    }
+  ],
+  "generated_utc": "2026-10-29T10:27:19.091582Z",
+  "latest_snapshot": "research/gensyn/data/public_runs_20261029T101259Z",
+  "limitations": [
+    "The dashboard leaderboard endpoint returns a finite ranked entries list (100 entries in the observed math snapshot); it exposes no pagination control in the linked client.",
+    "The top-rewards endpoint returns a current top-ten summary, not a historical learning curve.",
+    "The RL Swarm docs page captured in this snapshot stated that no official swarms were running at retrieval time, while CodeZero-specific pages described CodeZero as active; these statements are preserved as dated evidence and were not reconciled into a claim of live training.",
+    "The repository's technical report contains an older small-scale experiment and plotted relative-regret/answer-length results; it does not expose raw per-node training logs in this snapshot.",
+    "Dashboard score/reward values do not measure GPU-hours or a normalized compute contribution.",
+    "The unique-voters aggregate is not a count of leaderboard entries and must not be used as leaderboard coverage.",
+    "The CodeZero config sets log_with=wandb, but the official repository and pages consulted do not link a public global run project or peer-specific W&B run.",
+    "In this snapshot, the identified public dashboard APIs, linked official documentation, repository, and paper exposed no raw per-node train-step histories or downloadable training traces. This is an access/discovery limitation, not an exclusion from the research question.",
+    "No Internet Archive response is archived for this snapshot; archive availability was not verified. See DISCOVERY_LOG.md.",
+    "On-chain history reconstruction was out of scope."
+  ],
+  "manifest_path": "research/gensyn/data/public_runs_20261029T101259Z/manifest.json",
+  "manifest_sha256": "b3a5cddc909c03da41389856a3f0c113154054170333f492f158b66ef681c2a8",
+  "project": "gensyn-rl-swarm",
+  "raw_files": [
+    {
+      "bytes": 2619,
+      "discovered_from": "official dashboard URL inventory",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_28ec6e8565.html",
+      "retrieved_at": "2026-10-29T10:13:06.440212Z",
+      "sha256": "7ed2523fd6545481bab6e1a162dc69eaf714d7015a3c086e799837ef2f3354bb",
+      "status": 200,
+      "url": "https://dashboard.gensyn.ai/"
+    },
+    {
+      "bytes": 2587,
+      "discovered_from": "official dashboard URL inventory",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_9f639fa5ea.html",
+      "retrieved_at": "2026-10-29T10:13:07.178552Z",
+      "sha256": "5fe134ea31e936c7ca295d046286f7e7be8936cfce943d4dad0bad3411c85651",
+      "status": 200,
+      "url": "https://dashboard-math.gensyn.ai/"
+    },
+    {
+      "bytes": 2587,
+      "discovered_from": "official dashboard URL inventory",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_693db54747.html",
+      "retrieved_at": "2026-10-29T10:13:07.967719Z",
+      "sha256": "5fe134ea31e936c7ca295d046286f7e7be8936cfce943d4dad0bad3411c85651",
+      "status": 200,
+      "url": "https://swarm.gensyn.ai/"
+    },
+    {
+      "bytes": 2622025,
+      "discovered_from": "https://dashboard.gensyn.ai/",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/index-CZQSmGBV_ed15be221e.js",
+      "retrieved_at": "2026-10-29T10:13:08.735554Z",
+      "sha256": "2e9e31d507ebece1db20265aff4357463de530adb7293221e3d8b1c42149f8a6",
+      "status": 200,
+      "url": "https://dashboard.gensyn.ai/assets/index-CZQSmGBV.js"
+    },
+    {
+      "bytes": 2618123,
+      "discovered_from": "https://dashboard-math.gensyn.ai/",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/index-Bbx8QT7U_334d020ab9.js",
+      "retrieved_at": "2026-10-29T10:13:09.155217Z",
+      "sha256": "b6805a5797bf688bbb2b8bb8f153a0100659d18656ea0990be1d39765cb964da",
+      "status": 200,
+      "url": "https://dashboard-math.gensyn.ai/assets/index-Bbx8QT7U.js"
+    },
+    {
+      "bytes": 2618123,
+      "discovered_from": "https://swarm.gensyn.ai/",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/index-Bbx8QT7U_5ec3fe20be.js",
+      "retrieved_at": "2026-10-29T10:13:09.487975Z",
+      "sha256": "b6805a5797bf688bbb2b8bb8f153a0100659d18656ea0990be1d39765cb964da",
+      "status": 200,
+      "url": "https://swarm.gensyn.ai/assets/index-Bbx8QT7U.js"
+    },
+    {
+      "bytes": 465228,
+      "discovered_from": "official Gensyn RL Swarm documentation or news page",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_eb370cbe23.html",
+      "retrieved_at": "2026-10-29T10:13:09.874340Z",
+      "sha256": "8b6ac1532f68d0d5a583f3b649784ea1f6b389803f5fb90b5fa36dbc0ad1dec5",
+      "status": 200,
+      "url": "https://docs.gensyn.ai/testnet/rl-swarm"
+    },
+    {
+      "bytes": 502364,
+      "discovered_from": "official Gensyn RL Swarm documentation or news page",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_ccb5325f2d.html",
+      "retrieved_at": "2026-10-29T10:13:10.124820Z",
+      "sha256": "9ed818200b440176d95f213e7c2f3be059e8369a70395775e6a7866fbb6c60bf",
+      "status": 200,
+      "url": "https://docs.gensyn.ai/testnet/rl-swarm/how-it-works"
+    },
+    {
+      "bytes": 402634,
+      "discovered_from": "official Gensyn RL Swarm documentation or news page",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_feb12886d0.html",
+      "retrieved_at": "2026-10-29T10:13:11.126839Z",
+      "sha256": "3c343c2f63a75b71568cf716a4858fdff611e67a5415622958260898d0dc8ca9",
+      "status": 200,
+      "url": "https://docs.gensyn.ai/testnet/rl-swarm/how-it-works/legacy-environments"
+    },
+    {
+      "bytes": 554458,
+      "discovered_from": "official Gensyn RL Swarm documentation or news page",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_9af8b10ce1.html",
+      "retrieved_at": "2026-10-29T10:13:12.175380Z",
+      "sha256": "c5e359b3f724ae1124bdbea7e8f5beca71a943b3892708f4f5a599afd2fc766e",
+      "status": 200,
+      "url": "https://docs.gensyn.ai/testnet/rl-swarm/how-it-works/codezero"
+    },
+    {
+      "bytes": 83988,
+      "discovered_from": "official Gensyn RL Swarm documentation or news page",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_e4fd5fdf0f.html",
+      "retrieved_at": "2026-10-29T10:13:13.245549Z",
+      "sha256": "5838f6d6bc99e760a8da86c20f68103b34ac5ace0e323dc852db7ce3d8b09989",
+      "status": 200,
+      "url": "https://www.gensyn.ai/news/rl-swarm-a-framework-for-collaborative-rl"
+    },
+    {
+      "bytes": 91394,
+      "discovered_from": "official Gensyn RL Swarm documentation or news page",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_a544143a9a.html",
+      "retrieved_at": "2026-10-29T10:13:13.508745Z",
+      "sha256": "ea1e96209f07a3301833a60458fee27df20d5600b6190e22121f57808bb59509",
+      "status": 200,
+      "url": "https://www.gensyn.ai/news/codezero-extending-rl-swarm-toward-cooperative-coding-agents"
+    },
+    {
+      "bytes": 16,
+      "discovered_from": "https://dashboard.gensyn.ai/assets dashboard bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_4599aec8d1.json",
+      "retrieved_at": "2026-10-29T10:13:14.579603Z",
+      "sha256": "d62245f98a6ee05b16eb789ae4b91d0582b4753878055bea44cf4faa809a44e5",
+      "status": 200,
+      "url": "https://dashboard.gensyn.ai/api/v1/nodes-connected"
+    },
+    {
+      "bytes": 26,
+      "discovered_from": "https://dashboard.gensyn.ai/assets dashboard bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_082d29a68a.json",
+      "retrieved_at": "2026-10-29T10:13:14.805400Z",
+      "sha256": "94cea3b3fc7aeadedf6fb17067982b34a7d736e79d2a50e29ac9b24e42679a42",
+      "status": 200,
+      "url": "https://dashboard.gensyn.ai/api/v1/round-stage"
+    },
+    {
+      "bytes": 1056,
+      "discovered_from": "https://dashboard.gensyn.ai/assets dashboard bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_03523a8a59.json",
+      "retrieved_at": "2026-10-29T10:13:16.463658Z",
+      "sha256": "26e172e6d564f2c02ac14227742c14774655c37f9a6109541b15e6bf2c62994b",
+      "status": 200,
+      "url": "https://dashboard.gensyn.ai/api/v1/top-rewards"
+    },
+    {
+      "bytes": 18963,
+      "discovered_from": "https://dashboard.gensyn.ai/assets dashboard bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_7991dd577b.json",
+      "retrieved_at": "2026-10-29T10:13:16.958451Z",
+      "sha256": "c816429a54cd973e40570ee1f0dc15f6896d7769eb77c99f4fab9d743f3e1e28",
+      "status": 200,
+      "url": "https://dashboard.gensyn.ai/api/v1/leaderboard"
+    },
+    {
+      "bytes": 17,
+      "discovered_from": "https://dashboard.gensyn.ai/assets dashboard bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_6120bc18ff.json",
+      "retrieved_at": "2026-10-29T10:13:18.008629Z",
+      "sha256": "f64325b5e7e000cf8aa9037247ff826c3651bf80f0c5b1510878521579553649",
+      "status": 200,
+      "url": "https://dashboard.gensyn.ai/api/v1/unique-voters"
+    },
+    {
+      "bytes": 1765,
+      "discovered_from": "https://dashboard.gensyn.ai/assets dashboard bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_40aa42172e.json",
+      "retrieved_at": "2026-10-29T10:13:19.018163Z",
+      "sha256": "dc7da2d2d68c0869b6cc5220266d3958ddae40b5cf2b46750f27d1ea29a78c12",
+      "status": 200,
+      "url": "https://dashboard.gensyn.ai/api/v1/gossip-messages"
+    },
+    {
+      "bytes": 42,
+      "discovered_from": "https://dashboard-math.gensyn.ai/assets dashboard bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_26af315dde.json",
+      "retrieved_at": "2026-10-29T10:13:20.118588Z",
+      "sha256": "eec73dd1d423bcbe1d3b50b9cdfce102261a9c36cd340883cd44383d58ce990f",
+      "status": 500,
+      "url": "https://dashboard-math.gensyn.ai/api/v1/nodes-connected"
+    },
+    {
+      "bytes": 24,
+      "discovered_from": "https://dashboard-math.gensyn.ai/assets dashboard bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_aa204cc9a0.json",
+      "retrieved_at": "2026-10-29T10:13:25.632670Z",
+      "sha256": "b3af8d6bf8a30cc0dacfe3ec3471af9acd67f2fa1af11f74d00a82ced74dcd7a",
+      "status": 200,
+      "url": "https://dashboard-math.gensyn.ai/api/v1/round-stage"
+    },
+    {
+      "bytes": 1082,
+      "discovered_from": "https://dashboard-math.gensyn.ai/assets dashboard bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_a22fc92a24.json",
+      "retrieved_at": "2026-10-29T10:13:26.400704Z",
+      "sha256": "a95ecbb2c667c3a11ac429c7c817c0f1f4db14bd0c1f4f22b7c56800cbb7494e",
+      "status": 200,
+      "url": "https://dashboard-math.gensyn.ai/api/v1/top-rewards"
+    },
+    {
+      "bytes": 18814,
+      "discovered_from": "https://dashboard-math.gensyn.ai/assets dashboard bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_f0d09ff2c7.json",
+      "retrieved_at": "2026-10-29T10:13:27.458532Z",
+      "sha256": "ba8239d38e92124f0576b5e53117a34ef83c534f66a3e745f83b5663507039df",
+      "status": 200,
+      "url": "https://dashboard-math.gensyn.ai/api/v1/leaderboard"
+    },
+    {
+      "bytes": 16,
+      "discovered_from": "https://dashboard-math.gensyn.ai/assets dashboard bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_4f1e9e19dd.json",
+      "retrieved_at": "2026-10-29T10:13:28.533750Z",
+      "sha256": "3d2ee6a28f8498f60a634625c3ce8e8d68ae95fa3bc93339894e77dcc366de2b",
+      "status": 200,
+      "url": "https://dashboard-math.gensyn.ai/api/v1/unique-voters"
+    },
+    {
+      "bytes": 33024,
+      "discovered_from": "https://dashboard-math.gensyn.ai/assets dashboard bundle",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_93d1e84242.json",
+      "retrieved_at": "2026-10-29T10:13:29.570727Z",
+      "sha256": "9bda29661657724f87b646a1ff601fda92326912b5a979dac375b6156c88d20e",
+      "status": 200,
+      "url": "https://dashboard-math.gensyn.ai/api/v1/gossip-messages"
+    },
+    {
+      "bytes": 4798,
+      "discovered_from": "public Gensyn RL Swarm collection on Hugging Face",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_4151b9a6ac.json",
+      "retrieved_at": "2026-10-29T10:13:30.639696Z",
+      "sha256": "32a321985012bc3874e8849c7a3bb63f204149e5f05c825ab9be2c51eca16a50",
+      "status": 200,
+      "url": "https://huggingface.co/api/collections/Gensyn/rl-swarm"
+    },
+    {
+      "bytes": 944088,
+      "discovered_from": "public Hugging Face model search; next-page URL from Link header",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_b4a9f13f9c.json",
+      "retrieved_at": "2026-10-29T10:13:30.884976Z",
+      "sha256": "4e91edc43c28fff6e3883bb8050c89ee4b09d5f95df01bc3f5c7616083fd27db",
+      "status": 200,
+      "url": "https://huggingface.co/api/models?search=Gensyn-Swarm&limit=1000&expand=cardData&expand=createdAt&expand=lastModified&expand=downloads&expand=likes&expand=tags&expand=author&expand=pipeline_tag&expand=sha"
+    },
+    {
+      "bytes": 956544,
+      "discovered_from": "public Hugging Face model search; next-page URL from Link header",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_0f1b3ab3cd.json",
+      "retrieved_at": "2026-10-29T10:13:32.087690Z",
+      "sha256": "dfc3dd394723c58d45b2e2e54de59b1b526cd2f70e2399e5a049b6b378bad075",
+      "status": 200,
+      "url": "https://huggingface.co/api/models?search=Gensyn-Swarm&limit=1000&expand=cardData&expand=createdAt&expand=lastModified&expand=downloads&expand=likes&expand=tags&expand=author&expand=pipeline_tag&expand=sha&cursor=eyIkb3IiOlt7InRyZW5kaW5nU2NvcmUiOjAsIl9pZCI6eyIkZ3QiOiI2N2Y1YjVhNTJhYWY0YmEzOTk1MDUyNzgifX0seyJ0cmVuZGluZ1Njb3JlIjp7IiRsdCI6MH19LHsidHJlbmRpbmdTY29yZSI6bnVsbH1dLCJzZWFyY2hTZXF1ZW5jZVRva2VuIjoiQ09QenR3SWFDU0VBQUFBQUFBQUFBQm9PV2d4bjliV2xLcTlMbzVsUVVuZ2lEbG9NWi9XMXBTcXZTNk9aVUZKNCJ9"
+    },
+    {
+      "bytes": 921875,
+      "discovered_from": "public Hugging Face model search; next-page URL from Link header",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_7232936aa6.json",
+      "retrieved_at": "2026-10-29T10:13:33.811402Z",
+      "sha256": "aa80d1fe4f48cbe0323aa4dcb00b5b326a6ccf422a9ea14f8cad101c50771ad8",
+      "status": 200,
+      "url": "https://huggingface.co/api/models?search=Gensyn-Swarm&limit=1000&expand=cardData&expand=createdAt&expand=lastModified&expand=downloads&expand=likes&expand=tags&expand=author&expand=pipeline_tag&expand=sha&cursor=eyIkb3IiOlt7InRyZW5kaW5nU2NvcmUiOjAsIl9pZCI6eyIkZ3QiOiI2ODA4Nzg2MTIyNjlmOTFhNzdiYmEwOTkifX0seyJ0cmVuZGluZ1Njb3JlIjp7IiRsdCI6MH19LHsidHJlbmRpbmdTY29yZSI6bnVsbH1dLCJzZWFyY2hTZXF1ZW5jZVRva2VuIjoiQ0t5YWl3SWFDU0VBQUFBQUFBQUFBQm9PV2d4b0NIaGhJbW41R25lN29Ka2lEbG9NYUFoNFlTSnArUnAzdTZDWiJ9"
+    },
+    {
+      "bytes": 806684,
+      "discovered_from": "public Hugging Face model search; next-page URL from Link header",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_362086cb6c.json",
+      "retrieved_at": "2026-10-29T10:13:35.375330Z",
+      "sha256": "41ac13bf6985f8154944f5226ed1941093e47a4648e625b6d952a0ff82ee3adc",
+      "status": 200,
+      "url": "https://huggingface.co/api/models?search=Gensyn-Swarm&limit=1000&expand=cardData&expand=createdAt&expand=lastModified&expand=downloads&expand=likes&expand=tags&expand=author&expand=pipeline_tag&expand=sha&cursor=eyIkb3IiOlt7InRyZW5kaW5nU2NvcmUiOjAsIl9pZCI6eyIkZ3QiOiI2ODJkNjI4ZTllNWJkMWVhM2VlZGQ4NTIifX0seyJ0cmVuZGluZ1Njb3JlIjp7IiRsdCI6MH19LHsidHJlbmRpbmdTY29yZSI6bnVsbH1dLCJzZWFyY2hTZXF1ZW5jZVRva2VuIjoiQ0x2cTJRRWFDU0VBQUFBQUFBQUFBQm9PV2d4b0xXS09ubHZSNmo3dDJGSWlEbG9NYUMxaWpwNWIwZW8rN2RoUyJ9"
+    },
+    {
+      "bytes": 655119,
+      "discovered_from": "public Hugging Face model search; next-page URL from Link header",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_1a4a241448.json",
+      "retrieved_at": "2026-10-29T10:13:36.315324Z",
+      "sha256": "8b013b1753c3229ac119ca912a91d95d69a4b3699fee72adca011ecab5e65cf3",
+      "status": 200,
+      "url": "https://huggingface.co/api/models?search=Gensyn-Swarm&limit=1000&expand=cardData&expand=createdAt&expand=lastModified&expand=downloads&expand=likes&expand=tags&expand=author&expand=pipeline_tag&expand=sha&cursor=eyIkb3IiOlt7InRyZW5kaW5nU2NvcmUiOjAsIl9pZCI6eyIkZ3QiOiI2ODYwNWQ5Yjc4MWIyZDcxZTg1ZTNkYTcifX0seyJ0cmVuZGluZ1Njb3JlIjp7IiRsdCI6MH19LHsidHJlbmRpbmdTY29yZSI6bnVsbH1dLCJzZWFyY2hTZXF1ZW5jZVRva2VuIjoiQ0pxVmxRSWFDU0VBQUFBQUFBQUFBQm9PV2d4b1lGMmJlQnN0Y2VoZVBhY2lEbG9NYUdCZG0zZ2JMWEhvWGoybiJ9"
+    },
+    {
+      "bytes": 649447,
+      "discovered_from": "public Hugging Face model search; next-page URL from Link header",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_51d1b41fbc.json",
+      "retrieved_at": "2026-10-29T10:13:36.967988Z",
+      "sha256": "90e1ecf76e35ffa809d78e5f9888af65bbaf75789047b1afd1f17b6c5e1bab35",
+      "status": 200,
+      "url": "https://huggingface.co/api/models?search=Gensyn-Swarm&limit=1000&expand=cardData&expand=createdAt&expand=lastModified&expand=downloads&expand=likes&expand=tags&expand=author&expand=pipeline_tag&expand=sha&cursor=eyIkb3IiOlt7InRyZW5kaW5nU2NvcmUiOjAsIl9pZCI6eyIkZ3QiOiI2ODdmZDFkOWZlNjhiNGUwNjgyNTMzYWQifX0seyJ0cmVuZGluZ1Njb3JlIjp7IiRsdCI6MH19LHsidHJlbmRpbmdTY29yZSI6bnVsbH1dLCJzZWFyY2hTZXF1ZW5jZVRva2VuIjoiQ0xHNDNnRWFDU0VBQUFBQUFBQUFBQm9PV2d4b2Y5SFovbWkwNEdnbE02MGlEbG9NYUgvUjJmNW90T0JvSlRPdCJ9"
+    },
+    {
+      "bytes": 633709,
+      "discovered_from": "public Hugging Face model search; next-page URL from Link header",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_86c2a96959.json",
+      "retrieved_at": "2026-10-29T10:13:38.322124Z",
+      "sha256": "79881095e1442534a590ac148a1327ced80d5ac5a5645fd4df88fd46570dc135",
+      "status": 200,
+      "url": "https://huggingface.co/api/models?search=Gensyn-Swarm&limit=1000&expand=cardData&expand=createdAt&expand=lastModified&expand=downloads&expand=likes&expand=tags&expand=author&expand=pipeline_tag&expand=sha&cursor=eyIkb3IiOlt7InRyZW5kaW5nU2NvcmUiOjAsIl9pZCI6eyIkZ3QiOiI2OGFlNjUyYWE3MjM4ZDFhZWM1N2QwODMifX0seyJ0cmVuZGluZ1Njb3JlIjp7IiRsdCI6MH19LHsidHJlbmRpbmdTY29yZSI6bnVsbH1dLCJzZWFyY2hTZXF1ZW5jZVRva2VuIjoiQ05EQTdBRWFDU0VBQUFBQUFBQUFBQm9PV2d4b3JtVXFweU9OR3V4WDBJTWlEbG9NYUs1bEtxY2pqUnJzVjlDRCJ9"
+    },
+    {
+      "bytes": 655859,
+      "discovered_from": "public Hugging Face model search; next-page URL from Link header",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_156f23fa87.json",
+      "retrieved_at": "2026-10-29T10:13:39.243456Z",
+      "sha256": "cbef2f433d903330340a2bf3ad0c647f8f3d2aa1f38b0859c6c3fcee7e169e29",
+      "status": 200,
+      "url": "https://huggingface.co/api/models?search=Gensyn-Swarm&limit=1000&expand=cardData&expand=createdAt&expand=lastModified&expand=downloads&expand=likes&expand=tags&expand=author&expand=pipeline_tag&expand=sha&cursor=eyIkb3IiOlt7InRyZW5kaW5nU2NvcmUiOjAsIl9pZCI6eyIkZ3QiOiI2OGNkNzIzODYxODZiNTkzZmEwZTNhNmIifX0seyJ0cmVuZGluZ1Njb3JlIjp7IiRsdCI6MH19LHsidHJlbmRpbmdTY29yZSI6bnVsbH1dLCJzZWFyY2hTZXF1ZW5jZVRva2VuIjoiQ0p6TGpRSWFDU0VBQUFBQUFBQUFBQm9PV2d4b3pYSTRZWWExay9vT09tc2lEbG9NYU0xeU9HR0d0WlA2RGpwciJ9"
+    },
+    {
+      "bytes": 653735,
+      "discovered_from": "public Hugging Face model search; next-page URL from Link header",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_733690b83c.json",
+      "retrieved_at": "2026-10-29T10:13:39.989429Z",
+      "sha256": "b4f34e4f0db21dd9f4e0a1a323d875da974de62234ba7ddf5652e725be3b5e0d",
+      "status": 200,
+      "url": "https://huggingface.co/api/models?search=Gensyn-Swarm&limit=1000&expand=cardData&expand=createdAt&expand=lastModified&expand=downloads&expand=likes&expand=tags&expand=author&expand=pipeline_tag&expand=sha&cursor=eyIkb3IiOlt7InRyZW5kaW5nU2NvcmUiOjAsIl9pZCI6eyIkZ3QiOiI2OGUxYjFmY2QzOTVlYTc3ZjAwMGVmZTAifX0seyJ0cmVuZGluZ1Njb3JlIjp7IiRsdCI6MH19LHsidHJlbmRpbmdTY29yZSI6bnVsbH1dLCJzZWFyY2hTZXF1ZW5jZVRva2VuIjoiQ09XTGxnSWFDU0VBQUFBQUFBQUFBQm9PV2d4bzRiSDgwNVhxZC9BQTcrQWlEbG9NYU9HeC9OT1Y2bmZ3QU8vZyJ9"
+    },
+    {
+      "bytes": 659856,
+      "discovered_from": "public Hugging Face model search; next-page URL from Link header",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_c2ca03e9cf.json",
+      "retrieved_at": "2026-10-29T10:13:41.044346Z",
+      "sha256": "ffb5a6ff02793606c8154a5cd75b44ce1c398e7be03e9f7247fbbb2451ee941a",
+      "status": 200,
+      "url": "https://huggingface.co/api/models?search=Gensyn-Swarm&limit=1000&expand=cardData&expand=createdAt&expand=lastModified&expand=downloads&expand=likes&expand=tags&expand=author&expand=pipeline_tag&expand=sha&cursor=eyIkb3IiOlt7InRyZW5kaW5nU2NvcmUiOjAsIl9pZCI6eyIkZ3QiOiI2OGY4YzRjMWUzNTEzN2VkYjJhZGE4ZjEifX0seyJ0cmVuZGluZ1Njb3JlIjp7IiRsdCI6MH19LHsidHJlbmRpbmdTY29yZSI6bnVsbH1dLCJzZWFyY2hTZXF1ZW5jZVRva2VuIjoiQ01LSGt3SWFDU0VBQUFBQUFBQUFBQm9PV2d4bytNVEI0MUUzN2JLdHFQRWlEbG9NYVBqRXdlTlJOKzJ5cmFqeCJ9"
+    },
+    {
+      "bytes": 644200,
+      "discovered_from": "public Hugging Face model search; next-page URL from Link header",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_5ab006d7c6.json",
+      "retrieved_at": "2026-10-29T10:13:42.142034Z",
+      "sha256": "65bc540426a5f46ff4787733b3dbc259bf437f38f8f6db8a8cdd3091affae30c",
+      "status": 200,
+      "url": "https://huggingface.co/api/models?search=Gensyn-Swarm&limit=1000&expand=cardData&expand=createdAt&expand=lastModified&expand=downloads&expand=likes&expand=tags&expand=author&expand=pipeline_tag&expand=sha&cursor=eyIkb3IiOlt7InRyZW5kaW5nU2NvcmUiOjAsIl9pZCI6eyIkZ3QiOiI2OTBlNzczODhmMTIxZGJmNGQ1ZDI2MDIifX0seyJ0cmVuZGluZ1Njb3JlIjp7IiRsdCI6MH19LHsidHJlbmRpbmdTY29yZSI6bnVsbH1dLCJzZWFyY2hTZXF1ZW5jZVRva2VuIjoiQ05teThnRWFDU0VBQUFBQUFBQUFBQm9PV2d4cERuYzRqeElkdjAxZEpnSWlEbG9NYVE1M09JOFNIYjlOWFNZQyJ9"
+    },
+    {
+      "bytes": 144069,
+      "discovered_from": "public Hugging Face model search; next-page URL from Link header",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/response_6a06c573c0.json",
+      "retrieved_at": "2026-10-29T10:13:43.199226Z",
+      "sha256": "99fa386ca89e86aef426cce025be737200aa53bb45e49083a681ee4daf912259",
+      "status": 200,
+      "url": "https://huggingface.co/api/models?search=Gensyn-Swarm&limit=1000&expand=cardData&expand=createdAt&expand=lastModified&expand=downloads&expand=likes&expand=tags&expand=author&expand=pipeline_tag&expand=sha&cursor=eyIkb3IiOlt7InRyZW5kaW5nU2NvcmUiOjAsIl9pZCI6eyIkZ3QiOiI2OTJlZjFiY2E0M2IwMzJhZWIzZmNmZWQifX0seyJ0cmVuZGluZ1Njb3JlIjp7IiRsdCI6MH19LHsidHJlbmRpbmdTY29yZSI6bnVsbH1dLCJzZWFyY2hTZXF1ZW5jZVRva2VuIjoiQ01IbGx3SWFDU0VBQUFBQUFBQUFBQm9PV2d4cEx2RzhwRHNES3VzL3orMGlEbG9NYVM3eHZLUTdBeXJyUDgvdCJ9"
+    },
+    {
+      "bytes": 0,
+      "discovered_from": "https://dashboard-math.gensyn.ai/assets dashboard bundle",
+      "path": null,
+      "retrieved_at": "2026-10-29T10:16:43.393349Z",
+      "sha256": null,
+      "status": 500,
+      "url": "https://dashboard-math.gensyn.ai/api/v1/nodes-connected"
+    },
+    {
+      "bytes": 343,
+      "discovered_from": "official curated collection item: Gensyn/Qwen2.5-0.5B-Instruct",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/Qwen2.5-0_c7562e73b9.5B-Instruct",
+      "retrieved_at": "2026-10-29T10:16:49.353765Z",
+      "sha256": "bae8238cc185f386934316d45d0017264dfc9d6e9c9d2ea672962b3e2532a7c2",
+      "status": 200,
+      "url": "https://huggingface.co/api/models/Gensyn/Qwen2.5-0.5B-Instruct?expand=cardData"
+    },
+    {
+      "bytes": 2018,
+      "discovered_from": "official curated collection model card: Gensyn/Qwen2.5-0.5B-Instruct",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/README_ca96263e6b.md",
+      "retrieved_at": "2026-10-29T10:16:49.520736Z",
+      "sha256": "76c7de7e4259ccd07fe679f78418d50087d630765690d135af05444a30b161f3",
+      "status": 200,
+      "url": "https://huggingface.co/Gensyn/Qwen2.5-0.5B-Instruct/raw/main/README.md"
+    },
+    {
+      "bytes": 343,
+      "discovered_from": "official curated collection item: Gensyn/Qwen2.5-1.5B-Instruct",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/Qwen2.5-1_7b2512aab4.5B-Instruct",
+      "retrieved_at": "2026-10-29T10:16:50.578912Z",
+      "sha256": "9854b3fe1120ec90d1445bbe744af3672206f2132451bc4fc39181237320be16",
+      "status": 200,
+      "url": "https://huggingface.co/api/models/Gensyn/Qwen2.5-1.5B-Instruct?expand=cardData"
+    },
+    {
+      "bytes": 2019,
+      "discovered_from": "official curated collection model card: Gensyn/Qwen2.5-1.5B-Instruct",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/README_bca92d1aa1.md",
+      "retrieved_at": "2026-10-29T10:16:51.613967Z",
+      "sha256": "b4ccb2843ed44620d14a7f3ccfac561ccc51290bac5fb81f1a77f50e87e7efe0",
+      "status": 200,
+      "url": "https://huggingface.co/Gensyn/Qwen2.5-1.5B-Instruct/raw/main/README.md"
+    },
+    {
+      "bytes": 310,
+      "discovered_from": "official curated collection item: Gensyn/Qwen2.5-32B-Instruct-bnb-4bit",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/Qwen2_bf7ce3004b.5-32B-Instruct-bnb-4bit",
+      "retrieved_at": "2026-10-29T10:16:52.758275Z",
+      "sha256": "cc0fc6f53fce334ccb5d3362ba716522b92530301a94304f667bdf765cfb021d",
+      "status": 200,
+      "url": "https://huggingface.co/api/models/Gensyn/Qwen2.5-32B-Instruct-bnb-4bit?expand=cardData"
+    },
+    {
+      "bytes": 8960,
+      "discovered_from": "official curated collection model card: Gensyn/Qwen2.5-32B-Instruct-bnb-4bit",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/README_983c50414d.md",
+      "retrieved_at": "2026-10-29T10:16:53.700025Z",
+      "sha256": "5e8e78cde5b4a15517bed49069e7be75bc73faa02181164cd656634cdc7d5369",
+      "status": 200,
+      "url": "https://huggingface.co/Gensyn/Qwen2.5-32B-Instruct-bnb-4bit/raw/main/README.md"
+    },
+    {
+      "bytes": 305,
+      "discovered_from": "official curated collection item: Gensyn/Qwen2.5-72B-Instruct-bnb-4bit",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/Qwen2_193e3d40a8.5-72B-Instruct-bnb-4bit",
+      "retrieved_at": "2026-10-29T10:16:54.822151Z",
+      "sha256": "f1bd1d845444ffb638a8e370a6f0fd4dd860c906fda62a248fb6b72c55a6e6a5",
+      "status": 200,
+      "url": "https://huggingface.co/api/models/Gensyn/Qwen2.5-72B-Instruct-bnb-4bit?expand=cardData"
+    },
+    {
+      "bytes": 8955,
+      "discovered_from": "official curated collection model card: Gensyn/Qwen2.5-72B-Instruct-bnb-4bit",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/README_8a92d26f6a.md",
+      "retrieved_at": "2026-10-29T10:16:55.797981Z",
+      "sha256": "8c96e97e16abe6dda421851e8e997b721225ffc038accd5d6c564a271da98aff",
+      "status": 200,
+      "url": "https://huggingface.co/Gensyn/Qwen2.5-72B-Instruct-bnb-4bit/raw/main/README.md"
+    },
+    {
+      "bytes": 299,
+      "discovered_from": "official curated collection item: Gensyn/Qwen2.5-7B-Instruct",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/Qwen2_e9fce4d598.5-7B-Instruct",
+      "retrieved_at": "2026-10-29T10:16:56.930643Z",
+      "sha256": "00d15d2f83e468ed19e221049d8bfe6e10fabea09036e5d0c6c86cdae961f8e7",
+      "status": 200,
+      "url": "https://huggingface.co/api/models/Gensyn/Qwen2.5-7B-Instruct?expand=cardData"
+    },
+    {
+      "bytes": 8956,
+      "discovered_from": "official curated collection model card: Gensyn/Qwen2.5-7B-Instruct",
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/raw/README_51d5b64e67.md",
+      "retrieved_at": "2026-10-29T10:16:57.899655Z",
+      "sha256": "16cb9317b924ac30a5a927db7bd0563d67e9becf4d6586c35cad5d40f8128205",
+      "status": 200,
+      "url": "https://huggingface.co/Gensyn/Qwen2.5-7B-Instruct/raw/main/README.md"
+    }
+  ],
+  "schema_version": 1,
+  "source_checkout": {
+    "artifacts": {
+      "LICENSE.TXT": {
+        "license": "MIT",
+        "sha256": "cab0ffa76f0ec9d4a84580ce1875688b7a555d892e6dcbce84019442249f1dd2"
+      },
+      "README.md": {
+        "role": "Repository documentation, including its historical CodeZero transition notes",
+        "sha256": "0fad4208b11e682de2c596c6bbcf16a9410a1cf3c3f4727fe8782c8f3bf48ad7"
+      },
+      "historical_configs": [
+        {
+          "commit": "0737c2e158df633ccc395bfc34a2993e9097edd4",
+          "commit_date": "2025-10-17T20:28:40-07:00",
+          "git_blob_id": "ab23acae4c7a2204dbd68de1060c11aeef980f54",
+          "path_at_tag": "rgym_exp/config/rg-swarm.yaml",
+          "role": "Reasoning Gym default configuration; model can be overridden by MODEL_NAME and otherwise selected from hardware-dependent pools",
+          "sha256": "a2e212d4c10d05800209d6d983c84aed6c7025c71db6eb23884b1aa7551b0580",
+          "tag": "v0.6.4"
+        },
+        {
+          "commit": "992569cb77a0bb5513aeb6cbe0bf3d9f0849e4ed",
+          "commit_date": "2025-11-12T10:48:29-05:00",
+          "git_blob_id": "fafd7e40d5f2aa8e60d22c63dd3e7b06da753e19",
+          "path_at_tag": "code_gen_exp/config/code-gen-swarm.yaml",
+          "role": "CodeZero configuration; model path allows an environment override and has Qwen/DeepSeek default pools",
+          "sha256": "bff40d76f5f6e57dbd540e36ae3685a1ae8ecc17b4df7367feb84e0918db7de6",
+          "tag": "v0.7.0"
+        }
+      ],
+      "technical_report.pdf": {
+        "bytes": 175957,
+        "role": "Gensyn technical report describing a small three-model, Qwen-2.5-1.5B, GSM8K experiment over 500 iterations",
+        "sha256": "772c18db81157e0b645304c3be3858301dd5263c62a49a9946d5533828582892"
+      }
+    },
+    "branch": "main",
+    "checkout_path": "research/gensyn/upstream",
+    "commit": "286c17e5391fa3e9ebba64a8e683bb36e47376a8",
+    "commit_date": "2026-10-28T10:59:20-06:00",
+    "lfs_smudge_skipped": true,
+    "license": "MIT",
+    "repository": "https://github.com/gensyn-ai/rl-swarm.git",
+    "scope": "Full-history official source checkout, excluding LFS object downloads. No dependencies, model weights, containers, or training process were run.",
+    "shallow": false
+  },
+  "summary": {
+    "analyzed_utc": "2026-10-29T10:27:19.090425Z",
+    "dashboard_metric_scalars": 7,
+    "gossip_messages": 102,
+    "model_metadata_records": 11233,
+    "model_metadata_records_by_evidence_class": {
+      "name_search_candidate": 11223,
+      "official_curated_collection_member": 5,
+      "official_curated_collection_model_card_metadata": 5
+    },
+    "nodes_normalized": 200,
+    "notes": [
+      "The linked dashboard frontend labels the raw leaderboard score field as participation; reward and participation are leaderboard measures, not measured GPU time or per-node compute share.",
+      "The unique-voters endpoint is a separate aggregate counter, not the number of rows returned by the leaderboard endpoint.",
+      "Hugging Face name-search results are candidate self-published model repositories, not verified participants in a particular public run.",
+      "Official curated collection membership and model-card metadata show project-associated repositories; neither is linked to a particular dashboard peer or run.",
+      "No blockchain reconstruction was performed. The CodeZero repository config sets log_with=wandb, but no official public global run project or peer-specific W&B link was found in consulted sources.",
+      "In this snapshot, the identified public dashboards, official documentation, repository, and technical report exposed no raw per-node train-step histories; this is a discovery limitation, not an exclusion from the research question."
+    ],
+    "project": "gensyn-rl-swarm",
+    "requested_responses": 48,
+    "requests_by_host": {
+      "dashboard-math.gensyn.ai": 9,
+      "dashboard.gensyn.ai": 8,
+      "docs.gensyn.ai": 4,
+      "huggingface.co": 23,
+      "swarm.gensyn.ai": 2,
+      "www.gensyn.ai": 2
+    },
+    "response_status_counts": {
+      "200": 46,
+      "500": 2
+    },
+    "source_snapshot_started_utc": "2026-10-29T10:13:06.439859Z",
+    "top_reward_rows": 20,
+    "total_bytes": 18403466
+  },
+  "total_bytes": 18403466
+}

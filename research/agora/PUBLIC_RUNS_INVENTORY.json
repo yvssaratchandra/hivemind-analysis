@@ -1,0 +1,1448 @@
+{
+  "created_at": "2026-10-29T09:56:56.297552+00:00",
+  "entries": [
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:56:56.606573+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 993,
+      "final_url": "https://agora.pluralis.ai/api/runs",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked",
+        "cache-control": "public, max-age=300",
+        "content-type": "application/json",
+        "date": "Thu, 29 Oct 2026 09:56:56 GMT",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "via": "1.1 google"
+      },
+      "label": "registry",
+      "path": "raw/5a12385fddb223d1482255b5ffb6f6c289da8656ccd867483988130c2c06ca0a.body",
+      "retrieved_at": "2026-10-29T09:56:56.297755+00:00",
+      "sha256": "c72fbc72f6228ed96320b5e0abe8310747a2ee51900108cc1bd63c4e55aa1d12",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:56:57.520384+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 1144179,
+      "final_url": "https://agora.pluralis.ai/",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "1144179",
+        "cache-control": "s-maxage=180, stale-while-revalidate=31535820",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Thu, 29 Oct 2026 09:56:57 GMT",
+        "etag": "\"14mxa3h4020oitw\"",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+        "via": "1.1 google",
+        "x-nextjs-cache": "STALE",
+        "x-nextjs-prerender": "1",
+        "x-nextjs-stale-time": "300",
+        "x-powered-by": "Next.js"
+      },
+      "label": "dashboard",
+      "path": "raw/9e01b4e5fe521fbb0e2cab751768a283bd9a0bc10756ed53d2f69c473a13449e.body",
+      "retrieved_at": "2026-10-29T09:56:56.607978+00:00",
+      "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:56:58.571352+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 164418,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/1ftb7r71pzo16.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "164418",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:56:58 GMT",
+        "etag": "W/\"28242-1a162482964\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/09a00d44794295175ecdb3b172b28421334cce11535645aea8e0ceccf59e5df6.body",
+      "retrieved_at": "2026-10-29T09:56:57.841878+00:00",
+      "sha256": "0ae4f8ac6995eb37dd52f9c03e96ce00cb63fe32bd0b2429dce778d46763d21d",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/1ftb7r71pzo16.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:56:59.484429+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 235044,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/063al_q720fkj.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "235044",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:56:59 GMT",
+        "etag": "W/\"39624-1a162482965\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/baa153d5244cee986f575ed00fb1d66c7c3eb7a1593ca9b970efd90b9a2ee36c.body",
+      "retrieved_at": "2026-10-29T09:56:58.955807+00:00",
+      "sha256": "132af14ae137b73ad574d73ddc85352705b70b3bbca2666c4be2f5a9d9adb057",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/063al_q720fkj.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:00.517222+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 10030,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "10030",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:00 GMT",
+        "etag": "W/\"272e-1a162482962\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/faa55812fdc15ffafe83660ac6700349c773f4f9e67acff497a6778684ea4c77.body",
+      "retrieved_at": "2026-10-29T09:56:59.746030+00:00",
+      "sha256": "8bbb58cbfd4633c1d828c6bc37bc32abc768a149c01b1dfc4f5131fd81274551",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/turbopack-3-ry682tkyiqk.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:01.547946+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 42922,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/0wbpo5lom6wmh.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "42922",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:01 GMT",
+        "etag": "W/\"a7aa-1a16248295e\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/7823080851f07cfc5efff6c6eab35c33e4e5a33efad8aebe16e14a8c29e50788.body",
+      "retrieved_at": "2026-10-29T09:57:00.519123+00:00",
+      "sha256": "ba4d65b72e9a86005a92d118cc5d191fc09b5d38bd79790aeba522dd1ca15b6d",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/0wbpo5lom6wmh.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:02.549325+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 7820,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/2n5qeheznvl4u.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "7820",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:02 GMT",
+        "etag": "W/\"1e8c-1a162482966\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/56e4f8290345ba92af2b4111408741b17fef115e4baa4ef1c6364fc6aed335dd.body",
+      "retrieved_at": "2026-10-29T09:57:01.596410+00:00",
+      "sha256": "656d0a5df7d30d0b9bb04ea514c4b0c8111cef88f60efe225c79ccdda8df5f10",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/2n5qeheznvl4u.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:03.583826+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 465,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/1vz83aahdhio2.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "465",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:03 GMT",
+        "etag": "W/\"1d1-1a16248296a\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/b4b2cf0d17b125c630ff62aa99cd5d83131c4ae41686a506b70d43dbcfe5dff9.body",
+      "retrieved_at": "2026-10-29T09:57:02.550972+00:00",
+      "sha256": "4f2b2d126a60820be5af472536d403db710d180c96fd5dd5b41b9fc2e89eb3a8",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/1vz83aahdhio2.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:04.605664+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 20987,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/2xubomaj9mlvd.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "20987",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:04 GMT",
+        "etag": "W/\"51fb-1a162482962\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/9f8a79a4ac12685018dab287baaf0f16b7ed6b6b336b8455ef30b6332c24024d.body",
+      "retrieved_at": "2026-10-29T09:57:03.585283+00:00",
+      "sha256": "14f64c040d918b86fa2c8c1b029e5b4db5e52b54ad674aece7eccf0b47df39d3",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/2xubomaj9mlvd.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:05.593094+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 41606,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/2gbudvbo5kx72.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "41606",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:05 GMT",
+        "etag": "W/\"a286-1a162482960\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/01e51aed0188dc3176fe41c7b3fa3f49dde9f93d08ee9caf307ece49ac829337.body",
+      "retrieved_at": "2026-10-29T09:57:04.644404+00:00",
+      "sha256": "07318e6d593286e9daa2c6c79d3dcefe956b5f849bbdd121b155218e229e2eda",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/2gbudvbo5kx72.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:06.618427+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 33695,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/1b_24v4lh0zdy.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "33695",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:06 GMT",
+        "etag": "W/\"839f-1a16248295e\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/e9c04a002a5188720b784621430bfcadd3a77f4cd894047345d383f2e5c99429.body",
+      "retrieved_at": "2026-10-29T09:57:05.710329+00:00",
+      "sha256": "bad066c9b319a36b559b73ba9c18cb538ec333eb5e7820f4134a7edf7c553e04",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/1b_24v4lh0zdy.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:07.669606+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 716096,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/35ogo291m90cl.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "716096",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:07 GMT",
+        "etag": "W/\"aed40-1a162482969\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/5725d662cd9d17a504fb4849b51e1f44040fee774cdfda37d956a42f3a0aae16.body",
+      "retrieved_at": "2026-10-29T09:57:06.696944+00:00",
+      "sha256": "857cc5465d62450cab64c39244fd123ef6017e507fc8b757556d8c15e0f32380",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/35ogo291m90cl.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:09.131447+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 91476,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/3ptogtnaoi-o0.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "91476",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:09 GMT",
+        "etag": "W/\"16554-1a16248295e\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/7c6662341ab362f4b84ae61d5d29fdf402b1793e48dbfd813a3e35adc62dcc17.body",
+      "retrieved_at": "2026-10-29T09:57:08.609462+00:00",
+      "sha256": "b099565d9e82136c60bc077c6f060febe1a3d71427cc88d82d273426d645ab49",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/3ptogtnaoi-o0.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:10.147757+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 69236,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/2bhht07qozp7w.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "69236",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:10 GMT",
+        "etag": "W/\"10e74-1a162482964\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/a10308a953b24b3ca5d26d2c32816a25a9da2519cb160db5c9f2e7a88ee4f84f.body",
+      "retrieved_at": "2026-10-29T09:57:09.888196+00:00",
+      "sha256": "9e8c3cac42b4b4f7ec942f2832a5aba29a3fdf0046ceba79b42724819a89233c",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/2bhht07qozp7w.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:11.347761+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 42391,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/3dgii68sp_1ak.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "42391",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:11 GMT",
+        "etag": "W/\"a597-1a162482966\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/30ef8ef71b08edaac24aa76faf9ec2701dfb92e84336abe6de466feaa372fd8f.body",
+      "retrieved_at": "2026-10-29T09:57:10.390868+00:00",
+      "sha256": "59bc716902fbb28cb46c8a071ddbe4feb4c35dd775ca31cffea86db441931bd1",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/3dgii68sp_1ak.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:12.152710+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 112594,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/0cz1d0mv5g_q7.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "112594",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:12 GMT",
+        "etag": "W/\"1b7d2-1a16248295e\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/efa536dbe0c4e3a3c3c16a4a4f7fa9f5a779c9a8f0cd9dfa33a7333066a8903d.body",
+      "retrieved_at": "2026-10-29T09:57:11.413073+00:00",
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/0cz1d0mv5g_q7.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:13.195466+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 32668,
+      "final_url": "https://agora.pluralis.ai/_next/static/chunks/1dw_tl91r7yto.js",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Content-Length": "32668",
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript; charset=UTF-8",
+        "date": "Thu, 29 Oct 2026 09:57:13 GMT",
+        "etag": "W/\"7f9c-1a162482968\"",
+        "last-modified": "Thu, 22 Oct 2026 06:24:18 GMT",
+        "vary": "Accept-Encoding",
+        "via": "1.1 google"
+      },
+      "label": "dashboard_asset",
+      "path": "raw/b193f6692b365e00af42b2e60883bfef435a2575f93c26eb1c51b727ebfe5180.body",
+      "retrieved_at": "2026-10-29T09:57:12.357868+00:00",
+      "sha256": "f2a642039e8c8c537508390c488568b95c107e6f40b4717fcab5b5ebab8a0f51",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/_next/static/chunks/1dw_tl91r7yto.js"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:33.587496+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 392438,
+      "final_url": "https://agora.pluralis.ai/api/runs/pluralis-8b/peers",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked",
+        "cache-control": "public, max-age=600, must-revalidate",
+        "content-type": "application/json",
+        "date": "Thu, 29 Oct 2026 09:57:33 GMT",
+        "etag": "W/\"snap-v4-1789703372\"",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "via": "1.1 google"
+      },
+      "label": "pluralis-8b/peers",
+      "path": "raw/2512a4465175ca9bf1c3e5ecff762ef922ef40099b4b9c1c568f253b181b957c.body",
+      "retrieved_at": "2026-10-29T09:57:32.737177+00:00",
+      "sha256": "106174f29e2d85b2e0b9c5f167a7b91141afd49b87408ccd1440c298271f92f9",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-8b/peers"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:34.359372+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 173073,
+      "final_url": "https://agora.pluralis.ai/api/runs/pluralis-8b/training?range=all",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked",
+        "cache-control": "public, max-age=600, must-revalidate",
+        "content-type": "application/json",
+        "date": "Thu, 29 Oct 2026 09:57:34 GMT",
+        "etag": "W/\"snap-v4-1789703372\"",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "via": "1.1 google"
+      },
+      "label": "pluralis-8b/training?range=all",
+      "path": "raw/1b2137a3550aa00071461f92066e329d0af71b7215e73b3937ae30393442e3b3.body",
+      "retrieved_at": "2026-10-29T09:57:34.094225+00:00",
+      "sha256": "f5afc3a797fcff3250daff94eb8ec349678fd1876f06a0dd940b7591f7444cb1",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-8b/training?range=all"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:35.738221+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 22495,
+      "final_url": "https://agora.pluralis.ai/api/runs/pluralis-8b/leaderboard",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked",
+        "cache-control": "public, max-age=600, must-revalidate",
+        "content-type": "application/json",
+        "date": "Thu, 29 Oct 2026 09:57:35 GMT",
+        "etag": "W/\"snap-v4-1789703372\"",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "via": "1.1 google"
+      },
+      "label": "pluralis-8b/leaderboard",
+      "path": "raw/e574d0bff6415f4af86921a07e052129ef13f657466a4566d73bae6bac438ae4.body",
+      "retrieved_at": "2026-10-29T09:57:34.759810+00:00",
+      "sha256": "cd945547d1a4656aa0c8d17b3e8d9123c87820b743a01eb3d1f6ed12828e144a",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-8b/leaderboard"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:37.602121+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 34859658,
+      "final_url": "https://agora.pluralis.ai/api/runs/pluralis-8b/prometheus-timeseries?range=all",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked",
+        "cache-control": "public, max-age=600, must-revalidate",
+        "content-type": "application/json",
+        "date": "Thu, 29 Oct 2026 09:57:37 GMT",
+        "etag": "\"prom-c2f3f54e59d6a5ac\"",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "via": "1.1 google"
+      },
+      "label": "pluralis-8b/prometheus-timeseries?range=all",
+      "path": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+      "retrieved_at": "2026-10-29T09:57:35.772727+00:00",
+      "sha256": "c2f3f54e59d6a5ac621244badf19ed36ed1cc8cc25bf4f22cad89bd78bdcd33f",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-8b/prometheus-timeseries?range=all"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:52.477839+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 217,
+      "final_url": "https://agora.pluralis.ai/api/runs/pluralis-8b/evals",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked",
+        "cache-control": "public, max-age=15",
+        "content-type": "application/json",
+        "date": "Thu, 29 Oct 2026 09:57:52 GMT",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "via": "1.1 google"
+      },
+      "label": "pluralis-8b/evals",
+      "path": "raw/ef9c5cccc21f69794f3642fe296def4df3839e8caf6f04c161faf261e5c5c1b9.body",
+      "retrieved_at": "2026-10-29T09:57:52.014883+00:00",
+      "sha256": "d7061dd161ed135fc604fd396632bc31a8f98276de97ff786b6afd06810e63bc",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-8b/evals"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:53.242740+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 732582,
+      "final_url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/peers",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked",
+        "cache-control": "public, max-age=600, must-revalidate",
+        "content-type": "application/json",
+        "date": "Thu, 29 Oct 2026 09:57:53 GMT",
+        "etag": "W/\"snap-v4-1789703371\"",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "via": "1.1 google"
+      },
+      "label": "pluralis-13b-test/peers",
+      "path": "raw/ab4a144869fb98a94af2bceb043cdec51335e59252a4a36a4aa163a42d5e4053.body",
+      "retrieved_at": "2026-10-29T09:57:52.489568+00:00",
+      "sha256": "daacfd48b6ba8c0350c5e0e991a0f16101d8be0561487fcd3f68e20ca69bf906",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/peers"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:54.304142+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 168098,
+      "final_url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/training?range=all",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked",
+        "cache-control": "public, max-age=600, must-revalidate",
+        "content-type": "application/json",
+        "date": "Thu, 29 Oct 2026 09:57:54 GMT",
+        "etag": "W/\"snap-v4-1789703371\"",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "via": "1.1 google"
+      },
+      "label": "pluralis-13b-test/training?range=all",
+      "path": "raw/0dea3a9062525cd4595060ff51efb6f6d033e703ac4f706da6cd844436f5dcfb.body",
+      "retrieved_at": "2026-10-29T09:57:53.980132+00:00",
+      "sha256": "e64c06cfea40adb0bc6b615a975e88604fb3a1f34bf880b1149e4db98a6f2812",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/training?range=all"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:57:55.281243+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 12987,
+      "final_url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/leaderboard",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked",
+        "cache-control": "public, max-age=600, must-revalidate",
+        "content-type": "application/json",
+        "date": "Thu, 29 Oct 2026 09:57:55 GMT",
+        "etag": "W/\"snap-v4-1789703371\"",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "via": "1.1 google"
+      },
+      "label": "pluralis-13b-test/leaderboard",
+      "path": "raw/3d0808e40109ab3753eb7498364bd88e6a10f946c80d96065f34cf245c2548d5.body",
+      "retrieved_at": "2026-10-29T09:57:54.496232+00:00",
+      "sha256": "b1f5ea1d21b6107a982c2dc515891c704593c30f1b3930f8ef4dbab2d066b2f3",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/leaderboard"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:59:34.497090+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 72198352,
+      "final_url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all",
+      "headers": {
+        "Alt-Svc": "h3=\":443\"; ma=2592000",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked",
+        "cache-control": "public, max-age=600, must-revalidate",
+        "content-type": "application/json",
+        "date": "Thu, 29 Oct 2026 09:59:34 GMT",
+        "etag": "\"prom-d418bd5dcb47afd3\"",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "via": "1.1 google"
+      },
+      "label": "pluralis-13b-test/prometheus-timeseries?range=all",
+      "path": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+      "retrieved_at": "2026-10-29T09:59:32.436922+00:00",
+      "sha256": "d418bd5dcb47afd33bf2f3229b791326bdc06259c3c0156aafba12ecca40c37d",
+      "status": 200,
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:59:54.039763+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 7038676,
+      "final_url": "https://arxiv.org/pdf/2607.13332",
+      "headers": {
+        "Accept-Ranges": "bytes",
+        "Age": "334245",
+        "Connection": "close",
+        "Content-Length": "7038676",
+        "Date": "Thu, 29 Oct 2026 09:59:54 GMT",
+        "X-Cache": "MISS, HIT, MISS",
+        "X-Served-By": "cache-lga-kjfk8660076-LGA, cache-lga-kjfk8660076-LGA, cache-lga-kjfk8660071-LGA, cache-cph2320022-CPH",
+        "X-Timer": "S1793267994.179527,VS0,VE92",
+        "access-control-allow-origin": "*",
+        "content-disposition": "inline; filename=\"2607.13332v1.pdf\"",
+        "content-type": "application/pdf",
+        "etag": "\"sha256:911cab222b7f672ecfc8d534530829e6ba4676534b9e3bbe340d6a293ae23d63\"",
+        "last-modified": "Thu, 16 Jul 2026 00:28:59 GMT",
+        "link": "<https://arxiv.org/pdf/2607.13332>; rel='canonical'",
+        "server": "Google Frontend",
+        "via": "1.1 google, 1.1 varnish, 1.1 varnish, 1.1 varnish",
+        "x-cloud-trace-context": "c844c974e275691aff1158d9d016f9c0"
+      },
+      "label": "agora_paper",
+      "path": "raw/8a854a35e6d83b546a713ac18d58e9f6f2b454ba6c0854f5a69f9159debe1067.body",
+      "retrieved_at": "2026-10-29T09:59:53.791704+00:00",
+      "sha256": "e4251c0f107ee77d81fc1cec423e896b7cea7cb3d5f257fb258448631030de5e",
+      "status": 200,
+      "url": "https://arxiv.org/pdf/2607.13332"
+    },
+    {
+      "attempts": [
+        {
+          "at": "2026-10-29T09:59:56.147249+00:00",
+          "status": 200
+        }
+      ],
+      "bytes": 32299,
+      "final_url": "https://pluralis.ai/docs/",
+      "headers": {
+        "Accept-Ranges": "bytes",
+        "Access-Control-Allow-Origin": "*",
+        "Age": "0",
+        "Cache-Control": "max-age=600",
+        "Connection": "close",
+        "Content-Length": "32299",
+        "Content-Type": "text/html; charset=utf-8",
+        "Date": "Thu, 29 Oct 2026 09:59:56 GMT",
+        "ETag": "\"6ac46500-7e2b\"",
+        "Last-Modified": "Tue, 06 Oct 2026 03:03:28 GMT",
+        "Server": "GitHub.com",
+        "Vary": "Accept-Encoding",
+        "Via": "1.1 varnish",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Fastly-Request-ID": "7cd2397df232d636a4964dccc20748fa1a046162",
+        "X-GitHub-Request-Id": "2082:39B717:3954224:39E929F:6AE3191B",
+        "X-Served-By": "cache-cph2320028-CPH",
+        "X-Timer": "S1793267996.247121,VS0,VE150",
+        "expires": "Thu, 29 Oct 2026 10:09:56 GMT",
+        "x-github-edge-region": "fra",
+        "x-proxy-cache": "MISS"
+      },
+      "label": "pluralis_docs",
+      "path": "raw/47b1d827efef869d6aace3680c95f6c934d789b91c5d4dfae79b7b74a9936aa2.body",
+      "retrieved_at": "2026-10-29T09:59:55.943976+00:00",
+      "sha256": "84f9ae0777315297128e984c3e74053ebdb519da7c690cbdd9cee81f535eda1d",
+      "status": 200,
+      "url": "https://pluralis.ai/docs/"
+    }
+  ],
+  "manifest_sha256": "36611040d69eaf7d6e74f9a83c8abb59a89ed7c9eb4208cc308a292797f3249d",
+  "preserved_prior_archives": [
+    {
+      "bytes": 1536268,
+      "path": "research/agora/RUN_8B_DATA_20261013.json",
+      "sha256": "aaf3b8945f09fa1d0a3272111d78e5c4d9d7efe577c0980c24d9a7e4c89deae3"
+    },
+    {
+      "bytes": 2858459,
+      "path": "research/agora/LATEST_RUN_DATA_20261013.json",
+      "sha256": "df5e61cab9a4fbb4cd4429c6391c5482a09e649f37be51b7d187563ea02ba8d2"
+    }
+  ],
+  "snapshot": "research/agora/data/public_runs_20261029T095600Z",
+  "summary": {
+    "distinct_source_urls": 28,
+    "failed_sources": [],
+    "manifest_records": 28,
+    "raw_bytes": 118397495,
+    "runs": [
+      {
+        "capabilities": {
+          "evals": false,
+          "live_columns": false,
+          "polling": false,
+          "queue": false,
+          "ranges": false
+        },
+        "end_epoch": 1788852605,
+        "eval_tasks": null,
+        "label": "Pluralis-13B-Test",
+        "leaderboard_records": 100,
+        "meta": {
+          "dataset": "FineWeb-Edu",
+          "model": "Pluralis-13B",
+          "params_b": 13.0,
+          "precision": "bf16",
+          "tokens": "1.3T"
+        },
+        "node_records": 1215,
+        "peers_export_available": true,
+        "registry_source": "raw/5a12385fddb223d1482255b5ffb6f6c289da8656ccd867483988130c2c06ca0a.body",
+        "reported_progress": {
+          "tokens": "62.4B"
+        },
+        "run_id": "pluralis-13b-test",
+        "start_epoch": 1788247587,
+        "status": "finished",
+        "telemetry_export_available": true,
+        "tps_first": {
+          "step": 4,
+          "timestamp": 1788249987.581299,
+          "y": 18576.911
+        },
+        "tps_last": {
+          "step": 7437,
+          "timestamp": 1788852604.644925,
+          "y": 84522.677
+        },
+        "tps_points": 1499,
+        "train_loss_first": {
+          "step": 0,
+          "timestamp": 1788247587.277216,
+          "y": 12.259
+        },
+        "train_loss_last": {
+          "step": 7437,
+          "timestamp": 1788852604.644925,
+          "y": 3.006
+        },
+        "train_loss_points": 1500,
+        "training_export_available": true
+      },
+      {
+        "capabilities": {
+          "evals": true,
+          "live_columns": false,
+          "polling": false,
+          "queue": false,
+          "ranges": false
+        },
+        "end_epoch": 1783128899,
+        "eval_tasks": 0,
+        "label": "Pluralis-8B",
+        "leaderboard_records": 176,
+        "meta": {
+          "dataset": "FineWeb-Edu",
+          "model": "Pluralis-8B",
+          "params_b": 8.0,
+          "precision": "bf16",
+          "tokens": "1.3T"
+        },
+        "node_records": 592,
+        "peers_export_available": true,
+        "registry_source": "raw/5a12385fddb223d1482255b5ffb6f6c289da8656ccd867483988130c2c06ca0a.body",
+        "reported_progress": {
+          "tokens": "531.8B"
+        },
+        "run_id": "pluralis-8b",
+        "start_epoch": 1778733172,
+        "status": "finished",
+        "telemetry_export_available": true,
+        "tps_first": {
+          "step": 0,
+          "timestamp": 1778733171.845101,
+          "y": 0.0
+        },
+        "tps_last": {
+          "step": 63388,
+          "timestamp": 1783128899.11377,
+          "y": 5942.779
+        },
+        "tps_points": 1500,
+        "train_loss_first": {
+          "step": 0,
+          "timestamp": 1778733171.845101,
+          "y": 12.197
+        },
+        "train_loss_last": {
+          "step": 63388,
+          "timestamp": 1783128899.11377,
+          "y": 2.438
+        },
+        "train_loss_points": 1500,
+        "training_export_available": true
+      }
+    ],
+    "telemetry": [
+      {
+        "metric": "average_pcnt",
+        "null_values": 658664,
+        "observed_values": 114199,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 399,
+        "worker_series": 1937
+      },
+      {
+        "metric": "backward_batches",
+        "null_values": 469693,
+        "observed_values": 80479,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 1372
+      },
+      {
+        "metric": "formed_groupsize",
+        "null_values": 670272,
+        "observed_values": 114561,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 399,
+        "worker_series": 1967
+      },
+      {
+        "metric": "forward_batches",
+        "null_values": 507372,
+        "observed_values": 87311,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 1483
+      },
+      {
+        "metric": "gpu_alloc",
+        "null_values": 675666,
+        "observed_values": 93051,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 1917
+      },
+      {
+        "metric": "gpu_util",
+        "null_values": 656490,
+        "observed_values": 90974,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 1864
+      },
+      {
+        "metric": "grad_accum_time",
+        "null_values": 679469,
+        "observed_values": 114931,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 400,
+        "worker_series": 1986
+      },
+      {
+        "metric": "mfu",
+        "null_values": 503848,
+        "observed_values": 87226,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 1474
+      },
+      {
+        "metric": "mm_time",
+        "null_values": 670272,
+        "observed_values": 114561,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 399,
+        "worker_series": 1967
+      },
+      {
+        "metric": "open_conns",
+        "null_values": 756154,
+        "observed_values": 116021,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 2175
+      },
+      {
+        "metric": "peer_vis_body1",
+        "null_values": 12279,
+        "observed_values": 4162,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 41
+      },
+      {
+        "metric": "peer_vis_body2",
+        "null_values": 17705,
+        "observed_values": 3949,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 54
+      },
+      {
+        "metric": "peer_vis_body3",
+        "null_values": 12357,
+        "observed_values": 3683,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 40
+      },
+      {
+        "metric": "peer_vis_body4",
+        "null_values": 6918,
+        "observed_values": 3508,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 26
+      },
+      {
+        "metric": "peer_vis_body5",
+        "null_values": 12313,
+        "observed_values": 3727,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 40
+      },
+      {
+        "metric": "peer_vis_head",
+        "null_values": 20955,
+        "observed_values": 4308,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 63
+      },
+      {
+        "metric": "peer_vis_tail",
+        "null_values": 9330,
+        "observed_values": 3502,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 32
+      },
+      {
+        "metric": "post_step_grad",
+        "null_values": 686013,
+        "observed_values": 115185,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 1998
+      },
+      {
+        "metric": "pre_avg_grad",
+        "null_values": 506582,
+        "observed_values": 87299,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 1481
+      },
+      {
+        "metric": "pre_max_grad",
+        "null_values": 506582,
+        "observed_values": 87299,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 1481
+      },
+      {
+        "metric": "pre_step_grad",
+        "null_values": 696397,
+        "observed_values": 115227,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 2024
+      },
+      {
+        "metric": "ram_usage",
+        "null_values": 756159,
+        "observed_values": 116016,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 2175
+      },
+      {
+        "metric": "recv_comm",
+        "null_values": 756154,
+        "observed_values": 116021,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 2175
+      },
+      {
+        "metric": "reducer_pcnt",
+        "null_values": 139331,
+        "observed_values": 48598,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 399,
+        "worker_series": 471
+      },
+      {
+        "metric": "send_comm",
+        "null_values": 756154,
+        "observed_values": 116021,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 2175
+      },
+      {
+        "metric": "tot_comm",
+        "null_values": 756154,
+        "observed_values": 116021,
+        "run_id": "pluralis-13b-test",
+        "source_file": "raw/eced2fd9b11bd238400cd88aa6368858c6bbbde707b8d6b5e39f833feabbe06b.body",
+        "timestamps": 401,
+        "worker_series": 2175
+      },
+      {
+        "metric": "average_pcnt",
+        "null_values": 287315,
+        "observed_values": 40685,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 400,
+        "worker_series": 820
+      },
+      {
+        "metric": "backward_batches",
+        "null_values": 219912,
+        "observed_values": 37129,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 641
+      },
+      {
+        "metric": "dht_get_latency",
+        "null_values": 50842,
+        "observed_values": 16927,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 169
+      },
+      {
+        "metric": "dht_store_latency",
+        "null_values": 50842,
+        "observed_values": 16927,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 169
+      },
+      {
+        "metric": "formed_groupsize",
+        "null_values": 289699,
+        "observed_values": 40701,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 400,
+        "worker_series": 826
+      },
+      {
+        "metric": "forward_batches",
+        "null_values": 220710,
+        "observed_values": 37133,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 643
+      },
+      {
+        "metric": "gpu_alloc",
+        "null_values": 371753,
+        "observed_values": 40074,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 1027
+      },
+      {
+        "metric": "gpu_util",
+        "null_values": 369999,
+        "observed_values": 39823,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 1022
+      },
+      {
+        "metric": "grad_accum_time",
+        "null_values": 305165,
+        "observed_values": 40835,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 400,
+        "worker_series": 865
+      },
+      {
+        "metric": "mfu",
+        "null_values": 219914,
+        "observed_values": 37127,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 641
+      },
+      {
+        "metric": "mm_time",
+        "null_values": 289699,
+        "observed_values": 40701,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 400,
+        "worker_series": 826
+      },
+      {
+        "metric": "open_conns",
+        "null_values": 379742,
+        "observed_values": 41308,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 1050
+      },
+      {
+        "metric": "peer_vis_body1",
+        "null_values": 4244,
+        "observed_values": 1771,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 15
+      },
+      {
+        "metric": "peer_vis_body2",
+        "null_values": 4244,
+        "observed_values": 1771,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 15
+      },
+      {
+        "metric": "peer_vis_body3",
+        "null_values": 4244,
+        "observed_values": 1771,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 15
+      },
+      {
+        "metric": "peer_vis_body4",
+        "null_values": 4667,
+        "observed_values": 1749,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 16
+      },
+      {
+        "metric": "peer_vis_body5",
+        "null_values": 4244,
+        "observed_values": 1771,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 15
+      },
+      {
+        "metric": "peer_vis_head",
+        "null_values": 10728,
+        "observed_values": 2906,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 34
+      },
+      {
+        "metric": "peer_vis_tail",
+        "null_values": 18471,
+        "observed_values": 5188,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 59
+      },
+      {
+        "metric": "post_step_grad",
+        "null_values": 315207,
+        "observed_values": 40881,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 888
+      },
+      {
+        "metric": "pre_avg_grad",
+        "null_values": 219910,
+        "observed_values": 37131,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 641
+      },
+      {
+        "metric": "pre_max_grad",
+        "null_values": 219910,
+        "observed_values": 37131,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 641
+      },
+      {
+        "metric": "pre_step_grad",
+        "null_values": 318800,
+        "observed_values": 40897,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 897
+      },
+      {
+        "metric": "ram_usage",
+        "null_values": 379743,
+        "observed_values": 41307,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 1050
+      },
+      {
+        "metric": "recv_comm",
+        "null_values": 379742,
+        "observed_values": 41308,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 1050
+      },
+      {
+        "metric": "reducer_pcnt",
+        "null_values": 43236,
+        "observed_values": 16764,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 400,
+        "worker_series": 150
+      },
+      {
+        "metric": "rpc_find",
+        "null_values": 50842,
+        "observed_values": 16927,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 169
+      },
+      {
+        "metric": "rpc_store",
+        "null_values": 50842,
+        "observed_values": 16927,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 169
+      },
+      {
+        "metric": "send_comm",
+        "null_values": 379742,
+        "observed_values": 41308,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 1050
+      },
+      {
+        "metric": "tot_comm",
+        "null_values": 379742,
+        "observed_values": 41308,
+        "run_id": "pluralis-8b",
+        "source_file": "raw/61aa554ff630a63d2247474550eb7d040cdd9813d886641cfd507e620846b1dd.body",
+        "timestamps": 401,
+        "worker_series": 1050
+      }
+    ]
+  }
+}

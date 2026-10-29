@@ -10,6 +10,10 @@ history. Checked-out branch: `main`. Commit:
 Machine-readable provenance is in [SOURCE.json](SOURCE.json).
 The upstream checkout is excluded from the parent research repository.
 
+Public dashboard histories are archived separately from the local experiments;
+see [public-run evidence](PUBLIC_RUNS.md) and its hash inventory for the 8B and
+13B runs. The existing source checkout and October 13 archives are preserved.
+
 The upstream [README](upstream/README.md) credits Hivemind; its
 [third-party license list](upstream/THIRD_PARTY_LICENSES.md) lists
 `hivemind 1.2.0.dev0`. This establishes project lineage, not identical behavior

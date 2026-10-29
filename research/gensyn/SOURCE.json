@@ -1,0 +1,46 @@
+{
+  "repository": "https://github.com/gensyn-ai/rl-swarm.git",
+  "commit": "286c17e5391fa3e9ebba64a8e683bb36e47376a8",
+  "branch": "main",
+  "commit_date": "2026-10-28T10:59:20-06:00",
+  "shallow": false,
+  "lfs_smudge_skipped": true,
+  "license": "MIT",
+  "checkout_path": "research/gensyn/upstream",
+  "artifacts": {
+    "README.md": {
+      "sha256": "0fad4208b11e682de2c596c6bbcf16a9410a1cf3c3f4727fe8782c8f3bf48ad7",
+      "role": "Repository documentation, including its historical CodeZero transition notes"
+    },
+    "technical_report.pdf": {
+      "sha256": "772c18db81157e0b645304c3be3858301dd5263c62a49a9946d5533828582892",
+      "bytes": 175957,
+      "role": "Gensyn technical report describing a small three-model, Qwen-2.5-1.5B, GSM8K experiment over 500 iterations"
+    },
+    "LICENSE.TXT": {
+      "sha256": "cab0ffa76f0ec9d4a84580ce1875688b7a555d892e6dcbce84019442249f1dd2",
+      "license": "MIT"
+    },
+    "historical_configs": [
+      {
+        "tag": "v0.6.4",
+        "commit": "0737c2e158df633ccc395bfc34a2993e9097edd4",
+        "commit_date": "2025-10-17T20:28:40-07:00",
+        "path_at_tag": "rgym_exp/config/rg-swarm.yaml",
+        "git_blob_id": "ab23acae4c7a2204dbd68de1060c11aeef980f54",
+        "sha256": "a2e212d4c10d05800209d6d983c84aed6c7025c71db6eb23884b1aa7551b0580",
+        "role": "Reasoning Gym default configuration; model can be overridden by MODEL_NAME and otherwise selected from hardware-dependent pools"
+      },
+      {
+        "tag": "v0.7.0",
+        "commit": "992569cb77a0bb5513aeb6cbe0bf3d9f0849e4ed",
+        "commit_date": "2025-11-12T10:48:29-05:00",
+        "path_at_tag": "code_gen_exp/config/code-gen-swarm.yaml",
+        "git_blob_id": "fafd7e40d5f2aa8e60d22c63dd3e7b06da753e19",
+        "sha256": "bff40d76f5f6e57dbd540e36ae3685a1ae8ecc17b4df7367feb84e0918db7de6",
+        "role": "CodeZero configuration; model path allows an environment override and has Qwen/DeepSeek default pools"
+      }
+    ]
+  },
+  "scope": "Full-history official source checkout, excluding LFS object downloads. No dependencies, model weights, containers, or training process were run."
+}
