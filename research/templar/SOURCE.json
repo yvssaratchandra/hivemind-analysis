@@ -1,0 +1,88 @@
+{
+  "project": "Templar / Covenant-72B",
+  "collected_utc": "2026-10-29",
+  "repository": {
+    "url": "https://github.com/one-covenant/templar.git",
+    "resolved_commit": "0fefc2ad763cd4cfda080e58267fe562455f3b45",
+    "commit_date": "2026-10-04T17:14:54+01:00",
+    "default_branch": "main",
+    "full_history_commits": 2321,
+    "tags_observed": 174,
+    "git_lfs_smudge": "disabled during clone",
+    "submodules": [],
+    "license": "MIT (upstream LICENSE file)",
+    "upstream_path": "upstream/"
+  },
+  "official_sources": [
+    {
+      "url": "https://github.com/one-covenant/templar",
+      "role": "Official implementation and status notice; README distinguishes completed Covenant-72B from the separate Crusades MFU competition on Subnet 3."
+    },
+    {
+      "url": "https://github.com/one-covenant/crusades",
+      "role": "Separate Crusades implementation referenced by Templar README; not Covenant-72B training evidence."
+    },
+    {
+      "url": "https://www.tplr.ai/dashboard",
+      "role": "Official public dashboard. Dated browser snapshots select both the current Qwen pipeline run and the listed Covenant 72B view."
+    },
+    {
+      "url": "https://www.tplr.ai/api/model-training",
+      "role": "Same-origin JSON payload observed in the selected Covenant 72B dashboard; contains the BPB-by-outer-step series and final displayed value."
+    },
+    {
+      "url": "https://www.tplr.ai/api/benchmarks?model=base",
+      "role": "Same-origin JSON payload observed while Covenant 72B was selected; benchmark scores are reported at outer step 6410."
+    },
+    {
+      "url": "https://www.tplr.ai/api/evaluated-miners",
+      "role": "Same-origin JSON payload exposes a count only; no miner identities or contribution scores were returned in the captured dashboard view."
+    },
+    {
+      "url": "https://www.tplr.ai/api/pipeline/overview?run_id=qwen2048-20260928-pp4dp4-r2-h31-b8192-lr4-a",
+      "role": "Observed current-Qwen pipeline API. The browser also captured loss, tokens, MFU, round duration, participant summaries, and pipeline links for this run ID."
+    },
+    {
+      "url": "https://arxiv.org/abs/2603.08163",
+      "role": "Covenant-72B report; paper-based training and contribution claims, independent of the current dashboard snapshot."
+    },
+    {
+      "url": "https://arxiv.org/abs/2601.02360",
+      "role": "Paper linked from the current Qwen pipeline dashboard; separate from the Covenant-72B report."
+    },
+    {
+      "url": "https://huggingface.co/1Covenant/Covenant-72B",
+      "role": "First-party model card/model repository metadata only; model weights are not collected."
+    },
+    {
+      "url": "https://huggingface.co/1Covenant/Covenant-72B-Chat",
+      "role": "First-party chat model card/model repository metadata only; model weights are not collected."
+    }
+  ],
+  "dashboard_snapshots": [
+    {
+      "path": "data/extended_20261029/templar_dashboard_public/",
+      "selection": "Initial public dashboard state: QWEN30_MOE_003, marked completed."
+    },
+    {
+      "path": "data/extended_20261029/templar_dashboard_run_selector/",
+      "selection": "Run selector opened; visible options include Covenant 72B, TEST_RUN_001..003, TEST_RUN_30B_001, and QWEN30_MOE_003."
+    },
+    {
+      "path": "data/extended_20261029/templar_covenant72b_selected/",
+      "selection": "Covenant 72B selected; browser captured same-origin JSON responses and the rendered page."
+    }
+  ],
+  "model_context": {
+    "covenant_72b": "Historical completed 72B training run, identified by the official selector, dashboard view, and Covenant-72B paper.",
+    "qwen30_moe_003": "Separate newer dashboard pipeline run; its observed pipeline API responses use run_id qwen2048-20260928-pp4dp4-r2-h31-b8192-lr4-a.",
+    "crusades": "Separate MFU competition referenced by the Templar README; no Crusades run metrics are attributed to either dashboard selection in this archive."
+  },
+  "limitations": [
+    "Repository HEAD and dashboards are independent snapshots; no exact source commit for the historical 72B deployment was established.",
+    "The published paper's BPB plot and the dashboard API captured on 2026-10-29 are separate observations: the paper plot ends around outer step 6190, while the dashboard API series ends at step 6410.",
+    "The 72B view exposes a global BPB curve and benchmark series. The paper plots aggregate contributing-peer and unique-participant curves, while the evaluated-miner endpoint returns only a count and the visible incentive table has no rows; individual contribution scores or UIDs are unavailable, and paper-plot points were not digitized.",
+    "The selected 72B page also loads the newer Qwen pipeline API using its explicit Qwen run_id. Those series are kept separate and are not treated as 72B data.",
+    "No model weights or datasets were fetched."
+  ]
+}

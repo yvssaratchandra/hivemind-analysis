@@ -1,0 +1,116 @@
+{
+  "project": "Grail / grail-v0",
+  "collected_utc": "2026-10-29",
+  "repository": {
+    "url": "https://github.com/one-covenant/grail.git",
+    "resolved_commit": "54d6342928dc516b1169342d801596fe4b88ef6f",
+    "commit_date": "2026-04-09T21:18:04-06:00",
+    "default_branch": "main",
+    "full_history_commits": 1094,
+    "tags_observed": 64,
+    "git_lfs_smudge": "disabled during clone",
+    "license_file": null,
+    "submodules": [
+      {
+        "path": "vendor/affinetes",
+        "url": "https://github.com/AffineFoundation/affinetes.git",
+        "pinned_commit": "5b30f90b90295fc5cd163199da9148be156ba0d7",
+        "availability": "clone attempt failed because GitHub requested credentials; source not initialized"
+      }
+    ],
+    "upstream_path": "upstream/"
+  },
+  "official_sources": [
+    {
+      "url": "https://github.com/one-covenant/grail",
+      "role": "Official implementation, documentation, and links to monitoring."
+    },
+    {
+      "url": "https://templarresearch.substack.com/p/grail-v0-how-we-built-a-fully-open",
+      "role": "Official Grail-v0 article; describes one live-chain Qwen2.5-1.5B-Instruct run over 100 windows and roughly 320 trainer updates, and reports benchmark/training curves."
+    },
+    {
+      "url": "https://wandb.ai/tplr/grail",
+      "role": "Official public W&B project linked by the source repository and article; browser snapshot displayed a loading shell."
+    },
+    {
+      "url": "https://forge.coreweave.com/wandb/tplr/grail",
+      "role": "Public Forge-hosted W&B project route observed in browser; remained at Loading project."
+    },
+    {
+      "url": "https://api.wandb.ai/graphql",
+      "role": "Unauthenticated metadata-only GraphQL endpoint queried for the public project and at most ten run rows; returned project null in this capture."
+    },
+    {
+      "url": "https://forge.coreweave.com/api/wandb/graphql",
+      "role": "Unauthenticated metadata-only GraphQL endpoint queried for the public project and at most ten run rows; returned project null in this capture."
+    },
+    {
+      "url": "https://grail-grafana.tplr.ai/",
+      "role": "Official Grafana dashboard; home and miner leaderboard captures succeeded after allowing its WebSocket and bounded read-only Loki queries. Selected six-hour leaderboard query was empty; older history not assessed."
+    },
+    {
+      "url": "https://huggingface.co/api/models?author=1Covenant&search=grail&limit=100",
+      "role": "Bounded first-party model-card discovery query; an empty result is not treated as proof no output card exists."
+    },
+    {
+      "url": "https://huggingface.co/api/models/Qwen/Qwen2.5-1.5B-Instruct",
+      "role": "Upstream Qwen base-model metadata only; not a Grail checkpoint."
+    },
+    {
+      "url": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct/raw/main/README.md",
+      "role": "Upstream Qwen base-model card only; no weights requested."
+    },
+    {
+      "url": "https://grail-grafana.tplr.ai/api/dashboards/uid/grail-ops",
+      "role": "Public operations dashboard definition linked by the Grafana home page; GET response archived."
+    }
+  ],
+  "historical_claim_check": {
+    "official_article_says_single_live_chain_run": true,
+    "reported_model": "Qwen2.5-1.5B-Instruct",
+    "reported_horizon": "100 windows / roughly 320 trainer update steps after evaluation-only windows",
+    "explicit_machine_readable_finished_state_verified": false,
+    "independent_run_history_verified": false,
+    "interpretation": "The official article reports results and a plotted horizon for one run. That is not an independently verified W&B run status or numerical history export."
+  },
+  "publisher_reported_results": {
+    "training_pass_at_1": "approximately 3% to 41%",
+    "training_pass_at_5": "approximately 10% to 63%",
+    "external_benchmarks": {
+      "GSM8K": "72.2% trained versus 57.9% 4-shot base",
+      "MATH": "47.6% trained versus 12.7% 4-shot base",
+      "AMC 2023": "25% trained versus 7.5% 4-shot base"
+    },
+    "qualification": "Official article narrative, not independently recovered per-step history; single run."
+  },
+  "dashboard_snapshots": [
+    {
+      "path": "data/extended_20261029/grail_v0_blog_public/",
+      "selection": "Official Substack page archived with rendered DOM, HTML, MHTML, and PDF."
+    },
+    {
+      "path": "data/extended_20261029/grail_wandb_project_public/",
+      "selection": "Public Forge W&B route rendered Loading project; no run table appeared."
+    },
+    {
+      "path": "data/extended_20261029/grail_grafana_public/",
+      "selection": "Partial static-response capture; live websocket route blocked and browser attempt stopped safely."
+    },
+    {
+      "path": "data/extended_20261029/grail_grafana_ws_retry/",
+      "selection": "Public Grafana home, official WebSocket allowed; datasource POST reads still blocked in this attempt."
+    },
+    {
+      "path": "data/extended_20261029/grail_leaderboard_read_queries/",
+      "selection": "Six-hour miner leaderboard with bounded read-only Loki POST query; status 200, zero rows; request body archived."
+    }
+  ],
+  "limitations": [
+    "Both unauthenticated W&B GraphQL project lookups returned project null; no numerical history was available to export.",
+    "The Substack article has plots embedded in its capture, but the values were not recovered as a machine-readable training history.",
+    "No Grail-trained HF checkpoint was confirmed; the archived Qwen card is the upstream base model only.",
+    "No model weights or datasets were collected.",
+    "Grafana miner leaderboard returned zero rows for the archived six-hour request window. Older Grafana periods were not queried; completeness of historical Grafana telemetry is unknown."
+  ]
+}
