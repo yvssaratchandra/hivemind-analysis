@@ -1,0 +1,48 @@
+{
+  "repository": "https://github.com/dstrbtd/DistributedTraining.git",
+  "resolved_commit": "082f3a632cd412e688a325356af08e34f01d8b8e",
+  "commit_date": "2025-12-23",
+  "default_branch": "main",
+  "license": "MIT (README badge and included license terms; no standalone LICENSE file in this checkout)",
+  "git_lfs_smudge": "disabled during clone",
+  "collected_utc": "2026-10-29",
+  "public_sources": [
+    "https://www.dstrbtd.ai/",
+    "https://dash.dstrbtd.ai/mech1",
+    "https://wandb.ai/kmfoda/distributed_training_miners",
+    "https://wandb.ai/kmfoda/distributed_training_validators",
+    "https://wandb.ai/kmfoda/DeMoCo",
+    "https://huggingface.co/distributed/llama-4b",
+    "https://huggingface.co/dstrbtd/llama-1b"
+  ],
+  "collection_method_sources": [
+    {
+      "url": "https://raw.githubusercontent.com/wandb/wandb/v0.19.11/wandb/apis/public/history.py",
+      "use": "Public SDK GraphQL HistoryScan step-window query pattern (minStep, maxStep, samples)."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/wandb/wandb/v0.19.11/wandb/apis/public/runs.py",
+      "use": "Public SDK historyKeys.lastStep lookup used to bound step-window scans."
+    }
+  ],
+  "model_context": {
+    "distributed/llama-4b": "linked from the public dashboard; per-run use not verified",
+    "llama-4b-ws-4": "upstream default global_model_name; not a public Hugging Face ID and per-run use not verified",
+    "dstrbtd/llama-1b": "upstream default tokenizer; per-run use not verified"
+  },
+  "repository_defaults": {
+    "model": {
+      "value": "llama-4b-ws-4",
+      "source": "upstream/distributed_training/utils/config.py, --neuron.global_model_name default"
+    },
+    "tokenizer": {
+      "value": "dstrbtd/llama-1b",
+      "source": "upstream/distributed_training/utils/config.py, --neuron.global_tokenizer_name default"
+    },
+    "dataset": {
+      "value": "HuggingFaceFW/fineweb-edu",
+      "source": "upstream/distributed_training/data/dataset.py, DatasetLoader.name"
+    }
+  },
+  "note": "Repository HEAD and public dashboards are independent snapshots; the available public evidence does not prove which exact code revision produced each historical run. The upstream README identifies the repository as MIT licensed; it has no standalone LICENSE file."
+}

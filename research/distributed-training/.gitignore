@@ -1,0 +1,6 @@
+# Upstream source is maintained as a separate checkout; public snapshots are bulky.
+upstream/
+data/
+__pycache__/
+*.py[cod]
+.coverage
