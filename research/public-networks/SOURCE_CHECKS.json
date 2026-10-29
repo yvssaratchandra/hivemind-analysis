@@ -1,0 +1,34 @@
+[
+  {
+    "project": "node0",
+    "path": "research/node0/upstream",
+    "remote": "https://github.com/PluralisResearch/node0.git",
+    "commit": "32bd084de15dbdc8e30723ad66db7d01acf70c03",
+    "shallow": false,
+    "clean": true
+  },
+  {
+    "project": "gensyn",
+    "path": "research/gensyn/upstream",
+    "remote": "https://github.com/gensyn-ai/rl-swarm",
+    "commit": "286c17e5391fa3e9ebba64a8e683bb36e47376a8",
+    "shallow": false,
+    "clean": true
+  },
+  {
+    "project": "distributed-training",
+    "path": "research/distributed-training/upstream",
+    "remote": "https://github.com/dstrbtd/DistributedTraining.git",
+    "commit": "082f3a632cd412e688a325356af08e34f01d8b8e",
+    "shallow": false,
+    "clean": true
+  },
+  {
+    "project": "agora",
+    "path": "research/agora/upstream",
+    "remote": "https://github.com/PluralisResearch/agora.git",
+    "commit": "37d29a966528675635161007d7b43388012a98b2",
+    "shallow": false,
+    "clean": true
+  }
+]

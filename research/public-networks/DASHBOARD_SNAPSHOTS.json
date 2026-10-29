@@ -1,0 +1,4283 @@
+{
+  "snapshot_label": "dashboard_20261029_final",
+  "note": "Separate dated page captures, not an atomic snapshot or a fully interactive offline website.",
+  "views": [
+    {
+      "active_tab": "Overview",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-8b_overview",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-8b \u00b7\"]"
+        ],
+        "expected_run": "pluralis-8b",
+        "view": "Overview",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-8b_overview",
+      "manifest_sha256": "0299371dd7a2a588768f6081a72bd010431398b5a48358139a941eebb06088f1",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:12:15.631863Z",
+      "completed_at": "2026-10-29T16:12:28.438489Z",
+      "total_saved_bytes": 6668981,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:12:22.235201Z",
+          "completed_at": "2026-10-29T16:12:22.383111Z",
+          "selector": "[title^=\"pluralis-8b \u00b7\"]",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:12:17.148586Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1198692,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:12:27.444354Z",
+          "sha256": "d01fb155fe0430c79a52968b2692b71beeffdda543a2c15bb08ee2160713dd19",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 6969,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:12:27.451807Z",
+          "sha256": "3e946f6fac841895696809301f86d58f8796b1450c137811e9dccc9767d6d67b",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 200499,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:12:27.522629Z",
+          "sha256": "59b57ddcc48d7a5e57f82ae6ef416b55e8853622ffcd43a8a5907953749cd35c",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 200499,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_01.png",
+          "retrieved_at": "2026-10-29T16:12:27.793429Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 0,
+          "sha256": "59b57ddcc48d7a5e57f82ae6ef416b55e8853622ffcd43a8a5907953749cd35c",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 186197,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_02.png",
+          "retrieved_at": "2026-10-29T16:12:28.111229Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 339,
+          "sha256": "7f9ceff8eedf69fc51df8846ecfc63122a06f7d8ef5a3c346d80f30d883f0ca1",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 150015,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:12:28.303221Z",
+          "sha256": "8ef4aefcfc4bbaf7f32df146347c5e5ac02d5e2768b234d1eb47623316167ca9",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 264586,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:12:28.320948Z",
+          "sha256": "042902bf00f7b08a1a588578672de2c124568a8654b1a7298823c5a15e1c74fa",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:12:28.438453Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:12:19.219171Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Telemetry",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-8b_telemetry",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-8b \u00b7\"]",
+          "button:text-is(\"Telemetry\")"
+        ],
+        "expected_run": "pluralis-8b",
+        "view": "Telemetry",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-8b_telemetry",
+      "manifest_sha256": "c05cfd4260b12798519ff6446f73eaf0809e390924e24c210d7c576e45f3d69d",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:19:00.752082Z",
+      "completed_at": "2026-10-29T16:20:04.100412Z",
+      "total_saved_bytes": 9643187,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:19:21.635137Z",
+          "completed_at": "2026-10-29T16:19:21.746686Z",
+          "selector": "[title^=\"pluralis-8b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:19:41.748489Z",
+          "completed_at": "2026-10-29T16:19:41.919023Z",
+          "selector": "button:text-is(\"Telemetry\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:19:01.546366Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1874457,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:20:02.117691Z",
+          "sha256": "8d9ec0e2124b5f12fef9dbb38702d9f1328cff42291a792f2bd18f5d9aa0b6a4",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 33647,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:20:02.130970Z",
+          "sha256": "33196dc32743d4ef08e1985df33099cbe3777f53b1e65448b7c4e98be58f0a3c",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 492691,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:20:02.277421Z",
+          "sha256": "00fed764a1e02a26ba63176845a5e02f37abeb0e83a316ecea9876aaad1b5966",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 492691,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_01.png",
+          "retrieved_at": "2026-10-29T16:20:02.658625Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 0,
+          "sha256": "00fed764a1e02a26ba63176845a5e02f37abeb0e83a316ecea9876aaad1b5966",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 451910,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_02.png",
+          "retrieved_at": "2026-10-29T16:20:03.029821Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 671,
+          "sha256": "e9af99d7a660a3e6e3438fddd94c46816719af817ffe5a67219f61e5bb3851a5",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 368360,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_03.png",
+          "retrieved_at": "2026-10-29T16:20:03.370485Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 1273,
+          "sha256": "902a16c09267ee6d92432dedb30cd98c9d66862deaff0338196675c5149a3081",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 437437,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:20:03.807009Z",
+          "sha256": "7027d5f8f698465f18917b1b0c1aae815bda62608a1d4b8465ca24b45861f322",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 997420,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:20:03.873886Z",
+          "sha256": "f8be1e44b98b7e84303eb350f7c30cc02f8c586e9e8a7c97feac2a6ce907c5bd",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:20:04.100330Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:19:03.930722Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:19:42.944124Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-8b/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Evals",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-8b_evals",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-8b \u00b7\"]",
+          "button:text-is(\"Evals\")"
+        ],
+        "expected_run": "pluralis-8b",
+        "view": "Evals",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-8b_evals",
+      "manifest_sha256": "628a3290002698c22f4092c41f3316ccfde9efdff6d1139ec1181a77c2746468",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:12:50.209886Z",
+      "completed_at": "2026-10-29T16:13:12.156583Z",
+      "total_saved_bytes": 6111282,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:12:56.217428Z",
+          "completed_at": "2026-10-29T16:12:56.316690Z",
+          "selector": "[title^=\"pluralis-8b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:13:01.317846Z",
+          "completed_at": "2026-10-29T16:13:01.475417Z",
+          "selector": "button:text-is(\"Evals\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:12:51.096952Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1199290,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:13:06.640639Z",
+          "sha256": "d3300b4348c46363c5adc4373a5100e5304e5017e7cfb288d305a6c15d6139ab",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 6249,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:13:06.657870Z",
+          "sha256": "5632219cc96cd429d57c9d3ca44fa8b0f3739f33cc3914045809bfdfd477b3c6",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 102546,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:13:06.766161Z",
+          "sha256": "d3620004c47a8823adb334d0b7f19853402794f73858caaeda3b54e192bf188a",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 76364,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:13:11.877839Z",
+          "sha256": "596c35a3951ca009f1eae8e0360df02068da4e229c169a06a3035c7cf03ae313",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 265160,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:13:11.913470Z",
+          "sha256": "3611a2a7c9afd18ebe25fa9eb44230311a9dcc2a8ebcf0ae1351904c509c95fd",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:13:12.156491Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div.overflow-y-auto.p-3\").first to be visible\n    14 \u00d7 locator resolved to hidden <div class=\"flex-1 min-h-0 p-3 flex flex-col gap-3 overflow-y-auto\">\u2026</div>\n",
+          "retrieved_at": "2026-10-29T16:13:11.768613Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:12:53.573924Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Analysis",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-8b_analysis",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-8b \u00b7\"]",
+          "button:text-is(\"Analysis\")"
+        ],
+        "expected_run": "pluralis-8b",
+        "view": "Analysis",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-8b_analysis",
+      "manifest_sha256": "ebad5541ff99172fcb5e4c56b65acc1ad7b1a6ab75bd42c78912d58dad1afe46",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:13:12.297645Z",
+      "completed_at": "2026-10-29T16:13:34.837577Z",
+      "total_saved_bytes": 6368892,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:13:18.620152Z",
+          "completed_at": "2026-10-29T16:13:18.882766Z",
+          "selector": "[title^=\"pluralis-8b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:13:23.884091Z",
+          "completed_at": "2026-10-29T16:13:24.028490Z",
+          "selector": "button:text-is(\"Analysis\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:13:13.459338Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1212647,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:13:29.207159Z",
+          "sha256": "7dfb425fc0b5f866f6eafcdc6e011144905d552b74ce53a2d4cd072b2a6f1080",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 8045,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:13:29.223898Z",
+          "sha256": "fadd2481f87c566d89a14cc9eeff98ef5a4be03d5d468844fb019d3e3a831717",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 229278,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:13:29.370368Z",
+          "sha256": "cbed89d2170434754d9646ee7a093f18515bcce981b95671ea4f855b3e95c78d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 168961,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:13:34.561808Z",
+          "sha256": "708d42f94b4b8e1301baa4dbf63d070453c7d31ccc3b2fdedb975837edf7a487",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 279678,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:13:34.597244Z",
+          "sha256": "b64edaae972c5436e3e9e5fc182caffa7bd27b81afa98fb775d22ea0da8677fa",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:13:34.837505Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div.overflow-y-auto.p-3\").first to be visible\n    14 \u00d7 locator resolved to hidden <div class=\"flex-1 min-h-0 p-3 flex flex-col gap-3 overflow-y-auto\">\u2026</div>\n",
+          "retrieved_at": "2026-10-29T16:13:34.372894Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:13:15.845000Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Hardware",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-8b_hardware",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-8b \u00b7\"]",
+          "button:text-is(\"Hardware\")"
+        ],
+        "expected_run": "pluralis-8b",
+        "view": "Hardware",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-8b_hardware",
+      "manifest_sha256": "626f6fb364d466784e0d4e23cbb7a99d1c3650d41dce439ec4320d206ac44e6c",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:13:34.991097Z",
+      "completed_at": "2026-10-29T16:13:57.738836Z",
+      "total_saved_bytes": 6326963,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:13:41.548408Z",
+          "completed_at": "2026-10-29T16:13:41.857753Z",
+          "selector": "[title^=\"pluralis-8b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:13:46.860034Z",
+          "completed_at": "2026-10-29T16:13:46.993632Z",
+          "selector": "button:text-is(\"Hardware\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:13:36.317639Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1234759,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:13:52.157753Z",
+          "sha256": "e7e2dd56e076eb6b4214df0feb2cba1b5b571cceffb5589eb763431c4320b752",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 7986,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:13:52.175104Z",
+          "sha256": "86e31e89a8609c9c4d4b937976c396961e985bcbf4ba4f40d5da85da12525a21",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 198116,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:13:52.309990Z",
+          "sha256": "29754f862aa075c6e95d335ea83684668191812fb43a1be08d789192c87f552c",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 88094,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:13:57.467476Z",
+          "sha256": "dd067c57c2b4b5e4c27fe60f4f4a48d1b2679afddb274435c0b87dd955782241",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 303171,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:13:57.509920Z",
+          "sha256": "c897d15cb3f028fe31dba172f82a548245ef5245f15b1cc6fdcce0cf67657edd",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:13:57.738754Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div.overflow-y-auto.p-3\").first to be visible\n    14 \u00d7 locator resolved to hidden <div class=\"flex-1 min-h-0 p-3 flex flex-col gap-3 overflow-y-auto\">\u2026</div>\n",
+          "retrieved_at": "2026-10-29T16:13:57.312042Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:13:38.656169Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Geography",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-8b_geography",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-8b \u00b7\"]",
+          "button:text-is(\"Geography\")"
+        ],
+        "expected_run": "pluralis-8b",
+        "view": "Geography",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-8b_geography",
+      "manifest_sha256": "27d7a0ffa56ef119252bc2e9282e2ccae037324208467089931099e70aff3652",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:13:57.898445Z",
+      "completed_at": "2026-10-29T16:14:20.342461Z",
+      "total_saved_bytes": 6358602,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:14:04.295390Z",
+          "completed_at": "2026-10-29T16:14:04.571025Z",
+          "selector": "[title^=\"pluralis-8b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:14:09.571937Z",
+          "completed_at": "2026-10-29T16:14:09.757343Z",
+          "selector": "button:text-is(\"Geography\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:13:59.100228Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1216542,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:14:14.854493Z",
+          "sha256": "e7e66cf8600b59dbc70dc7bed4f2c5b3615b1e302fd3181d2a763014f1de9fd0",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 6307,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:14:14.870341Z",
+          "sha256": "5c9a71662964724727fbb42538ad03a33ad0905cab61e021ad5a4153a1955f7a",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 116410,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:14:14.977668Z",
+          "sha256": "710e27b56a10b8bb9adb2afcdc9b6bd5936b28dca1a7c9224463c8f56b1390f1",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 90885,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:14:20.116095Z",
+          "sha256": "53eb0a9dbcf6029c3314c71cae7b85276c6629fa3ef3a4a4347181b053595784",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 296893,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:14:20.142218Z",
+          "sha256": "34af2ec9c139180f81ae57c208ba773b354cbd904bfb13d931aa2eee649af076",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 2309,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:14:20.342416Z",
+          "sha256": "e2b5d7a4ba81f6659ae44211530706abc48b1b5bb672f6c3726b14a5ea417a82",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div.overflow-y-auto.p-3\").first to be visible\n    14 \u00d7 locator resolved to hidden <div class=\"flex-1 min-h-0 p-3 flex flex-col gap-3 overflow-y-auto\">\u2026</div>\n",
+          "retrieved_at": "2026-10-29T16:14:19.980075Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:14:01.561435Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Nodes",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-8b_nodes",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-8b \u00b7\"]",
+          "button:text-is(\"Nodes\")"
+        ],
+        "expected_run": "pluralis-8b",
+        "view": "Nodes",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-8b_nodes",
+      "manifest_sha256": "90bdcc45933c88feabcbb76c53f36b791e39e4c724f3c65bb34f1e2f91f7c72e",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:14:20.492096Z",
+      "completed_at": "2026-10-29T16:14:43.656568Z",
+      "total_saved_bytes": 9198097,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:14:26.891335Z",
+          "completed_at": "2026-10-29T16:14:27.185964Z",
+          "selector": "[title^=\"pluralis-8b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:14:32.187464Z",
+          "completed_at": "2026-10-29T16:14:32.329172Z",
+          "selector": "button:text-is(\"Nodes\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:14:21.781687Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 2574656,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:14:37.602433Z",
+          "sha256": "2a6fe0c03784cae76ff7ea9321df57af7e0a8790424124deba9ff5d8177e10c1",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 65313,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:14:37.637828Z",
+          "sha256": "cc178d1a380c2633faf7e5487875308b9f0df52e46516ed7eef2a1297f0fdc35",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 229855,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:14:37.779498Z",
+          "sha256": "26ec3da835950e1de1df1f3f713176da38b6c8210e91bbccc90ee289ce382256",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 106202,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:14:43.349762Z",
+          "sha256": "29676f391ef9304d471ba3a989240773efda7812e57da63207ca6752571f0b2e",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1738738,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:14:43.452028Z",
+          "sha256": "866f23d318396b4826b0b968de6d338644b697913f45602e366e26178a9dbc24",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:14:43.656417Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div.overflow-y-auto.p-3\").first to be visible\n    14 \u00d7 locator resolved to hidden <div class=\"flex-1 min-h-0 p-3 flex flex-col gap-3 overflow-y-auto\">\u2026</div>\n",
+          "retrieved_at": "2026-10-29T16:14:42.783075Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:14:24.041018Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Leaderboard",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-8b_leaderboard",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-8b \u00b7\"]",
+          "button:text-is(\"Leaderboard\")"
+        ],
+        "expected_run": "pluralis-8b",
+        "view": "Leaderboard",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-8b_leaderboard",
+      "manifest_sha256": "7c482ac65297b7a031c93f4e6f4567ce396f16784ae3ffcc86c8315970261119",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:14:43.786130Z",
+      "completed_at": "2026-10-29T16:15:06.218142Z",
+      "total_saved_bytes": 6907291,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:14:49.854500Z",
+          "completed_at": "2026-10-29T16:14:50.164340Z",
+          "selector": "[title^=\"pluralis-8b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:14:55.165592Z",
+          "completed_at": "2026-10-29T16:14:55.349967Z",
+          "selector": "button:text-is(\"Leaderboard\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:14:44.716049Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1499706,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:15:00.509255Z",
+          "sha256": "f09faebf3d95f93bcfa9bddbf32fa4bc55da34dc3ea25d94a322d655f0ddf463",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 15837,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:15:00.528963Z",
+          "sha256": "e32cee483e79e6bbd54fbae0da4014b517a8929170bb688abbc9c962e3074028",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 242575,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:15:00.675025Z",
+          "sha256": "67db75833780a49434ed2ae71ca76c8bc1daac0110f2b0772cc9fed8e5c8e65d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 90710,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:15:05.938611Z",
+          "sha256": "9de902e1a35b8eaf8d29c0242933de4b92f239562ed0e5125eddd9a025c76fb0",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 586282,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:15:05.997648Z",
+          "sha256": "bb10d00dad458a838d55d86c40c13176db787831d9df9db833586f552b80895a",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:15:06.218050Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div.overflow-y-auto.p-3\").first to be visible\n    14 \u00d7 locator resolved to hidden <div class=\"flex-1 min-h-0 p-3 flex flex-col gap-3 overflow-y-auto\">\u2026</div>\n",
+          "retrieved_at": "2026-10-29T16:15:05.677277Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:14:47.212686Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Overview",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-13b-test_overview",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-13b-test \u00b7\"]"
+        ],
+        "expected_run": "pluralis-13b-test",
+        "view": "Overview",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-13b-test_overview",
+      "manifest_sha256": "f61fd4088cdb340766259092f9c9c396a2feff762c817da02ff836b9b76fefcf",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:15:06.377341Z",
+      "completed_at": "2026-10-29T16:15:19.565418Z",
+      "total_saved_bytes": 6595148,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:15:12.665421Z",
+          "completed_at": "2026-10-29T16:15:12.800464Z",
+          "selector": "[title^=\"pluralis-13b-test \u00b7\"]",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:15:07.463370Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1141291,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:15:17.961410Z",
+          "sha256": "d33e0f1fa729c3e919106ba28f38d003df5ee833ec90a83dcb259160733e8f8f",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 4680,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:15:17.975447Z",
+          "sha256": "b48f91ecd99aa8654714e78282c12b23d1e07fd72f45e0362bbc5116a3dc6a46",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 215270,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:15:18.127512Z",
+          "sha256": "334a7f3a886618019d1722957ba551bb2cd014eb0af285e3cbbc63a5b9094762",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 215270,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_01.png",
+          "retrieved_at": "2026-10-29T16:15:18.465652Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 0,
+          "sha256": "334a7f3a886618019d1722957ba551bb2cd014eb0af285e3cbbc63a5b9094762",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 196394,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_02.png",
+          "retrieved_at": "2026-10-29T16:15:19.054401Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 339,
+          "sha256": "0fa02a2a1da2d02eda3e396597af215314f78951a2f9056cf63b9973fefca133",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 158024,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:15:19.322395Z",
+          "sha256": "24e9124f71f7d9a331468b783e1d0d94c25e837b6a579e474055fcc435264dfc",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 202695,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:15:19.356422Z",
+          "sha256": "354fab1df20123668bdad3e7775438915644190db86389b13bc0055b48786e4c",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:15:19.565306Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:15:10.025611Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Telemetry",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-13b-test_telemetry",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-13b-test \u00b7\"]",
+          "button:text-is(\"Telemetry\")"
+        ],
+        "expected_run": "pluralis-13b-test",
+        "view": "Telemetry",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-13b-test_telemetry",
+      "manifest_sha256": "b102ebad82cb20b9bf351cd21a37e3da108179e5738becb2904db9f76a497f39",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:20:04.213732Z",
+      "completed_at": "2026-10-29T16:21:08.233731Z",
+      "total_saved_bytes": 10689546,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:20:25.264984Z",
+          "completed_at": "2026-10-29T16:20:25.373351Z",
+          "selector": "[title^=\"pluralis-13b-test \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:20:45.374648Z",
+          "completed_at": "2026-10-29T16:20:45.931655Z",
+          "selector": "button:text-is(\"Telemetry\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:20:05.087859Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 2326277,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:21:06.134250Z",
+          "sha256": "ce8a46e3257176b6c2a1f1a6b92cc096c3ab826d727a45072ad2b4a8775bc965",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 54270,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:21:06.152000Z",
+          "sha256": "a672a8d6965408935659cae0ae35e90c57c1b1ca5bab2c06702a8dfa0420b58a",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 491018,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:21:06.308227Z",
+          "sha256": "e3d46de3734073428163e696a722bb3509b6fa8bd73d531e42aa5564c63ea422",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 491018,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_01.png",
+          "retrieved_at": "2026-10-29T16:21:06.666523Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 0,
+          "sha256": "e3d46de3734073428163e696a722bb3509b6fa8bd73d531e42aa5564c63ea422",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 476091,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_02.png",
+          "retrieved_at": "2026-10-29T16:21:07.027068Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 671,
+          "sha256": "eab6855b18917c2089e8372d5aa66dbd9b960bbfdc14042c0bd9728a5e9cc6ca",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 396744,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_03.png",
+          "retrieved_at": "2026-10-29T16:21:07.365254Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 1273,
+          "sha256": "a81abf32c405b206bcfc34dae4de09f4202c84f34c358797e5964508f2b9f3d5",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 471916,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:21:07.831737Z",
+          "sha256": "0246999b5f9fa1719cc5f2c41914ab92797e49540ad817ec5d7ff694a04d6b71",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1487638,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:21:07.911438Z",
+          "sha256": "6f8481fc8107ddc62ed9abfff8316d6a699154323200ce700d9ee68bfc623f88",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:21:08.233664Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:20:07.405061Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Evals",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-13b-test_evals",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-13b-test \u00b7\"]",
+          "button:text-is(\"Evals\")"
+        ],
+        "expected_run": "pluralis-13b-test",
+        "view": "Evals",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-13b-test_evals",
+      "manifest_sha256": "5ea470b41b3c27bfece3ca30f5f5dc1e61c05fa07f988a6b551d4ba94c57273d",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:15:47.384737Z",
+      "completed_at": "2026-10-29T16:16:09.794128Z",
+      "total_saved_bytes": 5988190,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:15:53.893945Z",
+          "completed_at": "2026-10-29T16:15:54.021461Z",
+          "selector": "[title^=\"pluralis-13b-test \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:15:59.022527Z",
+          "completed_at": "2026-10-29T16:15:59.177932Z",
+          "selector": "button:text-is(\"Evals\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:15:48.819939Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1141832,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:16:04.304037Z",
+          "sha256": "91f8360bff7f1b3e25545c9ff994e58ab720e00c5111892d89f87d8866250030",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 3972,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:16:04.316896Z",
+          "sha256": "53bfbd78d6a596bc332999eb72f03742bd7046022b8c816864f784c7e7744127",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 103190,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:16:04.436304Z",
+          "sha256": "59c642948b1fff7e83162acf0396a156abf8c10214f99580b3e818eececac5c8",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 74320,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:16:09.530923Z",
+          "sha256": "92563c92cbf5783c4f4915a1de6383351831c2bcda212b051749561dddfda321",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 203203,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:16:09.562366Z",
+          "sha256": "7d210996f1031b362fb3ec056741b3da741caf0e09f407849169deac6cab1394",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:16:09.794067Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div.overflow-y-auto.p-3\").first to be visible\n    14 \u00d7 locator resolved to hidden <div class=\"flex-1 min-h-0 p-3 flex flex-col gap-3 overflow-y-auto\">\u2026</div>\n",
+          "retrieved_at": "2026-10-29T16:16:09.438133Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:15:50.962994Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Analysis",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-13b-test_analysis",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-13b-test \u00b7\"]",
+          "button:text-is(\"Analysis\")"
+        ],
+        "expected_run": "pluralis-13b-test",
+        "view": "Analysis",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-13b-test_analysis",
+      "manifest_sha256": "51d4907d8f3b6bccf85b94b06d3c761397b3f95cfcb8521f867812042d05430c",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:16:09.940214Z",
+      "completed_at": "2026-10-29T16:16:32.651546Z",
+      "total_saved_bytes": 6248944,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:16:16.610380Z",
+          "completed_at": "2026-10-29T16:16:16.732011Z",
+          "selector": "[title^=\"pluralis-13b-test \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:16:21.733957Z",
+          "completed_at": "2026-10-29T16:16:21.899059Z",
+          "selector": "button:text-is(\"Analysis\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:16:11.448639Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1155302,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:16:27.024194Z",
+          "sha256": "69089d92aaf27190c0b3bc423265118aadc5eb5464df5a87e5656561107ca3f0",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 5791,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:16:27.039429Z",
+          "sha256": "569d99a334e391a1973951683cd4ed101d775472885a62bc01ccb11e5fb9d246",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 232023,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:16:27.235203Z",
+          "sha256": "cfa9d45244017e38a094f0310990d713e3681c16c4552069fd89ad2f7278c8ad",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 167699,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:16:32.399462Z",
+          "sha256": "0dcb07355121ea4c0acb2b8f975e4a2944266a1dda03505a3f10fd7a42e64db6",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 217846,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:16:32.430029Z",
+          "sha256": "2f1ce957eb1fa69ffbf89c852c52b7643d2908515b0bd85848f2267a6fddd449",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:16:32.651457Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div.overflow-y-auto.p-3\").first to be visible\n    14 \u00d7 locator resolved to hidden <div class=\"flex-1 min-h-0 p-3 flex flex-col gap-3 overflow-y-auto\">\u2026</div>\n",
+          "retrieved_at": "2026-10-29T16:16:32.237413Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:16:14.259741Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Hardware",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-13b-test_hardware",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-13b-test \u00b7\"]",
+          "button:text-is(\"Hardware\")"
+        ],
+        "expected_run": "pluralis-13b-test",
+        "view": "Hardware",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-13b-test_hardware",
+      "manifest_sha256": "96c86e8635cb63a4331319fd2f8b705372601d789c4fcd61832e6282f8fde491",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:16:32.805189Z",
+      "completed_at": "2026-10-29T16:16:55.044947Z",
+      "total_saved_bytes": 6222971,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:16:39.092171Z",
+          "completed_at": "2026-10-29T16:16:39.199409Z",
+          "selector": "[title^=\"pluralis-13b-test \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:16:44.201527Z",
+          "completed_at": "2026-10-29T16:16:44.340696Z",
+          "selector": "button:text-is(\"Hardware\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:16:33.938487Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1181890,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:16:49.461373Z",
+          "sha256": "19e53b2f48ee3e0c0ea233d9bd017c4ad67b4aa41705cfe6650dedd73ac8e0b7",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 5935,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:16:49.477261Z",
+          "sha256": "e282e4cc1454b402225010ea20289c63e8b31a4be461705c85fe9fd6373a9622",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 209153,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:16:49.610806Z",
+          "sha256": "d40b2490d838f2928fe64a05d0456d7ab6d12a2a5e155f63723d4ecf650a116e",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 85006,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:16:54.781903Z",
+          "sha256": "9a79e8e172c274f5e09c0bfc8661886e37e98d1aaeacbb53d9571747337f403d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 246150,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:16:54.816826Z",
+          "sha256": "8f14d75c8e65d2dbf203267d48df9acc13612ea50f92ce6b99ba60a2c312ac7d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:16:55.044855Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div.overflow-y-auto.p-3\").first to be visible\n    14 \u00d7 locator resolved to hidden <div class=\"flex-1 min-h-0 p-3 flex flex-col gap-3 overflow-y-auto\">\u2026</div>\n",
+          "retrieved_at": "2026-10-29T16:16:54.613398Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:16:36.256268Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Geography",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-13b-test_geography",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-13b-test \u00b7\"]",
+          "button:text-is(\"Geography\")"
+        ],
+        "expected_run": "pluralis-13b-test",
+        "view": "Geography",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-13b-test_geography",
+      "manifest_sha256": "d5220213644490cb037d44e0b7b8bec662c3954838b6fe32e9dcf9abde249801",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:16:55.184797Z",
+      "completed_at": "2026-10-29T16:17:17.655580Z",
+      "total_saved_bytes": 6287498,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:17:01.700891Z",
+          "completed_at": "2026-10-29T16:17:01.830143Z",
+          "selector": "[title^=\"pluralis-13b-test \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:17:06.831612Z",
+          "completed_at": "2026-10-29T16:17:06.981913Z",
+          "selector": "button:text-is(\"Geography\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:16:56.567807Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1172775,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:17:12.138449Z",
+          "sha256": "7aea2f7d67da95c92e2cd2778886a77e95c69c2b690974772695a3cf9f408add",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 4274,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:17:12.153353Z",
+          "sha256": "931e4ed7c13c82dd0245c8b340b9128afbb784d8b8f01e6f324e48220da0d9a9",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 136222,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:17:12.272237Z",
+          "sha256": "0517e9ab12bb9e9ed2f54dbb4a6cb6cd512f6279c7b2af2a64f3ecfe681020f7",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 93046,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:17:17.393407Z",
+          "sha256": "a613a825a89a5cde51b52e7628b5a8827d05bb03f3087d84f90a3a35e3f819a3",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 249616,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:17:17.428408Z",
+          "sha256": "1fdb9196442276dd60ef8b42829272613314d4b8417a5ee4fe1e8ce4f6b52916",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 2309,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:17:17.655535Z",
+          "sha256": "bab9937e91448cb0d26aad6a6de3948805df2237304afb27dac23812160cb2bc",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div.overflow-y-auto.p-3\").first to be visible\n    14 \u00d7 locator resolved to hidden <div class=\"flex-1 min-h-0 p-3 flex flex-col gap-3 overflow-y-auto\">\u2026</div>\n",
+          "retrieved_at": "2026-10-29T16:17:17.274141Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:16:59.037027Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Nodes",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-13b-test_nodes",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-13b-test \u00b7\"]",
+          "button:text-is(\"Nodes\")"
+        ],
+        "expected_run": "pluralis-13b-test",
+        "view": "Nodes",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-13b-test_nodes",
+      "manifest_sha256": "e3dcfece252cdd5fe857d9d7f64bfa0adbf99f512ae953f386116c19083b2019",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:17:17.801961Z",
+      "completed_at": "2026-10-29T16:17:41.883417Z",
+      "total_saved_bytes": 12155632,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:17:24.330035Z",
+          "completed_at": "2026-10-29T16:17:24.464619Z",
+          "selector": "[title^=\"pluralis-13b-test \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:17:29.465893Z",
+          "completed_at": "2026-10-29T16:17:29.751750Z",
+          "selector": "button:text-is(\"Nodes\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:17:19.217896Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 3959476,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:17:35.213246Z",
+          "sha256": "4c4e8682ddcc56f0757b7b46502dd9a81ce8f196edc6e01688f1da312cb46fc5",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 130168,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:17:35.290558Z",
+          "sha256": "c3efe90e4b1a0e08677ba9d3e6c03c83253fe4b23088b4572255b989756509a9",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 255301,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:17:35.471876Z",
+          "sha256": "7a0e27a8bea4a8f879353d6ad4eaead8d4985e1b4331fb6438de348d79a673da",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 107226,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:17:41.441911Z",
+          "sha256": "fd6594b6eb8ff4b446e8af7dc1160993f6c8e42aaf4af85e865eae970cce8ee7",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 3220128,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:17:41.668846Z",
+          "sha256": "f7d6d1e44719cb5e709334acbf4672a9bbf196db8af726d0e1d5806731f0a745",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:17:41.883355Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div.overflow-y-auto.p-3\").first to be visible\n    13 \u00d7 locator resolved to hidden <div class=\"flex-1 min-h-0 p-3 flex flex-col gap-3 overflow-y-auto\">\u2026</div>\n",
+          "retrieved_at": "2026-10-29T16:17:40.474572Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:17:21.590846Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Leaderboard",
+      "selection_succeeded": true,
+      "target": {
+        "project": "agora",
+        "label": "pluralis-13b-test_leaderboard",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"pluralis-13b-test \u00b7\"]",
+          "button:text-is(\"Leaderboard\")"
+        ],
+        "expected_run": "pluralis-13b-test",
+        "view": "Leaderboard",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/agora/data/dashboard_20261029_final/pluralis-13b-test_leaderboard",
+      "manifest_sha256": "8a3e6676dd254a964e66ca7fd94cd7904d418a078853187f49d0b1b79d1abd6b",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:17:42.038352Z",
+      "completed_at": "2026-10-29T16:18:04.262381Z",
+      "total_saved_bytes": 6519472,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:17:48.242235Z",
+          "completed_at": "2026-10-29T16:17:48.361438Z",
+          "selector": "[title^=\"pluralis-13b-test \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:17:53.363309Z",
+          "completed_at": "2026-10-29T16:17:53.504832Z",
+          "selector": "button:text-is(\"Leaderboard\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:17:43.085799Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1315341,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:17:58.680327Z",
+          "sha256": "61dfaa6112dfa3a377b05a8b6a63a76589055adc613d7bbe5aee61f903f2f00b",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 9567,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:17:58.699229Z",
+          "sha256": "b76ccb1814421f64b2131c2b58d312bc654467aac9bd108af59b78252000b2dd",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 247083,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:17:58.844494Z",
+          "sha256": "8d5c6dece85e8d2af3a83d5408882aab2de01e3351cddcb138831dac87c83b41",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 86589,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:18:04.018099Z",
+          "sha256": "a374c511240b5dfc04024417c0f44ab386c4d58e52a5bfcc54d7bd656466bdef",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 388711,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:18:04.045311Z",
+          "sha256": "131b9e483ddb9ab426e12febcb590e1e41743de71000c192818b3806ff9bac1a",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:18:04.262320Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div.overflow-y-auto.p-3\").first to be visible\n    14 \u00d7 locator resolved to hidden <div class=\"flex-1 min-h-0 p-3 flex flex-col gap-3 overflow-y-auto\">\u2026</div>\n",
+          "retrieved_at": "2026-10-29T16:18:03.846522Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:17:45.610078Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Overview",
+      "selection_succeeded": true,
+      "target": {
+        "project": "node0",
+        "label": "node0-7-5b_overview",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"node0-7-5b \u00b7\"]"
+        ],
+        "expected_run": "node0-7-5b",
+        "view": "Overview",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/node0/data/dashboard_20261029_final/node0-7-5b_overview",
+      "manifest_sha256": "18f0aeb34239290c012853ab042c89f02fab7dbf14c62e2dad591664f0acc2ff",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:18:04.424580Z",
+      "completed_at": "2026-10-29T16:18:18.228008Z",
+      "total_saved_bytes": 6856764,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:18:10.949656Z",
+          "completed_at": "2026-10-29T16:18:11.310758Z",
+          "selector": "[title^=\"node0-7-5b \u00b7\"]",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:18:05.743349Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1286306,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:18:16.468963Z",
+          "sha256": "63b16403219a06c9eb059e1ca824c08a5375361385247e6b6403a835b801249f",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 9896,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:18:16.486110Z",
+          "sha256": "35c1252c8c35f15d9840afb81a0a7d9c566eab7cd69fda3b1bb6c3fd4bf2d2c9",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 206784,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:18:16.651623Z",
+          "sha256": "dedbf7cde9f1028e640d0731980f0fc6205ca6c892a02b7f43c48d93d16c7704",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 206789,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_01.png",
+          "retrieved_at": "2026-10-29T16:18:17.316949Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 0,
+          "sha256": "328645ed90e756540e134a68bd75f2c2b811ba8080cdd1a4128b2b779dfd80f0",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 179276,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_02.png",
+          "retrieved_at": "2026-10-29T16:18:17.643373Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 404,
+          "sha256": "0403d1d4818965912118f68875d0d464b960fe2643d46834d7a04fad2a030205",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 147188,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:18:17.946188Z",
+          "sha256": "1dce0bb97a7aae4637dc849dfc97e98d8a67e527542b63e4dbf0455bd6123ddb",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 359001,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:18:18.011861Z",
+          "sha256": "253edb049ace4c11acc1c20076656084f52619a116f4576d04b43ac7f78483e6",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:18:18.227949Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:18:08.341330Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Telemetry",
+      "selection_succeeded": true,
+      "target": {
+        "project": "node0",
+        "label": "node0-7-5b_telemetry",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"node0-7-5b \u00b7\"]",
+          "button:text-is(\"Telemetry\")"
+        ],
+        "expected_run": "node0-7-5b",
+        "view": "Telemetry",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/node0/data/dashboard_20261029_final/node0-7-5b_telemetry",
+      "manifest_sha256": "bca3a196883b5473bb19c5343f27fcbb8f18e1dee40d7d0e227c09bd63933c08",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:18:18.370686Z",
+      "completed_at": "2026-10-29T16:18:37.207244Z",
+      "total_saved_bytes": 16520675,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:18:24.880560Z",
+          "completed_at": "2026-10-29T16:18:25.156487Z",
+          "selector": "[title^=\"node0-7-5b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:18:30.158203Z",
+          "completed_at": "2026-10-29T16:18:30.338328Z",
+          "selector": "button:text-is(\"Telemetry\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:18:19.756215Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1488803,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:18:35.428524Z",
+          "sha256": "104990e53e42c662f99e431f2b77c2f9202c5367616e01d617ce7438a39fdaa0",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 14712,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:18:35.447751Z",
+          "sha256": "d132cfe40f99fbbb59d8795a2b0975efeadaf5f7210ffe3e79726d0921a9f19d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 387665,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:18:35.589947Z",
+          "sha256": "b960d3f9d614f9ff955410e553b673885488ce05051b3547925d54738b87a128",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 387665,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_01.png",
+          "retrieved_at": "2026-10-29T16:18:35.954178Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 0,
+          "sha256": "b960d3f9d614f9ff955410e553b673885488ce05051b3547925d54738b87a128",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 416239,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_02.png",
+          "retrieved_at": "2026-10-29T16:18:36.303626Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 671,
+          "sha256": "2624247f8107e704960857e29750c14aecf549a2afd6e1a08c10ad04e187bde5",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 416634,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_03.png",
+          "retrieved_at": "2026-10-29T16:18:36.633844Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 710,
+          "sha256": "7d5eaf70620ba5ad7e652ad69e5f999039526ec052d88dff1ab33269c4fdd39a",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 310056,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:18:36.934775Z",
+          "sha256": "fe932e2a205133d8cef2e71e8bafff5f2411eeb07b2bf71fc6b41c47e22585c8",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 578593,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:18:36.990538Z",
+          "sha256": "84977668f8a3e214d459db441e9b6ab4819a3a10f56e751c1735dedf9eb4b657",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:18:37.207180Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:18:22.180760Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Evals",
+      "selection_succeeded": true,
+      "target": {
+        "project": "node0",
+        "label": "node0-7-5b_evals",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"node0-7-5b \u00b7\"]",
+          "button:text-is(\"Evals\")"
+        ],
+        "expected_run": "node0-7-5b",
+        "view": "Evals",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/node0/data/dashboard_20261029_final/node0-7-5b_evals",
+      "manifest_sha256": "07f63f39f0524058d94f0579a413b737a7967329d0964cc5f683db3c7a59dbc1",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:18:37.352534Z",
+      "completed_at": "2026-10-29T16:18:59.394307Z",
+      "total_saved_bytes": 6291254,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:18:43.430500Z",
+          "completed_at": "2026-10-29T16:18:43.736396Z",
+          "selector": "[title^=\"node0-7-5b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:18:48.737767Z",
+          "completed_at": "2026-10-29T16:18:48.932280Z",
+          "selector": "button:text-is(\"Evals\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:18:38.367121Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1286847,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:18:54.076720Z",
+          "sha256": "ec8f2e6ad226f8736077e2fe91fb0a5be89ce5dd53a6708bc8118a67f69b78dc",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 9269,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:18:54.112049Z",
+          "sha256": "55ca0914c63640cad30c784dcab97dc1282bb6473ede8d0bd7c1f092356611e6",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 97969,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:18:54.207913Z",
+          "sha256": "fff1bc2a522de88fbbaf456b31c8df257341a4045d7834ee644b23077b789308",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 75984,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:18:59.255240Z",
+          "sha256": "0ae11c9b41b3574ebd8b57c124e67b96f9de593b6d9e290b8fb2005f44b20cf7",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 359512,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:18:59.278504Z",
+          "sha256": "aac0ca2f75e2e69fde6a2034697ebf3596387047629067957c47c85409a77f39",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:18:59.394271Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\":is(div.overflow-y-auto.p-3):visible\").first to be visible\n",
+          "retrieved_at": "2026-10-29T16:18:59.209933Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:18:40.754034Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Analysis",
+      "selection_succeeded": true,
+      "target": {
+        "project": "node0",
+        "label": "node0-7-5b_analysis",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"node0-7-5b \u00b7\"]",
+          "button:text-is(\"Analysis\")"
+        ],
+        "expected_run": "node0-7-5b",
+        "view": "Analysis",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/node0/data/dashboard_20261029_final/node0-7-5b_analysis",
+      "manifest_sha256": "7be3c9a815f298429641b6c9aa82e925e69cce62878d9e592df223d26202a544",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:18:59.468472Z",
+      "completed_at": "2026-10-29T16:19:20.979124Z",
+      "total_saved_bytes": 6501451,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:19:05.333757Z",
+          "completed_at": "2026-10-29T16:19:05.508056Z",
+          "selector": "[title^=\"node0-7-5b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:19:10.508724Z",
+          "completed_at": "2026-10-29T16:19:10.601570Z",
+          "selector": "button:text-is(\"Analysis\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:19:00.244539Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1298195,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:19:15.678547Z",
+          "sha256": "98049745e80ddc036dfe77710b2889f6ddd7aaf4232ef43fb976da2219af3895",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 10356,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:19:15.686911Z",
+          "sha256": "a2e82458f15e6bf6bdd42e5b4e9807fa53037ebe32297b68b4a6d9e2ccd7c066",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 201187,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:19:15.757006Z",
+          "sha256": "279e93873067546ab4b9b0e66c738dba09ad3ac5dc556da836ffc4f740b076ff",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 149664,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:19:20.836003Z",
+          "sha256": "d951c70b7458a5a1f6bc8cda8b4f91d5e3a3cbffb37b0107c11b64a34f710af3",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 371766,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:19:20.856051Z",
+          "sha256": "993ffb9b9b10d0804287613c9d9fb8bbad4b22b6feb9d7ae239811c1d5bf9860",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:19:20.979076Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\":is(div.overflow-y-auto.p-3):visible\").first to be visible\n",
+          "retrieved_at": "2026-10-29T16:19:20.756926Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:19:02.615068Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Hardware",
+      "selection_succeeded": true,
+      "target": {
+        "project": "node0",
+        "label": "node0-7-5b_hardware",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"node0-7-5b \u00b7\"]",
+          "button:text-is(\"Hardware\")"
+        ],
+        "expected_run": "node0-7-5b",
+        "view": "Hardware",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/node0/data/dashboard_20261029_final/node0-7-5b_hardware",
+      "manifest_sha256": "7c8f54d89aca5b4b285b435e332ae7ac5c4f9d4f0cc96e696ad74d373848a676",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:19:21.063151Z",
+      "completed_at": "2026-10-29T16:19:38.483275Z",
+      "total_saved_bytes": 6987827,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:19:27.243896Z",
+          "completed_at": "2026-10-29T16:19:27.386379Z",
+          "selector": "[title^=\"node0-7-5b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:19:32.387676Z",
+          "completed_at": "2026-10-29T16:19:32.469449Z",
+          "selector": "button:text-is(\"Hardware\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:19:22.149121Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1346949,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:19:37.544347Z",
+          "sha256": "c013db60150bedf095e35c0c6f65ca6ccf8ea9dedea78aaca03f91216a7bf7e2",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 11518,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:19:37.552592Z",
+          "sha256": "f61412293d3640288b3ca1669f6ee8e8fb93d435317a5edf357d0612f100387f",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 209320,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:19:37.622556Z",
+          "sha256": "dc4d3e7dd7804ab936f18a3adf01d4c3e9970266018fc46fb0233a8b33ac8c71",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 209320,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_01.png",
+          "retrieved_at": "2026-10-29T16:19:37.904060Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 0,
+          "sha256": "dc4d3e7dd7804ab936f18a3adf01d4c3e9970266018fc46fb0233a8b33ac8c71",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 206410,
+          "content_type": "image/png",
+          "kind": "scroll_pane_screenshot",
+          "path": "artifacts/scroll_tile_02.png",
+          "retrieved_at": "2026-10-29T16:19:38.129901Z",
+          "scroll_selector": "div.overflow-y-auto.p-3",
+          "scroll_top": 523,
+          "sha256": "4dca482ac5698588d2f71dbf706e05a89abd30c89eae95dc5ff7afa15b01cbec",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 85397,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:19:38.330741Z",
+          "sha256": "b961222e594cfd0a79096b4e00a2601a3dfec0463a2de5e1c4c54a1d0678e8ff",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 424076,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:19:38.356439Z",
+          "sha256": "e480f5b4e7d354d280f27566024f83428cf79b98071c3686f212e866ddde4c4c",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:19:38.483218Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:19:24.539703Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Geography",
+      "selection_succeeded": true,
+      "target": {
+        "project": "node0",
+        "label": "node0-7-5b_geography",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"node0-7-5b \u00b7\"]",
+          "button:text-is(\"Geography\")"
+        ],
+        "expected_run": "node0-7-5b",
+        "view": "Geography",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/node0/data/dashboard_20261029_final/node0-7-5b_geography",
+      "manifest_sha256": "df31d3de6a5a60db08d5cc381c12b516f66f395af0c83d9578b24254538b77a8",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:19:38.572319Z",
+      "completed_at": "2026-10-29T16:20:00.620082Z",
+      "total_saved_bytes": 6685805,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:19:44.479631Z",
+          "completed_at": "2026-10-29T16:19:44.790658Z",
+          "selector": "[title^=\"node0-7-5b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:19:49.791718Z",
+          "completed_at": "2026-10-29T16:19:49.913229Z",
+          "selector": "button:text-is(\"Geography\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:19:39.380747Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1348296,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:19:55.054012Z",
+          "sha256": "be188dc10e887a1c09f470fd5367911b7d2938a08f9b1a6503867307c1d1b2ba",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 10169,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:19:55.078253Z",
+          "sha256": "c7fced2e6640e41f9c5f3ea751c54ea4abee5f107c9aac3842e62e6a3ff3af7a",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 157779,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:19:55.194779Z",
+          "sha256": "0d647da29a2a269254b5624bfe1d2fb7d4e4523e42c36011ecf05c4af65342fd",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 99383,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:20:00.341344Z",
+          "sha256": "15b0eaa9b1f6dc9ffe42f968227a814ab3999c3731253e0b92b59eb0081caa55",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 438613,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:20:00.383955Z",
+          "sha256": "a61ccb4c245ad7db549cd76ddb854c78fb1485a6138331bf0093db4ae249c17c",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 2309,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:20:00.620026Z",
+          "sha256": "3ce8f007759e3bb03e8fdbf5b664fc29af2f19f73ca650823f4adfbc8d97ef05",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\":is(div.overflow-y-auto.p-3):visible\").first to be visible\n",
+          "retrieved_at": "2026-10-29T16:20:00.196436Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:19:41.833177Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Nodes",
+      "selection_succeeded": true,
+      "target": {
+        "project": "node0",
+        "label": "node0-7-5b_nodes",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"node0-7-5b \u00b7\"]",
+          "button:text-is(\"Nodes\")"
+        ],
+        "expected_run": "node0-7-5b",
+        "view": "Nodes",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/node0/data/dashboard_20261029_final/node0-7-5b_nodes",
+      "manifest_sha256": "8cc9602c6526b81a21c19105817a2ee049950e73b738ebd217e8404170afd52c",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:20:00.762070Z",
+      "completed_at": "2026-10-29T16:20:25.207813Z",
+      "total_saved_bytes": 14527625,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:20:07.212793Z",
+          "completed_at": "2026-10-29T16:20:07.562178Z",
+          "selector": "[title^=\"node0-7-5b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:20:12.564278Z",
+          "completed_at": "2026-10-29T16:20:12.746631Z",
+          "selector": "button:text-is(\"Nodes\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:20:02.080461Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 5046321,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:20:18.285043Z",
+          "sha256": "0f8994d455cd03c6d8aa10a1b43c3543d52a0de13cde01aec40728012163bf29",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 160638,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:20:18.368888Z",
+          "sha256": "95bf5ae6bb0686f56ad29ade279cdf98b568c7bab7a6d7f64d1f001f694d6830",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 237424,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:20:18.536228Z",
+          "sha256": "0c982fa2ef0b3fec043bc49c6bfdc6d9e5454fc389378cf15b223646eecacc9c",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 107104,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:20:24.741022Z",
+          "sha256": "76cae2518e511cee0367c7c6663dc67f148c723ef1403cb393a2923483bda0ba",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 4397253,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:20:24.987129Z",
+          "sha256": "3ba3c2a9d17adec5b526368e45c1e37ee4e2e7eede89794c375fc0238bf2eba5",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:20:25.207740Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\":is(div.overflow-y-auto.p-3):visible\").first to be visible\n",
+          "retrieved_at": "2026-10-29T16:20:23.538816Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:20:04.255747Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": "Leaderboard",
+      "selection_succeeded": true,
+      "target": {
+        "project": "node0",
+        "label": "node0-7-5b_leaderboard",
+        "url": "https://agora.pluralis.ai/",
+        "click_selectors": [
+          "[title^=\"node0-7-5b \u00b7\"]",
+          "button:text-is(\"Leaderboard\")"
+        ],
+        "expected_run": "node0-7-5b",
+        "view": "Leaderboard",
+        "allow_hosts": [
+          "agora.pluralis.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/node0/data/dashboard_20261029_final/node0-7-5b_leaderboard",
+      "manifest_sha256": "ca6293317df8895a95c592809807c95a83d901dd3bf1070034653bdff6a2c5e6",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:20:25.359571Z",
+      "completed_at": "2026-10-29T16:20:48.111366Z",
+      "total_saved_bytes": 7525498,
+      "selector_actions": [
+        {
+          "attempted_at": "2026-10-29T16:20:31.478444Z",
+          "completed_at": "2026-10-29T16:20:31.909380Z",
+          "selector": "[title^=\"node0-7-5b \u00b7\"]",
+          "status": "clicked"
+        },
+        {
+          "attempted_at": "2026-10-29T16:20:36.911242Z",
+          "completed_at": "2026-10-29T16:20:37.401598Z",
+          "selector": "button:text-is(\"Leaderboard\")",
+          "status": "clicked"
+        }
+      ],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1144179,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:20:26.329355Z",
+          "sha256": "343381625aa01ce3824daedf401d35840b32ebcfb2f4c1435f1be3c42355e120",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1798478,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:20:42.610033Z",
+          "sha256": "b26a1b1c83af52971c16e6680e9ac84eacd00cc03cdbb9fcfed16d3f589a3eea",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 24827,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:20:42.637591Z",
+          "sha256": "3dc12b0323f76e18380937eacf3c756048fb29c3090b5bd9abd7a76c7cd288e2",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 235000,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:20:42.786892Z",
+          "sha256": "b303d92511e9708542dd573edaa9c9a4ba7729e9769349f4727cd6556c049341",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 88627,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:20:47.946082Z",
+          "sha256": "cc16c0c188b040c0530844ade8a8a5ddeeba6b37f755648f218876ce4b146ea7",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 906385,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:20:47.983179Z",
+          "sha256": "de2ec632405fe8aba83b248ed3de1d8c2e4ff519d342f961d024dcdf26a61c8c",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:20:48.111330Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "skipped",
+          "bytes": 0,
+          "kind": "scroll_pane_screenshot",
+          "path": null,
+          "reason": "TimeoutError: Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\":is(div.overflow-y-auto.p-3):visible\").first to be visible\n",
+          "retrieved_at": "2026-10-29T16:20:47.788237Z",
+          "sha256": null,
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "application/json",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "Error: Response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+          "resource_type": "fetch",
+          "retrieved_at": "2026-10-29T16:20:28.525545Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ]
+    },
+    {
+      "active_tab": null,
+      "selection_succeeded": true,
+      "target": {
+        "project": "gensyn",
+        "label": "rlswarm",
+        "url": "https://dashboard.gensyn.ai/?application=RLSwarm",
+        "click_selectors": [],
+        "allow_hosts": [
+          "dashboard.gensyn.ai",
+          "dashboard-math.gensyn.ai",
+          "swarm.gensyn.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/gensyn/data/dashboard_20261029_final/rlswarm",
+      "manifest_sha256": "33e866597fa0e37ca2caccf6300852da971c8ce1b1ff8400a65195dc56bb03fc",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:14:13.770291Z",
+      "completed_at": "2026-10-29T16:14:24.639274Z",
+      "total_saved_bytes": 15839681,
+      "selector_actions": [],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 2619,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:14:17.460648Z",
+          "sha256": "7ed2523fd6545481bab6e1a162dc69eaf714d7015a3c086e799837ef2f3354bb",
+          "status": 200,
+          "url": "https://dashboard.gensyn.ai/?application=RLSwarm"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 50287,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:14:22.694901Z",
+          "sha256": "6394cc4d9756d8d3dcb0a6c33abb3bc32e81ca5f86411b2f6821fe8a4a0913ae",
+          "status": null,
+          "url": "https://dashboard.gensyn.ai/?application=RLSwarm"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 10576,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:14:22.717556Z",
+          "sha256": "e6d59ddc6561eb193ef646b523e8aa999d0949b5000d1e3468d94981a141b897",
+          "status": null,
+          "url": "https://dashboard.gensyn.ai/?application=RLSwarm"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 611813,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:14:23.060390Z",
+          "sha256": "395d3a163a6bd81972257d0f807dcc7791101f6ae8b6d893b1e967fa61d9c042",
+          "status": null,
+          "url": "https://dashboard.gensyn.ai/?application=RLSwarm"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 5881893,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:14:24.376051Z",
+          "sha256": "b6729d68773ffd2ad964eba0cffee3ed1e767d07b46a6650ba64e4f73182f818",
+          "status": null,
+          "url": "https://dashboard.gensyn.ai/?application=RLSwarm"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 2193701,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:14:24.454585Z",
+          "sha256": "45e5fcae2d36a94698ea5f2f3d31ee469cbb5df29ddc154223031e5324b5dbba",
+          "status": null,
+          "url": "https://dashboard.gensyn.ai/?application=RLSwarm"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 9511,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:14:24.639232Z",
+          "sha256": "32c90e950160d3a1a4a57f5d368d5be63c8689ab8a17852bbce1aadfcc4cf387",
+          "status": null,
+          "url": "https://dashboard.gensyn.ai/?application=RLSwarm"
+        }
+      ],
+      "unsaved_entries": [
+        {
+          "application_status": "body_read_failed",
+          "bytes": 0,
+          "content_type": "video/webm",
+          "kind": "http_response",
+          "method": "GET",
+          "path": null,
+          "reason": "TargetClosedError: Response.body: Target page, context or browser has been closed",
+          "resource_type": "media",
+          "retrieved_at": "2026-10-29T16:14:18.417772Z",
+          "sha256": null,
+          "status": 200,
+          "url": "https://dashboard.gensyn.ai/videos/video-blockassist.webm"
+        }
+      ]
+    },
+    {
+      "active_tab": null,
+      "selection_succeeded": true,
+      "target": {
+        "project": "gensyn",
+        "label": "math",
+        "url": "https://dashboard-math.gensyn.ai/",
+        "click_selectors": [],
+        "allow_hosts": [
+          "dashboard.gensyn.ai",
+          "dashboard-math.gensyn.ai",
+          "swarm.gensyn.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/gensyn/data/dashboard_20261029_final/math",
+      "manifest_sha256": "aaa8f241d83a825d3e677fd7dece924b9ca6b764d675250f6124f55de66c9fd5",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:14:24.799157Z",
+      "completed_at": "2026-10-29T16:14:34.220459Z",
+      "total_saved_bytes": 4924111,
+      "selector_actions": [],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 2587,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:14:28.255997Z",
+          "sha256": "5fe134ea31e936c7ca295d046286f7e7be8936cfce943d4dad0bad3411c85651",
+          "status": 200,
+          "url": "https://dashboard-math.gensyn.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 128977,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:14:33.524097Z",
+          "sha256": "fd72571e113d72577357461fad4e8ffd3a2df2a49e77d16f1b28e30cef923c4f",
+          "status": null,
+          "url": "https://dashboard-math.gensyn.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 27513,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:14:33.559328Z",
+          "sha256": "2d3f43c050aa09c2bf7034fca0b125ca014685873a7100e8fd2f1051d365d054",
+          "status": null,
+          "url": "https://dashboard-math.gensyn.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 116653,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:14:33.758187Z",
+          "sha256": "b6659b04934709e2306d24a4769bb07c2b7de0e5b1b77d366214a59da2665f35",
+          "status": null,
+          "url": "https://dashboard-math.gensyn.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 164902,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:14:33.961659Z",
+          "sha256": "e41a091bb9f412b050a4bf87ebdaf3b1508f1a3c0e7c0a4ae3b7108bf78f0a62",
+          "status": null,
+          "url": "https://dashboard-math.gensyn.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1113723,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:14:34.043452Z",
+          "sha256": "b3bbfeba8006209cafd50243402ca7c3677681beb0563ce643ac942fb95aa11e",
+          "status": null,
+          "url": "https://dashboard-math.gensyn.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 10399,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:14:34.220361Z",
+          "sha256": "7b655928caf3f95c9b2dc3bc069ef02531f159a12a3be6308b39a5837d86bdf8",
+          "status": null,
+          "url": "https://dashboard-math.gensyn.ai/"
+        }
+      ],
+      "unsaved_entries": []
+    },
+    {
+      "active_tab": null,
+      "selection_succeeded": true,
+      "target": {
+        "project": "gensyn",
+        "label": "legacy_swarm",
+        "url": "https://swarm.gensyn.ai/",
+        "click_selectors": [],
+        "allow_hosts": [
+          "dashboard.gensyn.ai",
+          "dashboard-math.gensyn.ai",
+          "swarm.gensyn.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/gensyn/data/dashboard_20261029_final/legacy_swarm",
+      "manifest_sha256": "6d92db198951b71b641829500d1095f2a00b46b8d8f34da7006ddeab33609eb4",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:14:34.361827Z",
+      "completed_at": "2026-10-29T16:14:43.521461Z",
+      "total_saved_bytes": 4923941,
+      "selector_actions": [],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 2587,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:14:37.656503Z",
+          "sha256": "5fe134ea31e936c7ca295d046286f7e7be8936cfce943d4dad0bad3411c85651",
+          "status": 200,
+          "url": "https://swarm.gensyn.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 128977,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:14:42.941587Z",
+          "sha256": "fd72571e113d72577357461fad4e8ffd3a2df2a49e77d16f1b28e30cef923c4f",
+          "status": null,
+          "url": "https://swarm.gensyn.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 27504,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:14:42.959489Z",
+          "sha256": "2a5dce987c4dd9213194c038f3b91f37f5db178e8b039653a5c46bc614e63595",
+          "status": null,
+          "url": "https://swarm.gensyn.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 116653,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:14:43.169852Z",
+          "sha256": "b6659b04934709e2306d24a4769bb07c2b7de0e5b1b77d366214a59da2665f35",
+          "status": null,
+          "url": "https://swarm.gensyn.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 164902,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:14:43.351380Z",
+          "sha256": "1989559364ac08f082a323754e7732042d6d5cf1cbd637d132271cd250c75163",
+          "status": null,
+          "url": "https://swarm.gensyn.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1113660,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:14:43.399323Z",
+          "sha256": "b237a16dfadaba3af96e6f34f781630bcf89a8241c5dd85c52ee8e3110d2e763",
+          "status": null,
+          "url": "https://swarm.gensyn.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 10301,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:14:43.521404Z",
+          "sha256": "0ad260a44d65806083675dc8bb4ed433b8e2258c23472155ef6cc7e0c99ef96d",
+          "status": null,
+          "url": "https://swarm.gensyn.ai/"
+        }
+      ],
+      "unsaved_entries": []
+    },
+    {
+      "active_tab": null,
+      "selection_succeeded": true,
+      "target": {
+        "project": "distributed-training",
+        "label": "mech1",
+        "url": "https://dash.dstrbtd.ai/mech1",
+        "click_selectors": [],
+        "allow_hosts": [
+          "dash.dstrbtd.ai",
+          "ngrok-dash1.dstrbtd.ai",
+          "websocket.dstrbtd.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/distributed-training/data/dashboard_20261029_final/mech1",
+      "manifest_sha256": "e5cbb760bb6fef782f9ec8728da1cff0d5157ebbbbbb87061482e086ed287ad9",
+      "status": "complete",
+      "created_at": "2026-10-29T16:21:25.136083Z",
+      "completed_at": "2026-10-29T16:21:57.561515Z",
+      "total_saved_bytes": 3456398,
+      "selector_actions": [],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 686,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:21:26.340775Z",
+          "sha256": "6a59a9ba8f4b4dc02b32cce75bee1294263293d149371289988c61ea16fc63ff",
+          "status": 200,
+          "url": "https://dash.dstrbtd.ai/mech1"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 152019,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:21:56.429599Z",
+          "sha256": "a55c673f4addb2a405c3b0c2d5d5e8f996b40a3cfbb5612fc4eafc83ac3affe0",
+          "status": null,
+          "url": "https://dash.dstrbtd.ai/mech1"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 7281,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:21:56.454416Z",
+          "sha256": "443d32474df580cabc6f12f7a6f1bc69ff48e344949d07c979788090ce9ac7a2",
+          "status": null,
+          "url": "https://dash.dstrbtd.ai/mech1"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 660540,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:21:57.029904Z",
+          "sha256": "daaf7e875a32b3a32bd7e9fdbc0eb453924d6e2e90b9b1aac95227c4568899a5",
+          "status": null,
+          "url": "https://dash.dstrbtd.ai/mech1"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 863568,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:21:57.360824Z",
+          "sha256": "f7c30318ce0d4e19f45e1366c64e0bb09647f6103ca529a902da55b3f31d669a",
+          "status": null,
+          "url": "https://dash.dstrbtd.ai/mech1"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 373476,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:21:57.404975Z",
+          "sha256": "49ddcd7f9867f10d8d30dde3617feb775a82c278839a7f8b192f9cf7fb52427f",
+          "status": null,
+          "url": "https://dash.dstrbtd.ai/mech1"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:21:57.561462Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://dash.dstrbtd.ai/mech1"
+        }
+      ],
+      "unsaved_entries": []
+    },
+    {
+      "active_tab": null,
+      "selection_succeeded": true,
+      "target": {
+        "project": "distributed-training",
+        "label": "train",
+        "url": "https://dash.dstrbtd.ai/train",
+        "click_selectors": [],
+        "allow_hosts": [
+          "dash.dstrbtd.ai",
+          "ngrok-dash1.dstrbtd.ai",
+          "websocket.dstrbtd.ai",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com"
+        ]
+      },
+      "snapshot": "research/distributed-training/data/dashboard_20261029_final/train",
+      "manifest_sha256": "572e3220fa00c19c7abefcdf19d876bc22a1f82de31a17a97d7ca1faa5fa1744",
+      "status": "complete",
+      "created_at": "2026-10-29T16:16:47.338353Z",
+      "completed_at": "2026-10-29T16:17:18.599864Z",
+      "total_saved_bytes": 1493274,
+      "selector_actions": [],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 686,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:16:48.183775Z",
+          "sha256": "6a59a9ba8f4b4dc02b32cce75bee1294263293d149371289988c61ea16fc63ff",
+          "status": 200,
+          "url": "https://dash.dstrbtd.ai/train"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 3312,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:17:18.235224Z",
+          "sha256": "484d5ba71c76e6d001cf93e0bc676a200cad26d40d3df1e17d92e7f2384a934b",
+          "status": null,
+          "url": "https://dash.dstrbtd.ai/train"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 394,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:17:18.254445Z",
+          "sha256": "0a6dbac262543bbd39c2b6b40af04e176a21bc9c0e085a2ee0c4c1b2d7558c1d",
+          "status": null,
+          "url": "https://dash.dstrbtd.ai/train"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 48099,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:17:18.429897Z",
+          "sha256": "8198832e5e55176ad24f1aa2281ed9121ff977b208dde48d7798d7b1d9294455",
+          "status": null,
+          "url": "https://dash.dstrbtd.ai/train"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 111378,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:17:18.481232Z",
+          "sha256": "18b3e01c113581dde343a848d7ba816ec1da5a9a7b54faecde4d0aeba2080ce7",
+          "status": null,
+          "url": "https://dash.dstrbtd.ai/train"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 67999,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:17:18.509520Z",
+          "sha256": "6168175025b6d42c5e8cd82e27e94576733bb5e8b8f711aa8f5ed6614d4223b8",
+          "status": null,
+          "url": "https://dash.dstrbtd.ai/train"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 127,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:17:18.599800Z",
+          "sha256": "c17f11a62f68e8fb174a0e70b5f2d841c890cb0f3d701f4c4edb85d78b051a4d",
+          "status": null,
+          "url": "https://dash.dstrbtd.ai/train"
+        }
+      ],
+      "unsaved_entries": []
+    },
+    {
+      "active_tab": null,
+      "selection_succeeded": true,
+      "target": {
+        "project": "node0",
+        "label": "separate_dashboard",
+        "url": "https://dashboard.pluralis.ai/",
+        "click_selectors": [],
+        "allow_hosts": [
+          "dashboard.pluralis.ai",
+          "agora.pluralis.ai"
+        ]
+      },
+      "snapshot": "research/node0/data/dashboard_20261029_final/separate_dashboard",
+      "manifest_sha256": "7454873af507b12e07a9d3b576d7567971cbe592b5ca3298e861e169e44b504a",
+      "status": "complete_with_errors",
+      "created_at": "2026-10-29T16:14:57.326602Z",
+      "completed_at": "2026-10-29T16:15:03.717835Z",
+      "total_saved_bytes": 47658,
+      "selector_actions": [],
+      "artifacts": [
+        {
+          "application_status": "captured",
+          "bytes": 1403,
+          "content_type": "text/html",
+          "kind": "initial_html",
+          "path": "artifacts/initial.html",
+          "retrieved_at": "2026-10-29T16:14:58.322452Z",
+          "sha256": "758f493bd7cf772ef884d8c3ca73b2d998cc11e75d131a68ea411b92869ab8a2",
+          "status": 403,
+          "url": "https://dashboard.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 1350,
+          "content_type": "text/html; charset=utf-8",
+          "kind": "rendered_dom",
+          "path": "artifacts/rendered_dom.html",
+          "retrieved_at": "2026-10-29T16:15:03.411512Z",
+          "sha256": "1d1432617d85deae14613e7bd985a4588eb5ac6a8d7318190d2fe1ab1a5ed1a9",
+          "status": null,
+          "url": "https://dashboard.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 169,
+          "content_type": "application/json",
+          "kind": "page_summary",
+          "path": "artifacts/page_summary.json",
+          "retrieved_at": "2026-10-29T16:15:03.432600Z",
+          "sha256": "4e080fb3d119ccdbf49801c7bbaabefe56f1e219656d1c9c5ca0b381323fe8b3",
+          "status": null,
+          "url": "https://dashboard.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 22691,
+          "content_type": "image/png",
+          "kind": "screenshot_png",
+          "path": "artifacts/full_page.png",
+          "retrieved_at": "2026-10-29T16:15:03.508137Z",
+          "sha256": "ce171cb43203d8ab01ddb78ca9579743796c49e0c3fc9eef5a9be48b63c390a2",
+          "status": null,
+          "url": "https://dashboard.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 18555,
+          "content_type": "application/pdf",
+          "kind": "page_pdf",
+          "path": "artifacts/page.pdf",
+          "retrieved_at": "2026-10-29T16:15:03.542832Z",
+          "sha256": "224edc400f59cba0ef6dd4b1856cfd5122b54261a5ea694a3f6d097775c5fbf9",
+          "status": null,
+          "url": "https://dashboard.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 2548,
+          "content_type": "multipart/related",
+          "kind": "page_mhtml",
+          "path": "artifacts/page.mhtml",
+          "retrieved_at": "2026-10-29T16:15:03.563868Z",
+          "sha256": "d4a9c4f704fc12c05f5cc6e5a7deddc15234a5e7497c9f1f95e3728d2ecee572",
+          "status": null,
+          "url": "https://dashboard.pluralis.ai/"
+        },
+        {
+          "application_status": "captured",
+          "bytes": 942,
+          "content_type": "application/json",
+          "kind": "browser_logs",
+          "path": "artifacts/browser_logs.json",
+          "retrieved_at": "2026-10-29T16:15:03.717784Z",
+          "sha256": "edc6e71e64352d01317de48082110682aed24dd0d6119a95c4a1512de2ff3876",
+          "status": null,
+          "url": "https://dashboard.pluralis.ai/"
+        }
+      ],
+      "unsaved_entries": []
+    }
+  ]
+}

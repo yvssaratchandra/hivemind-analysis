@@ -1,0 +1,120 @@
+{
+  "checked_at": "2026-10-29T16:25:38.445771+00:00",
+  "results": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/public-networks",
+        "-p",
+        "test_*.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "tests_run": 22,
+      "skipped": 1,
+      "output": "large 200 0\ndenied 403 9\nretry 200 7\nlater 429 0\nretry 200 7\nlarge 200 0\nlarge 200 6\nsource 200 7\n----------------------------------------------------------------------\nRan 22 tests in 0.014s\n\nOK (skipped=1)\n"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "research.node0.test_collect_public_runs",
+        "research.agora.test_public_runs",
+        "-q"
+      ],
+      "exit_code": 0,
+      "tests_run": 15,
+      "skipped": 0,
+      "output": "----------------------------------------------------------------------\nRan 15 tests in 1.014s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/gensyn",
+        "-p",
+        "test_*.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "tests_run": 5,
+      "skipped": 0,
+      "output": "----------------------------------------------------------------------\nRan 5 tests in 0.005s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/distributed-training",
+        "-p",
+        "test_*.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "tests_run": 23,
+      "skipped": 0,
+      "output": "W&B distributed_training_miners: full-history windows for r-safe (1 ranges, window=1000, lastStep=0)\nW&B distributed_training_validators: full-history windows for v1 (5 ranges, window=100, lastStep=499)\nW&B distributed_training_validators: full-history windows for v1 (2 ranges, window=100, lastStep=199)\nW&B distributed_training_miners: full-history windows for unknown-count (2 ranges, window=1000, lastStep=1000)\n----------------------------------------------------------------------\nRan 23 tests in 0.036s\n\nOK\n"
+    },
+    {
+      "command": [
+        "research/public-networks/.plot-env/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/public-networks",
+        "-p",
+        "test_plot_public_runs.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "tests_run": 1,
+      "skipped": 0,
+      "output": "----------------------------------------------------------------------\nRan 1 test in 0.788s\n\nOK\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "tests_run": 0,
+      "skipped": 0,
+      "output": ""
+    }
+  ],
+  "passed_tests": 65,
+  "all_commands_passed": true,
+  "source_sha256": {
+    "research/agora/collect_public_runs.py": "ba2fc44a503b786905df5adbbd934291080cdcf3294e073dcc6ea55dd967772d",
+    "research/agora/test_public_runs.py": "b272d19edd087dac51500dfdc088b06fc746fb5199768ee1e09df3f3ee3b2d18",
+    "research/distributed-training/collect_public_runs.py": "28dfd4ac8e3114ff223c0b15b340bfb7a0da5bbe3237ae81db3daf0c95439e91",
+    "research/distributed-training/test_collect_public_runs.py": "5086c53f179b6e96df5828888b1b7fc766f712bbc3dffbf5383a3e5551efd965",
+    "research/gensyn/collect_public_runs.py": "0e9e031ec6bdb9f4668b18e8959b9e23dc05b5db87dfb1dea5b7eea4c2152296",
+    "research/gensyn/test_collect_public_runs.py": "1dc169c385f8c7351d8d4cef2f86768a4f19accc7523c0cd3c44808848e56364",
+    "research/node0/collect_public_runs.py": "f56f5cb88263e617f6b7af2a3e441023bd1470e605db219fdc5d43d57f0e0945",
+    "research/node0/test_collect_public_runs.py": "f33fd2497ee890f01e4fd51a15c58e62a8c9a1407b114abf596b8af2f71951cc",
+    "research/public-networks/archive_http.py": "3303ccab573b8747dca1eb8bf45d85864d05a6aea4d23a97e79023821768a3a7",
+    "research/public-networks/capture_dashboard.py": "503951d0e428660758288b5455528c3a6b7ceb70a1f82536f89d617b0074cd3c",
+    "research/public-networks/collect_public_runs.py": "2e26fa34440ab48ea9a90afe821c4ff7324acf4aaa8745c18bc1a7a56a983191",
+    "research/public-networks/index_dashboard_snapshots.py": "753ce965f96dddad64b3ebcb570195c14534765735ed1364fa86f3f2b2cc5bf6",
+    "research/public-networks/plot_public_runs.py": "a16970bae28587aa773697f24598458ca0ee4fffa8e6ecc0e19bb1d5dd96ef32",
+    "research/public-networks/test_archive_http.py": "50e9d166e45cc2101bc51c72311f0465462b3c5ea357853eeb117de803e91f89",
+    "research/public-networks/test_capture_dashboard.py": "0eaf7afe4d2951d29e691dc17d7a171a4c240e516250504f3a9362fd16a30306",
+    "research/public-networks/test_plot_public_runs.py": "2fb53712209f1afdc5475d63744c55b050ded2c154124b808f3b56f01e7361ca",
+    "research/public-networks/test_verify_public_runs.py": "11dcb102eec9c535652c516443ba89c0c3cead21f0d9d6a1c47b8da90dad775c",
+    "research/public-networks/verify_public_runs.py": "3eb0970de6b9d60b90132006b3a7de3f3c2119bb242227bcb0bfb714b193f72f"
+  }
+}

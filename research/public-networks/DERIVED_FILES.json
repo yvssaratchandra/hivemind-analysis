@@ -1,0 +1,196 @@
+{
+  "files": [
+    {
+      "bytes": 328,
+      "path": "research/agora/data/dashboard_20261029_incomplete_attempt/pluralis-8b_overview/FAILURE.json",
+      "sha256": "47f245f7e76ac0a3018a6d001a88eb911a379e111d1956823101415ff2c1d59b"
+    },
+    {
+      "bytes": 1418,
+      "path": "research/agora/data/public_runs_20261029T095600Z/report.md",
+      "sha256": "8a08f3f1ebf0d1351ab2280682df9efe9d64431b5594029f18543b65e233aba4"
+    },
+    {
+      "bytes": 19126,
+      "path": "research/agora/data/public_runs_20261029T095600Z/summary.json",
+      "sha256": "d4de7676018936639f358c9cd433559df867a9b832c7d9c8863b805f91464b3b"
+    },
+    {
+      "bytes": 1450629,
+      "path": "research/agora/data/public_runs_20261029T095600Z/tables/gpu_population.csv",
+      "sha256": "3516387906b056d7ee63a34fa87d68cbfc8ce553f077a8bef7a4e6b9a47d7805"
+    },
+    {
+      "bytes": 42494,
+      "path": "research/agora/data/public_runs_20261029T095600Z/tables/leaderboards.csv",
+      "sha256": "2c46e8eb93f9009f3ca2e3d8b26557f1d44683f111bb6c8d482c394a4096e0a3"
+    },
+    {
+      "bytes": 473009,
+      "path": "research/agora/data/public_runs_20261029T095600Z/tables/nodes.csv",
+      "sha256": "c592fb6d939ffb41f74e3ae05cf0c15f2caed950bb0e508c845070baca27a2a8"
+    },
+    {
+      "bytes": 1687,
+      "path": "research/agora/data/public_runs_20261029T095600Z/tables/runs.csv",
+      "sha256": "f2a5351b2a1f92a8f2fdfbe6a14959ba96049e1550b4444d67cbe067506aabf5"
+    },
+    {
+      "bytes": 20987093,
+      "path": "research/agora/data/public_runs_20261029T095600Z/tables/telemetry.csv.gz",
+      "sha256": "e9d8bf9b9cfbf66ce58a1f5b979ea34277f0bce821b2370862177510242dd50f"
+    },
+    {
+      "bytes": 6981,
+      "path": "research/agora/data/public_runs_20261029T095600Z/tables/telemetry_summary.csv",
+      "sha256": "bab8cd89f829c95da456154a672e9770ccf1d53609e8bf68b25d8512c9d39808"
+    },
+    {
+      "bytes": 851896,
+      "path": "research/agora/data/public_runs_20261029T095600Z/tables/training.csv",
+      "sha256": "1694eeff6494987ddbe5a8eced6addaeb8e13ad33bdaf2bf1236c046155e5724"
+    },
+    {
+      "bytes": 71911,
+      "path": "research/distributed-training/data/public_20261029/REPORT.md",
+      "sha256": "54930f8bb459e34983734fa2ad0f24f6e379f57a1f7d9e80182c814940e98617"
+    },
+    {
+      "bytes": 1334,
+      "path": "research/distributed-training/data/public_20261029/normalized/mech1_eval_history.csv",
+      "sha256": "5e21565a7a4babce205ccaaadf61c6eb0e359eb8fad03a62d87acf3061a52893"
+    },
+    {
+      "bytes": 176460,
+      "path": "research/distributed-training/data/public_20261029/normalized/mech1_strategies.csv",
+      "sha256": "0cac7fc0a4cbca9e76ab3062c7d7682485237a9a535b7127476a1077ab3fad6e"
+    },
+    {
+      "bytes": 4429201192,
+      "path": "research/distributed-training/data/public_20261029/normalized/wandb_history_full.jsonl.gz",
+      "sha256": "aac07208c950468aa8be0376b75471739043bcf0c552273841c1db7330dbbc7f"
+    },
+    {
+      "bytes": 609155048,
+      "path": "research/distributed-training/data/public_20261029/normalized/wandb_history_sampled.jsonl.gz",
+      "sha256": "e626d1090895823017a7669bff3a0e4fba0b29efc7ce8c8dd9ae7b2d30793ad2"
+    },
+    {
+      "bytes": 671096,
+      "path": "research/distributed-training/data/public_20261029/normalized/wandb_runs.csv",
+      "sha256": "6bf72836439582d9ba41c9439996cba5625c05a9099829c6f37f7d59d6dd505d"
+    },
+    {
+      "bytes": 224011,
+      "path": "research/distributed-training/data/public_20261029/summary.json",
+      "sha256": "dae2e32a5e524b8524a8542eb6545f9e1422ec0ea2b34faf049117ba2cb9ee11"
+    },
+    {
+      "bytes": 68299,
+      "path": "research/distributed-training/data/public_20261029/wandb_full_history_coverage.json",
+      "sha256": "4019464ead90b8d99c3a90b574cbd6b102fd26a5f48e77ce9b54e23f7daa2ce8"
+    },
+    {
+      "bytes": 34194,
+      "path": "research/gensyn/data/public_runs_20261029T100232Z/normalized/gossip_messages.csv",
+      "sha256": "83fe0a237e17a0393d539bd6824a6bac420268ea706947e9e62e68ef8d0a2d05"
+    },
+    {
+      "bytes": 4064,
+      "path": "research/gensyn/data/public_runs_20261029T100232Z/normalized/metrics.csv",
+      "sha256": "85bd95a55aad2f092c569add9356ef5fe13221833e50e9b2c484f3c0bd1921b1"
+    },
+    {
+      "bytes": 593347,
+      "path": "research/gensyn/data/public_runs_20261029T100232Z/normalized/models.csv",
+      "sha256": "d42a6981e713bbbc2b1e4408a88df04a11735a80e7a1a35e2e6d76f2d99335a6"
+    },
+    {
+      "bytes": 37997,
+      "path": "research/gensyn/data/public_runs_20261029T100232Z/normalized/nodes.csv",
+      "sha256": "65a74bf271435e6851a2af30d502fd75d2e7ed91a929d2cb7b2168cf60296d6c"
+    },
+    {
+      "bytes": 941,
+      "path": "research/gensyn/data/public_runs_20261029T100232Z/normalized/summary.json",
+      "sha256": "37326ea23d6fe6fa02cf57808ee698fc72e2cf763dbb522918f5cfc1bb278c58"
+    },
+    {
+      "bytes": 35901,
+      "path": "research/gensyn/data/public_runs_20261029T101104Z/normalized/gossip_messages.csv",
+      "sha256": "f1d65c8b2b7da56ae3c3f92a651a27b466b35709657ff52d9162fc8d0f54e179"
+    },
+    {
+      "bytes": 7989,
+      "path": "research/gensyn/data/public_runs_20261029T101104Z/normalized/metrics.csv",
+      "sha256": "48dd6fc5a0b4b30f4423b1b22e0282361e596fa7d38b004c43097ea94409b2ca"
+    },
+    {
+      "bytes": 1186,
+      "path": "research/gensyn/data/public_runs_20261029T101104Z/normalized/models.csv",
+      "sha256": "eed7a087325be3ee72e1416680f612a54a452848144194b0ffdeb90ddb8b3bea"
+    },
+    {
+      "bytes": 87466,
+      "path": "research/gensyn/data/public_runs_20261029T101104Z/normalized/nodes.csv",
+      "sha256": "393a303acb8225868d2aa6b52796e1679df8724d6b6dc606528e3d77aa93020e"
+    },
+    {
+      "bytes": 1226,
+      "path": "research/gensyn/data/public_runs_20261029T101104Z/normalized/summary.json",
+      "sha256": "2dcf27761a5354be16d73ad2431346a482668396e9485df3173a6dd42bb6c6d3"
+    },
+    {
+      "bytes": 69108,
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/normalized/gossip_messages.csv",
+      "sha256": "4a7b831fd73d61e58a6f26265b1be321a6afc5351d0d9f0b9528c50a7fb14c8a"
+    },
+    {
+      "bytes": 943,
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/normalized/metrics.csv",
+      "sha256": "84019736b8c347e387098a958118e5afd515750353e1ffd3cd53c7927eea2d19"
+    },
+    {
+      "bytes": 13198850,
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/normalized/models.csv",
+      "sha256": "a908dd074d6f099bbe5973c4f9d046c2b31003a3de3ef93cec70fcff96c4b798"
+    },
+    {
+      "bytes": 130258,
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/normalized/nodes.csv",
+      "sha256": "801cba4511d11d6805d1e5582de97ee4ab81d29e42b31d5f7956267d04326141"
+    },
+    {
+      "bytes": 1913,
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/normalized/summary.json",
+      "sha256": "353ed91984440cb8214301b897c71a3e7c1717317b62bf1298d7c5ae47f49155"
+    },
+    {
+      "bytes": 8518,
+      "path": "research/gensyn/data/public_runs_20261029T101259Z/normalized/top_rewards.csv",
+      "sha256": "10fb442b37321c25cfc12207aeb28cc8711dcfcba1ece835c04bf37f6776b55c"
+    },
+    {
+      "bytes": 78006,
+      "path": "research/node0/data/public_runs_20261029T100000Z/leaderboard.csv",
+      "sha256": "bd9f1ebf1ab43022e5f6bddc130454f83d4506a5000eacfa9bbc266b83ca353a"
+    },
+    {
+      "bytes": 16087602,
+      "path": "research/node0/data/public_runs_20261029T100000Z/metrics.csv.gz",
+      "sha256": "b53a9a1e378b268a982ef0e390997fd27890366eea7586ca716bed6be4e010f6"
+    },
+    {
+      "bytes": 1082979,
+      "path": "research/node0/data/public_runs_20261029T100000Z/nodes.csv",
+      "sha256": "de5afc7d211076758756ce6279a13cb175f0b0b641931f1aef8958847b1fcd3f"
+    },
+    {
+      "bytes": 8282,
+      "path": "research/node0/data/public_runs_20261029T100000Z/report.md",
+      "sha256": "4857469136e3a6a448ce30a346ac1d741129ba74b9e9caa9bd530abdc8de9f7f"
+    }
+  ],
+  "note": "Checksums of derived files and diagnostic receipts not already listed in raw/browser manifests; raw sources can be used to regenerate analysis.",
+  "recorded_at": "2026-10-29T16:24:20.589923+00:00"
+}

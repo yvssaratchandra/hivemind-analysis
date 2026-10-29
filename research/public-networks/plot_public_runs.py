@@ -36,6 +36,12 @@ def records(snapshot):
             continue
 
 
+def save_svg(fig, path):
+    """Keep Matplotlib SVG output friendly to repository whitespace checks."""
+    fig.savefig(path, metadata={'Date': None})
+    path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines()) + '\n')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--snapshot', type=Path, action='append', required=True)
@@ -89,7 +95,7 @@ def main():
         fig.suptitle('Public dashboard training curves — sampled observations, separate runs')
         fig.tight_layout()
         fig.savefig(args.output / 'training_loss.png', dpi=160)
-        fig.savefig(args.output / 'training_loss.svg', metadata={'Date': None})
+        save_svg(fig, args.output / 'training_loss.svg')
         plt.close(fig)
     if boards:
         boards.sort(key=lambda item: (item[0], item[1]))
@@ -102,7 +108,7 @@ def main():
         fig.suptitle('Leaderboard score distributions — scores are not verified compute contribution')
         fig.tight_layout()
         fig.savefig(args.output / 'leaderboard_scores.png', dpi=160)
-        fig.savefig(args.output / 'leaderboard_scores.svg', metadata={'Date': None})
+        save_svg(fig, args.output / 'leaderboard_scores.svg')
         plt.close(fig)
     if benchmark:
         fig, ax = plt.subplots(figsize=(8, 4.4))
@@ -117,7 +123,7 @@ def main():
         fig.text(.5, .01, 'Different strategies may win each evaluation; this is not one model’s training curve.', ha='center', fontsize=9)
         fig.tight_layout(rect=(0, .04, 1, 1))
         fig.savefig(args.output / 'strategy_benchmarks.png', dpi=160)
-        fig.savefig(args.output / 'strategy_benchmarks.svg', metadata={'Date': None})
+        save_svg(fig, args.output / 'strategy_benchmarks.svg')
         plt.close(fig)
     if miner_examples:
         fig, axes = plt.subplots(1, len(miner_examples), figsize=(5 * len(miner_examples), 4.5), squeeze=False)
@@ -129,7 +135,7 @@ def main():
         fig.text(.5, .01, 'First three qualifying runs on the first exported page; models and restart boundaries are not established.', ha='center', fontsize=9)
         fig.tight_layout(rect=(0, .04, 1, 1))
         fig.savefig(args.output / 'miner_loss_examples.png', dpi=160)
-        fig.savefig(args.output / 'miner_loss_examples.svg', metadata={'Date': None})
+        save_svg(fig, args.output / 'miner_loss_examples.svg')
         plt.close(fig)
     (args.output / 'PROVENANCE.json').write_text(json.dumps({
         'matplotlib': matplotlib.__version__, 'sources': provenance,

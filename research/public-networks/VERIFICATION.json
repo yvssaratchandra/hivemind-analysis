@@ -1,0 +1,1294 @@
+{
+  "all_saved_bodies_verified": true,
+  "passed": true,
+  "snapshots": [
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "bad0c31bae28852bec3a9f58a36eb7f76d619629b946f557a7e239f78037e2f9",
+      "raw_bytes": 6254380,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029T161100Z/pluralis-8b_overview",
+      "status_counts": {
+        "200": 29,
+        "None": 8
+      },
+      "total_bytes": 6274046,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 34
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "51d4907d8f3b6bccf85b94b06d3c761397b3f95cfcb8521f867812042d05430c",
+      "raw_bytes": 6248944,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-13b-test_analysis",
+      "status_counts": {
+        "200": 30,
+        "None": 7
+      },
+      "total_bytes": 6269129,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 35
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "5ea470b41b3c27bfece3ca30f5f5dc1e61c05fa07f988a6b551d4ba94c57273d",
+      "raw_bytes": 5988190,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-13b-test_evals",
+      "status_counts": {
+        "200": 30,
+        "None": 7
+      },
+      "total_bytes": 6008367,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 35
+    },
+    {
+      "entries": 39,
+      "errors": [],
+      "manifest_sha256": "d5220213644490cb037d44e0b7b8bec662c3954838b6fe32e9dcf9abde249801",
+      "raw_bytes": 6287498,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-13b-test_geography",
+      "status_counts": {
+        "200": 32,
+        "None": 7
+      },
+      "total_bytes": 6309459,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 37
+    },
+    {
+      "entries": 39,
+      "errors": [],
+      "manifest_sha256": "96c86e8635cb63a4331319fd2f8b705372601d789c4fcd61832e6282f8fde491",
+      "raw_bytes": 6222971,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-13b-test_hardware",
+      "status_counts": {
+        "200": 32,
+        "None": 7
+      },
+      "total_bytes": 6244192,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 37
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "8a3e6676dd254a964e66ca7fd94cd7904d418a078853187f49d0b1b79d1abd6b",
+      "raw_bytes": 6519472,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-13b-test_leaderboard",
+      "status_counts": {
+        "200": 30,
+        "None": 7
+      },
+      "total_bytes": 6539663,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 35
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "e3dcfece252cdd5fe857d9d7f64bfa0adbf99f512ae953f386116c19083b2019",
+      "raw_bytes": 12155632,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-13b-test_nodes",
+      "status_counts": {
+        "200": 30,
+        "None": 7
+      },
+      "total_bytes": 12175816,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 35
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "f61fd4088cdb340766259092f9c9c396a2feff762c817da02ff836b9b76fefcf",
+      "raw_bytes": 6595148,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-13b-test_overview",
+      "status_counts": {
+        "200": 29,
+        "None": 8
+      },
+      "total_bytes": 6615018,
+      "unarchived_responses": [
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 36
+    },
+    {
+      "entries": 40,
+      "errors": [],
+      "manifest_sha256": "b102ebad82cb20b9bf351cd21a37e3da108179e5738becb2904db9f76a497f39",
+      "raw_bytes": 10689546,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-13b-test_telemetry",
+      "status_counts": {
+        "200": 31,
+        "None": 9
+      },
+      "total_bytes": 10711314,
+      "unarchived_responses": [
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 39
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "ebad5541ff99172fcb5e4c56b65acc1ad7b1a6ab75bd42c78912d58dad1afe46",
+      "raw_bytes": 6368892,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-8b_analysis",
+      "status_counts": {
+        "200": 30,
+        "None": 7
+      },
+      "total_bytes": 6389065,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 35
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "628a3290002698c22f4092c41f3316ccfde9efdff6d1139ec1181a77c2746468",
+      "raw_bytes": 6111282,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-8b_evals",
+      "status_counts": {
+        "200": 30,
+        "None": 7
+      },
+      "total_bytes": 6131447,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 35
+    },
+    {
+      "entries": 39,
+      "errors": [],
+      "manifest_sha256": "27d7a0ffa56ef119252bc2e9282e2ccae037324208467089931099e70aff3652",
+      "raw_bytes": 6358602,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-8b_geography",
+      "status_counts": {
+        "200": 32,
+        "None": 7
+      },
+      "total_bytes": 6380551,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 37
+    },
+    {
+      "entries": 39,
+      "errors": [],
+      "manifest_sha256": "626f6fb364d466784e0d4e23cbb7a99d1c3650d41dce439ec4320d206ac44e6c",
+      "raw_bytes": 6326963,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-8b_hardware",
+      "status_counts": {
+        "200": 32,
+        "None": 7
+      },
+      "total_bytes": 6348172,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 37
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "7c482ac65297b7a031c93f4e6f4567ce396f16784ae3ffcc86c8315970261119",
+      "raw_bytes": 6907291,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-8b_leaderboard",
+      "status_counts": {
+        "200": 30,
+        "None": 7
+      },
+      "total_bytes": 6927471,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 35
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "90bdcc45933c88feabcbb76c53f36b791e39e4c724f3c65bb34f1e2f91f7c72e",
+      "raw_bytes": 9198097,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-8b_nodes",
+      "status_counts": {
+        "200": 30,
+        "None": 7
+      },
+      "total_bytes": 9218267,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 35
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "0299371dd7a2a588768f6081a72bd010431398b5a48358139a941eebb06088f1",
+      "raw_bytes": 6668981,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-8b_overview",
+      "status_counts": {
+        "200": 29,
+        "None": 8
+      },
+      "total_bytes": 6688839,
+      "unarchived_responses": [
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 36
+    },
+    {
+      "entries": 41,
+      "errors": [],
+      "manifest_sha256": "c05cfd4260b12798519ff6446f73eaf0809e390924e24c210d7c576e45f3d69d",
+      "raw_bytes": 9643187,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_final/pluralis-8b_telemetry",
+      "status_counts": {
+        "200": 32,
+        "None": 9
+      },
+      "total_bytes": 9665622,
+      "unarchived_responses": [
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-8b/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 39
+    },
+    {
+      "entries": 8,
+      "errors": [],
+      "manifest_sha256": "09465f51b4a2ff31129a4eccadc11e204e5b6a7d7d55d395603e00db30ec80f9",
+      "raw_bytes": 3202974,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_incomplete_attempt/pluralis-8b_overview",
+      "status_counts": {
+        "200": 1,
+        "None": 7
+      },
+      "total_bytes": 3207307,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        }
+      ],
+      "verified_bodies": 7
+    },
+    {
+      "entries": 38,
+      "errors": [],
+      "manifest_sha256": "f58a25de509e128015c648993eae08b3c0a4d656dc34c12e213e0d295a4dcbe9",
+      "raw_bytes": 9325693,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_short_attempt/pluralis-13b-test_telemetry",
+      "status_counts": {
+        "200": 31,
+        "None": 7
+      },
+      "total_bytes": 9346401,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 36
+    },
+    {
+      "entries": 39,
+      "errors": [],
+      "manifest_sha256": "d177fd835afe55417a6013c010b445cbde4db5593b40bc1336324395d42b14f7",
+      "raw_bytes": 7357930,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/dashboard_20261029_short_attempt/pluralis-8b_telemetry",
+      "status_counts": {
+        "200": 32,
+        "None": 7
+      },
+      "total_bytes": 7379303,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-8b/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 36
+    },
+    {
+      "entries": 28,
+      "errors": [],
+      "manifest_sha256": "36611040d69eaf7d6e74f9a83c8abb59a89ed7c9eb4208cc308a292797f3249d",
+      "raw_bytes": 118397495,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/agora/data/public_runs_20261029T095600Z",
+      "status_counts": {
+        "200": 28
+      },
+      "total_bytes": 142264150,
+      "unarchived_responses": [],
+      "verified_bodies": 28
+    },
+    {
+      "entries": 19,
+      "errors": [],
+      "manifest_sha256": "e5cbb760bb6fef782f9ec8728da1cff0d5157ebbbbbb87061482e086ed287ad9",
+      "raw_bytes": 3456398,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/distributed-training/data/dashboard_20261029_final/mech1",
+      "status_counts": {
+        "200": 13,
+        "None": 6
+      },
+      "total_bytes": 3466290,
+      "unarchived_responses": [],
+      "verified_bodies": 19
+    },
+    {
+      "entries": 14,
+      "errors": [],
+      "manifest_sha256": "572e3220fa00c19c7abefcdf19d876bc22a1f82de31a17a97d7ca1faa5fa1744",
+      "raw_bytes": 1493274,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/distributed-training/data/dashboard_20261029_final/train",
+      "status_counts": {
+        "200": 8,
+        "None": 6
+      },
+      "total_bytes": 1500745,
+      "unarchived_responses": [],
+      "verified_bodies": 14
+    },
+    {
+      "entries": 17,
+      "errors": [],
+      "manifest_sha256": "d62b5a70f23f95f861095a422a882ba96f9e8076e91dc0516e9a67fc15f3311f",
+      "raw_bytes": 3364990,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/distributed-training/data/dashboard_20261029_poll_attempt/mech1",
+      "status_counts": {
+        "200": 11,
+        "None": 6
+      },
+      "total_bytes": 3374764,
+      "unarchived_responses": [],
+      "verified_bodies": 17
+    },
+    {
+      "entries": 15,
+      "errors": [],
+      "manifest_sha256": "0a136858fc38e4024d1572888415ebda12d5d3af9ef44e5058e2a7eba32c6e4f",
+      "raw_bytes": 1897668,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/distributed-training/data/dashboard_20261029_short_attempt/mech1",
+      "status_counts": {
+        "200": 9,
+        "None": 6
+      },
+      "total_bytes": 1905807,
+      "unarchived_responses": [],
+      "verified_bodies": 15
+    },
+    {
+      "entries": 14,
+      "errors": [],
+      "manifest_sha256": "aa82dd0093d102707b35b140a5b408c7b610b50ec832934ff6e2b5ae83e94c80",
+      "raw_bytes": 1493274,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/distributed-training/data/dashboard_20261029_short_attempt/train",
+      "status_counts": {
+        "200": 8,
+        "None": 6
+      },
+      "total_bytes": 1500775,
+      "unarchived_responses": [],
+      "verified_bodies": 14
+    },
+    {
+      "entries": 15,
+      "errors": [],
+      "manifest_sha256": "4b662440d699c9ab21639e512f1a65c60f4a6f1e2261773cfce71a295cb0b2a0",
+      "raw_bytes": 1971953,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/distributed-training/data/dashboard_20261029_short_attempt2/mech1",
+      "status_counts": {
+        "200": 9,
+        "None": 6
+      },
+      "total_bytes": 1979888,
+      "unarchived_responses": [],
+      "verified_bodies": 15
+    },
+    {
+      "entries": 728,
+      "errors": [],
+      "manifest_sha256": "72cdd3dd8d1a3538838f52d8e0814847b7ac4ac61df18711454f2bdcc6c118bf",
+      "raw_bytes": 9060911067,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/distributed-training/data/public_20261029",
+      "status_counts": {
+        "200": 691,
+        "404": 2,
+        "502": 1,
+        "None": 34
+      },
+      "total_bytes": 14101777595,
+      "unarchived_responses": [
+        {
+          "reason": "HTTP 502",
+          "status": 502,
+          "url": "https://ngrok-dash0.dstrbtd.ai"
+        },
+        {
+          "reason": "HTTP 404",
+          "status": 404,
+          "url": "https://huggingface.co/distributed/llama-4b/raw/main/README.md"
+        },
+        {
+          "reason": "HTTP 404",
+          "status": 404,
+          "url": "https://huggingface.co/dstrbtd/llama-1b/raw/main/README.md"
+        },
+        {
+          "reason": "RuntimeError: single response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like field in public metadata/history response; response not archived",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like field in public metadata/history response; response not archived",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like field in public metadata/history response; response not archived",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like field in public metadata/history response; response not archived",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.runs.edges[0].node.history[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 25580 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.runs.edges[0].node.history[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.runs.edges[0].node.history[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 25580 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.r019.historyKeys.keys.uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.r019.historyKeys.keys.uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 236 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.r000.historyKeys.keys.uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 1260 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.run.h000[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.run.h000[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.run.h000[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.run.h000[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.run.h000[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.run.h000[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.run.h000[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.run.h000[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.run.h000[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.run.h000[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.run.h000[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.run.h000[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.run.h000[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.run.h000[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.run.h000[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.run.h000[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.run.h000[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.run.h000[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.run.h000[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.run.h000[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 51180 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.run.h000[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.run.h000[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.run.h000[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.run.h000[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.run.h000[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.run.h000[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.run.h000[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.run.h000[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.run.h000[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.run.h000[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.run.h000[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.run.h000[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.run.h000[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.run.h000[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.run.h000[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.run.h000[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.run.h000[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.run.h000[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.run.h000[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.run.h000[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 76780 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.run.h000[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.run.h000[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.run.h000[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.run.h000[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.run.h000[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.run.h000[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.run.h000[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.run.h000[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.run.h000[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.run.h000[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.run.h000[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.run.h000[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.run.h000[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.run.h000[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.run.h000[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.run.h000[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.run.h000[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.run.h000[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.run.h000[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.run.h000[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 51180 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.run.h000[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.run.h000[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.run.h000[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.run.h000[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.run.h000[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.run.h000[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.run.h000[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.run.h000[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.run.h000[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.run.h000[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.run.h000[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.run.h000[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.run.h000[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.run.h000[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.run.h000[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.run.h000[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.run.h000[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.run.h000[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.run.h000[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.run.h000[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 76780 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.run.h000[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.run.h000[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.run.h000[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.run.h000[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.run.h000[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.run.h000[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.run.h000[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.run.h000[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.run.h000[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.run.h000[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.run.h000[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.run.h000[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.run.h000[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.run.h000[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.run.h000[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.run.h000[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.run.h000[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.run.h000[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.run.h000[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.run.h000[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 19180 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.run.h000[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.run.h000[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.run.h000[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.run.h000[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.run.h000[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.run.h000[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.run.h000[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.run.h000[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.run.h000[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.run.h000[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.run.h000[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.run.h000[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.run.h000[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.run.h000[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.run.h000[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.run.h000[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.run.h000[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.run.h000[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.run.h000[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.run.h000[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 86508 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.run.h000[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.run.h000[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.run.h000[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.run.h000[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.run.h000[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.run.h000[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.run.h000[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.run.h000[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.run.h000[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.run.h000[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.run.h000[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.run.h000[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.run.h000[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.run.h000[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.run.h000[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.run.h000[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.run.h000[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.run.h000[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.run.h000[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.run.h000[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 51180 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.run.h000[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.run.h000[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.run.h000[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.run.h000[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.run.h000[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.run.h000[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.run.h000[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.run.h000[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.run.h000[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.run.h000[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.run.h000[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.run.h000[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.run.h000[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.run.h000[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.run.h000[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.run.h000[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.run.h000[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.run.h000[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.run.h000[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.run.h000[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 76780 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.run.h000[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.run.h000[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.run.h000[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.run.h000[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.run.h000[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.run.h000[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.run.h000[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.run.h000[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.run.h000[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.run.h000[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.run.h000[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.run.h000[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.run.h000[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.run.h000[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.run.h000[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.run.h000[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.run.h000[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.run.h000[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.run.h000[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.run.h000[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 51180 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.run.h000[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.run.h000[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.run.h000[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.run.h000[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.run.h000[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.run.h000[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.run.h000[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.run.h000[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.run.h000[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.run.h000[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.run.h000[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.run.h000[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.run.h000[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.run.h000[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.run.h000[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.run.h000[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.run.h000[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.run.h000[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.run.h000[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.run.h000[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 76780 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.run.h000[0].uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.run.h000[0].uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.run.h000[0].uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.run.h000[0].uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.run.h000[0].uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.run.h000[0].uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.run.h000[0].uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.run.h000[0].uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.run.h000[0].uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.run.h000[0].uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.run.h000[0].uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.run.h000[0].uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.run.h000[0].uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.run.h000[0].uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.run.h000[0].uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.run.h000[0].uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.run.h000[0].uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.run.h000[0].uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.run.h000[0].uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.run.h000[0].uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 51180 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.r000.historyKeys.keys.uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 236 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.r000.historyKeys.keys.uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 236 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.r000.historyKeys.keys.uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 236 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.r000.historyKeys.keys.uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 236 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.r000.historyKeys.keys.uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 236 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "credential-like key-name screen matched; response not archived; matched key paths (no values retained): $.data.project.r000.historyKeys.keys.uid_0.train.secret_access_key (key `uid_0.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_1.train.secret_access_key (key `uid_1.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_10.train.secret_access_key (key `uid_10.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_100.train.secret_access_key (key `uid_100.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_101.train.secret_access_key (key `uid_101.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_102.train.secret_access_key (key `uid_102.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_103.train.secret_access_key (key `uid_103.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_104.train.secret_access_key (key `uid_104.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_105.train.secret_access_key (key `uid_105.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_106.train.secret_access_key (key `uid_106.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_107.train.secret_access_key (key `uid_107.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_108.train.secret_access_key (key `uid_108.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_109.train.secret_access_key (key `uid_109.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_11.train.secret_access_key (key `uid_11.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_110.train.secret_access_key (key `uid_110.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_111.train.secret_access_key (key `uid_111.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_112.train.secret_access_key (key `uid_112.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_113.train.secret_access_key (key `uid_113.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_114.train.secret_access_key (key `uid_114.train.secret_access_key`), $.data.project.r000.historyKeys.keys.uid_115.train.secret_access_key (key `uid_115.train.secret_access_key`); 236 additional matched paths omitted",
+          "status": 200,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        },
+        {
+          "reason": "RuntimeError: decompressed response exceeded 134217728-byte safety cap",
+          "status": null,
+          "url": "https://api.wandb.ai/graphql"
+        }
+      ],
+      "verified_bodies": 666
+    },
+    {
+      "entries": 18,
+      "errors": [],
+      "manifest_sha256": "6d92db198951b71b641829500d1095f2a00b46b8d8f34da7006ddeab33609eb4",
+      "raw_bytes": 4923941,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/gensyn/data/dashboard_20261029_final/legacy_swarm",
+      "status_counts": {
+        "200": 10,
+        "401": 1,
+        "500": 1,
+        "None": 6
+      },
+      "total_bytes": 4935884,
+      "unarchived_responses": [],
+      "verified_bodies": 18
+    },
+    {
+      "entries": 18,
+      "errors": [],
+      "manifest_sha256": "aaa8f241d83a825d3e677fd7dece924b9ca6b764d675250f6124f55de66c9fd5",
+      "raw_bytes": 4924111,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/gensyn/data/dashboard_20261029_final/math",
+      "status_counts": {
+        "200": 10,
+        "401": 1,
+        "500": 1,
+        "None": 6
+      },
+      "total_bytes": 4936243,
+      "unarchived_responses": [],
+      "verified_bodies": 18
+    },
+    {
+      "entries": 25,
+      "errors": [],
+      "manifest_sha256": "33e866597fa0e37ca2caccf6300852da971c8ce1b1ff8400a65195dc56bb03fc",
+      "raw_bytes": 15839681,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/gensyn/data/dashboard_20261029_final/rlswarm",
+      "status_counts": {
+        "200": 18,
+        "401": 1,
+        "None": 6
+      },
+      "total_bytes": 15855102,
+      "unarchived_responses": [
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://dashboard.gensyn.ai/videos/video-blockassist.webm"
+        }
+      ],
+      "verified_bodies": 24
+    },
+    {
+      "entries": 12,
+      "errors": [],
+      "manifest_sha256": "806cc4cb4d9c32e0eeb27b4957aa3f1ba0460d93649b0ec6437adeeeb88bd2c7",
+      "raw_bytes": 5987639,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/gensyn/data/public_runs_20261029T100232Z",
+      "status_counts": {
+        "200": 11,
+        "500": 1
+      },
+      "total_bytes": 6664477,
+      "unarchived_responses": [
+        {
+          "reason": "HTTP 500: Internal Server Error",
+          "status": 500,
+          "url": "https://dashboard-math.gensyn.ai/api/v1/nodes-connected"
+        }
+      ],
+      "verified_bodies": 11
+    },
+    {
+      "entries": 26,
+      "errors": [],
+      "manifest_sha256": "eb299718e5d7e2907d08c50b788ae3dc8c9a575f6e280c4b815dfcd38f7404d8",
+      "raw_bytes": 10046278,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/gensyn/data/public_runs_20261029T101104Z",
+      "status_counts": {
+        "200": 24,
+        "400": 1,
+        "500": 1
+      },
+      "total_bytes": 10198255,
+      "unarchived_responses": [],
+      "verified_bodies": 26
+    },
+    {
+      "entries": 60,
+      "errors": [],
+      "manifest_sha256": "a62d1570e1ba986781c8e4156f7b0c412f923396ca382168d919d7791073e248",
+      "raw_bytes": 18456468,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/gensyn/data/public_runs_20261029T101259Z",
+      "status_counts": {
+        "200": 51,
+        "500": 3,
+        "request_error": 6
+      },
+      "total_bytes": 31921703,
+      "unarchived_responses": [
+        {
+          "reason": "HTTP 500: Internal Server Error",
+          "status": 500,
+          "url": "https://dashboard-math.gensyn.ai/api/v1/nodes-connected"
+        },
+        {
+          "reason": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+          "status": "request_error",
+          "url": "https://swarm.gensyn.ai/api/v1/nodes-connected"
+        },
+        {
+          "reason": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+          "status": "request_error",
+          "url": "https://swarm.gensyn.ai/api/v1/round-stage"
+        },
+        {
+          "reason": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+          "status": "request_error",
+          "url": "https://swarm.gensyn.ai/api/v1/top-rewards"
+        },
+        {
+          "reason": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+          "status": "request_error",
+          "url": "https://swarm.gensyn.ai/api/v1/leaderboard"
+        },
+        {
+          "reason": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+          "status": "request_error",
+          "url": "https://swarm.gensyn.ai/api/v1/unique-voters"
+        },
+        {
+          "reason": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+          "status": "request_error",
+          "url": "https://swarm.gensyn.ai/api/v1/gossip-messages"
+        }
+      ],
+      "verified_bodies": 53
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "7be3c9a815f298429641b6c9aa82e925e69cce62878d9e592df223d26202a544",
+      "raw_bytes": 6501451,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/node0/data/dashboard_20261029_final/node0-7-5b_analysis",
+      "status_counts": {
+        "200": 30,
+        "None": 7
+      },
+      "total_bytes": 6521424,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 35
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "07f63f39f0524058d94f0579a413b737a7967329d0964cc5f683db3c7a59dbc1",
+      "raw_bytes": 6291254,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/node0/data/dashboard_20261029_final/node0-7-5b_evals",
+      "status_counts": {
+        "200": 30,
+        "None": 7
+      },
+      "total_bytes": 6311217,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 35
+    },
+    {
+      "entries": 39,
+      "errors": [],
+      "manifest_sha256": "df31d3de6a5a60db08d5cc381c12b516f66f395af0c83d9578b24254538b77a8",
+      "raw_bytes": 6685805,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/node0/data/dashboard_20261029_final/node0-7-5b_geography",
+      "status_counts": {
+        "200": 32,
+        "None": 7
+      },
+      "total_bytes": 6707554,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 37
+    },
+    {
+      "entries": 40,
+      "errors": [],
+      "manifest_sha256": "7c8f54d89aca5b4b285b435e332ae7ac5c4f9d4f0cc96e696ad74d373848a676",
+      "raw_bytes": 6987827,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/node0/data/dashboard_20261029_final/node0-7-5b_hardware",
+      "status_counts": {
+        "200": 32,
+        "None": 8
+      },
+      "total_bytes": 7009495,
+      "unarchived_responses": [
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 39
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "ca6293317df8895a95c592809807c95a83d901dd3bf1070034653bdff6a2c5e6",
+      "raw_bytes": 7525498,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/node0/data/dashboard_20261029_final/node0-7-5b_leaderboard",
+      "status_counts": {
+        "200": 30,
+        "None": 7
+      },
+      "total_bytes": 7545477,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 35
+    },
+    {
+      "entries": 39,
+      "errors": [],
+      "manifest_sha256": "8cc9602c6526b81a21c19105817a2ee049950e73b738ebd217e8404170afd52c",
+      "raw_bytes": 14527625,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/node0/data/dashboard_20261029_final/node0-7-5b_nodes",
+      "status_counts": {
+        "200": 32,
+        "None": 7
+      },
+      "total_bytes": 14548620,
+      "unarchived_responses": [
+        {
+          "reason": "skipped",
+          "status": null,
+          "url": "https://agora.pluralis.ai/"
+        },
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 37
+    },
+    {
+      "entries": 37,
+      "errors": [],
+      "manifest_sha256": "18f0aeb34239290c012853ab042c89f02fab7dbf14c62e2dad591664f0acc2ff",
+      "raw_bytes": 6856764,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/node0/data/dashboard_20261029_final/node0-7-5b_overview",
+      "status_counts": {
+        "200": 29,
+        "None": 8
+      },
+      "total_bytes": 6876620,
+      "unarchived_responses": [
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 36
+    },
+    {
+      "entries": 41,
+      "errors": [],
+      "manifest_sha256": "bca3a196883b5473bb19c5343f27fcbb8f18e1dee40d7d0e227c09bd63933c08",
+      "raw_bytes": 16520675,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/node0/data/dashboard_20261029_final/node0-7-5b_telemetry",
+      "status_counts": {
+        "200": 32,
+        "None": 9
+      },
+      "total_bytes": 16542940,
+      "unarchived_responses": [
+        {
+          "reason": "body_read_failed",
+          "status": 200,
+          "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/prometheus-timeseries?range=all"
+        }
+      ],
+      "verified_bodies": 40
+    },
+    {
+      "entries": 7,
+      "errors": [],
+      "manifest_sha256": "7454873af507b12e07a9d3b576d7567971cbe592b5ca3298e861e169e44b504a",
+      "raw_bytes": 47658,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/node0/data/dashboard_20261029_final/separate_dashboard",
+      "status_counts": {
+        "403": 1,
+        "None": 6
+      },
+      "total_bytes": 51639,
+      "unarchived_responses": [],
+      "verified_bodies": 7
+    },
+    {
+      "entries": 6,
+      "errors": [],
+      "manifest_sha256": "04b139af734daa7ef497545a6bea3e8a71e9d1c6bdeb4f1505743aea44a52490",
+      "raw_bytes": 9089861,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/node0/data/public_runs_20261029T100000Z",
+      "status_counts": {
+        "200": 5,
+        "403": 1
+      },
+      "total_bytes": 26349324,
+      "unarchived_responses": [
+        {
+          "reason": "HTTP 403",
+          "status": 403,
+          "url": "https://dashboard.pluralis.ai/"
+        }
+      ],
+      "verified_bodies": 5
+    },
+    {
+      "entries": 8,
+      "errors": [],
+      "manifest_sha256": "16ace4208aeeb0c859de5a0d47520b480cb95756f93d190587cef156df256c36",
+      "raw_bytes": 1247594,
+      "snapshot": "/home/sarat/Projects/hivemind-analysis/research/public-networks/data",
+      "status_counts": {
+        "None": 8
+      },
+      "total_bytes": 1249822,
+      "unarchived_responses": [],
+      "verified_bodies": 8
+    }
+  ],
+  "total_bytes": 14576825259,
+  "verified_at": "2026-10-29T16:24:13.046611+00:00",
+  "within_20gb_budget": true
+}

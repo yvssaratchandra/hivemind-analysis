@@ -1,0 +1,462 @@
+{
+  "purpose": "Dated public dashboard presentation snapshots; no training or account login",
+  "route_evidence": "Archived dashboard HTML and JavaScript from the 2026-10-29 public-run archives; browser selection must be visually verified",
+  "targets": [
+    {
+      "project": "agora",
+      "label": "pluralis-8b_overview",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-8b \u00b7\"]"
+      ],
+      "expected_run": "pluralis-8b",
+      "view": "Overview",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-8b_telemetry",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-8b \u00b7\"]",
+        "button:text-is(\"Telemetry\")"
+      ],
+      "expected_run": "pluralis-8b",
+      "view": "Telemetry",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-8b_evals",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-8b \u00b7\"]",
+        "button:text-is(\"Evals\")"
+      ],
+      "expected_run": "pluralis-8b",
+      "view": "Evals",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-8b_analysis",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-8b \u00b7\"]",
+        "button:text-is(\"Analysis\")"
+      ],
+      "expected_run": "pluralis-8b",
+      "view": "Analysis",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-8b_hardware",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-8b \u00b7\"]",
+        "button:text-is(\"Hardware\")"
+      ],
+      "expected_run": "pluralis-8b",
+      "view": "Hardware",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-8b_geography",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-8b \u00b7\"]",
+        "button:text-is(\"Geography\")"
+      ],
+      "expected_run": "pluralis-8b",
+      "view": "Geography",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-8b_nodes",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-8b \u00b7\"]",
+        "button:text-is(\"Nodes\")"
+      ],
+      "expected_run": "pluralis-8b",
+      "view": "Nodes",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-8b_leaderboard",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-8b \u00b7\"]",
+        "button:text-is(\"Leaderboard\")"
+      ],
+      "expected_run": "pluralis-8b",
+      "view": "Leaderboard",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-13b-test_overview",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-13b-test \u00b7\"]"
+      ],
+      "expected_run": "pluralis-13b-test",
+      "view": "Overview",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-13b-test_telemetry",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-13b-test \u00b7\"]",
+        "button:text-is(\"Telemetry\")"
+      ],
+      "expected_run": "pluralis-13b-test",
+      "view": "Telemetry",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-13b-test_evals",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-13b-test \u00b7\"]",
+        "button:text-is(\"Evals\")"
+      ],
+      "expected_run": "pluralis-13b-test",
+      "view": "Evals",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-13b-test_analysis",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-13b-test \u00b7\"]",
+        "button:text-is(\"Analysis\")"
+      ],
+      "expected_run": "pluralis-13b-test",
+      "view": "Analysis",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-13b-test_hardware",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-13b-test \u00b7\"]",
+        "button:text-is(\"Hardware\")"
+      ],
+      "expected_run": "pluralis-13b-test",
+      "view": "Hardware",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-13b-test_geography",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-13b-test \u00b7\"]",
+        "button:text-is(\"Geography\")"
+      ],
+      "expected_run": "pluralis-13b-test",
+      "view": "Geography",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-13b-test_nodes",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-13b-test \u00b7\"]",
+        "button:text-is(\"Nodes\")"
+      ],
+      "expected_run": "pluralis-13b-test",
+      "view": "Nodes",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "agora",
+      "label": "pluralis-13b-test_leaderboard",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"pluralis-13b-test \u00b7\"]",
+        "button:text-is(\"Leaderboard\")"
+      ],
+      "expected_run": "pluralis-13b-test",
+      "view": "Leaderboard",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "node0",
+      "label": "node0-7-5b_overview",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"node0-7-5b \u00b7\"]"
+      ],
+      "expected_run": "node0-7-5b",
+      "view": "Overview",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "node0",
+      "label": "node0-7-5b_telemetry",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"node0-7-5b \u00b7\"]",
+        "button:text-is(\"Telemetry\")"
+      ],
+      "expected_run": "node0-7-5b",
+      "view": "Telemetry",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "node0",
+      "label": "node0-7-5b_evals",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"node0-7-5b \u00b7\"]",
+        "button:text-is(\"Evals\")"
+      ],
+      "expected_run": "node0-7-5b",
+      "view": "Evals",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "node0",
+      "label": "node0-7-5b_analysis",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"node0-7-5b \u00b7\"]",
+        "button:text-is(\"Analysis\")"
+      ],
+      "expected_run": "node0-7-5b",
+      "view": "Analysis",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "node0",
+      "label": "node0-7-5b_hardware",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"node0-7-5b \u00b7\"]",
+        "button:text-is(\"Hardware\")"
+      ],
+      "expected_run": "node0-7-5b",
+      "view": "Hardware",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "node0",
+      "label": "node0-7-5b_geography",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"node0-7-5b \u00b7\"]",
+        "button:text-is(\"Geography\")"
+      ],
+      "expected_run": "node0-7-5b",
+      "view": "Geography",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "node0",
+      "label": "node0-7-5b_nodes",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"node0-7-5b \u00b7\"]",
+        "button:text-is(\"Nodes\")"
+      ],
+      "expected_run": "node0-7-5b",
+      "view": "Nodes",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "node0",
+      "label": "node0-7-5b_leaderboard",
+      "url": "https://agora.pluralis.ai/",
+      "click_selectors": [
+        "[title^=\"node0-7-5b \u00b7\"]",
+        "button:text-is(\"Leaderboard\")"
+      ],
+      "expected_run": "node0-7-5b",
+      "view": "Leaderboard",
+      "allow_hosts": [
+        "agora.pluralis.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "gensyn",
+      "label": "rlswarm",
+      "url": "https://dashboard.gensyn.ai/?application=RLSwarm",
+      "click_selectors": [],
+      "allow_hosts": [
+        "dashboard.gensyn.ai",
+        "dashboard-math.gensyn.ai",
+        "swarm.gensyn.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "gensyn",
+      "label": "math",
+      "url": "https://dashboard-math.gensyn.ai/",
+      "click_selectors": [],
+      "allow_hosts": [
+        "dashboard.gensyn.ai",
+        "dashboard-math.gensyn.ai",
+        "swarm.gensyn.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "gensyn",
+      "label": "legacy_swarm",
+      "url": "https://swarm.gensyn.ai/",
+      "click_selectors": [],
+      "allow_hosts": [
+        "dashboard.gensyn.ai",
+        "dashboard-math.gensyn.ai",
+        "swarm.gensyn.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "distributed-training",
+      "label": "mech1",
+      "url": "https://dash.dstrbtd.ai/mech1",
+      "click_selectors": [],
+      "allow_hosts": [
+        "dash.dstrbtd.ai",
+        "ngrok-dash1.dstrbtd.ai",
+        "websocket.dstrbtd.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "distributed-training",
+      "label": "train",
+      "url": "https://dash.dstrbtd.ai/train",
+      "click_selectors": [],
+      "allow_hosts": [
+        "dash.dstrbtd.ai",
+        "ngrok-dash1.dstrbtd.ai",
+        "websocket.dstrbtd.ai",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    {
+      "project": "node0",
+      "label": "separate_dashboard",
+      "url": "https://dashboard.pluralis.ai/",
+      "click_selectors": [],
+      "allow_hosts": [
+        "dashboard.pluralis.ai",
+        "agora.pluralis.ai"
+      ]
+    }
+  ]
+}

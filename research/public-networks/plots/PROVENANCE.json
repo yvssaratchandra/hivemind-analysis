@@ -1,0 +1,59 @@
+{
+  "matplotlib": "3.11.2",
+  "sources": [
+    {
+      "snapshot": "research/agora/data/public_runs_20261029T095600Z",
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-8b/training?range=all",
+      "path": "raw/1b2137a3550aa00071461f92066e329d0af71b7215e73b3937ae30393442e3b3.body",
+      "sha256": "f5afc3a797fcff3250daff94eb8ec349678fd1876f06a0dd940b7591f7444cb1"
+    },
+    {
+      "snapshot": "research/agora/data/public_runs_20261029T095600Z",
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-8b/leaderboard",
+      "path": "raw/e574d0bff6415f4af86921a07e052129ef13f657466a4566d73bae6bac438ae4.body",
+      "sha256": "cd945547d1a4656aa0c8d17b3e8d9123c87820b743a01eb3d1f6ed12828e144a"
+    },
+    {
+      "snapshot": "research/agora/data/public_runs_20261029T095600Z",
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/training?range=all",
+      "path": "raw/0dea3a9062525cd4595060ff51efb6f6d033e703ac4f706da6cd844436f5dcfb.body",
+      "sha256": "e64c06cfea40adb0bc6b615a975e88604fb3a1f34bf880b1149e4db98a6f2812"
+    },
+    {
+      "snapshot": "research/agora/data/public_runs_20261029T095600Z",
+      "url": "https://agora.pluralis.ai/api/runs/pluralis-13b-test/leaderboard",
+      "path": "raw/3d0808e40109ab3753eb7498364bd88e6a10f946c80d96065f34cf245c2548d5.body",
+      "sha256": "b1f5ea1d21b6107a982c2dc515891c704593c30f1b3930f8ef4dbab2d066b2f3"
+    },
+    {
+      "snapshot": "research/node0/data/public_runs_20261029T100000Z",
+      "url": "https://agora.pluralis.ai/api/runs/node0-7-5b/training?range=all",
+      "path": "raw/node0_training_12a3c0e243fbbb2f.body",
+      "sha256": "0e563c395cae00841e2605648a145ed08fa372af58762ec704deb88b82f638ec"
+    },
+    {
+      "snapshot": "research/node0/data/public_runs_20261029T100000Z",
+      "url": "https://agora.pluralis.ai/api/runs/node0-7-5b/leaderboard",
+      "path": "raw/node0_leaderboard_532800f67b533643.body",
+      "sha256": "4e88dbb9ab5ada8d9055379559f42b8876ee5543c9e697d4c966094d78bf0487"
+    },
+    {
+      "snapshot": "research/distributed-training/data/public_20261029",
+      "url": "https://ngrok-dash1.dstrbtd.ai/api/mech1/history",
+      "path": "raw/mech1/history.json",
+      "sha256": "89e6d89340768b578978352c911c4ae789173643d8a2d5ef76fead4e95baf631"
+    },
+    {
+      "snapshot": "research/distributed-training/data/public_20261029",
+      "url": "https://api.wandb.ai/graphql",
+      "path": "raw/wandb/kmfoda/distributed_training_miners/page-0000.json",
+      "sha256": "7debc314650502f5650f4b476a3bfc0320d196baaeaaa26f88a03140cf057cc8"
+    }
+  ],
+  "miner_example_selection": "First three runs on miners page 0000 with at least two history rows, count matching historyLineCount, and numeric loss/_step. Illustrative, not representative.",
+  "miner_example_runs": [
+    "M228",
+    "M255",
+    "M237"
+  ]
+}
