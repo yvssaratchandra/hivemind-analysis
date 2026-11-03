@@ -1,0 +1,10 @@
+{
+  "local_path": "research/node0/papers/ (git-ignored)",
+  "downloaded_utc": "2026-11-03",
+  "cited_by": "research/node0/upstream/README.md:383-415",
+  "papers": [
+    {"arxiv": "2506.01260", "file": "2506.01260.pdf", "url": "https://arxiv.org/pdf/2506.01260", "pdf_title": "Subspace Networks: Scaling Decentralized Training with Communication-Efficient Model Parallelism", "note": "Cited in the README as 'Protocol Models'; the current arXiv version carries the title above", "pages": 40, "sha256": "5af0d5f21173583b0c997c4f9c6330f134acf888aa325eaeab42acb9749a2f3d"},
+    {"arxiv": "2505.01099", "file": "2505.01099.pdf", "url": "https://arxiv.org/pdf/2505.01099", "pdf_title": "Nesterov Method for Asynchronous Pipeline Parallel Optimization (per README citation)", "pages": 18, "sha256": "1ca2e1d64e02b430b86ddd2b40257a9fe618c364984e0ddc59a96433cd167d30"}
+  ],
+  "not_available": "The Node0 citation (avraham2025node0) points to the GitHub repository, not a paper."
+}

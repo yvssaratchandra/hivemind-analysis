@@ -1,0 +1,14 @@
+{
+  "local_path": "research/agora/papers/ (git-ignored)",
+  "downloaded_utc": "2026-11-03",
+  "cited_by": "research/agora/upstream/README.md and docs/index.md:66-69",
+  "papers": [
+    {"arxiv": "2601.22442", "file": "2601.22442.pdf", "url": "https://arxiv.org/pdf/2601.22442", "pdf_title": "AsyncMesh: Fully Asynchronous Optimization for Data and Pipeline Parallelism", "pages": 26, "sha256": "b6f09ef8861d32f8a4874ef9ce4131c285bf884c3a215dcd996f7753b586fc0c"},
+    {"arxiv": "2301.11913", "file": "2301.11913.pdf", "url": "https://arxiv.org/pdf/2301.11913", "pdf_title": "SWARM Parallelism: Training Large Models Can Be Surprisingly Communication-Efficient", "pages": 25, "sha256": "65daaa3131ddf9f3e2656496cee58ed7b6075478a98a2f2bd9f08f8593548923"}
+  ],
+  "also_cited": [
+    {"arxiv": "2506.01260", "location": "research/node0/papers/2506.01260.pdf"},
+    {"arxiv": "2505.01099", "location": "research/node0/papers/2505.01099.pdf"},
+    {"arxiv": "2607.13332", "location": "research/agora/2607.pdf (tracked; byte-identical to a fresh download on 2026-11-03)"}
+  ]
+}

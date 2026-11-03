@@ -1,0 +1,46 @@
+{
+  "downloaded_utc": "2026-11-03",
+  "scope": "Read-only source archive; nothing installed or executed.",
+  "dependencies": [
+    {
+      "name": "gensyn-ai/hivemind (Gensyn fork of Hivemind)",
+      "pinned_by": "research/gensyn/upstream/code_gen_exp/requirements.txt (hivemind@git+https://github.com/gensyn-ai/hivemind@639c964a8019de63135a2594663b5bec8e5356dd)",
+      "pinned_commit": "639c964a8019de63135a2594663b5bec8e5356dd",
+      "pinned_commit_date": "2025-07-07T14:58:59-04:00",
+      "pinned_commit_branch": "origin/startup-timeout",
+      "repository": "https://github.com/gensyn-ai/hivemind.git",
+      "local_path": "research/gensyn/deps/hivemind (git-ignored; full clone, all 3 remote branches, not shallow)",
+      "default_branch_head_at_clone": "4d5c41495be082490ea44cce4e9dd58f9926bb4e"
+    },
+    {
+      "name": "gensyn-ai/genrl (git history)",
+      "pinned_by": "gensyn-genrl==0.3.0; release source in research/gensyn/genrl/ (see GENRL_SOURCE.json)",
+      "tag": "v0.3.0",
+      "repository": "https://github.com/gensyn-ai/genrl.git",
+      "local_path": "research/gensyn/deps/genrl (git-ignored; full clone, not shallow)",
+      "head_at_clone": "2da2e4d2dd168fc8a66bcc558984d3b9f0cac696",
+      "tag_vs_pypi_sdist": "src/genrl identical except the PyPI sdist adds runner/local_hivemind_launcher.py. RL Swarm installs the PyPI release, so research/gensyn/genrl/ is authoritative."
+    }
+  ],
+  "contract": {
+    "chain": "Gensyn testnet",
+    "explorer": "https://gensyn-testnet.explorer.alchemy.com",
+    "proxy_address": "0x7745a8FE4b8D2D2c3BB103F8dCae822746F35Da0",
+    "proxy_address_source": "research/gensyn/upstream/run_rl_swarm.sh:13 and README.md:183",
+    "proxy_type": "EIP-1967 / UUPS (upgradeable by its owner)",
+    "upgrades": [
+      {"block": 8780382, "utc": "2025-09-29T20:22:48Z", "implementation": "0xb1543cf8c38a371056243b3983b8876a20fec1e6"},
+      {"block": 8780400, "utc": "2025-09-29T20:23:24Z", "implementation": "0xEA4F16eeC928f9D78Cca672137D352a45639180b"}
+    ],
+    "upgrade_query": "Blockscout getLogs, topic0 Upgraded(address) on the proxy, block 0 to latest, fetched 2026-11-03",
+    "current_implementation_source": "research/gensyn/contract/implementation/src/SwarmCoordinator.sol (explorer: fully verified, solc v0.8.29, verified 2025-10-19)",
+    "previous_implementation_source": "research/gensyn/contract/implementation_previous/src/SwarmCoordinator.sol (byte-identical to the current one)",
+    "sha256": {
+      "implementation/src/SwarmCoordinator.sol": "76a7a314166fdaee9679345e14cc38d7349f214949d16f1471d8965f0d7be6eb",
+      "implementation_previous/src/SwarmCoordinator.sol": "76a7a314166fdaee9679345e14cc38d7349f214949d16f1471d8965f0d7be6eb",
+      "raw/proxy_upgraded_events.json": "28deed1539b35b6abd10c8088290b16a557dd903a843a48e0c5b79fc35bd4f96"
+    },
+    "raw_api_responses": "research/gensyn/contract/raw/ (tracked)",
+    "limits": "Explorer-verified source is the explorer's claim that it matches the deployed bytecode; not independently recompiled here."
+  }
+}

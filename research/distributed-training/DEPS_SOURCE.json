@@ -1,0 +1,51 @@
+{
+  "downloaded_utc": "2026-11-03",
+  "scope": "Read-only source archive; nothing installed or executed.",
+  "dependencies": [
+    {
+      "name": "learning-at-home/hivemind",
+      "pinned_by": "research/distributed-training/upstream/setup.py:40 (git+https://github.com/learning-at-home/hivemind.git@3a4cc15e29ce51b20c5d415a4c579abbae435718)",
+      "pinned_commit": "3a4cc15e29ce51b20c5d415a4c579abbae435718",
+      "pinned_commit_date": "2024-10-13T12:49:49+02:00",
+      "pinned_commit_subject": "Bump version to 1.1.11",
+      "repository": "https://github.com/learning-at-home/hivemind.git",
+      "local_path": "research/distributed-training/deps/hivemind (git-ignored; full clone, not shallow, 28 tags)",
+      "head_at_clone": "4bd43b77895019b20d18d81d0d0c1a5ab9a10847"
+    },
+    {
+      "name": "bittensor (SDK)",
+      "pinned_by": "research/distributed-training/upstream/setup.py:43 (bittensor==9.12.2)",
+      "file": "bittensor-9.12.2.tar.gz",
+      "url": "https://files.pythonhosted.org/packages/10/85/c8dab4bf2b1f031ff5095a963e23b301866a83f3eb558866a1a0e93be7fc/bittensor-9.12.2.tar.gz",
+      "sha256": "a0dd9804d2b1e6a9b743686719e86cf6d685ae414af8a4baef59a6af85b7efaf",
+      "pypi_upload_time": "2025-10-30T19:58:23",
+      "local_path": "research/distributed-training/deps/ (sdist) and deps/src/bittensor-9.12.2 (unpacked)"
+    },
+    {
+      "name": "bittensor-cli",
+      "pinned_by": "research/distributed-training/upstream/requirements.txt:22 (bittensor-cli==9.11.2)",
+      "file": "bittensor_cli-9.11.2.tar.gz",
+      "url": "https://files.pythonhosted.org/packages/78/76/04ca9938fca72465ef129b783f3d960edf98ecb455ab03ffb43547068fac/bittensor_cli-9.11.2.tar.gz",
+      "sha256": "11da18f7682e66f75cf5fc2f846ebe47b4b963c850f7a9394bf63609ed4fc09a",
+      "pypi_upload_time": "2025-09-19T13:53:40",
+      "local_path": "research/distributed-training/deps/ (sdist) and deps/src/bittensor_cli-9.11.2 (unpacked)"
+    },
+    {
+      "name": "opentensor/subtensor (chain runtime: registration, pruning, Yuma consensus)",
+      "pinned_by": "Not pinned by SN38; the chain runs whatever runtime is deployed. Full history kept so the runtime at any date can be checked out.",
+      "repository": "https://github.com/opentensor/subtensor.git",
+      "local_path": "research/distributed-training/deps/subtensor (git-ignored; full clone, not shallow, 132 tags)",
+      "head_at_clone": "973b2a9565985ca37c8c0505c2a99f2cd1e2a7f6",
+      "last_commit_on_or_before_sn38_pin_date_2025-12-23": "30be6ea9477b6be91ecd0d4381e941c57eb80f6a",
+      "limits": "Which runtime version was deployed on mainnet at a given date is not established here."
+    }
+  ],
+  "not_archived": [
+    {
+      "item": "SN38 blog post linked from upstream README.md:13",
+      "url": "https://distributed-training.notion.site/Decentralised-Distributed-Training-fd21bdfa72294dfeab8fb092770212b9",
+      "reason": "Notion loads page content via POST; the capture tool allows only GET/HEAD by design. The Wayback Machine returned HTTP 429 / timed out on 2026-11-03. WebFetch returned only the word 'Notion'.",
+      "failed_attempt": "research/distributed-training/data/blog_notion_20261103_blocked_attempt (cookie banner only)"
+    }
+  ]
+}
