@@ -14,7 +14,7 @@ Evidence status:
 
 Nothing here comes from a public-swarm experiment.
 
-Scope so far: the Place, Lead, Combine and Credit cells for Node0 and Agora, plus the Combine-versus-Place comparison for SN38 and RL Swarm. Join and Sync cells, and the remaining SN38, RL Swarm and Hivemind cells, are not yet reviewed here.
+Scope so far: the Place, Lead, Combine and Credit cells for Node0 and Agora. Join and Sync cells, and all SN38, RL Swarm and Hivemind cells, are not yet reviewed here.
 
 ## Sources
 
@@ -149,15 +149,6 @@ Correction: an earlier draft of this cell read `O: reducers`. The local probe sh
 | Contributors that consistently fail are removed from the swarm (Credit and liveness feeding back into Join) | `AGD/agora-system/fault-tolerance.md:15` | Docs |
 
 ---
-
-## Combine compared with Place (all four projects)
-
-| Project | Combine = Place? | Evidence | Status |
-|---|---|---|---|
-| Node0 | Yes | See Node0 above | Code |
-| Agora | Yes | See Agora above | Code |
-| SN38 | **No.** Place is the master validator's invitation list (top 64 by self-claimed `inner_step`). What is averaged is (1) whoever joins Hivemind matchmaking on the prefix, plus (2) one extra update the validator computes from the top miner's state | Invitations: `distributed_training/validator/forward.py:150-174`, `distributed_training/averaging/avg_handler.py:177-191`. Real group: `distributed_training/averaging/averagers.py:366` `look_for_group`. Injected update: `forward.py:183-230` | Code |
-| RL Swarm | **No.** There is no group. Each node randomly picks 2 peers' rollouts to train on | `code_gen_exp/src/solver_data.py:224-249` `transplant_trees` (`random.sample`) | Code |
 
 ## Open questions
 
