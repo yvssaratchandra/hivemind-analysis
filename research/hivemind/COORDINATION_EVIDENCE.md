@@ -125,9 +125,13 @@ Abstention: any participant can stay out of any round by not announcing or not s
 | Workers ship with `averaging_mode: client` | `AGC/configs/default.yaml:31` | Code |
 | The mode is **advertised by the peer itself**. A peer that advertises NODE receives reduction work | `research/agora/HANDOFF.md:3-13`; `research/agora/results/reducer_mode_20261015_c/REPORT.txt` (local, 3 loopback peers, no auth or integrity service) | Measured (local) |
 | Whether the deployment's auth or integrity checks stop a modified client advertising NODE | Not tested | **Open** |
-| Who runs the operator's NODE peers in deployment | Not in repo | Inferred (probably the operator) |
+| In deployment, only Pluralis nodes are assigned the reducer role: "Only Pluralis nodes, which have fast, reliable network connections, are assigned the reducer role, receiving data from all peers and performing the reduction (averaging), while contributors act only as senders" | Agora paper, arXiv 2607.13332 (`research/agora/2607.pdf`, §All-reduce; `pdftotext` lines 759-761) | Docs (paper) |
+| There is no group leader: peers announce in the DHT, wait for the stage to register, then "members are ordered deterministically so that every peer derives the same layout" | Same paper, lines 757-759 | Docs (paper) |
 
-Correction: an earlier draft of this cell read `O: reducers`. The local probe shows reducer status is self-advertised, so a C component is required.
+Corrections:
+- An earlier draft of this cell read `none`. That is wrong, because the reducers run the reduction.
+- A later draft read `O: reducers`. The local probe shows the mode is self-advertised, so a C component is required.
+- The paper confirms the operator's intent (only Pluralis nodes reduce). The code shows the mechanism is a self-advertised mode. Whether deployment enforces it is the open question above.
 
 ### Combine — `O: membership (via Place); C: reducer's ban verdict`
 
