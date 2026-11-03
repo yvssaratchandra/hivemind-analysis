@@ -30,7 +30,7 @@ The `upstream/` checkouts and `research/node0/data/` are git-ignored, so they ex
 - Node0 dashboard bundle `response_30ef8ef71b08edaac24a_15.body`: `59bc716902fbb28cb46c8a071ddbe4feb4c35dd775ca31cffea86db441931bd1`. This matches the UI chunk hash recorded in `research/node0/data/public_runs_20261029T100000Z/report.md:71`.
 - Agora reducer-mode probe report `research/agora/results/reducer_mode_20261015_c/REPORT.txt` (tracked in git): `92de4846531edab2544f7ab7fef0d6cdce995e3b71ea452eb77a7a86e3b021ed`.
 
-Every file:line citation below was checked on 2026-11-03 by a script confirming that the cited line contains the quoted token: 46 checks. Where a citation is a range, the token falls inside the range.
+Every file:line citation below was checked on 2026-11-03 by a script confirming that the cited line contains the quoted token: 46 checks, plus 15 for the candidate-decision section. Where a citation is a range, the token falls inside the range.
 
 Abbreviations used below:
 - `N0` = `research/node0/upstream/src/node0/`
@@ -149,6 +149,54 @@ Correction: an earlier draft of this cell read `O: reducers`. The local probe sh
 | Contributors that consistently fail are removed from the swarm (Credit and liveness feeding back into Join) | `AGD/agora-system/fault-tolerance.md:15` | Docs |
 
 ---
+
+## Candidate decisions not yet in the table
+
+These were found by reviewing what the six decisions miss. They are proposals, not agreed cells.
+
+### Progress: what is the current step? (proposed new decision)
+
+The global step decides whether a node is stale. Staleness triggers Sync; in Agora it also triggers ghost mode (weight 0). In Agora the global step also sets the group key.
+
+| Project | Claim | Evidence | Status |
+|---|---|---|---|
+| Both | The global epoch is the **highest epoch claimed** by any non-client peer. Peers advance when the **summed self-reported samples** reach the target | Hivemind tracker: `hivemind/optim/progress_tracker.py:303-306` (max over non-client claims), `:128-133` (`ready_to_update_epoch`). Agora's copy: `AG/core/optimization/progress_tracker.py:335-338` | Code |
+| Node0 | Uses Hivemind's tracker through its `Optimizer` subclass. Every replica is non-client (see Lead), so every replica's claim counts | `N0/server/optim.py:36` (`AutoStepOptimizer(Optimizer)`), `:78-81` | Code |
+| Node0 | A node more than `max_allowed_stale` epochs behind the global epoch loads state from peers (Sync) | `N0/server/optim.py:85` | Code |
+| Agora | Workers are CLIENT, so only NODE peers' claims set the global epoch | `AG/core/optimization/progress_tracker.py:335-338`; `AGC/configs/default.yaml:31` | Code |
+| Agora | A node more than `max_allowed_stale` behind enters ghost mode | `AG/core/optimization/optimizer_sparta_async_nstep.py:104-107` | Code |
+| Agora | The group key for each round is derived from the global epoch | `AG/core/averaging/averager.py:491` `look_for_group(step, global_step=int(self.global_epoch))` | Code |
+
+Proposed cells: **Node0 `C: epoch claims (all replicas)`**, **Agora `C: epoch claims (NODE peers)`**.
+
+### Route: which worker gets each microbatch? (proposed: fold into Place)
+
+Place currently covers only the averaging group inside one stage. Routing decides the pipeline path, i.e. which replica in each stage works with which, and therefore who does work and earns FLOP credit.
+
+| Project | Claim | Evidence | Status |
+|---|---|---|---|
+| Agora | Trainers route microbatches to a worker in each stage, balance load and supply data shards. They "run on Pluralis-owned infrastructure rather than on contributor nodes" | `AGD/agora-system/training-architecture.md:149` | Docs |
+| Agora | Trainers find workers from the DHT announcements, pick the least-loaded by accumulated virtual runtime, and short-ban unreachable workers for 30 s | `AGD/agora-system/training-architecture.md:195, 294, 308` | Docs |
+| Agora | Trainer code is not in the repository | Search of `research/agora/upstream/` | Code (negative) |
+| Node0 | No trainer code or routing description exists in the repository. The same design as Agora is assumed | Search of `research/node0/upstream/` | **Inferred** |
+
+Proposed cells (as part of Place): **Agora `O: trainers route`**, **Node0 `O: trainers route (inferred)`**.
+
+### Removal: who is removed after joining? (proposed: fold into Join)
+
+| Project | Claim | Evidence | Status |
+|---|---|---|---|
+| Agora | The operator's monitor can write a terminate record for a peer, signed with `monitor_public_key`. The node reads it and **kills itself** | `AG/logging/log_monitor.py:163-181`; schema `AG/security/validator_schema.py:39` | Code |
+| Agora | Enforcement depends on the client cooperating. A modified client could ignore the record | Same lines: the kill is a local `os.killpg` | Inferred |
+| Agora | Contributors that consistently fail are removed from the swarm | `AGD/agora-system/fault-tolerance.md:15` | Docs |
+| Node0 | The auth server can refuse (re-)joins: 401/403/429 are treated as "not in allowlist / blocked" | `N0/security/authorization.py:197-202` | Code |
+
+Proposed: read Join as "who takes part, and who is removed".
+
+### Considered and left out
+
+- **Run parameters.** Always operator-set (Node0's signed `paramstore`, shipped configs), so they don't differ between projects.
+- **Task and data assignment.** This is what nodes train on (data plane), not a coordination decision.
 
 ## Open questions
 
