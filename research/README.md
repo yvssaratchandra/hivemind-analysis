@@ -15,3 +15,5 @@
 Run Hivemind experiments from the repository root with paths such as `python research/hivemind/step1_baseline.py`. Results, presentations, and historical records are kept together under `research/hivemind/`.
 
 The [DHT survey](hivemind/DHT_PROJECT_SURVEY.md) and [control-plane target survey](hivemind/CONTROL_PLANE_TARGET_SURVEY.md) moved with the existing research.
+
+Local snapshots of code, dependencies, papers and public data for Node0, Agora, Gensyn RL Swarm and Distributed Training are git-ignored and backed up outside GitHub. The [archive inventory](ARCHIVE_INVENTORY.md) lists each with its hash; check a restored copy with `python3 -I research/archive_inventory.py --verify`. Coordination-layer table evidence is in [hivemind/COORDINATION_EVIDENCE.md](hivemind/COORDINATION_EVIDENCE.md).

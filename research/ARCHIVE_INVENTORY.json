@@ -1,0 +1,285 @@
+{
+ "generated_utc": "2026-11-03T07:35:17+00:00",
+ "snapshots": [
+  {
+   "project": "node0",
+   "snapshot": "upstream",
+   "kind": "git",
+   "remote": "https://github.com/PluralisResearch/node0.git",
+   "head": "32bd084de15dbdc8e30723ad66db7d01acf70c03",
+   "head_date": "2025-09-23T04:43:54Z",
+   "commits": 5,
+   "shallow": false,
+   "dirty": false
+  },
+  {
+   "project": "node0",
+   "snapshot": "papers",
+   "kind": "files",
+   "files": 2,
+   "bytes": 24024226,
+   "tree_sha256": "08e2ed2d4c421315c16ed5c4e37109cec544061f779ce370ff90641b191ebf29"
+  },
+  {
+   "project": "node0",
+   "snapshot": "data/dashboard_20261029_final",
+   "kind": "files",
+   "files": 310,
+   "bytes": 72114986,
+   "tree_sha256": "5df6061c928dbfd9a065aac45de3e24d5d4f731fc8ac2f8eddc3abe4ac13d652"
+  },
+  {
+   "project": "node0",
+   "snapshot": "data/public_runs_20261029T100000Z",
+   "kind": "files",
+   "files": 10,
+   "bytes": 26349324,
+   "tree_sha256": "a603f603e2ef8a22c5cac7815bf5cabbc5518696b5f8eafd0b6690059256dff5"
+  },
+  {
+   "project": "agora",
+   "snapshot": "upstream",
+   "kind": "git",
+   "remote": "https://github.com/PluralisResearch/agora.git",
+   "head": "37d29a966528675635161007d7b43388012a98b2",
+   "head_date": "2026-07-04T18:12:04+09:30",
+   "commits": 21,
+   "shallow": false,
+   "dirty": false
+  },
+  {
+   "project": "agora",
+   "snapshot": "papers",
+   "kind": "files",
+   "files": 2,
+   "bytes": 3662631,
+   "tree_sha256": "8fb7fcd3632509982f92ef3dfa3b08d22921831e920815fe4aa30527ce8be3fa"
+  },
+  {
+   "project": "agora",
+   "snapshot": "data/dashboard_20261029T161100Z",
+   "kind": "files",
+   "files": 35,
+   "bytes": 6274046,
+   "tree_sha256": "8d4dae5cf1a5d1b53a14aff8a0fa7e4a4cbb7be64a5ba996bd6b246ca2177570"
+  },
+  {
+   "project": "agora",
+   "snapshot": "data/dashboard_20261029_final",
+   "kind": "files",
+   "files": 594,
+   "bytes": 118622392,
+   "tree_sha256": "fc0ca180495f38c6101efa533c88da6e377bc2d5f9f5bb636ea11e53e7a1eb79"
+  },
+  {
+   "project": "agora",
+   "snapshot": "data/dashboard_20261029_incomplete_attempt",
+   "kind": "files",
+   "files": 9,
+   "bytes": 3207307,
+   "tree_sha256": "a23202e15048b77ed94d0805374fe4bffa72de3e9dc7405f3378db544cb01325"
+  },
+  {
+   "project": "agora",
+   "snapshot": "data/dashboard_20261029_short_attempt",
+   "kind": "files",
+   "files": 74,
+   "bytes": 16725704,
+   "tree_sha256": "c93e3d2ff248c29e0759dff22ea04c4523a08893b2fd838498af66cef2b62941"
+  },
+  {
+   "project": "agora",
+   "snapshot": "data/public_runs_20261029T095600Z",
+   "kind": "files",
+   "files": 38,
+   "bytes": 142264150,
+   "tree_sha256": "0aa655664629ddc2ec225e68addb31ba7c26d71a699dfb8d04abf24a9f48d01c"
+  },
+  {
+   "project": "gensyn",
+   "snapshot": "upstream",
+   "kind": "git",
+   "remote": "https://github.com/gensyn-ai/rl-swarm",
+   "head": "286c17e5391fa3e9ebba64a8e683bb36e47376a8",
+   "head_date": "2026-10-28T10:59:20-06:00",
+   "commits": 240,
+   "shallow": false,
+   "dirty": false
+  },
+  {
+   "project": "gensyn",
+   "snapshot": "genrl",
+   "kind": "files",
+   "files": 138,
+   "bytes": 1130714,
+   "tree_sha256": "a27357630abef30f3b0ceac611829681cb5f37885dce4c8b6b898b89ad122945"
+  },
+  {
+   "project": "gensyn",
+   "snapshot": "contract",
+   "kind": "files",
+   "files": 35,
+   "bytes": 494837,
+   "tree_sha256": "d2eb492573c3552873eeb12ba14b317f65a68a48bbbf3786664159d253d1e04a"
+  },
+  {
+   "project": "gensyn",
+   "snapshot": "data/dashboard_20261029_final",
+   "kind": "files",
+   "files": 63,
+   "bytes": 25727229,
+   "tree_sha256": "8f78295dbc135aad57f4908610c7590699312ec7348935f615756ce6d45d0932"
+  },
+  {
+   "project": "gensyn",
+   "snapshot": "data/public_runs_20261029T100232Z",
+   "kind": "files",
+   "files": 17,
+   "bytes": 6664477,
+   "tree_sha256": "62df404d18293d7966c8a1ae1e77b8df4e03891cf0c85056643f048b75c9ceaf"
+  },
+  {
+   "project": "gensyn",
+   "snapshot": "data/public_runs_20261029T101104Z",
+   "kind": "files",
+   "files": 32,
+   "bytes": 10198255,
+   "tree_sha256": "2929737f0f6b9697bfbd4bf00259269b6872d8ce8b9ecdfa6c6341e8a1005e03"
+  },
+  {
+   "project": "gensyn",
+   "snapshot": "data/public_runs_20261029T101259Z",
+   "kind": "files",
+   "files": 60,
+   "bytes": 31921703,
+   "tree_sha256": "4e4a1cd68f6aee6c2cfbd5df80e2fe6d202d34535cd5a85b420080a426a61eac"
+  },
+  {
+   "project": "gensyn",
+   "snapshot": "deps/genrl",
+   "kind": "git",
+   "remote": "https://github.com/gensyn-ai/genrl.git",
+   "head": "2da2e4d2dd168fc8a66bcc558984d3b9f0cac696",
+   "head_date": "2025-11-12T10:46:44-05:00",
+   "commits": 136,
+   "shallow": false,
+   "dirty": false
+  },
+  {
+   "project": "gensyn",
+   "snapshot": "deps/hivemind",
+   "kind": "git",
+   "remote": "https://github.com/gensyn-ai/hivemind.git",
+   "head": "4d5c41495be082490ea44cce4e9dd58f9926bb4e",
+   "head_date": "2025-05-06T08:05:46+01:00",
+   "commits": 595,
+   "shallow": false,
+   "dirty": false
+  },
+  {
+   "project": "distributed-training",
+   "snapshot": "upstream",
+   "kind": "git",
+   "remote": "https://github.com/dstrbtd/DistributedTraining.git",
+   "head": "082f3a632cd412e688a325356af08e34f01d8b8e",
+   "head_date": "2025-12-23T09:39:06Z",
+   "commits": 1187,
+   "shallow": false,
+   "dirty": false
+  },
+  {
+   "project": "distributed-training",
+   "snapshot": "data/blog_notion_20261103_blocked_attempt",
+   "kind": "files",
+   "files": 756,
+   "bytes": 38743727,
+   "tree_sha256": "390316b055bff96d328e3abf5e7a9949fa32788b7123d6a4352c806319b8c192"
+  },
+  {
+   "project": "distributed-training",
+   "snapshot": "data/dashboard_20261029_final",
+   "kind": "files",
+   "files": 35,
+   "bytes": 4967035,
+   "tree_sha256": "cf80cd3a4243336e537809a3f45cf9b4f406ec024f01dd5339e7da1911682457"
+  },
+  {
+   "project": "distributed-training",
+   "snapshot": "data/dashboard_20261029_poll_attempt",
+   "kind": "files",
+   "files": 18,
+   "bytes": 3374764,
+   "tree_sha256": "8a8deb76ad705f0dd0a3abaa1bda531d55182a67ee9cbf431c6b2dd63c01df90"
+  },
+  {
+   "project": "distributed-training",
+   "snapshot": "data/dashboard_20261029_short_attempt",
+   "kind": "files",
+   "files": 31,
+   "bytes": 3406582,
+   "tree_sha256": "bf7d475bf448a74da30750ec8eea21d606798a57abf1483cbfb95a91973f0b49"
+  },
+  {
+   "project": "distributed-training",
+   "snapshot": "data/dashboard_20261029_short_attempt2",
+   "kind": "files",
+   "files": 16,
+   "bytes": 1979888,
+   "tree_sha256": "e8c00c52d40ea5c41d6b5a0f2747f7f99a6d1f904666239ae0bec8466e7a6181"
+  },
+  {
+   "project": "distributed-training",
+   "snapshot": "data/public_20261029",
+   "kind": "files",
+   "files": 675,
+   "bytes": 14101777595,
+   "tree_sha256": "87dd9bf7b444c4fefb850d27c8c7c2b3dc8a977ae3d919cb15abfa5d9029553e"
+  },
+  {
+   "project": "distributed-training",
+   "snapshot": "deps/bittensor-9.12.2.tar.gz",
+   "kind": "files",
+   "files": 1,
+   "bytes": 285956,
+   "tree_sha256": "cffcaaf0944c05d1a41a3dd19456727536de4f944a153c813f77ca0f2c0ca576"
+  },
+  {
+   "project": "distributed-training",
+   "snapshot": "deps/bittensor_cli-9.11.2.tar.gz",
+   "kind": "files",
+   "files": 1,
+   "bytes": 233155,
+   "tree_sha256": "c499712e605f5ce4475c33aa3f6171ad750339fafcd5758d0176d42801cfacf3"
+  },
+  {
+   "project": "distributed-training",
+   "snapshot": "deps/hivemind",
+   "kind": "git",
+   "remote": "https://github.com/learning-at-home/hivemind.git",
+   "head": "4bd43b77895019b20d18d81d0d0c1a5ab9a10847",
+   "head_date": "2026-01-04T23:36:23Z",
+   "commits": 599,
+   "shallow": false,
+   "dirty": false
+  },
+  {
+   "project": "distributed-training",
+   "snapshot": "deps/src",
+   "kind": "files",
+   "files": 178,
+   "bytes": 2705521,
+   "tree_sha256": "a931ff00ca555caeeb4f35fdd45f845fd1e82880d8f58dcdfd2607255ac6c4ec"
+  },
+  {
+   "project": "distributed-training",
+   "snapshot": "deps/subtensor",
+   "kind": "git",
+   "remote": "https://github.com/opentensor/subtensor.git",
+   "head": "973b2a9565985ca37c8c0505c2a99f2cd1e2a7f6",
+   "head_date": "2026-11-02T19:55:53+01:00",
+   "commits": 13604,
+   "shallow": false,
+   "dirty": false
+  }
+ ]
+}
