@@ -30,7 +30,7 @@ The `upstream/` checkouts and `research/node0/data/` are git-ignored, so they ex
 - Node0 dashboard bundle `response_30ef8ef71b08edaac24a_15.body`: `59bc716902fbb28cb46c8a071ddbe4feb4c35dd775ca31cffea86db441931bd1`. This matches the UI chunk hash recorded in `research/node0/data/public_runs_20261029T100000Z/report.md:71`.
 - Agora reducer-mode probe report `research/agora/results/reducer_mode_20261015_c/REPORT.txt` (tracked in git): `92de4846531edab2544f7ab7fef0d6cdce995e3b71ea452eb77a7a86e3b021ed`.
 
-Every file:line citation below was checked on 2026-11-03 by a script confirming that the cited line contains the quoted token: 46 checks, plus 15 for the candidate-decision section and 26 for the strategy section (2026-11-04). Paper line numbers refer to `pdftotext research/agora/2607.pdf -` output numbered with `grep -n`. Where a citation is a range, the token falls inside the range.
+Most file:line citations below were checked by a script confirming that the cited line contains the quoted token: 46 checks, plus 15 for the candidate-decision section and 26 for the strategy section (2026-11-04). Paper line numbers refer to `pdftotext research/agora/2607.pdf -` output numbered with `grep -n`. Where a citation is a range, the token falls inside the range. The Place-rebinding rows (added 2026-11-04) cite `hivemind/dht/schema.py:80-82`, `hivemind/dht/crypto.py:44-46` and the validator/dht_partition files; these were read directly, not re-run through the token-check script.
 
 Abbreviations used below:
 - `N0` = `research/node0/upstream/src/node0/`
@@ -63,17 +63,20 @@ Abstention: any participant can stay out of any round by not announcing or not s
 
 ## Node0
 
-### Place — `O: stage`
+### Place — `O: stage; C: stage announcement`
 
 | Claim | Evidence | Status |
 |---|---|---|
 | The auth server assigns the pipeline stage | `N0/security/authorization.py:183` `self.pipeline_stage = response["stage_type"]`; `N0/run_server.py:167` `pipeline_stage = str(authorizer.pipeline_stage)` | Code |
-| The stage fixes the averaging key, a single fixed key per stage | `N0/server/matchmaking.py:65` `self._fixed_key = f"{self.prefix}.0b"` | Code |
+| The stage fixes the averaging key, a single fixed key per stage | `N0/server/matchmaking.py:65` `self._fixed_key = f"{self.prefix}.0b"`. The averaging prefix is `{run_id}_grad_averager`, and `run_id` is the stage name (`N0/server/node0_server.py:289` `run_id=expert_uid.split(UID_DELIMITER)[0]`) | Code |
 | The group is every replica of the stage. The expected size is the stage roster (`<stage>.0.`) | `N0/server/matchmaking.py:175-176` `max_peers = len(self.peer_table)`; `:195` reads `self.prefix.split("_")[0] + ".0."`; `:214-250` collects announcements until `len(all_peerIds) == self.max_peers` or timeout | Code |
 | The replica index (UID) does not affect grouping | `N0/server/matchmaking.py:252` the group is simply `sorted(all_peerIds)` | Code |
-| A node's self-announcement is liveness, not placement | Same lines: a node is included only if it announced and was seen | Code |
-| Footnote: the client sends a self-reported hardware profile (device, GPU memory, bandwidth) to the auth server on join, but nothing in the repo or docs says it influences the stage. So it is not listed as an input | `N0/security/authorization.py:134-140` | Code (input sent); effect **unknown** |
-| Can a node announce under a stage it was not assigned? | DHT validators not yet checked (`N0/security/validation.py`) | **Open** |
+| **The assigned stage is not re-bound after Join.** The averaging key `{stage}_grad_averager.0b` is not one of the three schema-validated keys, so `SchemaValidator` returns `allow_extra_keys=True` for it (`hivemind/dht/schema.py:80-82`). The validators cover only `{prefix}_{stage}_worker_metrics`, `{prefix}_{peer_id}_worker_ports` and `{stage}_paramstore` (`N0/security/validation.py` `make_validators`) | `N0/security/validation.py`; `hivemind/dht/schema.py:80-82` | Code |
+| The signature validator does not bind it either: it enforces a signature only for records whose key or subkey carries an `[owner:ssh-rsa …]` marker, else returns True unconditionally. The averaging announcement's subkey is the raw `peer_id.to_bytes()`, with no marker | `hivemind/dht/crypto.py:44-46`; `N0/server/matchmaking.py:84-89` | Code |
+| The per-stage DHT split is computed client-side from the node's own stage, so it is not an operator-enforced boundary | `N0/utils/dht_partition.py:83-96` | Code |
+| So a modified client is not prevented from announcing under another stage's key: placement is a participant claim re-asserted at the averaging layer, not just the auth server's assignment | Above rows | Code |
+| **Effect of a foreign announcement is inferred, not tested.** Stages have different parameter shapes, so a participant whose tensors mismatch the target stage breaks that stage's all-reduce round (disruption). Clean inclusion (poisoning) would additionally need shape-correct tensors and surviving matchmaking, which is untested | — | **Inferred / untested** |
+| Footnote: the client also sends a self-reported hardware profile (device, GPU memory, bandwidth) to the auth server on join, but nothing in the repo or docs says it influences the stage. So it is not listed as an input | `N0/security/authorization.py:134-140` | Code (input sent); effect **unknown** |
 
 ### Lead — `none`
 
@@ -107,7 +110,7 @@ Abstention: any participant can stay out of any round by not announcing or not s
 
 ## Agora
 
-### Place — `O: stage; C: hardware report`
+### Place — `O: stage; C: hardware report, stage announcement`
 
 | Claim | Evidence | Status |
 |---|---|---|
@@ -119,7 +122,8 @@ Abstention: any participant can stay out of any round by not announcing or not s
 | The expected size is the stage roster (`<stage>.0.`) | `AG/core/all_reduce/matchmaking.py:179-189` `get_max_peers` counts entries at `prefix.split("_")[0] + ".0."` | Code |
 | Each node waits up to its own deadline, then forms the group from whoever it has seen. No agreement step exists, so views can differ (late node, divergent DHT reads) | `AG/core/all_reduce/matchmaking.py:191-245` | Code |
 | Mismatched views break the round rather than silently corrupt it: a sender missing from a reducer's list raises in `sender_peer_ids.index(...)`, and the constant `group_id` cannot detect the mismatch | `AG/core/all_reduce/ar_runner.py:333`; `matchmaking.py:239` | Inferred (untested) |
-| Can a node announce under a stage it was not assigned? | DHT validators not yet checked | **Open** |
+| **The assigned stage is not re-bound after Join**, as in Node0. Agora's DHT validators cover only the terminate record (`AG/security/validator_schema.py`); every other key, including the group key, passes under `allow_extra_keys=True`. The token carries only username, public key, expiry and signature (`AGC/security/authorizer.py:94-101`), not a stage. So a modified client is not prevented from announcing under another stage's key | `AG/security/validator_schema.py`; `AGC/security/authorizer.py:94-101`; `hivemind/dht/schema.py:80-82` | Code |
+| Effect of a foreign announcement is inferred, not tested: at least round disruption (shape mismatch, as in the row above); clean poisoning untested | — | **Inferred / untested** |
 
 ### Lead — `C: averaging mode`
 
@@ -174,7 +178,7 @@ Marks:
 
 | System | Place Claim | Place State | Lead Claim | Lead State | Combine Claim | Combine State | Credit Claim | Credit State |
 |---|---|---|---|---|---|---|---|---|
-| Node0 | – | – | – | – | ✓ | – | ✓ | – |
+| Node0 | ✓ (inferred) | – | – | – | ✓ | – | ✓ | – |
 | Agora | ✓ (inferred) | – | ✓ | – | ✓ | – | ✓ | – |
 
 **No State cell applies.** Neither project has a chain or an external randomness source. Every value these decisions use is either fixed in the code or derived from participant claims. The table below lists each value and why it is not shared state.
@@ -182,7 +186,7 @@ Marks:
 | Value | Where it is used | Source | Shared state? |
 |---|---|---|---|
 | Stage | Place | Auth server (`N0/security/authorization.py:183`; `AGC/security/authorizer.py:122`) | No, O |
-| Group key: Node0 `{stage}.0b`, Agora `{stage}_s{step}.0b` | Place, Combine | Derived from stage and step (`N0/server/matchmaking.py:65`; `AG/core/all_reduce/matchmaking.py:57-59`) | No, protocol rule |
+| Group key: Node0 `{stage}.0b`, Agora `{stage}_s{step}.0b` | Place, Combine | Derived from stage and step (`N0/server/matchmaking.py:65`; `AG/core/all_reduce/matchmaking.py:57-59`). Predictable, but not validator-bound to the assigned stage (see Place Claim), so it is a claim surface, not shared state | No, protocol rule |
 | Global step | Agora group key, SPARTA slice | Highest step claimed by non-client peers (`AG/core/optimization/progress_tracker.py:335-338`) | No, C |
 | Averaging mode (who reduces) | Agora Lead | Each peer's advert (`AG/core/averaging/averager.py:180-185`) | No, C |
 | Which 5% of parameters are averaged | Agora Combine (data plane) | Fixed seed `1337` plus the global step (`AG/core/averaging/state_averager_sparta.py:104, 109-118`) | No, a constant plus C |
@@ -195,7 +199,7 @@ Note on the earlier draft of this table: it marked several State cells ✓ or ×
 
 | Cell | Mark | Proof | Status |
 |---|---|---|---|
-| Place Claim | – | Place is `O: stage`. The auth server sends the stage (`N0/security/authorization.py:183`). The client also sends a hardware profile (`:134-140`), but nothing shows it affects the stage | Code |
+| Place Claim | ✓ (inferred) | The auth server assigns the stage, but nothing re-binds it after Join. The averaging key `{stage}_grad_averager.0b` is not a schema-validated key (`hivemind/dht/schema.py:80-82`), and the signature validator ignores records without an `[owner:]` marker, which the announcement lacks (`hivemind/dht/crypto.py:44-46`; `N0/server/matchmaking.py:84-89`). The per-stage DHT split is computed client-side (`N0/utils/dht_partition.py:83-96`). So a modified client can announce under a non-assigned stage's key. Demonstrated effect is round disruption (shape mismatch); clean poisoning untested | Code; effect **inferred** |
 | Place State | – | No S input; see the table above | Code |
 | Lead Claim | – | There is no leader and no reducer role to claim. Every replica reduces (`N0/server/HM_gradient_averager.py:102`). A node's bandwidth or mode advert cannot change its share, because Node0 replaces every member's advertised data with the node's own (`N0/server/matchmaking.py:258` `gathered = tuple(step.data_for_gather for peer_id in sorted_peer_ids)`). A node that deviates can make layouts disagree and break the round, but cannot take it over | Code; disruption **inferred** |
 | Lead State | – | No leader, no S input | Code |
@@ -208,7 +212,7 @@ Note on the earlier draft of this table: it marked several State cells ✓ or ×
 
 | Cell | Mark | Proof | Status |
 |---|---|---|---|
-| Place Claim | ✓ (inferred) | The Authorizer "can place more capable contributors on the heavier stages" (paper, lines 1617-1625). Capability comes from the node's self-reported hardware profile (`AGC/security/authorizer.py:100-116`). Over-reporting could steer a node toward a heavier stage, such as the tail | Paper + Code; server closed, **inferred** |
+| Place Claim | ✓ (inferred) | Two claim inputs. (1) The Authorizer "can place more capable contributors on the heavier stages" (paper, lines 1617-1625) from the node's self-reported hardware (`AGC/security/authorizer.py:100-116`), so over-reporting could steer the assignment. (2) As in Node0, the assigned stage is not re-bound after Join: validators cover only the terminate record (`AG/security/validator_schema.py`), and the token carries no stage (`AGC/security/authorizer.py:94-101`), so a modified client can announce under a non-assigned stage's key. Demonstrated effect is disruption; poisoning untested | Paper + Code; server closed, **inferred** |
 | Place State | – | No S input. See the related tactics below | Code |
 | Lead Claim | ✓ | Reducer status is the peer's own averaging-mode advert (`AG/core/all_reduce/ar_runner.py:145-149`; `AG/core/averaging/averager.py:180-185`). In a local probe, a peer advertising NODE was given 32 of 96 reduction elements, and 0 when it advertised CLIENT | **Measured (local)**: `research/agora/HANDOFF.md:3-13`, `research/agora/results/reducer_mode_20261015_c/REPORT.txt`. Run with 3 loopback peers, no auth or integrity service; deployment enforcement untested |
 | Lead State | – | No S input; see the table above | Code |
@@ -281,6 +285,6 @@ Proposed: read Join as "who takes part, and who is removed".
 
 ## Open questions
 
-1. Do Node0 or Agora DHT validators stop a peer from announcing under a stage or UID it was not assigned, or from inflating the stage roster?
+1. **Answered (code):** the DHT validators do **not** bind a peer's announcement to its assigned stage. In both projects the validators cover only a fixed set of record types (Node0: metrics, ports, paramstore; Agora: terminate), and every other key, including the averaging group key, passes under `allow_extra_keys=True` (`hivemind/dht/schema.py:80-82`); the signature validator applies only to records with an `[owner:]` marker, which the announcement lacks. See the Place cells. **Still untested:** the end-to-end effect of a foreign-stage announcement. A controlled local experiment (one honest node per stage plus one modified client announcing under a foreign key) is needed to show whether the round disrupts, degrades, or is poisoned. Give it its own output label.
 2. In deployment, does Agora's auth or integrity service stop a modified client from advertising NODE mode?
 3. When Agora groups disagree (late node), does the round fail, shrink, or produce a wrong average? This needs a local experiment with its own label.
