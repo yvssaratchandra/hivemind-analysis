@@ -30,7 +30,7 @@ The `upstream/` checkouts and `research/node0/data/` are git-ignored, so they ex
 - Node0 dashboard bundle `response_30ef8ef71b08edaac24a_15.body`: `59bc716902fbb28cb46c8a071ddbe4feb4c35dd775ca31cffea86db441931bd1`. This matches the UI chunk hash recorded in `research/node0/data/public_runs_20261029T100000Z/report.md:71`.
 - Agora reducer-mode probe report `research/agora/results/reducer_mode_20261015_c/REPORT.txt` (tracked in git): `92de4846531edab2544f7ab7fef0d6cdce995e3b71ea452eb77a7a86e3b021ed`.
 
-Every file:line citation below was checked on 2026-11-03 by a script confirming that the cited line contains the quoted token: 46 checks, plus 15 for the candidate-decision section. Where a citation is a range, the token falls inside the range.
+Every file:line citation below was checked on 2026-11-03 by a script confirming that the cited line contains the quoted token: 46 checks, plus 15 for the candidate-decision section and 26 for the strategy section (2026-11-04). Paper line numbers refer to `pdftotext research/agora/2607.pdf -` output numbered with `grep -n`. Where a citation is a range, the token falls inside the range.
 
 Abbreviations used below:
 - `N0` = `research/node0/upstream/src/node0/`
@@ -72,6 +72,7 @@ Abstention: any participant can stay out of any round by not announcing or not s
 | The group is every replica of the stage. The expected size is the stage roster (`<stage>.0.`) | `N0/server/matchmaking.py:175-176` `max_peers = len(self.peer_table)`; `:195` reads `self.prefix.split("_")[0] + ".0."`; `:214-250` collects announcements until `len(all_peerIds) == self.max_peers` or timeout | Code |
 | The replica index (UID) does not affect grouping | `N0/server/matchmaking.py:252` the group is simply `sorted(all_peerIds)` | Code |
 | A node's self-announcement is liveness, not placement | Same lines: a node is included only if it announced and was seen | Code |
+| Footnote: the client sends a self-reported hardware profile (device, GPU memory, bandwidth) to the auth server on join, but nothing in the repo or docs says it influences the stage. So it is not listed as an input | `N0/security/authorization.py:134-140` | Code (input sent); effect **unknown** |
 | Can a node announce under a stage it was not assigned? | DHT validators not yet checked (`N0/security/validation.py`) | **Open** |
 
 ### Lead — `none`
@@ -106,23 +107,30 @@ Abstention: any participant can stay out of any round by not announcing or not s
 
 ## Agora
 
-### Place — `O: stage`
+### Place — `O: stage; C: hardware report`
 
 | Claim | Evidence | Status |
 |---|---|---|
 | The auth server assigns both the stage and the exact expert UID | `AGC/security/authorizer.py:122-123` `self.pipeline_stage = response["stage_type"]`, `self.expert_uid = response["uid"]`; used at `AGC/run_server.py:271, 276` | Code |
+| The Authorizer places each node on "a stage that requires additional capacity" and "can place more capable contributors on the heavier stages" | Agora paper, `research/agora/2607.pdf` (`pdftotext` lines 1617-1625, "Stage placement") | Docs (paper) |
+| Capability comes from a hardware profile the node reports about itself (device, GPU memory, RAM, bandwidth, latency) | `AGC/security/authorizer.py:100-116` | Code |
+| The node learns its stage at authorization, before it trains: "a single log line confirms the slot and the assigned stage", and it then downloads that stage's checkpoint | `AGD/agora-system/startup-sequence.md:13, 19` | Docs |
 | There is one group per stage per step. Group bits are fixed to empty, so every replica posts under the same step key | `AG/core/all_reduce/matchmaking.py:55` `self.group_bits = ""`; `:57-59` key `f"{prefix}_s{global_step}.0b"` | Code |
 | The expected size is the stage roster (`<stage>.0.`) | `AG/core/all_reduce/matchmaking.py:179-189` `get_max_peers` counts entries at `prefix.split("_")[0] + ".0."` | Code |
 | Each node waits up to its own deadline, then forms the group from whoever it has seen. No agreement step exists, so views can differ (late node, divergent DHT reads) | `AG/core/all_reduce/matchmaking.py:191-245` | Code |
 | Mismatched views break the round rather than silently corrupt it: a sender missing from a reducer's list raises in `sender_peer_ids.index(...)`, and the constant `group_id` cannot detect the mismatch | `AG/core/all_reduce/ar_runner.py:333`; `matchmaking.py:239` | Inferred (untested) |
 | Can a node announce under a stage it was not assigned? | DHT validators not yet checked | **Open** |
 
-### Lead — `O: shipped config; C: advertised NODE mode`
+### Lead — `C: averaging mode`
 
 | Claim | Evidence | Status |
 |---|---|---|
-| The peers that reduce are those in NODE mode; CLIENT peers get a zero share of the reduction | `AG/core/all_reduce/ar_runner.py:145-149` | Code |
-| Workers ship with `averaging_mode: client` | `AGC/configs/default.yaml:31` | Code |
+| The peers that reduce are those in NODE mode; CLIENT peers get a zero share of the reduction | `AG/core/all_reduce/ar_runner.py:145-149`; enum `AveragingMode` (`NODE`, `CLIENT`, `AUX`) at `:53-56` | Code |
+| The averager takes its mode from its own local argument, and nothing signs or validates it | `AG/core/averaging/averager.py:180-185` | Code |
+| Workers ship with `averaging_mode: client`. The optimizer's own default is `"node"`, so a client that drops this config line would advertise NODE | `AGC/configs/default.yaml:31`; `AG/core/optimization/optimizer_sync.py:138` | Code |
+| The auth server does not assign the mode. The node sends `role: "worker"`, and the role that comes back only labels metrics | `AGC/run_server.py:230, 305-312` | Code |
+| No parameter store, reducer allowlist or trusted-peer list exists in the client | Search of `agora/` and `agora_server/` for paramstore, allowlist, whitelist, trusted (2026-11-04) | Code (negative) |
+| A closed-source integrity check sends a client-computed hash on join. What it covers is unknown (the binary's strings are compressed), and it can be switched off. If it covers the config, it acts at Join, not Lead | `AGC/security/authorizer.py:90-111`; `AGC/run_server.py:222` `check_integrity` | Code; coverage **unknown** |
 | The mode is **advertised by the peer itself**. A peer that advertises NODE receives reduction work | `research/agora/HANDOFF.md:3-13`; `research/agora/results/reducer_mode_20261015_c/REPORT.txt` (local, 3 loopback peers, no auth or integrity service) | Measured (local) |
 | Whether the deployment's auth or integrity checks stop a modified client advertising NODE | Not tested | **Open** |
 | In deployment, only Pluralis nodes are assigned the reducer role: "Only Pluralis nodes, which have fast, reliable network connections, are assigned the reducer role, receiving data from all peers and performing the reduction (averaging), while contributors act only as senders" | Agora paper, arXiv 2607.13332 (`research/agora/2607.pdf`, §All-reduce; `pdftotext` lines 759-761) | Docs (paper) |
@@ -130,8 +138,7 @@ Abstention: any participant can stay out of any round by not announcing or not s
 
 Corrections:
 - An earlier draft of this cell read `none`. That is wrong, because the reducers run the reduction.
-- A later draft read `O: reducers`. The local probe shows the mode is self-advertised, so a C component is required.
-- The paper confirms the operator's intent (only Pluralis nodes reduce). The code shows the mechanism is a self-advertised mode. Whether deployment enforces it is the open question above.
+- A later draft read `O: reducers`, then `O: shipped config; C: advertised NODE mode`. The operator is not an input to this decision: it never assigns the mode, and the protocol acts only on each peer's advert. The operator's intent (only Pluralis nodes reduce, per the paper) works only through shipped defaults, and possibly through Join if the integrity check covers the config. That belongs in a footnote, not the cell.
 
 ### Combine — `O: membership (via Place); C: reducer's ban verdict`
 
@@ -151,6 +158,76 @@ Corrections:
 | FLOPs are computed by the node from its own logs and pushed to the operator's metrics server | `AG/prometheus/monitor.py:588-589` (samples), `:616-652` (FLOPs / MFU) | Code |
 | Presence is observed by the operator ("registered and visible in the swarm"); the node does not claim a duration. The exact mechanism is opaque | `AGD/quick-start/points.md` | Docs |
 | Contributors that consistently fail are removed from the swarm (Credit and liveness feeding back into Join) | `AGD/agora-system/fault-tolerance.md:15` | Docs |
+
+---
+
+## Strategy feasibility (Claim manipulation and Shared-state anticipation)
+
+This table marks whether an attacker can influence each decision through two strategies:
+- **Claim manipulation (Claim):** lying in a participant-claim (C) input to the decision.
+- **Shared-state anticipation (State):** predicting a shared-state (S) input in advance and positioning for it.
+
+Marks:
+- **✓** — feasible. The basis is code or docs unless the cell says measured or inferred.
+- **–** — the decision has no input of that type, so the strategy does not apply.
+- **×** — the decision has an input of that type, but the strategy fails, e.g. because the input is checked. No cell currently has this mark. Every claim input found here goes unchecked, and neither project has a shared-state input.
+
+| System | Place Claim | Place State | Lead Claim | Lead State | Combine Claim | Combine State | Credit Claim | Credit State |
+|---|---|---|---|---|---|---|---|---|
+| Node0 | – | – | – | – | ✓ | – | ✓ | – |
+| Agora | ✓ (inferred) | – | ✓ | – | ✓ | – | ✓ | – |
+
+**No State cell applies.** Neither project has a chain or an external randomness source. Every value these decisions use is either fixed in the code or derived from participant claims. The table below lists each value and why it is not shared state.
+
+| Value | Where it is used | Source | Shared state? |
+|---|---|---|---|
+| Stage | Place | Auth server (`N0/security/authorization.py:183`; `AGC/security/authorizer.py:122`) | No, O |
+| Group key: Node0 `{stage}.0b`, Agora `{stage}_s{step}.0b` | Place, Combine | Derived from stage and step (`N0/server/matchmaking.py:65`; `AG/core/all_reduce/matchmaking.py:57-59`) | No, protocol rule |
+| Global step | Agora group key, SPARTA slice | Highest step claimed by non-client peers (`AG/core/optimization/progress_tracker.py:335-338`) | No, C |
+| Averaging mode (who reduces) | Agora Lead | Each peer's advert (`AG/core/averaging/averager.py:180-185`) | No, C |
+| Which 5% of parameters are averaged | Agora Combine (data plane) | Fixed seed `1337` plus the global step (`AG/core/averaging/state_averager_sparta.py:104, 109-118`) | No, a constant plus C |
+| Which reducer owns which slice | Combine | Group sorted by peer ID; the *i*-th peer reduces the *i*-th part (`AG/core/all_reduce/ar_runner.py:123`; `matchmaking.py:238-241`; Node0 `N0/server/matchmaking.py:252`) | No. Peer IDs are self-generated keys |
+| Scoring rule, presence | Credit | Operator (dashboard, docs) | No, O |
+
+Note on the earlier draft of this table: it marked several State cells ✓ or ×, because the cells then listed group keys as shared state (for example Combine `S: step key; C: records, weight`). The keys were later reclassified as protocol rules, so those marks became –.
+
+### Node0
+
+| Cell | Mark | Proof | Status |
+|---|---|---|---|
+| Place Claim | – | Place is `O: stage`. The auth server sends the stage (`N0/security/authorization.py:183`). The client also sends a hardware profile (`:134-140`), but nothing shows it affects the stage | Code |
+| Place State | – | No S input; see the table above | Code |
+| Lead Claim | – | There is no leader and no reducer role to claim. Every replica reduces (`N0/server/HM_gradient_averager.py:102`). A node's bandwidth or mode advert cannot change its share, because Node0 replaces every member's advertised data with the node's own (`N0/server/matchmaking.py:258` `gathered = tuple(step.data_for_gather for peer_id in sorted_peer_ids)`). A node that deviates can make layouts disagree and break the round, but cannot take it over | Code; disruption **inferred** |
+| Lead State | – | No leader, no S input | Code |
+| Combine Claim | ✓ | Every replica is a reducer and can ban a sender as "missing" or failed (`N0/server/ar_runner.py:217-224, 336, 343-346`). No peer can check that verdict, so a false ban drops an honest sender's update from that part of the round | Code; exploitation **inferred** (not tested) |
+| Combine State | – | No S input | Code |
+| Credit Claim | ✓ | The worker metrics are FLOPs and active time computed by the node itself and written to the DHT (`N0/utils/monitor.py:228-240`). The dashboard score sums FLOPs plus presence from active time (archived dashboard bundle, see Credit above). Nothing in the repo checks the values | Code + Docs; exploitation **inferred** (the operator may cross-check out of view) |
+| Credit State | – | No S input; the rule is set by the operator | Docs |
+
+### Agora
+
+| Cell | Mark | Proof | Status |
+|---|---|---|---|
+| Place Claim | ✓ (inferred) | The Authorizer "can place more capable contributors on the heavier stages" (paper, lines 1617-1625). Capability comes from the node's self-reported hardware profile (`AGC/security/authorizer.py:100-116`). Over-reporting could steer a node toward a heavier stage, such as the tail | Paper + Code; server closed, **inferred** |
+| Place State | – | No S input. See the related tactics below | Code |
+| Lead Claim | ✓ | Reducer status is the peer's own averaging-mode advert (`AG/core/all_reduce/ar_runner.py:145-149`; `AG/core/averaging/averager.py:180-185`). In a local probe, a peer advertising NODE was given 32 of 96 reduction elements, and 0 when it advertised CLIENT | **Measured (local)**: `research/agora/HANDOFF.md:3-13`, `research/agora/results/reducer_mode_20261015_c/REPORT.txt`. Run with 3 loopback peers, no auth or integrity service; deployment enforcement untested |
+| Lead State | – | No S input; see the table above | Code |
+| Combine Claim | ✓ | NODE peers ban senders that fail or time out (`AG/core/all_reduce/ar_runner.py:260-267, 384, 391-396`; `AGD/agora-system/fault-tolerance.md:13`). The verdict cannot be checked. Anyone can become a NODE peer through the Lead claim | Code + Docs; exploitation **inferred** |
+| Combine State | – | No S input. The SPARTA slice and slice ownership are predictable, but come from a constant and claims; see the table above | Code |
+| Credit Claim | ✓ | Compute points are FLOPs the node computes from its own logs and pushes to the operator's metrics server (`AG/prometheus/monitor.py:616-652`). The documented score uses those FLOPs (`AGD/quick-start/points.md`) | Code + Docs; exploitation **inferred** (the operator may cross-check out of view) |
+| Credit State | – | No S input. The rule and presence are operator-side (`AGD/quick-start/points.md`) | Docs |
+
+### Related tactics outside the two strategies
+
+These are footnotes, not table cells. All are inferred and untested.
+
+| Tactic | What it exploits | Evidence |
+|---|---|---|
+| **Stage re-roll** (Agora): quit, delete `private.key`, rejoin, and repeat until the target stage is assigned | Cheap node identities (Join). Each try must pass the reachability check, the join rate limit, the queue and a full state download | The stage is known at authorization (`AGD/agora-system/startup-sequence.md:13, 19`). A fresh key gives a new identity (`AGD/quick-start/advanced.md:150-159`; `research/agora/upstream/README.md:335-341`). The cap is 2 active peers per HF account (`AGD/quick-start/advanced.md:23-24`). Admission checks are described in paper lines 1582-1605 |
+| **Predicting the stage** (Agora): join when the target stage is the most under-served | The operator's balancing rule plus per-stage occupancy that the operator publishes (not S) | Paper lines 1617-1621; per-stage occupancy shown on the dashboard (`AGD/agora-system/startup-sequence.md`, Queue section) |
+| **Record capture** (both): put Sybils near the predictable group key to control what nodes read | The DHT, not a decision input | Keys at `N0/server/matchmaking.py:65` and `AG/core/all_reduce/matchmaking.py:57-59`. Hivemind measurements in `research/hivemind/HANDOFF.md` §4.1 and §4.6 |
+| **Slice targeting** (Agora): poison exactly the 5% of parameters about to be averaged | The data plane; the slice is computable in advance | `AG/core/averaging/state_averager_sparta.py:104, 109-118` |
+| **Slice-ownership grinding** (both): generate keys until the peer ID sorts into a chosen reducer position | Self-generated peer IDs | `AG/core/all_reduce/ar_runner.py:123`; `AG/core/all_reduce/matchmaking.py:238-241` |
 
 ---
 
