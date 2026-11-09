@@ -1,0 +1,11 @@
+{
+  "local_path": "research/hivemind/papers/ (git-ignored)",
+  "downloaded_utc": "2026-11-09",
+  "purpose": "Paper presentation: Sridhar et al., NDSS 2024; HANDOFF.md names it as the framing model for this project",
+  "papers": [
+    {"venue": "NDSS 2024", "doi": "10.14722/ndss.2024.23153", "file": "ndss2024-sridhar-ipfs-censorship.pdf", "url": "https://www.ndss-symposium.org/wp-content/uploads/2024-153-paper.pdf", "title": "Content Censorship in the InterPlanetary File System", "version": "published proceedings", "pages": 17, "sha256": "61b4cef530eb99879e4317f7ece393522086939b1754bccba7456db02327617c"},
+    {"arxiv": "2307.12212v2", "file": "arxiv-2307.12212v2.pdf", "url": "https://arxiv.org/pdf/2307.12212v2", "title": "Content Censorship in the InterPlanetary File System", "version": "arXiv v2, 4 Dec 2023; pdftotext output differs from the NDSS version only by the arXiv stamp and one word", "pages": 17, "sha256": "26b73c854aab3d83a6419de7b04ce91138de5b952479af5bb2a55e26616a13d4"}
+  ],
+  "derived": "pdftotext (reading order) of each PDF saved beside it as .txt",
+  "artifact": "https://doi.org/10.5281/zenodo.8300034 (not downloaded)"
+}
