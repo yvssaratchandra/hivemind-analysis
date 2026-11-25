@@ -1,5 +1,101 @@
 # Handoff — read this first
 
+## Paper direction (early draft framing, recorded 2026-11-25)
+
+On 2026-11-25 the user supplied excerpts from an early paper draft. The framing
+will change. It replaces the three-item brief in §1 as the frame for the paper.
+The brief and the dated entries below still record how the evidence was produced.
+The draft text itself is not in this repository.
+
+**Scope.** The study is now about the *coordination layer* of decentralized
+training across deployed systems, not only Hivemind's discovery and averaging
+layer. The Hivemind measurements below become one case within it.
+
+**Research questions.**
+- **RQ1 Exposure.** Which coordination decisions can an admitted participant
+  steer through claims about itself, or through shared state it can predict?
+- **RQ2 Cost.** How many identities and how much computation does steering need
+  in deployed code?
+- **RQ3 Impact.** How much does steered coordination degrade the trained model
+  while the attacker sends correct values? Does robust aggregation detect it?
+
+**Planned contributions.**
+1. A model of the coordination step as five decisions. Each decision's inputs
+   come from the operator, from shared state, or from participant claims (draft §2).
+2. The model applied to ten systems that ran public training in 2024–2026
+   (draft §3.2).
+3. End-to-end attacks on the coordination layer of Agora and Node0. The remaining
+   exposed decisions are validated by running each other system's deployed
+   decision code on attacker inputs. Cost is measured in identities and
+   computation, including under standard DHT hardening (draft §3.3, §4).
+4. Training harm from an attacker that sends only correct values, while
+   Byzantine-robust aggregation accepts every round (draft §5). Two mitigations:
+   per-round shared randomness, and bounds on claimed quantities (draft §6, with
+   disclosure).
+
+Draft §7 is related work and §8 the conclusion.
+
+**Threat model (draft §3.1).**
+- *Goals* concern the communication structure produced in each round:
+  - **exclusion:** remove chosen honest participants from averaging groups;
+  - **bias:** make some participants' data enter the model more often than others';
+  - **amplification:** raise the attacker's share of chosen groups above its
+    share of the run.
+  Global run metrics stay in their normal range throughout.
+- *Capabilities.* The attacker passes Join through regular admission and runs as
+  many identities as Join admits at its regular cost. It chooses each identity's
+  update, reads public run state (DHT records, chain state) and uses ordinary
+  Internet connectivity.
+- *Strategies*, chosen by where a decision's input comes from:
+  - **Claim manipulation:** set an unverified, unbound claim, such as a deadline,
+    a progress report or an averaging weight.
+  - **Shared-state anticipation:** learn shared state before the decision reads
+    it, or grind it, then choose node identifiers, active identities or joining
+    time so the decision selects the attacker.
+  Shared state revealed only after inputs are fixed places everyone at random.
+  A decision computed only from operator inputs offers no attack surface.
+
+### Existing evidence against the draft
+
+| Draft item | Evidence in this repository | Status |
+|---|---|---|
+| Decision model | `COORDINATION_EVIDENCE.md` reviews Place, Lead, Combine and Credit. It names Join and Sync but has not reviewed them. Progress is proposed as a new decision; Route is proposed to fold into Place and Removal into Join | Partial. The draft's five decisions are not yet mapped to these |
+| Ten-system survey | Decision cells exist for Node0, Agora and Gensyn RL Swarm only. Public-run evidence is archived for those plus SN38 (`../ARCHIVE_INVENTORY.md`), and under `../intellect-1/`, `../psyche/`, `../iota/`, `../templar/` and `../grail/` | Partial. The list of ten is not recorded here. SN38 and Hivemind cells are not reviewed |
+| Cost in bare Hivemind | Five crafted `node_id`s own a record at any swarm size (§4.1). Five take the whole candidate list (§4.2). The earliest declared expiration wins leadership (§4.3, §4.15). Renewal attracts choices but caused no material harm (Step 30 entry) | Measured locally (loopback or WAN-delay emulation) |
+| End-to-end attacks on Agora and Node0 | Agora: three-peer reducer-mode claim probe, one round per arm. A NODE claim gave the test peer 32 of 96 reduction elements (`../agora/results/reducer_mode_20261015_c/`). There is also an honest eight-peer baseline. Node0: no local experiment. Foreign-stage announcement: untested (`COORDINATION_EVIDENCE.md`, open question 1) | Agora capability measured. No end-to-end attack yet |
+| Other systems' decision code run on attacker inputs | None found | Open |
+| Cost under DHT hardening | None found | Open |
+| Harm while sending correct values | Capture plus exclusion during native `Optimizer` training, one seed (`capture_training_pilot_20261021_b`, entry dated 2026-10-21 above). Target crossing was 62 s at baseline and 153 s with capture only; it was not reached within 180 s under exclusion. In a four-node probe, membership omission excludes and isolates the victim (§4.17). The 1800 s time-to-target preset is configured but not run. The Vera baseline awaits operator review | One-seed pilot, not reproduced |
+| Robust aggregation accepts every round | Hivemind has no robust aggregation (§4.10). §4.11 tested coordinate median only against *poisoned* values | Open |
+| Mitigations | None found | Open |
+
+### Differences between the draft and the evidence, to resolve before writing draft §2–§3
+
+1. **Is a DHT key computable in advance shared state?** The draft says yes and
+   uses it as the example for shared-state anticipation.
+   `COORDINATION_EVIDENCE.md` classifies derived group keys as protocol rules,
+   not shared state. On that basis it finds that no State cell applies to Node0,
+   Agora or RL Swarm. As things stand, the State strategy has no instance in the
+   three reviewed systems. Either reclassify the keys, or find State inputs among
+   the other seven systems.
+2. **Is the averaging weight a coordination claim?** The draft names it as a
+   claim, and the second mitigation bounds claimed quantities.
+   `COORDINATION_EVIDENCE.md` excludes weight from Combine as a data-plane value.
+   If weight is in scope, §4.11 applies under RQ3. An *honest* gradient at
+   declared weight 10⁶ moved the model only 1.22× relative to the control. The
+   35–148× damage required a sign-flip poison, which RQ3's correct-values
+   attacker does not send.
+3. **Five decisions or six?** The evidence document uses six (Join, Sync, Place,
+   Lead, Combine, Credit) and proposes a seventh (Progress).
+4. **Identity cost differs by system.** Bare Hivemind identities are
+   self-generated keys, about 0.1 s each (§4.1). Node0 and Agora take the stage
+   from an operator auth server, and Node0's server can refuse joins
+   (`COORDINATION_EVIDENCE.md`, Strategy and Removal sections). How many
+   identities each admits, and at what cost, is not recorded. RQ2 needs this
+   per system.
+
+---
+
 **Offline review provenance corrected 2026-10-27:** review output now preserves
 both the current wrapper and analyzer under `review_code/` and records their
 hashes in `review.json` and the inventory. The review executes the saved analyzer
