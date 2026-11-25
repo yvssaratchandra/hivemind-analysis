@@ -23,7 +23,8 @@ layer. The Hivemind measurements below become one case within it.
 1. A model of the coordination step as five decisions. Each decision's inputs
    come from the operator, from shared state, or from participant claims (draft §2).
 2. The model applied to ten systems that ran public training in 2024–2026
-   (draft §3.2).
+   (draft §3.2). The current list: Node0, Agora, Gensyn RL Swarm, SN38, Psyche,
+   Covenant, Grail, IOTA, INTELLECT-1 and INTELLECT-2.
 3. End-to-end attacks on the coordination layer of Agora and Node0. The remaining
    exposed decisions are validated by running each other system's deployed
    decision code on attacker inputs. Cost is measured in identities and
@@ -34,6 +35,13 @@ layer. The Hivemind measurements below become one case within it.
    disclosure).
 
 Draft §7 is related work and §8 the conclusion.
+
+**Provisional (user, 2026-11-25).** The attacker goals (exclusion, bias,
+amplification), the decision taxonomy (Join, Place, Lead, Combine and so on) and
+the system list are all expected to change as the user learns more about each
+project. A system stays in the survey only if its architecture fits the
+coordination model, and the fit criteria are not yet fixed. Do not treat any of
+these as settled when planning experiments or writing.
 
 **Threat model (draft §3.1).**
 - *Goals* concern the communication structure produced in each round:
@@ -60,7 +68,7 @@ Draft §7 is related work and §8 the conclusion.
 | Draft item | Evidence in this repository | Status |
 |---|---|---|
 | Decision model | `COORDINATION_EVIDENCE.md` reviews Place, Lead, Combine and Credit. It names Join and Sync but has not reviewed them. Progress is proposed as a new decision; Route is proposed to fold into Place and Removal into Join | Partial. The draft's five decisions are not yet mapped to these |
-| Ten-system survey | Decision cells exist for Node0, Agora and Gensyn RL Swarm only. Public-run evidence is archived for those plus SN38 (`../ARCHIVE_INVENTORY.md`), and under `../intellect-1/`, `../psyche/`, `../iota/`, `../templar/` and `../grail/` | Partial. The list of ten is not recorded here. SN38 and Hivemind cells are not reviewed |
+| Ten-system survey | Decision cells exist for Node0, Agora and Gensyn RL Swarm only. Public-run evidence is archived for all ten: Node0, Agora, Gensyn and SN38 (`../ARCHIVE_INVENTORY.md`), plus `../psyche/`, `../templar/` (Covenant), `../grail/`, `../iota/`, `../intellect-1/` and `../intellect-2/` | Partial. Seven of the ten have no decision cells. Hivemind cells are not reviewed |
 | Cost in bare Hivemind | Five crafted `node_id`s own a record at any swarm size (§4.1). Five take the whole candidate list (§4.2). The earliest declared expiration wins leadership (§4.3, §4.15). Renewal attracts choices but caused no material harm (Step 30 entry) | Measured locally (loopback or WAN-delay emulation) |
 | End-to-end attacks on Agora and Node0 | Agora: three-peer reducer-mode claim probe, one round per arm. A NODE claim gave the test peer 32 of 96 reduction elements (`../agora/results/reducer_mode_20261015_c/`). There is also an honest eight-peer baseline. Node0: no local experiment. Foreign-stage announcement: untested (`COORDINATION_EVIDENCE.md`, open question 1) | Agora capability measured. No end-to-end attack yet |
 | Other systems' decision code run on attacker inputs | None found | Open |
@@ -77,7 +85,8 @@ Draft §7 is related work and §8 the conclusion.
    not shared state. On that basis it finds that no State cell applies to Node0,
    Agora or RL Swarm. As things stand, the State strategy has no instance in the
    three reviewed systems. Either reclassify the keys, or find State inputs among
-   the other seven systems.
+   the other seven systems (SN38, Psyche, Covenant, Grail, IOTA, INTELLECT-1,
+   INTELLECT-2).
 2. **Is the averaging weight a coordination claim?** The draft names it as a
    claim, and the second mitigation bounds claimed quantities.
    `COORDINATION_EVIDENCE.md` excludes weight from Combine as a data-plane value.
