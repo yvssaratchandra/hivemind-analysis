@@ -2795,6 +2795,10 @@ forgery could plausibly have.
 
 ### Where this sits in the literature (searched 2026-09; `QA_NOTES.md` Q15 predates this)
 
+**Broader survey 2026-11-27:** `COORDINATION_LITERATURE.md` covers coordination-layer attacks and defenses across
+server FL, decentralized learning and hybrid/permissionless training. Its entries are verified at abstract level
+only.
+
 Q15 established that nobody has analysed Hivemind's DHT security, and that both Hivemind papers state
 the uniform-`node_id` assumption and defer the analysis. That still holds. **What Q15 does not cover is
 the group-formation thesis**, and there the space is much busier than it looks:
